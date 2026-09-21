@@ -1,0 +1,2945 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-09-21 10:24+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: lv\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "Please check your internet connection and try again."
+msgstr "Lūdzu, pārbaudiet interneta savienojumu un mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(edited)"
+msgstr "(rediģēts)"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(expand)"
+msgstr "(izvērst)"
+
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "(you)"
+msgstr "(jūs)"
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+msgid "[not set]"
+msgstr "[nav iestatīts]"
+
+#. placeholder {0}: visible.length
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+msgid "{0, plural, one {# result} other {# results}}"
+msgstr "{0, plural, zero {# rezultātu} one {# rezultāts} other {# rezultāti}}"
+
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, zero {# atlasīti} one {# atlasīts} other {# atlasīti}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, zero {+# ligzdoti} one {+# ligzdots} other {+# ligzdoti}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#d} other {#d}}"
+msgstr "{count, plural, one {#d} other {#d}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#h} other {#h}}"
+msgstr "{count, plural, one {#st} other {#st}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#m} other {#m}}"
+msgstr "{count, plural, one {#min} other {#min}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#w} other {#w}}"
+msgstr "{count, plural, one {#ned} other {#ned}}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{day}, {from} to {to}"
+msgstr "{day}, no {from} līdz {to}"
+
+#: src/hooks/use-options.ts
+msgid "{days, plural, one {# day before} other {# days before}}"
+msgstr "{days, plural, zero {# dienu iepriekš} one {# dienu iepriekš} other {# dienas iepriekš}}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "{entityLabel} name"
+msgstr "{entityLabel} nosaukums"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{from} to {to}"
+msgstr "no {from} līdz {to}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, zero {+# vēl} one {+# vēl} other {+# vēl}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour before} other {# hours before}}"
+msgstr "{hours, plural, zero {# stundu iepriekš} one {# stundu iepriekš} other {# stundas iepriekš}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour} other {# hours}}"
+msgstr "{hours, plural, zero {# stundu} one {# stunda} other {# stundas}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
+msgstr "{minutes, plural, zero {# minūšu iepriekš} one {# minūti iepriekš} other {# minūtes iepriekš}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute} other {# minutes}}"
+msgstr "{minutes, plural, zero {# minūšu} one {# minūte} other {# minūtes}}"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "{opponentName} offered a draw"
+msgstr "{opponentName} piedāvāja neizšķirtu"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{sentLabel} no {totalLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "{totalCount, plural, one {# item} other {# items}}"
+msgstr "{totalCount, plural, zero {# vienumu} one {# vienums} other {# vienumi}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, zero {# atbilžu} one {# atbilde} other {+# vēl atbildes}}"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
+msgstr "{unreadCount, plural, zero {Atvērt izvēlni (# neizlasītu paziņojumu)} one {Atvērt izvēlni (# neizlasīts paziņojums)} other {Atvērt izvēlni (# neizlasīti paziņojumi)}}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "12 hours"
+msgstr "12 stundas"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "24 hours"
+msgstr "24 stundas"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "A recording is already in progress."
+msgstr "Ierakstīšana jau notiek."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Absolute (date and time)"
+msgstr "Absolūts (datums un laiks)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Accept"
+msgstr "Pieņemt"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Access denied"
+msgstr "Piekļuve liegta"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Access level"
+msgstr "Piekļuves līmenis"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Account type"
+msgstr "Konta veids"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Activity"
+msgstr "Aktivitāte"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add"
+msgstr "Pievienot"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Add a comment..."
+msgstr "Pievieno komentāru..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add a new account"
+msgstr "Pievienot jaunu kontu"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add a new field to this class"
+msgstr "Pievienot jaunu lauku šai klasei"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Add access"
+msgstr "Pievienot piekļuvi"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add account"
+msgstr "Pievienot kontu"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Add caption"
+msgstr "Pievienot parakstu"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add checklist item"
+msgstr "Pievienot kontrolsaraksta vienumu"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add field"
+msgstr "Pievienot lauku"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add item..."
+msgstr "Pievienot vienumu..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Add link"
+msgstr "Pievienot saiti"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Add option"
+msgstr "Pievienot opciju"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Add tag..."
+msgstr "Pievienot tagu..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add to existing notifications"
+msgstr "Pievienot esošajiem paziņojumiem"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+msgid "Add view"
+msgstr "Pievienot skatu"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Address"
+msgstr "Adrese"
+
+#: src/features/calendar/editor.tsx
+msgid "After a number"
+msgstr "Pēc noteikta skaita"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "AI"
+msgstr "MI"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/day-popover.tsx
+#: src/features/calendar/editor.tsx
+msgid "All day"
+msgstr "Visu dienu"
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "All events"
+msgstr "Visi notikumi"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Atļaut ikvienam meklēt: {entityLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Allow sort by"
+msgstr "Atļaut kārtot pēc"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "An error occurred"
+msgstr "Radās kļūda"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "An unexpected error occurred"
+msgstr "Radās negaidīta kļūda"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Android push"
+msgstr "Android push"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone"
+msgstr "Jebkurš"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone who is logged in"
+msgstr "Jebkurš, kas ir pieteicies"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr "Viss, kas ir abonējis šo plūsmu, pārstās to saņemt. Pēc tam varēsiet kopēt jaunu URL."
+
+#. placeholder {0}: deleteTarget?.name
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "Vai tiešām vēlies dzēst \"{0}\"?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Vai tiešām vēlies dzēst \"{title}\"? Šo darbību nevar atsaukt."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
+msgstr "Vai tiešām vēlies dzēst kolonnu \"{name}\"? To nevar atsaukt."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Are you sure you want to delete this comment? This will also delete all replies."
+msgstr "Vai tiešām vēlies dzēst šo komentāru? Tas dzēsīs arī visas atbildes."
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Are you sure you want to log out? You will need to log in again to access your account."
+msgstr "Vai tiešām vēlies izrakstīties? Lai piekļūtu kontam, būs jāpierakstās vēlreiz."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign?"
+msgstr "Vai tiešām vēlies padoties?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Vai tiešām vēlies padoties? {opponentName} uzvarēs spēli."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Ascending"
+msgstr "Augošā secībā"
+
+#: src/hooks/use-options.ts
+msgid "At the time of the event"
+msgstr "Notikuma laikā"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach comment files"
+msgstr "Pievienot komentāra failus"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach reply files"
+msgstr "Pievienot atbildes failus"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Authenticated users"
+msgstr "Autentificēti lietotāji"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Authenticator code"
+msgstr "Authenticator kods"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Available keyboard shortcuts"
+msgstr "Pieejamie tastatūras īsceļi"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar"
+msgstr "Avatars"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar for {name}"
+msgstr "{name} avatars"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Back"
+msgstr "Atpakaļ"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Back to home"
+msgstr "Atpakaļ uz sākumu"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity-banner.tsx
+msgid "Banner"
+msgstr "Baneris"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner removed"
+msgstr "Baneris noņemts"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner updated"
+msgstr "Baneris atjaunināts"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Block {name}"
+msgstr "Bloķēt {name}"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocked by"
+msgstr "Bloķēja"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Blocked navigation to untrusted link"
+msgstr "Navigācija uz neuzticamu saiti bloķēta"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocks"
+msgstr "Bloki"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Board"
+msgstr "Galds"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Boost interest"
+msgstr "Veicināt interesi"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Border colour"
+msgstr "Apmales krāsa"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Browser notifications"
+msgstr "Pārlūka paziņojumi"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "calendar"
+msgstr "kalendārs"
+
+#: src/features/calendar/editor.tsx
+msgid "Calendar"
+msgstr "Kalendārs"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar address"
+msgstr "Kalendāra adrese"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address copied to clipboard"
+msgstr "Kalendāra adrese nokopēta starpliktuvē"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address revoked"
+msgstr "Kalendāra adrese atsaukta"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+msgid "Calendar colour"
+msgstr "Kalendāra krāsa"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar created"
+msgstr "Kalendārs izveidots"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar deleted"
+msgstr "Kalendārs dzēsts"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar renamed"
+msgstr "Kalendārs pārdēvēts"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar up to date"
+msgstr "Kalendārs ir aktuāls"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/index.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendars"
+msgstr "Kalendāri"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera permission denied"
+msgstr "Kameras atļauja noraidīta"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera unavailable"
+msgstr "Kamera nav pieejama"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel comment"
+msgstr "Atcelt komentāru"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel reply"
+msgstr "Atcelt atbildi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Atcelts"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Caption"
+msgstr "Paraksts"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Category for these notifications"
+msgstr "Šo paziņojumu kategorija"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Change notification category"
+msgstr "Mainīt paziņojuma kategoriju"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed"
+msgstr "Mainīts"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed {field}"
+msgstr "Mainīts {field}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Changed occurrence"
+msgstr "Mainīts atkārtojums"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checkbox"
+msgstr "Izvēles rūtiņa"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Checking for changes..."
+msgstr "Pārbauda izmaiņas..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checklist"
+msgstr "Kontrolsaraksts"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Choose a game from the sidebar or start a new one."
+msgstr "Izvēlies spēli no sānu joslas vai sāc jaunu."
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/language-picker.tsx
+msgid "Choose language"
+msgstr "Izvēlies valodu"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Clear"
+msgstr "Notīrīt"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Clear all"
+msgstr "Notīrīt visu"
+
+#: ../../../lib/web/src/components/search-input.tsx
+msgid "Clear search"
+msgstr "Notīrīt meklēšanu"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/dialog.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/sheet.tsx
+#: src/features/calendar/editor.tsx
+msgid "Close"
+msgstr "Aizvērt"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Close dialog"
+msgstr "Aizvērt dialogu"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Close navigation"
+msgstr "Aizvērt navigāciju"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Close panel"
+msgstr "Aizvērt paneli"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Close panel / cancel"
+msgstr "Aizvērt paneli / atcelt"
+
+#: ../../../lib/web/src/components/header-search.tsx
+msgid "Close search"
+msgstr "Aizvērt meklēšanu"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Collapse"
+msgstr "Sakļaut"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Collapse sidebar"
+msgstr "Sakļaut sānu joslu"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour"
+msgstr "Krāsa"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour saved"
+msgstr "Krāsa saglabāta"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Column actions"
+msgstr "Kolonnas darbības"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Columns group by"
+msgstr "Kolonnas grupē pēc"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Comfortable"
+msgstr "Ērts"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Command Palette"
+msgstr "Komandu palete"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Comment actions"
+msgstr "Komentāra darbības"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Comments"
+msgstr "Komentāri"
+
+#. placeholder {0}: data.comments.count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Comments ({0})"
+msgstr "Komentāri ({0})"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Compact"
+msgstr "Kompakts"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Configure option settings"
+msgstr "Konfigurē opciju iestatījumus"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Configure view settings"
+msgstr "Konfigurē skata iestatījumus"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Confirm"
+msgstr "Apstiprināt"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Pievienot ierīci"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Pievienot vēl vienu ierīci"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connected"
+msgstr "Savienots"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Pievieno ierīci..."
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connecting..."
+msgstr "Notiek savienošana..."
+
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "Content not found."
+msgstr "Saturs nav atrasts."
+
+#: ../../../lib/web/src/lib/query-client.ts
+msgid "Content not modified"
+msgstr "Saturs nav mainīts"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Contextual information and details."
+msgstr "Konteksta informācija un detaļas."
+
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+msgid "Continue"
+msgstr "Turpināt"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Continue with {label}"
+msgstr "Turpināt ar {label}"
+
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Copied"
+msgstr "Nokopēts"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copied to clipboard"
+msgstr "Nokopēts starpliktuvē"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/settings.tsx
+msgid "Copy"
+msgstr "Kopēt"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopēt {label}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Copy calendar address"
+msgstr "Kopēt kalendāra adresi"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Could not load this document. Please try again later."
+msgstr "Nevarēja ielādēt šo dokumentu. Lūdzu, mēģini vēlāk vēlreiz."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Couldn't load notifications"
+msgstr "Neizdevās ielādēt paziņojumus"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't send the code. Please try again."
+msgstr "Neizdevās nosūtīt kodu. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't start re-authentication. Please try again."
+msgstr "Neizdevās sākt atkārtotu autentifikāciju. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't verify with that account. Please try again."
+msgstr "Neizdevās verificēt ar šo kontu. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Create"
+msgstr "Izveidot"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Create {entityLabel}"
+msgstr "Izveidot {entityLabel}"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Create calendar"
+msgstr "Izveidot kalendāru"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Create new item"
+msgstr "Izveidot jaunu vienumu"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Created"
+msgstr "Izveidots"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Izveidots {0}"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Created {field}"
+msgstr "Izveidots {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Creating calendar..."
+msgstr "Veido kalendāru..."
+
+#: ../../../lib/web/src/components/map-view.tsx
+msgid "Current location"
+msgstr "Pašreizējā atrašanās vieta"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: src/features/calendar/editor.tsx
+msgid "Custom"
+msgstr "Pielāgots"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Daily"
+msgstr "Katru dienu"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dark"
+msgstr "Tumšs"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Data conflict"
+msgstr "Datu konflikts"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Date"
+msgstr "Datums"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Day"
+msgstr "Diena"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Decline"
+msgstr "Noraidīt"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Default"
+msgstr "Noklusētais"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Default AI account"
+msgstr "Noklusētais AI konts"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default event length"
+msgstr "Noklusētais notikuma ilgums"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default reminder"
+msgstr "Noklusētais atgādinājums"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Default sort"
+msgstr "Noklusētā kārtošana"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Delete"
+msgstr "Dzēst"
+
+#. placeholder {0}: deleting?.name ?? ''
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete <0>{0}</0> and every event on it?"
+msgstr "Dzēst <0>{0}</0> un visus tajā esošos notikumus?"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Delete attachment"
+msgstr "Dzēst pielikumu"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete calendar"
+msgstr "Dzēst kalendāru"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Delete column"
+msgstr "Dzēst kolonnu"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Delete comment"
+msgstr "Dzēst komentāru"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Dzēst ierīci"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Dzēst ierīci?"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete field"
+msgstr "Dzēst lauku"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Delete game?"
+msgstr "Dzēst spēli?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Delete item"
+msgstr "Dzēst vienumu"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Delete option"
+msgstr "Dzēst opciju"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete option {0}"
+msgstr "Dzēst opciju {0}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Delete this event"
+msgstr "Dzēst šo notikumu"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Delete view"
+msgstr "Dzēst skatu"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Delete your account on the old server"
+msgstr "Dzēsiet savu kontu vecajā serverī"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted"
+msgstr "Dzēsts"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted {field}"
+msgstr "Dzēsts {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Deleting calendar..."
+msgstr "Dzēš kalendāru..."
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Dzēš ierīci..."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Descending"
+msgstr "Dilstošā secībā"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Description"
+msgstr "Apraksts"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Details Panel"
+msgstr "Detaļu panelis"
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Detect from web browser"
+msgstr "Noteikt no tīmekļa pārlūka"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Ierīce dzēsta"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device name"
+msgstr "Ierīces nosaukums"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Directory"
+msgstr "Katalogs"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard"
+msgstr "Atmest"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard draft?"
+msgstr "Atmest melnrakstu?"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Disconnected"
+msgstr "Atvienots"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Dismiss"
+msgstr "Aizvērt"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Displays the mobile sidebar."
+msgstr "Parāda mobilo sānu joslu."
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Does not match the required pattern"
+msgstr "Neatbilst prasītajam šablonam"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Done"
+msgstr "Pabeigts"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "Lejupielādēt"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download failed"
+msgstr "Lejupielāde neizdevās"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Duplicates"
+msgstr "Dublikāti"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dyslexia-friendly"
+msgstr "Disleksijai draudzīgs"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "Earlier events"
+msgstr "Iepriekšējie notikumi"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Edit {label}"
+msgstr "Rediģēt {label}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Edit caption"
+msgstr "Rediģēt parakstu"
+
+#: src/features/calendar/editor.tsx
+msgid "Edit event"
+msgstr "Rediģēt notikumu"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field"
+msgstr "Rediģēt lauku"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field settings"
+msgstr "Rediģēt lauka iestatījumus"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Edit option"
+msgstr "Rediģēt opciju"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit option {0}"
+msgstr "Rediģēt opciju {0}"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Edit selected card"
+msgstr "Rediģēt atlasīto karti"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Edit view"
+msgstr "Rediģēt skatu"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Email"
+msgstr "E-pasts"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Email code"
+msgstr "E-pasta kods"
+
+#: src/features/calendar/editor.tsx
+msgid "End"
+msgstr "Beigas"
+
+#: src/features/calendar/editor.tsx
+msgid "End time"
+msgstr "Beigu laiks"
+
+#: src/features/calendar/editor.tsx
+msgid "Ends"
+msgstr "Beidzas"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Enter banner text (markdown supported)..."
+msgstr "Ievadiet reklāmkaroga tekstu (atbalsta markdown)..."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter the code from your email"
+msgstr "Ievadiet kodu no sava e-pasta"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter your authenticator code"
+msgstr "Ievadiet autentifikatora kodu"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Error"
+msgstr "Kļūda"
+
+#: src/features/calendar/editor.tsx
+msgid "Event created"
+msgstr "Notikums izveidots"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Event deleted"
+msgstr "Notikums dzēsts"
+
+#: src/features/calendar/editor.tsx
+msgid "Event saved"
+msgstr "Notikums saglabāts"
+
+#: src/features/calendar/editor.tsx
+msgid "Every"
+msgstr "Ik pēc"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Expand"
+msgstr "Izvērst"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Expand sidebar"
+msgstr "Izvērst sānjoslu"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "External URL"
+msgstr "Ārējs URL"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Extra large"
+msgstr "Ļoti liels"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts
+msgid "Failed to add account"
+msgstr "Neizdevās pievienot kontu"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to check the calendar"
+msgstr "Neizdevās pārbaudīt kalendāru"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Neizdevās pievienot ierīci"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Failed to copy"
+msgstr "Neizdevās kopēt"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to create calendar"
+msgstr "Neizdevās izveidot kalendāru"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to create link"
+msgstr "Neizdevās izveidot saiti"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to delete"
+msgstr "Neizdevās dzēst"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to delete attachment"
+msgstr "Neizdevās dzēst pielikumu"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to delete calendar"
+msgstr "Neizdevās dzēst kalendāru"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to delete comment"
+msgstr "Neizdevās dzēst komentāru"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Neizdevās dzēst ierīci"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Failed to delete link"
+msgstr "Neizdevās dzēst saiti"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Failed to delete the event"
+msgstr "Neizdevās dzēst notikumu"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to get RSS token"
+msgstr "Neizdevās iegūt RSS pilnvaru"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to get the calendar address"
+msgstr "Neizdevās iegūt kalendāra adresi"
+
+#: ../../../lib/web/src/hooks/use-load-more.ts
+msgid "Failed to load"
+msgstr "Neizdevās ielādēt"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to load banner"
+msgstr "Neizdevās ielādēt reklāmkarogu"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "Failed to load history"
+msgstr "Neizdevās ielādēt vēsturi"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load image"
+msgstr "Neizdevās ielādēt attēlu"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to load item"
+msgstr "Neizdevās ielādēt vienumu"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to load prompts"
+msgstr "Neizdevās ielādēt uzvednes"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load video"
+msgstr "Neizdevās ielādēt video"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to load your preferences"
+msgstr "Neizdevās ielādēt tavas preferences"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to move"
+msgstr "Neizdevās pārvietot"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to move the event"
+msgstr "Neizdevās pārvietot notikumu"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to post comment"
+msgstr "Neizdevās publicēt komentāru"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to rename calendar"
+msgstr "Neizdevās pārdēvēt kalendāru"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to reset prompt"
+msgstr "Neizdevās atiestatīt uzvedni"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to revoke RSS access"
+msgstr "Neizdevās atsaukt RSS piekļuvi"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to revoke the calendar address"
+msgstr "Neizdevās atsaukt kalendāra adresi"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to save"
+msgstr "Neizdevās saglabāt"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to save prompt"
+msgstr "Neizdevās saglabāt uzvedni"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to save the colour"
+msgstr "Neizdevās saglabāt krāsu"
+
+#: src/features/calendar/editor.tsx
+msgid "Failed to save the event"
+msgstr "Neizdevās saglabāt notikumu"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to subscribe"
+msgstr "Neizdevās abonēt"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to update banner"
+msgstr "Neizdevās atjaunināt reklāmkarogu"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to update comment"
+msgstr "Neizdevās atjaunināt komentāru"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to update watching"
+msgstr "Neizdevās atjaunināt novērošanu"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to upload attachment"
+msgstr "Neizdevās augšupielādēt pielikumu"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Files"
+msgstr "Faili"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Finish moving your account"
+msgstr "Pabeidziet konta pārvietošanu"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Flags"
+msgstr "Karogi"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Flat"
+msgstr "Plakana"
+
+#: src/features/calendar/editor.tsx
+msgid "Frequency"
+msgstr "Biežums"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Friday"
+msgstr "Piektdiena"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Friends"
+msgstr "Draugi"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "From"
+msgstr "No"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "From theme"
+msgstr "No motīva"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Go back"
+msgstr "Atpakaļ"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Group"
+msgstr "Grupa"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Group by"
+msgstr "Grupēt pēc"
+
+#. placeholder {0}: name || subject.slice(1)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Group: {0}"
+msgstr "Grupa: {0}"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "History"
+msgstr "Vēsture"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Home"
+msgstr "Sākums"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Hot"
+msgstr "Aktuāli"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "ID"
+msgstr "ID"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Image viewer: {0}"
+msgstr "Attēlu skatītājs: {0}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Imperial"
+msgstr "Imperiāls"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Including anonymous users"
+msgstr "Ieskaitot anonīmos lietotājus"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar"
+msgstr "Iniciāļu avatars"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar for {name}"
+msgstr "{name} iniciāļu avatars"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Interest {weight}"
+msgstr "Interese {weight}"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Interests"
+msgstr "Intereses"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Invalid date"
+msgstr "Nederīgs datums"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Šķiet, ka meklētā lapa <0/>neeksistē vai ir noņemta."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Item details"
+msgstr "Vienuma informācija"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "Just now"
+msgstr "Tikko"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Keyboard shortcuts"
+msgstr "Tastatūras saīsnes"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Large"
+msgstr "Liels"
+
+#: src/features/calendar/editor.tsx
+msgid "Last day"
+msgstr "Pēdējā diena"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Pēdējo reizi izmantots {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Layout"
+msgstr "Izkārtojums"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Tikai burti, cipari, atstarpes, defises un slīpsvītras"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Light"
+msgstr "Gaišs"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Link"
+msgstr "Saite"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Links"
+msgstr "Saites"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/components/toolbar.tsx
+msgid "List"
+msgstr "Saraksts"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Load more"
+msgstr "Ielādēt vairāk"
+
+#: ../../../lib/web/src/components/ui/loading-content.tsx
+msgid "Loading content…"
+msgstr "Notiek satura ielāde…"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item"
+msgstr "Ielādē vienumu"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item details"
+msgstr "Ielādē vienuma informāciju"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Loading..."
+msgstr "Ielādē..."
+
+#: src/features/calendar/editor.tsx
+msgid "Location"
+msgstr "Atrašanās vieta"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Log out"
+msgstr "Izrakstīties"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out (with errors)"
+msgstr "Izrakstījās (ar kļūdām)"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out successfully"
+msgstr "Izrakstīšanās veiksmīga"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Logging out…"
+msgstr "Izrakstās…"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Manage categories"
+msgstr "Pārvaldīt kategorijas"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Pārvaldīt ierīces"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Manual"
+msgstr "Manuāls"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Mark all as read"
+msgstr "Atzīmēt visus kā lasītus"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Maximum length"
+msgstr "Maks. garums"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "MCP server"
+msgstr "MCP serveris"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Medium"
+msgstr "Vidējs"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Members"
+msgstr "Dalībnieki"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Menu"
+msgstr "Izvēlne"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Message"
+msgstr "Ziņojums"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Metric"
+msgstr "Metrisks"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Microphone permission denied"
+msgstr "Mikrofona atļauja liegta"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Minimum length"
+msgstr "Min. garums"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Mochi web"
+msgstr "Mochi tīmeklis"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Moderation"
+msgstr "Moderēšana"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Monday"
+msgstr "Pirmdiena"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Month"
+msgstr "Mēnesis"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Monthly"
+msgstr "Mēneša"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "More options"
+msgstr "Vairāk opciju"
+
+#: src/features/calendar/index.tsx
+msgid "Move this event"
+msgstr "Pārvietot šo notikumu"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved"
+msgstr "Pārvietots"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved {field}"
+msgstr "Pārvietots {field}"
+
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr "Pārvieto uz {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Multiweek"
+msgstr "Vairākas nedēļas"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Name"
+msgstr "Nosaukums"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name cannot contain < or > characters"
+msgstr "Nosaukums nedrīkst saturēt rakstzīmes < vai >"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name is required"
+msgstr "Nosaukums ir obligāts"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name must be 1000 characters or less"
+msgstr "Nosaukums nedrīkst pārsniegt 1000 rakstzīmes"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Network error"
+msgstr "Tīkla kļūda"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Never"
+msgstr "Nekad"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "New"
+msgstr "Jauns"
+
+#: src/hooks/use-ics-copy.ts
+msgid "New calendar address copied to clipboard"
+msgstr "Jaunā kalendāra adrese nokopēta starpliktuvē"
+
+#: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/editor.tsx
+msgid "New event"
+msgstr "Jauns notikums"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "New game"
+msgstr "Jauna spēle"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Next"
+msgstr "Tālāk"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Next image"
+msgstr "Nākamais attēls"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr "Nākamais mēnesis"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No {parentClassNames} to add to"
+msgstr "Nav {parentClassNames}, kam pievienot"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "No access rules configured. Add rules to control who can access this resource."
+msgstr "Piekļuves noteikumi nav konfigurēti. Pievienojiet noteikumus, lai kontrolētu, kam ir piekļuve šim resursam."
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No activity yet"
+msgstr "Vēl nav aktivitātes"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "No comments yet"
+msgstr "Vēl nav komentāru"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Nav pievienotu ierīču."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No events"
+msgstr "Nav notikumu"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "No games yet"
+msgstr "Vēl nav spēļu"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No groups available"
+msgstr "Nav pieejamu grupu"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No item types can be created yet. Create the required parent items first."
+msgstr "Vēl nevar izveidot vienumu tipus. Vispirms izveidojiet nepieciešamos vecākvienumus."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "No matching objects"
+msgstr "Nav atbilstošu objektu"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "No people found"
+msgstr "Cilvēki nav atrasti"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "No places found"
+msgstr "Vietas nav atrastas"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "No results found"
+msgstr "Rezultāti nav atrasti"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "No results found."
+msgstr "Rezultāti nav atrasti."
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "No status"
+msgstr "Nav statusa"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "No time zone found."
+msgstr "Laika josla nav atrasta."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "No topic record yet — try again after the next notification."
+msgstr "Vēl nav tēmas ieraksta — mēģiniet vēlreiz pēc nākamā paziņojuma."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "No unread notifications"
+msgstr "Nav nelasītu paziņojumu"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No users found"
+msgstr "Lietotāji nav atrasti"
+
+#: ../../../lib/web/src/components/entity/entity-design-preview.tsx
+msgid "No views"
+msgstr "Nav skatījumu"
+
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: src/hooks/use-options.ts
+msgid "None"
+msgstr "Nav"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Normal"
+msgstr "Normāls"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Not found"
+msgstr "Nav atrasts"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Not set"
+msgstr "Nav iestatīts"
+
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "Nothing found"
+msgstr "Nekas nav atrasts"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Notifications: {0}"
+msgstr "Paziņojumi: {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Numurs"
+
+#: src/features/calendar/editor.tsx
+msgid "Occurrences"
+msgstr "Atkārtojumi"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "On"
+msgstr "Ieslēgts"
+
+#: src/features/calendar/editor.tsx
+msgid "On a date"
+msgstr "Noteiktā datumā"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Only this"
+msgstr "Tikai šo"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Oops! Page Not Found!"
+msgstr "Hops! Lapa nav atrasta!"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Open actions"
+msgstr "Atvērt darbības"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Open menu"
+msgstr "Atvērt izvēlni"
+
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Open navigation"
+msgstr "Atvērt navigāciju"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Open option actions"
+msgstr "Atvērt iespēju darbības"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Open selected card"
+msgstr "Atvērt atlasīto karti"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Open view actions"
+msgstr "Atvērt skata darbības"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Open view controls"
+msgstr "Atvērt skata vadības elementus"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Option name"
+msgstr "Iespējas nosaukums"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Options"
+msgstr "Iespējas"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Cits"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Owner"
+msgstr "Īpašnieks"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Parent"
+msgstr "Vecāks"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Passkey"
+msgstr "Piekļuves atslēga"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkey verification failed. Please try again."
+msgstr "Piekļuves atslēgas pārbaude neizdevās. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Passkeys"
+msgstr "Piekļuves atslēgas"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkeys are not available in this browser"
+msgstr "Piekļuves atslēgas šajā pārlūkā nav pieejamas"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Password"
+msgstr "Parole"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Pattern (regex)"
+msgstr "Šablons (regex)"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "People"
+msgstr "Cilvēki"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Please check your internet connection and try again."
+msgstr "Lūdzu, pārbaudiet interneta savienojumu un mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please try again."
+msgstr "Mēģini vēlreiz."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please wait a moment and try again."
+msgstr "Lūdzu, uzgaidiet brīdi un mēģiniet vēlreiz."
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Poll now"
+msgstr "Pārbaudīt tagad"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts"
+msgstr "Ieraksti"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts and comments"
+msgstr "Ieraksti un komentāri"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences"
+msgstr "Preferences"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences saved"
+msgstr "Preferences saglabātas"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Previous"
+msgstr "Iepriekšējais"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Previous image"
+msgstr "Iepriekšējais attēls"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr "Iepriekšējais mēnesis"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Privacy"
+msgstr "Privātums"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Processing…"
+msgstr "Apstrādā…"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Prompt saved"
+msgstr "Pamudinājums saglabāts"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Properties"
+msgstr "Īpašības"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Push notification"
+msgstr "Push paziņojums"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Raised"
+msgstr "Izcelts"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-link your accounts on this server"
+msgstr "Atkārtoti saistiet savus kontus šajā serverī"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-register your passkeys on this server"
+msgstr "Atkārtoti reģistrējiet savas piekļuves atslēgas šajā serverī"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Recommended"
+msgstr "Ieteikts"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Reconnecting ({retries})..."
+msgstr "Notiek atkārtota savienošana ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording failed. Please try again."
+msgstr "Ierakstīšana neizdevās. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording produced no audio"
+msgstr "Ieraksts nesaturēja audio"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Redirecting to login."
+msgstr "Pāradresē uz pieteikšanos."
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Reduce interest"
+msgstr "Samazināt interesi"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Relates"
+msgstr "Saistīts"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative (5m, 3h, 2d)"
+msgstr "Relatīvs (5m, 3h, 2d)"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative within 24 hours, else absolute"
+msgstr "Relatīvs 24 stundu laikā, citādi absolūts"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}"
+msgstr "Atbilstība {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Atbilstība {relevance}, interese {weight}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Reload"
+msgstr "Pārlādēt"
+
+#: src/features/calendar/editor.tsx
+msgid "Reminder"
+msgstr "Atgādinājums"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove"
+msgstr "Noņemt"
+
+#. placeholder {0}: filter.label
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Remove {0} filter"
+msgstr "Noņemt {0} filtru"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Remove {name}"
+msgstr "Noņemt {name}"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule"
+msgstr "Noņemt piekļuves noteikumu"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Vai noņemt piekļuves noteikumu “{0}”?"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access?"
+msgstr "Noņemt piekļuvi?"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Remove interest"
+msgstr "Noņemt interesi"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Remove item"
+msgstr "Noņemt vienumu"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Remove link"
+msgstr "Noņemt saiti"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Rename"
+msgstr "Pārdēvēt"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+msgid "Rename calendar"
+msgstr "Pārdēvēt kalendāru"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename column"
+msgstr "Pārdēvēt kolonnu"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename this board column"
+msgstr "Pārdēvēt šo dēļa kolonnu"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Renaming calendar..."
+msgstr "Pārdēvē kalendāru..."
+
+#: src/features/calendar/editor.tsx
+msgid "Repeat"
+msgstr "Atkārtošana"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Repeats"
+msgstr "Atkārtojas"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Replace"
+msgstr "Aizstāt"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply"
+msgstr "Atbildēt"
+
+#. placeholder {0}: comment.name || comment.author
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply to {0}..."
+msgstr "Atbildēt {0}..."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Requesting access to {asking}..."
+msgstr "Pieprasa piekļuvi {asking}..."
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Required"
+msgstr "Obligāts"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Resend email"
+msgstr "Sūtīt e-pastu vēlreiz"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign"
+msgstr "Padoties"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign game?"
+msgstr "Padoties spēlē?"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Retry"
+msgstr "Mēģināt vēlreiz"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/settings.tsx
+msgid "Revoke"
+msgstr "Atsaukt"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke access"
+msgstr "Atsaukt piekļuvi"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke RSS access?"
+msgstr "Vai atsaukt RSS piekļuvi?"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Rows"
+msgstr "Rindas"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Rows group by"
+msgstr "Rindu grupēšana pēc"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS access revoked"
+msgstr "RSS piekļuve atsaukta"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS feed"
+msgstr "RSS plūsma"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS URL copied to clipboard"
+msgstr "RSS URL nokopēts starpliktuvē"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Saturday"
+msgstr "Sestdiena"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
+msgid "Save"
+msgstr "Saglabāt"
+
+#: src/features/calendar/editor.tsx
+msgid "Save this event"
+msgstr "Saglabāt šo notikumu"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Saglabājiet šo paroli tagad. To vairs nevarēs parādīt."
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Saving colour..."
+msgstr "Saglabā krāsu..."
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Saving..."
+msgstr "Saglabā..."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/header-search.tsx
+#: ../../../lib/web/src/components/search.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Search"
+msgstr "Meklēt"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Search for a command to run..."
+msgstr "Meklēt izpildāmu komandu..."
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place"
+msgstr "Meklēt vietu"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place..."
+msgstr "Meklēt vietu..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for destination..."
+msgstr "Meklēt galamērķi..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for origin..."
+msgstr "Meklēt izcelsmi..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Search objects..."
+msgstr "Meklēt objektus..."
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "Search time zone..."
+msgstr "Meklēt laika joslu..."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Search users"
+msgstr "Meklēt lietotājus"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Search, watch, and sort this view."
+msgstr "Meklējiet, skatieties un kārtojiet šo skatu."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Search..."
+msgstr "Meklēt..."
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Searching..."
+msgstr "Meklē..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Select"
+msgstr "Atlasīt"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Select a field"
+msgstr "Atlasīt lauku"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Select a game"
+msgstr "Atlasīt spēli"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select a user, group, or other rule to grant access."
+msgstr "Atlasiet lietotāju, grupu vai citu noteikumu, lai piešķirtu piekļuvi."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select access rule"
+msgstr "Atlasīt piekļuves noteikumu"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Select account type"
+msgstr "Atlasīt konta tipu"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select group"
+msgstr "Izvēlieties grupu"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Select location"
+msgstr "Izvēlieties atrašanās vietu"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select next card"
+msgstr "Izvēlieties nākamo karti"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Select person..."
+msgstr "Atlasiet personu..."
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select previous card"
+msgstr "Izvēlieties iepriekšējo karti"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Select..."
+msgstr "Izvēlieties..."
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Selected: <0>{0}</0>"
+msgstr "Izvēlēts: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Send again"
+msgstr "Sūtīt vēlreiz"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Send email"
+msgstr "Sūtīt e-pastu"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Send message"
+msgstr "Sūtīt ziņu"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Serif"
+msgstr "Serifs"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Server"
+msgstr "Serveris"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Server error"
+msgstr "Servera kļūda"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Server rules"
+msgstr "Servera noteikumi"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Session expired. Please log in again."
+msgstr "Sesija ir beigusies. Lūdzu, piesakieties vēlreiz."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Set origin and destination"
+msgstr "Iestatīt sākuma un galapunktu"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Settings"
+msgstr "Iestatījumi"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show classes"
+msgstr "Rādīt klases"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show fields"
+msgstr "Rādīt laukus"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Show this help"
+msgstr "Rādīt šo palīdzību"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Showing {totalShown} of {total}"
+msgstr "Tiek rādīti {totalShown} no {total}"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Sidebar"
+msgstr "Sānu josla"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Piesakieties ar kontu, kuram ir piekļuve <0/> šim resursam."
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Sign out"
+msgstr "Atteikties"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Signing out..."
+msgstr "Notiek izrakstīšanās..."
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Single line of text only"
+msgstr "Tikai viena teksta rinda"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Small"
+msgstr "Mazs"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Sort"
+msgstr "Kārtot"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Sources"
+msgstr "Avoti"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Spacious"
+msgstr "Plašs"
+
+#: src/features/calendar/editor.tsx
+msgid "Start"
+msgstr "Sākt"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Start the discussion by adding the first comment."
+msgstr "Sāciet diskusiju, pievienojot pirmo komentāru."
+
+#: src/features/calendar/editor.tsx
+msgid "Start time"
+msgstr "Sākuma laiks"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Stop watching"
+msgstr "Pārtraukt skatīšanos"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Subject"
+msgstr "Tēma"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit comment"
+msgstr "Iesniegt komentāru"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit reply"
+msgstr "Iesniegt atbildi"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/recommended-entities.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe"
+msgstr "Abonēt"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe to calendar"
+msgstr "Abonēt kalendāru"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribed"
+msgstr "Abonēts"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Sunday"
+msgstr "Svētdiena"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Switch to view 1-9"
+msgstr "Pārslēgt uz skatu 1-9"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistēma"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag already exists"
+msgstr "Tags jau eksistē"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag must be 50 characters or less"
+msgstr "Birkā drīkst būt ne vairāk kā 50 rakstzīmes"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tags"
+msgstr "Tagi"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Terms and conditions"
+msgstr "Lietošanas nosacījumi"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Text"
+msgstr "Teksts"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "That code is incorrect or has expired."
+msgstr "Šis kods ir nepareizs vai tā derīguma termiņš ir beidzies."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+msgid "That could not be sent. The files may be too large, or your connection failed. Try smaller files."
+msgstr "Neizdevās nosūtīt. Faili var būt pārāk lieli, vai savienojums pārtrūka. Mēģiniet mazākus failus."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "That was too large to upload. Remove or shrink files and try again."
+msgstr "Pārāk liels, lai augšupielādētu. Noņemiet vai samaziniet failus un mēģiniet vēlreiz."
+
+#: src/features/calendar/settings.tsx
+msgid "the address answered {status}"
+msgstr "adrese atbildēja {status}"
+
+#: src/features/calendar/settings.tsx
+msgid "the address could not be reached"
+msgstr "adresi nevarēja sasniegt"
+
+#: src/features/calendar/settings.tsx
+msgid "the address does not serve a calendar"
+msgstr "adrese nepiedāvā kalendāru"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar is too large"
+msgstr "kalendārs ir pārāk liels"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera is already in use"
+msgstr "Kamera jau tiek izmantota"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera request was not answered"
+msgstr "Uz kameras pieprasījumu netika atbildēts"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "The device will no longer be able to sync calendars."
+msgstr "Ierīce vairs nevarēs sinhronizēt kalendārus."
+
+#. placeholder {0}: failureReason(calendar.failure)
+#: src/features/calendar/settings.tsx
+msgid "The last fetch failed: {0}"
+msgstr "Pēdējā ielāde neizdevās: {0}"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The microphone request was not answered"
+msgstr "Uz mikrofona pieprasījumu netika atbildēts"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The passkey request was not answered"
+msgstr "Uz piekļuves atslēgas pieprasījumu netika atbildēts"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "The requested content could not be found."
+msgstr "Pieprasīto saturu neizdevās atrast."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "The server returned a web page instead of data."
+msgstr "Serveris atgrieza tīmekļa lapu, nevis datus."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Šai lietotnei nav atļauts izmantot jūsu piekļuves atslēgu. Atļaujiet to Iestatījumos, sadaļā Atļaujas."
+
+#: src/hooks/use-ics-copy.ts
+msgid "This calendar address was already issued and cannot be shown again."
+msgstr "Šī kalendāra adrese jau ir izsniegta, un to nevar parādīt vēlreiz."
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This event"
+msgstr "Šis notikums"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+msgid "This event changed somewhere else."
+msgstr "Šis notikums ir mainīts citur."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Tas neatgriezeniski dzēsīs spēli un tās tērzēšanu. Šo darbību nevar atsaukt."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Thursday"
+msgstr "Ceturtdiena"
+
+#: src/features/calendar/editor.tsx
+msgid "Timezone"
+msgstr "Laika josla"
+
+#: src/features/calendar/editor.tsx
+msgid "Title"
+msgstr "Virsraksts"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "To"
+msgstr "Uz"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Today"
+msgstr "Šodien"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Toggle section"
+msgstr "Pārslēgt sadaļu"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Toggle sidebar"
+msgstr "Pārslēgt sānjoslu"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Toggle view options"
+msgstr "Pārslēgt skata opcijas"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Toggle watched filter"
+msgstr "Pārslēgt skatīšanās filtru"
+
+#: src/features/calendar/index.tsx
+msgid "Too many events to show them all. Choose a shorter range."
+msgstr "Pārāk daudz notikumu, lai parādītu visus. Izvēlies īsāku diapazonu."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Too many requests"
+msgstr "Pārāk daudz pieprasījumu"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Top"
+msgstr "Augšā"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Travelling"
+msgstr "Ceļojums"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Try adjusting your search terms"
+msgstr "Mēģiniet pielāgot meklēšanas vārdus"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Try again"
+msgstr "Mēģināt vēlreiz"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Tuesday"
+msgstr "Otrdiena"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Tips"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "Type a command or search..."
+msgstr "Ierakstiet komandu vai meklējiet..."
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Type a message…"
+msgstr "Ierakstiet ziņu…"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search users"
+msgstr "Ierakstiet, lai meklētu lietotājus"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search..."
+msgstr "Ierakstiet, lai meklētu..."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Unable to connect to remote server"
+msgstr "Neizdevās izveidot savienojumu ar attālo serveri"
+
+#: ../../../lib/web/src/lib/auth-manager.ts
+#: ../../../lib/web/src/lib/auth-manager.ts
+msgid "Unable to redirect to login. Please try again."
+msgstr "Nevar pāradresēt uz pieteikšanos. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Unassigned"
+msgstr "Nepiešķirts"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+msgid "Unavailable"
+msgstr "Nav pieejams"
+
+#: ../../../lib/web/src/lib/request.ts
+#: ../../../lib/web/src/lib/request.ts
+msgid "Unexpected API error"
+msgstr "Negaidīta API kļūda"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "United States"
+msgstr "Amerikas Savienotās Valstis"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-table-header.tsx
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Unknown"
+msgstr "Nezināms"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Unsubscribe"
+msgstr "Atrakstīties"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/lib/entity-title.ts
+msgid "Untitled"
+msgstr "Bez nosaukuma"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Updated"
+msgstr "Atjaunināts"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Updated {field}"
+msgstr "Atjaunināts {field}"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Upload"
+msgstr "Augšupielādēt"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Upload progress"
+msgstr "Augšupielādes norise"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Use your passkey"
+msgstr "Izmantojiet savu piekļuves atslēgu"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "User"
+msgstr "Lietotājs"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Variables: {variables}"
+msgstr "Mainīgie: {variables}"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verification code"
+msgstr "Verifikācijas kods"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify"
+msgstr "Verificēt"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify email address"
+msgstr "Verificēt e-pasta adresi"
+
+#: ../../../lib/web/src/components/attachment-gallery.tsx
+msgid "Video thumbnail"
+msgstr "Video sīktēls"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Video viewer: {0}"
+msgstr "Video skatītājs: {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View"
+msgstr "Skatīt"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "View all notifications"
+msgstr "Skatīt visus paziņojumus"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "View and edit item details"
+msgstr "Skatīt un rediģēt vienuma detaļas"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "View controls"
+msgstr "Skata vadīklas"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View options"
+msgstr "Skata opcijas"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Voice recording is not supported in this browser"
+msgstr "Balss ierakstīšana šajā pārlūkā netiek atbalstīta"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Watch"
+msgstr "Skatīties"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Watched"
+msgstr "Skatīts"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Watched only"
+msgstr "Tikai skatīts"
+
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Nosūtījām verifikācijas kodu uz <0>{0}</0>. Ievadiet kodu zemāk, lai apstiprinātu savu e-pasta adresi."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Wednesday"
+msgstr "Trešdiena"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Week"
+msgstr "Nedēļa"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Weekly"
+msgstr "Katru nedēļu"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks before"
+msgstr "Nedēļas pirms"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks shown"
+msgstr "Rādītās nedēļas"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Work days"
+msgstr "Darba dienas"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Work week"
+msgstr "Darba nedēļa"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours end"
+msgstr "Darba laika beigas"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours start"
+msgstr "Darba laika sākums"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Yearly"
+msgstr "Reizi gadā"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "You do not have access to this section."
+msgstr "Jums nav piekļuves šai sadaļai."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
+msgstr "Jūsu konts tika pārvietots šeit no {source}. Kamēr to tur nedzēšat, ziņojumi un paziņojumi var sasniegt abus serverus, daļa jūsu satura joprojām tiek apkalpota no vecā servera un sekotājiem var paiet dažas minūtes, lai atrastu jūs šeit."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your attachments will be lost."
+msgstr "Jūsu pielikumi tiks zaudēti."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text and attachments will be lost."
+msgstr "Jūsu teksts un pielikumi tiks zaudēti."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text will be lost."
+msgstr "Tavs teksts tiks zaudēts."

@@ -1,0 +1,2945 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-09-21 10:24+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: tl\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "Please check your internet connection and try again."
+msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(edited)"
+msgstr "(in-edit)"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(expand)"
+msgstr "(palawakin)"
+
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "(you)"
+msgstr "(ikaw)"
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+msgid "[not set]"
+msgstr "[hindi naitakda]"
+
+#. placeholder {0}: visible.length
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+msgid "{0, plural, one {# result} other {# results}}"
+msgstr "{0, plural, one {# resulta} other {# resulta}}"
+
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# napili} other {# napili}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# naka-nest} other {+# naka-nest}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#d} other {#d}}"
+msgstr "{count, plural, one {#ar} other {#ar}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#h} other {#h}}"
+msgstr "{count, plural, one {#or} other {#or}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#m} other {#m}}"
+msgstr "{count, plural, one {#min} other {#min}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#w} other {#w}}"
+msgstr "{count, plural, one {#lin} other {#lin}}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{day}, {from} to {to}"
+msgstr "{day}, {from} hanggang {to}"
+
+#: src/hooks/use-options.ts
+msgid "{days, plural, one {# day before} other {# days before}}"
+msgstr "{days, plural, one {# araw bago} other {# na araw bago}}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "{entityLabel} name"
+msgstr "Pangalan ng {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{from} to {to}"
+msgstr "{from} hanggang {to}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# pa} other {+# pa}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour before} other {# hours before}}"
+msgstr "{hours, plural, one {# oras bago} other {# na oras bago}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour} other {# hours}}"
+msgstr "{hours, plural, one {# oras} other {# na oras}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
+msgstr "{minutes, plural, one {# minuto bago} other {# na minuto bago}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute} other {# minutes}}"
+msgstr "{minutes, plural, one {# minuto} other {# na minuto}}"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "{opponentName} offered a draw"
+msgstr "Nag-alok ng draw si {opponentName}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{sentLabel} sa {totalLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "{totalCount, plural, one {# item} other {# items}}"
+msgstr "{totalCount, plural, one {# item} other {# na item}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# tugon} other {+# pang tugon}}"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
+msgstr "{unreadCount, plural, one {Buksan ang menu (# hindi pa nababasang notification)} other {Buksan ang menu (# hindi pa nababasang notification)}}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "12 hours"
+msgstr "12 oras"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "24 hours"
+msgstr "24 oras"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "A recording is already in progress."
+msgstr "May kasalukuyan nang pagre-record."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Absolute (date and time)"
+msgstr "Absolute (petsa at oras)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Accept"
+msgstr "Tanggapin"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Access denied"
+msgstr "Tinanggihan ang access"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Access level"
+msgstr "Antas ng access"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Account type"
+msgstr "Uri ng account"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Activity"
+msgstr "Aktibidad"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add"
+msgstr "Idagdag"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Add a comment..."
+msgstr "Magdagdag ng komento..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add a new account"
+msgstr "Magdagdag ng bagong account"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add a new field to this class"
+msgstr "Magdagdag ng bagong field sa class na ito"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Add access"
+msgstr "Magdagdag ng access"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add account"
+msgstr "Magdagdag ng account"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Add caption"
+msgstr "Magdagdag ng caption"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add checklist item"
+msgstr "Magdagdag ng checklist item"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add field"
+msgstr "Magdagdag ng field"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add item..."
+msgstr "Magdagdag ng item..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Add link"
+msgstr "Magdagdag ng link"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Add option"
+msgstr "Magdagdag ng option"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Add tag..."
+msgstr "Magdagdag ng tag..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add to existing notifications"
+msgstr "Idagdag sa mga umiiral na notification"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+msgid "Add view"
+msgstr "Magdagdag ng view"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Address"
+msgstr "Address"
+
+#: src/features/calendar/editor.tsx
+msgid "After a number"
+msgstr "Pagkatapos ng isang bilang"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "AI"
+msgstr "AI"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/day-popover.tsx
+#: src/features/calendar/editor.tsx
+msgid "All day"
+msgstr "Buong araw"
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "All events"
+msgstr "Lahat ng kaganapan"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Payagan ang sinuman na maghanap ng {entityLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Allow sort by"
+msgstr "Payagan ang pag-sort ayon sa"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "An error occurred"
+msgstr "May naganap na error"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "An unexpected error occurred"
+msgstr "May naganap na hindi inaasahang error"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Android push"
+msgstr "Android push"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone"
+msgstr "Kahit sino"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone who is logged in"
+msgstr "Sinumang naka-log in"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr "Titigil sa pagtanggap nito ang lahat ng naka-subscribe sa feed na ito. Maaari kang kumopya ng bagong URL pagkatapos."
+
+#. placeholder {0}: deleteTarget?.name
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "Sigurado ka bang gusto mong i-delete ang \"{0}\"?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Sigurado ka bang gusto mong i-delete ang \"{title}\"? Hindi na ito maibabalik."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
+msgstr "Sigurado ka bang gusto mong i-delete ang column na \"{name}\"? Hindi na ito maibabalik."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Are you sure you want to delete this comment? This will also delete all replies."
+msgstr "Sigurado ka bang gusto mong i-delete ang komentong ito? Made-delete din lahat ng sagot."
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Are you sure you want to log out? You will need to log in again to access your account."
+msgstr "Sigurado ka bang gusto mong mag-log out? Kakailanganin mong mag-log in muli para ma-access ang iyong account."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign?"
+msgstr "Sigurado kang gusto mong sumuko?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Sigurado ka bang gusto mong sumuko? Mananalo si {opponentName} sa laro."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Ascending"
+msgstr "Pataas"
+
+#: src/hooks/use-options.ts
+msgid "At the time of the event"
+msgstr "Sa oras ng kaganapan"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach comment files"
+msgstr "I-attach ang mga file ng komento"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach reply files"
+msgstr "I-attach ang mga file ng sagot"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Authenticated users"
+msgstr "Mga naka-authenticate na user"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Authenticator code"
+msgstr "Code ng authenticator"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Available keyboard shortcuts"
+msgstr "Mga available na keyboard shortcut"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar for {name}"
+msgstr "Avatar para kay {name}"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Back"
+msgstr "Bumalik"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Back to home"
+msgstr "Bumalik sa home"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity-banner.tsx
+msgid "Banner"
+msgstr "Banner"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner removed"
+msgstr "Tinanggal ang banner"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner updated"
+msgstr "Na-update ang banner"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Block {name}"
+msgstr "I-block si {name}"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocked by"
+msgstr "Hinarang ng"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Blocked navigation to untrusted link"
+msgstr "Hinarang ang pag-navigate sa di-pinagkakatiwalaang link"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocks"
+msgstr "Hinaharangan"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Board"
+msgstr "Board"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Boost interest"
+msgstr "Palakasin ang interes"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Border colour"
+msgstr "Kulay ng border"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Browser notifications"
+msgstr "Mga notification ng browser"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "calendar"
+msgstr "kalendaryo"
+
+#: src/features/calendar/editor.tsx
+msgid "Calendar"
+msgstr "Kalendaryo"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar address"
+msgstr "Address ng kalendaryo"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address copied to clipboard"
+msgstr "Nakopya ang address ng kalendaryo sa clipboard"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address revoked"
+msgstr "Nabawi ang address ng kalendaryo"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+msgid "Calendar colour"
+msgstr "Kulay ng kalendaryo"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar created"
+msgstr "Nagawa ang kalendaryo"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar deleted"
+msgstr "Na-delete ang kalendaryo"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar renamed"
+msgstr "Napalitan ang pangalan ng kalendaryo"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar up to date"
+msgstr "Napapanahon ang kalendaryo"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/index.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendars"
+msgstr "Mga kalendaryo"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera permission denied"
+msgstr "Tinanggihan ang pahintulot sa camera"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera unavailable"
+msgstr "Hindi available ang camera"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Cancel"
+msgstr "Kanselahin"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel comment"
+msgstr "Kanselahin ang komento"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel reply"
+msgstr "Kanselahin ang sagot"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Kinansela"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Caption"
+msgstr "Caption"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Category for these notifications"
+msgstr "Category para sa mga notification na ito"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Change notification category"
+msgstr "Baguhin ang category ng notification"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed"
+msgstr "Binago"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed {field}"
+msgstr "Binago ang {field}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Changed occurrence"
+msgstr "Binagong pag-ulit"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Checking for changes..."
+msgstr "Sinusuri ang mga pagbabago..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checklist"
+msgstr "Checklist"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Choose a game from the sidebar or start a new one."
+msgstr "Pumili ng laro mula sa sidebar o magsimula ng bago."
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/language-picker.tsx
+msgid "Choose language"
+msgstr "Pumili ng wika"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Clear"
+msgstr "Burahin"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Clear all"
+msgstr "Burahin lahat"
+
+#: ../../../lib/web/src/components/search-input.tsx
+msgid "Clear search"
+msgstr "Burahin ang paghahanap"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/dialog.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/sheet.tsx
+#: src/features/calendar/editor.tsx
+msgid "Close"
+msgstr "Isara"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Close dialog"
+msgstr "Isara ang dialog"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Close navigation"
+msgstr "Isara ang navigation"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Close panel"
+msgstr "Isara ang panel"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Close panel / cancel"
+msgstr "Isara ang panel / kanselahin"
+
+#: ../../../lib/web/src/components/header-search.tsx
+msgid "Close search"
+msgstr "Isara ang paghahanap"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Collapse"
+msgstr "I-collapse"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Collapse sidebar"
+msgstr "I-collapse ang sidebar"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour"
+msgstr "Kulay"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour saved"
+msgstr "Na-save ang kulay"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Column actions"
+msgstr "Mga aksyon sa column"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Columns group by"
+msgstr "Pagsama-samahin ang mga column ayon sa"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Comfortable"
+msgstr "Komportable"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Command Palette"
+msgstr "Command palette"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Comment actions"
+msgstr "Mga aksyon sa komento"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Comments"
+msgstr "Mga komento"
+
+#. placeholder {0}: data.comments.count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Comments ({0})"
+msgstr "Mga komento ({0})"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Compact"
+msgstr "Compact"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Configure option settings"
+msgstr "I-configure ang mga setting ng option"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Configure view settings"
+msgstr "I-configure ang mga setting ng view"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Confirm"
+msgstr "Kumpirmahin"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Ikonekta ang device"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Ikonekta ang isa pang device"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connected"
+msgstr "Konektado"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Kinokonekta ang device..."
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connecting..."
+msgstr "Kumokonekta..."
+
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "Content not found."
+msgstr "Hindi nahanap ang nilalaman."
+
+#: ../../../lib/web/src/lib/query-client.ts
+msgid "Content not modified"
+msgstr "Hindi nabago ang nilalaman"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Contextual information and details."
+msgstr "Contextual na impormasyon at detalye."
+
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+msgid "Continue"
+msgstr "Magpatuloy"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Continue with {label}"
+msgstr "Magpatuloy gamit ang {label}"
+
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Copied"
+msgstr "Nakopya"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copied to clipboard"
+msgstr "Nakopya sa clipboard"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/settings.tsx
+msgid "Copy"
+msgstr "Kopyahin"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopyahin ang {label}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Copy calendar address"
+msgstr "Kopyahin ang address ng kalendaryo"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Could not load this document. Please try again later."
+msgstr "Hindi ma-load ang document na ito. Subukan muli mamaya."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Couldn't load notifications"
+msgstr "Hindi ma-load ang mga notification"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't send the code. Please try again."
+msgstr "Hindi naipadala ang code. Pakisubukang muli."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't start re-authentication. Please try again."
+msgstr "Hindi masimulan ang muling pagpapatunay. Pakisubukang muli."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't verify with that account. Please try again."
+msgstr "Hindi ma-verify gamit ang account na iyon. Pakisubukang muli."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Create"
+msgstr "Gumawa"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Create {entityLabel}"
+msgstr "Gumawa ng {entityLabel}"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Create calendar"
+msgstr "Gumawa ng kalendaryo"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Create new item"
+msgstr "Gumawa ng bagong item"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Created"
+msgstr "Nagawa"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Ginawa noong {0}"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Created {field}"
+msgstr "Ginawa ang {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Creating calendar..."
+msgstr "Ginagawa ang kalendaryo..."
+
+#: ../../../lib/web/src/components/map-view.tsx
+msgid "Current location"
+msgstr "Kasalukuyang lokasyon"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: src/features/calendar/editor.tsx
+msgid "Custom"
+msgstr "Pasadya"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Daily"
+msgstr "Araw-araw"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dark"
+msgstr "Madilim"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Data conflict"
+msgstr "Salungatan sa data"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Date"
+msgstr "Petsa"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Day"
+msgstr "Araw"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Decline"
+msgstr "Tanggihan"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Default"
+msgstr "Default"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Default AI account"
+msgstr "Default na AI account"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default event length"
+msgstr "Default na haba ng kaganapan"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default reminder"
+msgstr "Default na paalala"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Default sort"
+msgstr "Default na sort"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Delete"
+msgstr "I-delete"
+
+#. placeholder {0}: deleting?.name ?? ''
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete <0>{0}</0> and every event on it?"
+msgstr "I-delete ang <0>{0}</0> at lahat ng kaganapan dito?"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Delete attachment"
+msgstr "I-delete ang attachment"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete calendar"
+msgstr "I-delete ang kalendaryo"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Delete column"
+msgstr "I-delete ang column"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Delete comment"
+msgstr "I-delete ang komento"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device"
+msgstr "I-delete ang device"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "I-delete ang device?"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete field"
+msgstr "I-delete ang field"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Delete game?"
+msgstr "I-delete ang laro?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Delete item"
+msgstr "I-delete ang item"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Delete option"
+msgstr "I-delete ang option"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete option {0}"
+msgstr "I-delete ang option {0}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Delete this event"
+msgstr "I-delete ang kaganapang ito"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Delete view"
+msgstr "I-delete ang view"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Delete your account on the old server"
+msgstr "Burahin ang iyong account sa lumang server"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted"
+msgstr "Tinanggal"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted {field}"
+msgstr "Tinanggal ang {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Deleting calendar..."
+msgstr "Dine-delete ang kalendaryo..."
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Dine-delete ang device..."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Descending"
+msgstr "Pababa"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Description"
+msgstr "Paglalarawan"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Details Panel"
+msgstr "Panel ng mga detalye"
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Detect from web browser"
+msgstr "Tukuyin mula sa web browser"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Na-delete na ang device"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device name"
+msgstr "Pangalan ng device"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Directory"
+msgstr "Direktoryo"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard"
+msgstr "Itapon"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard draft?"
+msgstr "Itapon ang draft?"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Disconnected"
+msgstr "Nadiskonekta"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Dismiss"
+msgstr "I-dismiss"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Displays the mobile sidebar."
+msgstr "Ipinapakita ang mobile sidebar."
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Does not match the required pattern"
+msgstr "Hindi tumutugma sa kinakailangang pattern"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Done"
+msgstr "Tapos na"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "I-download"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download failed"
+msgstr "Nabigo ang pag-download"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Duplicates"
+msgstr "Duplicate"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dyslexia-friendly"
+msgstr "Angkop sa dyslexia"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "Earlier events"
+msgstr "Mga nakaraang kaganapan"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
+msgid "Edit"
+msgstr "I-edit"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Edit {label}"
+msgstr "I-edit ang {label}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Edit caption"
+msgstr "I-edit ang caption"
+
+#: src/features/calendar/editor.tsx
+msgid "Edit event"
+msgstr "I-edit ang kaganapan"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field"
+msgstr "I-edit ang field"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field settings"
+msgstr "I-edit ang field settings"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Edit option"
+msgstr "I-edit ang pagpipilian"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit option {0}"
+msgstr "I-edit ang option {0}"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Edit selected card"
+msgstr "I-edit ang piniling card"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Edit view"
+msgstr "I-edit ang view"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Email"
+msgstr "Email"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Email code"
+msgstr "Code ng email"
+
+#: src/features/calendar/editor.tsx
+msgid "End"
+msgstr "Katapusan"
+
+#: src/features/calendar/editor.tsx
+msgid "End time"
+msgstr "Oras ng pagtatapos"
+
+#: src/features/calendar/editor.tsx
+msgid "Ends"
+msgstr "Nagtatapos"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Enter banner text (markdown supported)..."
+msgstr "Maglagay ng banner text (suportado ang markdown)..."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter the code from your email"
+msgstr "Ilagay ang code mula sa iyong email"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter your authenticator code"
+msgstr "Ilagay ang iyong authenticator code"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Error"
+msgstr "Error"
+
+#: src/features/calendar/editor.tsx
+msgid "Event created"
+msgstr "Nagawa ang kaganapan"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Event deleted"
+msgstr "Na-delete ang kaganapan"
+
+#: src/features/calendar/editor.tsx
+msgid "Event saved"
+msgstr "Na-save ang kaganapan"
+
+#: src/features/calendar/editor.tsx
+msgid "Every"
+msgstr "Tuwing"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Expand"
+msgstr "Palawakin"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Expand sidebar"
+msgstr "I-expand ang sidebar"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "External URL"
+msgstr "Panlabas na URL"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Extra large"
+msgstr "Sobrang laki"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts
+msgid "Failed to add account"
+msgstr "Nabigong magdagdag ng account"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to check the calendar"
+msgstr "Nabigong suriin ang kalendaryo"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Hindi naikonekta ang device"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Failed to copy"
+msgstr "Nabigong kumopya"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to create calendar"
+msgstr "Hindi nagawa ang kalendaryo"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to create link"
+msgstr "Nabigong gumawa ng link"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to delete"
+msgstr "Nabigong magdelete"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to delete attachment"
+msgstr "Nabigong magdelete ng attachment"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to delete calendar"
+msgstr "Hindi na-delete ang kalendaryo"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to delete comment"
+msgstr "Nabigong magdelete ng comment"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Hindi na-delete ang device"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Failed to delete link"
+msgstr "Nabigong magdelete ng link"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Failed to delete the event"
+msgstr "Nabigong i-delete ang kaganapan"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to get RSS token"
+msgstr "Nabigong makakuha ng RSS token"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to get the calendar address"
+msgstr "Nabigong makuha ang address ng kalendaryo"
+
+#: ../../../lib/web/src/hooks/use-load-more.ts
+msgid "Failed to load"
+msgstr "Nabigong i-load"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to load banner"
+msgstr "Nabigong i-load ang banner"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "Failed to load history"
+msgstr "Nabigong i-load ang history"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load image"
+msgstr "Nabigong i-load ang larawan"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to load item"
+msgstr "Nabigong i-load ang item"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to load prompts"
+msgstr "Nabigong i-load ang mga prompt"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load video"
+msgstr "Nabigong i-load ang video"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to load your preferences"
+msgstr "Nabigong i-load ang iyong mga kagustuhan"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to move"
+msgstr "Nabigong ilipat"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to move the event"
+msgstr "Nabigong ilipat ang kaganapan"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to post comment"
+msgstr "Nabigong mag-post ng comment"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to rename calendar"
+msgstr "Hindi napalitan ang pangalan ng kalendaryo"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to reset prompt"
+msgstr "Nabigong i-reset ang prompt"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to revoke RSS access"
+msgstr "Nabigong bawiin ang RSS access"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to revoke the calendar address"
+msgstr "Nabigong bawiin ang address ng kalendaryo"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to save"
+msgstr "Nabigong i-save"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to save prompt"
+msgstr "Nabigong i-save ang prompt"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to save the colour"
+msgstr "Nabigong i-save ang kulay"
+
+#: src/features/calendar/editor.tsx
+msgid "Failed to save the event"
+msgstr "Nabigong i-save ang kaganapan"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to subscribe"
+msgstr "Nabigong mag-subscribe"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to update banner"
+msgstr "Nabigong i-update ang banner"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to update comment"
+msgstr "Nabigong i-update ang comment"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to update watching"
+msgstr "Nabigong i-update ang pagsubaybay"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to upload attachment"
+msgstr "Nabigong mag-upload ng attachment"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Files"
+msgstr "Mga file"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Finish moving your account"
+msgstr "Tapusin ang paglipat ng iyong account"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Flags"
+msgstr "Mga flag"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Flat"
+msgstr "Patag"
+
+#: src/features/calendar/editor.tsx
+msgid "Frequency"
+msgstr "Dalas"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Friday"
+msgstr "Biyernes"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Friends"
+msgstr "Mga kaibigan"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "From"
+msgstr "Mula sa"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "From theme"
+msgstr "Mula sa tema"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Go back"
+msgstr "Bumalik"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Group"
+msgstr "Grupo"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Group by"
+msgstr "Pangkatin ayon sa"
+
+#. placeholder {0}: name || subject.slice(1)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Group: {0}"
+msgstr "Grupo: {0}"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "History"
+msgstr "Kasaysayan"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Home"
+msgstr "Home"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Hot"
+msgstr "Sikat"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "ID"
+msgstr "ID"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Image viewer: {0}"
+msgstr "Image viewer: {0}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Imperial"
+msgstr "Imperyal"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Including anonymous users"
+msgstr "Kasama ang mga anonymous na user"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar"
+msgstr "Initials avatar"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar for {name}"
+msgstr "Initials avatar para kay {name}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Interest {weight}"
+msgstr "Interes {weight}"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Interests"
+msgstr "Mga interest"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Invalid date"
+msgstr "Invalid na petsa"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Mukhang ang pahinang hinahanap mo <0/>ay wala o maaaring inalis na."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Item details"
+msgstr "Detalye ng item"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "Just now"
+msgstr "Ngayon lang"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Keyboard shortcuts"
+msgstr "Mga keyboard shortcut"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Large"
+msgstr "Malaki"
+
+#: src/features/calendar/editor.tsx
+msgid "Last day"
+msgstr "Huling araw"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Huling ginamit {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Layout"
+msgstr "Layout"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Mga titik, numero, espasyo, gitling, at slash lamang"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Light"
+msgstr "Maliwanag"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Link"
+msgstr "Link"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Links"
+msgstr "Mga link"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/components/toolbar.tsx
+msgid "List"
+msgstr "Listahan"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Load more"
+msgstr "Mag-load ng higit pa"
+
+#: ../../../lib/web/src/components/ui/loading-content.tsx
+msgid "Loading content…"
+msgstr "Nilo-load ang nilalaman…"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item"
+msgstr "Nilo-load ang item"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item details"
+msgstr "Nilo-load ang detalye ng item"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Loading..."
+msgstr "Nilo-load..."
+
+#: src/features/calendar/editor.tsx
+msgid "Location"
+msgstr "Lokasyon"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Log out"
+msgstr "Mag-log out"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out (with errors)"
+msgstr "Nag-log out (na may mga error)"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out successfully"
+msgstr "Matagumpay na nag-log out"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Logging out…"
+msgstr "Nagla-log out…"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Manage categories"
+msgstr "I-manage ang mga category"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Pamahalaan ang mga device"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Manual"
+msgstr "Manwal"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Mark all as read"
+msgstr "Markahan lahat bilang nabasa"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Maximum length"
+msgstr "Pinakamataas na haba"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "MCP server"
+msgstr "MCP server"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Medium"
+msgstr "Katamtaman"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Members"
+msgstr "Mga Miyembro"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Menu"
+msgstr "Menu"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Message"
+msgstr "Mensahe"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Metric"
+msgstr "Metriko"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Microphone permission denied"
+msgstr "Tinanggihan ang pahintulot sa mikropono"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Minimum length"
+msgstr "Pinakamababang haba"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Mochi web"
+msgstr "Mochi web"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Moderation"
+msgstr "Moderasyon"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Monday"
+msgstr "Lunes"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Month"
+msgstr "Buwan"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Monthly"
+msgstr "Buwanang"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "More options"
+msgstr "Iba pang opsyon"
+
+#: src/features/calendar/index.tsx
+msgid "Move this event"
+msgstr "Ilipat ang kaganapang ito"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved"
+msgstr "Inilipat"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved {field}"
+msgstr "Inilipat ang {field}"
+
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr "Inililipat sa {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Multiweek"
+msgstr "Ilang linggo"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Name"
+msgstr "Pangalan"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name cannot contain < or > characters"
+msgstr "Hindi maaaring maglaman ng < o > na karakter ang pangalan"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name is required"
+msgstr "Kailangan ang pangalan"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name must be 1000 characters or less"
+msgstr "Ang pangalan ay dapat 1000 karakter o mas mababa"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Network error"
+msgstr "Error sa network"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Never"
+msgstr "Hindi kailanman"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "New"
+msgstr "Bago"
+
+#: src/hooks/use-ics-copy.ts
+msgid "New calendar address copied to clipboard"
+msgstr "Nakopya ang bagong address ng kalendaryo sa clipboard"
+
+#: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/editor.tsx
+msgid "New event"
+msgstr "Bagong kaganapan"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "New game"
+msgstr "Bagong laro"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Next"
+msgstr "Susunod"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Next image"
+msgstr "Susunod na imahe"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr "Susunod na buwan"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No {parentClassNames} to add to"
+msgstr "Walang {parentClassNames} na maaaring idagdag"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "No access rules configured. Add rules to control who can access this resource."
+msgstr "Walang naka-configure na access rule. Magdagdag ng mga rule upang kontrolin kung sino ang maaaring mag-access sa resource na ito."
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No activity yet"
+msgstr "Wala pang aktibidad"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "No comments yet"
+msgstr "Wala pang komento"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Walang nakakonektang device."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No events"
+msgstr "Walang kaganapan"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "No games yet"
+msgstr "Wala pang laro"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No groups available"
+msgstr "Walang available na grupo"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No item types can be created yet. Create the required parent items first."
+msgstr "Wala pang uri ng item na magagawa. Gumawa muna ng kinakailangang parent item."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "No matching objects"
+msgstr "Walang tugmang object"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "No people found"
+msgstr "Walang nakitang tao"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "No places found"
+msgstr "Walang nakitang lugar"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "No results found"
+msgstr "Walang nahanap na resulta"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "No results found."
+msgstr "Walang nakitang resulta."
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "No status"
+msgstr "Walang status"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "No time zone found."
+msgstr "Walang nakitang time zone."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "No topic record yet — try again after the next notification."
+msgstr "Wala pang topic record — subukan muli pagkatapos ng susunod na notification."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "No unread notifications"
+msgstr "Walang hindi pa nababasang notification"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No users found"
+msgstr "Walang nakitang user"
+
+#: ../../../lib/web/src/components/entity/entity-design-preview.tsx
+msgid "No views"
+msgstr "Walang view"
+
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: src/hooks/use-options.ts
+msgid "None"
+msgstr "Wala"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Normal"
+msgstr "Karaniwan"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Not found"
+msgstr "Hindi nahanap"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Not set"
+msgstr "Hindi naka-set"
+
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "Nothing found"
+msgstr "Walang nakita"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Notifications: {0}"
+msgstr "Mga notification: {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Numero"
+
+#: src/features/calendar/editor.tsx
+msgid "Occurrences"
+msgstr "Bilang ng pag-ulit"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "On"
+msgstr "Naka-on"
+
+#: src/features/calendar/editor.tsx
+msgid "On a date"
+msgstr "Sa isang petsa"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Only this"
+msgstr "Ito lang"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Oops! Page Not Found!"
+msgstr "Ay! Hindi Nahanap ang Pahina!"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Open actions"
+msgstr "Buksan ang mga aksyon"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Open menu"
+msgstr "Buksan ang menu"
+
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Open navigation"
+msgstr "Buksan ang navigation"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Open option actions"
+msgstr "Buksan ang mga aksyon ng opsyon"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Open selected card"
+msgstr "Buksan ang piniling card"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Open view actions"
+msgstr "Buksan ang mga aksyon ng view"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Open view controls"
+msgstr "Buksan ang mga view control"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Option name"
+msgstr "Pangalan ng opsyon"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Options"
+msgstr "Mga Opsyon"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Iba pa"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Owner"
+msgstr "May-ari"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Parent"
+msgstr "Magulang"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Passkey"
+msgstr "Passkey"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkey verification failed. Please try again."
+msgstr "Nabigo ang pag-verify ng passkey. Pakisubukang muli."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Passkeys"
+msgstr "Mga Passkey"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkeys are not available in this browser"
+msgstr "Hindi available ang mga passkey sa browser na ito"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Password"
+msgstr "Password"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Pattern (regex)"
+msgstr "Pattern (regex)"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "People"
+msgstr "Mga Tao"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Please check your internet connection and try again."
+msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please try again."
+msgstr "Pakisubukan muli."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please wait a moment and try again."
+msgstr "Mangyaring maghintay sandali at subukang muli."
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Poll now"
+msgstr "Suriin ngayon"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts"
+msgstr "Mga Post"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts and comments"
+msgstr "Mga post at komento"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences"
+msgstr "Mga Kagustuhan"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences saved"
+msgstr "Na-save ang mga kagustuhan"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Previous"
+msgstr "Nakaraan"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Previous image"
+msgstr "Nakaraang imahe"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr "Nakaraang buwan"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Privacy"
+msgstr "Pagkapribado"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Processing…"
+msgstr "Pinoproseso…"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Prompt saved"
+msgstr "Na-save ang prompt"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Properties"
+msgstr "Mga katangian"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Push notification"
+msgstr "Push notification"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Raised"
+msgstr "Nakaangat"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-link your accounts on this server"
+msgstr "I-relink ang iyong mga account sa server na ito"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-register your passkeys on this server"
+msgstr "Muling irehistro ang iyong mga passkey sa server na ito"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Recommended"
+msgstr "Inirerekomenda"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Reconnecting ({retries})..."
+msgstr "Muling kumokonekta ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording failed. Please try again."
+msgstr "Nabigo ang pagre-record. Subukang muli."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording produced no audio"
+msgstr "Walang tunog ang recording"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Redirecting to login."
+msgstr "Nire-redirect sa login."
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Reduce interest"
+msgstr "Bawasan ang interes"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Relates"
+msgstr "May kaugnayan"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative (5m, 3h, 2d)"
+msgstr "Relatibo (5m, 3h, 2d)"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative within 24 hours, else absolute"
+msgstr "Relatibo sa loob ng 24 na oras, kung hindi ay absolute"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}"
+msgstr "Kaugnayan {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Kaugnayan {relevance}, interes {weight}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Reload"
+msgstr "I-reload"
+
+#: src/features/calendar/editor.tsx
+msgid "Reminder"
+msgstr "Paalala"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove"
+msgstr "Alisin"
+
+#. placeholder {0}: filter.label
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Remove {0} filter"
+msgstr "Alisin ang filter na {0}"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Remove {name}"
+msgstr "Alisin ang {name}"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule"
+msgstr "Alisin ang access rule"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Alisin ang panuntunan sa access para sa \"{0}\"?"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access?"
+msgstr "Alisin ang access?"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Remove interest"
+msgstr "Alisin ang interes"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Remove item"
+msgstr "Alisin ang item"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Remove link"
+msgstr "Alisin ang link"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Rename"
+msgstr "Palitan ang pangalan"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+msgid "Rename calendar"
+msgstr "Palitan ang pangalan ng kalendaryo"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename column"
+msgstr "Palitan ang pangalan ng column"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename this board column"
+msgstr "Palitan ang pangalan ng board column na ito"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Renaming calendar..."
+msgstr "Pinapalitan ang pangalan ng kalendaryo..."
+
+#: src/features/calendar/editor.tsx
+msgid "Repeat"
+msgstr "Pag-ulit"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Repeats"
+msgstr "Paulit-ulit"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Replace"
+msgstr "Palitan"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply"
+msgstr "Tumugon"
+
+#. placeholder {0}: comment.name || comment.author
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply to {0}..."
+msgstr "Sagutin si {0}..."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Requesting access to {asking}..."
+msgstr "Humihiling ng access sa {asking}..."
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Required"
+msgstr "Kinakailangan"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Resend email"
+msgstr "Muling ipadala ang email"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign"
+msgstr "Sumuko"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign game?"
+msgstr "Sumuko sa laro?"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Retry"
+msgstr "Subukang muli"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/settings.tsx
+msgid "Revoke"
+msgstr "Bawiin"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke access"
+msgstr "Bawiin ang access"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke RSS access?"
+msgstr "Bawiin ang access sa RSS?"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Rows"
+msgstr "Mga row"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Rows group by"
+msgstr "Igrupo ang mga row ayon sa"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS access revoked"
+msgstr "Nabawi ang RSS access"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS feed"
+msgstr "Feed ng RSS"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS URL copied to clipboard"
+msgstr "Nakopya ang RSS URL sa clipboard"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Saturday"
+msgstr "Sabado"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
+msgid "Save"
+msgstr "I-save"
+
+#: src/features/calendar/editor.tsx
+msgid "Save this event"
+msgstr "I-save ang kaganapang ito"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "I-save ang password na ito ngayon. Hindi na ito maipapakita muli."
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Saving colour..."
+msgstr "Sini-save ang kulay..."
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Saving..."
+msgstr "Sini-save..."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/header-search.tsx
+#: ../../../lib/web/src/components/search.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Search"
+msgstr "Maghanap"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Search for a command to run..."
+msgstr "Maghanap ng command na patatakbuhin..."
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place"
+msgstr "Maghanap ng lugar"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place..."
+msgstr "Maghanap ng lugar..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for destination..."
+msgstr "Maghanap ng destination..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for origin..."
+msgstr "Maghanap ng origin..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Search objects..."
+msgstr "Maghanap ng object..."
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "Search time zone..."
+msgstr "Maghanap ng time zone..."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Search users"
+msgstr "Maghanap ng user"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Search, watch, and sort this view."
+msgstr "Maghanap, bantayan, at ayusin ang view na ito."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Search..."
+msgstr "Maghanap..."
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Searching..."
+msgstr "Naghahanap..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Select"
+msgstr "Pumili"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Select a field"
+msgstr "Pumili ng field"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Select a game"
+msgstr "Pumili ng laro"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select a user, group, or other rule to grant access."
+msgstr "Pumili ng user, group, o iba pang panuntunan para magbigay ng access."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select access rule"
+msgstr "Pumili ng access rule"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Select account type"
+msgstr "Pumili ng uri ng account"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select group"
+msgstr "Pumili ng group"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Select location"
+msgstr "Pumili ng lokasyon"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select next card"
+msgstr "Piliin ang susunod na card"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Select person..."
+msgstr "Pumili ng tao..."
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select previous card"
+msgstr "Piliin ang nakaraang card"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Select..."
+msgstr "Pumili..."
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Selected: <0>{0}</0>"
+msgstr "Napili: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Send again"
+msgstr "Ipadala muli"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Send email"
+msgstr "Magpadala ng email"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Send message"
+msgstr "Ipadala ang mensahe"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Serif"
+msgstr "Serif"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Server"
+msgstr "Server"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Server error"
+msgstr "Error sa server"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Server rules"
+msgstr "Mga patakaran ng server"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Session expired. Please log in again."
+msgstr "Nag-expire na ang session. Mag-log in muli."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Set origin and destination"
+msgstr "Itakda ang origin at destination"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Settings"
+msgstr "Mga setting"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show classes"
+msgstr "Ipakita ang mga klase"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show fields"
+msgstr "Ipakita ang mga field"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Show this help"
+msgstr "Ipakita ang tulong na ito"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Showing {totalShown} of {total}"
+msgstr "Ipinapakita ang {totalShown} sa {total}"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Mag-sign in gamit ang account na may access <0/> sa mapagkukunang ito."
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Sign out"
+msgstr "Mag-sign out"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Signing out..."
+msgstr "Nag-si-sign out..."
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Single line of text only"
+msgstr "Isang linya ng teksto lamang"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Small"
+msgstr "Maliit"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Sort"
+msgstr "Ayusin"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Sources"
+msgstr "Mga source"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Spacious"
+msgstr "Maluwag"
+
+#: src/features/calendar/editor.tsx
+msgid "Start"
+msgstr "Simulan"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Start the discussion by adding the first comment."
+msgstr "Simulan ang diskusyon sa pamamagitan ng pagdagdag ng unang komento."
+
+#: src/features/calendar/editor.tsx
+msgid "Start time"
+msgstr "Oras ng simula"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Stop watching"
+msgstr "Itigil ang pagmamasid"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Subject"
+msgstr "Paksa"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit comment"
+msgstr "Ipasa ang komento"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit reply"
+msgstr "Ipasa ang sagot"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/recommended-entities.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe"
+msgstr "Mag-subscribe"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe to calendar"
+msgstr "Mag-subscribe sa kalendaryo"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribed"
+msgstr "Naka-subscribe"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Sunday"
+msgstr "Linggo"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Switch to view 1-9"
+msgstr "Lumipat sa view 1-9"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag already exists"
+msgstr "May tag na"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag must be 50 characters or less"
+msgstr "Ang tag ay dapat 50 character o mas kaunti"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tags"
+msgstr "Mga tag"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Terms and conditions"
+msgstr "Mga tuntunin at kundisyon"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Text"
+msgstr "Teksto"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "That code is incorrect or has expired."
+msgstr "Mali ang code na iyon o nag-expire na."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+msgid "That could not be sent. The files may be too large, or your connection failed. Try smaller files."
+msgstr "Hindi maipadala. Maaaring masyadong malaki ang mga file, o nabigo ang iyong koneksyon. Subukan ang mas maliliit na file."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "That was too large to upload. Remove or shrink files and try again."
+msgstr "Masyadong malaki para i-upload. Alisin o paliitin ang mga file at subukang muli."
+
+#: src/features/calendar/settings.tsx
+msgid "the address answered {status}"
+msgstr "sumagot ang address ng {status}"
+
+#: src/features/calendar/settings.tsx
+msgid "the address could not be reached"
+msgstr "hindi maabot ang address"
+
+#: src/features/calendar/settings.tsx
+msgid "the address does not serve a calendar"
+msgstr "walang kalendaryong ibinibigay ang address"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar is too large"
+msgstr "masyadong malaki ang kalendaryo"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera is already in use"
+msgstr "Ginagamit na ang camera"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera request was not answered"
+msgstr "Hindi nasagot ang kahilingan sa camera"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "The device will no longer be able to sync calendars."
+msgstr "Hindi na maisi-sync ng device ang mga kalendaryo."
+
+#. placeholder {0}: failureReason(calendar.failure)
+#: src/features/calendar/settings.tsx
+msgid "The last fetch failed: {0}"
+msgstr "Nabigo ang huling pagkuha: {0}"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The microphone request was not answered"
+msgstr "Hindi nasagot ang kahilingan sa mikropono"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The passkey request was not answered"
+msgstr "Hindi nasagot ang kahilingan sa passkey"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "The requested content could not be found."
+msgstr "Hindi mahanap ang hiniling na content."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "The server returned a web page instead of data."
+msgstr "Nagbalik ang server ng web page sa halip na data."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Hindi pinapayagan ang app na ito na gamitin ang iyong passkey. Payagan ito sa Mga Setting, sa ilalim ng Mga Pahintulot."
+
+#: src/hooks/use-ics-copy.ts
+msgid "This calendar address was already issued and cannot be shown again."
+msgstr "Naibigay na ang address ng kalendaryong ito at hindi na ito maipapakita muli."
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This event"
+msgstr "Ang kaganapang ito"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+msgid "This event changed somewhere else."
+msgstr "Nabago ang kaganapang ito sa ibang lugar."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Permanenteng buburahin nito ang laro at ang chat nito. Hindi na maaaring bawiin ang aksyong ito."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Thursday"
+msgstr "Huwebes"
+
+#: src/features/calendar/editor.tsx
+msgid "Timezone"
+msgstr "Time zone"
+
+#: src/features/calendar/editor.tsx
+msgid "Title"
+msgstr "Pamagat"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "To"
+msgstr "Papunta"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Today"
+msgstr "Ngayong araw"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Toggle section"
+msgstr "I-toggle ang seksyon"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Toggle sidebar"
+msgstr "I-toggle ang sidebar"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Toggle view options"
+msgstr "I-toggle ang mga pagpipilian sa view"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Toggle watched filter"
+msgstr "I-toggle ang watched filter"
+
+#: src/features/calendar/index.tsx
+msgid "Too many events to show them all. Choose a shorter range."
+msgstr "Masyadong maraming kaganapan para ipakita lahat. Pumili ng mas maikling saklaw."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Too many requests"
+msgstr "Masyadong maraming request"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Top"
+msgstr "Itaas"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Travelling"
+msgstr "Naglalakbay"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Try adjusting your search terms"
+msgstr "Subukang ayusin ang iyong mga search term"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Try again"
+msgstr "Subukang muli"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Tuesday"
+msgstr "Martes"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Uri"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "Type a command or search..."
+msgstr "Mag-type ng command o maghanap..."
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Type a message…"
+msgstr "Mag-type ng mensahe…"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search users"
+msgstr "Mag-type para maghanap ng user"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search..."
+msgstr "Mag-type para maghanap..."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Unable to connect to remote server"
+msgstr "Hindi makakonekta sa malayong server"
+
+#: ../../../lib/web/src/lib/auth-manager.ts
+#: ../../../lib/web/src/lib/auth-manager.ts
+msgid "Unable to redirect to login. Please try again."
+msgstr "Hindi maka-redirect sa login. Pakisubukang muli."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Unassigned"
+msgstr "Walang nakatalaga"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+msgid "Unavailable"
+msgstr "Hindi available"
+
+#: ../../../lib/web/src/lib/request.ts
+#: ../../../lib/web/src/lib/request.ts
+msgid "Unexpected API error"
+msgstr "Hindi inaasahang API error"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "United States"
+msgstr "Estados Unidos"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-table-header.tsx
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Unknown"
+msgstr "Hindi alam"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Unsubscribe"
+msgstr "Mag-unsubscribe"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/lib/entity-title.ts
+msgid "Untitled"
+msgstr "Walang pamagat"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Updated"
+msgstr "Na-update"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Updated {field}"
+msgstr "Na-update ang {field}"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Upload"
+msgstr "Mag-upload"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Upload progress"
+msgstr "Progreso ng pag-upload"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Use your passkey"
+msgstr "Gamitin ang iyong passkey"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "User"
+msgstr "User"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Username"
+msgstr "Username"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Variables: {variables}"
+msgstr "Mga variable: {variables}"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verification code"
+msgstr "Code ng pagpapatunay"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify"
+msgstr "Beripikahin"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify email address"
+msgstr "Beripikahin ang email address"
+
+#: ../../../lib/web/src/components/attachment-gallery.tsx
+msgid "Video thumbnail"
+msgstr "Thumbnail ng video"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Video viewer: {0}"
+msgstr "Video viewer: {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View"
+msgstr "Tingnan"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "View all notifications"
+msgstr "Tingnan lahat ng notification"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "View and edit item details"
+msgstr "Tingnan at i-edit ang mga detalye ng item"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "View controls"
+msgstr "Mga view control"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View options"
+msgstr "Mga opsyon ng view"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Voice recording is not supported in this browser"
+msgstr "Hindi suportado ang voice recording sa browser na ito"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Watch"
+msgstr "Manood"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Watched"
+msgstr "Binabantayan"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Watched only"
+msgstr "Binabantayan lamang"
+
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Nagpadala kami ng verification code sa <0>{0}</0>. Ilagay ang code sa ibaba upang i-verify ang iyong email address."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Wednesday"
+msgstr "Miyerkules"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Week"
+msgstr "Linggo"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Weekly"
+msgstr "Lingguhan"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks before"
+msgstr "Mga linggo bago nito"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks shown"
+msgstr "Mga linggong ipinapakita"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Work days"
+msgstr "Mga araw ng trabaho"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Work week"
+msgstr "Linggo ng trabaho"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours end"
+msgstr "Katapusan ng oras ng trabaho"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours start"
+msgstr "Simula ng oras ng trabaho"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Yearly"
+msgstr "Taunan"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "You do not have access to this section."
+msgstr "Wala kang access sa seksyong ito."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
+msgstr "Ang iyong account ay inilipat dito mula sa {source}. Hanggang hindi mo ito binubura doon, ang mga mensahe at abiso ay maaaring maabot ang parehong mga server, ang ilan sa iyong nilalaman ay patuloy na pinaglilingkuran mula sa lumang server, at ang mga tagasunod ay maaaring maglaan ng ilang minuto upang mahanap ka dito."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your attachments will be lost."
+msgstr "Mawawala ang iyong mga attachment."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text and attachments will be lost."
+msgstr "Mawawala ang iyong teksto at mga attachment."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text will be lost."
+msgstr "Mawawala ang iyong teksto."

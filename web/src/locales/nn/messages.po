@@ -1,0 +1,2945 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-09-21 10:24+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: nn\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "Please check your internet connection and try again."
+msgstr "Sjekk internettsambandet ditt og prøv igjen."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(edited)"
+msgstr "(redigert)"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(expand)"
+msgstr "(utvid)"
+
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "(you)"
+msgstr "(deg)"
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+msgid "[not set]"
+msgstr "[ikkje sett]"
+
+#. placeholder {0}: visible.length
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+msgid "{0, plural, one {# result} other {# results}}"
+msgstr "{0, plural, one {# resultat} other {# resultat}}"
+
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# vald} other {# valde}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# nesta} other {+# nesta}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#d} other {#d}}"
+msgstr "{count, plural, one {#d} other {#d}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#h} other {#h}}"
+msgstr "{count, plural, one {#t} other {#t}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#m} other {#m}}"
+msgstr "{count, plural, one {#min} other {#min}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#w} other {#w}}"
+msgstr "{count, plural, one {#v} other {#v}}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{day}, {from} to {to}"
+msgstr "{day}, {from} til {to}"
+
+#: src/hooks/use-options.ts
+msgid "{days, plural, one {# day before} other {# days before}}"
+msgstr "{days, plural, one {# dag før} other {# dagar før}}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "{entityLabel} name"
+msgstr "{entityLabel}-namn"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{from} to {to}"
+msgstr "{from} til {to}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# til} other {+# til}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour before} other {# hours before}}"
+msgstr "{hours, plural, one {# time før} other {# timar før}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour} other {# hours}}"
+msgstr "{hours, plural, one {# time} other {# timar}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
+msgstr "{minutes, plural, one {# minutt før} other {# minutt før}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute} other {# minutes}}"
+msgstr "{minutes, plural, one {# minutt} other {# minutt}}"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "{opponentName} offered a draw"
+msgstr "{opponentName} tilbaud uavgjort"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{sentLabel} av {totalLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "{totalCount, plural, one {# item} other {# items}}"
+msgstr "{totalCount, plural, one {# element} other {# element}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# svar} other {+# fleire svar}}"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
+msgstr "{unreadCount, plural, one {Opne meny (# ulese varsel)} other {Opne meny (# ulesne varsel)}}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "12 hours"
+msgstr "12 timar"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "24 hours"
+msgstr "24 timar"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "A recording is already in progress."
+msgstr "Eit opptak er allereie i gang."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Absolute (date and time)"
+msgstr "Absolutt (dato og tid)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Accept"
+msgstr "Godta"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Access denied"
+msgstr "Tilgang nekta"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Access level"
+msgstr "Tilgangsnivå"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Account type"
+msgstr "Kontotype"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Activity"
+msgstr "Aktivitet"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add"
+msgstr "Legg til"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Add a comment..."
+msgstr "Legg til ein kommentar..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add a new account"
+msgstr "Legg til ein ny konto"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add a new field to this class"
+msgstr "Legg til eit nytt felt i denne klassa"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Add access"
+msgstr "Legg til tilgang"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add account"
+msgstr "Legg til konto"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Add caption"
+msgstr "Legg til bilettekst"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add checklist item"
+msgstr "Legg til sjekklisteelement"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add field"
+msgstr "Legg til felt"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add item..."
+msgstr "Legg til element..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Add link"
+msgstr "Legg til lenkje"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Add option"
+msgstr "Legg til val"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Add tag..."
+msgstr "Legg til etikett..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add to existing notifications"
+msgstr "Legg til i eksisterande varsel"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+msgid "Add view"
+msgstr "Legg til visning"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Address"
+msgstr "Adresse"
+
+#: src/features/calendar/editor.tsx
+msgid "After a number"
+msgstr "Etter eit tal"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "AI"
+msgstr "KI"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/day-popover.tsx
+#: src/features/calendar/editor.tsx
+msgid "All day"
+msgstr "Heile dagen"
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "All events"
+msgstr "Alle hendingar"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "La kven som helst søkja etter {entityLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Allow sort by"
+msgstr "Tillat sortering etter"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "An error occurred"
+msgstr "Det oppstod ein feil"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "An unexpected error occurred"
+msgstr "Det oppstod ein uventa feil"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Android push"
+msgstr "Android-push"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone"
+msgstr "Alle"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone who is logged in"
+msgstr "Alle som er logga inn"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr "Alt som abonnerer på denne straumen sluttar å ta imot han. Du kan kopiere ei ny nettadresse etterpå."
+
+#. placeholder {0}: deleteTarget?.name
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "Er du sikker på at du vil slette «{0}»?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Er du sikker på at du vil slette «{title}»? Denne handlinga kan ikkje angrast."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
+msgstr "Er du sikker på at du vil slette kolonnen «{name}»? Dette kan ikkje angrast."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Are you sure you want to delete this comment? This will also delete all replies."
+msgstr "Er du sikker på at du vil slette denne kommentaren? Dette vil òg slette alle svar."
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Are you sure you want to log out? You will need to log in again to access your account."
+msgstr "Er du sikker på at du vil logge ut? Du må logge inn att for å få tilgang til kontoen din."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign?"
+msgstr "Er du sikker på at du vil gje opp?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Er du sikker på at du vil gje opp? {opponentName} vinn spelet."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Ascending"
+msgstr "Stigande"
+
+#: src/hooks/use-options.ts
+msgid "At the time of the event"
+msgstr "På tidspunktet for hendinga"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach comment files"
+msgstr "Legg ved kommentarfiler"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach reply files"
+msgstr "Legg ved svarfiler"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Authenticated users"
+msgstr "Autentiserte brukarar"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Authenticator code"
+msgstr "Autentiseringskode"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Available keyboard shortcuts"
+msgstr "Tilgjengelege tastatursnarvegar"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar for {name}"
+msgstr "Avatar for {name}"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Back"
+msgstr "Tilbake"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Back to home"
+msgstr "Tilbake til start"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity-banner.tsx
+msgid "Banner"
+msgstr "Banner"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner removed"
+msgstr "Banner fjerna"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner updated"
+msgstr "Banner oppdatert"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Block {name}"
+msgstr "Blokker {name}"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocked by"
+msgstr "Blokkert av"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Blocked navigation to untrusted link"
+msgstr "Blokkerte navigering til ei ikkje-tiltrudd lenkje"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocks"
+msgstr "Blokker"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Board"
+msgstr "Brett"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Boost interest"
+msgstr "Auk interesse"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Border colour"
+msgstr "Kantfarge"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Browser notifications"
+msgstr "Nettlesarvarsel"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "calendar"
+msgstr "kalender"
+
+#: src/features/calendar/editor.tsx
+msgid "Calendar"
+msgstr "Kalender"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar address"
+msgstr "Kalenderadresse"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address copied to clipboard"
+msgstr "Kalenderadressa kopiert til utklippstavla"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address revoked"
+msgstr "Kalenderadressa trekt tilbake"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+msgid "Calendar colour"
+msgstr "Kalenderfarge"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar created"
+msgstr "Kalender oppretta"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar deleted"
+msgstr "Kalender sletta"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar renamed"
+msgstr "Kalenderen fekk nytt namn"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar up to date"
+msgstr "Kalenderen er oppdatert"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/index.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendars"
+msgstr "Kalendrar"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera permission denied"
+msgstr "Kameraløyve avvist"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera unavailable"
+msgstr "Kamera ikkje tilgjengeleg"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel comment"
+msgstr "Avbryt kommentar"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel reply"
+msgstr "Avbryt svar"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Avbroten"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Caption"
+msgstr "Bilettekst"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Category for these notifications"
+msgstr "Kategori for desse varsla"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Change notification category"
+msgstr "Endre varselkategori"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed"
+msgstr "Endra"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed {field}"
+msgstr "Endra {field}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Changed occurrence"
+msgstr "Endra førekomst"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checkbox"
+msgstr "Avkryssingsboks"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Checking for changes..."
+msgstr "Ser etter endringar..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checklist"
+msgstr "Sjekkliste"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Choose a game from the sidebar or start a new one."
+msgstr "Vel eit spel frå sidestolpen eller start eit nytt."
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/language-picker.tsx
+msgid "Choose language"
+msgstr "Vel språk"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Clear"
+msgstr "Tøm"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Clear all"
+msgstr "Tøm alle"
+
+#: ../../../lib/web/src/components/search-input.tsx
+msgid "Clear search"
+msgstr "Tøm søk"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/dialog.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/sheet.tsx
+#: src/features/calendar/editor.tsx
+msgid "Close"
+msgstr "Lat att"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Close dialog"
+msgstr "Lat att dialogen"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Close navigation"
+msgstr "Lat att navigeringa"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Close panel"
+msgstr "Lukk panelet"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Close panel / cancel"
+msgstr "Lat att panelet / avbryt"
+
+#: ../../../lib/web/src/components/header-search.tsx
+msgid "Close search"
+msgstr "Lat att søket"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Collapse"
+msgstr "Slå saman"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Collapse sidebar"
+msgstr "Klapp saman sidestolpen"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour"
+msgstr "Farge"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour saved"
+msgstr "Farge lagra"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Column actions"
+msgstr "Kolonnehandlingar"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Columns group by"
+msgstr "Kolonnar grupperer etter"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Comfortable"
+msgstr "Romsleg"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Command Palette"
+msgstr "Kommandopalett"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Comment actions"
+msgstr "Kommentarhandlingar"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Comments"
+msgstr "Kommentarar"
+
+#. placeholder {0}: data.comments.count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Comments ({0})"
+msgstr "Kommentarar ({0})"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Compact"
+msgstr "Kompakt"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Configure option settings"
+msgstr "Set opp valinnstillingar"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Configure view settings"
+msgstr "Set opp visningsinnstillingar"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Confirm"
+msgstr "Stadfest"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Kople til ei eining"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Kople til ei eining til"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connected"
+msgstr "Tilkopla"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Koplar til eining..."
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connecting..."
+msgstr "Koplar til..."
+
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "Content not found."
+msgstr "Innhaldet vart ikkje funne."
+
+#: ../../../lib/web/src/lib/query-client.ts
+msgid "Content not modified"
+msgstr "Innhald ikkje endra"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Contextual information and details."
+msgstr "Kontekstinformasjon og detaljar."
+
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+msgid "Continue"
+msgstr "Hald fram"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Continue with {label}"
+msgstr "Hald fram med {label}"
+
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Copied"
+msgstr "Kopiert"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copied to clipboard"
+msgstr "Kopiert til utklippstavla"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/settings.tsx
+msgid "Copy"
+msgstr "Kopier"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopier {label}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Copy calendar address"
+msgstr "Kopier kalenderadressa"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Could not load this document. Please try again later."
+msgstr "Kunne ikkje lasta dette dokumentet. Prøv igjen seinare."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Couldn't load notifications"
+msgstr "Klarte ikkje lasta varsla"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't send the code. Please try again."
+msgstr "Klarte ikkje å sende koden. Prøv igjen."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't start re-authentication. Please try again."
+msgstr "Klarte ikkje å starte ny autentisering. Prøv igjen."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't verify with that account. Please try again."
+msgstr "Klarte ikkje å stadfeste med den kontoen. Prøv igjen."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Create"
+msgstr "Opprett"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Create {entityLabel}"
+msgstr "Opprett {entityLabel}"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Create calendar"
+msgstr "Opprett kalender"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Create new item"
+msgstr "Opprett nytt element"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Created"
+msgstr "Oppretta"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Oppretta {0}"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Created {field}"
+msgstr "Oppretta {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Creating calendar..."
+msgstr "Opprettar kalender..."
+
+#: ../../../lib/web/src/components/map-view.tsx
+msgid "Current location"
+msgstr "Noverande posisjon"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: src/features/calendar/editor.tsx
+msgid "Custom"
+msgstr "Tilpassa"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Daily"
+msgstr "Dagleg"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dark"
+msgstr "Mørk"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Data conflict"
+msgstr "Datakonflikt"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Date"
+msgstr "Dato"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Day"
+msgstr "Dag"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Decline"
+msgstr "Avslå"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Default"
+msgstr "Standard"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Default AI account"
+msgstr "Standard KI-konto"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default event length"
+msgstr "Standard hendingslengd"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default reminder"
+msgstr "Standardpåminning"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Default sort"
+msgstr "Standardsortering"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Delete"
+msgstr "Slett"
+
+#. placeholder {0}: deleting?.name ?? ''
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete <0>{0}</0> and every event on it?"
+msgstr "Slette <0>{0}</0> og alle hendingane i han?"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Delete attachment"
+msgstr "Slett vedlegg"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete calendar"
+msgstr "Slett kalender"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Delete column"
+msgstr "Slett kolonne"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Delete comment"
+msgstr "Slett kommentar"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Slett eining"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Slette eining?"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete field"
+msgstr "Slett felt"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Delete game?"
+msgstr "Slette spelet?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Delete item"
+msgstr "Slett element"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Delete option"
+msgstr "Slett val"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete option {0}"
+msgstr "Slett valet {0}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Delete this event"
+msgstr "Slett denne hendinga"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Delete view"
+msgstr "Slett visning"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Delete your account on the old server"
+msgstr "Slett kontoen din på den gamle tenaren"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted"
+msgstr "Sletta"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted {field}"
+msgstr "Sletta {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Deleting calendar..."
+msgstr "Slettar kalender..."
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Slettar eining..."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Descending"
+msgstr "Fallande"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Description"
+msgstr "Skildring"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Details Panel"
+msgstr "Detaljpanel"
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Detect from web browser"
+msgstr "Oppdag frå nettlesaren"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Eining sletta"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device name"
+msgstr "Einingsnamn"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Directory"
+msgstr "Katalog"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard"
+msgstr "Forkast"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard draft?"
+msgstr "Vil du forkaste utkastet?"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Disconnected"
+msgstr "Fråkopla"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Dismiss"
+msgstr "Avvis"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Displays the mobile sidebar."
+msgstr "Viser mobil sidestolpe."
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Does not match the required pattern"
+msgstr "Samsvarar ikkje med det påkravde mønsteret"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Done"
+msgstr "Ferdig"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "Last ned"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download failed"
+msgstr "Nedlastinga feila"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Duplicates"
+msgstr "Duplikat"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dyslexia-friendly"
+msgstr "Dyslektikarvenleg"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "Earlier events"
+msgstr "Tidlegare hendingar"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
+msgid "Edit"
+msgstr "Rediger"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Edit {label}"
+msgstr "Rediger {label}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Edit caption"
+msgstr "Rediger bileteksten"
+
+#: src/features/calendar/editor.tsx
+msgid "Edit event"
+msgstr "Rediger hending"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field"
+msgstr "Rediger felt"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field settings"
+msgstr "Rediger feltinnstillingar"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Edit option"
+msgstr "Rediger val"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit option {0}"
+msgstr "Rediger val {0}"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Edit selected card"
+msgstr "Rediger valt kort"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Edit view"
+msgstr "Rediger vising"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Email"
+msgstr "E-post"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Email code"
+msgstr "E-postkode"
+
+#: src/features/calendar/editor.tsx
+msgid "End"
+msgstr "Slutt"
+
+#: src/features/calendar/editor.tsx
+msgid "End time"
+msgstr "Sluttid"
+
+#: src/features/calendar/editor.tsx
+msgid "Ends"
+msgstr "Sluttar"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Enter banner text (markdown supported)..."
+msgstr "Skriv inn bannertekst (markdown er støtta)..."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter the code from your email"
+msgstr "Skriv inn koden frå e-posten din"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter your authenticator code"
+msgstr "Skriv inn autentiseringskoden din"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Error"
+msgstr "Feil"
+
+#: src/features/calendar/editor.tsx
+msgid "Event created"
+msgstr "Hending oppretta"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Event deleted"
+msgstr "Hending sletta"
+
+#: src/features/calendar/editor.tsx
+msgid "Event saved"
+msgstr "Hending lagra"
+
+#: src/features/calendar/editor.tsx
+msgid "Every"
+msgstr "Kvar"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Expand"
+msgstr "Utvid"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Expand sidebar"
+msgstr "Utvid sidestolpe"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "External URL"
+msgstr "Ekstern URL"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Extra large"
+msgstr "Ekstra stor"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts
+msgid "Failed to add account"
+msgstr "Klarte ikkje leggja til konto"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to check the calendar"
+msgstr "Klarte ikkje sjekka kalenderen"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Klarte ikkje kople til eininga"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Failed to copy"
+msgstr "Klarte ikkje kopiera"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to create calendar"
+msgstr "Klarte ikkje oppretta kalender"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to create link"
+msgstr "Klarte ikkje oppretta lenke"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to delete"
+msgstr "Klarte ikkje sletta"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to delete attachment"
+msgstr "Klarte ikkje sletta vedlegg"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to delete calendar"
+msgstr "Klarte ikkje sletta kalender"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to delete comment"
+msgstr "Klarte ikkje sletta kommentar"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Klarte ikkje sletta eininga"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Failed to delete link"
+msgstr "Klarte ikkje sletta lenke"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Failed to delete the event"
+msgstr "Klarte ikkje sletta hendinga"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to get RSS token"
+msgstr "Klarte ikkje henta RSS-token"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to get the calendar address"
+msgstr "Klarte ikkje henta kalenderadressa"
+
+#: ../../../lib/web/src/hooks/use-load-more.ts
+msgid "Failed to load"
+msgstr "Klarte ikkje lasta"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to load banner"
+msgstr "Kunne ikkje lasta banneret"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "Failed to load history"
+msgstr "Klarte ikkje lasta historikk"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load image"
+msgstr "Kunne ikkje lasta biletet"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to load item"
+msgstr "Klarte ikkje lasta element"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to load prompts"
+msgstr "Klarte ikkje lasta forespurnader"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load video"
+msgstr "Kunne ikkje lasta videoen"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to load your preferences"
+msgstr "Klarte ikkje lasta innstillingane dine"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to move"
+msgstr "Kunne ikkje flytte"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to move the event"
+msgstr "Klarte ikkje flytta hendinga"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to post comment"
+msgstr "Klarte ikkje posta kommentar"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to rename calendar"
+msgstr "Klarte ikkje gje kalenderen nytt namn"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to reset prompt"
+msgstr "Klarte ikkje nullstilla forespurnad"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to revoke RSS access"
+msgstr "Klarte ikkje trekkje tilbake RSS-tilgang"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to revoke the calendar address"
+msgstr "Klarte ikkje trekkja tilbake kalenderadressa"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to save"
+msgstr "Klarte ikkje lagra"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to save prompt"
+msgstr "Klarte ikkje lagra forespurnad"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to save the colour"
+msgstr "Klarte ikkje lagra fargen"
+
+#: src/features/calendar/editor.tsx
+msgid "Failed to save the event"
+msgstr "Klarte ikkje lagra hendinga"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to subscribe"
+msgstr "Klarte ikkje abonnera"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to update banner"
+msgstr "Klarte ikkje oppdatera banner"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to update comment"
+msgstr "Klarte ikkje oppdatera kommentar"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to update watching"
+msgstr "Kunne ikkje oppdatere overvaking"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to upload attachment"
+msgstr "Klarte ikkje lasta opp vedlegg"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Files"
+msgstr "Filer"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Finish moving your account"
+msgstr "Fullfør flyttinga av kontoen din"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Flags"
+msgstr "Flagg"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Flat"
+msgstr "Flat"
+
+#: src/features/calendar/editor.tsx
+msgid "Frequency"
+msgstr "Frekvens"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Friday"
+msgstr "Fredag"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Friends"
+msgstr "Vener"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "From"
+msgstr "Frå"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "From theme"
+msgstr "Frå tema"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Go back"
+msgstr "Gå tilbake"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Group"
+msgstr "Gruppe"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Group by"
+msgstr "Grupper etter"
+
+#. placeholder {0}: name || subject.slice(1)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Group: {0}"
+msgstr "Gruppe: {0}"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "History"
+msgstr "Historikk"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Home"
+msgstr "Heim"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Hot"
+msgstr "Het"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "ID"
+msgstr "ID"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Image viewer: {0}"
+msgstr "Biletvisar: {0}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Imperial"
+msgstr "Imperisk"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Including anonymous users"
+msgstr "Inkludert anonyme brukarar"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar"
+msgstr "Initialavatar"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar for {name}"
+msgstr "Initialavatar for {name}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Interest {weight}"
+msgstr "Interesse {weight}"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Interests"
+msgstr "Interesser"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Invalid date"
+msgstr "Ugyldig dato"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Det ser ut til at sida du leitar etter <0/>ikkje finst eller er fjerna."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Item details"
+msgstr "Detaljar om element"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "Just now"
+msgstr "Nettopp no"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Keyboard shortcuts"
+msgstr "Snøggtastar"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Large"
+msgstr "Stor"
+
+#: src/features/calendar/editor.tsx
+msgid "Last day"
+msgstr "Siste dag"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Sist nytta {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Layout"
+msgstr "Utforming"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Berre bokstavar, tal, mellomrom, bindestrekar og skråstrekar"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Light"
+msgstr "Lyst"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Link"
+msgstr "Lenkje"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Links"
+msgstr "Lenker"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/components/toolbar.tsx
+msgid "List"
+msgstr "Liste"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Load more"
+msgstr "Last fleire"
+
+#: ../../../lib/web/src/components/ui/loading-content.tsx
+msgid "Loading content…"
+msgstr "Lastar inn innhald…"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item"
+msgstr "Lastar element"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item details"
+msgstr "Lastar elementdetaljar"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Loading..."
+msgstr "Lastar..."
+
+#: src/features/calendar/editor.tsx
+msgid "Location"
+msgstr "Stad"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Log out"
+msgstr "Logg ut"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out (with errors)"
+msgstr "Logga ut (med feil)"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out successfully"
+msgstr "Logga ut"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Logging out…"
+msgstr "Loggar ut…"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Manage categories"
+msgstr "Handsam kategoriar"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Administrer einingar"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Manual"
+msgstr "Manuell"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Mark all as read"
+msgstr "Merk alle som lesne"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Maximum length"
+msgstr "Største lengd"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "MCP server"
+msgstr "MCP-tenar"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Medium"
+msgstr "Middels"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Members"
+msgstr "Medlemer"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Menu"
+msgstr "Meny"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Message"
+msgstr "Melding"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Metric"
+msgstr "Metrisk"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Microphone permission denied"
+msgstr "Mikrofonløyve nekta"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Minimum length"
+msgstr "Minste lengd"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Mochi web"
+msgstr "Mochi web"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Moderation"
+msgstr "Moderering"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Monday"
+msgstr "Måndag"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Month"
+msgstr "Månad"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Monthly"
+msgstr "Månadleg"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "More options"
+msgstr "Fleire val"
+
+#: src/features/calendar/index.tsx
+msgid "Move this event"
+msgstr "Flytt denne hendinga"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved"
+msgstr "Flytta"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved {field}"
+msgstr "Flytta {field}"
+
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr "Flyttar til {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Multiweek"
+msgstr "Fleire veker"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Name"
+msgstr "Namn"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name cannot contain < or > characters"
+msgstr "Namn kan ikkje innehalda < eller >"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name is required"
+msgstr "Namn er påkravd"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name must be 1000 characters or less"
+msgstr "Namn må vera 1000 teikn eller mindre"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Network error"
+msgstr "Nettverksfeil"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Never"
+msgstr "Aldri"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "New"
+msgstr "Ny"
+
+#: src/hooks/use-ics-copy.ts
+msgid "New calendar address copied to clipboard"
+msgstr "Ny kalenderadresse kopiert til utklippstavla"
+
+#: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/editor.tsx
+msgid "New event"
+msgstr "Ny hending"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "New game"
+msgstr "Nytt spel"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Next"
+msgstr "Neste"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Next image"
+msgstr "Neste bilete"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr "Neste månad"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No {parentClassNames} to add to"
+msgstr "Ingen {parentClassNames} å leggja til i"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "No access rules configured. Add rules to control who can access this resource."
+msgstr "Ingen tilgangsreglar er sette opp. Legg til reglar for å styra kven som har tilgang til denne ressursen."
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No activity yet"
+msgstr "Ingen aktivitet enno"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "No comments yet"
+msgstr "Ingen kommentarar enno"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Ingen einingar tilkopla."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No events"
+msgstr "Ingen hendingar"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "No games yet"
+msgstr "Ingen spel enno"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No groups available"
+msgstr "Ingen grupper tilgjengelege"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No item types can be created yet. Create the required parent items first."
+msgstr "Ingen elementtypar kan opprettast enno. Opprett dei påkravde overordna elementa først."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "No matching objects"
+msgstr "Ingen samsvarande objekt"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "No people found"
+msgstr "Ingen personar funne"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "No places found"
+msgstr "Ingen stader funne"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "No results found"
+msgstr "Ingen resultat funne"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "No results found."
+msgstr "Ingen treff funne."
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "No status"
+msgstr "Ingen status"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "No time zone found."
+msgstr "Inga tidssone funne."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "No topic record yet — try again after the next notification."
+msgstr "Inga emneoppføring enno — prøv igjen etter neste varsel."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "No unread notifications"
+msgstr "Ingen ulesne varsel"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No users found"
+msgstr "Ingen brukarar funne"
+
+#: ../../../lib/web/src/components/entity/entity-design-preview.tsx
+msgid "No views"
+msgstr "Ingen visningar"
+
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: src/hooks/use-options.ts
+msgid "None"
+msgstr "Ingen"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Normal"
+msgstr "Normal"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Not found"
+msgstr "Ikkje funnen"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Not set"
+msgstr "Ikkje sett"
+
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "Nothing found"
+msgstr "Ingenting funne"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Notifications: {0}"
+msgstr "Varsel: {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Tal"
+
+#: src/features/calendar/editor.tsx
+msgid "Occurrences"
+msgstr "Førekomstar"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "On"
+msgstr "På"
+
+#: src/features/calendar/editor.tsx
+msgid "On a date"
+msgstr "På ein dato"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Only this"
+msgstr "Berre denne"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Oops! Page Not Found!"
+msgstr "Ups! Side ikkje funne!"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Open actions"
+msgstr "Opne handlingar"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Open menu"
+msgstr "Opna meny"
+
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Open navigation"
+msgstr "Opna navigasjon"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Open option actions"
+msgstr "Opna alternativhandlingar"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Open selected card"
+msgstr "Opna vald kort"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Open view actions"
+msgstr "Opna visningshandlingar"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Open view controls"
+msgstr "Opna visningskontrollar"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Option name"
+msgstr "Alternativnamn"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Options"
+msgstr "Alternativ"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Anna"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Owner"
+msgstr "Eigar"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Parent"
+msgstr "Forelder"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Passkey"
+msgstr "Nykel"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkey verification failed. Please try again."
+msgstr "Stadfesting av tilgangsnøkkelen feila. Prøv igjen."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Passkeys"
+msgstr "Tilgangsnøklar"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkeys are not available in this browser"
+msgstr "Nyklar er ikkje tilgjengelege i denne nettlesaren"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Password"
+msgstr "Passord"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Pattern (regex)"
+msgstr "Mønster (regex)"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "People"
+msgstr "Personar"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Please check your internet connection and try again."
+msgstr "Sjekk internettsambandet ditt og prøv igjen."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please try again."
+msgstr "Prøv igjen."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please wait a moment and try again."
+msgstr "Vent eit augeblink og prøv igjen."
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Poll now"
+msgstr "Hent no"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts"
+msgstr "Innlegg"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts and comments"
+msgstr "Innlegg og kommentarar"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences"
+msgstr "Innstillingar"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences saved"
+msgstr "Innstillingar lagra"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Previous"
+msgstr "Førre"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Previous image"
+msgstr "Førre bilete"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr "Førre månad"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Privacy"
+msgstr "Personvern"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Processing…"
+msgstr "Handsamar…"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Prompt saved"
+msgstr "Leiarmelding lagra"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Properties"
+msgstr "Eigenskapar"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Push notification"
+msgstr "Push-varsel"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Raised"
+msgstr "Heva"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-link your accounts on this server"
+msgstr "Kople kontoane dine til denne tenaren på nytt"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-register your passkeys on this server"
+msgstr "Registrer tilgangsnøklane dine på nytt på denne tenaren"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Recommended"
+msgstr "Tilrådd"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Reconnecting ({retries})..."
+msgstr "Koplar til att ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording failed. Please try again."
+msgstr "Opptaket feila. Prøv igjen."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording produced no audio"
+msgstr "Opptaket gav ingen lyd"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Redirecting to login."
+msgstr "Omdirigerer til innlogging."
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Reduce interest"
+msgstr "Reduser interesse"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Relates"
+msgstr "Relaterer"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative (5m, 3h, 2d)"
+msgstr "Relativ (5m, 3t, 2d)"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative within 24 hours, else absolute"
+msgstr "Relativ innan 24 timar, elles absolutt"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}"
+msgstr "Relevans {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Relevans {relevance}, interesse {weight}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Reload"
+msgstr "Last inn på nytt"
+
+#: src/features/calendar/editor.tsx
+msgid "Reminder"
+msgstr "Påminning"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove"
+msgstr "Fjern"
+
+#. placeholder {0}: filter.label
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Remove {0} filter"
+msgstr "Fjern {0}-filter"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Remove {name}"
+msgstr "Fjern {name}"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule"
+msgstr "Fjern tilgangsregel"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Fjerne tilgangsregel for «{0}»?"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access?"
+msgstr "Fjern tilgang?"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Remove interest"
+msgstr "Fjern interesse"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Remove item"
+msgstr "Fjern element"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Remove link"
+msgstr "Fjern lenkja"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Rename"
+msgstr "Døyp om"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+msgid "Rename calendar"
+msgstr "Gje kalenderen nytt namn"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename column"
+msgstr "Døyp om kolonne"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename this board column"
+msgstr "Døyp om denne tavlekolonna"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Renaming calendar..."
+msgstr "Gjev kalenderen nytt namn..."
+
+#: src/features/calendar/editor.tsx
+msgid "Repeat"
+msgstr "Gjentaking"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Repeats"
+msgstr "Gjentek seg"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Replace"
+msgstr "Byt ut"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply"
+msgstr "Svar"
+
+#. placeholder {0}: comment.name || comment.author
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply to {0}..."
+msgstr "Svar til {0}..."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Requesting access to {asking}..."
+msgstr "Ber om tilgang til {asking}..."
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Required"
+msgstr "Påkravd"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Resend email"
+msgstr "Send e-posten på nytt"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign"
+msgstr "Gje opp"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign game?"
+msgstr "Gje opp spelet?"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Retry"
+msgstr "Prøv igjen"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/settings.tsx
+msgid "Revoke"
+msgstr "Trekk tilbake"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke access"
+msgstr "Trekk tilbake tilgang"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke RSS access?"
+msgstr "Oppheve RSS-tilgang?"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Rows"
+msgstr "Rader"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Rows group by"
+msgstr "Rader gruppert etter"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS access revoked"
+msgstr "RSS-tilgang trekt tilbake"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS feed"
+msgstr "RSS-straum"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS URL copied to clipboard"
+msgstr "RSS-URL kopiert til utklippstavla"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Saturday"
+msgstr "Laurdag"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
+msgid "Save"
+msgstr "Lagre"
+
+#: src/features/calendar/editor.tsx
+msgid "Save this event"
+msgstr "Lagre denne hendinga"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Lagre dette passordet no. Det kan ikkje visast igjen."
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Saving colour..."
+msgstr "Lagrar farge..."
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Saving..."
+msgstr "Lagrar..."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/header-search.tsx
+#: ../../../lib/web/src/components/search.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Search"
+msgstr "Søk"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Search for a command to run..."
+msgstr "Søk etter ein kommando å køyre..."
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place"
+msgstr "Søk etter ein stad"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place..."
+msgstr "Søk etter ein stad..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for destination..."
+msgstr "Søk etter destinasjon..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for origin..."
+msgstr "Søk etter opphav..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Search objects..."
+msgstr "Søk i objekt..."
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "Search time zone..."
+msgstr "Søk i tidssone..."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Search users"
+msgstr "Søk i brukarar"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Search, watch, and sort this view."
+msgstr "Søk, sjå på og sorter denne visninga."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Search..."
+msgstr "Søk..."
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Searching..."
+msgstr "Søkjer..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Select"
+msgstr "Vel"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Select a field"
+msgstr "Vel eit felt"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Select a game"
+msgstr "Vel eit spel"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select a user, group, or other rule to grant access."
+msgstr "Vel ein brukar, gruppe eller annan regel for å gje tilgang."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select access rule"
+msgstr "Vel tilgangsregel"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Select account type"
+msgstr "Vel kontotype"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select group"
+msgstr "Vel gruppe"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Select location"
+msgstr "Vel stad"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select next card"
+msgstr "Vel neste kort"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Select person..."
+msgstr "Vel person..."
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select previous card"
+msgstr "Vel førre kort"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Select..."
+msgstr "Vel..."
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Selected: <0>{0}</0>"
+msgstr "Vald: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Send again"
+msgstr "Send igjen"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Send email"
+msgstr "Send e-post"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Send message"
+msgstr "Send melding"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Serif"
+msgstr "Antikva"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Server"
+msgstr "Tenar"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Server error"
+msgstr "Tenarfeil"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Server rules"
+msgstr "Tenarreglar"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Session expired. Please log in again."
+msgstr "Økta gjekk ut. Logg inn igjen."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Set origin and destination"
+msgstr "Set opphav og mål"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Settings"
+msgstr "Innstillingar"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show classes"
+msgstr "Vis klassar"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show fields"
+msgstr "Vis felt"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Show this help"
+msgstr "Vis denne hjelpa"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Showing {totalShown} of {total}"
+msgstr "Viser {totalShown} av {total}"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Sidebar"
+msgstr "Sidestolpe"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Logg inn med ein konto som har tilgang <0/> til denne ressursen."
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Sign out"
+msgstr "Logg ut"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Signing out..."
+msgstr "Loggar ut..."
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Single line of text only"
+msgstr "Berre éi linje med tekst"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Small"
+msgstr "Liten"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Sort"
+msgstr "Sorter"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Sources"
+msgstr "Kjelder"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Spacious"
+msgstr "Romsleg"
+
+#: src/features/calendar/editor.tsx
+msgid "Start"
+msgstr "Start"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Start the discussion by adding the first comment."
+msgstr "Start diskusjonen ved å leggje til den første kommentaren."
+
+#: src/features/calendar/editor.tsx
+msgid "Start time"
+msgstr "Starttid"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Stop watching"
+msgstr "Slutt å sjå på"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Subject"
+msgstr "Emne"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit comment"
+msgstr "Send inn kommentar"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit reply"
+msgstr "Send inn svar"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/recommended-entities.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe"
+msgstr "Abonner"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe to calendar"
+msgstr "Abonner på kalender"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribed"
+msgstr "Abonnerer"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Sunday"
+msgstr "Sundag"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Switch to view 1-9"
+msgstr "Byt til vising 1-9"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "System"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag already exists"
+msgstr "Etiketten finst alt"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag must be 50 characters or less"
+msgstr "Taggen kan vere høgst 50 teikn"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tags"
+msgstr "Etikettar"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Terms and conditions"
+msgstr "Vilkår"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Text"
+msgstr "Tekst"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "That code is incorrect or has expired."
+msgstr "Koden er feil eller har gått ut."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+msgid "That could not be sent. The files may be too large, or your connection failed. Try smaller files."
+msgstr "Det kunne ikkje sendast. Filene kan vere for store, eller tilkoplinga svikta. Prøv mindre filer."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "That was too large to upload. Remove or shrink files and try again."
+msgstr "Det var for stort til å laste opp. Fjern eller forminsk filer og prøv igjen."
+
+#: src/features/calendar/settings.tsx
+msgid "the address answered {status}"
+msgstr "adressa svarte {status}"
+
+#: src/features/calendar/settings.tsx
+msgid "the address could not be reached"
+msgstr "adressa kunne ikkje nåast"
+
+#: src/features/calendar/settings.tsx
+msgid "the address does not serve a calendar"
+msgstr "adressa leverer ikkje ein kalender"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar is too large"
+msgstr "kalenderen er for stor"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera is already in use"
+msgstr "Kameraet er allereie i bruk"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera request was not answered"
+msgstr "Kameraførespurnaden vart ikkje svara på"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "The device will no longer be able to sync calendars."
+msgstr "Eininga vil ikkje lenger kunne synkronisera kalendrar."
+
+#. placeholder {0}: failureReason(calendar.failure)
+#: src/features/calendar/settings.tsx
+msgid "The last fetch failed: {0}"
+msgstr "Den siste hentinga mislukkast: {0}"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The microphone request was not answered"
+msgstr "Mikrofonførespurnaden vart ikkje svara på"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The passkey request was not answered"
+msgstr "Nykelførespurnaden vart ikkje svara på"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "The requested content could not be found."
+msgstr "Fann ikkje innhaldet du bad om."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "The server returned a web page instead of data."
+msgstr "Tenaren returnerte ei nettside i staden for data."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Denne appen har ikkje løyve til å bruke nykelen din. Tillat det i Innstillingar under Løyve."
+
+#: src/hooks/use-ics-copy.ts
+msgid "This calendar address was already issued and cannot be shown again."
+msgstr "Denne kalenderadressa er allereie utferda og kan ikkje visast igjen."
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This event"
+msgstr "Denne hendinga"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+msgid "This event changed somewhere else."
+msgstr "Denne hendinga er endra ein annan stad."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Dette slettar spelet og praten permanent. Denne handlinga kan ikkje angrast."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Thursday"
+msgstr "Torsdag"
+
+#: src/features/calendar/editor.tsx
+msgid "Timezone"
+msgstr "Tidssone"
+
+#: src/features/calendar/editor.tsx
+msgid "Title"
+msgstr "Tittel"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "To"
+msgstr "Til"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Today"
+msgstr "I dag"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Toggle section"
+msgstr "Slå bolken av/på"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Toggle sidebar"
+msgstr "Slå sidepanelet av/på"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Toggle view options"
+msgstr "Slå visingsval av/på"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Toggle watched filter"
+msgstr "Slå filter for følgde av/på"
+
+#: src/features/calendar/index.tsx
+msgid "Too many events to show them all. Choose a shorter range."
+msgstr "For mange hendingar til å visa alle. Vel eit kortare tidsrom."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Too many requests"
+msgstr "For mange førespurnader"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Top"
+msgstr "Topp"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Travelling"
+msgstr "Reiser"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Try adjusting your search terms"
+msgstr "Prøv å justere søkjeorda"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Try again"
+msgstr "Prøv igjen"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Tuesday"
+msgstr "Tysdag"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Type"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "Type a command or search..."
+msgstr "Skriv ein kommando eller søk..."
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Type a message…"
+msgstr "Skriv ei melding…"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search users"
+msgstr "Skriv for å søkje etter brukarar"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search..."
+msgstr "Skriv for å søkje..."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Unable to connect to remote server"
+msgstr "Klarte ikkje å kople til fjerntenaren"
+
+#: ../../../lib/web/src/lib/auth-manager.ts
+#: ../../../lib/web/src/lib/auth-manager.ts
+msgid "Unable to redirect to login. Please try again."
+msgstr "Kunne ikkje omdirigere til innlogging. Prøv igjen."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Unassigned"
+msgstr "Ikkje tildelt"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+msgid "Unavailable"
+msgstr "Ikkje tilgjengeleg"
+
+#: ../../../lib/web/src/lib/request.ts
+#: ../../../lib/web/src/lib/request.ts
+msgid "Unexpected API error"
+msgstr "Uventa API-feil"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "United States"
+msgstr "USA"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-table-header.tsx
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Unknown"
+msgstr "Ukjend"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Unsubscribe"
+msgstr "Sei opp abonnement"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/lib/entity-title.ts
+msgid "Untitled"
+msgstr "Utan tittel"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Updated"
+msgstr "Oppdatert"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Updated {field}"
+msgstr "Oppdaterte {field}"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Upload"
+msgstr "Last opp"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Upload progress"
+msgstr "Framdrift for opplasting"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Use your passkey"
+msgstr "Bruk tilgangsnøkkelen din"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "User"
+msgstr "Brukar"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Username"
+msgstr "Brukarnamn"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Variables: {variables}"
+msgstr "Variablar: {variables}"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verification code"
+msgstr "Stadfestingskode"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify"
+msgstr "Stadfest"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify email address"
+msgstr "Stadfest e-postadresse"
+
+#: ../../../lib/web/src/components/attachment-gallery.tsx
+msgid "Video thumbnail"
+msgstr "Videominiatyrbilete"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Video viewer: {0}"
+msgstr "Videovisar: {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View"
+msgstr "Vis"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "View all notifications"
+msgstr "Vis alle varsel"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "View and edit item details"
+msgstr "Vis og rediger elementdetaljar"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "View controls"
+msgstr "Vis kontrollar"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View options"
+msgstr "Visingsval"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Voice recording is not supported in this browser"
+msgstr "Taleopptak er ikkje støtta i denne nettlesaren"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Watch"
+msgstr "Følg"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Watched"
+msgstr "Følgd"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Watched only"
+msgstr "Berre følgde"
+
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Vi sende ein stadfestingskode til <0>{0}</0>. Skriv inn koden nedanfor for å stadfeste e-postadressa di."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Wednesday"
+msgstr "Onsdag"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Week"
+msgstr "Veke"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Weekly"
+msgstr "Vekentleg"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks before"
+msgstr "Veker før"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks shown"
+msgstr "Veker som blir viste"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Work days"
+msgstr "Arbeidsdagar"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Work week"
+msgstr "Arbeidsveke"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours end"
+msgstr "Arbeidstida sluttar"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours start"
+msgstr "Arbeidstida startar"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Yearly"
+msgstr "Årleg"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "You do not have access to this section."
+msgstr "Du har ikkje tilgang til denne bolken."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
+msgstr "Kontoen din vart flytta hit frå {source}. Inntil du slettar han der, kan meldingar og varsel nå begge tenarane, noko av innhaldet ditt blir framleis servert frå den gamle tenaren, og følgjarar kan ta nokre minutt å finne deg her."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your attachments will be lost."
+msgstr "Vedlegga dine går tapt."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text and attachments will be lost."
+msgstr "Teksten og vedlegga dine går tapt."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text will be lost."
+msgstr "Teksten din går tapt."

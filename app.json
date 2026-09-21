@@ -1,0 +1,82 @@
+// Mochi Calendars app
+// Copyright © 2026 Mochisoft OÜ
+// SPDX-License-Identifier: AGPL-3.0-only
+// This file is part of Mochi, licensed under the GNU AGPL v3 with the
+// Mochi Application Interface Exception - see license.txt and license-exception.md.
+
+{
+	"version": "0.2",
+	"label": "app.name",
+	"classes": ["calendar"],
+	"paths": ["calendars"],
+	"services": ["calendars"],
+
+	"architecture": {"engine": "starlark", "version": 4},
+	"execute": ["calendars.star"],
+
+	// Set to "2.0" at release: the dev build reports the Makefile version.
+	"require": {"version": {"minimum": "1.4"}},
+
+	"database": {
+		"schema": 1,
+		"file": "calendars.db",
+		"create": {"function": "database_create"},
+		"upgrade": {"function": "database_upgrade"},
+	},
+
+	"icons": [
+		{"action": "", "label": "app.name", "file": "images/icon.svg"}
+	],
+
+	"actions": {
+		"": {"file": "web/dist/index.html"},
+		"assets": {"files": "web/dist/assets"},
+		"images": {"files": "web/dist/images"},
+		"-/calendars": {"function": "action_calendars"},
+		"-/calendars/get": {"function": "action_calendar_get"},
+		"-/calendars/create": {"function": "action_calendar_create"},
+		"-/calendars/rename": {"function": "action_calendar_rename"},
+		"-/calendars/colour": {"function": "action_calendar_colour"},
+		"-/calendars/delete": {"function": "action_calendar_delete"},
+		"-/calendars/subscribe": {"function": "action_calendar_subscribe"},
+		"-/calendars/poll": {"function": "action_calendar_poll"},
+		"-/events": {"function": "action_events"},
+		"-/events/bounds": {"function": "action_events_bounds"},
+		"-/events/get": {"function": "action_event_get"},
+		"-/events/batch": {"function": "action_events_batch"},
+		"-/events/create": {"function": "action_event_create"},
+		"-/events/update": {"function": "action_event_update"},
+		"-/events/delete": {"function": "action_event_delete"},
+		"-/events/changes": {"function": "action_events_changes"},
+		"-/link": {"function": "action_link"},
+		"-/link/revoke": {"function": "action_link_revoke"},
+		"-/preferences/get": {"function": "action_preferences_get"},
+		"-/preferences/set": {"function": "action_preferences_set"},
+		"-/token/create": {"function": "action_token_create"},
+		"-/token/list": {"function": "action_token_list"},
+		"-/token/delete": {"function": "action_token_delete"},
+		// CalDAV, served by core's DAV engine over the dav/* functions below:
+		// public because the engine authenticates every request itself, with a
+		// token the token actions mint.
+		"caldav/*path": {"feature": "caldav", "public": true},
+
+		// The ICS link others subscribe to: a plain path, as the git clone URL is,
+		// so the token is bound to this key and the SPA catch-all never sees it.
+		":calendar": {"file": "web/dist/index.html"},
+		":calendar/calendar.ics": {"function": "action_ics", "public": true},
+		":calendar/assets": {"files": "web/dist/assets"},
+		":calendar/images": {"files": "web/dist/images"}
+	},
+
+	"events": {
+	},
+
+	"functions": {
+		"dav/collections": {"function": "function_dav_collections", "permission": "calendars/read"},
+		"dav/collections/create": {"function": "function_dav_collection_create", "permission": "calendars/read"},
+		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "calendars/read"},
+		"dav/objects": {"function": "function_dav_objects", "permission": "calendars/read"},
+		"dav/put": {"function": "function_dav_put", "permission": "calendars/read"},
+		"dav/delete": {"function": "function_dav_delete", "permission": "calendars/read"}
+	}
+}

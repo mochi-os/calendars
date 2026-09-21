@@ -1,0 +1,2945 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-09-21 10:24+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: uk\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "Please check your internet connection and try again."
+msgstr "Будь ласка, перевірте підключення до Інтернету та спробуйте ще раз."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(edited)"
+msgstr "(відредаговано)"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "(expand)"
+msgstr "(розгорнути)"
+
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "(you)"
+msgstr "(ви)"
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+msgid "[not set]"
+msgstr "[не задано]"
+
+#. placeholder {0}: visible.length
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+msgid "{0, plural, one {# result} other {# results}}"
+msgstr "{0, plural, one {# результат} few {# результатів} many {# результатів} other {# результатів}}"
+
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# вибрано} few {# вибрано} many {# вибрано} other {# вибрано}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# вкладений} few {+# вкладені} many {+# вкладених} other {+# вкладених}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#d} other {#d}}"
+msgstr "{count, plural, one {#д} other {#д}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#h} other {#h}}"
+msgstr "{count, plural, one {#год} other {#год}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#m} other {#m}}"
+msgstr "{count, plural, one {#хв} other {#хв}}"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "{count, plural, one {#w} other {#w}}"
+msgstr "{count, plural, one {#тиж} other {#тиж}}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{day}, {from} to {to}"
+msgstr "{day}, з {from} до {to}"
+
+#: src/hooks/use-options.ts
+msgid "{days, plural, one {# day before} other {# days before}}"
+msgstr "{days, plural, one {за # день} few {за # дні} many {за # днів} other {за # дня}}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "{entityLabel} name"
+msgstr "Назва {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+#: src/features/calendar/components/event-popover.tsx
+msgid "{from} to {to}"
+msgstr "з {from} до {to}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {ще +#} few {ще +#} many {ще +#} other {ще +#}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour before} other {# hours before}}"
+msgstr "{hours, plural, one {за # годину} few {за # години} many {за # годин} other {за # години}}"
+
+#: src/hooks/use-options.ts
+msgid "{hours, plural, one {# hour} other {# hours}}"
+msgstr "{hours, plural, one {# година} few {# години} many {# годин} other {# години}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
+msgstr "{minutes, plural, one {за # хвилину} few {за # хвилини} many {за # хвилин} other {за # хвилини}}"
+
+#: src/hooks/use-options.ts
+msgid "{minutes, plural, one {# minute} other {# minutes}}"
+msgstr "{minutes, plural, one {# хвилина} few {# хвилини} many {# хвилин} other {# хвилини}}"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "{opponentName} offered a draw"
+msgstr "{opponentName} запропонував нічию"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{sentLabel} з {totalLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "{totalCount, plural, one {# item} other {# items}}"
+msgstr "{totalCount, plural, one {# елемент} few {# елементи} many {# елементів} other {# елемента}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# відповідь} few {ще +# відповідей} many {ще +# відповідей} other {ще +# відповідей}}"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
+msgstr "{unreadCount, plural, one {Відкрити меню (# непрочитане сповіщення)} few {Відкрити меню (# непрочитаних сповіщення)} many {Відкрити меню (# непрочитаних сповіщень)} other {Відкрити меню (# непрочитаного сповіщення)}}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "12 hours"
+msgstr "12 годин"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "24 hours"
+msgstr "24 години"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "A recording is already in progress."
+msgstr "Запис уже триває."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Absolute (date and time)"
+msgstr "Абсолютне (дата й час)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Accept"
+msgstr "Прийняти"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Access denied"
+msgstr "Доступ заборонено"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Access level"
+msgstr "Рівень доступу"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Account type"
+msgstr "Тип облікового запису"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Activity"
+msgstr "Активність"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add"
+msgstr "Додати"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Add a comment..."
+msgstr "Додати коментар..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add a new account"
+msgstr "Додати новий обліковий запис"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add a new field to this class"
+msgstr "Додати нове поле до цього класу"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Add access"
+msgstr "Додати доступ"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add account"
+msgstr "Додати обліковий запис"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Add caption"
+msgstr "Додати підпис"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add checklist item"
+msgstr "Додати пункт списку"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+msgid "Add field"
+msgstr "Додати поле"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Add item..."
+msgstr "Додати елемент..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Add link"
+msgstr "Додати посилання"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Add option"
+msgstr "Додати варіант"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Add tag..."
+msgstr "Додати тег..."
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Add to existing notifications"
+msgstr "Додати до наявних сповіщень"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+#: ../../../lib/web/src/components/view-tabs.tsx
+msgid "Add view"
+msgstr "Додати подання"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Address"
+msgstr "Адреса"
+
+#: src/features/calendar/editor.tsx
+msgid "After a number"
+msgstr "Після певної кількості"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "AI"
+msgstr "ШІ"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/day-popover.tsx
+#: src/features/calendar/editor.tsx
+msgid "All day"
+msgstr "Увесь день"
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "All events"
+msgstr "Усі події"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Дозволити всім шукати {entityLabel}"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Allow sort by"
+msgstr "Дозволити сортування за"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "An error occurred"
+msgstr "Сталася помилка"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/error-normalizer.ts
+msgid "An unexpected error occurred"
+msgstr "Сталася неочікувана помилка"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Android push"
+msgstr "Push для Android"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone"
+msgstr "Будь-хто"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Anyone who is logged in"
+msgstr "Будь-хто, хто увійшов"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr "Усе, що підписане на цей канал, перестане його отримувати. Після цього ви зможете скопіювати нову URL-адресу."
+
+#. placeholder {0}: deleteTarget?.name
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "Ви впевнені, що хочете видалити \"{0}\"?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Ви впевнені, що хочете видалити \"{title}\"? Цю дію не можна скасувати."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
+msgstr "Ви впевнені, що хочете видалити стовпець \"{name}\"? Цю дію не можна скасувати."
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Are you sure you want to delete this comment? This will also delete all replies."
+msgstr "Ви впевнені, що хочете видалити цей коментар? Це також видалить усі відповіді."
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Are you sure you want to log out? You will need to log in again to access your account."
+msgstr "Ви впевнені, що хочете вийти? Вам доведеться увійти знову, щоб отримати доступ до облікового запису."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign?"
+msgstr "Ви впевнені, що хочете здатися?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Ви впевнені, що хочете здатися? {opponentName} виграє партію."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Ascending"
+msgstr "За зростанням"
+
+#: src/hooks/use-options.ts
+msgid "At the time of the event"
+msgstr "На час події"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach comment files"
+msgstr "Додати файли коментаря"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Attach reply files"
+msgstr "Додати файли відповіді"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Authenticated users"
+msgstr "Автентифіковані користувачі"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Authenticator code"
+msgstr "Код автентифікатора"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Available keyboard shortcuts"
+msgstr "Доступні комбінації клавіш"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar"
+msgstr "Аватар"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx
+msgid "Avatar for {name}"
+msgstr "Аватар для {name}"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Back"
+msgstr "Назад"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Back to home"
+msgstr "На головну"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity-banner.tsx
+msgid "Banner"
+msgstr "Банер"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner removed"
+msgstr "Банер видалено"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Banner updated"
+msgstr "Банер оновлено"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Block {name}"
+msgstr "Заблокувати {name}"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocked by"
+msgstr "Блокується"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Blocked navigation to untrusted link"
+msgstr "Перехід за недовіреним посиланням заблоковано"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Blocks"
+msgstr "Блокує"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Board"
+msgstr "Дошка"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Boost interest"
+msgstr "Підвищити інтерес"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Border colour"
+msgstr "Колір рамки"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Browser notifications"
+msgstr "Сповіщення браузера"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "calendar"
+msgstr "календар"
+
+#: src/features/calendar/editor.tsx
+msgid "Calendar"
+msgstr "Календар"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar address"
+msgstr "Адреса календаря"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address copied to clipboard"
+msgstr "Адресу календаря скопійовано в буфер обміну"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Calendar address revoked"
+msgstr "Адресу календаря відкликано"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+msgid "Calendar colour"
+msgstr "Колір календаря"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar created"
+msgstr "Календар створено"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar deleted"
+msgstr "Календар видалено"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendar renamed"
+msgstr "Календар перейменовано"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar up to date"
+msgstr "Календар актуальний"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/index.tsx
+#: src/features/calendar/settings.tsx
+msgid "Calendars"
+msgstr "Календарі"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera permission denied"
+msgstr "Дозвіл на камеру відхилено"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Camera unavailable"
+msgstr "Камера недоступна"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel comment"
+msgstr "Скасувати коментар"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Cancel reply"
+msgstr "Скасувати відповідь"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Скасовано"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Caption"
+msgstr "Підпис"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Category for these notifications"
+msgstr "Категорія цих сповіщень"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Change notification category"
+msgstr "Змінити категорію сповіщення"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed"
+msgstr "Змінено"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed {field}"
+msgstr "Змінено {field}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Changed occurrence"
+msgstr "Змінене повторення"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checkbox"
+msgstr "Прапорець"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Checking for changes..."
+msgstr "Перевірка змін..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Checklist"
+msgstr "Контрольний список"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Choose a game from the sidebar or start a new one."
+msgstr "Виберіть гру на бічній панелі або почніть нову."
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/language-picker.tsx
+msgid "Choose language"
+msgstr "Виберіть мову"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Clear"
+msgstr "Очистити"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Clear all"
+msgstr "Очистити все"
+
+#: ../../../lib/web/src/components/search-input.tsx
+msgid "Clear search"
+msgstr "Очистити пошук"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/dialog.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/sheet.tsx
+#: src/features/calendar/editor.tsx
+msgid "Close"
+msgstr "Закрити"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Close dialog"
+msgstr "Закрити діалог"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Close navigation"
+msgstr "Закрити навігацію"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Close panel"
+msgstr "Закрити панель"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Close panel / cancel"
+msgstr "Закрити панель / скасувати"
+
+#: ../../../lib/web/src/components/header-search.tsx
+msgid "Close search"
+msgstr "Закрити пошук"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Collapse"
+msgstr "Згорнути"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Collapse sidebar"
+msgstr "Згорнути бічну панель"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour"
+msgstr "Колір"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Colour saved"
+msgstr "Колір збережено"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Column actions"
+msgstr "Дії зі стовпцем"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Columns group by"
+msgstr "Стовпці згруповано за"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Comfortable"
+msgstr "Зручний"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Command Palette"
+msgstr "Палітра команд"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Comment actions"
+msgstr "Дії з коментарем"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Comments"
+msgstr "Коментарі"
+
+#. placeholder {0}: data.comments.count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Comments ({0})"
+msgstr "Коментарі ({0})"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Compact"
+msgstr "Компактний"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Configure option settings"
+msgstr "Налаштувати параметри варіанта"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Configure view settings"
+msgstr "Налаштувати параметри подання"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Confirm"
+msgstr "Підтвердити"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Підключити пристрій"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Підключити ще один пристрій"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connected"
+msgstr "Підключено"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Підключення пристрою..."
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Connecting..."
+msgstr "З'єднання..."
+
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "Content not found."
+msgstr "Вміст не знайдено."
+
+#: ../../../lib/web/src/lib/query-client.ts
+msgid "Content not modified"
+msgstr "Вміст не змінено"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Contextual information and details."
+msgstr "Контекстна інформація та деталі."
+
+#: ../../../lib/web/src/components/responsive-confirm-dialog.tsx
+msgid "Continue"
+msgstr "Продовжити"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Continue with {label}"
+msgstr "Продовжити з {label}"
+
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Copied"
+msgstr "Скопійовано"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copied to clipboard"
+msgstr "Скопійовано в буфер обміну"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/settings.tsx
+msgid "Copy"
+msgstr "Копіювати"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Копіювати {label}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Copy calendar address"
+msgstr "Копіювати адресу календаря"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Could not load this document. Please try again later."
+msgstr "Не вдалося завантажити цей документ. Спробуйте пізніше."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Couldn't load notifications"
+msgstr "Не вдалося завантажити сповіщення"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't send the code. Please try again."
+msgstr "Не вдалося надіслати код. Спробуйте ще раз."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't start re-authentication. Please try again."
+msgstr "Не вдалося розпочати повторну автентифікацію. Спробуйте ще раз."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Couldn't verify with that account. Please try again."
+msgstr "Не вдалося підтвердити за допомогою цього облікового запису. Спробуйте ще раз."
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Create"
+msgstr "Створити"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Create {entityLabel}"
+msgstr "Створити {entityLabel}"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Create calendar"
+msgstr "Створити календар"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Create new item"
+msgstr "Створити новий елемент"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Created"
+msgstr "Створено"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Створено {0}"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Created {field}"
+msgstr "Створено {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Creating calendar..."
+msgstr "Створення календаря..."
+
+#: ../../../lib/web/src/components/map-view.tsx
+msgid "Current location"
+msgstr "Поточне місце"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: src/features/calendar/editor.tsx
+msgid "Custom"
+msgstr "Користувацький"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Daily"
+msgstr "Щодня"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dark"
+msgstr "Темна"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Data conflict"
+msgstr "Конфлікт даних"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Date"
+msgstr "Дата"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Day"
+msgstr "День"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
+msgid "Decline"
+msgstr "Відхилити"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Default AI account"
+msgstr "AI-обліковий запис за замовчуванням"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default event length"
+msgstr "Тривалість події за замовчуванням"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default reminder"
+msgstr "Нагадування за замовчуванням"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Default sort"
+msgstr "Сортування за замовчуванням"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Delete"
+msgstr "Видалити"
+
+#. placeholder {0}: deleting?.name ?? ''
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete <0>{0}</0> and every event on it?"
+msgstr "Видалити <0>{0}</0> і всі події в ньому?"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Delete attachment"
+msgstr "Видалити вкладення"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Delete calendar"
+msgstr "Видалити календар"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Delete column"
+msgstr "Видалити стовпець"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Delete comment"
+msgstr "Видалити коментар"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Видалити пристрій"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Видалити пристрій?"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete field"
+msgstr "Видалити поле"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Delete game?"
+msgstr "Видалити гру?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Delete item"
+msgstr "Видалити елемент"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Delete option"
+msgstr "Видалити варіант"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Delete option {0}"
+msgstr "Видалити варіант {0}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Delete this event"
+msgstr "Видалити цю подію"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Delete view"
+msgstr "Видалити подання"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Delete your account on the old server"
+msgstr "Видаліть свій обліковий запис на старому сервері"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted"
+msgstr "Видалено"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Deleted {field}"
+msgstr "Видалено {field}"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Deleting calendar..."
+msgstr "Видалення календаря..."
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Видалення пристрою..."
+
+#: ../../../lib/web/src/components/ui/sort-direction-button.tsx
+msgid "Descending"
+msgstr "За спаданням"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Description"
+msgstr "Опис"
+
+#: ../../../lib/web/src/components/layout/right-panel.tsx
+msgid "Details Panel"
+msgstr "Панель деталей"
+
+#: ../../../lib/web/src/components/language-picker.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/components/timezone-select.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Detect from web browser"
+msgstr "Визначати з веббраузера"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Пристрій видалено"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Device name"
+msgstr "Назва пристрою"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Directory"
+msgstr "Каталог"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard"
+msgstr "Відхилити"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Discard draft?"
+msgstr "Відхилити чернетку?"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Disconnected"
+msgstr "Відключено"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Dismiss"
+msgstr "Закрити"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Displays the mobile sidebar."
+msgstr "Відображає мобільну бічну панель."
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Does not match the required pattern"
+msgstr "Не відповідає потрібному шаблону"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Done"
+msgstr "Готово"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "Завантажити"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download failed"
+msgstr "Не вдалося завантажити"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Duplicates"
+msgstr "Дублює"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Dyslexia-friendly"
+msgstr "Підходить при дислексії"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "Earlier events"
+msgstr "Попередні події"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
+msgid "Edit"
+msgstr "Редагувати"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Edit {label}"
+msgstr "Редагувати {label}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Edit caption"
+msgstr "Редагувати підпис"
+
+#: src/features/calendar/editor.tsx
+msgid "Edit event"
+msgstr "Редагувати подію"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field"
+msgstr "Редагувати поле"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit field settings"
+msgstr "Редагувати налаштування поля"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Edit option"
+msgstr "Редагувати варіант"
+
+#. placeholder {0}: opt.name
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Edit option {0}"
+msgstr "Редагувати параметр {0}"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Edit selected card"
+msgstr "Редагувати вибрану картку"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Edit view"
+msgstr "Редагувати вигляд"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Email code"
+msgstr "Код електронної пошти"
+
+#: src/features/calendar/editor.tsx
+msgid "End"
+msgstr "Кінець"
+
+#: src/features/calendar/editor.tsx
+msgid "End time"
+msgstr "Час завершення"
+
+#: src/features/calendar/editor.tsx
+msgid "Ends"
+msgstr "Завершується"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Enter banner text (markdown supported)..."
+msgstr "Введіть текст банера (підтримується markdown)..."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter the code from your email"
+msgstr "Введіть код зі свого електронного листа"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Enter your authenticator code"
+msgstr "Введіть код з програми автентифікації"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Error"
+msgstr "Помилка"
+
+#: src/features/calendar/editor.tsx
+msgid "Event created"
+msgstr "Подію створено"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Event deleted"
+msgstr "Подію видалено"
+
+#: src/features/calendar/editor.tsx
+msgid "Event saved"
+msgstr "Подію збережено"
+
+#: src/features/calendar/editor.tsx
+msgid "Every"
+msgstr "Кожні"
+
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/comment-tree-layout.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+msgid "Expand"
+msgstr "Розгорнути"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+msgid "Expand sidebar"
+msgstr "Розгорнути бічну панель"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "External URL"
+msgstr "Зовнішній URL"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Extra large"
+msgstr "Дуже великий"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts
+msgid "Failed to add account"
+msgstr "Не вдалося додати обліковий запис"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to check the calendar"
+msgstr "Не вдалося перевірити календар"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Не вдалося підключити пристрій"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx
+#: ../../../lib/web/src/lib/toast-utils.ts
+msgid "Failed to copy"
+msgstr "Не вдалося скопіювати"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to create calendar"
+msgstr "Не вдалося створити календар"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to create link"
+msgstr "Не вдалося створити посилання"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to delete"
+msgstr "Не вдалося видалити"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to delete attachment"
+msgstr "Не вдалося видалити вкладення"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to delete calendar"
+msgstr "Не вдалося видалити календар"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to delete comment"
+msgstr "Не вдалося видалити коментар"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Не вдалося видалити пристрій"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Failed to delete link"
+msgstr "Не вдалося видалити посилання"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+msgid "Failed to delete the event"
+msgstr "Не вдалося видалити подію"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to get RSS token"
+msgstr "Не вдалося отримати RSS-токен"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to get the calendar address"
+msgstr "Не вдалося отримати адресу календаря"
+
+#: ../../../lib/web/src/hooks/use-load-more.ts
+msgid "Failed to load"
+msgstr "Не вдалося завантажити"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to load banner"
+msgstr "Не вдалося завантажити банер"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "Failed to load history"
+msgstr "Не вдалося завантажити історію"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load image"
+msgstr "Не вдалося завантажити зображення"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to load item"
+msgstr "Не вдалося завантажити елемент"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to load prompts"
+msgstr "Не вдалося завантажити запити"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Failed to load video"
+msgstr "Не вдалося завантажити відео"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to load your preferences"
+msgstr "Не вдалося завантажити ваші параметри"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to move"
+msgstr "Не вдалося перемістити"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to move the event"
+msgstr "Не вдалося перемістити подію"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to post comment"
+msgstr "Не вдалося опублікувати коментар"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to rename calendar"
+msgstr "Не вдалося перейменувати календар"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to reset prompt"
+msgstr "Не вдалося скинути запит"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Failed to revoke RSS access"
+msgstr "Не вдалося відкликати доступ RSS"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Failed to revoke the calendar address"
+msgstr "Не вдалося відкликати адресу календаря"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Failed to save"
+msgstr "Не вдалося зберегти"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Failed to save prompt"
+msgstr "Не вдалося зберегти запит"
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Failed to save the colour"
+msgstr "Не вдалося зберегти колір"
+
+#: src/features/calendar/editor.tsx
+msgid "Failed to save the event"
+msgstr "Не вдалося зберегти подію"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to subscribe"
+msgstr "Не вдалося підписатися"
+
+#: ../../../lib/web/src/components/banner-section.tsx
+msgid "Failed to update banner"
+msgstr "Не вдалося оновити банер"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Failed to update comment"
+msgstr "Не вдалося оновити коментар"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Failed to update watching"
+msgstr "Не вдалося оновити стеження"
+
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Failed to upload attachment"
+msgstr "Не вдалося завантажити вкладення"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Files"
+msgstr "Файли"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Finish moving your account"
+msgstr "Завершіть переміщення облікового запису"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Flags"
+msgstr "Прапорці"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Flat"
+msgstr "Плаский"
+
+#: src/features/calendar/editor.tsx
+msgid "Frequency"
+msgstr "Частота"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Friday"
+msgstr "П'ятниця"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Friends"
+msgstr "Друзі"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "From"
+msgstr "Від"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "From theme"
+msgstr "З теми"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Go back"
+msgstr "Назад"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Group"
+msgstr "Група"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Group by"
+msgstr "Групувати за"
+
+#. placeholder {0}: name || subject.slice(1)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Group: {0}"
+msgstr "Група: {0}"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgid "History"
+msgstr "Історія"
+
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Home"
+msgstr "Головна"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Hot"
+msgstr "Популярне"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "ID"
+msgstr "ID"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Image viewer: {0}"
+msgstr "Перегляд зображень: {0}"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Imperial"
+msgstr "Імперські"
+
+#: ../../../lib/web/src/features/access/types.ts
+msgid "Including anonymous users"
+msgstr "Включно з анонімними користувачами"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar"
+msgstr "Аватар з ініціалів"
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx
+msgid "Initials avatar for {name}"
+msgstr "Аватар з ініціалів для {name}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Interest {weight}"
+msgstr "Інтерес {weight}"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Interests"
+msgstr "Інтереси"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Invalid date"
+msgstr "Недійсна дата"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Схоже, сторінка, яку ви шукаєте, <0/>не існує або була вилучена."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Item details"
+msgstr "Деталі елемента"
+
+#: ../../../lib/web/src/lib/locale-format.ts
+msgid "Just now"
+msgstr "Щойно"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Keyboard shortcuts"
+msgstr "Комбінації клавіш"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Large"
+msgstr "Великий"
+
+#: src/features/calendar/editor.tsx
+msgid "Last day"
+msgstr "Останній день"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Востаннє використано {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Layout"
+msgstr "Макет"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Лише літери, цифри, пробіли, дефіси та скісні риски"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Light"
+msgstr "Світла"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Link"
+msgstr "Посилання"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Links"
+msgstr "Посилання"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/components/toolbar.tsx
+msgid "List"
+msgstr "Список"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Load more"
+msgstr "Завантажити більше"
+
+#: ../../../lib/web/src/components/ui/loading-content.tsx
+msgid "Loading content…"
+msgstr "Завантаження вмісту…"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item"
+msgstr "Завантаження елемента"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Loading item details"
+msgstr "Завантаження деталей елемента"
+
+#: ../../../lib/web/src/features/document/document-page.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Loading..."
+msgstr "Завантаження..."
+
+#: src/features/calendar/editor.tsx
+msgid "Location"
+msgstr "Розташування"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Log out"
+msgstr "Вийти"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out (with errors)"
+msgstr "Виконано вихід (з помилками)"
+
+#: ../../../lib/web/src/hooks/use-logout.ts
+msgid "Logged out successfully"
+msgstr "Вихід виконано успішно"
+
+#: ../../../lib/web/src/components/sign-out-dialog.tsx
+msgid "Logging out…"
+msgstr "Виконується вихід…"
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Manage categories"
+msgstr "Керувати категоріями"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Керувати пристроями"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Manual"
+msgstr "Вручну"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Mark all as read"
+msgstr "Позначити все як прочитане"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Maximum length"
+msgstr "Максимальна довжина"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "MCP server"
+msgstr "MCP-сервер"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Medium"
+msgstr "Середній"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Members"
+msgstr "Учасники"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Menu"
+msgstr "Меню"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Message"
+msgstr "Повідомлення"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Metric"
+msgstr "Метричні"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Microphone permission denied"
+msgstr "Дозвіл на мікрофон відхилено"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Minimum length"
+msgstr "Мінімальна довжина"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Mochi web"
+msgstr "Mochi веб"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Moderation"
+msgstr "Модерація"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Monday"
+msgstr "Понеділок"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Month"
+msgstr "Місяць"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Monthly"
+msgstr "Щомісяця"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "More options"
+msgstr "Більше параметрів"
+
+#: src/features/calendar/index.tsx
+msgid "Move this event"
+msgstr "Перемістити цю подію"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved"
+msgstr "Переміщено"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Moved {field}"
+msgstr "Переміщено {field}"
+
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr "Переміщення на {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Multiweek"
+msgstr "Кілька тижнів"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Name"
+msgstr "Ім'я"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name cannot contain < or > characters"
+msgstr "Ім'я не може містити символи < або >"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name is required"
+msgstr "Ім'я обов'язкове"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+msgid "Name must be 1000 characters or less"
+msgstr "Ім'я має містити 1000 символів або менше"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Network error"
+msgstr "Помилка мережі"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Never"
+msgstr "Ніколи"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "New"
+msgstr "Нове"
+
+#: src/hooks/use-ics-copy.ts
+msgid "New calendar address copied to clipboard"
+msgstr "Нову адресу календаря скопійовано в буфер обміну"
+
+#: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/editor.tsx
+msgid "New event"
+msgstr "Нова подія"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "New game"
+msgstr "Нова гра"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Next"
+msgstr "Далі"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Next image"
+msgstr "Наступне зображення"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr "Наступний місяць"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No {parentClassNames} to add to"
+msgstr "Немає {parentClassNames} для додавання"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "No access rules configured. Add rules to control who can access this resource."
+msgstr "Правила доступу не налаштовано. Додайте правила, щоб керувати, хто може мати доступ до цього ресурсу."
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No activity yet"
+msgstr "Активності ще немає"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "No comments yet"
+msgstr "Коментарів ще немає"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Немає підключених пристроїв."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No events"
+msgstr "Немає подій"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "No games yet"
+msgstr "Ігор ще немає"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No groups available"
+msgstr "Немає доступних груп"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+msgid "No item types can be created yet. Create the required parent items first."
+msgstr "Жоден тип елемента ще не можна створити. Спершу створіть необхідні батьківські елементи."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "No matching objects"
+msgstr "Немає відповідних об'єктів"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "No people found"
+msgstr "Людей не знайдено"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "No places found"
+msgstr "Місць не знайдено"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "No results found"
+msgstr "Результатів не знайдено"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "No results found."
+msgstr "Результатів не знайдено."
+
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "No status"
+msgstr "Немає статусу"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "No time zone found."
+msgstr "Часовий пояс не знайдено."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "No topic record yet — try again after the next notification."
+msgstr "Запису про тему ще немає — спробуйте ще раз після наступного сповіщення."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "No unread notifications"
+msgstr "Немає непрочитаних сповіщень"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "No users found"
+msgstr "Користувачів не знайдено"
+
+#: ../../../lib/web/src/components/entity/entity-design-preview.tsx
+msgid "No views"
+msgstr "Немає переглядів"
+
+#: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: src/hooks/use-options.ts
+msgid "None"
+msgstr "Немає"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Normal"
+msgstr "Звичайний"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Not found"
+msgstr "Не знайдено"
+
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+msgid "Not set"
+msgstr "Не встановлено"
+
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+msgid "Nothing found"
+msgstr "Нічого не знайдено"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "Notifications: {0}"
+msgstr "Сповіщення: {0}"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Число"
+
+#: src/features/calendar/editor.tsx
+msgid "Occurrences"
+msgstr "Повторення"
+
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "On"
+msgstr "Увімк."
+
+#: src/features/calendar/editor.tsx
+msgid "On a date"
+msgstr "У певну дату"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Only this"
+msgstr "Лише цю"
+
+#: ../../../lib/web/src/features/errors/not-found-error.tsx
+msgid "Oops! Page Not Found!"
+msgstr "Ой! Сторінку не знайдено!"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Open actions"
+msgstr "Відкрити дії"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Open menu"
+msgstr "Відкрити меню"
+
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+#: ../../../lib/web/src/components/layout/top-bar.tsx
+msgid "Open navigation"
+msgstr "Відкрити навігацію"
+
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Open option actions"
+msgstr "Відкрити дії параметра"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Open selected card"
+msgstr "Відкрити вибрану картку"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Open view actions"
+msgstr "Відкрити дії перегляду"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Open view controls"
+msgstr "Відкрити елементи керування переглядом"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+msgid "Option name"
+msgstr "Назва параметра"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Options"
+msgstr "Параметри"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Інше"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Owner"
+msgstr "Власник"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Parent"
+msgstr "Батьківський"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Passkey"
+msgstr "Ключ доступу"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkey verification failed. Please try again."
+msgstr "Не вдалося перевірити ключ доступу. Спробуйте ще раз."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Passkeys"
+msgstr "Ключі доступу"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Passkeys are not available in this browser"
+msgstr "Ключі доступу недоступні в цьому браузері"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Password"
+msgstr "Пароль"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Pattern (regex)"
+msgstr "Шаблон (regex)"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "People"
+msgstr "Люди"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Please check your internet connection and try again."
+msgstr "Будь ласка, перевірте підключення до Інтернету та спробуйте ще раз."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please try again."
+msgstr "Спробуйте ще раз."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Please wait a moment and try again."
+msgstr "Зачекайте трохи та повторіть спробу."
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Poll now"
+msgstr "Перевірити зараз"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts"
+msgstr "Дописи"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Posts and comments"
+msgstr "Дописи та коментарі"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences"
+msgstr "Параметри"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Preferences saved"
+msgstr "Параметри збережено"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Previous"
+msgstr "Попередній"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Previous image"
+msgstr "Попереднє зображення"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr "Попередній місяць"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Privacy"
+msgstr "Приватність"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Processing…"
+msgstr "Обробка…"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Prompt saved"
+msgstr "Запит збережено"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Properties"
+msgstr "Властивості"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Push notification"
+msgstr "Push-сповіщення"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Raised"
+msgstr "Піднятий"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-link your accounts on this server"
+msgstr "Повторно прив'яжіть облікові записи на цьому сервері"
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Re-register your passkeys on this server"
+msgstr "Зареєструйте свої ключі доступу на цьому сервері знову"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Recommended"
+msgstr "Рекомендоване"
+
+#: ../../../lib/web/src/lib/chat-ui.ts
+msgid "Reconnecting ({retries})..."
+msgstr "Повторне підключення ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording failed. Please try again."
+msgstr "Запис не вдався. Спробуйте ще раз."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Recording produced no audio"
+msgstr "Запис не містить звуку"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Redirecting to login."
+msgstr "Перенаправлення на сторінку входу."
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Reduce interest"
+msgstr "Зменшити інтерес"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Relates"
+msgstr "Стосується"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative (5m, 3h, 2d)"
+msgstr "Відносний (5хв, 3год, 2д)"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Relative within 24 hours, else absolute"
+msgstr "Відносний протягом 24 годин, інакше абсолютний"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}"
+msgstr "Релевантність {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Релевантність {relevance}, інтерес {weight}"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+msgid "Reload"
+msgstr "Перезавантажити"
+
+#: src/features/calendar/editor.tsx
+msgid "Reminder"
+msgstr "Нагадування"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove"
+msgstr "Видалити"
+
+#. placeholder {0}: filter.label
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Remove {0} filter"
+msgstr "Видалити фільтр {0}"
+
+#: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/member-list.tsx
+msgid "Remove {name}"
+msgstr "Видалити {name}"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule"
+msgstr "Видалити правило доступу"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Вилучити правило доступу для «{0}»?"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Remove access?"
+msgstr "Видалити доступ?"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Remove interest"
+msgstr "Видалити інтерес"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Remove item"
+msgstr "Видалити елемент"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Remove link"
+msgstr "Видалити посилання"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+msgid "Rename calendar"
+msgstr "Перейменувати календар"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename column"
+msgstr "Перейменувати стовпець"
+
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx
+msgid "Rename this board column"
+msgstr "Перейменувати цей стовпець дошки"
+
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Renaming calendar..."
+msgstr "Перейменування календаря..."
+
+#: src/features/calendar/editor.tsx
+msgid "Repeat"
+msgstr "Повтор"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Repeats"
+msgstr "Повторюється"
+
+#: src/hooks/use-ics-copy.ts
+msgid "Replace"
+msgstr "Замінити"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply"
+msgstr "Відповісти"
+
+#. placeholder {0}: comment.name || comment.author
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+msgid "Reply to {0}..."
+msgstr "Відповісти {0}..."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Requesting access to {asking}..."
+msgstr "Запит доступу до {asking}..."
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Required"
+msgstr "Обов'язково"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Resend email"
+msgstr "Надіслати лист повторно"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign"
+msgstr "Здатися"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "Resign game?"
+msgstr "Здатися у грі?"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx
+msgid "Retry"
+msgstr "Повторити"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/settings.tsx
+msgid "Revoke"
+msgstr "Відкликати"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke access"
+msgstr "Відкликати доступ"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Revoke RSS access?"
+msgstr "Відкликати доступ RSS?"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Rows"
+msgstr "Рядки"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Rows group by"
+msgstr "Рядки згруповані за"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS access revoked"
+msgstr "Доступ RSS відкликано"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS feed"
+msgstr "RSS-стрічка"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "RSS URL copied to clipboard"
+msgstr "RSS URL скопійовано в буфер обміну"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Saturday"
+msgstr "Субота"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+#: ../../../lib/web/src/components/attachment-composer.tsx
+#: ../../../lib/web/src/components/banner-section.tsx
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx
+#: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/features/calendar/components/scope-dialog.tsx
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+#: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
+msgid "Save"
+msgstr "Зберегти"
+
+#: src/features/calendar/editor.tsx
+msgid "Save this event"
+msgstr "Зберегти цю подію"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Збережіть цей пароль зараз. Його не можна буде показати знову."
+
+#: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/settings.tsx
+msgid "Saving colour..."
+msgstr "Збереження кольору..."
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Saving..."
+msgstr "Збереження..."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+#: ../../../lib/web/src/components/header-search.tsx
+#: ../../../lib/web/src/components/search.tsx
+#: src/features/calendar/components/agenda.tsx
+msgid "Search"
+msgstr "Пошук"
+
+#: ../../../lib/web/src/components/ui/command.tsx
+msgid "Search for a command to run..."
+msgstr "Пошук команди для виконання..."
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place"
+msgstr "Пошук місця"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Search for a place..."
+msgstr "Пошук місця..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for destination..."
+msgstr "Пошук пункту призначення..."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Search for origin..."
+msgstr "Пошук пункту відправлення..."
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+msgid "Search objects..."
+msgstr "Пошук обʼєктів..."
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "Search time zone..."
+msgstr "Пошук часового поясу..."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Search users"
+msgstr "Пошук користувачів"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Search, watch, and sort this view."
+msgstr "Шукайте, відстежуйте та сортуйте цей вигляд."
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Search..."
+msgstr "Пошук..."
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Searching..."
+msgstr "Пошук..."
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Select"
+msgstr "Вибрати"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Select a field"
+msgstr "Виберіть поле"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx
+msgid "Select a game"
+msgstr "Виберіть гру"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select a user, group, or other rule to grant access."
+msgstr "Виберіть користувача, групу або інше правило для надання доступу."
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select access rule"
+msgstr "Виберіть правило доступу"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Select account type"
+msgstr "Виберіть тип облікового запису"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Select group"
+msgstr "Виберіть групу"
+
+#: ../../../lib/web/src/components/place-picker.tsx
+msgid "Select location"
+msgstr "Вибрати місцезнаходження"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select next card"
+msgstr "Вибрати наступну картку"
+
+#: ../../../lib/web/src/components/person-picker.tsx
+msgid "Select person..."
+msgstr "Виберіть людину..."
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Select previous card"
+msgstr "Вибрати попередню картку"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx
+msgid "Select..."
+msgstr "Виберіть..."
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Selected: <0>{0}</0>"
+msgstr "Вибрано: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Send again"
+msgstr "Надіслати ще раз"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Send email"
+msgstr "Надіслати лист"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Send message"
+msgstr "Надіслати повідомлення"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Serif"
+msgstr "Із засічками"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Server"
+msgstr "Сервер"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Server error"
+msgstr "Помилка сервера"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Server rules"
+msgstr "Правила сервера"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Session expired. Please log in again."
+msgstr "Термін дії сеансу минув. Увійдіть ще раз."
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Set origin and destination"
+msgstr "Встановити пункти відправлення та призначення"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Settings"
+msgstr "Налаштування"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show classes"
+msgstr "Показати класи"
+
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Show fields"
+msgstr "Показати поля"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Show this help"
+msgstr "Показати цю довідку"
+
+#: ../../../lib/web/src/components/ui/load-more.tsx
+msgid "Showing {totalShown} of {total}"
+msgstr "Показано {totalShown} з {total}"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Sidebar"
+msgstr "Бічна панель"
+
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Увійдіть в обліковий запис, який має доступ <0/> до цього ресурсу."
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+msgid "Sign out"
+msgstr "Вийти"
+
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx
+msgid "Signing out..."
+msgstr "Вихід..."
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Single line of text only"
+msgstr "Тільки один рядок тексту"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Small"
+msgstr "Малий"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Sort"
+msgstr "Сортувати"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Sources"
+msgstr "Джерела"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Spacious"
+msgstr "Просторий"
+
+#: src/features/calendar/editor.tsx
+msgid "Start"
+msgstr "Почати"
+
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx
+msgid "Start the discussion by adding the first comment."
+msgstr "Почніть обговорення, додавши перший коментар."
+
+#: src/features/calendar/editor.tsx
+msgid "Start time"
+msgstr "Час початку"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Stop watching"
+msgstr "Припинити стеження"
+
+#: ../../../lib/web/src/features/access/access-list.tsx
+msgid "Subject"
+msgstr "Тема"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit comment"
+msgstr "Надіслати коментар"
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Submit reply"
+msgstr "Надіслати відповідь"
+
+#: ../../../lib/web/src/components/inline-entity-search.tsx
+#: ../../../lib/web/src/components/recommended-entities.tsx
+#: ../../../lib/web/src/components/search-entity-page.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe"
+msgstr "Підписатися"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribe to calendar"
+msgstr "Підписатися на календар"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Subscribed"
+msgstr "Підписано"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Sunday"
+msgstr "Неділя"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Switch to view 1-9"
+msgstr "Перейти до вигляду 1-9"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Система"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag already exists"
+msgstr "Тег уже існує"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tag must be 50 characters or less"
+msgstr "Тег має бути не довшим за 50 символів"
+
+#: ../../../lib/web/src/components/post-tags.tsx
+#: ../../../lib/web/src/components/post-tags.tsx
+msgid "Tags"
+msgstr "Теги"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx
+#: ../../../lib/web/src/features/document/document-page.tsx
+msgid "Terms and conditions"
+msgstr "Умови та правила"
+
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Text"
+msgstr "Текст"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "That code is incorrect or has expired."
+msgstr "Цей код неправильний або його термін дії минув."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+msgid "That could not be sent. The files may be too large, or your connection failed. Try smaller files."
+msgstr "Не вдалося надіслати. Можливо, файли завеликі або з'єднання перервалося. Спробуйте менші файли."
+
+#: ../../../lib/web/src/hooks/use-attachment-error.ts
+#: ../../../lib/web/src/lib/handle-server-error.ts
+msgid "That was too large to upload. Remove or shrink files and try again."
+msgstr "Завеликий розмір для завантаження. Видаліть або зменшіть файли й повторіть спробу."
+
+#: src/features/calendar/settings.tsx
+msgid "the address answered {status}"
+msgstr "адреса відповіла {status}"
+
+#: src/features/calendar/settings.tsx
+msgid "the address could not be reached"
+msgstr "не вдалося зв'язатися з адресою"
+
+#: src/features/calendar/settings.tsx
+msgid "the address does not serve a calendar"
+msgstr "адреса не надає календар"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar is too large"
+msgstr "календар завеликий"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera is already in use"
+msgstr "Камера вже використовується"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The camera request was not answered"
+msgstr "Запит камери залишився без відповіді"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "The device will no longer be able to sync calendars."
+msgstr "Пристрій більше не зможе синхронізувати календарі."
+
+#. placeholder {0}: failureReason(calendar.failure)
+#: src/features/calendar/settings.tsx
+msgid "The last fetch failed: {0}"
+msgstr "Останнє отримання не вдалося: {0}"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The microphone request was not answered"
+msgstr "Запит мікрофона залишився без відповіді"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "The passkey request was not answered"
+msgstr "Запит ключа доступу залишився без відповіді"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "The requested content could not be found."
+msgstr "Запитаний вміст не знайдено."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "The server returned a web page instead of data."
+msgstr "Сервер повернув вебсторінку замість даних."
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Цьому застосунку не дозволено використовувати ваш ключ доступу. Дозвольте це в Налаштуваннях, у розділі Дозволи."
+
+#: src/hooks/use-ics-copy.ts
+msgid "This calendar address was already issued and cannot be shown again."
+msgstr "Цю адресу календаря вже видано, і її не можна показати знову."
+
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This event"
+msgstr "Ця подія"
+
+#: src/features/calendar/components/delete-event-dialog.tsx
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+msgid "This event changed somewhere else."
+msgstr "Цю подію змінено в іншому місці."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Це назавжди видалить гру та її чат. Цю дію не можна скасувати."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Thursday"
+msgstr "Четвер"
+
+#: src/features/calendar/editor.tsx
+msgid "Timezone"
+msgstr "Часовий пояс"
+
+#: src/features/calendar/editor.tsx
+msgid "Title"
+msgstr "Заголовок"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "To"
+msgstr "Куди"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Today"
+msgstr "Сьогодні"
+
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+#: ../../../lib/web/src/components/layout/nav-group.tsx
+msgid "Toggle section"
+msgstr "Розгорнути/згорнути розділ"
+
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+#: ../../../lib/web/src/components/ui/sidebar.tsx
+msgid "Toggle sidebar"
+msgstr "Перемкнути бічну панель"
+
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
+msgid "Toggle view options"
+msgstr "Перемкнути параметри вигляду"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Toggle watched filter"
+msgstr "Перемкнути фільтр відстежуваних"
+
+#: src/features/calendar/index.tsx
+msgid "Too many events to show them all. Choose a shorter range."
+msgstr "Забагато подій, щоб показати їх усі. Виберіть коротший діапазон."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Too many requests"
+msgstr "Забагато запитів"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgid "Top"
+msgstr "Верх"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx
+msgid "Travelling"
+msgstr "Подорож"
+
+#: ../../../lib/web/src/components/search-entity-page.tsx
+msgid "Try adjusting your search terms"
+msgstr "Спробуйте змінити пошукові терміни"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "Try again"
+msgstr "Спробувати знову"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Tuesday"
+msgstr "Вівторок"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Тип"
+
+#: ../../../lib/web/src/components/command-menu.tsx
+msgid "Type a command or search..."
+msgstr "Введіть команду або пошук..."
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx
+msgid "Type a message…"
+msgstr "Введіть повідомлення…"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search users"
+msgstr "Введіть для пошуку користувачів"
+
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Type to search..."
+msgstr "Введіть для пошуку..."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts
+msgid "Unable to connect to remote server"
+msgstr "Не вдалося підключитися до віддаленого сервера"
+
+#: ../../../lib/web/src/lib/auth-manager.ts
+#: ../../../lib/web/src/lib/auth-manager.ts
+msgid "Unable to redirect to login. Please try again."
+msgstr "Не вдається перенаправити на сторінку входу. Спробуйте ще раз."
+
+#: ../../../lib/web/src/components/notification-category-button.tsx
+msgid "Unassigned"
+msgstr "Не призначено"
+
+#: ../../../lib/web/src/components/attachment-image.tsx
+msgid "Unavailable"
+msgstr "Недоступно"
+
+#: ../../../lib/web/src/lib/request.ts
+#: ../../../lib/web/src/lib/request.ts
+msgid "Unexpected API error"
+msgstr "Неочікувана помилка API"
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "United States"
+msgstr "Сполучені Штати"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-row.tsx
+#: ../../../lib/web/src/components/tree-table-header.tsx
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Unknown"
+msgstr "Невідомо"
+
+#: ../../../lib/web/src/components/options-menu.tsx
+msgid "Unsubscribe"
+msgstr "Відписатися"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/lib/entity-title.ts
+msgid "Untitled"
+msgstr "Без назви"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgid "Updated"
+msgstr "Оновлено"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Updated {field}"
+msgstr "Оновлено {field}"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
+msgid "Upload"
+msgstr "Завантажити"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx
+msgid "Upload progress"
+msgstr "Хід завантаження"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+msgid "Use your passkey"
+msgstr "Скористайтеся ключем доступу"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx
+#: ../../../lib/web/src/features/access/access-dialog.tsx
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "User"
+msgstr "Користувач"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Username"
+msgstr "Імʼя користувача"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx
+msgid "Variables: {variables}"
+msgstr "Змінні: {variables}"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verification code"
+msgstr "Код підтвердження"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify"
+msgstr "Перевірити"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "Verify email address"
+msgstr "Підтвердити електронну адресу"
+
+#: ../../../lib/web/src/components/attachment-gallery.tsx
+msgid "Video thumbnail"
+msgstr "Мініатюра відео"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Video viewer: {0}"
+msgstr "Перегляд відео: {0}"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View"
+msgstr "Переглянути"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+#: ../../../lib/web/src/components/layout/notification-menu.tsx
+msgid "View all notifications"
+msgstr "Переглянути всі сповіщення"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "View and edit item details"
+msgstr "Переглянути та змінити деталі елемента"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "View controls"
+msgstr "Елементи керування виглядом"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "View options"
+msgstr "Параметри перегляду"
+
+#: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Voice recording is not supported in this browser"
+msgstr "Запис голосу не підтримується в цьому браузері"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
+msgid "Watch"
+msgstr "Стежити"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/filter-bar.tsx
+msgid "Watched"
+msgstr "Відстежується"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+msgid "Watched only"
+msgstr "Лише відстежувані"
+
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Ми надіслали код підтвердження на <0>{0}</0>. Введіть код нижче, щоб підтвердити свою адресу електронної пошти."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "Wednesday"
+msgstr "Середа"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Week"
+msgstr "Тиждень"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Weekly"
+msgstr "Щотижня"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks before"
+msgstr "Попередні тижні"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Weeks shown"
+msgstr "Показані тижні"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Work days"
+msgstr "Робочі дні"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Work week"
+msgstr "Робочий тиждень"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours end"
+msgstr "Кінець робочого дня"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Working hours start"
+msgstr "Початок робочого дня"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+msgid "Yearly"
+msgstr "Щорічно"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx
+msgid "You do not have access to this section."
+msgstr "Ви не маєте доступу до цього розділу."
+
+#: ../../../lib/web/src/components/restore-banner.tsx
+msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
+msgstr "Ваш обліковий запис переміщено сюди з {source}. Поки ви не видалите його там, повідомлення та сповіщення можуть надходити на обидва сервери, частина вашого вмісту продовжить надаватися зі старого сервера, а підписникам може знадобитися кілька хвилин, щоб знайти вас тут."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your attachments will be lost."
+msgstr "Ваші вкладення буде втрачено."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text and attachments will be lost."
+msgstr "Ваш текст і вкладення буде втрачено."
+
+#: ../../../lib/web/src/components/comment-composer.tsx
+msgid "Your text will be lost."
+msgstr "Ваш текст буде втрачено."

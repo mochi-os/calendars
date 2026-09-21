@@ -1,0 +1,530 @@
+// Copyright © 2026 Mochisoft OÜ
+// SPDX-License-Identifier: AGPL-3.0-only
+// This file is part of Mochi, licensed under the GNU AGPL v3 with the
+// Mochi Application Interface Exception - see license.txt and license-exception.md.
+
+/* eslint-disable lingui/no-unlocalized-strings -- every literal here is an
+   iCalendar protocol token, never shown to anyone. */
+
+// The editor's own model of an event and the iCalendar component tree the
+// server stores. Everything here is pure: a day is YYYY-MM-DD as it reads in
+// the named zone, a time is minutes since midnight, and instants are unix
+// seconds.
+
+import { addDays, timestampAt, zonedDay, zonedMinutes } from '@mochi/web'
+import type { Component, Property } from '@/api/types/events'
+
+export type Frequency = 'never' | 'daily' | 'weekly' | 'monthly' | 'yearly'
+type Ending = 'never' | 'until' | 'count'
+
+export interface Repeat {
+  frequency: Frequency
+  /** Every n days, weeks, months or years. */
+  interval: number
+  /** Weekly only: 0 = Sunday through 6 = Saturday. */
+  weekdays: number[]
+  ending: Ending
+  /** The last day the series may fall on, when ending is "until". */
+  until: string
+  /** How many occurrences, when ending is "count". */
+  count: number
+}
+
+export interface EventDraft {
+  title: string
+  calendar: string
+  allday: boolean
+  start: string
+  /** Minutes since midnight; ignored for an all-day event. */
+  startTime: number
+  /** The last day of an all-day event, or the day the event ends on. */
+  finish: string
+  finishTime: number
+  timezone: string
+  location: string
+  description: string
+  repeat: Repeat
+  /** Minutes before the start; -1 is no reminder. */
+  reminder: number
+}
+
+export const NO_REMINDER = -1
+
+export function emptyRepeat(): Repeat {
+  return {
+    frequency: 'never',
+    interval: 1,
+    weekdays: [],
+    ending: 'never',
+    until: '',
+    count: 10,
+  }
+}
+
+// Properties the editor owns; anything else on an edited event is carried
+// through untouched, so a property a phone wrote survives a web edit.
+const MANAGED = new Set([
+  'SUMMARY',
+  'DTSTART',
+  'DTEND',
+  'DURATION',
+  'LOCATION',
+  'DESCRIPTION',
+  'RRULE',
+  'UID',
+  'DTSTAMP',
+])
+
+const WEEKDAYS = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA']
+
+// --- Reading and writing property values ---
+
+export function property(
+  component: Component,
+  name: string
+): Property | undefined {
+  return component.properties.find((item) => item.name === name)
+}
+
+export function propertyValue(component: Component, name: string): string {
+  return property(component, name)?.value ?? ''
+}
+
+function pad(value: number): string {
+  return value < 10 ? `0${value}` : String(value)
+}
+
+/** A DATE value: 20260916. */
+function dateValue(day: string): string {
+  return day.replace(/-/g, '')
+}
+
+/** A local DATE-TIME value: 20260916T090000. */
+function dateTimeValue(day: string, minutes: number): string {
+  const hour = Math.floor(minutes / 60)
+  return `${dateValue(day)}T${pad(hour)}${pad(minutes % 60)}00`
+}
+
+/** A UTC DATE-TIME value: 20260916T080000Z. */
+export function utcValue(seconds: number): string {
+  const date = new Date(seconds * 1000)
+  return (
+    `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(date.getUTCDate())}` +
+    `T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(date.getUTCSeconds())}Z`
+  )
+}
+
+/**
+ * The instant a DTSTART-style property names, in unix seconds, and whether it
+ * is a whole-day value. A floating time is read in `timezone`, as the server
+ * reads it.
+ */
+export function propertyInstant(
+  item: Property | undefined,
+  timezone: string
+): { seconds: number; allday: boolean; zone: string } | null {
+  if (!item || !item.value) return null
+  const value = item.value.trim()
+  const zone = item.params?.TZID?.[0] ?? ''
+  if (/^\d{8}$/.test(value)) {
+    const day = `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`
+    return { seconds: timestampAt(day, 0, timezone), allday: true, zone }
+  }
+  const match = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(Z?)$/.exec(value)
+  if (!match) return null
+  const [, year, month, day, hour, minute, second, utc] = match
+  if (utc === 'Z') {
+    return {
+      seconds:
+        Date.UTC(
+          Number(year),
+          Number(month) - 1,
+          Number(day),
+          Number(hour),
+          Number(minute),
+          Number(second)
+        ) / 1000,
+      allday: false,
+      zone: '',
+    }
+  }
+  return {
+    seconds: timestampAt(
+      `${year}-${month}-${day}`,
+      Number(hour) * 60 + Number(minute),
+      zone || timezone
+    ),
+    allday: false,
+    zone,
+  }
+}
+
+// --- Repeat ---
+
+/** An RRULE value from the editor's repeat settings. */
+export function repeatRule(repeat: Repeat, timezone: string): string {
+  if (repeat.frequency === 'never') return ''
+  const parts = [`FREQ=${repeat.frequency.toUpperCase()}`]
+  if (repeat.interval > 1) parts.push(`INTERVAL=${repeat.interval}`)
+  if (repeat.frequency === 'weekly' && repeat.weekdays.length) {
+    const days = [...repeat.weekdays]
+      .sort((a, b) => a - b)
+      .map((day) => WEEKDAYS[day])
+    parts.push(`BYDAY=${days.join(',')}`)
+  }
+  if (repeat.ending === 'until' && repeat.until) {
+    // The last moment of the chosen day, so the day itself is included.
+    parts.push(`UNTIL=${utcValue(timestampAt(repeat.until, 1440, timezone) - 1)}`)
+  } else if (repeat.ending === 'count') {
+    parts.push(`COUNT=${Math.max(1, repeat.count)}`)
+  }
+  return parts.join(';')
+}
+
+/** The editor's repeat settings from an RRULE value. */
+export function ruleRepeat(rule: string, timezone: string): Repeat {
+  const out = emptyRepeat()
+  if (!rule) return out
+  const fields = new Map<string, string>()
+  for (const part of rule.split(';')) {
+    const at = part.indexOf('=')
+    if (at > 0) fields.set(part.slice(0, at).toUpperCase(), part.slice(at + 1))
+  }
+  const frequency = (fields.get('FREQ') ?? '').toLowerCase()
+  if (
+    frequency === 'daily' ||
+    frequency === 'weekly' ||
+    frequency === 'monthly' ||
+    frequency === 'yearly'
+  ) {
+    out.frequency = frequency
+  }
+  const interval = Number(fields.get('INTERVAL') ?? '1')
+  if (Number.isFinite(interval) && interval > 0) out.interval = interval
+  const byday = fields.get('BYDAY')
+  if (byday) {
+    out.weekdays = byday
+      .split(',')
+      .map((token) => WEEKDAYS.indexOf(token.trim().slice(-2).toUpperCase()))
+      .filter((day) => day >= 0)
+  }
+  const until = fields.get('UNTIL')
+  if (until) {
+    const instant = propertyInstant(
+      { name: 'UNTIL', params: {}, value: until },
+      timezone
+    )
+    if (instant) {
+      out.ending = 'until'
+      out.until = zonedDay(new Date(instant.seconds * 1000), timezone)
+    }
+  } else if (fields.get('COUNT')) {
+    const count = Number(fields.get('COUNT'))
+    if (Number.isFinite(count) && count > 0) {
+      out.ending = 'count'
+      out.count = count
+    }
+  }
+  return out
+}
+
+// --- Reminders ---
+
+/** A TRIGGER duration for a reminder that many minutes before the start. */
+export function reminderTrigger(minutes: number): string {
+  if (minutes <= 0) return 'PT0M'
+  if (minutes % 1440 === 0) return `-P${minutes / 1440}D`
+  if (minutes % 60 === 0) return `-PT${minutes / 60}H`
+  return `-PT${minutes}M`
+}
+
+/** The minutes before the start a TRIGGER names; null when it is not one. */
+export function triggerMinutes(trigger: string): number | null {
+  const match = /^(-?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
+    trigger.trim().toUpperCase()
+  )
+  if (!match) return null
+  const [, sign, weeks, days, hours, minutes, seconds] = match
+  const total =
+    Number(weeks ?? 0) * 10080 +
+    Number(days ?? 0) * 1440 +
+    Number(hours ?? 0) * 60 +
+    Number(minutes ?? 0) +
+    Number(seconds ?? 0) / 60
+  if (total === 0) return 0
+  return sign === '-' ? total : -total
+}
+
+function alarm(minutes: number, summary: string): Component {
+  return {
+    name: 'VALARM',
+    properties: [
+      { name: 'ACTION', params: {}, value: 'DISPLAY' },
+      { name: 'DESCRIPTION', params: {}, value: summary },
+      { name: 'TRIGGER', params: {}, value: reminderTrigger(minutes) },
+    ],
+    components: [],
+  }
+}
+
+// --- Draft to components ---
+
+function startProperty(draft: EventDraft): Property {
+  if (draft.allday) {
+    return {
+      name: 'DTSTART',
+      params: { VALUE: ['DATE'] },
+      value: dateValue(draft.start),
+    }
+  }
+  return {
+    name: 'DTSTART',
+    params: { TZID: [draft.timezone] },
+    value: dateTimeValue(draft.start, draft.startTime),
+  }
+}
+
+function finishProperty(draft: EventDraft): Property {
+  if (draft.allday) {
+    // DTEND is exclusive, so a one-day event ends on the following day.
+    return {
+      name: 'DTEND',
+      params: { VALUE: ['DATE'] },
+      value: dateValue(addDays(draft.finish, 1)),
+    }
+  }
+  return {
+    name: 'DTEND',
+    params: { TZID: [draft.timezone] },
+    value: dateTimeValue(draft.finish, draft.finishTime),
+  }
+}
+
+/**
+ * The VEVENT an editor draft describes. Properties the editor does not own are
+ * carried over from `previous`, as are that component's own sub-components
+ * other than its alarms, which the reminder setting replaces.
+ */
+export function draftComponent(
+  draft: EventDraft,
+  previous?: Component
+): Component {
+  const kept = (previous?.properties ?? []).filter(
+    (item) => !MANAGED.has(item.name)
+  )
+  const properties: Property[] = [
+    { name: 'SUMMARY', params: {}, value: draft.title },
+    startProperty(draft),
+    finishProperty(draft),
+  ]
+  if (draft.location) {
+    properties.push({ name: 'LOCATION', params: {}, value: draft.location })
+  }
+  if (draft.description) {
+    properties.push({
+      name: 'DESCRIPTION',
+      params: {},
+      value: draft.description,
+    })
+  }
+  const rule = repeatRule(draft.repeat, draft.timezone)
+  if (rule) properties.push({ name: 'RRULE', params: {}, value: rule })
+
+  const components = (previous?.components ?? []).filter(
+    (item) => item.name !== 'VALARM'
+  )
+  if (draft.reminder !== NO_REMINDER) {
+    components.push(alarm(draft.reminder, draft.title))
+  }
+  return {
+    name: 'VEVENT',
+    properties: [...properties, ...kept],
+    components,
+  }
+}
+
+/** The editor's draft for an existing VEVENT. */
+export function componentDraft(
+  component: Component,
+  calendar: string,
+  timezone: string
+): EventDraft {
+  const start = propertyInstant(property(component, 'DTSTART'), timezone)
+  const finish = propertyInstant(property(component, 'DTEND'), timezone)
+  const zone = property(component, 'DTSTART')?.params?.TZID?.[0] ?? timezone
+  const allday = start?.allday ?? false
+  const startSeconds = start?.seconds ?? Math.floor(Date.now() / 1000)
+  // A whole-day DTEND is the day after the last, and an event with neither
+  // DTEND nor DURATION ends where it starts.
+  const finishSeconds = finish
+    ? allday
+      ? finish.seconds - 1
+      : finish.seconds
+    : startSeconds
+
+  const reminderAlarm = component.components.find(
+    (item) => item.name === 'VALARM'
+  )
+  const trigger = reminderAlarm
+    ? triggerMinutes(propertyValue(reminderAlarm, 'TRIGGER'))
+    : null
+
+  return {
+    title: propertyValue(component, 'SUMMARY'),
+    calendar,
+    allday,
+    start: zonedDay(new Date(startSeconds * 1000), zone),
+    startTime: zonedMinutes(new Date(startSeconds * 1000), zone),
+    finish: zonedDay(new Date(finishSeconds * 1000), zone),
+    finishTime: zonedMinutes(new Date(finishSeconds * 1000), zone),
+    timezone: zone,
+    location: propertyValue(component, 'LOCATION'),
+    description: propertyValue(component, 'DESCRIPTION'),
+    repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
+    reminder: trigger === null ? NO_REMINDER : trigger,
+  }
+}
+
+/** The master VEVENT of a stored event: the one with no RECURRENCE-ID. */
+export function masterComponent(components: Component[]): Component | undefined {
+  return (
+    components.find(
+      (item) => item.name === 'VEVENT' && !property(item, 'RECURRENCE-ID')
+    ) ?? components.find((item) => item.name === 'VEVENT')
+  )
+}
+
+/** The override of one occurrence, if the event already carries one. */
+export function overrideComponent(
+  components: Component[],
+  start: number,
+  timezone: string
+): Component | undefined {
+  return components.find((item) => {
+    if (item.name !== 'VEVENT') return false
+    const id = property(item, 'RECURRENCE-ID')
+    if (!id) return false
+    const instant = propertyInstant(id, timezone)
+    return instant !== null && instant.seconds === start
+  })
+}
+
+/**
+ * A RECURRENCE-ID naming the occurrence that starts at `start`, in the form
+ * the master's own DTSTART uses so the two describe the same instant.
+ */
+function recurrenceIdentifier(
+  master: Component,
+  start: number,
+  timezone: string
+): Property {
+  const dtstart = property(master, 'DTSTART')
+  const zone = dtstart?.params?.TZID?.[0] ?? ''
+  if (dtstart && /^\d{8}$/.test(dtstart.value)) {
+    return {
+      name: 'RECURRENCE-ID',
+      params: { VALUE: ['DATE'] },
+      value: dateValue(zonedDay(new Date(start * 1000), zone || timezone)),
+    }
+  }
+  if (zone) {
+    return {
+      name: 'RECURRENCE-ID',
+      params: { TZID: [zone] },
+      value: dateTimeValue(
+        zonedDay(new Date(start * 1000), zone),
+        zonedMinutes(new Date(start * 1000), zone)
+      ),
+    }
+  }
+  return { name: 'RECURRENCE-ID', params: {}, value: utcValue(start) }
+}
+
+/**
+ * The master with `start` added to its EXDATE, which removes that one
+ * occurrence from the series.
+ */
+function withException(
+  master: Component,
+  start: number,
+  timezone: string
+): Component {
+  const identifier = recurrenceIdentifier(master, start, timezone)
+  const properties = [...master.properties]
+  const existing = properties.findIndex((item) => item.name === 'EXDATE')
+  if (existing >= 0) {
+    const current = properties[existing]
+    properties[existing] = {
+      ...current,
+      value: current.value
+        ? `${current.value},${identifier.value}`
+        : identifier.value,
+    }
+  } else {
+    properties.push({
+      name: 'EXDATE',
+      params: identifier.params,
+      value: identifier.value,
+    })
+  }
+  return { ...master, properties }
+}
+
+/** Where an occurrence sits: the whole series, or one of its occurrences. */
+export type Scope = 'one' | 'all'
+
+/**
+ * The component list to send for an edit. "All events" rewrites the master and
+ * keeps any overrides; "This event" leaves the master alone and writes an
+ * override for the one occurrence, replacing an earlier override of it.
+ */
+export function editedComponents(
+  components: Component[],
+  draft: EventDraft,
+  scope: Scope,
+  start: number,
+  timezone: string
+): Component[] {
+  const master = masterComponent(components)
+  if (!master) return [draftComponent(draft)]
+  if (scope === 'all') {
+    const rewritten = draftComponent(draft, master)
+    return [rewritten, ...components.filter((item) => item !== master)]
+  }
+  const existing = overrideComponent(components, start, timezone)
+  // An override carries no rule of its own: it describes one occurrence.
+  const single = draftComponent(
+    { ...draft, repeat: emptyRepeat() },
+    existing ?? master
+  )
+  const identifier = recurrenceIdentifier(master, start, timezone)
+  // An override describes one occurrence: the series' own rule and the dates
+  // it adds or excludes belong to the master alone.
+  const series = new Set(['RECURRENCE-ID', 'RRULE', 'RDATE', 'EXDATE'])
+  const override: Component = {
+    ...single,
+    properties: [
+      ...single.properties.filter((item) => !series.has(item.name)),
+      identifier,
+    ],
+  }
+  const rest = components.filter((item) => item !== existing)
+  return [...rest, override]
+}
+
+/**
+ * The component list to send when one occurrence of a series is deleted: the
+ * master gains an exception for it and any override of it is dropped.
+ */
+export function deletedOccurrence(
+  components: Component[],
+  start: number,
+  timezone: string
+): Component[] | null {
+  const master = masterComponent(components)
+  if (!master) return null
+  const existing = overrideComponent(components, start, timezone)
+  return components
+    .filter((item) => item !== existing)
+    .map((item) => (item === master ? withException(item, start, timezone) : item))
+}
