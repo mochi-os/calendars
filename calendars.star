@@ -198,9 +198,11 @@ def calendar_by_slug(identity, slug):
 		return None
 	return mochi.db.row("select * from calendars where identity=? and slug=?", identity, slug)
 
-def calendar_insert(identity, id, slug, kind, colour, url=""):
+# ignore: let the unique index on (identity, slug) settle a race between two
+# creators of the same slug; the caller reads the slug back to learn who won.
+def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False):
 	now = mochi.time.now()
-	mochi.db.execute("insert into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ? )",
+	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ? )",
 		id, identity, slug, kind, colour, url, _POLL_BASE, now, now)
 
 # calendars_ensure(identity): the default calendar and the birthdays calendar
@@ -1312,7 +1314,14 @@ def function_dav_collection_create(context, identity, collection, name="", descr
 	if not label or len(label) > _NAME_MAXIMUM or not mochi.text.valid(label, "name"):
 		label = collection
 	id = mochi.entity.create("calendar", label, "private")
-	calendar_insert(identity, id, collection, "own", _COLOUR_DEFAULT)
+	# Two MKCALENDARs for one slug at once both pass the check above. The
+	# unique index decides; the loser drops the entity it made and answers as
+	# a sequential duplicate would, rather than failing on the constraint.
+	calendar_insert(identity, id, collection, "own", _COLOUR_DEFAULT, ignore=True)
+	row = calendar_by_slug(identity, collection)
+	if row["id"] != id:
+		mochi.entity.delete(id)
+		return {"error": "exists"}
 	return {"slug": collection}
 
 def function_dav_collection_delete(context, identity, collection):
