@@ -208,12 +208,21 @@ def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False):
 # calendars_ensure(identity): the default calendar and the birthdays calendar
 # exist from the first request on, each an entity with a fixed slug.
 def calendars_ensure(identity):
-	if not mochi.db.exists("select id from calendars where identity=? and slug='default'", identity):
-		id = mochi.entity.create("calendar", mochi.app.label("calendar.default"), "private")
-		calendar_insert(identity, id, "default", "own", _COLOUR_DEFAULT)
-	if not mochi.db.exists("select id from calendars where identity=? and slug='birthdays'", identity):
-		id = mochi.entity.create("calendar", mochi.app.label("calendar.birthdays"), "private")
-		calendar_insert(identity, id, "birthdays", "birthdays", "#f472b6")
+	calendar_ensure(identity, "default", "calendar.default", "own", _COLOUR_DEFAULT)
+	calendar_ensure(identity, "birthdays", "calendar.birthdays", "birthdays", "#f472b6")
+
+# One fixed-slug calendar, created on first use. An identity's first requests
+# race here - the calendar page loads its calendars and its events together -
+# and both find nothing. The unique index on (identity, slug) decides: the
+# insert is ignored for the loser, which drops the entity it made. Before this
+# the loser's insert failed the whole request.
+def calendar_ensure(identity, slug, label, kind, colour):
+	if mochi.db.exists("select id from calendars where identity=? and slug=?", identity, slug):
+		return
+	id = mochi.entity.create("calendar", mochi.app.label(label), "private")
+	calendar_insert(identity, id, slug, kind, colour, ignore=True)
+	if calendar_by_slug(identity, slug)["id"] != id:
+		mochi.entity.delete(id)
 
 def calendar_readonly(row):
 	return row["kind"] != "own"
