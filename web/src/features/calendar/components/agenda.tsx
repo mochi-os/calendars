@@ -17,6 +17,7 @@ import {
   Input,
   Label,
   addDays,
+  cn,
   useFormat,
 } from '@mochi/web'
 import { CalendarDays, ChevronUp, Repeat, Repeat2 } from 'lucide-react'
@@ -42,7 +43,7 @@ interface Props {
 export function Agenda({ onSelect }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { date, calendars, visible } = useCalendarContext()
+  const { date, today, calendars, visible } = useCalendarContext()
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
   const [search, setSearch] = useState('')
 
@@ -74,9 +75,7 @@ export function Agenda({ onSelect }: Props) {
   )
   const later = Boolean(
     bounds.data &&
-      (bounds.data.endless
-        ? span.after < HORIZON
-        : bounds.data.last >= loadedTo)
+    (bounds.data.endless ? span.after < HORIZON : bounds.data.last >= loadedTo)
   )
 
   const names = useMemo(
@@ -228,7 +227,14 @@ export function Agenda({ onSelect }: Props) {
         ) : (
           days.map(([day, list]) => (
             <div key={day}>
-              <h2 className='bg-muted/60 sticky top-0 px-3 py-1.5 text-sm font-semibold'>
+              <h2
+                className={cn(
+                  'sticky top-0 px-3 py-1.5 text-sm font-semibold',
+                  day === today
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted/60'
+                )}
+              >
                 {format.formatLongDate(
                   new Date(format.timestampAt(day, 720) * 1000)
                 )}

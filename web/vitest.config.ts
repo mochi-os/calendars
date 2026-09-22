@@ -7,10 +7,9 @@ import path from 'path'
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react-swc'
 
-// Pure-function tests only, but they reach @mochi/web, whose barrel touches
-// the document at import time and whose modules use @lingui/*/macro - so a DOM
-// environment and the build's macro transform are both needed here.
 export default defineConfig({
+  // The macro transform the build applies: without it @lingui/*/macro falls
+  // through to babel-plugin-macros, which is not installed.
   plugins: [react({ plugins: [['@lingui/swc-plugin', {}]] })],
   resolve: {
     alias: {
@@ -19,6 +18,7 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
-    include: ['src/**/*.test.ts'],
+    setupFiles: ['./src/test/setup.ts'],
+    include: ['src/**/*.test.{ts,tsx}'],
   },
 })
