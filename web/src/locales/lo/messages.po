@@ -547,6 +547,10 @@ msgstr "ກຳລັງກວດສອບການປ່ຽນແປງ..."
 msgid "Checklist"
 msgstr "ລາຍການກວດສອບ"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "ເລືອກວັນທີ"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "ເລືອກເກມຈາກແຖບຂ້າງ ຫຼື ເລີ່ມຕົ້ນອັນໃໝ່."
@@ -1604,6 +1608,7 @@ msgstr "ການຄວບຄຸມ"
 msgid "Monday"
 msgstr "ວັນຈັນ"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "ເດືອນ"
@@ -1701,9 +1706,13 @@ msgstr "ຕໍ່ໄປ"
 msgid "Next image"
 msgstr "ຮູບຕໍ່ໄປ"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "ເດືອນໜ້າ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "ປີໜ້າ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "ກ່ອນໜ້າ"
 msgid "Previous image"
 msgstr "ຮູບກ່ອນໜ້າ"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "ເດືອນກ່ອນໜ້າ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "ປີກ່ອນໜ້າ"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "ເວລາເລີກວຽກ"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "ເວລາເລີ່ມວຽກ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "ປີ"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

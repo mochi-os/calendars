@@ -547,6 +547,10 @@ msgstr "Ap tcheke chanjman..."
 msgid "Checklist"
 msgstr "Lis verifikasyon"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Chwazi yon dat"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Chwazi yon jwèt nan ba kote a oswa kòmanse yon nouvo."
@@ -1604,6 +1608,7 @@ msgstr "Moderasyon"
 msgid "Monday"
 msgstr "Lendi"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Mwa"
@@ -1701,9 +1706,13 @@ msgstr "Pwochen"
 msgid "Next image"
 msgstr "Pwochen imaj"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Mwa pwochen"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Ane pwochen"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Anvan"
 msgid "Previous image"
 msgstr "Imaj anvan"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Mwa anvan"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Ane anvan"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Fen lè travay"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Kòmansman lè travay"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Ane"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

@@ -547,6 +547,10 @@ msgstr "Guhertin tên kontrolkirin..."
 msgid "Checklist"
 msgstr "Lîsteya kontrolê"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Dîrokekê hilbijêre"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Lîstikekê ji panela kêlekê hilbijêre an yeke nû dest pê bike."
@@ -1604,6 +1608,7 @@ msgstr "Moderasyon"
 msgid "Monday"
 msgstr "Duşem"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Meh"
@@ -1701,9 +1706,13 @@ msgstr "Pêştir"
 msgid "Next image"
 msgstr "Wêneya pêştir"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Meha bê"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Sala bê"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Pêştir"
 msgid "Previous image"
 msgstr "Wêneya pêştir"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Meha borî"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Sala borî"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Dawiya saetên kar"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Destpêka saetên kar"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Sal"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

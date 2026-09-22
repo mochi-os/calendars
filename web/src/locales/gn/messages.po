@@ -547,6 +547,10 @@ msgstr "Ohechahína ñemoambue..."
 msgid "Checklist"
 msgstr "Checklist"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Eiporavo peteĩ ára"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Eiporavo peteĩ ñembosarái sidebar-gui térã eñepyrũ peteĩ pyahu."
@@ -1604,6 +1608,7 @@ msgstr "Ñangareko"
 msgid "Monday"
 msgstr "Arakõi"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Jasy"
@@ -1701,9 +1706,13 @@ msgstr "Tenondeve"
 msgid "Next image"
 msgstr "Ta'anga oseguíva"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Jasy oúva"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Ary oúva"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Tenondete"
 msgid "Previous image"
 msgstr "Ta'anga tenondete"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Jasy ohasava'ekue"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Ary ohasava'ekue"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Mba'apo aravo paha"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Mba'apo aravo ñepyrũ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Ary"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

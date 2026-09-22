@@ -547,6 +547,10 @@ msgstr "Recherche de modifications..."
 msgid "Checklist"
 msgstr "Checklist"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Choisir une date"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Choisissez une partie dans la barre latérale ou commencez-en une nouvelle."
@@ -1604,6 +1608,7 @@ msgstr "Modération"
 msgid "Monday"
 msgstr "Lundi"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Mois"
@@ -1701,9 +1706,13 @@ msgstr "Suivant"
 msgid "Next image"
 msgstr "Image suivante"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Mois suivant"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Année suivante"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Précédent"
 msgid "Previous image"
 msgstr "Image précédente"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Mois précédent"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Année précédente"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Fin des heures de travail"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Début des heures de travail"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Année"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

@@ -547,6 +547,10 @@ msgstr "Duke kontrolluar për ndryshime..."
 msgid "Checklist"
 msgstr "Listë kontrolli"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Zgjidh një datë"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Zgjidh një lojë nga ana ose nis një të re."
@@ -1604,6 +1608,7 @@ msgstr "Moderimi"
 msgid "Monday"
 msgstr "E hënë"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Muaji"
@@ -1701,9 +1706,13 @@ msgstr "Tjetri"
 msgid "Next image"
 msgstr "Imazhi tjetër"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Muaji tjetër"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Viti tjetër"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "I mëparshmi"
 msgid "Previous image"
 msgstr "Imazhi i mëparshëm"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Muaji i mëparshëm"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Viti i mëparshëm"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Fundi i orarit të punës"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Fillimi i orarit të punës"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Viti"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

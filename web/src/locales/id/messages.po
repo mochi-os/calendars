@@ -547,6 +547,10 @@ msgstr "Memeriksa perubahan..."
 msgid "Checklist"
 msgstr "Checklist"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Pilih tanggal"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Pilih permainan dari sidebar atau mulai yang baru."
@@ -1604,6 +1608,7 @@ msgstr "Moderasi"
 msgid "Monday"
 msgstr "Senin"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Bulan"
@@ -1701,9 +1706,13 @@ msgstr "Berikutnya"
 msgid "Next image"
 msgstr "Gambar berikutnya"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Bulan berikutnya"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Tahun berikutnya"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Sebelumnya"
 msgid "Previous image"
 msgstr "Gambar sebelumnya"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Bulan sebelumnya"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Tahun sebelumnya"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Akhir jam kerja"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Awal jam kerja"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Tahun"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

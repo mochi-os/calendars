@@ -547,6 +547,10 @@ msgstr "Đang kiểm tra thay đổi..."
 msgid "Checklist"
 msgstr "Danh sách kiểm tra"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Chọn ngày"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Chọn một ván chơi ở thanh bên hoặc bắt đầu ván mới."
@@ -1604,6 +1608,7 @@ msgstr "Kiểm duyệt"
 msgid "Monday"
 msgstr "Thứ Hai"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Tháng"
@@ -1701,9 +1706,13 @@ msgstr "Tiếp"
 msgid "Next image"
 msgstr "Hình tiếp theo"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Tháng sau"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Năm sau"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Trước"
 msgid "Previous image"
 msgstr "Hình trước"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Tháng trước"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Năm trước"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Giờ kết thúc làm việc"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Giờ bắt đầu làm việc"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Năm"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

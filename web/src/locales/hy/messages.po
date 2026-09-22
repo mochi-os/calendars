@@ -547,6 +547,10 @@ msgstr "Փոփոխությունները ստուգվում են..."
 msgid "Checklist"
 msgstr "Ստուգաթերթիկ"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Ընտրեք ամսաթիվ"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Ընտրեք խաղ կողագոտուց կամ սկսեք նորը։"
@@ -1604,6 +1608,7 @@ msgstr "Մոդերացիա"
 msgid "Monday"
 msgstr "Երկուշաբթի"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Ամիս"
@@ -1701,9 +1706,13 @@ msgstr "Հաջորդ"
 msgid "Next image"
 msgstr "Հաջորդ նկարը"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Հաջորդ ամիս"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Հաջորդ տարի"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Նախորդ"
 msgid "Previous image"
 msgstr "Նախորդ նկարը"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Նախորդ ամիս"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Նախորդ տարի"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Աշխատանքային ժամերի ավարտ"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Աշխատանքային ժամերի սկիզբ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Տարի"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

@@ -547,6 +547,10 @@ msgstr "جارٍ التحقق من التغييرات..."
 msgid "Checklist"
 msgstr "قائمة المهام"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "اختر تاريخًا"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "اختر لعبة من الشريط الجانبي أو ابدأ لعبة جديدة."
@@ -1604,6 +1608,7 @@ msgstr "الإشراف"
 msgid "Monday"
 msgstr "الاثنين"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "شهر"
@@ -1701,9 +1706,13 @@ msgstr "التالي"
 msgid "Next image"
 msgstr "الصورة التالية"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "الشهر التالي"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "السنة التالية"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "السابق"
 msgid "Previous image"
 msgstr "الصورة السابقة"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "الشهر السابق"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "السنة السابقة"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "نهاية ساعات العمل"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "بداية ساعات العمل"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "السنة"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

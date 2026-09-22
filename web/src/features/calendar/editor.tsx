@@ -5,6 +5,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
+  DatePicker,
   Button,
   Dialog,
   DialogContent,
@@ -413,14 +414,11 @@ function EditorFields({
             <Trans>Start</Trans>
           </Label>
           <div className='flex gap-2'>
-            <Input
+            <DatePicker
               id='event-start'
-              type='date'
               className='min-w-0 flex-1'
               value={draft.start}
-              onChange={(input) =>
-                moveStart(input.target.value || draft.start, draft.startTime)
-              }
+              onChange={(day) => moveStart(day || draft.start, draft.startTime)}
             />
             {!draft.allday && (
               <Input
@@ -440,15 +438,14 @@ function EditorFields({
             <Trans>End</Trans>
           </Label>
           <div className='flex gap-2'>
-            <Input
+            <DatePicker
               id='event-finish'
-              type='date'
               className='min-w-0 flex-1'
               value={draft.finish}
-              onChange={(input) =>
+              onChange={(day) =>
                 edit((current) => ({
                   ...current,
-                  finish: input.target.value || current.finish,
+                  finish: day || current.finish,
                 }))
               }
             />
@@ -672,16 +669,15 @@ function EditorFields({
                 <Label htmlFor='repeat-until'>
                   <Trans>Last day</Trans>
                 </Label>
-                <Input
+                <DatePicker
                   id='repeat-until'
-                  type='date'
                   value={draft.repeat.until}
-                  onChange={(input) =>
+                  onChange={(day) =>
                     edit((current) => ({
                       ...current,
                       repeat: {
                         ...current.repeat,
-                        until: input.target.value,
+                        until: day,
                       },
                     }))
                   }

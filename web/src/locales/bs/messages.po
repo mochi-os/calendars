@@ -547,6 +547,10 @@ msgstr "Provjera promjena..."
 msgid "Checklist"
 msgstr "Lista"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Odaberite datum"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Odaberite igru sa bočne trake ili započnite novu."
@@ -1604,6 +1608,7 @@ msgstr "Moderacija"
 msgid "Monday"
 msgstr "Ponedjeljak"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Mjesec"
@@ -1701,9 +1706,13 @@ msgstr "Sljedeće"
 msgid "Next image"
 msgstr "Sljedeća slika"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Sljedeći mjesec"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Sljedeća godina"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Prethodno"
 msgid "Previous image"
 msgstr "Prethodna slika"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Prethodni mjesec"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Prethodna godina"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Kraj radnog vremena"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Početak radnog vremena"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Godina"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

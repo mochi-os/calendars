@@ -547,6 +547,10 @@ msgstr "Ag seiceáil le haghaidh athruithe..."
 msgid "Checklist"
 msgstr "Seicliosta"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Roghnaigh dáta"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Roghnaigh cluiche ón mbarra taoibh nó tosaigh ceann nua."
@@ -1604,6 +1608,7 @@ msgstr "Modhnóireacht"
 msgid "Monday"
 msgstr "Dé Luain"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Mí"
@@ -1701,9 +1706,13 @@ msgstr "Ar aghaidh"
 msgid "Next image"
 msgstr "An chéad íomhá eile"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "An mhí seo chugainn"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "An bhliain seo chugainn"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Roimhe seo"
 msgid "Previous image"
 msgstr "Íomhá roimhe seo"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "An mhí roimhe seo"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "An bhliain roimhe seo"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Deireadh na n-uaireanta oibre"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Tús na n-uaireanta oibre"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Bliain"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

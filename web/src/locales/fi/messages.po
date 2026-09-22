@@ -547,6 +547,10 @@ msgstr "Tarkistetaan muutoksia..."
 msgid "Checklist"
 msgstr "Tarkistuslista"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Valitse päivämäärä"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Valitse peli sivupalkista tai aloita uusi."
@@ -1604,6 +1608,7 @@ msgstr "Moderointi"
 msgid "Monday"
 msgstr "Maanantai"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Kuukausi"
@@ -1701,9 +1706,13 @@ msgstr "Seuraava"
 msgid "Next image"
 msgstr "Seuraava kuva"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Seuraava kuukausi"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Seuraava vuosi"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Edellinen"
 msgid "Previous image"
 msgstr "Edellinen kuva"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Edellinen kuukausi"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Edellinen vuosi"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Työajan loppu"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Työajan alku"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Vuosi"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

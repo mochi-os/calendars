@@ -547,6 +547,10 @@ msgstr "Kukhangelwa utshintsho..."
 msgid "Checklist"
 msgstr "Uluhlu lokuhlola"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Khetha umhla"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Khetha umdlalo kwibha esecaleni okanye qalisa omtsha."
@@ -1604,6 +1608,7 @@ msgstr "Ulawulo"
 msgid "Monday"
 msgstr "Umvulo"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Inyanga"
@@ -1701,9 +1706,13 @@ msgstr "Olandelayo"
 msgid "Next image"
 msgstr "Umfanekiso olandelayo"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Inyanga ezayo"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Unyaka ozayo"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Engaphambili"
 msgid "Previous image"
 msgstr "Umfanekiso ongaphambili"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Inyanga edlulileyo"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Unyaka odlulileyo"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Ukuphela kweeyure zokusebenza"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Ukuqala kweeyure zokusebenza"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Unyaka"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

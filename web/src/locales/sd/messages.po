@@ -547,6 +547,10 @@ msgstr "تبديلين جي جانچ ٿي رهي آهي..."
 msgid "Checklist"
 msgstr "چيڪ لسٽ"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "تاريخ چونڊيو"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "سائڊبار مان راند چونڊيو يا نئين شروع ڪريو."
@@ -1604,6 +1608,7 @@ msgstr "نگراني"
 msgid "Monday"
 msgstr "سومر"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "مهينو"
@@ -1701,9 +1706,13 @@ msgstr "اڳيون"
 msgid "Next image"
 msgstr "اڳيون تصوير"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "ايندڙ مهينو"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "ايندڙ سال"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "پوئيون"
 msgid "Previous image"
 msgstr "پوئيون تصوير"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "پوئيون مهينو"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "پوئيون سال"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "ڪم جي ڪلاڪن جي پڄاڻي"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "ڪم جي ڪلاڪن جي شروعات"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "سال"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

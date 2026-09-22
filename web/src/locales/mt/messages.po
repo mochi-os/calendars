@@ -547,6 +547,10 @@ msgstr "Qed jiġu ċċekkjati l-bidliet..."
 msgid "Checklist"
 msgstr "Checklist"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Agħżel data"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Agħżel logħba mill-barra tal-ġenb jew ibda waħda ġdida."
@@ -1604,6 +1608,7 @@ msgstr "Moderazzjoni"
 msgid "Monday"
 msgstr "It-Tnejn"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Xahar"
@@ -1701,9 +1706,13 @@ msgstr "Li jmiss"
 msgid "Next image"
 msgstr "Stampa li jmiss"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Ix-xahar li ġej"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Is-sena li ġejja"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Preċedenti"
 msgid "Previous image"
 msgstr "Stampa preċedenti"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Ix-xahar preċedenti"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Is-sena preċedenti"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Tmiem il-ħin tax-xogħol"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Bidu tal-ħin tax-xogħol"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Sena"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

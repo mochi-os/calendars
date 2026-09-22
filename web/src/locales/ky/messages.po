@@ -547,6 +547,10 @@ msgstr "Өзгөрүүлөр текшерилүүдө..."
 msgid "Checklist"
 msgstr "Текшерүү тизмеси"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Күндү тандаңыз"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Каптал тилкесинен оюнду тандаңыз же жаңысын баштаңыз."
@@ -1604,6 +1608,7 @@ msgstr "Модерация"
 msgid "Monday"
 msgstr "Дүйшөмбү"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Ай"
@@ -1701,9 +1706,13 @@ msgstr "Кийинки"
 msgid "Next image"
 msgstr "Кийинки сүрөт"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Кийинки ай"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Кийинки жыл"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Мурунку"
 msgid "Previous image"
 msgstr "Мурунку сүрөт"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Мурунку ай"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Мурунку жыл"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Жумуш убактысынын аякташы"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Жумуш убактысынын башталышы"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Жыл"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

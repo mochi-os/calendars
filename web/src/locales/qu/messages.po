@@ -547,6 +547,10 @@ msgstr "Hukchasqakunata qhawarichkan..."
 msgid "Checklist"
 msgstr "Lista"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Huk p'unchawta akllay"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Pukllay akllay sidebar-manta utaq musuq qallariy."
@@ -1604,6 +1608,7 @@ msgstr "Qhawakipay"
 msgid "Monday"
 msgstr "Lunes"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Killa"
@@ -1701,9 +1706,13 @@ msgstr "Qatiqnin"
 msgid "Next image"
 msgstr "Qatiqnin imagen"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Qatiq killa"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Qatiq wata"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Ñawpaqnin"
 msgid "Previous image"
 msgstr "Ñawpaqnin imagen"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Ñawpaq killa"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Ñawpaq wata"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Llamk'ana pacha tukukuynin"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Llamk'ana pacha qallariynin"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Wata"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

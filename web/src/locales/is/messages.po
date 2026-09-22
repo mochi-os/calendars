@@ -547,6 +547,10 @@ msgstr "Athuga breytingar..."
 msgid "Checklist"
 msgstr "Gátlisti"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Veldu dagsetningu"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Veldu leik úr hliðarstikunni eða byrjaðu nýjan."
@@ -1604,6 +1608,7 @@ msgstr "Umsjón"
 msgid "Monday"
 msgstr "Mánudagur"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "Mánuður"
@@ -1701,9 +1706,13 @@ msgstr "Næst"
 msgid "Next image"
 msgstr "Næsta mynd"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Næsti mánuður"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Næsta ár"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "Fyrri"
 msgid "Previous image"
 msgstr "Fyrri mynd"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Fyrri mánuður"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Fyrra ár"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "Lok vinnutíma"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "Upphaf vinnutíma"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Ár"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx

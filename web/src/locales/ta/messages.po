@@ -547,6 +547,10 @@ msgstr "மாற்றங்கள் சரிபார்க்கப்ப�
 msgid "Checklist"
 msgstr "சரிபார்ப்பு பட்டியல்"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "தேதியைத் தேர்ந்தெடுக்கவும்"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "பக்கப்பட்டியில் இருந்து ஒரு விளையாட்டைத் தேர்ந்தெடுக்கவும் அல்லது புதிய ஒன்றைத் தொடங்கவும்."
@@ -1604,6 +1608,7 @@ msgstr "மட்டுறுத்தல்"
 msgid "Monday"
 msgstr "திங்கட்கிழமை"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 #: src/features/calendar/components/toolbar.tsx
 msgid "Month"
 msgstr "மாதம்"
@@ -1701,9 +1706,13 @@ msgstr "அடுத்து"
 msgid "Next image"
 msgstr "அடுத்த படம்"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "அடுத்த மாதம்"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "அடுத்த ஆண்டு"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1986,9 +1995,13 @@ msgstr "முந்தையது"
 msgid "Previous image"
 msgstr "முந்தைய படம்"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "முந்தைய மாதம்"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "முந்தைய ஆண்டு"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2918,6 +2931,10 @@ msgstr "வேலை நேர முடிவு"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Working hours start"
 msgstr "வேலை நேரத் தொடக்கம்"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "ஆண்டு"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
