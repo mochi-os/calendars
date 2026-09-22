@@ -4,13 +4,12 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useLingui } from '@lingui/react/macro'
 import {
-  Button,
   Popover,
   PopoverAnchor,
   PopoverContent,
   useFormat,
 } from '@mochi/web'
-import { MapPin, Pencil, Trash2 } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 
 interface Props {
@@ -18,20 +17,12 @@ interface Props {
   /** Where the block that was clicked sits on screen. */
   anchor: DOMRect | null
   onClose: () => void
-  onEdit: () => void
-  onDelete: () => void
 }
 
 /** The first few lines of a description; the editor shows the whole thing. */
 const DESCRIPTION_HEAD = 240
 
-export function EventPopover({
-  instance,
-  anchor,
-  onClose,
-  onEdit,
-  onDelete,
-}: Props) {
+export function EventPopover({ instance, anchor, onClose }: Props) {
   const { t } = useLingui()
   const format = useFormat()
   if (!instance || !anchor) return null
@@ -101,21 +92,6 @@ export function EventPopover({
             {description}
             {instance.description.length > DESCRIPTION_HEAD ? '…' : ''}
           </p>
-        )}
-        {!instance.readonly && (
-          <div className='flex justify-end gap-2 pt-1'>
-            <Button variant='outline' size='sm' onClick={onDelete}>
-              <Trash2 className='size-4' />
-              {t`Delete`}
-            </Button>
-            <Button
-              size='sm'
-              onClick={onEdit}
-              icon={<Pencil className='size-4' />}
-            >
-              {t`Edit`}
-            </Button>
-          </div>
         )}
       </PopoverContent>
     </Popover>

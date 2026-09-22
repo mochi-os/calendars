@@ -24,7 +24,6 @@ import { useInstancesQuery } from '@/hooks/use-events'
 import { emptyRepeat, type EventDraft, type Scope } from '@/lib/ical'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { DayPopover } from '@/features/calendar/components/day-popover'
-import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { EventPopover } from '@/features/calendar/components/event-popover'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
@@ -58,7 +57,6 @@ export function CalendarPage() {
     day: string
     anchor: DOMRect
   } | null>(null)
-  const [deleting, setDeleting] = useState<Instance | null>(null)
   const [moving, setMoving] = useState<((scope: Scope) => void) | null>(null)
 
   const mover = useEventMove()
@@ -169,22 +167,19 @@ export function CalendarPage() {
     })
   }
 
-  const select = (key: string, anchor: HTMLElement) => {
-    const instance = byKey.get(key)
-    if (instance) {
+  // A click opens the editor; a read-only occurrence (a subscription's or a
+  // birthday) has nothing to edit, so it opens the summary popover instead.
+  const open = (instance: Instance, anchor: HTMLElement) => {
+    if (instance.readonly || instance.event.startsWith('birthday-')) {
       setSelected({ instance, anchor: anchor.getBoundingClientRect() })
+    } else {
+      setEditing({ mode: 'edit', event: instance.event, start: instance.start })
     }
   }
 
-  const edit = () => {
-    if (!selected) return
-    if (selected.instance.event.startsWith('birthday-')) return
-    setEditing({
-      mode: 'edit',
-      event: selected.instance.event,
-      start: selected.instance.start,
-    })
-    setSelected(null)
+  const select = (key: string, anchor: HTMLElement) => {
+    const instance = byKey.get(key)
+    if (instance) open(instance, anchor)
   }
 
   // A drag on a repeating occurrence has to say which occurrences it moved.
@@ -195,11 +190,7 @@ export function CalendarPage() {
 
   const grid =
     view === 'list' ? (
-      <Agenda
-        onSelect={(instance, anchor) =>
-          setSelected({ instance, anchor: anchor.getBoundingClientRect() })
-        }
-      />
+      <Agenda onSelect={open} />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
         days={days}
@@ -263,11 +254,6 @@ export function CalendarPage() {
         instance={selected?.instance ?? null}
         anchor={selected?.anchor ?? null}
         onClose={() => setSelected(null)}
-        onEdit={edit}
-        onDelete={() => {
-          if (selected) setDeleting(selected.instance)
-          setSelected(null)
-        }}
       />
 
       <DayPopover
@@ -277,15 +263,10 @@ export function CalendarPage() {
         onClose={() => setOverflow(null)}
         onSelect={(instance, anchor) => {
           setOverflow(null)
-          setSelected({ instance, anchor: anchor.getBoundingClientRect() })
+          open(instance, anchor)
         }}
       />
 
-      <DeleteEventDialog
-        event={deleting?.event ?? null}
-        start={deleting?.start ?? 0}
-        onClose={() => setDeleting(null)}
-      />
 
       <ScopeDialog
         open={moving !== null}
