@@ -539,8 +539,13 @@ def reminders_ensure(identity):
 
 # === Birthdays ===
 
+# The people service refuses the call without contacts/read, and that refusal
+# would fail the whole listing every view asks for, so a server that has not
+# granted it gets an empty birthdays calendar rather than no calendar at all.
 def birthdays_contacts(identity):
 	if not identity or not mochi.service.exists("contacts"):
+		return []
+	if not mochi.permission.check("contacts/read"):
 		return []
 	return mochi.service.call("contacts", "contacts/birthdays", identity) or []
 
@@ -1129,6 +1134,11 @@ def action_link(a):
 	if not row:
 		a.error.label(404, "errors.calendar_not_found")
 		return
+	# mochi.token.create refuses without tokens/create; answered here so the
+	# refusal is a clean 403, and before an existing link could be revoked.
+	if not mochi.permission.check("tokens/create"):
+		a.error.label(403, "errors.not_allowed")
+		return
 	regenerate = a.input("regenerate", "") == "1"
 	existing = mochi.db.row("select hash from links where calendar=?", row["id"])
 	if existing and not regenerate:
@@ -1270,6 +1280,9 @@ def token_name_input(a):
 def action_token_create(a):
 	name = token_name_input(a)
 	if name == None:
+		return
+	if not mochi.permission.check("tokens/create"):
+		a.error.label(403, "errors.not_allowed")
 		return
 	token = mochi.token.create(name, ["dav"], 0, "caldav/*path", "")
 	if not token:
