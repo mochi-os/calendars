@@ -18,10 +18,10 @@ import {
 } from '@mochi/web'
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
+import { emptyRepeat, type EventDraft, type Scope } from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
-import { emptyRepeat, type EventDraft, type Scope } from '@/lib/ical'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { DayPopover } from '@/features/calendar/components/day-popover'
 import { EventPopover } from '@/features/calendar/components/event-popover'
@@ -105,6 +105,7 @@ export function CalendarPage() {
         start: instance.start,
         finish: instance.finish,
         allday: instance.allday,
+        date: instance.date,
         readonly: instance.readonly || instance.event.startsWith('birthday-'),
         recurring: instance.recurring,
         exception: instance.exception,
@@ -266,7 +267,6 @@ export function CalendarPage() {
           open(instance, anchor)
         }}
       />
-
 
       <ScopeDialog
         open={moving !== null}

@@ -18,6 +18,7 @@ import {
   Label,
   addDays,
   cn,
+  coveredDays,
   useFormat,
 } from '@mochi/web'
 import { CalendarDays, ChevronUp, Repeat, Repeat2 } from 'lucide-react'
@@ -99,7 +100,7 @@ export function Agenda({ onSelect }: Props) {
   const days = useMemo(() => {
     const out = new Map<string, Instance[]>()
     for (const instance of matches) {
-      const day = format.zonedDay(new Date(instance.start * 1000))
+      const day = coveredDays(instance, format.zonedDay).start
       const list = out.get(day)
       if (list) list.push(instance)
       else out.set(day, [instance])

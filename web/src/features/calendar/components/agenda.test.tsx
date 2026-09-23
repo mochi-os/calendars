@@ -44,7 +44,19 @@ const instance = (day: number, summary: string): Instance => ({
 vi.mock('@/hooks/use-events', () => ({
   useBoundsQuery: () => ({ data: { first: 0, last: 0, endless: false } }),
   useInstancePages: () => ({
-    instances: [instance(22, 'Design review'), instance(23, 'Wax boots')],
+    instances: [
+      instance(22, 'Design review'),
+      instance(23, 'Wax boots'),
+      // An all-day occurrence expanded by a server nine hours ahead of this
+      // browser's UTC: its instants begin on the 21st, its date is the 22nd.
+      {
+        ...instance(22, 'Laundry'),
+        allday: true,
+        date: '2026-09-22',
+        start: Date.UTC(2026, 8, 21, 15) / 1000,
+        finish: Date.UTC(2026, 8, 22, 15) / 1000,
+      },
+    ],
     pending: false,
   }),
 }))
@@ -74,5 +86,19 @@ describe('Agenda', () => {
     const { other } = show()
     expect(other.classList.contains('bg-primary')).toBe(false)
     expect(other.classList.contains('bg-muted/60')).toBe(true)
+  })
+})
+
+describe('Agenda all-day placement', () => {
+  it('lists an all-day occurrence under its own date, not the day its instants begin', () => {
+    show()
+    const headings = screen.getAllByRole('heading', { level: 2 })
+    expect(
+      headings.some((heading) => /\b21\b/.test(heading.textContent ?? ''))
+    ).toBe(false)
+    const group = screen
+      .getByText('Laundry')
+      .closest('ul')?.previousElementSibling
+    expect(group?.textContent).toMatch(/\b22\b/)
   })
 })

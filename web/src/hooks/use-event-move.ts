@@ -5,6 +5,7 @@
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
+  coveredDays,
   daysBetween,
   getErrorMessage,
   toast,
@@ -46,9 +47,7 @@ export function useEventMove() {
         overrideComponent(event.components, instance.start, format.timezone) ??
         masterComponent(event.components)
       if (!own) return
-      const draft = change(
-        componentDraft(own, event.calendar, format.timezone)
-      )
+      const draft = change(componentDraft(own, event.calendar, format.timezone))
       const components = event.recurring
         ? editedComponents(
             event.components,
@@ -73,8 +72,8 @@ export function useEventMove() {
   }
 
   /** A block dragged or resized in the day and week views. */
-  const toTime = (instance: Instance, start: number, finish: number) =>
-    (scope: Scope) =>
+  const toTime =
+    (instance: Instance, start: number, finish: number) => (scope: Scope) =>
       apply(instance, scope, (draft) => {
         const zone = draft.timezone
         return {
@@ -89,7 +88,9 @@ export function useEventMove() {
   /** A chip dragged onto another day in the month and multiweek views. */
   const toDay = (instance: Instance, day: string) => (scope: Scope) =>
     apply(instance, scope, (draft) => {
-      const from = zonedDay(new Date(instance.start * 1000), draft.timezone)
+      const from = coveredDays(instance, (date) =>
+        zonedDay(date, draft.timezone)
+      ).start
       const shift = daysBetween(from, day)
       if (shift === 0) return draft
       return {

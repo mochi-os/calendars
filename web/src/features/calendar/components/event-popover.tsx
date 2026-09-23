@@ -7,6 +7,7 @@ import {
   Popover,
   PopoverAnchor,
   PopoverContent,
+  coveredDays,
   useFormat,
 } from '@mochi/web'
 import { MapPin } from 'lucide-react'
@@ -34,9 +35,15 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
 
   let span: string
   if (instance.allday) {
-    span = oneDay
-      ? format.formatLongDate(start)
-      : format.formatDayRange(start, lastDay)
+    // By the days the occurrence covers, not its instants, so the dates read
+    // the same in every zone.
+    const days = coveredDays(instance, format.zonedDay)
+    const first = new Date(format.timestampAt(days.start, 720) * 1000)
+    const last = new Date(format.timestampAt(days.finish, 720) * 1000)
+    span =
+      days.start === days.finish
+        ? format.formatLongDate(first)
+        : format.formatDayRange(first, last)
   } else if (oneDay) {
     const day = format.formatLongDate(start)
     const from = format.formatClock(start)
