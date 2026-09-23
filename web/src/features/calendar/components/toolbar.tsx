@@ -118,12 +118,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
             </Button>
           </PopoverTrigger>
           <PopoverContent align='start' className='w-72'>
-            <MiniMonth
-              selected={date}
-              today={today}
-              highlight={{ from: range.from, days: range.days }}
-              onSelect={setDate}
-            />
+            <MiniMonth selected={date} today={today} onSelect={setDate} />
           </PopoverContent>
         </Popover>
       )}

@@ -49,17 +49,8 @@ import { EventEditor } from '@/features/calendar/editor'
 export function CalendarsLayout() {
   const { t } = useLingui()
   const { isDesktop } = useScreenSize()
-  const {
-    ordered,
-    isLoading,
-    shown,
-    toggle,
-    only,
-    date,
-    setDate,
-    today,
-    range,
-  } = useCalendarContext()
+  const { ordered, isLoading, shown, toggle, only, date, setDate, today } =
+    useCalendarContext()
 
   const [createOpen, setCreateOpen] = useState(false)
   const [subscribeOpen, setSubscribeOpen] = useState(false)
@@ -107,7 +98,8 @@ export function CalendarsLayout() {
       await toastAction(pollMutation.mutateAsync(calendar.id), {
         loading: t`Checking for changes...`,
         success: t`Calendar up to date`,
-        error: (error) => getErrorMessage(error, t`Failed to check the calendar`),
+        error: (error) =>
+          getErrorMessage(error, t`Failed to check the calendar`),
       })
     } catch {
       // toastAction already showed error
@@ -217,12 +209,7 @@ export function CalendarsLayout() {
         sidebarHeader={
           isDesktop ? (
             <div className='pt-3'>
-              <MiniMonth
-                selected={date}
-                today={today}
-                highlight={{ from: range.from, days: range.days }}
-                onSelect={setDate}
-              />
+              <MiniMonth selected={date} today={today} onSelect={setDate} />
             </div>
           ) : undefined
         }
@@ -243,10 +230,7 @@ export function CalendarsLayout() {
 
       <SubscribeDialog open={subscribeOpen} onOpenChange={setSubscribeOpen} />
 
-      <RenameDialog
-        calendar={renaming}
-        onClose={() => setRenaming(null)}
-      />
+      <RenameDialog calendar={renaming} onClose={() => setRenaming(null)} />
 
       <ColourDialog
         calendar={recolouring}
