@@ -10,6 +10,7 @@ import {
   dayOfWeek,
   MonthGrid,
   monthOf,
+  stepDate,
   TimeGrid,
   useFormat,
   usePageTitle,
@@ -35,6 +36,7 @@ export function CalendarPage() {
   const {
     view,
     range,
+    date,
     setDate,
     setView,
     today,
@@ -238,6 +240,7 @@ export function CalendarPage() {
           setDate(day)
           setView('day')
         }}
+        onStep={(direction) => setDate(stepDate(view, date, direction))}
       />
     )
 
