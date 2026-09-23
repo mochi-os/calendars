@@ -321,6 +321,10 @@ msgstr "Сигурен ли си дека сакаш да се повлечеш?
 msgid "Ascending"
 msgstr "Растечки"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "На море"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Во времето на настанот"
@@ -877,7 +881,6 @@ msgstr "Стандардно подредување"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Претходни настани"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Уреди"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Време на крај"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Временска зона на крајот"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Завршува"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Завршува пред да започне"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Поставки"
 msgid "Show classes"
 msgstr "Прикажи класи"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Прикажувај ги настаните во нивната сопствена временска зона"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Прикажи полиња"
@@ -2501,6 +2515,10 @@ msgstr "Започнете ја дискусијата со додавање н�
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Време на почеток"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Временска зона на почетокот"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Четврток"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Временска зона"
 
 #: src/features/calendar/editor.tsx

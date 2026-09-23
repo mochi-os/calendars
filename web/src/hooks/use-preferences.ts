@@ -21,6 +21,7 @@ export const DEFAULTS: Preferences = {
   duration: 60,
   reminder: 15,
   view: 'month',
+  zones: false,
 }
 
 export const usePreferencesQuery = () =>

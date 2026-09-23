@@ -321,6 +321,10 @@ msgstr "Tu bawer î ku dixwazî teslîm bibî? {opponentName} dê di lîstikê d
 msgid "Ascending"
 msgstr "Hilkişandî"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Li deryayê"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Di dema bûyerê de"
@@ -877,7 +881,6 @@ msgstr "Rêzkirina standard"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Bûyerên berê"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Sererast bike"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Dema dawî"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Herêma demê ya dawiyê"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Diqede"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Berî ku dest pê bike diqede"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Mîheng"
 msgid "Show classes"
 msgstr "Çînan nîşan bide"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Bûyeran di herêma demê ya wan de nîşan bide"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Qadan nîşan bide"
@@ -2501,6 +2515,10 @@ msgstr "Bi zêdekirina şîroveya yekem nîqaşê dest pê bike."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Dema destpêkê"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Herêma demê ya destpêkê"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,8 +2678,8 @@ msgid "Thursday"
 msgstr "Pêncşem"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
-msgstr "Herêma demê"
+msgid "Time zone"
+msgstr "Cona demê"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"

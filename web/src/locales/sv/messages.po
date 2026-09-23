@@ -321,6 +321,10 @@ msgstr "Är du säker på att du vill ge upp? {opponentName} kommer att vinna pa
 msgid "Ascending"
 msgstr "Stigande"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Till sjöss"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "När händelsen börjar"
@@ -877,7 +881,6 @@ msgstr "Standardsortering"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Tidigare händelser"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Redigera"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Sluttid"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Tidszon för slut"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Slutar"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Slutar innan den börjar"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Inställningar"
 msgid "Show classes"
 msgstr "Visa klasser"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Visa händelser i deras egen tidszon"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Visa fält"
@@ -2501,6 +2515,10 @@ msgstr "Starta diskussionen genom att lägga till den första kommentaren."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Starttid"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Tidszon för start"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Torsdag"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Tidszon"
 
 #: src/features/calendar/editor.tsx

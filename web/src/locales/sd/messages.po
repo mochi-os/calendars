@@ -321,6 +321,10 @@ msgstr "ڇا توهان پڪ سان دستبردار ٿيڻ چاهيو ٿا؟ {o
 msgid "Ascending"
 msgstr "گهٽ کان وڌيڪ"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "سمنڊ ۾"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "واقعي جي وقت تي"
@@ -877,7 +881,6 @@ msgstr "ڊفالٽ ترتيب"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "اڳيان واقعا"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "ترميم"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "پڄاڻي جو وقت"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "پڄاڻي جو ٽائيم زون"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "ختم ٿئي ٿو"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "شروع ٿيڻ کان اڳ ختم ٿئي ٿو"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "سيٽنگون"
 msgid "Show classes"
 msgstr "ڪلاسز ڏيکاريو"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "واقعن کي انهن جي پنهنجي ٽائيم زون ۾ ڏيکاريو"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "فيلڊ ڏيکاريو"
@@ -2501,6 +2515,10 @@ msgstr "پهريون تبصرو شامل ڪري بحث شروع ڪريو."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "شروع جو وقت"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "شروعات جو ٽائيم زون"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "خميس"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "وقت جو زون"
 
 #: src/features/calendar/editor.tsx

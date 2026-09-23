@@ -74,22 +74,19 @@ export function useEventMove() {
   /** A block dragged or resized in the day and week views. */
   const toTime =
     (instance: Instance, start: number, finish: number) => (scope: Scope) =>
-      apply(instance, scope, (draft) => {
-        const zone = draft.timezone
-        return {
-          ...draft,
-          start: zonedDay(new Date(start * 1000), zone),
-          startTime: zonedMinutes(new Date(start * 1000), zone),
-          finish: zonedDay(new Date(finish * 1000), zone),
-          finishTime: zonedMinutes(new Date(finish * 1000), zone),
-        }
-      })
+      apply(instance, scope, (draft) => ({
+        ...draft,
+        start: zonedDay(new Date(start * 1000), draft.zone.start),
+        startTime: zonedMinutes(new Date(start * 1000), draft.zone.start),
+        finish: zonedDay(new Date(finish * 1000), draft.zone.finish),
+        finishTime: zonedMinutes(new Date(finish * 1000), draft.zone.finish),
+      }))
 
   /** A chip dragged onto another day in the month and multiweek views. */
   const toDay = (instance: Instance, day: string) => (scope: Scope) =>
     apply(instance, scope, (draft) => {
-      const from = coveredDays(instance, (date) =>
-        zonedDay(date, draft.timezone)
+      const from = coveredDays(instance, (date, zone) =>
+        zonedDay(date, zone || draft.zone.start)
       ).start
       const shift = daysBetween(from, day)
       if (shift === 0) return draft

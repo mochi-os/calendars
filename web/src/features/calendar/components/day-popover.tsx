@@ -10,6 +10,7 @@ import {
   useFormat,
 } from '@mochi/web'
 import type { Instance } from '@/api/types/events'
+import { useCalendarContext } from '@/context/calendar-context'
 
 interface Props {
   /** The day whose occurrences are listed, or null when none is open. */
@@ -30,6 +31,7 @@ export function DayPopover({
 }: Props) {
   const { t } = useLingui()
   const format = useFormat()
+  const { preferences } = useCalendarContext()
   if (!day || !anchor) return null
 
   const list = instances
@@ -83,7 +85,10 @@ export function DayPopover({
                 <span className='text-muted-foreground shrink-0'>
                   {instance.allday
                     ? t`All day`
-                    : format.formatClock(new Date(instance.start * 1000))}
+                    : format.formatClock(
+                        new Date(instance.start * 1000),
+                        preferences.zones ? instance.zone?.start : undefined
+                      )}
                 </span>
                 <span className='min-w-0 flex-1 truncate'>
                   {instance.summary}

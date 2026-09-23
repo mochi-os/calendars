@@ -321,6 +321,10 @@ msgstr "本当に投了しますか?{opponentName}の勝ちになります。"
 msgid "Ascending"
 msgstr "昇順"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "海上"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "予定の開始時刻"
@@ -877,7 +881,6 @@ msgstr "デフォルトの並び順"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "以前の予定"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "編集"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "終了時刻"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "終了のタイムゾーン"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "終了条件"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "開始より前に終了"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "設定"
 msgid "Show classes"
 msgstr "クラスを表示"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "予定をそれぞれのタイムゾーンで表示"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "フィールドを表示"
@@ -2501,6 +2515,10 @@ msgstr "最初のコメントを追加してディスカッションを始めま
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "開始時刻"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "開始のタイムゾーン"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "木曜日"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "タイムゾーン"
 
 #: src/features/calendar/editor.tsx

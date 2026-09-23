@@ -321,6 +321,10 @@ msgstr "Ali ste prepričani, da se želite predati? {opponentName} bo zmagal igr
 msgid "Ascending"
 msgstr "Naraščajoče"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Na morju"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Ob času dogodka"
@@ -877,7 +881,6 @@ msgstr "Privzeto razvrščanje"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Prejšnji dogodki"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Uredi"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Čas konca"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Časovni pas konca"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Se konča"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Konča se, preden se začne"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Nastavitve"
 msgid "Show classes"
 msgstr "Prikaži razrede"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Prikaži dogodke v njihovem lastnem časovnem pasu"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Prikaži polja"
@@ -2501,6 +2515,10 @@ msgstr "Začni razpravo z dodajanjem prvega komentarja."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Čas začetka"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Časovni pas začetka"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Četrtek"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Časovni pas"
 
 #: src/features/calendar/editor.tsx

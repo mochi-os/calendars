@@ -9,7 +9,9 @@ import {
   componentDraft,
   deletedOccurrence,
   draftComponent,
+  draftInstants,
   editedComponents,
+  foreignZones,
   emptyRepeat,
   masterComponent,
   property,
@@ -34,7 +36,7 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     startTime: 9 * 60,
     finish: '2026-09-16',
     finishTime: 10 * 60,
-    timezone: ZONE,
+    zone: { start: ZONE, finish: ZONE },
     location: '',
     description: '',
     repeat: emptyRepeat(),
@@ -461,3 +463,94 @@ describe('masterComponent', () => {
     expect(masterComponent([])).toBeUndefined()
   })
 })
+
+describe('a zone per end', () => {
+  const flight: EventDraft = {
+    ...draft(),
+    allday: false,
+    start: '2026-09-25',
+    startTime: 600,
+    finish: '2026-09-25',
+    finishTime: 780,
+    zone: { start: 'Europe/London', finish: 'America/New_York' },
+  }
+
+  it('writes each end with its own TZID', () => {
+    const component = draftComponent(flight)
+    expect(property(component, 'DTSTART')?.params.TZID).toEqual(['Europe/London'])
+    expect(property(component, 'DTEND')?.params.TZID).toEqual(['America/New_York'])
+    // 10:00 London is 09:00Z, 13:00 New York is 17:00Z: eight hours.
+    const { start, finish } = draftInstants(flight)
+    expect(finish - start).toBe(8 * 3600)
+  })
+
+  it('reads each end back in its own zone', () => {
+    const read = componentDraft(draftComponent(flight), 'cal', 'UTC')
+    expect(read.zone).toEqual({ start: 'Europe/London', finish: 'America/New_York' })
+    expect([read.startTime, read.finishTime]).toEqual([600, 780])
+  })
+
+  it('gives a DTEND without a zone the start zone, and neither the user zone', () => {
+    const one = componentDraft(
+      {
+        name: 'VEVENT',
+        properties: [
+          { name: 'DTSTART', params: { TZID: ['Asia/Tokyo'] }, value: '20260925T090000' },
+          { name: 'DTEND', params: {}, value: '20260925T003000Z' },
+        ],
+        components: [],
+      },
+      'cal',
+      'Europe/London'
+    )
+    expect(one.zone).toEqual({ start: 'Asia/Tokyo', finish: 'Asia/Tokyo' })
+    const none = componentDraft(
+      {
+        name: 'VEVENT',
+        properties: [
+          { name: 'DTSTART', params: {}, value: '20260925T090000Z' },
+          { name: 'DTEND', params: {}, value: '20260925T100000Z' },
+        ],
+        components: [],
+      },
+      'cal',
+      'Europe/London'
+    )
+    expect(none.zone).toEqual({ start: 'Europe/London', finish: 'Europe/London' })
+  })
+
+  it('tells an end that precedes its start as an instant from one that only reads earlier', () => {
+    // Monday 10:00 Auckland to Sunday 15:00 Tahiti reads backwards but is four hours on.
+    const hop = { ...flight, start: '2026-09-28', finish: '2026-09-27', finishTime: 900, zone: { start: 'Pacific/Auckland', finish: 'Pacific/Tahiti' } }
+    expect(draftInstants(hop).finish - draftInstants(hop).start).toBe(4 * 3600)
+    const wrong = { ...flight, finishTime: 540, zone: { start: 'Europe/London', finish: 'Europe/London' } }
+    expect(draftInstants(wrong).finish < draftInstants(wrong).start).toBe(true)
+  })
+})
+
+describe('foreignZones', () => {
+  const user = 'Europe/London'
+  it('says nothing when both ends are in the user zone, which a zone-less event also is', () => {
+    expect(foreignZones(draft({ allday: false, zone: { start: user, finish: user } }), user)).toBe(false)
+    const none = componentDraft(
+      {
+        name: 'VEVENT',
+        properties: [
+          { name: 'DTSTART', params: {}, value: '20260925T090000Z' },
+          { name: 'DTEND', params: {}, value: '20260925T100000Z' },
+        ],
+        components: [],
+      },
+      'cal',
+      user
+    )
+    expect(foreignZones(none, user)).toBe(false)
+  })
+
+  it('shows the zones when either end is elsewhere, never on an all-day event', () => {
+    expect(foreignZones(draft({ allday: false, zone: { start: user, finish: 'America/New_York' } }), user)).toBe(true)
+    expect(foreignZones(draft({ allday: false, zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' } }), user)).toBe(true)
+    expect(foreignZones(draft({ allday: true, zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' } }), user)).toBe(false)
+  })
+})
+

@@ -12,6 +12,7 @@ import {
   flightNumber,
   useFormat,
   useLinks,
+  zoneCity,
 } from '@mochi/web'
 import { Clock, MapPin, Plane, TextAlignStart } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
@@ -20,13 +21,20 @@ interface Props {
   instance: Instance | null
   /** Where the block that was clicked sits on screen. */
   anchor: DOMRect | null
+  /** Whether the views show events in their own zones. */
+  zones?: boolean
   onClose: () => void
 }
 
 /** The first few lines of a description; the editor shows the whole thing. */
 const DESCRIPTION_HEAD = 240
 
-export function EventPopover({ instance, anchor, onClose }: Props) {
+export function EventPopover({
+  instance,
+  anchor,
+  zones = false,
+  onClose,
+}: Props) {
   const { t } = useLingui()
   const format = useFormat()
   const links = useLinks()
@@ -35,9 +43,40 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
   const start = new Date(instance.start * 1000)
   const finish = new Date(instance.finish * 1000)
   const lastDay = new Date(Math.max(instance.start, instance.finish - 1) * 1000)
-  const oneDay = format.zonedDay(start) === format.zonedDay(lastDay)
+  // The zones the ends were written in, when they are not the user's own.
+  const startZone = instance.zone?.start || undefined
+  const finishZone = instance.zone?.finish || undefined
+  const foreign =
+    !instance.allday &&
+    ((startZone !== undefined && startZone !== format.timezone) ||
+      (finishZone !== undefined && finishZone !== format.timezone))
+
+  // The span read in a pair of zones, the user's own when none is given.
+  // With cities, each end names the city of its zone: "10:00 London to
+  // 13:00 New York".
+  const describe = (
+    at: { start?: string; finish?: string },
+    cities: boolean
+  ) => {
+    const label = (zone?: string) =>
+      cities ? ` ${zoneCity(zone ?? format.timezone)}` : ''
+    const oneDay =
+      format.zonedDay(start, at.start) === format.zonedDay(lastDay, at.finish)
+    if (oneDay) {
+      const day = format.formatLongDate(start, at.start)
+      const from = `${format.formatClock(start, at.start)}${label(at.start)}`
+      const to = `${format.formatClock(finish, at.finish)}${label(at.finish)}`
+      return t`${day}, ${from} to ${to}`
+    }
+    const from = `${format.formatLongDate(start, at.start)} ${format.formatClock(start, at.start)}${label(at.start)}`
+    const to = `${format.formatLongDate(finish, at.finish)} ${format.formatClock(finish, at.finish)}${label(at.finish)}`
+    return t`${from} to ${to}`
+  }
 
   let span: string
+  // The span in the ends' own zones, beneath the user's when the views keep
+  // the user's zone, and the span itself when they show events in theirs.
+  let own = ''
   if (instance.allday) {
     // By the days the occurrence covers, not its instants, so the dates read
     // the same in every zone.
@@ -48,15 +87,11 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
       days.start === days.finish
         ? format.formatLongDate(first)
         : format.formatDayRange(first, last)
-  } else if (oneDay) {
-    const day = format.formatLongDate(start)
-    const from = format.formatClock(start)
-    const to = format.formatClock(finish)
-    span = t`${day}, ${from} to ${to}`
+  } else if (zones && foreign) {
+    span = describe({ start: startZone, finish: finishZone }, true)
   } else {
-    const from = `${format.formatLongDate(start)} ${format.formatClock(start)}`
-    const to = `${format.formatLongDate(finish)} ${format.formatClock(finish)}`
-    span = t`${from} to ${to}`
+    span = describe({}, false)
+    if (foreign) own = describe({ start: startZone, finish: finishZone }, true)
   }
 
   // A subscription's description may be HTML, as Google's are; the summary
@@ -107,6 +142,12 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
           <Clock className='mt-0.5 size-4 shrink-0' aria-hidden />
           <span className='min-w-0'>{span}</span>
         </p>
+        {own && (
+          <p className='text-muted-foreground flex items-start gap-1.5 text-sm'>
+            <span aria-hidden className='mt-0.5 size-4 shrink-0' />
+            <span className='min-w-0'>{own}</span>
+          </p>
+        )}
         {instance.location && (
           <p className='flex items-start gap-1.5 text-sm'>
             {flight ? (

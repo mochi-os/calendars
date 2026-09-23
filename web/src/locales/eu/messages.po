@@ -321,6 +321,10 @@ msgstr "Ziur al zaude amore eman nahi duzula? {opponentName}-(e)k irabaziko du j
 msgid "Ascending"
 msgstr "Gorakorra"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Itsasoan"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Gertaeraren unean"
@@ -877,7 +881,6 @@ msgstr "Lehenetsitako ordena"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Aurreko gertaerak"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Editatu"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Amaiera-ordua"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Amaierako ordu-zona"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Amaitzen da"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Hasi baino lehen amaitzen da"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Ezarpenak"
 msgid "Show classes"
 msgstr "Erakutsi klaseak"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Erakutsi gertaerak beren ordu-zonan"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Erakutsi eremuak"
@@ -2501,6 +2515,10 @@ msgstr "Hasi eztabaida lehen iruzkina gehituz."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Hasiera-ordua"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Hasierako ordu-zona"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Osteguna"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Ordu-zona"
 
 #: src/features/calendar/editor.tsx

@@ -321,6 +321,10 @@ msgstr "Bạn có chắc muốn xin thua không? {opponentName} sẽ thắng vá
 msgid "Ascending"
 msgstr "Tăng dần"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Trên biển"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Vào lúc diễn ra sự kiện"
@@ -877,7 +881,6 @@ msgstr "Sắp xếp mặc định"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Sự kiện trước"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Sửa"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Giờ kết thúc"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Múi giờ kết thúc"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Kết thúc vào"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Kết thúc trước khi bắt đầu"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Cài đặt"
 msgid "Show classes"
 msgstr "Hiển thị lớp"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Hiển thị sự kiện theo múi giờ riêng của chúng"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Hiển thị trường"
@@ -2501,6 +2515,10 @@ msgstr "Bắt đầu thảo luận bằng cách thêm bình luận đầu tiên.
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Thời gian bắt đầu"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Múi giờ bắt đầu"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Thứ năm"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Múi giờ"
 
 #: src/features/calendar/editor.tsx

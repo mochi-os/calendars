@@ -321,6 +321,10 @@ msgstr "Çekilmek istediğinizden emin misiniz? {opponentName} oyunu kazanacak."
 msgid "Ascending"
 msgstr "Artan"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Denizde"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Etkinlik saatinde"
@@ -877,7 +881,6 @@ msgstr "Varsayılan sıralama"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Önceki etkinlikler"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Bitiş saati"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Bitiş saat dilimi"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Sona erer"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Başlamadan önce bitiyor"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Ayarlar"
 msgid "Show classes"
 msgstr "Sınıfları göster"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Etkinlikleri kendi saat dilimlerinde göster"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Alanları göster"
@@ -2501,6 +2515,10 @@ msgstr "İlk yorumu ekleyerek tartışmayı başlat."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Başlangıç zamanı"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Başlangıç saat dilimi"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Perşembe"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Saat dilimi"
 
 #: src/features/calendar/editor.tsx

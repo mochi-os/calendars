@@ -321,6 +321,10 @@ msgstr "நீங்கள் சரணடைய விரும்புகி�
 msgid "Ascending"
 msgstr "ஏறுவரிசை"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "கடலில்"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "நிகழ்வு தொடங்கும் நேரத்தில்"
@@ -877,7 +881,6 @@ msgstr "இயல்புநிலை வரிசை"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "முந்தைய நிகழ்வுகள்"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "திருத்து"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "முடியும் நேரம்"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "முடிவு நேர மண்டலம்"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "முடிவடைகிறது"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "தொடங்குவதற்கு முன்பே முடிகிறது"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "அமைப்புகள்"
 msgid "Show classes"
 msgstr "வகுப்புகளை காட்டு"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "நிகழ்வுகளை அவற்றின் சொந்த நேர மண்டலத்தில் காட்டு"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "புலங்களை காட்டு"
@@ -2501,6 +2515,10 @@ msgstr "முதல் கருத்தை சேர்த்து விவ
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "தொடக்க நேரம்"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "தொடக்க நேர மண்டலம்"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "வியாழக்கிழமை"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "நேர மண்டலம்"
 
 #: src/features/calendar/editor.tsx

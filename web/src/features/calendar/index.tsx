@@ -15,6 +15,7 @@ import {
   useFormat,
   usePageTitle,
   useShellStorage,
+  offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
 import { Check } from 'lucide-react'
@@ -63,14 +64,18 @@ export function CalendarPage() {
 
   const mover = useEventMove()
 
-  const start = format.timestampAt(range.from, 0)
-  const finish = format.timestampAt(addDays(range.from, range.days), 0)
+  // With events shown in their own zones, a day's occurrences can begin or
+  // end up to a day away by the user's clock, so the window grows a day each
+  // side and the views place what falls on their days.
+  const margin = preferences.zones ? 86400 : 0
+  const start = format.timestampAt(range.from, 0) - margin
+  const finish = format.timestampAt(addDays(range.from, range.days), 0) + margin
   // The list fetches its own pages, so the range query is idle there.
   const shown = useMemo(
     () => (view === 'list' ? [] : visible.map((c) => c.id)),
     [view, visible]
   )
-  const { data } = useInstancesQuery(start, finish, shown)
+  const { data } = useInstancesQuery(start, finish, shown, format.timezone)
   // A calendar's colour comes from the calendar list, so recolouring one is
   // seen at once rather than when the range is fetched again.
   const colours = useMemo(
@@ -111,8 +116,17 @@ export function CalendarPage() {
         readonly: instance.readonly || instance.event.startsWith('birthday-'),
         recurring: instance.recurring,
         exception: instance.exception,
+        // Each end's own zone, only when the user shows events in their
+        // zones; an end without one is placed in the user's zone.
+        zone:
+          preferences.zones && instance.zone
+            ? {
+                start: instance.zone.start || undefined,
+                finish: instance.zone.finish || undefined,
+              }
+            : undefined,
       })),
-    [instances]
+    [instances, preferences.zones]
   )
 
   const days = useMemo(() => {
@@ -141,7 +155,7 @@ export function CalendarPage() {
         startTime: format.zonedMinutes(new Date(from * 1000)),
         finish: format.zonedDay(new Date(to * 1000)),
         finishTime: format.zonedMinutes(new Date(to * 1000)),
-        timezone: format.timezone,
+        zone: { start: format.timezone, finish: format.timezone },
         location: '',
         description: '',
         repeat: emptyRepeat(),
@@ -202,6 +216,9 @@ export function CalendarPage() {
         hours={preferences.hours}
         workdays={preferences.days}
         today={today}
+        // With events at their own wall-clock times, the gutter says whose
+        // clock its hours are.
+        zone={preferences.zones ? offsetLabel(format.timezone) : undefined}
         onSelect={select}
         onCreate={(from, to) =>
           setEditing({ mode: 'create', draft: compose(from, to) })
@@ -257,6 +274,7 @@ export function CalendarPage() {
       <EventPopover
         instance={selected?.instance ?? null}
         anchor={selected?.anchor ?? null}
+        zones={preferences.zones}
         onClose={() => setSelected(null)}
       />
 

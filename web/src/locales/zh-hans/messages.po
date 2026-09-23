@@ -321,6 +321,10 @@ msgstr "确定要认输吗?{opponentName} 将赢得比赛。"
 msgid "Ascending"
 msgstr "升序"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "海上"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "活动开始时"
@@ -877,7 +881,6 @@ msgstr "默认排序"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "更早的活动"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "编辑"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "结束时间"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "结束时区"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "结束于"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "结束早于开始"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "设置"
 msgid "Show classes"
 msgstr "显示分类"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "按事件自身的时区显示"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "显示字段"
@@ -2501,6 +2515,10 @@ msgstr "添加第一条评论以开始讨论。"
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "开始时间"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "开始时区"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "星期四"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "时区"
 
 #: src/features/calendar/editor.tsx

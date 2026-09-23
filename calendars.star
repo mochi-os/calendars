@@ -138,6 +138,34 @@ def calendar_wrap(components, timezones=[]):
 		{"name": "PRODID", "params": {}, "value": _PRODID},
 	], "components": list(timezones) + list(components)}
 
+# timezones_named(components, present) -> list: a VTIMEZONE for every zone the
+# components' TZID parameters name that `present` (VTIMEZONE components, or a
+# dict of them by TZID) does not already hold, from the zone database. An
+# object that names a zone must carry its VTIMEZONE, which the editors do not
+# send; a name the database does not know gets none.
+def timezones_named(components, present=[]):
+	held = {}
+	for tz in (present.values() if type(present) == "dict" else present):
+		if type(tz) == "dict":
+			held[property_value(tz, "TZID")] = True
+	out = []
+	# The components and their children, walked without recursion, which
+	# Starlark refuses: an override's alarm sits two levels down.
+	pending = [c for c in components if type(c) == "dict"]
+	while pending:
+		component = pending.pop()
+		for p in component.get("properties", []):
+			if type(p) != "dict":
+				continue
+			for name in (p.get("params") or {}).get("TZID", []):
+				if name and name not in held:
+					held[name] = True
+					tz = mochi.ical.timezone(name)
+					if tz:
+						out.append(tz)
+		pending.extend([c for c in component.get("components", []) if type(c) == "dict"])
+	return out
+
 # duration_seconds(text) -> int or None: an iCalendar duration such as -PT15M,
 # -P1D or PT0S, as signed seconds.
 def duration_seconds(text):
@@ -437,7 +465,7 @@ def event_text(components, uid):
 		property_set(component, "UID", uid)
 		property_set(component, "DTSTAMP", stamp)
 		clean.append(component)
-	text = mochi.ical.format(calendar_wrap(clean))
+	text = mochi.ical.format(calendar_wrap(clean, timezones_named(clean)))
 	if not text or len(text) > _ICS_MAXIMUM:
 		return None
 	return text
@@ -496,16 +524,21 @@ def schedule_reminder(e):
 	if not row:
 		return
 	# The occurrence must still exist: the event may have moved since.
-	found = False
+	found = None
 	for occurrence in mochi.ical.instances(row["ics"], instance, instance + 1):
 		if occurrence["start"] == instance:
-			found = True
+			found = occurrence
 	if not found:
 		return
 	calendar = mochi.db.row("select id from calendars where id=?", row["calendar"])
 	title = row["summary"] or mochi.app.label("notifications.reminder.untitled")
-	body = mochi.app.label("notifications.reminder.body", time=mochi.time.local(instance, "time"))
-	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date")
+	# The time as the calendar shows it: in the event's own zone when the user
+	# shows events in their zones, else in the user's.
+	zone = ""
+	if preferences_load(e.user)["zones"]:
+		zone = found.get("zone", {}).get("start", "")
+	body = mochi.app.label("notifications.reminder.body", time=mochi.time.local(instance, "time", timezone=zone))
+	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone)
 	mochi.service.call("notifications", "send", "reminder", row["id"], title, body, url,
 		mochi.app.label("notifications.topic.reminder"), event=row["id"] + ":" + str(instance))
 	# A recurring event keeps one occurrence scheduled past the window.
@@ -890,6 +923,11 @@ def action_events(a):
 	if not span:
 		return
 	start, finish = span
+	# The zone the client resolved "auto" to, so floating times and day
+	# boundaries agree with what it draws; else the server's own resolution.
+	timezone = a.input("timezone", "")
+	if timezone and not mochi.text.valid(timezone, "timezone"):
+		timezone = ""
 	wanted = [c for c in a.input("calendars", "").split(",") if c]
 	out = []
 	for calendar in calendars_rows(identity):
@@ -900,7 +938,7 @@ def action_events(a):
 			continue
 		readonly = calendar_readonly(calendar)
 		for row in mochi.db.rows("select id, ics, uid from events where calendar=? and component='VEVENT' and start<? and ( finish>? or finish=0 or recurring=1 )", calendar["id"], finish, start):
-			for instance in mochi.ical.instances(row["ics"], start, finish):
+			for instance in mochi.ical.instances(row["ics"], start, finish, timezone=timezone):
 				instance["event"] = row["id"]
 				instance["calendar"] = calendar["id"]
 				instance["colour"] = calendar["colour"]
@@ -1186,7 +1224,7 @@ def calendar_text(row):
 					timezones[property_value(c, "TZID")] = c
 				else:
 					components.append(c)
-	calendar = calendar_wrap(components, timezones.values())
+	calendar = calendar_wrap(components, list(timezones.values()) + timezones_named(components, timezones))
 	if name:
 		calendar["properties"].append({"name": "X-WR-CALNAME", "params": {}, "value": name})
 	if not components:
@@ -1215,10 +1253,16 @@ def action_ics(a):
 
 # === Actions: preferences ===
 
-_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month"}
+# "zones" shows each event at its own wall-clock time, each end in the zone it
+# was written in, rather than converted into the user's zone.
+_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False}
 
 def preferences_read(a):
-	stored = json.decode(a.user.preference.get("calendars") or "{}", None)
+	return preferences_load(a.user)
+
+# The preferences of a user object, a request's or a schedule's.
+def preferences_load(user):
+	stored = json.decode(user.preference.get("calendars") or "{}", None)
 	out = {}
 	for key in _PREFERENCES:
 		out[key] = stored.get(key, _PREFERENCES[key]) if type(stored) == "dict" else _PREFERENCES[key]
@@ -1255,6 +1299,9 @@ def action_preferences_set(a):
 	view = body.get("view", current["view"])
 	if view not in ("day", "week", "multiweek", "month", "list"):
 		view = current["view"]
+	zones = body.get("zones", current["zones"])
+	if type(zones) != "bool":
+		zones = current["zones"]
 	out = {
 		"hours": {"start": start, "finish": finish},
 		"days": sorted(set(days)) if days else [],
@@ -1262,6 +1309,7 @@ def action_preferences_set(a):
 		"duration": bounded(body.get("duration", current["duration"]), 0, 1440, current["duration"]),
 		"reminder": bounded(body.get("reminder", current["reminder"]), -1, 10080, current["reminder"]),
 		"view": view,
+		"zones": zones,
 	}
 	a.user.preference.set("calendars", json.encode(out))
 	return {"data": {"preferences": out}}

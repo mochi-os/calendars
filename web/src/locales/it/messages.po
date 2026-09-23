@@ -321,6 +321,10 @@ msgstr "Sei sicuro di voler abbandonare? {opponentName} vincerà la partita."
 msgid "Ascending"
 msgstr "Crescente"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "In mare"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "All'ora dell'evento"
@@ -877,7 +881,6 @@ msgstr "Ordinamento predefinito"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Eventi precedenti"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Modifica"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Ora di fine"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Fuso orario di fine"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Termina"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Finisce prima di iniziare"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Impostazioni"
 msgid "Show classes"
 msgstr "Mostra classi"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Mostra gli eventi nel loro fuso orario"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Mostra campi"
@@ -2501,6 +2515,10 @@ msgstr "Avvia la discussione aggiungendo il primo commento."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Ora di inizio"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Fuso orario di inizio"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Giovedì"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Fuso orario"
 
 #: src/features/calendar/editor.tsx

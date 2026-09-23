@@ -321,6 +321,10 @@ msgstr "Sigurado ka bang gusto mong sumuko? Mananalo si {opponentName} sa laro."
 msgid "Ascending"
 msgstr "Pataas"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Sa dagat"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Sa oras ng kaganapan"
@@ -877,7 +881,6 @@ msgstr "Default na pag-uuri"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Mga nakaraang kaganapan"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "I-edit"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Oras ng pagtatapos"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Time zone ng wakas"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Nagtatapos"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Nagtatapos bago magsimula"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Mga setting"
 msgid "Show classes"
 msgstr "Ipakita ang mga klase"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Ipakita ang mga kaganapan sa sarili nilang time zone"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Ipakita ang mga field"
@@ -2501,6 +2515,10 @@ msgstr "Simulan ang diskusyon sa pamamagitan ng pagdagdag ng unang komento."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Oras ng simula"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Time zone ng simula"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Huwebes"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Time zone"
 
 #: src/features/calendar/editor.tsx

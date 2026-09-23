@@ -321,6 +321,10 @@ msgstr "Ydych chi'n siŵr eich bod am ymddiswyddo? Bydd {opponentName} yn ennill
 msgid "Ascending"
 msgstr "Esgynnol"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Ar y môr"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Ar adeg y digwyddiad"
@@ -877,7 +881,6 @@ msgstr "Trefnu diofyn"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Digwyddiadau cynharach"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Golygu"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Amser gorffen"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Cylchfa amser gorffen"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Yn gorffen"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Yn gorffen cyn iddo ddechrau"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Gosodiadau"
 msgid "Show classes"
 msgstr "Dangos dosbarthiadau"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Dangos digwyddiadau yn eu cylchfa amser eu hunain"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Dangos meysydd"
@@ -2501,6 +2515,10 @@ msgstr "Cychwynnwch y drafodaeth drwy ychwanegu'r sylw cyntaf."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Amser cychwyn"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Cylchfa amser dechrau"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,8 +2678,8 @@ msgid "Thursday"
 msgstr "Dydd Iau"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
-msgstr "Parth amser"
+msgid "Time zone"
+msgstr "Cylchfa amser"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"

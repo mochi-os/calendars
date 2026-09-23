@@ -44,7 +44,7 @@ interface Props {
 export function Agenda({ onSelect }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { date, today, calendars, visible } = useCalendarContext()
+  const { date, today, calendars, visible, preferences } = useCalendarContext()
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
   const [search, setSearch] = useState('')
 
@@ -67,7 +67,7 @@ export function Agenda({ onSelect }: Props) {
   }, [span, format])
 
   const bounds = useBoundsQuery(shown)
-  const { instances, pending } = useInstancePages(pages, shown)
+  const { instances, pending } = useInstancePages(pages, shown, format.timezone)
 
   const loadedFrom = pages[0].start
   const loadedTo = pages[pages.length - 1].finish
@@ -100,13 +100,16 @@ export function Agenda({ onSelect }: Props) {
   const days = useMemo(() => {
     const out = new Map<string, Instance[]>()
     for (const instance of matches) {
-      const day = coveredDays(instance, format.zonedDay).start
+      const day = coveredDays(
+        preferences.zones ? instance : { ...instance, zone: undefined },
+        format.zonedDay
+      ).start
       const list = out.get(day)
       if (list) list.push(instance)
       else out.set(day, [instance])
     }
     return [...out.entries()]
-  }, [matches, format])
+  }, [matches, format, preferences.zones])
 
   // --- Loading more ---
   //
@@ -253,7 +256,10 @@ export function Agenda({ onSelect }: Props) {
                       <span className='text-muted-foreground w-20 shrink-0 text-sm'>
                         {instance.allday
                           ? t`All day`
-                          : format.formatClock(new Date(instance.start * 1000))}
+                          : format.formatClock(
+                              new Date(instance.start * 1000),
+                              preferences.zones ? instance.zone?.start : undefined
+                            )}
                       </span>
                       <span
                         aria-hidden

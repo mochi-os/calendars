@@ -321,6 +321,10 @@ msgstr "Uqinisekile ukuba ufuna ukunikezela? {opponentName} uza kuphumelela umdl
 msgid "Ascending"
 msgstr "Ukunyuka"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Elwandle"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Ngexesha lomsitho"
@@ -877,7 +881,6 @@ msgstr "Ukuhlela koqobo"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Imisitho edlulileyo"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Hlela"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Ixesha lokuphela"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Ummandla wexesha lokuphela"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Iphela"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Iphela ingekaqali"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Iisetingi"
 msgid "Show classes"
 msgstr "Bonisa iiklasi"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Bonisa iziganeko kummandla wexesha wazo"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Bonisa iindawo"
@@ -2501,6 +2515,10 @@ msgstr "Qalisa ingxoxo ngokongeza ilizwi lokuqala."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Ixesha lokuqalisa"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Ummandla wexesha lokuqala"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Ulwesine"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Ummandla wexesha"
 
 #: src/features/calendar/editor.tsx

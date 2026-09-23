@@ -321,6 +321,10 @@ msgstr "Бууж өгөхдөө итгэлтэй байна уу? {opponentName}
 msgid "Ascending"
 msgstr "Өсөхөөр"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Далайд"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Үйл явдлын үед"
@@ -877,7 +881,6 @@ msgstr "Үндсэн эрэмбэлэлт"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Өмнөх үйл явдлууд"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Засах"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Дуусах цаг"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Дуусах цагийн бүс"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Дуусна"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Эхлэхээс өмнө дуусна"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Тохиргоо"
 msgid "Show classes"
 msgstr "Ангиллуудыг харуулах"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Үйл явдлыг өөрийнх нь цагийн бүсээр харуулах"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Талбаруудыг харуулах"
@@ -2501,6 +2515,10 @@ msgstr "Эхний сэтгэгдэл нэмж хэлэлцүүлэг эхлүү
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Эхлэх цаг"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Эхлэх цагийн бүс"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Пүрэв гараг"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Цагийн бүс"
 
 #: src/features/calendar/editor.tsx

@@ -321,6 +321,10 @@ msgstr "আপনি কি নিশ্চিত যে আপনি হার 
 msgid "Ascending"
 msgstr "ঊর্ধ্বক্রম"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "সমুদ্রে"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "ইভেন্টের সময়ে"
@@ -877,7 +881,6 @@ msgstr "ডিফল্ট সাজানো"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "আগের ইভেন্ট"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "সম্পাদনা"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "শেষের সময়"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "শেষের সময় অঞ্চল"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "শেষ হয়"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "শুরুর আগেই শেষ হয়"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "সেটিংস"
 msgid "Show classes"
 msgstr "ক্লাস দেখান"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "ইভেন্টগুলি তাদের নিজস্ব সময় অঞ্চলে দেখান"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "ফিল্ড দেখান"
@@ -2501,6 +2515,10 @@ msgstr "প্রথম মন্তব্য যোগ করে আলোচ�
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "শুরুর সময়"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "শুরুর সময় অঞ্চল"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "বৃহস্পতিবার"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "সময় অঞ্চল"
 
 #: src/features/calendar/editor.tsx

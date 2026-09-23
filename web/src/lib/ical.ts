@@ -40,7 +40,11 @@ export interface EventDraft {
   /** The last day of an all-day event, or the day the event ends on. */
   finish: string
   finishTime: number
-  timezone: string
+  /**
+   * The zone each end's clock reads in. A flight is 10:00 Europe/London to
+   * 13:00 America/New_York; most events have the same zone at both ends.
+   */
+  zone: { start: string; finish: string }
   location: string
   description: string
   repeat: Repeat
@@ -267,6 +271,32 @@ function alarm(minutes: number, summary: string): Component {
   }
 }
 
+/**
+ * Whether a draft's zones are worth showing: a timed event with an end that is
+ * not in the user's zone. Both ends in the user's zone, or an event that had
+ * no zone at all and so reads in the user's, say nothing the user needs to see.
+ */
+export function foreignZones(draft: EventDraft, timezone: string): boolean {
+  return (
+    !draft.allday &&
+    (draft.zone.start !== timezone || draft.zone.finish !== timezone)
+  )
+}
+
+/** The instants a timed draft's two ends name, each read in its own zone. */
+export function draftInstants(draft: EventDraft): { start: number; finish: number } {
+  if (draft.allday) {
+    return {
+      start: timestampAt(draft.start, 0, draft.zone.start),
+      finish: timestampAt(addDays(draft.finish, 1), 0, draft.zone.finish),
+    }
+  }
+  return {
+    start: timestampAt(draft.start, draft.startTime, draft.zone.start),
+    finish: timestampAt(draft.finish, draft.finishTime, draft.zone.finish),
+  }
+}
+
 // --- Draft to components ---
 
 function startProperty(draft: EventDraft): Property {
@@ -279,7 +309,7 @@ function startProperty(draft: EventDraft): Property {
   }
   return {
     name: 'DTSTART',
-    params: { TZID: [draft.timezone] },
+    params: { TZID: [draft.zone.start] },
     value: dateTimeValue(draft.start, draft.startTime),
   }
 }
@@ -295,7 +325,7 @@ function finishProperty(draft: EventDraft): Property {
   }
   return {
     name: 'DTEND',
-    params: { TZID: [draft.timezone] },
+    params: { TZID: [draft.zone.finish] },
     value: dateTimeValue(draft.finish, draft.finishTime),
   }
 }
@@ -327,7 +357,7 @@ export function draftComponent(
       value: draft.description,
     })
   }
-  const rule = repeatRule(draft.repeat, draft.timezone)
+  const rule = repeatRule(draft.repeat, draft.zone.start)
   if (rule) properties.push({ name: 'RRULE', params: {}, value: rule })
 
   const components = (previous?.components ?? []).filter(
@@ -351,7 +381,10 @@ export function componentDraft(
 ): EventDraft {
   const start = propertyInstant(property(component, 'DTSTART'), timezone)
   const finish = propertyInstant(property(component, 'DTEND'), timezone)
+  // Each end's own zone; an end without one, UTC or floating, is edited in
+  // the user's zone, and a DTEND without one follows the start.
   const zone = property(component, 'DTSTART')?.params?.TZID?.[0] ?? timezone
+  const finishZone = property(component, 'DTEND')?.params?.TZID?.[0] ?? zone
   const allday = start?.allday ?? false
   const startSeconds = start?.seconds ?? Math.floor(Date.now() / 1000)
   // A whole-day DTEND is the day after the last, and an event with neither
@@ -375,9 +408,9 @@ export function componentDraft(
     allday,
     start: zonedDay(new Date(startSeconds * 1000), zone),
     startTime: zonedMinutes(new Date(startSeconds * 1000), zone),
-    finish: zonedDay(new Date(finishSeconds * 1000), zone),
-    finishTime: zonedMinutes(new Date(finishSeconds * 1000), zone),
-    timezone: zone,
+    finish: zonedDay(new Date(finishSeconds * 1000), finishZone),
+    finishTime: zonedMinutes(new Date(finishSeconds * 1000), finishZone),
+    zone: { start: zone, finish: finishZone },
     location: propertyValue(component, 'LOCATION'),
     description: propertyValue(component, 'DESCRIPTION'),
     repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),

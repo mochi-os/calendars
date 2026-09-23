@@ -321,6 +321,10 @@ msgstr "დარწმუნებული ხართ, რომ გსუ�
 msgid "Ascending"
 msgstr "ზრდადობით"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "ზღვაზე"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "ღონისძიების დროს"
@@ -877,7 +881,6 @@ msgstr "ნაგულისხმევი დახარისხება"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "ადრინდელი ღონისძიებები"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "რედაქტირება"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "დასრულების დრო"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "დასრულების დროის სარტყელი"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "სრულდება"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "სრულდება დაწყებამდე"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "პარამეტრები"
 msgid "Show classes"
 msgstr "კლასების ჩვენება"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "მოვლენების ჩვენება საკუთარ დროის სარტყელში"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "ველების ჩვენება"
@@ -2501,6 +2515,10 @@ msgstr "დაიწყეთ დისკუსია პირველი კ
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "დაწყების დრო"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "დაწყების დროის სარტყელი"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "ხუთშაბათი"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "დროის სარტყელი"
 
 #: src/features/calendar/editor.tsx

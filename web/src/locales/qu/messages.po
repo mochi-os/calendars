@@ -321,6 +321,10 @@ msgstr "Saqiyta munanki? {opponentName} pukllayta atipanqa."
 msgid "Ascending"
 msgstr "Wicharispa"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Mama quchapi"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Ruwana pachapi"
@@ -877,7 +881,6 @@ msgstr "Allichay predeterminado"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Ñawpaq ruwanakuna"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Hukchay"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Tukukuy pacha"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Tukukuy pacha suyu"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Tukukun"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Manaraq qallarichkaptin tukun"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Wakichiykuna"
 msgid "Show classes"
 msgstr "Clasekunata rikuchiy"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Ruraykunata kikin pacha suyunpi rikuchiy"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Campoykunata rikuchiy"
@@ -2501,6 +2515,10 @@ msgstr "Ñawpaq comentariota churaspa rimanakuyta qallariy."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Qallariy hora"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Qallariy pacha suyu"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Illapachaw"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Pacha zona"
 
 #: src/features/calendar/editor.tsx

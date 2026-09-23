@@ -321,6 +321,10 @@ msgstr "정말 기권하시겠습니까? {opponentName}이(가) 게임에서 이
 msgid "Ascending"
 msgstr "오름차순"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "해상"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "일정 시작 시각"
@@ -877,7 +881,6 @@ msgstr "기본 정렬"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "이전 일정"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "편집"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "종료 시각"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "종료 시간대"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "종료 조건"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "시작하기 전에 종료됨"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "설정"
 msgid "Show classes"
 msgstr "클래스 표시"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "일정을 각자의 시간대로 표시"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "필드 표시"
@@ -2501,6 +2515,10 @@ msgstr "첫 번째 댓글을 추가하여 토론을 시작해 주세요."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "시작 시간"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "시작 시간대"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "목요일"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "시간대"
 
 #: src/features/calendar/editor.tsx

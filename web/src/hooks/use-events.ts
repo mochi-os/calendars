@@ -17,8 +17,12 @@ import type {
 } from '@/api/types/events'
 
 const eventKeys = {
-  instances: (start: number, finish: number, calendars: string[]) =>
-    ['instances', start, finish, calendars] as const,
+  instances: (
+    start: number,
+    finish: number,
+    calendars: string[],
+    timezone = ''
+  ) => ['instances', start, finish, calendars, timezone] as const,
   event: (event: string) => ['event', event] as const,
   bounds: (calendars: string[]) => ['bounds', calendars] as const,
 }
@@ -31,13 +35,14 @@ const eventKeys = {
 export const useInstancesQuery = (
   start: number,
   finish: number,
-  calendars: string[]
+  calendars: string[],
+  timezone?: string
 ) => {
   // Sorted, so the same set of calendars is always the same cache entry.
   const key = [...calendars].sort()
   return useQuery<InstancesResponse>({
-    queryKey: eventKeys.instances(start, finish, key),
-    queryFn: () => eventsApi.list(start, finish, key),
+    queryKey: eventKeys.instances(start, finish, key, timezone),
+    queryFn: () => eventsApi.list(start, finish, key, timezone),
     enabled: finish > start && key.length > 0,
     placeholderData: (previous) => previous,
   })
@@ -50,13 +55,14 @@ export const useInstancesQuery = (
  */
 export const useInstancePages = (
   pages: { start: number; finish: number }[],
-  calendars: string[]
+  calendars: string[],
+  timezone?: string
 ) => {
   const key = [...calendars].sort()
   return useQueries({
     queries: pages.map((page) => ({
-      queryKey: eventKeys.instances(page.start, page.finish, key),
-      queryFn: () => eventsApi.list(page.start, page.finish, key),
+      queryKey: eventKeys.instances(page.start, page.finish, key, timezone),
+      queryFn: () => eventsApi.list(page.start, page.finish, key, timezone),
       enabled: page.finish > page.start && key.length > 0,
     })),
     combine: (results) => ({

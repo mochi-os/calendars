@@ -321,6 +321,10 @@ msgstr "Είστε σίγουροι ότι θέλετε να παραιτηθε�
 msgid "Ascending"
 msgstr "Αύξουσα"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Στη θάλασσα"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Την ώρα του συμβάντος"
@@ -877,7 +881,6 @@ msgstr "Προεπιλεγμένη ταξινόμηση"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Προηγούμενα συμβάντα"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Επεξεργασία"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Ώρα λήξης"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Ζώνη ώρας λήξης"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Λήγει"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Λήγει πριν αρχίσει"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Ρυθμίσεις"
 msgid "Show classes"
 msgstr "Εμφάνιση κλάσεων"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Εμφάνιση συμβάντων στη δική τους ζώνη ώρας"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Εμφάνιση πεδίων"
@@ -2501,6 +2515,10 @@ msgstr "Ξεκινήστε τη συζήτηση προσθέτοντας το �
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Ώρα έναρξης"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Ζώνη ώρας έναρξης"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Πέμπτη"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Ζώνη ώρας"
 
 #: src/features/calendar/editor.tsx

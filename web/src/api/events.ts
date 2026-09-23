@@ -37,7 +37,8 @@ export const eventsApi = {
   list: (
     start: number,
     finish: number,
-    calendars?: string[]
+    calendars?: string[],
+    timezone?: string
   ): Promise<InstancesResponse> =>
     requestHelpers.get<InstancesResponse>(endpoints.events.list, {
       ...quiet,
@@ -47,6 +48,9 @@ export const eventsApi = {
         ...(calendars && calendars.length
           ? { calendars: calendars.join(',') }
           : {}),
+        // The zone "auto" resolved to here, so the server expands floating
+        // times and day boundaries in the zone the views draw in.
+        ...(timezone ? { timezone } : {}),
       },
     }),
 

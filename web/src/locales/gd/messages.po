@@ -321,6 +321,10 @@ msgstr "A bheil thu cinnteach gu bheil thu airson dreuchd a leigeil dhìot? Buan
 msgid "Ascending"
 msgstr "A' dìreadh"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Aig muir"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Aig àm an tachartais"
@@ -877,7 +881,6 @@ msgstr "Seòrsachadh bunaiteach"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Tachartasan nas tràithe"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Deasaich"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Àm crìochnachaidh"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Roinn-tìde crìche"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Thig gu crìch"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Thig e gu crìch mus tòisich e"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Roghainnean"
 msgid "Show classes"
 msgstr "Seall clasaichean"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Seall tachartasan san roinn-tìde aca fhèin"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Seall raointean"
@@ -2501,6 +2515,10 @@ msgstr "Tòisich an deasbad le bhith a' cur a' chiad bheachd ris."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Àm tòiseachaidh"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Roinn-tìde toisich"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Diardaoin"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Roinn-tìde"
 
 #: src/features/calendar/editor.tsx

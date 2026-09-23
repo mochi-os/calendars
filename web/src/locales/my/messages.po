@@ -321,6 +321,10 @@ msgstr "လက်လျှော့မှာသေချာပါသလား? {
 msgid "Ascending"
 msgstr "ငယ်စဉ်ကြီးလိုက်"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "ပင်လယ်ပြင်တွင်"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "အစီအစဉ် စတင်ချိန်တွင်"
@@ -877,7 +881,6 @@ msgstr "မူရင်း စီစဉ်မှု"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "ယခင် အစီအစဉ်များ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "တည်းဖြတ်"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "ပြီးဆုံးချိန်"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "ပြီးဆုံးချိန် အချိန်ဇုန်"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "ပြီးဆုံးမည့်အချိန်"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "မစတင်မီ ပြီးဆုံးသည်"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "ဆက်တင်များ"
 msgid "Show classes"
 msgstr "Class များ ပြမည်"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "ပွဲများကို ၎င်းတို့၏ကိုယ်ပိုင်အချိန်ဇုန်ဖြင့် ပြရန်"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "ကွက်လပ်များ ပြမည်"
@@ -2501,6 +2515,10 @@ msgstr "ပထမမှတ်ချက် ထည့်၍ ဆွေးနွေ�
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "စတင်ချိန်"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "စတင်ချိန် အချိန်ဇုန်"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "ကြာသပတေး"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "အချိန်ဇုန်"
 
 #: src/features/calendar/editor.tsx

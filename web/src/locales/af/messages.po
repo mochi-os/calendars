@@ -321,6 +321,10 @@ msgstr "Is jy seker jy wil oorgee? {opponentName} sal die spel wen."
 msgid "Ascending"
 msgstr "Oplopend"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Op see"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Op die tyd van die gebeurtenis"
@@ -877,7 +881,6 @@ msgstr "Verstek sortering"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Vroeëre gebeurtenisse"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Wysig"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Eindtyd"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Eindtydsone"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Eindig"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Eindig voor dit begin"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Instellings"
 msgid "Show classes"
 msgstr "Wys klasse"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Wys gebeure in hul eie tydsone"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Wys velde"
@@ -2501,6 +2515,10 @@ msgstr "Begin die bespreking deur die eerste kommentaar by te voeg."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Begintyd"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Begintydsone"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Donderdag"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Tydsone"
 
 #: src/features/calendar/editor.tsx

@@ -321,6 +321,10 @@ msgstr "Èske ou sèten ou vle bay vag? {opponentName} pral genyen jwèt la."
 msgid "Ascending"
 msgstr "Monte"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Nan lanmè"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Nan lè evènman an"
@@ -877,7 +881,6 @@ msgstr "Klasman defo"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Evènman anvan yo"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Modifye"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Lè fen"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Zòn lè fen"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Fini"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Li fini anvan li kòmanse"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Paramèt"
 msgid "Show classes"
 msgstr "Montre klas yo"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Montre evènman yo nan pwòp zòn lè yo"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Montre chan yo"
@@ -2501,6 +2515,10 @@ msgstr "Kòmanse diskisyon an pa ajoute premye kòmantè a."
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Lè kòmansman"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Zòn lè kòmansman"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Jedi"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Zòn lè"
 
 #: src/features/calendar/editor.tsx

@@ -52,7 +52,9 @@ import { reminderOptions } from '@/hooks/use-options'
 import {
   componentDraft,
   draftComponent,
+  draftInstants,
   editedComponents,
+  foreignZones,
   emptyRepeat,
   masterComponent,
   overrideComponent,
@@ -76,6 +78,8 @@ export function EventEditor() {
   const event = data?.event
 
   const [draft, setDraft] = useState<EventDraft | null>(null)
+  // The zone controls, revealed by the globe for the rest of one edit.
+  const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
   const [asking, setAsking] = useState<'save' | 'delete' | null>(null)
   const [confirming, setConfirming] = useState(false)
@@ -97,6 +101,7 @@ export function EventEditor() {
   // A create opens on the draft it was given; an edit waits for the stored
   // event, then reads the occurrence's own component where it has one.
   useEffect(() => {
+    setRevealed(false)
     if (!editing) {
       setDraft(null)
       setAsking(null)
@@ -125,6 +130,11 @@ export function EventEditor() {
   const close = () => setEditing(null)
 
   const recurring = Boolean(event?.recurring) && editing?.mode === 'edit'
+  // The end may read earlier than the start by the clock, across zones, but
+  // never as an instant.
+  const ordered = draft ? draftInstants(draft).finish >= draftInstants(draft).start : true
+  // The zones show only when an end is not in the user's zone, or on request.
+  const zones = draft ? foreignZones(draft, format.timezone) || revealed : false
 
   const write = async (scope: Scope) => {
     if (!draft || !editing) return
@@ -193,6 +203,8 @@ export function EventEditor() {
     ) : draft ? (
       <EditorFields
         draft={draft}
+        zones={zones}
+        onReveal={() => setRevealed(true)}
         setDraft={setDraft}
         custom={custom}
         setCustom={setCustom}
@@ -221,7 +233,7 @@ export function EventEditor() {
       <Button
         onClick={save}
         loading={pending}
-        disabled={!draft || draft.title.trim() === ''}
+        disabled={!draft || draft.title.trim() === '' || !ordered}
         icon={<Check className='size-4' />}
       >
         <Trans>Save</Trans>
@@ -302,12 +314,17 @@ function EditorFields({
   custom,
   setCustom,
   calendars,
+  zones,
+  onReveal,
 }: {
   draft: EventDraft
   setDraft: React.Dispatch<React.SetStateAction<EventDraft | null>>
   custom: boolean
   setCustom: (value: boolean) => void
   calendars: { id: string; name: string }[]
+  /** Whether the zone controls show; a globe reveals them otherwise. */
+  zones: boolean
+  onReveal: () => void
 }) {
   const { t } = useLingui()
   const format = useFormat()
@@ -432,6 +449,27 @@ function EditorFields({
               />
             )}
           </div>
+          {zones && (
+            <TimezoneSelect
+              compact
+              auto={false}
+              label={t`Start time zone`}
+              value={draft.zone.start}
+              onChange={(zone) =>
+                // The end follows the start while the two still agree.
+                edit((current) => ({
+                  ...current,
+                  zone: {
+                    start: zone,
+                    finish:
+                      current.zone.finish === current.zone.start
+                        ? zone
+                        : current.zone.finish,
+                  },
+                }))
+              }
+            />
+          )}
         </div>
         <div className='space-y-2'>
           <Label htmlFor='event-finish'>
@@ -463,26 +501,35 @@ function EditorFields({
                 }
               />
             )}
+            {!draft.allday && !zones && (
+              <Button
+                type='button'
+                variant='ghost'
+                size='icon'
+                className='text-muted-foreground shrink-0'
+                aria-label={t`Time zone`}
+                onClick={onReveal}
+              >
+                <Globe className='size-4' />
+              </Button>
+            )}
           </div>
+          {zones && (
+            <TimezoneSelect
+              compact
+              auto={false}
+              label={t`End time zone`}
+              value={draft.zone.finish}
+              onChange={(zone) =>
+                edit((current) => ({
+                  ...current,
+                  zone: { ...current.zone, finish: zone },
+                }))
+              }
+            />
+          )}
         </div>
       </div>
-
-      {/* Only an event that is not in the user's own zone needs to say which
-          zone it is in. */}
-      {!draft.allday && draft.timezone !== format.timezone && (
-        <div className='space-y-2'>
-          <Label className='flex items-center gap-2'>
-            <Globe className='size-4' />
-            <Trans>Timezone</Trans>
-          </Label>
-          <TimezoneSelect
-            value={draft.timezone}
-            onChange={(value) =>
-              edit((current) => ({ ...current, timezone: value }))
-            }
-          />
-        </div>
-      )}
 
       <div className='space-y-2'>
         <Label htmlFor='event-location' className='flex items-center gap-2'>

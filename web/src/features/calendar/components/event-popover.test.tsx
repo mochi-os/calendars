@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { render, screen } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { Instance } from '@/api/types/events'
 import { EventPopover } from './event-popover'
@@ -147,3 +147,50 @@ describe('EventPopover description', () => {
     expect(screen.getByText(/Bring/).textContent).toBe('Bring the numbers\na < b')
   })
 })
+
+// The user's zone in these tests is the provider default, UTC.
+describe('EventPopover zones', () => {
+  // 10:00 London (BST) to 13:00 New York (EDT): 09:00Z to 17:00Z.
+  const flight: Instance = {
+    ...instance('EI59'),
+    summary: 'Flight',
+    start: Date.UTC(2026, 8, 25, 9) / 1000,
+    finish: Date.UTC(2026, 8, 25, 17) / 1000,
+    zone: { start: 'Europe/London', finish: 'America/New_York' },
+  }
+  function open(shown: Instance, zones: boolean) {
+    // One dialog at a time: a test may open two.
+    cleanup()
+    render(
+      <I18nProvider i18n={i18n}>
+        <EventPopover
+          instance={shown}
+          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
+          zones={zones}
+          onClose={vi.fn()}
+        />
+      </I18nProvider>
+    )
+    return screen.getByRole('dialog').textContent ?? ''
+  }
+
+  it('names each end with its city when events are shown in their own zones', () => {
+    const text = open(flight, true)
+    expect(text).toContain('10:00 London to 13:00 New York')
+    expect(text).not.toContain('09:00 to 17:00')
+  })
+
+  it('keeps the user zone and adds the ends in their own zones beneath otherwise', () => {
+    const text = open(flight, false)
+    expect(text).toContain('09:00 to 17:00')
+    expect(text).toContain('10:00 London to 13:00 New York')
+  })
+
+  it('says nothing about zones for an event written in the user zone', () => {
+    const text = open({ ...flight, zone: { start: 'UTC', finish: 'UTC' } }, false)
+    expect(text).toContain('09:00 to 17:00')
+    expect(text).not.toContain('London')
+    expect(open({ ...flight, zone: { start: '', finish: '' } }, true)).not.toContain('UTC')
+  })
+})
+

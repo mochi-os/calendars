@@ -321,6 +321,10 @@ msgstr "Вы уверены, что хотите сдаться? {opponentName} 
 msgid "Ascending"
 msgstr "По возрастанию"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "В море"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "В момент события"
@@ -877,7 +881,6 @@ msgstr "Сортировка по умолчанию"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1059,7 +1062,6 @@ msgstr "Более ранние события"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Изменить"
 
@@ -1118,8 +1120,16 @@ msgid "End time"
 msgstr "Время окончания"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Часовой пояс окончания"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Заканчивается"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Заканчивается раньше, чем начинается"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -2439,6 +2449,10 @@ msgstr "Настройки"
 msgid "Show classes"
 msgstr "Показать классы"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Показывать события в их собственном часовом поясе"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Показать поля"
@@ -2501,6 +2515,10 @@ msgstr "Начните обсуждение, добавив первый ком�
 #: src/features/calendar/editor.tsx
 msgid "Start time"
 msgstr "Время начала"
+
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Часовой пояс начала"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2660,7 +2678,7 @@ msgid "Thursday"
 msgstr "Четверг"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Часовой пояс"
 
 #: src/features/calendar/editor.tsx
