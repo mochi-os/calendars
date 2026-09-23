@@ -5,15 +5,8 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  ConfirmDialog,
   Input,
   Label,
   ResponsiveDialog,
@@ -29,14 +22,7 @@ import {
   toastAction,
   useFormat,
 } from '@mochi/web'
-import {
-  ArrowLeft,
-  Check,
-  Copy,
-  Plus,
-  Smartphone,
-  Trash2,
-} from 'lucide-react'
+import { ArrowLeft, Check, Copy, Plus, Smartphone, Trash2 } from 'lucide-react'
 import {
   useCreateTokenMutation,
   useDeleteTokenMutation,
@@ -164,11 +150,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
                 value={address}
                 copy={copy}
               />
-              <CredentialRow
-                label={t`Username`}
-                value={USERNAME}
-                copy={copy}
-              />
+              <CredentialRow label={t`Username`} value={USERNAME} copy={copy} />
               <CredentialRow label={t`Password`} value={token} copy={copy} />
               <p className='text-sm'>
                 <Trans>Save this password now. It cannot be shown again.</Trans>
@@ -266,34 +248,17 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         </ResponsiveDialogContent>
       </ResponsiveDialog>
 
-      <AlertDialog
+      <ConfirmDialog
         open={deleting !== null}
         onOpenChange={(isOpen) => {
           if (!isOpen) setDeleting(null)
         }}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              <Trans>Delete device?</Trans>
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              <Trans>The device will no longer be able to sync calendars.</Trans>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>
-              <Trans>Cancel</Trans>
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={() => void remove()}
-              loading={deleteMutation.isPending}
-            >
-              <Trans>Delete</Trans>
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title={t`Delete device?`}
+        desc={t`The device will no longer be able to sync calendars.`}
+        confirmText={t`Delete`}
+        isLoading={deleteMutation.isPending}
+        handleConfirm={() => void remove()}
+      />
     </>
   )
 }
