@@ -42,26 +42,20 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
   const { t } = useLingui()
   const format = useFormat()
   const { isDesktop } = useScreenSize()
-  const {
-    view,
-    setView,
-    date,
-    setDate,
-    today,
-    range,
-    preferences,
-    workweek,
-    setWorkweek,
-  } = useCalendarContext()
+  const { view, setView, date, setDate, today, range, workweek, setWorkweek } =
+    useCalendarContext()
 
-  const options: { value: CalendarView; label: string; icon: React.ElementType }[] =
-    [
-      { value: 'day', label: t`Day`, icon: Calendar },
-      { value: 'week', label: t`Week`, icon: Columns3 },
-      { value: 'multiweek', label: t`Multiweek`, icon: Rows3 },
-      { value: 'month', label: t`Month`, icon: Grid3x3 },
-      { value: 'list', label: t`List`, icon: List },
-    ]
+  const options: {
+    value: CalendarView
+    label: string
+    icon: React.ElementType
+  }[] = [
+    { value: 'day', label: t`Day`, icon: Calendar },
+    { value: 'week', label: t`Week`, icon: Columns3 },
+    { value: 'multiweek', label: t`Multiweek`, icon: Rows3 },
+    { value: 'month', label: t`Month`, icon: Grid3x3 },
+    { value: 'list', label: t`List`, icon: List },
+  ]
   // Below tablet width there is no room for a grid, so only the two views that
   // read well in a column are offered.
   const offered = isDesktop
@@ -70,14 +64,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
         (option) => option.value === 'day' || option.value === 'list'
       )
 
-  const step = (direction: number) =>
-    setDate(
-      stepDate(view, date, direction, {
-        weekStartsOn: format.weekStartsOn,
-        weeks: preferences.multiweek.weeks,
-        previous: preferences.multiweek.previous,
-      })
-    )
+  const step = (direction: number) => setDate(stepDate(view, date, direction))
 
   const title = rangeTitle(view, range, {
     longDate: (day) =>
