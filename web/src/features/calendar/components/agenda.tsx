@@ -14,8 +14,6 @@ import { useLingui } from '@lingui/react/macro'
 import {
   Button,
   EmptyState,
-  Input,
-  Label,
   addDays,
   cn,
   coveredDays,
@@ -44,9 +42,9 @@ interface Props {
 export function Agenda({ onSelect }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { date, today, calendars, visible, preferences } = useCalendarContext()
+  const { date, today, calendars, visible, preferences, search } =
+    useCalendarContext()
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
-  const [search, setSearch] = useState('')
 
   // Pages before and after the anchor day; a new anchor starts again.
   const [span, setSpan] = useState({ anchor: date, before: 0, after: 1 })
@@ -184,19 +182,6 @@ export function Agenda({ onSelect }: Props) {
 
   return (
     <div className='flex h-full min-h-0 flex-col'>
-      <div className='flex items-end justify-end border-b px-3 py-2'>
-        <div className='space-y-1'>
-          <Label htmlFor='agenda-search'>{t`Search`}</Label>
-          <Input
-            id='agenda-search'
-            type='search'
-            className='w-56'
-            value={search}
-            onChange={(input) => setSearch(input.target.value)}
-          />
-        </div>
-      </div>
-
       <div
         ref={scroller}
         className='min-h-0 flex-1 overflow-y-auto'

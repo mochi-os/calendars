@@ -57,6 +57,9 @@ interface CalendarContextValue {
   /** Week view: hide the days that are not work days. */
   workweek: boolean
   setWorkweek: (value: boolean) => void
+  /** The text the list view filters by, typed into the toolbar. */
+  search: string
+  setSearch: (value: string) => void
   editing: Editing | null
   setEditing: (editing: Editing | null) => void
 }
@@ -85,6 +88,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     preferences.view
   )
   const [workweek, setWorkweek] = useState(false)
+  const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Editing | null>(null)
 
   const today = format.zonedDay(new Date())
@@ -181,6 +185,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       range,
       workweek,
       setWorkweek,
+      search: query,
+      setSearch: setQuery,
       editing,
       setEditing,
     }),
@@ -202,6 +208,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       today,
       range,
       workweek,
+      query,
       editing,
     ]
   )

@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react/macro'
 import {
   Button,
   DropdownMenu,
+  Input,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
@@ -35,6 +36,7 @@ import {
   MoreHorizontal,
   Plus,
   Rows3,
+  Search,
 } from 'lucide-react'
 import { useCalendarContext } from '@/context/calendar-context'
 
@@ -42,8 +44,18 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
   const { t } = useLingui()
   const format = useFormat()
   const { isDesktop } = useScreenSize()
-  const { view, setView, date, setDate, today, range, workweek, setWorkweek } =
-    useCalendarContext()
+  const {
+    view,
+    setView,
+    date,
+    setDate,
+    today,
+    range,
+    workweek,
+    setWorkweek,
+    search,
+    setSearch,
+  } = useCalendarContext()
 
   const options: {
     value: CalendarView
@@ -123,11 +135,31 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
         </Popover>
       )}
 
+      {/* The search box: the list view filters by it, and typing from any
+          other view opens the list, which is where the matches show. */}
+      <div className='relative ms-auto'>
+        <Search
+          className='text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 size-4 -translate-y-1/2'
+          aria-hidden
+        />
+        <Input
+          type='search'
+          aria-label={t`Search`}
+          className='h-9 w-36 ps-8 sm:w-52'
+          value={search}
+          onChange={(input) => {
+            const value = input.target.value
+            setSearch(value)
+            if (value.trim() && view !== 'list') setView('list')
+          }}
+        />
+      </div>
+
       <Select
         value={view}
         onValueChange={(value) => setView(value as CalendarView)}
       >
-        <SelectTrigger className='ms-auto w-auto' aria-label={t`View`}>
+        <SelectTrigger className='w-auto' aria-label={t`View`}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent align='end'>

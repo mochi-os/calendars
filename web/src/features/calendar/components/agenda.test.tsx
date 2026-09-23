@@ -14,6 +14,7 @@ const calendar = { id: 'c1', name: 'Test calendar', colour: '#60a5fa' }
 vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => ({
     preferences: { zones: false },
+    search: '',
     date: '2026-09-22',
     today: '2026-09-22',
     calendars: [calendar],
