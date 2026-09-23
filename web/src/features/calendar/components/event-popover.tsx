@@ -8,6 +8,7 @@ import {
   PopoverAnchor,
   PopoverContent,
   coveredDays,
+  descriptionText,
   flightNumber,
   useFormat,
   useLinks,
@@ -58,7 +59,10 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
     span = t`${from} to ${to}`
   }
 
-  const description = instance.description.slice(0, DESCRIPTION_HEAD)
+  // A subscription's description may be HTML, as Google's are; the summary
+  // shows its text.
+  const text = descriptionText(instance.description)
+  const description = text.slice(0, DESCRIPTION_HEAD)
   // A location that is a flight number opens on the user's flight tracker;
   // anything else opens as a map search.
   const flight = flightNumber(instance.location)
@@ -129,7 +133,7 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
             <TextAlignStart className='mt-0.5 size-4 shrink-0' aria-hidden />
             <span className='min-w-0 break-words whitespace-pre-wrap'>
               {description}
-              {instance.description.length > DESCRIPTION_HEAD ? '…' : ''}
+              {text.length > DESCRIPTION_HEAD ? '…' : ''}
             </span>
           </p>
         )}

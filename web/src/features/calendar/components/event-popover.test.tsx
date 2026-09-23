@@ -133,3 +133,17 @@ describe('EventPopover layout', () => {
     ).toBe(true)
   })
 })
+
+describe('EventPopover description', () => {
+  it('shows an HTML description as text with its line breaks', () => {
+    show('EI59', 'PNR: 2YHEIJ&nbsp;<br>Class: Business<br>Seats: 2K')
+    const shown = screen.getByText(/PNR/)
+    expect(shown.textContent).toBe('PNR: 2YHEIJ\nClass: Business\nSeats: 2K')
+    expect(shown.textContent).not.toContain('<br>')
+  })
+
+  it('leaves a plain description untouched', () => {
+    show('EI59', 'Bring the numbers\na < b')
+    expect(screen.getByText(/Bring/).textContent).toBe('Bring the numbers\na < b')
+  })
+})
