@@ -8,9 +8,11 @@ import {
   PopoverAnchor,
   PopoverContent,
   coveredDays,
+  flightNumber,
   useFormat,
+  useLinks,
 } from '@mochi/web'
-import { MapPin } from 'lucide-react'
+import { Clock, MapPin, Plane, TextAlignStart } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 
 interface Props {
@@ -26,6 +28,7 @@ const DESCRIPTION_HEAD = 240
 export function EventPopover({ instance, anchor, onClose }: Props) {
   const { t } = useLingui()
   const format = useFormat()
+  const links = useLinks()
   if (!instance || !anchor) return null
 
   const start = new Date(instance.start * 1000)
@@ -56,6 +59,9 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
   }
 
   const description = instance.description.slice(0, DESCRIPTION_HEAD)
+  // A location that is a flight number opens on the user's flight tracker;
+  // anything else opens as a map search.
+  const flight = flightNumber(instance.location)
 
   return (
     <Popover
@@ -77,27 +83,54 @@ export function EventPopover({ instance, anchor, onClose }: Props) {
         />
       </PopoverAnchor>
       <PopoverContent align='start' className='w-80 space-y-2'>
-        <div className='flex items-start gap-2'>
+        {/* Every row leads with a 16px glyph and the same gap, so the title,
+            the span, the location and the description align in one column. */}
+        <div className='flex items-start gap-1.5'>
           <span
             aria-hidden
-            className='mt-1.5 size-3 shrink-0 rounded-full'
-            style={{ backgroundColor: instance.colour }}
-          />
+            className='mt-0.5 flex size-4 shrink-0 items-center justify-center'
+          >
+            <span
+              className='size-3 rounded-full'
+              style={{ backgroundColor: instance.colour }}
+            />
+          </span>
           <h2 className='min-w-0 flex-1 font-semibold break-words'>
             {instance.summary}
           </h2>
         </div>
-        <p className='text-muted-foreground text-sm'>{span}</p>
+        <p className='text-muted-foreground flex items-start gap-1.5 text-sm'>
+          <Clock className='mt-0.5 size-4 shrink-0' aria-hidden />
+          <span className='min-w-0'>{span}</span>
+        </p>
         {instance.location && (
           <p className='flex items-start gap-1.5 text-sm'>
-            <MapPin className='mt-0.5 size-4 shrink-0' aria-hidden />
-            <span className='min-w-0 break-words'>{instance.location}</span>
+            {flight ? (
+              <Plane className='mt-0.5 size-4 shrink-0' aria-hidden />
+            ) : (
+              <MapPin className='mt-0.5 size-4 shrink-0' aria-hidden />
+            )}
+            {/* In a new tab: the shell's sandbox allows popups, so a plain
+                anchor is enough. */}
+            <a
+              href={
+                flight ? links.flight(flight) : links.map(instance.location)
+              }
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-primary min-w-0 break-words underline-offset-4 hover:underline'
+            >
+              {instance.location}
+            </a>
           </p>
         )}
         {description && (
-          <p className='text-sm break-words whitespace-pre-wrap'>
-            {description}
-            {instance.description.length > DESCRIPTION_HEAD ? '…' : ''}
+          <p className='flex items-start gap-1.5 text-sm'>
+            <TextAlignStart className='mt-0.5 size-4 shrink-0' aria-hidden />
+            <span className='min-w-0 break-words whitespace-pre-wrap'>
+              {description}
+              {instance.description.length > DESCRIPTION_HEAD ? '…' : ''}
+            </span>
           </p>
         )}
       </PopoverContent>
