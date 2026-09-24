@@ -1157,6 +1157,10 @@ def action_calendar_grant(a):
 	if not provider:
 		a.error.label(400, "errors.account_not_found")
 		return
+	# A native app's consent runs in the system browser and returns on the
+	# app's own scheme, bound by its PKCE challenge rather than a session.
+	if a.input("mode", "") == "mobile":
+		return {"data": mochi.account.grant(provider, "calendar", target, account, scheme=a.input("scheme", ""), challenge=a.input("challenge", ""))}
 	return {"data": mochi.account.grant(provider, "calendar", target, account)}
 
 # Connect an account a calendar can be linked through, from the subscribe
