@@ -261,6 +261,10 @@ msgstr "Alle hendingar"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "La kven som helst søkja etter {entityLabel}"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Tillat kalendertilgang"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Tillat sortering etter"
@@ -278,6 +282,10 @@ msgstr "Det oppstod ein uventa feil"
 msgid "Android push"
 msgstr "Android-push"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Ein annan Mochi- eller CalDAV-tenar"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "Alle som er logga inn"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Alt som abonnerer på denne straumen sluttar å ta imot han. Du kan kopiere ei ny nettadresse etterpå."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "App-spesifikt passord"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "Avatar for {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Tilbake"
 
@@ -428,6 +449,10 @@ msgstr "kalender"
 msgid "Calendar"
 msgstr "Kalender"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Kalendertilgang vart ikkje gjeven"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "Kalender oppretta"
 msgid "Calendar deleted"
 msgstr "Kalender sletta"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Kalender kopla"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Kalenderen fekk nytt namn"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Kalendertenar"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Kalender synkronisert"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "Klapp saman sidestolpen"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Farge"
@@ -692,6 +730,10 @@ msgstr "Set opp visningsinnstillingar"
 msgid "Confirm"
 msgstr "Stadfest"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Kople til"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "Kople til ei eining"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Kople til ei eining til"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Kople til Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "Hald fram"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "Hald fram med {label}"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Hald fram med {providerLabel}"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "E-post"
 msgid "Email code"
 msgstr "E-postkode"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Aktiver Google-kontoar"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Slutt"
@@ -1218,6 +1272,10 @@ msgstr "Ekstra stor"
 msgid "Failed to add account"
 msgstr "Klarte ikkje leggja til konto"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Klarte ikkje be om kalendertilgang"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Klarte ikkje sjekka kalenderen"
@@ -1225,6 +1283,10 @@ msgstr "Klarte ikkje sjekka kalenderen"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "Klarte ikkje kople til eininga"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Klarte ikkje kople til kontoen"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "Klarte ikkje henta RSS-token"
 msgid "Failed to get the calendar address"
 msgstr "Klarte ikkje henta kalenderadressa"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Klarte ikkje kople til kalenderen"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Klarte ikkje lasta"
@@ -1325,6 +1391,14 @@ msgstr "Klarte ikkje flytta hendinga"
 msgid "Failed to post comment"
 msgstr "Klarte ikkje posta kommentar"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Klarte ikkje lese kontoane"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Klarte ikkje lese kalendrane"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "Klarte ikkje lagra hendinga"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Klarte ikkje abonnera"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Klarte ikkje synkronisere kalenderen"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "Frå tema"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Gå tilbake"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Google-kontoar er ikkje aktiverte på denne tenaren."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "Lyst"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Lenkje"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Kopla"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "Fleire veker"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Nyklar er ikkje tilgjengelege i denne nettlesaren"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Passord"
 
@@ -2071,6 +2165,10 @@ msgstr "Leiarmelding lagra"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Eigenskapar"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Publisert kalenderadresse (berre les)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "Antikva"
 msgid "Server"
 msgstr "Tenar"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Tenaradresse"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "Sundag"
 msgid "Switch to view 1-9"
 msgstr "Byt til vising 1-9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Synkroniser no"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Synkroniserer..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "adressa leverer ikkje ein kalender"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "kalenderen finst ikkje lenger på den tenaren"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "kalenderen er for stor"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "kalenderen vart endra på den andre tenaren samstundes"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "tenaren til kalenderen kunne ikkje nåast"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "tenaren til kalenderen avviste innloggingsdetaljane til kontoen"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "Brukar"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Brukarnamn"
 
@@ -3016,6 +3143,10 @@ msgstr "Årleg"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Du har ikkje tilgang til denne bolken."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Du har ikkje kopla til ein Google-konto."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

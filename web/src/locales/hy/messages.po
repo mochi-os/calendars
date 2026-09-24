@@ -261,6 +261,10 @@ msgstr "Բոլոր միջոցառումները"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Թույլատրել բոլորին որոնել {entityLabel}"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Թույլատրել օրացույցի մուտքը"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Թույլատրել տեսակավորել ըստ"
@@ -278,6 +282,10 @@ msgstr "Անսպասելի սխալ առաջացավ"
 msgid "Android push"
 msgstr "Android push"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Մեկ այլ Mochi կամ CalDAV սերվեր"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "Ցանկացած մուտք գործած անձ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Այս հոսքին բաժանորդագրված ամեն ինչ կդադարի ստանալ այն։ Դրանից հետո կարող եք պատճենել նոր URL։"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "Հավելվածի հատուկ գաղտնաբառ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "{name}-ի ավատար"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Հետ"
 
@@ -428,6 +449,10 @@ msgstr "օրացույց"
 msgid "Calendar"
 msgstr "Օրացույց"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Օրացույցի մուտքը չի տրամադրվել"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "Օրացույցը ստեղծվեց"
 msgid "Calendar deleted"
 msgstr "Օրացույցը ջնջվեց"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Օրացույցը կապված է"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Օրացույցը վերանվանվեց"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Օրացույցի սերվեր"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Օրացույցը համաժամանակեցվեց"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "Ծալել կողագոտին"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Գույն"
@@ -692,6 +730,10 @@ msgstr "Կարգավորել տեսքի կարգավորումները"
 msgid "Confirm"
 msgstr "Հաստատել"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Միանալ"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "Միացնել սարք"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Միացնել ևս մեկ սարք"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Միացնել Google-ը"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "Շարունակել"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "Շարունակել {label}-ով"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Շարունակել {providerLabel}-ով"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "Էլ․ փոստ"
 msgid "Email code"
 msgstr "Էլ․ փոստի կոդ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Միացնել Google հաշիվները"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Ավարտ"
@@ -1218,6 +1272,10 @@ msgstr "Շատ մեծ"
 msgid "Failed to add account"
 msgstr "Չհաջողվեց ավելացնել հաշիվը"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Չհաջողվեց օրացույցի մուտք հայցել"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Չհաջողվեց ստուգել օրացույցը"
@@ -1225,6 +1283,10 @@ msgstr "Չհաջողվեց ստուգել օրացույցը"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "Չհաջողվեց միացնել սարքը"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Չհաջողվեց միացնել հաշիվը"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "Չհաջողվեց ստանալ RSS տոկենը"
 msgid "Failed to get the calendar address"
 msgstr "Չհաջողվեց ստանալ օրացույցի հասցեն"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Չհաջողվեց կապել օրացույցը"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Չհաջողվեց բեռնել"
@@ -1325,6 +1391,14 @@ msgstr "Չհաջողվեց տեղափոխել միջոցառումը"
 msgid "Failed to post comment"
 msgstr "Չհաջողվեց հրապարակել մեկնաբանությունը"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Չհաջողվեց կարդալ հաշիվները"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Չհաջողվեց կարդալ օրացույցները"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "Չհաջողվեց պահպանել միջոցառումը"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Չհաջողվեց բաժանորդագրվել"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Չհաջողվեց համաժամանակեցնել օրացույցը"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "Թեմայից"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Հետ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Google հաշիվներն այս սերվերում միացված չեն։"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "Լուսավոր"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Հղում"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Կապված"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "Մի քանի շաբաթ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Անցաբանալիները հասանելի չեն այս դիտարկիչում"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Գաղտնաբառ"
 
@@ -2071,6 +2165,10 @@ msgstr "Հուշումը պահպանվեց"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Հատկություններ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Հրապարակված օրացույցի հասցե (միայն կարդալ)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "Սերիֆ"
 msgid "Server"
 msgstr "Սերվեր"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Սերվերի հասցե"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "Կիրակի"
 msgid "Switch to view 1-9"
 msgstr "Անցնել 1-9 տեսքի"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Համաժամանակեցնել հիմա"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Համաժամանակեցվում է..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "հասցեն օրացույց չի տրամադրում"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "օրացույցն այլևս չկա այդ սերվերում"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "օրացույցը չափազանց մեծ է"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "օրացույցը նույն ժամանակ փոխվել է մյուս սերվերում"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "չհաջողվեց կապ հաստատել օրացույցի սերվերի հետ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "օրացույցի սերվերը մերժեց հաշվի մուտքի տվյալները"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "Օգտատեր"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Օգտանուն"
 
@@ -3016,6 +3143,10 @@ msgstr "Տարեկան"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Այս բաժինը ձեզ հասանելի չէ։"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Դուք Google հաշիվ չեք միացրել։"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

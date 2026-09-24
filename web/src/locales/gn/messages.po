@@ -261,6 +261,10 @@ msgstr "Opaite evento"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Emoneĩ opavavépe oheka {entityLabel}"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Emoneĩ jeike arapapahápe"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Eipysyrõ orden ko'ãva rupive"
@@ -278,6 +282,10 @@ msgstr "Oĩ peteĩ jejavy ñeha'ãrõ'ỹva"
 msgid "Android push"
 msgstr "Android push"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Ambue Mochi térã CalDAV mohendaha"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "Oimeraẽva oikéva"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Opa mba'e osuscribíva ko feed-pe ndohupytyvéima. Upéi ikatu embokopia peteĩ URL pyahu."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "Ñe'ẽñemi tembipuru'ípe guarã"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "{name} avatar"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Tapykuépe"
 
@@ -428,6 +449,10 @@ msgstr "arapapaha"
 msgid "Calendar"
 msgstr "Arapapaha"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Ndoje'ẽi jeike arapapahápe"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "Arapapaha oñemoheñói"
 msgid "Calendar deleted"
 msgstr "Arapapaha oñembogue"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Arapapaha ojejuaju"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Arapapaha oñembohera jey"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Arapapaha mohendaha"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Arapapaha ojembojoja"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "Mbohypy'ũ sidebar"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Sa'y"
@@ -692,6 +730,10 @@ msgstr "Embohekombo'e view hekombo'e"
 msgid "Confirm"
 msgstr "Emoneĩ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Ojoaju"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "Embojoaju peteĩ mba'e"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Embojoaju ambue mba'e"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Embojoaju Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "Tenonde"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "Eku tenonde {label} ndive"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Eku'e {providerLabel} ndive"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Código email"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Emyendy Google cuentakuéra"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Paha"
@@ -1218,6 +1272,10 @@ msgstr "Tuichavéva"
 msgid "Failed to add account"
 msgstr "Ndaikatúi oñembojuaju cuenta"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Ndaikatúi ojerure jeike arapapahápe"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Ndaikatúi ojehecha arapapaha"
@@ -1225,6 +1283,10 @@ msgstr "Ndaikatúi ojehecha arapapaha"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "Ndaikatúi oñembojoaju mba'e"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Ndaikatúi ojoaju cuenta"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "Ndaikatúi oguenohẽ RSS token"
 msgid "Failed to get the calendar address"
 msgstr "Ndaikatúi ojejuhu arapapaha dirección"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Ndaikatúi embojuaju arapapaha"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Ndaikatúi oñembogue"
@@ -1325,6 +1391,14 @@ msgstr "Ndaikatúi oñemongu'e evento"
 msgid "Failed to post comment"
 msgstr "Ndaikatúi oñemonde comentario"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Ndaikatúi oñemoñe'ẽ umi cuenta"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Ndaikatúi oñemoñe'ẽ umi arapapaha"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "Ndaikatúi oñeñongatu evento"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Ndaikatúi oñesuscribi"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Ndaikatúi ojembojoja arapapaha"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "Téma guive"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Tereje jey"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Google cuentakuéra ndoñemyendýi ko mohendahápe."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "Hesakã"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Ñeꞌẽ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Ojejuaju"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "Heta arapokõindy"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Passkeys ndaipóri ko navegador-pe"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Ñe'ẽñemi"
 
@@ -2071,6 +2165,10 @@ msgstr "Prompt oñeñongatu"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Mba'éichagua"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Arapapaha dirección oñemoherakuãva (omoñe'ẽ año)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "Serif"
 msgid "Server"
 msgstr "Mohendaha"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Mohendaha dirección"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "Arateĩ"
 msgid "Switch to view 1-9"
 msgstr "Eike vista 1-9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Embojoja ko'ág̃a"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Embojoja..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "pe dirección ndome'ẽi arapapaha"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "arapapaha ndaipóriveima upe mohendahápe"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "arapapaha tuichaiterei"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "arapapaha oñemoambue ambue mohendahápe peteĩchagua aravópe"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "ndaikatúi oñeguahẽ arapapaha mohendahápe"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "arapapaha mohendaha nomoneĩri cuenta credenciales"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "Mboapurevahára"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Mboapurevahárarã téra"
 
@@ -3016,6 +3143,10 @@ msgstr "Ary mante"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Ndereguerekói jeike ko vorépe."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Ndembojuajúi peteĩ Google cuenta."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

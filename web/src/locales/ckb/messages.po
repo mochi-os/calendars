@@ -261,6 +261,10 @@ msgstr "هەموو ڕووداوەکان"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ڕێگە بدە بە هەموان بۆ گەڕان بەدوای {entityLabel}"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "ڕێگەدان بە دەستڕاگەیشتنی ڕۆژژمێر"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ڕێگە بدە بە ڕیزکردن بەپێی"
@@ -278,6 +282,10 @@ msgstr "هەڵەیەکی چاوەڕواننەکراو ڕوویدا"
 msgid "Android push"
 msgstr "پاڵنانی Android"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "ڕاژەکارێکی تری Mochi یان CalDAV"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "هەر کەسێک کە چووبێتە ژوورەوە"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "هەر شتێک بەم لێدوانە بەشداری کردبێت وەرگرتنی ڕادەگرێت. دواتر دەتوانیت URLی نوێ لەبەربگریت."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "وشەی نهێنی تایبەت بە ئەپ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "ئەڤاتار بۆ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "گەڕانەوە"
 
@@ -428,6 +449,10 @@ msgstr "ڕۆژژمێر"
 msgid "Calendar"
 msgstr "ڕۆژژمێر"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "دەستڕاگەیشتنی ڕۆژژمێر نەدرا"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "ڕۆژژمێر دروستکرا"
 msgid "Calendar deleted"
 msgstr "ڕۆژژمێر سڕایەوە"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "ڕۆژژمێر بەستراوە"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "ناوی ڕۆژژمێر گۆڕدرا"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ڕاژەکاری ڕۆژژمێر"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "ڕۆژژمێر هاوکات کرا"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "نوقاندنی لاتەنیشت"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "ڕەنگ"
@@ -692,6 +730,10 @@ msgstr "ڕێکخستنی ڕوانگە ڕێک بخە"
 msgid "Confirm"
 msgstr "پشتڕاستکردنەوە"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "پەیوەندی"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "ئامێرێک بەستنەوە"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "ئامێرێکی تر بەستنەوە"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "پەیوەندی بە Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "بەردەوامبوون"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "بەردەوامبە بە {label}"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "بەردەوامبوون بە {providerLabel}"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "ئیمەیڵ"
 msgid "Email code"
 msgstr "کۆدی ئیمەیڵ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "چالاککردنی هەژمارەکانی Google"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "کۆتایی"
@@ -1218,6 +1272,10 @@ msgstr "زۆر گەورە"
 msgid "Failed to add account"
 msgstr "زیادکردنی هەژمار سەرکەوتوو نەبوو"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "داواکردنی دەستڕاگەیشتنی ڕۆژژمێر سەرکەوتوو نەبوو"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "پشکنینی ڕۆژژمێر سەرکەوتوو نەبوو"
@@ -1225,6 +1283,10 @@ msgstr "پشکنینی ڕۆژژمێر سەرکەوتوو نەبوو"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "بەستنەوەی ئامێرەکە سەرکەوتوو نەبوو"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "پەیوەندیکردنی هەژمار سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "وەرگرتنی Token ـی RSS سەرکەوتوو نەبوو"
 msgid "Failed to get the calendar address"
 msgstr "وەرگرتنی ناونیشانی ڕۆژژمێر سەرکەوتوو نەبوو"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "بەستنەوەی ڕۆژژمێر سەرکەوتوو نەبوو"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "بارکردن سەرکەوتوو نەبوو"
@@ -1325,6 +1391,14 @@ msgstr "گواستنەوەی ڕووداوەکە سەرکەوتوو نەبوو"
 msgid "Failed to post comment"
 msgstr "ناردنی بۆچوون سەرکەوتوو نەبوو"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "خوێندنەوەی هەژمارەکان سەرکەوتوو نەبوو"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "خوێندنەوەی ڕۆژژمێرەکان سەرکەوتوو نەبوو"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "پاشەکەوتکردنی ڕووداوەکە سەرکەوتوو نەب�
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "بەشداریبوون سەرکەوتوو نەبوو"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "هاوکاتکردنی ڕۆژژمێر سەرکەوتوو نەبوو"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "لە ڕووکارەوە"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "گەڕانەوە"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "هەژمارەکانی Google لەم ڕاژەکارەدا چالاک نەکراون."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "ڕووناک"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "بەستەر"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "بەستراوە"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "چەند هەفتە"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "پاسکییەکان لەم وێبگەڕەدا بەردەست نین"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "وشەی نهێنی"
 
@@ -2071,6 +2165,10 @@ msgstr "پرۆمپت پاشەکەوت کرا"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "تایبەتمەندییەکان"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "ناونیشانی ڕۆژژمێری بڵاوکراوە (تەنها خوێندنەوە)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "سێریف"
 msgid "Server"
 msgstr "ڕاژەکار"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "ناونیشانی ڕاژەکار"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "یەکشەممە"
 msgid "Switch to view 1-9"
 msgstr "بگۆڕە بۆ پیشاندانی ١-٩"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ئێستا هاوکاتبکە"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "هاوکاتکردن..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "ناونیشانەکە ڕۆژژمێر پێشکەش ناکات"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "ڕۆژژمێرەکە چیتر لەسەر ئەو ڕاژەکارە نییە"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "ڕۆژژمێرەکە زۆر گەورەیە"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "ڕۆژژمێرەکە لە هەمان کاتدا لەسەر ڕاژەکارەکەی تر گۆڕدرا"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "نەتوانرا بگەیت بە ڕاژەکاری ڕۆژژمێر"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "ڕاژەکاری ڕۆژژمێر بڕوانامەکانی هەژمارەکەی ڕەتکردەوە"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "بەکارهێنەر"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "ناوی بەکارهێنەر"
 
@@ -3016,6 +3143,10 @@ msgstr "ساڵانە"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "دەستپێگەیشتنت بەم بەشە نییە."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "تۆ هیچ هەژمارێکی Google پەیوەست نەکردووە."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

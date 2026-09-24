@@ -261,6 +261,10 @@ msgstr "Všetky udalosti"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Povoliť komukoľvek vyhľadávať {entityLabel}"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Povoliť prístup ku kalendáru"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Povoliť triedenie podľa"
@@ -278,6 +282,10 @@ msgstr "Vyskytla sa neočakávaná chyba"
 msgid "Android push"
 msgstr "Android push"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Iný server Mochi alebo CalDAV"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "Ktokoľvek, kto je prihlásený"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Všetko, čo je prihlásené na tento kanál, ho prestane dostávať. Potom môžete skopírovať novú adresu URL."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "Heslo pre aplikáciu"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "Avatar používateľa {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Späť"
 
@@ -428,6 +449,10 @@ msgstr "kalendár"
 msgid "Calendar"
 msgstr "Kalendár"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Prístup ku kalendáru nebol udelený"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "Kalendár bol vytvorený"
 msgid "Calendar deleted"
 msgstr "Kalendár bol odstránený"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Kalendár prepojený"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Kalendár bol premenovaný"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Kalendárový server"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Kalendár synchronizovaný"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "Zbaliť bočný panel"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Farba"
@@ -692,6 +730,10 @@ msgstr "Konfigurovať nastavenia zobrazenia"
 msgid "Confirm"
 msgstr "Potvrdiť"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Pripojiť"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "Pripojiť zariadenie"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Pripojiť ďalšie zariadenie"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Pripojiť Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "Pokračovať"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "Pokračovať s {label}"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Pokračovať s {providerLabel}"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mailový kód"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Povoliť účty Google"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Koniec"
@@ -1218,6 +1272,10 @@ msgstr "Veľmi veľké"
 msgid "Failed to add account"
 msgstr "Nepodarilo sa pridať účet"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Nepodarilo sa požiadať o prístup ku kalendáru"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Nepodarilo sa skontrolovať kalendár"
@@ -1225,6 +1283,10 @@ msgstr "Nepodarilo sa skontrolovať kalendár"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "Nepodarilo sa pripojiť zariadenie"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Nepodarilo sa pripojiť účet"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "Nepodarilo sa získať RSS token"
 msgid "Failed to get the calendar address"
 msgstr "Nepodarilo sa získať adresu kalendára"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Nepodarilo sa prepojiť kalendár"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Nepodarilo sa načítať"
@@ -1325,6 +1391,14 @@ msgstr "Nepodarilo sa presunúť udalosť"
 msgid "Failed to post comment"
 msgstr "Nepodarilo sa odoslať komentár"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Nepodarilo sa načítať účty"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Nepodarilo sa načítať kalendáre"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "Nepodarilo sa uložiť udalosť"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Nepodarilo sa prihlásiť na odber"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Nepodarilo sa synchronizovať kalendár"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "Z motívu"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Späť"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Účty Google nie sú na tomto serveri povolené."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "Svetlý"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Odkaz"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Prepojené"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "Viac týždňov"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Prístupové kľúče nie sú v tomto prehliadači k dispozícii"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Heslo"
 
@@ -2071,6 +2165,10 @@ msgstr "Prompt uložený"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Vlastnosti"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Publikovaná adresa kalendára (iba na čítanie)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "Pätkové"
 msgid "Server"
 msgstr "Server"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Adresa servera"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "Nedeľa"
 msgid "Switch to view 1-9"
 msgstr "Prepnúť na zobrazenie 1 – 9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Synchronizovať teraz"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Synchronizuje sa..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "adresa neposkytuje kalendár"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "kalendár už na tom serveri nie je"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "kalendár je príliš veľký"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "kalendár bol v rovnakom čase zmenený na druhom serveri"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "server kalendára nebol dostupný"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "server kalendára odmietol prihlasovacie údaje účtu"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "Používateľ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Používateľské meno"
 
@@ -3016,6 +3143,10 @@ msgstr "Ročne"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Nemáte prístup k tejto sekcii."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Nepripojili ste žiadny účet Google."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

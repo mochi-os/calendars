@@ -261,6 +261,10 @@ msgstr "ሁሉም ክስተቶች"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ማንኛውም ሰው {entityLabel} እንዲፈልግ ፍቀድ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "የቀን መቁጠሪያ መዳረሻ ይፍቀዱ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ደርድር በ ፍቀድ"
@@ -278,6 +282,10 @@ msgstr "ያልተጠበቀ ስህተት ተከስቷል"
 msgid "Android push"
 msgstr "የAndroid ግፋ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "ሌላ Mochi ወይም CalDAV ሰርቨር"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "የገባ ማንኛውም ሰው"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "በዚህ ምግብ የተመዘገበ ማንኛውም ነገር መቀበሉን ያቆማል። ከዚያ በኋላ አዲስ URL መቅዳት ይችላሉ።"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "ለመተግበሪያ የተወሰነ የይለፍ ቃል"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "የ{name} አምሳያ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "ተመለስ"
 
@@ -428,6 +449,10 @@ msgstr "የቀን መቁጠሪያ"
 msgid "Calendar"
 msgstr "የቀን መቁጠሪያ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "የቀን መቁጠሪያ መዳረሻ አልተፈቀደም"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "የቀን መቁጠሪያ ተፈጥሯል"
 msgid "Calendar deleted"
 msgstr "የቀን መቁጠሪያ ተሰርዟል"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "የቀን መቁጠሪያ ተገናኝቷል"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "የቀን መቁጠሪያ ስም ተቀይሯል"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "የቀን መቁጠሪያ ሰርቨር"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "የቀን መቁጠሪያ ተመሳስሏል"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "የጎን አሞሌ አጥፋ"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "ቀለም"
@@ -692,6 +730,10 @@ msgstr "የእይታ ቅንብሮችን አዋቅር"
 msgid "Confirm"
 msgstr "አረጋግጥ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "አገናኝ"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "መሳሪያ ያገናኙ"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "ሌላ መሳሪያ ያገናኙ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google አገናኝ"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "ቀጥል"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "በ{label} ይቀጥሉ"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "በ{providerLabel} ይቀጥሉ"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "ኢሜይል"
 msgid "Email code"
 msgstr "የኢሜይል ኮድ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "የGoogle መለያዎችን አንቃ"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "መጨረሻ"
@@ -1218,6 +1272,10 @@ msgstr "በጣም ትልቅ"
 msgid "Failed to add account"
 msgstr "መለያ መጨመር አልተሳካም"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "የቀን መቁጠሪያ መዳረሻ መጠየቅ አልተሳካም"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "የቀን መቁጠሪያውን መፈተሽ አልተሳካም"
@@ -1225,6 +1283,10 @@ msgstr "የቀን መቁጠሪያውን መፈተሽ አልተሳካም"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "መሳሪያውን ማገናኘት አልተሳካም"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "መለያውን ማገናኘት አልተሳካም"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "የRSS ቶከን ማግኘት አልተሳካም"
 msgid "Failed to get the calendar address"
 msgstr "የቀን መቁጠሪያ አድራሻን ማግኘት አልተሳካም"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "የቀን መቁጠሪያውን ማገናኘት አልተሳካም"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "መጫን አልተሳካም"
@@ -1325,6 +1391,14 @@ msgstr "ክስተቱን ማንቀሳቀስ አልተሳካም"
 msgid "Failed to post comment"
 msgstr "አስተያየት መለጠፍ አልተሳካም"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "መለያዎችን ማንበብ አልተሳካም"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "የቀን መቁጠሪያዎችን ማንበብ አልተሳካም"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "ክስተቱን ማስቀመጥ አልተሳካም"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "መመዝገብ አልተሳካም"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "የቀን መቁጠሪያውን ማመሳሰል አልተሳካም"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "ከገጽታ"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "ተመለስ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "የGoogle መለያዎች በዚህ ሰርቨር ላይ አልተነቁም።"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "ብርሃን"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "አገናኝ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "ተገናኝቷል"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "ብዙ ሳምንታት"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "ፓስኪዎች በዚህ አሳሽ ውስጥ አይገኙም"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "የይለፍ ቃል"
 
@@ -2071,6 +2165,10 @@ msgstr "ጥያቄ ተቀምጧል"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "ባህሪያት"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "የታተመ የቀን መቁጠሪያ አድራሻ (ለማንበብ ብቻ)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "ሰሪፍ"
 msgid "Server"
 msgstr "ሰርቨር"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "የሰርቨር አድራሻ"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "እሁድ"
 msgid "Switch to view 1-9"
 msgstr "ወደ ዕይታ 1-9 ቀይር"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "አሁን ያመሳስሉ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "በማመሳሰል ላይ..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "አድራሻው የቀን መቁጠሪያ አያቀርብም"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "የቀን መቁጠሪያው ከዚያ ሰርቨር ላይ የለም"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "የቀን መቁጠሪያው በጣም ትልቅ ነው"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "የቀን መቁጠሪያው በተመሳሳይ ጊዜ በሌላኛው ሰርቨር ላይ ተቀይሯል"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "የቀን መቁጠሪያው ሰርቨር ሊደረስበት አልቻለም"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "የቀን መቁጠሪያው ሰርቨር የመለያውን ምስክርነቶች ውድቅ አድርጓል"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "ተጠቃሚ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "የተጠቃሚ ስም"
 
@@ -3016,6 +3143,10 @@ msgstr "ዓመታዊ"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "የዚህ ክፍል መዳረሻ የለዎትም።"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "የGoogle መለያ አላገናኙም።"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

@@ -261,6 +261,10 @@ msgstr "എല്ലാ ഇവന്റുകളും"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} ആർക്കും തിരയാൻ അനുവദിക്കുക"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "കലണ്ടർ ആക്സസ് അനുവദിക്കുക"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "സോർട്ട് ചെയ്യാൻ അനുവദിക്കുക"
@@ -278,6 +282,10 @@ msgstr "അപ്രതീക്ഷിത പിശക് സംഭവിച്�
 msgid "Android push"
 msgstr "Android പുഷ്"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "മറ്റൊരു Mochi അല്ലെങ്കിൽ CalDAV സെർവർ"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "ലോഗിൻ ചെയ്ത ആരും"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ഈ ഫീഡ് സബ്‌സ്‌ക്രൈബ് ചെയ്ത എല്ലാം അത് ലഭിക്കുന്നത് നിർത്തും. പിന്നീട് നിങ്ങൾക്ക് ഒരു പുതിയ URL പകർത്താം."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "ആപ്പ്-നിർദിഷ്ട പാസ്‌വേഡ്"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "{name}-ന്റെ അവതാർ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "തിരികെ"
 
@@ -428,6 +449,10 @@ msgstr "കലണ്ടർ"
 msgid "Calendar"
 msgstr "കലണ്ടർ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "കലണ്ടർ ആക്സസ് നൽകിയിട്ടില്ല"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "കലണ്ടർ സൃഷ്ടിച്ചു"
 msgid "Calendar deleted"
 msgstr "കലണ്ടർ ഇല്ലാതാക്കി"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "കലണ്ടർ ലിങ്ക് ചെയ്തു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "കലണ്ടറിന്റെ പേര് മാറ്റി"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "കലണ്ടർ സെർവർ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "കലണ്ടർ സിങ്ക് ചെയ്തു"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "സൈഡ്ബാർ ചുരുക്കുക"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "നിറം"
@@ -692,6 +730,10 @@ msgstr "കാഴ്ച ക്രമീകരണങ്ങൾ കോൺഫിഗ�
 msgid "Confirm"
 msgstr "സ്ഥിരീകരിക്കുക"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "കണക്റ്റ്"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "ഒരു ഡിവൈസ് ബന്ധിപ്പിക്കുക"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "മറ്റൊരു ഡിവൈസ് ബന്ധിപ്പിക്കുക"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google കണക്റ്റ് ചെയ്യുക"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "തുടരുക"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "{label} ഉപയോഗിച്ച് തുടരുക"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ഉപയോഗിച്ച് തുടരുക"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "ഇമെയിൽ"
 msgid "Email code"
 msgstr "ഇമെയിൽ കോഡ്"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google അക്കൗണ്ടുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "അവസാനം"
@@ -1218,6 +1272,10 @@ msgstr "അധിക വലുത്"
 msgid "Failed to add account"
 msgstr "അക്കൗണ്ട് ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "കലണ്ടർ ആക്സസ് ആവശ്യപ്പെടുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "കലണ്ടർ പരിശോധിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1225,6 +1283,10 @@ msgstr "കലണ്ടർ പരിശോധിക്കുന്നതിൽ �
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "ഡിവൈസ് ബന്ധിപ്പിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "അക്കൗണ്ട് കണക്റ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "RSS ടോക്കൺ നേടുന്നതിൽ പരാജയപ
 msgid "Failed to get the calendar address"
 msgstr "കലണ്ടറിന്റെ വിലാസം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "കലണ്ടർ ലിങ്ക് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1325,6 +1391,14 @@ msgstr "ഇവന്റ് നീക്കുന്നതിൽ പരാജയ�
 msgid "Failed to post comment"
 msgstr "അഭിപ്രായം പോസ്റ്റുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "അക്കൗണ്ടുകൾ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "കലണ്ടറുകൾ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "ഇവന്റ് സേവ് ചെയ്യുന്നതിൽ പ
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "സബ്സ്ക്രൈബ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "കലണ്ടർ സിങ്ക് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "തീമിൽ നിന്ന്"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "തിരികെ പോകുക"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "ഈ സെർവറിൽ Google അക്കൗണ്ടുകൾ പ്രവർത്തനക്ഷമമാക്കിയിട്ടില്ല."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "ലൈറ്റ്"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "ലിങ്ക്"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "ലിങ്ക് ചെയ്തു"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "ഒന്നിലധികം ആഴ്ചകൾ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "ഈ ബ്രൗസറിൽ പാസ്കീകൾ ലഭ്യമല്ല"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "പാസ്‌വേഡ്"
 
@@ -2071,6 +2165,10 @@ msgstr "പ്രോംപ്റ്റ് സേവ് ചെയ്തു"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "സവിശേഷതകൾ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "പ്രസിദ്ധീകരിച്ച കലണ്ടർ വിലാസം (വായന മാത്രം)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "സെരിഫ്"
 msgid "Server"
 msgstr "സെർവർ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "സെർവർ വിലാസം"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "ഞായറാഴ്ച"
 msgid "Switch to view 1-9"
 msgstr "കാഴ്ച 1-9 ലേക്ക് മാറുക"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ഇപ്പോൾ സിങ്ക് ചെയ്യുക"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "സിങ്ക് ചെയ്യുന്നു..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "ഈ വിലാസം കലണ്ടർ നൽകുന്നില്ല"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "കലണ്ടർ ഇനി ആ സെർവറിൽ ഇല്ല"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "കലണ്ടർ വളരെ വലുതാണ്"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "അതേ സമയം മറ്റേ സെർവറിൽ കലണ്ടർ മാറ്റപ്പെട്ടു"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "കലണ്ടറിന്റെ സെർവറിൽ എത്താനായില്ല"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "കലണ്ടറിന്റെ സെർവർ അക്കൗണ്ടിന്റെ ക്രെഡൻഷ്യലുകൾ നിരസിച്ചു"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "ഉപയോക്താവ്"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "ഉപയോക്തൃനാമം"
 
@@ -3016,6 +3143,10 @@ msgstr "വാർഷിക"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ഈ വിഭാഗത്തിലേക്ക് നിങ്ങൾക്ക് പ്രവേശനമില്ല."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "നിങ്ങൾ Google അക്കൗണ്ട് കണക്റ്റ് ചെയ്തിട്ടില്ല."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

@@ -261,6 +261,10 @@ msgstr ""
 msgid "Allow anyone to search for {entityLabel}"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr ""
@@ -278,6 +282,10 @@ msgstr ""
 msgid "Android push"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -289,6 +297,18 @@ msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
 msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
@@ -363,6 +383,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr ""
 
@@ -428,6 +449,10 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr ""
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,9 +478,21 @@ msgstr ""
 msgid "Calendar deleted"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr ""
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
+msgstr ""
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr ""
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
 msgstr ""
 
 #: src/components/layout/calendars-layout.tsx
@@ -636,6 +673,7 @@ msgstr ""
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr ""
@@ -692,6 +730,10 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr ""
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -699,6 +741,10 @@ msgstr ""
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
 msgstr ""
 
 #: ../../../lib/web/src/lib/chat-ui.ts
@@ -731,6 +777,10 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
+msgstr ""
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
 msgstr ""
 
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1129,6 +1179,10 @@ msgstr ""
 msgid "Email code"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr ""
@@ -1218,12 +1272,20 @@ msgstr ""
 msgid "Failed to add account"
 msgstr "新增賬戶失敗"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr ""
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr ""
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
 msgstr ""
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
@@ -1280,6 +1342,10 @@ msgstr ""
 msgid "Failed to get the calendar address"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr ""
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr ""
@@ -1325,6 +1391,14 @@ msgstr ""
 msgid "Failed to post comment"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr ""
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1362,6 +1436,10 @@ msgstr ""
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
+msgstr ""
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
 msgstr ""
 
 #: src/hooks/use-event-move.ts
@@ -1429,6 +1507,14 @@ msgstr ""
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
 msgstr ""
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "連結"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr ""
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr ""
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr ""
 
@@ -2070,6 +2164,10 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
 msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
@@ -2463,6 +2561,10 @@ msgstr ""
 msgid "Server"
 msgstr ""
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr ""
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr ""
 msgid "Switch to view 1-9"
 msgstr ""
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr ""
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr ""
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,7 +2767,23 @@ msgid "the address does not serve a calendar"
 msgstr ""
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr ""
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
+msgstr ""
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr ""
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr ""
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
 msgstr ""
 
 #: ../../../lib/web/src/lib/shell-errors.ts
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "用戶"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr ""
 
@@ -3015,6 +3142,10 @@ msgstr ""
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
+msgstr ""
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
 msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx

@@ -10,9 +10,13 @@ export interface Calendar {
   slug: string
   name: string
   colour: string
-  kind: 'own' | 'subscription' | 'birthdays'
+  kind: 'own' | 'subscription' | 'birthdays' | 'linked'
   /** The subscription's source address; empty for a calendar of one's own. */
   url: string
+  /** The connected account a linked calendar syncs through; empty otherwise. */
+  account: string
+  /** The remote collection a linked calendar mirrors; empty otherwise. */
+  collection: string
   readonly: boolean
   default: boolean
   version: number
@@ -42,4 +46,49 @@ export interface LinkResponse {
   token?: string
   path?: string
   exists?: boolean
+}
+
+/** A connected account that can hold a calendar. */
+export interface CalendarAccount {
+  id: string
+  /** `google`, `apple` or `caldav`. */
+  type: string
+  label: string
+  identifier: string
+  /** The capabilities the account holds now, such as `login` and `calendar`. */
+  granted: string[]
+}
+
+/** `-/calendars/account` answers the account it connected and tried. */
+export interface AccountResponse {
+  account: CalendarAccount
+}
+
+export interface AccountsResponse {
+  accounts: CalendarAccount[]
+  /** The OAuth provider types a new account can be granted from. */
+  providers: string[]
+  /** Whether the caller may set a missing provider up in the system settings. */
+  administrator: boolean
+}
+
+/** One calendar an account's own server offers. */
+export interface RemoteCalendar {
+  /** The collection address to link. */
+  href: string
+  name: string
+  description: string
+  colour: string
+  readonly: boolean
+  /** The calendar here that already mirrors it, or empty. */
+  linked: string
+}
+
+export interface RemoteResponse {
+  calendars: RemoteCalendar[]
+}
+
+/** `-/calendars/grant` answers the address the browser visits to consent. */
+export interface GrantResponse {
+  url: string
 }

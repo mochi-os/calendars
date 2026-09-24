@@ -10,9 +10,11 @@
 # summarise and expand, and core's DAV engine serves the caldav/*path route
 # over the dav/* functions at the end of this file.
 #
-# Three kinds of calendar: own (the user's events), subscription (an external
-# ICS URL, polled, read-only) and birthdays (derived from contacts, read-only,
-# nothing stored).
+# Four kinds of calendar: own (the user's events), subscription (an external
+# ICS URL, polled, read-only), birthdays (derived from contacts, read-only,
+# nothing stored) and linked (a calendar on another CalDAV server, reached
+# through a connected account, synced both ways: pulled on a schedule and
+# pushed on every write, with the server's version winning a conflict).
 
 _PRODID = "-//Mochisoft//Mochi Calendars//EN"
 
@@ -37,6 +39,13 @@ _POLL_BASE = 3600
 _POLL_MAXIMUM = 86400
 _POLL_BUDGET = 50
 
+# A linked calendar is checked this often, the objects it pulls in one
+# multiget, and how many multigets one sync runs before leaving the rest to
+# the next.
+_LINK_POLL = 900
+_LINK_BATCH = 50
+_LINK_BATCHES = 20
+
 # Reminders are scheduled per occurrence this far ahead; a fired reminder and
 # the calendar listing top the window up.
 _REMINDER_WINDOW = 30 * 86400
@@ -49,16 +58,29 @@ _COLOUR_DEFAULT = "#60a5fa"
 _TOMBSTONE_RETENTION = 7776000
 
 def database_upgrade(version):
-	pass
+	if version == 2:
+		# A linked calendar: the connected account it syncs through and the
+		# collection it mirrors; on each event, the object's address and
+		# version on the other server, and whether a write is still to push.
+		# Guarded per column, so a database created with them already there
+		# and a partly applied run both pass.
+		calendars = [c["name"] for c in mochi.db.table("calendars")]
+		for column, definition in [("account", "text not null default ''"), ("collection", "text not null default ''")]:
+			if column not in calendars:
+				mochi.db.execute("alter table calendars add column " + column + " " + definition)
+		events = [c["name"] for c in mochi.db.table("events")]
+		for column, definition in [("href", "text not null default ''"), ("remote", "text not null default ''"), ("dirty", "integer not null default 0")]:
+			if column not in events:
+				mochi.db.execute("alter table events add column " + column + " " + definition)
 
 def database_create():
-	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
+	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '' )")
 	mochi.db.execute("create index if not exists calendars_identity on calendars( identity )")
 	mochi.db.execute("create unique index if not exists calendars_identity_slug on calendars( identity, slug )")
 	# ics holds the object's iCalendar text; the rest are read from it when it
 	# is written, for listing and the CalDAV time-range prefilter. A recurring
 	# event's finish is 0: open-ended.
-	mochi.db.execute("create table if not exists events ( id text not null primary key, calendar text not null, identity text not null, slug text not null default '', uid text not null default '', etag text not null default '', ics text not null default '', component text not null default 'VEVENT', summary text not null default '', start integer not null default 0, finish integer not null default 0, allday integer not null default 0, recurring integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
+	mochi.db.execute("create table if not exists events ( id text not null primary key, calendar text not null, identity text not null, slug text not null default '', uid text not null default '', etag text not null default '', ics text not null default '', component text not null default 'VEVENT', summary text not null default '', start integer not null default 0, finish integer not null default 0, allday integer not null default 0, recurring integer not null default 0, created integer not null default 0, updated integer not null default 0, href text not null default '', remote text not null default '', dirty integer not null default 0 )")
 	mochi.db.execute("create index if not exists events_calendar_start on events( calendar, start )")
 	mochi.db.execute("create unique index if not exists events_calendar_slug on events( calendar, slug )")
 	mochi.db.execute("create unique index if not exists events_calendar_uid on events( calendar, uid ) where uid != ''")
@@ -228,10 +250,10 @@ def calendar_by_slug(identity, slug):
 
 # ignore: let the unique index on (identity, slug) settle a race between two
 # creators of the same slug; the caller reads the slug back to learn who won.
-def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False):
+def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False, account="", collection=""):
 	now = mochi.time.now()
-	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ? )",
-		id, identity, slug, kind, colour, url, _POLL_BASE, now, now)
+	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated, account, collection ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ? )",
+		id, identity, slug, kind, colour, url, _LINK_POLL if kind == "linked" else _POLL_BASE, now, now, account, collection)
 
 # calendars_ensure(identity): the default calendar and the birthdays calendar
 # exist from the first request on, each an entity with a fixed slug.
@@ -253,7 +275,11 @@ def calendar_ensure(identity, slug, label, kind, colour):
 		mochi.entity.delete(id)
 
 def calendar_readonly(row):
-	return row["kind"] != "own"
+	return row["kind"] != "own" and row["kind"] != "linked"
+
+# calendar_polled(row): whether the calendar is kept up to date on a schedule.
+def calendar_polled(row):
+	return row["kind"] == "subscription" or row["kind"] == "linked"
 
 def calendar_public(row):
 	return {
@@ -264,6 +290,8 @@ def calendar_public(row):
 		"colour": row["colour"],
 		"kind": row["kind"],
 		"url": row["url"],
+		"account": row["account"],
+		"collection": row["collection"],
 		"readonly": calendar_readonly(row),
 		"default": row["slug"] == "default",
 		"version": row["version"],
@@ -296,14 +324,16 @@ def changes_prune(identity):
 	mochi.db.execute("delete from changes where identity=? and deleted=1 and id<=?", identity, old["id"])
 	mochi.db.execute("insert into pruned ( identity, change ) values ( ?, ? ) on conflict( identity ) do update set change=max( change, excluded.change )", identity, old["id"])
 
+# Deleting a linked calendar unlinks it: the events go here and stay on the
+# other server.
 def calendar_delete(identity, row):
 	for event in mochi.db.rows("select * from events where calendar=?", row["id"]):
-		event_delete(identity, event)
+		event_delete(identity, event, push=False)
 	for link in mochi.db.rows("select hash from links where calendar=?", row["id"]):
 		mochi.token.delete(link["hash"])
 	mochi.db.execute("delete from links where calendar=?", row["id"])
 	mochi.db.execute("delete from polls where calendar=?", row["id"])
-	if row["kind"] == "subscription":
+	if calendar_polled(row):
 		for se in mochi.schedule.list():
 			if se.event == "schedule_calendars_poll" and se.data.get("calendar", "") == row["id"]:
 				se.cancel()
@@ -350,10 +380,14 @@ def event_full(row):
 	out["components"] = [c for c in tree.get("components", []) if type(c) == "dict" and c.get("name") != "VTIMEZONE"] if tree else []
 	return out
 
-# event_write(identity, calendar, slug, ics, row=None) -> row or string: store
-# an object's text, reading its columns from it. Answers an error code when
-# the text is not a calendar object or another object holds its uid.
-def event_write(identity, calendar, slug, ics, row=None):
+# event_write(identity, calendar, slug, ics, row=None, push=True) -> row or
+# string: store an object's text, reading its columns from it. Answers an
+# error code when the text is not a calendar object or another object holds
+# its uid. In a linked calendar the write goes on to the other server, unless
+# it came from there: a conflict there is answered as one here, with the
+# other server's version stored in place of the write, and a server that
+# cannot be reached leaves the write marked to push at the next sync.
+def event_write(identity, calendar, slug, ics, row=None, push=True):
 	if type(ics) != "string" or len(ics) > _ICS_MAXIMUM:
 		return "too_large"
 	summary = mochi.ical.summary(ics)
@@ -378,13 +412,34 @@ def event_write(identity, calendar, slug, ics, row=None):
 	calendar_touch(calendar, id)
 	after = event_get(identity, id)
 	reminders_schedule(after)
+	if push:
+		holder = mochi.db.row("select * from calendars where id=?", calendar)
+		if holder and holder["kind"] == "linked":
+			code = linked_push(holder, after)
+			if code == "conflict":
+				return "conflict"
+			after = event_get(identity, id)
 	return after
 
-def event_delete(identity, row):
+# event_delete(identity, row, push=True) -> string: remove an object, and in
+# a linked calendar remove it from the other server first. Answers "" when
+# done, "conflict" when the other server holds a newer version (stored here
+# in place of the deleted one), else why the other server refused.
+def event_delete(identity, row, push=True):
+	if push and row["href"]:
+		holder = mochi.db.row("select * from calendars where id=?", row["calendar"])
+		if holder and holder["kind"] == "linked":
+			result = mochi.caldav.delete(holder["account"], row["href"], row["remote"])
+			if result.get("error") == "conflict":
+				linked_replace(holder, row)
+				return "conflict"
+			if result.get("error"):
+				return linked_failure(result)
 	reminders_cancel(row["id"])
 	mochi.db.execute("delete from events where id=? and identity=?", row["id"], identity)
 	calendar_touch(row["calendar"], row["id"], 1)
 	changes_prune(identity)
+	return ""
 
 # component_clean(component, depth) -> dict or None: a client's component tree
 # in stored form. Names are the format's tokens; every value a string; only
@@ -634,6 +689,126 @@ def birthday_object(contact, calendar):
 
 # === Subscriptions ===
 
+# === Linked calendars ===
+# A linked calendar mirrors one collection on another CalDAV server, reached
+# through a connected account core holds the credential for. Each event keeps
+# the object's address there and the version the server last answered, and a
+# write that could not be pushed is marked dirty for the next sync.
+
+def linked_failure(result):
+	code = result.get("error", "") or "transport"
+	if "status" in result:
+		return code + ":" + str(result["status"])
+	return code
+
+# linked_push(calendar, event) -> string: write the event to the other
+# server. "" when it took; "conflict" when the server holds a version this one
+# did not know, which then replaces the event here; else why it failed, with
+# the event marked to push later.
+def linked_push(calendar, event):
+	href = event["href"] or (calendar["collection"] + event["slug"] + ".ics")
+	result = mochi.caldav.put(calendar["account"], href, event["ics"], event["remote"])
+	if not result.get("error"):
+		mochi.db.execute("update events set href=?, remote=?, dirty=0 where id=?", href, result.get("etag", ""), event["id"])
+		return ""
+	if result["error"] == "conflict":
+		linked_replace(calendar, dict(event, href=href))
+		return "conflict"
+	mochi.db.execute("update events set dirty=1 where id=?", event["id"])
+	mochi.db.execute("update calendars set failure=? where id=?", linked_failure(result), calendar["id"])
+	return linked_failure(result)
+
+# linked_replace(calendar, event): the other server's version of the object
+# takes the place of the event here, or the event goes when the server no
+# longer holds it.
+def linked_replace(calendar, event):
+	got = mochi.caldav.get(calendar["account"], calendar["collection"], [event["href"]])
+	if got.get("error"):
+		return
+	objects = [o for o in got.get("objects", []) if o.get("ics")]
+	if not objects:
+		event_delete(calendar["identity"], event, push=False)
+		return
+	written = event_write(calendar["identity"], calendar["id"], event["slug"], objects[0]["ics"], event, push=False)
+	if type(written) == "dict":
+		mochi.db.execute("update events set href=?, remote=?, dirty=0 where id=?", event["href"], objects[0].get("etag", ""), written["id"])
+
+# linked_pull(row) -> (bool, bool) or string: bring the collection's objects
+# in: fetch those whose version moved or that are new, drop those gone. The
+# pair is whether anything changed and whether the whole collection was
+# covered; a failure code otherwise.
+def linked_pull(row):
+	listing = mochi.caldav.list(row["account"], row["collection"])
+	if listing.get("error"):
+		return linked_failure(listing)
+	remote = {}
+	for o in listing.get("objects", []):
+		remote[o["href"]] = o.get("etag", "")
+	local = {}
+	for event in mochi.db.rows("select * from events where calendar=?", row["id"]):
+		if event["href"]:
+			local[event["href"]] = event
+	wanted = [href for href in remote if href not in local or local[href]["remote"] != remote[href] or local[href]["dirty"] == 1]
+	changed = False
+	complete = True
+	for i in range(0, len(wanted), _LINK_BATCH):
+		if i >= _LINK_BATCH * _LINK_BATCHES:
+			complete = False
+			break
+		got = mochi.caldav.get(row["account"], row["collection"], wanted[i:i + _LINK_BATCH])
+		if got.get("error"):
+			return linked_failure(got)
+		for o in got.get("objects", []):
+			if not o.get("ics"):
+				continue
+			existing = local.get(o["href"])
+			slug = existing["slug"] if existing else mochi.crypto.hash.sha256(o["href"])[:32]
+			written = event_write(row["identity"], row["id"], slug, o["ics"], existing, push=False)
+			if type(written) == "dict":
+				mochi.db.execute("update events set href=?, remote=?, dirty=0 where id=?", o["href"], o.get("etag", ""), written["id"])
+				changed = True
+	for href in local:
+		if href not in remote:
+			event_delete(row["identity"], local[href], push=False)
+			changed = True
+	return (changed, complete)
+
+# linked_sync(row, force=False) -> bool: push what is still to push, then
+# pull what changed on the other server. The collection's change tag, where
+# the server keeps one, skips the pull when nothing moved; a manual sync
+# never skips it. Returns whether anything changed here.
+def linked_sync(row, force=False):
+	changed = False
+	failure = ""
+	for event in mochi.db.rows("select * from events where calendar=? and dirty=1", row["id"]):
+		code = linked_push(row, event)
+		if code == "conflict":
+			changed = True
+		elif code:
+			failure = code
+			break
+	for event in mochi.db.rows("select * from events where calendar=? and href='' and dirty=0", row["id"]):
+		# Written before the calendar was linked, or by a pull that could
+		# not name it: a push gives it an address.
+		if not failure and linked_push(row, event) == "":
+			changed = True
+	if not failure:
+		status = mochi.caldav.status(row["account"], row["collection"])
+		if status.get("error"):
+			failure = linked_failure(status)
+		elif force or not status.get("ctag") or status.get("ctag") != row["etag"]:
+			result = linked_pull(row)
+			if type(result) == "string":
+				failure = result
+			else:
+				changed = changed or result[0]
+				if result[1]:
+					mochi.db.execute("update calendars set etag=? where id=?", status.get("ctag", ""), row["id"])
+	now = mochi.time.now()
+	interval = _LINK_POLL if not failure else min(max(row["interval"], _LINK_POLL) * 2, _POLL_MAXIMUM)
+	mochi.db.execute("update calendars set interval=?, next=?, fetched=?, failure=? where id=?", interval, now + interval, now, failure, row["id"])
+	return changed
+
 # subscription_ingest(row, text) -> int or string: replace a subscription's
 # events with those in the fetched text. Events are grouped by uid so a
 # recurring event and its overrides stay one object. Returns the count, or an
@@ -721,7 +896,7 @@ def poll_schedule(calendar, delay):
 # ensure_polls(): a poll scheduled for every subscription, and the daily
 # watchdog that re-creates lost ones. One schedule listing covers them all.
 def ensure_polls():
-	subscriptions = mochi.db.rows("select id, next from calendars where kind='subscription'")
+	subscriptions = mochi.db.rows("select id, next from calendars where kind='subscription' or kind='linked'")
 	if not subscriptions:
 		return
 	polled = {}
@@ -747,7 +922,7 @@ def schedule_calendars_poll(e):
 	if e.source != "schedule":
 		return
 	calendar = e.data.get("calendar", "")
-	row = mochi.db.row("select * from calendars where id=? and kind='subscription'", calendar)
+	row = mochi.db.row("select * from calendars where id=? and ( kind='subscription' or kind='linked' )", calendar)
 	if not row:
 		return
 	now = mochi.time.now()
@@ -759,7 +934,10 @@ def schedule_calendars_poll(e):
 		return
 	safety = mochi.schedule.after("schedule_calendars_poll", {"calendar": calendar}, 360)
 	if row["next"] <= now:
-		subscription_fetch(row)
+		if row["kind"] == "linked":
+			linked_sync(row)
+		else:
+			subscription_fetch(row)
 	safety.cancel()
 	after = mochi.db.row("select next from calendars where id=?", calendar)
 	if after:
@@ -895,11 +1073,147 @@ def action_calendar_subscribe(a):
 def action_calendar_poll(a):
 	identity = a.user.identity.id
 	row = calendar_get(identity, a.input("calendar", ""))
-	if not row or row["kind"] != "subscription":
+	if not row or not calendar_polled(row):
 		a.error.label(404, "errors.calendar_not_found")
 		return
-	changed = subscription_fetch(row, True)
+	if row["kind"] == "linked":
+		changed = linked_sync(row, True)
+	else:
+		changed = subscription_fetch(row, True)
 	return {"data": {"changed": changed, "calendar": calendar_public(calendar_get(identity, row["id"]))}}
+
+# === Actions: linked calendars ===
+
+# The connected accounts a calendar can be linked through, each with the
+# capabilities it holds now, and the OAuth providers a new account can be
+# granted from.
+def action_calendar_accounts(a):
+	accounts = []
+	for account in mochi.account.list("calendar") or []:
+		accounts.append({"id": account["id"], "type": account["type"], "label": account.get("label", ""), "identifier": account.get("identifier", ""), "granted": account.get("granted", [])})
+	providers = [p["type"] for p in (mochi.account.providers("calendar") or []) if p.get("flow") == "oauth"]
+	# An administrator is offered the system settings where a missing
+	# provider's sign-in client is entered; anyone else is told to ask one.
+	return {"data": {"accounts": accounts, "providers": providers, "administrator": a.user.role == "administrator"}}
+
+# Start the consent that grants calendar access to an OAuth account: a known
+# one, or a new one of the provider. Answers the address the browser visits;
+# the provider returns it to the target with granted=calendar and the account.
+def action_calendar_grant(a):
+	provider = a.input("provider", "")
+	account = a.input("account", "")
+	target = a.input("target", "")
+	if not target.startswith("/") or target.startswith("//"):
+		a.error.label(400, "errors.invalid_target")
+		return
+	if account:
+		row = mochi.account.get(account)
+		if not row:
+			a.error.label(404, "errors.account_not_found")
+			return
+		provider = row["type"]
+	if not provider:
+		a.error.label(400, "errors.account_not_found")
+		return
+	return {"data": mochi.account.grant(provider, "calendar", target, account)}
+
+# Connect an account a calendar can be linked through, from the subscribe
+# wizard: an Apple ID with an app-specific password, or a CalDAV server with
+# a login. The account is tried against its server before it is kept, so a
+# wrong password is refused here rather than at the calendar list.
+def action_calendar_account(a):
+	kind = a.input("type", "")
+	if kind != "apple" and kind != "caldav":
+		a.error.label(400, "errors.invalid_account")
+		return
+	fields = {}
+	for key in ("url", "username", "password", "label"):
+		value = a.input(key, "").strip() if key != "password" else a.input(key, "")
+		if len(value) > 4096:
+			a.error.label(400, "errors.invalid_account")
+			return
+		if value:
+			fields[key] = value
+	if not fields.get("username") or not fields.get("password"):
+		a.error.label(400, "errors.invalid_account")
+		return
+	if kind == "apple":
+		if not mochi.text.valid(fields["username"], "email"):
+			a.error.label(400, "errors.invalid_account")
+			return
+		fields.pop("url", None)
+	else:
+		url = fields.get("url", "")
+		if not url.startswith("http://") and not url.startswith("https://") or not mochi.text.valid(url, "url"):
+			a.error.label(400, "errors.url_scheme_required")
+			return
+	added = mochi.account.add(kind, **fields)
+	if not added or not added.get("id"):
+		a.error.label(502, "errors.calendar_unreachable")
+		return
+	tried = mochi.account.test(added["id"])
+	if not tried or not tried.get("success"):
+		mochi.account.remove(added["id"])
+		a.error.label(502, "errors.account_failed", message=(tried or {}).get("message", ""))
+		return
+	account = mochi.account.get(added["id"]) or added
+	return {"data": {"account": {"id": account["id"], "type": account["type"], "label": account.get("label", ""), "identifier": account.get("identifier", ""), "granted": account.get("granted", ["calendar"])}}}
+
+def account_error(a, result):
+	code = result.get("error", "")
+	if code == "unauthorised":
+		a.error.label(502, "errors.account_unauthorised")
+	elif code == "missing":
+		a.error.label(404, "errors.account_not_found")
+	else:
+		a.error.label(502, "errors.calendar_unreachable")
+
+# The calendars an account's server offers, each with the calendar here that
+# already mirrors it.
+def action_calendar_remote(a):
+	identity = a.user.identity.id
+	account = a.input("account", "")
+	result = mochi.caldav.calendars(account)
+	if result.get("error"):
+		account_error(a, result)
+		return
+	linked = {}
+	for row in mochi.db.rows("select id, collection from calendars where identity=? and account=?", identity, account):
+		linked[row["collection"]] = row["id"]
+	calendars = []
+	for remote in result.get("calendars", []):
+		calendars.append(dict(remote, linked=linked.get(remote["href"], "")))
+	return {"data": {"calendars": calendars}}
+
+# Link a calendar here to a collection on the account's server, and bring
+# its events in.
+def action_calendar_link(a):
+	identity = a.user.identity.id
+	calendars_ensure(identity)
+	account = a.input("account", "")
+	collection = a.input("collection", "").strip()
+	if not mochi.account.get(account):
+		a.error.label(404, "errors.account_not_found")
+		return
+	if not collection.startswith("http://") and not collection.startswith("https://") or not mochi.text.valid(collection, "url"):
+		a.error.label(400, "errors.url_scheme_required")
+		return
+	if mochi.db.exists("select id from calendars where identity=? and collection=?", identity, collection):
+		a.error.label(400, "errors.calendar_linked")
+		return
+	colour = colour_input(a, _COLOUR_DEFAULT)
+	if colour == None:
+		return
+	name = a.input("name", "").strip()
+	if not name or len(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
+		name = collection.split("//", 1)[1].split("/")[0][:_NAME_MAXIMUM]
+	id = mochi.entity.create("calendar", name, "private")
+	calendar_insert(identity, id, mochi.entity.fingerprint(id), "linked", colour, account=account, collection=collection)
+	row = calendar_get(identity, id)
+	linked_sync(row, True)
+	poll_schedule(id, _LINK_POLL)
+	ensure_polls()
+	return {"data": {"calendar": calendar_public(calendar_get(identity, id))}}
 
 # === Actions: events ===
 
@@ -1033,8 +1347,14 @@ def event_error(a, code):
 		a.error.label(400, "errors.event_too_large")
 	elif code == "duplicate":
 		a.error.label(409, "errors.event_duplicate")
-	else:
+	elif code == "conflict":
+		a.error.label(412, "errors.event_changed")
+	elif code == "unauthorised" or code.startswith("unauthorised:"):
+		a.error.label(502, "errors.account_unauthorised")
+	elif code == "invalid":
 		a.error.label(400, "errors.invalid_event")
+	else:
+		a.error.label(502, "errors.calendar_unreachable")
 
 def action_event_create(a):
 	identity = a.user.identity.id
@@ -1115,7 +1435,12 @@ def action_event_update(a):
 		if row["uid"] and mochi.db.exists("select id from events where calendar=? and uid=? and id!=?", target["id"], row["uid"], row["id"]):
 			a.error.label(409, "errors.event_duplicate")
 			return
-		mochi.db.execute("update events set calendar=?, slug=?, updated=? where id=? and identity=?", target["id"], slug, mochi.time.now(), row["id"], identity)
+		if calendar["kind"] == "linked" and row["href"]:
+			result = mochi.caldav.delete(calendar["account"], row["href"], row["remote"])
+			if result.get("error") and result["error"] != "missing":
+				event_error(a, result["error"])
+				return
+		mochi.db.execute("update events set calendar=?, slug=?, href='', remote='', dirty=0, updated=? where id=? and identity=?", target["id"], slug, mochi.time.now(), row["id"], identity)
 		calendar_touch(row["calendar"], row["id"], 1)
 		row = event_get(identity, row["id"])
 	written = event_write(identity, target["id"], row["slug"], ics, row)
@@ -1231,7 +1556,10 @@ def action_event_delete(a):
 	if calendar and calendar_readonly(calendar):
 		a.error.label(400, "errors.calendar_readonly")
 		return
-	event_delete(identity, row)
+	code = event_delete(identity, row)
+	if code:
+		event_error(a, code)
+		return
 	return {"data": {}}
 
 def action_events_changes(a):
@@ -1577,5 +1905,9 @@ def function_dav_delete(context, identity, collection, name, match="", absent=Fa
 		return {"error": "not_found"}
 	if absent or (match and match != "*" and match != row["etag"]):
 		return {"error": "conflict"}
-	event_delete(identity, row)
+	code = event_delete(identity, row)
+	if code == "conflict":
+		return {"error": "conflict"}
+	if code:
+		return {"error": "unreachable"}
 	return {}

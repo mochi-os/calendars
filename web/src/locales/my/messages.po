@@ -261,6 +261,10 @@ msgstr "အစီအစဉ်အားလုံး"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} ကို မည်သူမဆို ရှာဖွေခွင့်ပြုပါ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "ပြက္ခဒိန် ဝင်ရောက်ခွင့် ခွင့်ပြုမည်"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "စီစဉ်ခွင့်ပြုသည်"
@@ -278,6 +282,10 @@ msgstr "မမျှော်လင့်ထားသော အမှားတ�
 msgid "Android push"
 msgstr "Android push အကြောင်းကြားချက်"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "အခြား Mochi သို့မဟုတ် CalDAV ဆာဗာ"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "ဝင်ရောက်ထားသူ မည်သူမဆို"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ဤဖိဒ်ကို စာရင်းသွင်းထားသည့် အရာအားလုံး လက်ခံရရှိမှု ရပ်တန့်ပါမည်။ ထို့နောက် URL အသစ်ကို ကူးယူနိုင်ပါသည်။"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "အက်ပ်သီးသန့် စကားဝှက်"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "{name} အတွက် အသွင်ပုံ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "နောက်သို့"
 
@@ -428,6 +449,10 @@ msgstr "ပြက္ခဒိန်"
 msgid "Calendar"
 msgstr "ပြက္ခဒိန်"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "ပြက္ခဒိန် ဝင်ရောက်ခွင့် မရရှိပါ"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "ပြက္ခဒိန် ဖန်တီးပြီးပါပြ�
 msgid "Calendar deleted"
 msgstr "ပြက္ခဒိန် ဖျက်ပြီးပါပြီ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "ပြက္ခဒိန် ချိတ်ဆက်ပြီးပါပြီ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "ပြက္ခဒိန် အမည်ပြောင်းပြီးပါပြီ"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ပြက္ခဒိန် ဆာဗာ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "ပြက္ခဒိန် ထပ်တူပြုပြီးပါပြီ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "ဘေးဘား ခေါက်မည်"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "အရောင်"
@@ -692,6 +730,10 @@ msgstr "ကြည့်ရှုမှု ဆက်တင်များ ပြ�
 msgid "Confirm"
 msgstr "အတည်ပြုမည်"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "ချိတ်ဆက်"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "ကိရိယာ ချိတ်ဆက်မည်"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "အခြားကိရိယာ ချိတ်ဆက်မည်"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google ချိတ်ဆက်မည်"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "ဆက်လက်လုပ်ဆောင်မည်"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "{label} ဖြင့် ဆက်လက်လုပ်ဆောင်ပါ"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ဖြင့် ဆက်လုပ်မည်"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "အီးမေးလ်"
 msgid "Email code"
 msgstr "အီးမေးလ် ကုဒ်"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google အကောင့်များ ဖွင့်မည်"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "ပြီးဆုံး"
@@ -1218,6 +1272,10 @@ msgstr "အလွန်ကြီး"
 msgid "Failed to add account"
 msgstr "အကောင့် ထည့်၍ မရပါ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "ပြက္ခဒိန် ဝင်ရောက်ခွင့် တောင်း၍ မရပါ"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "ပြက္ခဒိန် စစ်ဆေး၍ မရပါ"
@@ -1225,6 +1283,10 @@ msgstr "ပြက္ခဒိန် စစ်ဆေး၍ မရပါ"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "ကိရိယာ ချိတ်ဆက်၍ မရပါ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "အကောင့် ချိတ်ဆက်၍ မရပါ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "RSS တိုကင် ရယူ၍ မရပါ"
 msgid "Failed to get the calendar address"
 msgstr "ပြက္ခဒိန် လိပ်စာ ရယူ၍ မရပါ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "ပြက္ခဒိန် ချိတ်ဆက်၍ မရပါ"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "တင်၍ မရပါ"
@@ -1325,6 +1391,14 @@ msgstr "အစီအစဉ် ရွှေ့၍ မရပါ"
 msgid "Failed to post comment"
 msgstr "မှတ်ချက် တင်၍ မရပါ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "အကောင့်များ ဖတ်၍ မရပါ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "ပြက္ခဒိန်များ ဖတ်၍ မရပါ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "အစီအစဉ် သိမ်း၍ မရပါ"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "စာရင်းသွင်း၍ မရပါ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "ပြက္ခဒိန် ထပ်တူပြု၍ မရပါ"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "အပြင်အဆင်မှ"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "ပြန်သွားပါ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "ဤဆာဗာတွင် Google အကောင့်များကို ဖွင့်ထားခြင်း မရှိပါ။"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "အလင်း"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "လင့်ခ်"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "ချိတ်ဆက်ထား"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "အပတ်များစွာ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "ဤဘရောက်ဆာတွင် passkey များ မရရှိနိုင်ပါ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "စကားဝှက်"
 
@@ -2071,6 +2165,10 @@ msgstr "Prompt သိမ်းပြီးပါပြီ"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "ဂုဏ်သတ္တိများ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "ထုတ်ဝေထားသော ပြက္ခဒိန် လိပ်စာ (ဖတ်ရှုသာ)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "ဆာရစ်ဖ်"
 msgid "Server"
 msgstr "ဆာဗာ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "ဆာဗာ လိပ်စာ"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "တနင်္ဂနွေ"
 msgid "Switch to view 1-9"
 msgstr "ကြည့်ရှုခြင်း 1-9 သို့ ပြောင်းမည်"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ယခု ထပ်တူပြုမည်"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "ထပ်တူပြုနေသည်..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "လိပ်စာက ပြက္ခဒိန် မပေးပါ"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "ပြက္ခဒိန်သည် ထိုဆာဗာတွင် မရှိတော့ပါ"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "ပြက္ခဒိန် ကြီးလွန်းသည်"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "တစ်ချိန်တည်းတွင် အခြားဆာဗာ၌ ပြက္ခဒိန် ပြောင်းလဲခဲ့သည်"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "ပြက္ခဒိန်၏ ဆာဗာသို့ မရောက်နိုင်ပါ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "ပြက္ခဒိန်၏ ဆာဗာက အကောင့်၏ အထောက်အထားများကို ငြင်းပယ်ခဲ့သည်"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "သုံးစွဲသူ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "သုံးစွဲသူအမည်"
 
@@ -3016,6 +3143,10 @@ msgstr "နှစ်စဉ်"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ဤအပိုင်းသို့ သင့်တွင် ဝင်ရောက်ခွင့်မရှိပါ။"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "သင် Google အကောင့် ချိတ်ဆက်ထားခြင်း မရှိပါ။"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

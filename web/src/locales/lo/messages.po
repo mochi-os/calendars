@@ -261,6 +261,10 @@ msgstr "ເຫດການທັງໝົດ"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ອະນຸຍາດໃຫ້ທຸກຄົນຄົ້ນຫາ {entityLabel}"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "ອະນຸຍາດການເຂົ້າເຖິງປະຕິທິນ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ອະນຸຍາດການຈັດລຽງຕາມ"
@@ -278,6 +282,10 @@ msgstr "ເກີດຂໍ້ຜິດພາດທີ່ບໍ່ຄາດຄິ
 msgid "Android push"
 msgstr "ການແຈ້ງເຕືອນ Android"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "ເຊີບເວີ Mochi ຫຼື CalDAV ອື່ນ"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "ໃຜກໍໄດ້ທີ່ເຂົ້າສູ່ລະບົບ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ທຸກຢ່າງທີ່ສະໝັກຮັບຟີດນີ້ຈະຢຸດຮັບມັນ. ທ່ານສາມາດສຳເນົາ URL ໃໝ່ໄດ້ຫຼັງຈາກນັ້ນ."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "ລະຫັດຜ່ານສະເພາະແອັບ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "ອະວາຕາສຳລັບ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "ກັບຄືນ"
 
@@ -428,6 +449,10 @@ msgstr "ປະຕິທິນ"
 msgid "Calendar"
 msgstr "ປະຕິທິນ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "ບໍ່ໄດ້ຮັບການເຂົ້າເຖິງປະຕິທິນ"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "ສ້າງປະຕິທິນແລ້ວ"
 msgid "Calendar deleted"
 msgstr "ລຶບປະຕິທິນແລ້ວ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "ເຊື່ອມຕໍ່ປະຕິທິນແລ້ວ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "ປ່ຽນຊື່ປະຕິທິນແລ້ວ"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ເຊີບເວີປະຕິທິນ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "ຊິງຄ໌ປະຕິທິນແລ້ວ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "ຫຍໍ້ແຖບຂ້າງ"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "ສີ"
@@ -692,6 +730,10 @@ msgstr "ກຳນົດຄ່າການຕັ້ງຄ່າມຸມມອງ
 msgid "Confirm"
 msgstr "ຢືນຢັນ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "ເຊື່ອມຕໍ່"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "ເຊື່ອມຕໍ່ອຸປະກອນ"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "ເຊື່ອມຕໍ່ອຸປະກອນອື່ນ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "ເຊື່ອມຕໍ່ Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "ຕໍ່"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "ສືບຕໍ່ດ້ວຍ {label}"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "ດຳເນີນຕໍ່ດ້ວຍ {providerLabel}"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "ອີເມວ"
 msgid "Email code"
 msgstr "ລະຫັດອີເມວ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "ເປີດໃຊ້ງານບັນຊີ Google"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "ສິ້ນສຸດ"
@@ -1218,6 +1272,10 @@ msgstr "ໃຫຍ່ພິເສດ"
 msgid "Failed to add account"
 msgstr "ເພີ່ມບັນຊີລົ້ມເຫຼວ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "ຂໍການເຂົ້າເຖິງປະຕິທິນລົ້ມເຫຼວ"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "ກວດສອບປະຕິທິນລົ້ມເຫຼວ"
@@ -1225,6 +1283,10 @@ msgstr "ກວດສອບປະຕິທິນລົ້ມເຫຼວ"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "ເຊື່ອມຕໍ່ອຸປະກອນລົ້ມເຫຼວ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "ເຊື່ອມຕໍ່ບັນຊີລົ້ມເຫຼວ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "ໄດ້ຮັບໂທເຄັນ RSS ລົ້ມເຫຼວ"
 msgid "Failed to get the calendar address"
 msgstr "ຮັບທີ່ຢູ່ປະຕິທິນລົ້ມເຫຼວ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "ເຊື່ອມຕໍ່ປະຕິທິນລົ້ມເຫຼວ"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "ໂຫຼດລົ້ມເຫຼວ"
@@ -1325,6 +1391,14 @@ msgstr "ຍ້າຍເຫດການລົ້ມເຫຼວ"
 msgid "Failed to post comment"
 msgstr "ໂພສຄຳເຫັນລົ້ມເຫຼວ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "ອ່ານບັນຊີລົ້ມເຫຼວ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "ອ່ານປະຕິທິນລົ້ມເຫຼວ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "ບັນທຶກເຫດການລົ້ມເຫຼວ"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "ສະໝັກລົ້ມເຫຼວ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "ຊິງຄ໌ປະຕິທິນລົ້ມເຫຼວ"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "ຈາກຮູບແບບ"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "ກັບໄປ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "ຍັງບໍ່ໄດ້ເປີດໃຊ້ງານບັນຊີ Google ໃນເຊີບເວີນີ້."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "ສະຫວ່າງ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "ລິ້ງ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "ເຊື່ອມຕໍ່ແລ້ວ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "ຫຼາຍອາທິດ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Passkeys ບໍ່ສາມາດໃຊ້ໄດ້ໃນບຣາວເຊີນີ້"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "ລະຫັດຜ່ານ"
 
@@ -2071,6 +2165,10 @@ msgstr "ບັນທຶກ prompt ແລ້ວ"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "ຄຸນສົມບັດ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "ທີ່ຢູ່ປະຕິທິນທີ່ເຜີຍແຜ່ (ອ່ານຢ່າງດຽວ)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "ເຊຣິບ"
 msgid "Server"
 msgstr "ເຊີບເວີ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "ທີ່ຢູ່ເຊີບເວີ"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "ວັນອາທິດ"
 msgid "Switch to view 1-9"
 msgstr "ສະຫຼັບໄປເບິ່ງ 1-9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ຊິງຄ໌ດຽວນີ້"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "ກຳລັງຊິງຄ໌..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "ທີ່ຢູ່ນີ້ບໍ່ໄດ້ໃຫ້ບໍລິການປະຕິທິນ"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "ປະຕິທິນບໍ່ມີຢູ່ໃນເຊີບເວີນັ້ນອີກຕໍ່ໄປ"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "ປະຕິທິນໃຫຍ່ເກີນໄປ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "ປະຕິທິນຖືກປ່ຽນແປງຢູ່ເຊີບເວີອື່ນໃນເວລາດຽວກັນ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "ບໍ່ສາມາດຕິດຕໍ່ເຊີບເວີຂອງປະຕິທິນໄດ້"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "ເຊີບເວີຂອງປະຕິທິນປະຕິເສດຂໍ້ມູນຮັບຮອງຂອງບັນຊີ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "ຜູ້ໃຊ້"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "ຊື່ຜູ້ໃຊ້"
 
@@ -3016,6 +3143,10 @@ msgstr "ລາຍປີ"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ທ່ານບໍ່ມີສິດເຂົ້າເຖິງພາກສ່ວນນີ້."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "ທ່ານຍັງບໍ່ໄດ້ເຊື່ອມຕໍ່ບັນຊີ Google."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

@@ -4,7 +4,11 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { calendarsApi } from '@/api/calendars'
-import type { CalendarsResponse } from '@/api/types/calendars'
+import type {
+  AccountsResponse,
+  CalendarsResponse,
+  RemoteResponse,
+} from '@/api/types/calendars'
 
 const calendarKeys = {
   all: () => ['calendars'] as const,
@@ -59,3 +63,55 @@ export const useSubscribeCalendarMutation = () =>
 
 export const usePollCalendarMutation = () =>
   useCalendarMutation((calendar: string) => calendarsApi.poll(calendar))
+
+/** The connected accounts a calendar can be linked through. */
+export const useCalendarAccountsQuery = (enabled: boolean) =>
+  useQuery<AccountsResponse>({
+    queryKey: ['calendars', 'accounts'],
+    queryFn: () => calendarsApi.accounts(),
+    enabled,
+  })
+
+/** Connects an Apple or CalDAV account the wizard can then link through. */
+export const useAddCalendarAccountMutation = () => {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (fields: {
+      type: 'apple' | 'caldav'
+      url?: string
+      username: string
+      password: string
+      label?: string
+    }) => calendarsApi.account(fields),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['calendars', 'accounts'] })
+    },
+  })
+}
+
+/** The calendars an account's own server offers. */
+export const useRemoteCalendarsQuery = (account: string | null) =>
+  useQuery<RemoteResponse>({
+    queryKey: ['calendars', 'remote', account],
+    queryFn: () => calendarsApi.remote(account ?? ''),
+    enabled: account !== null && account !== '',
+  })
+
+export const useLinkCalendarMutation = () =>
+  useCalendarMutation(
+    (fields: {
+      account: string
+      collection: string
+      name: string
+      colour: string
+    }) => calendarsApi.link(fields)
+  )
+
+export const useGrantCalendarMutation = () =>
+  useMutation({
+    mutationFn: (fields: {
+      target: string
+      account?: string
+      provider?: string
+    }) => calendarsApi.grant(fields),
+  })

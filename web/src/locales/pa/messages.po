@@ -261,6 +261,10 @@ msgstr "ਸਾਰੇ ਇਵੈਂਟ"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ਕਿਸੇ ਨੂੰ ਵੀ {entityLabel} ਖੋਜਣ ਦੀ ਆਗਿਆ ਦਿਓ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "ਕੈਲੰਡਰ ਪਹੁੰਚ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ਇਸ ਅਨੁਸਾਰ ਛਾਂਟਣ ਦੀ ਆਗਿਆ ਦਿਓ"
@@ -278,6 +282,10 @@ msgstr "ਇੱਕ ਅਣਕਿਆਸੀ ਗੜਬੜ ਹੋਈ"
 msgid "Android push"
 msgstr "Android ਪੁਸ਼"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "ਕੋਈ ਹੋਰ Mochi ਜਾਂ CalDAV ਸਰਵਰ"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "ਕੋਈ ਵੀ ਜੋ ਲੌਗ ਇਨ ਹੈ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ਇਸ ਫੀਡ ਦੀ ਗਾਹਕੀ ਲੈਣ ਵਾਲਾ ਸਭ ਕੁਝ ਇਸਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨਾ ਬੰਦ ਕਰ ਦੇਵੇਗਾ। ਬਾਅਦ ਵਿੱਚ ਤੁਸੀਂ ਨਵਾਂ URL ਕਾਪੀ ਕਰ ਸਕਦੇ ਹੋ।"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "ਐਪ-ਵਿਸ਼ੇਸ਼ ਪਾਸਵਰਡ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "{name} ਲਈ ਅਵਤਾਰ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "ਵਾਪਸ"
 
@@ -428,6 +449,10 @@ msgstr "ਕੈਲੰਡਰ"
 msgid "Calendar"
 msgstr "ਕੈਲੰਡਰ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "ਕੈਲੰਡਰ ਪਹੁੰਚ ਨਹੀਂ ਦਿੱਤੀ ਗਈ"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "ਕੈਲੰਡਰ ਬਣਾਇਆ ਗਿਆ"
 msgid "Calendar deleted"
 msgstr "ਕੈਲੰਡਰ ਮਿਟਾਇਆ ਗਿਆ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "ਕੈਲੰਡਰ ਲਿੰਕ ਹੋ ਗਿਆ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "ਕੈਲੰਡਰ ਦਾ ਨਾਮ ਬਦਲਿਆ ਗਿਆ"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ਕੈਲੰਡਰ ਸਰਵਰ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "ਕੈਲੰਡਰ ਸਿੰਕ ਹੋ ਗਿਆ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "ਸਾਈਡਬਾਰ ਸੰਕੁਚਿਤ ਕਰੋ"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "ਰੰਗ"
@@ -692,6 +730,10 @@ msgstr "ਦ੍ਰਿਸ਼ ਸੈਟਿੰਗਾਂ ਕੌਨਫਿਗਰ ਕਰ
 msgid "Confirm"
 msgstr "ਪੁਸ਼ਟੀ ਕਰੋ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "ਜੁੜੋ"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰੋ"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "ਹੋਰ ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰੋ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google ਨਾਲ ਜੁੜੋ"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "ਜਾਰੀ ਰੱਖੋ"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "{label} ਨਾਲ ਜਾਰੀ ਰੱਖੋ"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ਨਾਲ ਜਾਰੀ ਰੱਖੋ"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "ਈਮੇਲ"
 msgid "Email code"
 msgstr "ਈਮੇਲ ਕੋਡ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google ਖਾਤੇ ਸਮਰੱਥ ਕਰੋ"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "ਸਮਾਪਤੀ"
@@ -1218,6 +1272,10 @@ msgstr "ਵਾਧੂ ਵੱਡਾ"
 msgid "Failed to add account"
 msgstr "ਖਾਤਾ ਜੋੜਨ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "ਕੈਲੰਡਰ ਪਹੁੰਚ ਮੰਗਣ ਵਿੱਚ ਅਸਫਲ"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "ਕੈਲੰਡਰ ਦੀ ਜਾਂਚ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
@@ -1225,6 +1283,10 @@ msgstr "ਕੈਲੰਡਰ ਦੀ ਜਾਂਚ ਕਰਨ ਵਿੱਚ ਅਸਫ�
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "ਖਾਤਾ ਕਨੈਕਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "RSS ਟੋਕਨ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to get the calendar address"
 msgstr "ਕੈਲੰਡਰ ਦਾ ਪਤਾ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "ਕੈਲੰਡਰ ਲਿੰਕ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
@@ -1325,6 +1391,14 @@ msgstr "ਇਵੈਂਟ ਲਿਜਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to post comment"
 msgstr "ਟਿੱਪਣੀ ਪੋਸਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "ਖਾਤੇ ਪੜ੍ਹਨ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "ਕੈਲੰਡਰ ਪੜ੍ਹਨ ਵਿੱਚ ਅਸਫਲ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "ਇਵੈਂਟ ਸੰਭਾਲਣ ਵਿੱਚ ਅਸਫਲ"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "ਗਾਹਕੀ ਲੈਣ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "ਕੈਲੰਡਰ ਸਿੰਕ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "ਥੀਮ ਤੋਂ"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "ਵਾਪਸ ਜਾਓ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "ਇਸ ਸਰਵਰ 'ਤੇ Google ਖਾਤੇ ਸਮਰੱਥ ਨਹੀਂ ਕੀਤੇ ਗਏ ਹਨ।"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "ਲਾਈਟ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "ਲਿੰਕ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "ਲਿੰਕ ਕੀਤਾ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "ਕਈ ਹਫ਼ਤੇ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਪਾਸਕੀਆਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "ਪਾਸਵਰਡ"
 
@@ -2071,6 +2165,10 @@ msgstr "ਪ੍ਰਾਂਪਟ ਸੇਵ ਹੋ ਗਿਆ"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "ਪ੍ਰਕਾਸ਼ਿਤ ਕੈਲੰਡਰ ਪਤਾ (ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "ਸੈਰੀਫ"
 msgid "Server"
 msgstr "ਸਰਵਰ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "ਸਰਵਰ ਪਤਾ"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "ਐਤਵਾਰ"
 msgid "Switch to view 1-9"
 msgstr "ਦ੍ਰਿਸ਼ 1-9 'ਤੇ ਜਾਓ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ਹੁਣੇ ਸਿੰਕ ਕਰੋ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "ਸਿੰਕ ਕਰ ਰਿਹਾ ਹੈ..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "ਇਹ ਪਤਾ ਕੋਈ ਕੈਲੰਡਰ ਨਹੀਂ ਦਿੰਦਾ"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "ਕੈਲੰਡਰ ਹੁਣ ਉਸ ਸਰਵਰ ਉੱਤੇ ਨਹੀਂ ਹੈ"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "ਕੈਲੰਡਰ ਬਹੁਤ ਵੱਡਾ ਹੈ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "ਉਸੇ ਸਮੇਂ ਦੂਜੇ ਸਰਵਰ ਉੱਤੇ ਕੈਲੰਡਰ ਬਦਲਿਆ ਗਿਆ ਸੀ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "ਕੈਲੰਡਰ ਦੇ ਸਰਵਰ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੋ ਸਕੀ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "ਕੈਲੰਡਰ ਦੇ ਸਰਵਰ ਨੇ ਖਾਤੇ ਦੇ ਪ੍ਰਮਾਣ ਪੱਤਰ ਰੱਦ ਕਰ ਦਿੱਤੇ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "ਉਪਭੋਗਤਾ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "ਉਪਭੋਗਤਾ ਨਾਮ"
 
@@ -3016,6 +3143,10 @@ msgstr "ਸਾਲਾਨਾ"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ਤੁਹਾਡੇ ਕੋਲ ਇਸ ਭਾਗ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੈ।"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "ਤੁਸੀਂ ਕੋਈ Google ਖਾਤਾ ਨਹੀਂ ਜੋੜਿਆ ਹੈ।"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

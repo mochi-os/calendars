@@ -261,6 +261,10 @@ msgstr "అన్ని ఈవెంట్‌లు"
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} కోసం వెతకడానికి ఎవరినైనా అనుమతించు"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "క్యాలెండర్ యాక్సెస్‌ను అనుమతించండి"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "వీటి ద్వారా క్రమబద్ధీకరణను అనుమతించండి"
@@ -278,6 +282,10 @@ msgstr "ఊహించని లోపం సంభవించింది"
 msgid "Android push"
 msgstr "Android పుష్"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "మరో Mochi లేదా CalDAV సర్వర్"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -290,6 +298,18 @@ msgstr "లాగిన్ అయిన ఎవరైనా"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ఈ ఫీడ్‌కు సభ్యత్వం పొందిన ప్రతిదీ దాన్ని స్వీకరించడం ఆపేస్తుంది. ఆ తర్వాత మీరు కొత్త URLని కాపీ చేయవచ్చు."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "యాప్-నిర్దిష్ట పాస్‌వర్డ్"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -363,6 +383,7 @@ msgstr "{name} కోసం అవతార్"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "వెనుకకు"
 
@@ -428,6 +449,10 @@ msgstr "క్యాలెండర్"
 msgid "Calendar"
 msgstr "క్యాలెండర్"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "క్యాలెండర్ యాక్సెస్ ఇవ్వబడలేదు"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -453,10 +478,22 @@ msgstr "క్యాలెండర్ సృష్టించబడింద�
 msgid "Calendar deleted"
 msgstr "క్యాలెండర్ తొలగించబడింది"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "క్యాలెండర్ లింక్ చేయబడింది"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "క్యాలెండర్ పేరు మార్చబడింది"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "క్యాలెండర్ సర్వర్"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "క్యాలెండర్ సింక్ చేయబడింది"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -636,6 +673,7 @@ msgstr "సైడ్‌బార్‌ను కుదించండి"
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "రంగు"
@@ -692,6 +730,10 @@ msgstr "వీక్షణ సెట్టింగ్‌లను కాన్�
 msgid "Confirm"
 msgstr "నిర్ధారించండి"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "కనెక్ట్"
+
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect a device"
@@ -700,6 +742,10 @@ msgstr "పరికరాన్ని కనెక్ట్ చేయండి"
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "మరో పరికరాన్ని కనెక్ట్ చేయండి"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google కనెక్ట్ చేయండి"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -732,6 +778,10 @@ msgstr "కొనసాగించండి"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "{label}తో కొనసాగించండి"
+
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} తో కొనసాగించండి"
 
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
@@ -1129,6 +1179,10 @@ msgstr "ఇమెయిల్"
 msgid "Email code"
 msgstr "ఇమెయిల్ కోడ్"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google ఖాతాలను ప్రారంభించండి"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "ముగింపు"
@@ -1218,6 +1272,10 @@ msgstr "అదనపు పెద్దది"
 msgid "Failed to add account"
 msgstr "ఖాతాను జోడించడంలో విఫలమైంది"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "క్యాలెండర్ యాక్సెస్ అడగడంలో విఫలమైంది"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "క్యాలెండర్‌ను తనిఖీ చేయడంలో విఫలమైంది"
@@ -1225,6 +1283,10 @@ msgstr "క్యాలెండర్‌ను తనిఖీ చేయడం�
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Failed to connect device"
 msgstr "పరికరాన్ని కనెక్ట్ చేయడంలో విఫలమైంది"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "ఖాతాను కనెక్ట్ చేయడంలో విఫలమైంది"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
@@ -1280,6 +1342,10 @@ msgstr "RSS టోకెన్‌ను పొందడంలో విఫలమ
 msgid "Failed to get the calendar address"
 msgstr "క్యాలెండర్ చిరునామాను పొందడంలో విఫలమైంది"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "క్యాలెండర్‌ను లింక్ చేయడంలో విఫలమైంది"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "లోడ్ చేయడంలో విఫలమైంది"
@@ -1325,6 +1391,14 @@ msgstr "ఈవెంట్‌ను తరలించడంలో విఫల�
 msgid "Failed to post comment"
 msgstr "వ్యాఖ్యను పోస్ట్ చేయడంలో విఫలమైంది"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "ఖాతాలను చదవడంలో విఫలమైంది"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "క్యాలెండర్‌లను చదవడంలో విఫలమైంది"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1363,6 +1437,10 @@ msgstr "ఈవెంట్‌ను సేవ్ చేయడంలో విఫ
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "చందా చేరడంలో విఫలమైంది"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "క్యాలెండర్‌ను సింక్ చేయడంలో విఫలమైంది"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
@@ -1430,6 +1508,14 @@ msgstr "థీమ్ నుండి"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "వెనక్కి వెళ్ళండి"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "ఈ సర్వర్‌లో Google ఖాతాలు ప్రారంభించబడలేదు."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1539,8 +1625,13 @@ msgid "Light"
 msgstr "లైట్"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "లింక్"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "లింక్ చేయబడింది"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1701,6 +1792,8 @@ msgstr "అనేక వారాలు"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1992,6 +2085,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "ఈ బ్రౌజర్‌లో పాస్‌కీలు అందుబాటులో లేవు"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "పాస్‌వర్డ్"
 
@@ -2071,6 +2165,10 @@ msgstr "ప్రాంప్ట్ సేవ్ చేయబడింది"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "లక్షణాలు"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "ప్రచురించిన క్యాలెండర్ చిరునామా (చదవడానికి మాత్రమే)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2463,6 +2561,10 @@ msgstr "సెరిఫ్"
 msgid "Server"
 msgstr "సర్వర్"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "సర్వర్ చిరునామా"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2603,6 +2705,14 @@ msgstr "ఆదివారం"
 msgid "Switch to view 1-9"
 msgstr "వీక్షణ 1-9 కి మారండి"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ఇప్పుడే సింక్ చేయండి"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "సింక్ చేస్తోంది..."
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
@@ -2657,8 +2767,24 @@ msgid "the address does not serve a calendar"
 msgstr "ఈ చిరునామా క్యాలెండర్‌ను అందించదు"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "క్యాలెండర్ ఇక ఆ సర్వర్‌లో లేదు"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "క్యాలెండర్ చాలా పెద్దది"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "అదే సమయంలో మరొక సర్వర్‌లో క్యాలెండర్ మార్చబడింది"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "క్యాలెండర్ సర్వర్‌ను చేరుకోలేకపోయాము"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "క్యాలెండర్ సర్వర్ ఖాతా ఆధారాలను తిరస్కరించింది"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2894,6 +3020,7 @@ msgid "User"
 msgstr "యూజర్"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "యూజర్‌నేమ్"
 
@@ -3016,6 +3143,10 @@ msgstr "వార్షిక"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ఈ విభాగానికి మీకు యాక్సెస్ లేదు."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "మీరు Google ఖాతాను కనెక్ట్ చేయలేదు."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

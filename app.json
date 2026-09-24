@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "0.3",
+	"version": "0.4",
 	"label": "app.name",
 	"classes": ["calendar"],
 	"paths": ["calendars"],
@@ -15,10 +15,10 @@
 	"execute": ["calendars.star"],
 
 	// Set to "2.0" at release: the dev build reports the Makefile version.
-	"require": {"version": {"minimum": "2.0"}},
+	"require": {"version": {"minimum": "2.0.3"}},
 
 	"database": {
-		"schema": 1,
+		"schema": 2,
 		"file": "calendars.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -40,6 +40,11 @@
 		"-/calendars/delete": {"function": "action_calendar_delete"},
 		"-/calendars/subscribe": {"function": "action_calendar_subscribe"},
 		"-/calendars/poll": {"function": "action_calendar_poll"},
+		"-/calendars/accounts": {"function": "action_calendar_accounts"},
+		"-/calendars/account": {"function": "action_calendar_account"},
+		"-/calendars/grant": {"function": "action_calendar_grant"},
+		"-/calendars/remote": {"function": "action_calendar_remote"},
+		"-/calendars/link": {"function": "action_calendar_link"},
 		"-/events": {"function": "action_events"},
 		"-/events/bounds": {"function": "action_events_bounds"},
 		"-/events/get": {"function": "action_event_get"},
