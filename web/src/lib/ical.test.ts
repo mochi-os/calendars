@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { describe, expect, it } from 'vitest'
 import type { Component } from '@/api/types/events'
 import {
+  anchoredDraft,
   componentDraft,
   deletedOccurrence,
   draftComponent,
@@ -14,13 +14,17 @@ import {
   foreignZones,
   emptyRepeat,
   masterComponent,
+  movedDraft,
+  occurrenceDraft,
   property,
   propertyInstant,
   propertyValue,
   reminderTrigger,
   repeatRule,
   ruleRepeat,
+  splitSeries,
   triggerMinutes,
+  truncatedSeries,
   utcValue,
   type EventDraft,
 } from './ical'
@@ -58,7 +62,11 @@ describe('property values', () => {
 
   it('reads a zoned value through its TZID', () => {
     const instant = propertyInstant(
-      { name: 'DTSTART', params: { TZID: ['Europe/London'] }, value: '20260916T090000' },
+      {
+        name: 'DTSTART',
+        params: { TZID: ['Europe/London'] },
+        value: '20260916T090000',
+      },
       'UTC'
     )
     expect(utcValue(instant!.seconds)).toBe('20260916T080000Z')
@@ -93,7 +101,12 @@ describe('repeat rules', () => {
   it('writes the frequency, interval and weekdays', () => {
     expect(
       repeatRule(
-        { ...emptyRepeat(), frequency: 'weekly', interval: 2, weekdays: [1, 3] },
+        {
+          ...emptyRepeat(),
+          frequency: 'weekly',
+          interval: 2,
+          weekdays: [1, 3],
+        },
         ZONE
       )
     ).toBe('FREQ=WEEKLY;INTERVAL=2;BYDAY=MO,WE')
@@ -134,10 +147,12 @@ describe('repeat rules', () => {
   })
 
   it('reads an end date and a count', () => {
-    expect(ruleRepeat('FREQ=DAILY;UNTIL=20260930T225959Z', ZONE)).toMatchObject({
-      ending: 'until',
-      until: '2026-09-30',
-    })
+    expect(ruleRepeat('FREQ=DAILY;UNTIL=20260930T225959Z', ZONE)).toMatchObject(
+      {
+        ending: 'until',
+        until: '2026-09-30',
+      }
+    )
     expect(ruleRepeat('FREQ=DAILY;COUNT=3', ZONE)).toMatchObject({
       ending: 'count',
       count: 3,
@@ -295,7 +310,10 @@ describe('editing one occurrence of a series', () => {
   it('rewrites the master for "All events"', () => {
     const components = editedComponents(
       [series],
-      draft({ title: 'Renamed', repeat: { ...emptyRepeat(), frequency: 'daily' } }),
+      draft({
+        title: 'Renamed',
+        repeat: { ...emptyRepeat(), frequency: 'daily' },
+      }),
       'all',
       occurrence,
       ZONE
@@ -477,8 +495,12 @@ describe('a zone per end', () => {
 
   it('writes each end with its own TZID', () => {
     const component = draftComponent(flight)
-    expect(property(component, 'DTSTART')?.params.TZID).toEqual(['Europe/London'])
-    expect(property(component, 'DTEND')?.params.TZID).toEqual(['America/New_York'])
+    expect(property(component, 'DTSTART')?.params.TZID).toEqual([
+      'Europe/London',
+    ])
+    expect(property(component, 'DTEND')?.params.TZID).toEqual([
+      'America/New_York',
+    ])
     // 10:00 London is 09:00Z, 13:00 New York is 17:00Z: eight hours.
     const { start, finish } = draftInstants(flight)
     expect(finish - start).toBe(8 * 3600)
@@ -486,7 +508,10 @@ describe('a zone per end', () => {
 
   it('reads each end back in its own zone', () => {
     const read = componentDraft(draftComponent(flight), 'cal', 'UTC')
-    expect(read.zone).toEqual({ start: 'Europe/London', finish: 'America/New_York' })
+    expect(read.zone).toEqual({
+      start: 'Europe/London',
+      finish: 'America/New_York',
+    })
     expect([read.startTime, read.finishTime]).toEqual([600, 780])
   })
 
@@ -495,7 +520,11 @@ describe('a zone per end', () => {
       {
         name: 'VEVENT',
         properties: [
-          { name: 'DTSTART', params: { TZID: ['Asia/Tokyo'] }, value: '20260925T090000' },
+          {
+            name: 'DTSTART',
+            params: { TZID: ['Asia/Tokyo'] },
+            value: '20260925T090000',
+          },
           { name: 'DTEND', params: {}, value: '20260925T003000Z' },
         ],
         components: [],
@@ -516,14 +545,27 @@ describe('a zone per end', () => {
       'cal',
       'Europe/London'
     )
-    expect(none.zone).toEqual({ start: 'Europe/London', finish: 'Europe/London' })
+    expect(none.zone).toEqual({
+      start: 'Europe/London',
+      finish: 'Europe/London',
+    })
   })
 
   it('tells an end that precedes its start as an instant from one that only reads earlier', () => {
     // Monday 10:00 Auckland to Sunday 15:00 Tahiti reads backwards but is four hours on.
-    const hop = { ...flight, start: '2026-09-28', finish: '2026-09-27', finishTime: 900, zone: { start: 'Pacific/Auckland', finish: 'Pacific/Tahiti' } }
+    const hop = {
+      ...flight,
+      start: '2026-09-28',
+      finish: '2026-09-27',
+      finishTime: 900,
+      zone: { start: 'Pacific/Auckland', finish: 'Pacific/Tahiti' },
+    }
     expect(draftInstants(hop).finish - draftInstants(hop).start).toBe(4 * 3600)
-    const wrong = { ...flight, finishTime: 540, zone: { start: 'Europe/London', finish: 'Europe/London' } }
+    const wrong = {
+      ...flight,
+      finishTime: 540,
+      zone: { start: 'Europe/London', finish: 'Europe/London' },
+    }
     expect(draftInstants(wrong).finish < draftInstants(wrong).start).toBe(true)
   })
 })
@@ -531,7 +573,12 @@ describe('a zone per end', () => {
 describe('foreignZones', () => {
   const user = 'Europe/London'
   it('says nothing when both ends are in the user zone, which a zone-less event also is', () => {
-    expect(foreignZones(draft({ allday: false, zone: { start: user, finish: user } }), user)).toBe(false)
+    expect(
+      foreignZones(
+        draft({ allday: false, zone: { start: user, finish: user } }),
+        user
+      )
+    ).toBe(false)
     const none = componentDraft(
       {
         name: 'VEVENT',
@@ -548,9 +595,242 @@ describe('foreignZones', () => {
   })
 
   it('shows the zones when either end is elsewhere, never on an all-day event', () => {
-    expect(foreignZones(draft({ allday: false, zone: { start: user, finish: 'America/New_York' } }), user)).toBe(true)
-    expect(foreignZones(draft({ allday: false, zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' } }), user)).toBe(true)
-    expect(foreignZones(draft({ allday: true, zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' } }), user)).toBe(false)
+    expect(
+      foreignZones(
+        draft({
+          allday: false,
+          zone: { start: user, finish: 'America/New_York' },
+        }),
+        user
+      )
+    ).toBe(true)
+    expect(
+      foreignZones(
+        draft({
+          allday: false,
+          zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
+        }),
+        user
+      )
+    ).toBe(true)
+    expect(
+      foreignZones(
+        draft({
+          allday: true,
+          zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
+        }),
+        user
+      )
+    ).toBe(false)
   })
 })
 
+describe('cutting a series at an occurrence', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+  // The third occurrence, 2026-09-18 09:00 London.
+  const third = at('20260918T090000')
+
+  it('ends the old series just before the occurrence, in UTC, dropping any COUNT', () => {
+    const counted = draftComponent(
+      draft({ repeat: { ...daily, ending: 'count', count: 10 } })
+    )
+    const before = truncatedSeries([counted], third, ZONE)!
+    // 09:00 BST is 08:00 UTC; the last moment before it.
+    expect(propertyValue(before[0], 'RRULE')).toBe(
+      'FREQ=DAILY;UNTIL=20260918T075959Z'
+    )
+  })
+
+  it('names the day before for an all-day series', () => {
+    const allday = draftComponent(
+      draft({
+        allday: true,
+        start: '2026-09-16',
+        finish: '2026-09-16',
+        repeat: daily,
+      })
+    )
+    const day = propertyInstant(
+      { name: 'DTSTART', params: { VALUE: ['DATE'] }, value: '20260918' },
+      ZONE
+    )!.seconds
+    const before = truncatedSeries([allday], day, ZONE)!
+    expect(propertyValue(before[0], 'RRULE')).toBe('FREQ=DAILY;UNTIL=20260917')
+  })
+
+  it('keeps the overrides and listed dates before the cut on the old series and drops the rest', () => {
+    const earlier = editedComponents(
+      [series],
+      draft({ title: 'Earlier' }),
+      'one',
+      at('20260917T090000'),
+      ZONE
+    )
+    const both = editedComponents(
+      earlier,
+      draft({ title: 'Later' }),
+      'one',
+      at('20260920T090000'),
+      ZONE
+    )
+    const excluded = deletedOccurrence(both, at('20260919T090000'), ZONE)!
+    const before = truncatedSeries(excluded, third, ZONE)!
+    expect(before.map((item) => propertyValue(item, 'SUMMARY'))).toEqual([
+      'Standup',
+      'Earlier',
+    ])
+    expect(property(before[0], 'EXDATE')).toBeUndefined()
+  })
+
+  it('answers nothing for the first occurrence, or for an event that does not repeat', () => {
+    expect(truncatedSeries([series], at('20260916T090000'), ZONE)).toBeNull()
+    expect(
+      truncatedSeries([draftComponent(draft())], at('20260916T090000'), ZONE)
+    ).toBeNull()
+  })
+
+  it('starts the new series where the occurrence now lands, carrying later overrides and dates along', () => {
+    const later = editedComponents(
+      [series],
+      draft({
+        title: 'Later',
+        start: '2026-09-20',
+        startTime: 14 * 60,
+        finish: '2026-09-20',
+        finishTime: 15 * 60,
+      }),
+      'one',
+      at('20260920T090000'),
+      ZONE
+    )
+    const excluded = deletedOccurrence(later, at('20260919T090000'), ZONE)!
+    // The occurrence dragged an hour later: 10:00 on the 18th.
+    const moved = draft({
+      start: '2026-09-18',
+      startTime: 10 * 60,
+      finish: '2026-09-18',
+      finishTime: 11 * 60,
+      repeat: daily,
+    })
+    const split = splitSeries(excluded, moved, third, ZONE)!
+    expect(propertyValue(split.after[0], 'DTSTART')).toBe('20260918T100000')
+    expect(propertyValue(split.after[0], 'RRULE')).toBe('FREQ=DAILY')
+    // The excluded 19th moves an hour with the series.
+    expect(propertyValue(split.after[0], 'EXDATE')).toBe('20260919T100000')
+    // The 20th's override keeps its own title and length, an hour later,
+    // and names the occurrence the new series has there.
+    const carried = split.after[1]
+    expect(propertyValue(carried, 'SUMMARY')).toBe('Later')
+    expect(propertyValue(carried, 'DTSTART')).toBe('20260920T150000')
+    expect(propertyValue(carried, 'DTEND')).toBe('20260920T160000')
+    expect(property(carried, 'RECURRENCE-ID')).toEqual({
+      name: 'RECURRENCE-ID',
+      params: { TZID: [ZONE] },
+      value: '20260920T100000',
+    })
+    expect(propertyValue(split.before[0], 'RRULE')).toBe(
+      'FREQ=DAILY;UNTIL=20260918T075959Z'
+    )
+    expect(split.before).toHaveLength(1)
+  })
+
+  it('moves a draft read from the master onto the occurrence, keeping the edit', () => {
+    // The editor showed the 16th and the user set 11:00; the third
+    // occurrence therefore lands on the 18th at 11:00.
+    const anchored = anchoredDraft(
+      draft({ startTime: 11 * 60, finishTime: 12 * 60, repeat: daily }),
+      series,
+      third,
+      ZONE,
+      true
+    )
+    expect(anchored.start).toBe('2026-09-18')
+    expect(anchored.startTime).toBe(11 * 60)
+    expect(anchored.finish).toBe('2026-09-18')
+    // A draft read from the occurrence's own override already sits there.
+    const own = draft({ start: '2026-09-18', finish: '2026-09-18' })
+    expect(anchoredDraft(own, series, third, ZONE, false)).toBe(own)
+  })
+
+  it('reads the series as it stands at a later occurrence', () => {
+    const read = occurrenceDraft(series, third, 'cal1', ZONE)
+    expect(read.start).toBe('2026-09-18')
+    expect(read.startTime).toBe(9 * 60)
+    expect(read.repeat.frequency).toBe('daily')
+  })
+
+  it('moves an all-day draft by whole days without losing its last day', () => {
+    const whole = draft({
+      allday: true,
+      start: '2026-09-16',
+      finish: '2026-09-17',
+    })
+    const moved = movedDraft(whole, 2 * 86400)
+    expect(moved.start).toBe('2026-09-18')
+    expect(moved.finish).toBe('2026-09-19')
+  })
+})
+
+describe('moving a whole series', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+
+  it('takes the overrides and exception dates along when the master moves', () => {
+    const withOverride = editedComponents(
+      [series],
+      draft({
+        title: 'Once',
+        start: '2026-09-17',
+        startTime: 14 * 60,
+        finish: '2026-09-17',
+        finishTime: 15 * 60,
+      }),
+      'one',
+      at('20260917T090000'),
+      ZONE
+    )
+    const excluded = deletedOccurrence(
+      withOverride,
+      at('20260918T090000'),
+      ZONE
+    )!
+    const moved = editedComponents(
+      excluded,
+      draft({ startTime: 10 * 60, finishTime: 11 * 60, repeat: daily }),
+      'all',
+      at('20260917T090000'),
+      ZONE
+    )
+    expect(propertyValue(moved[0], 'DTSTART')).toBe('20260916T100000')
+    expect(propertyValue(moved[0], 'EXDATE')).toBe('20260918T100000')
+    const override = moved[1]
+    expect(propertyValue(override, 'SUMMARY')).toBe('Once')
+    expect(propertyValue(override, 'DTSTART')).toBe('20260917T150000')
+    expect(propertyValue(override, 'RECURRENCE-ID')).toBe('20260917T100000')
+  })
+
+  it('leaves the overrides alone when only the title changes', () => {
+    const withOverride = editedComponents(
+      [series],
+      draft({ title: 'Once' }),
+      'one',
+      at('20260917T090000'),
+      ZONE
+    )
+    const renamed = editedComponents(
+      withOverride,
+      draft({ title: 'Renamed', repeat: daily }),
+      'all',
+      at('20260917T090000'),
+      ZONE
+    )
+    expect(renamed[1]).toBe(withOverride[1])
+  })
+})

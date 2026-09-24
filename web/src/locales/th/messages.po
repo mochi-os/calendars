@@ -65,6 +65,7 @@ msgstr "{count, plural, one {#น} other {#น}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,6 +79,7 @@ msgstr "{days, plural, other {# วันก่อน}}"
 msgid "{entityLabel} name"
 msgstr "ชื่อ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
@@ -243,6 +245,7 @@ msgstr "หลังจากจำนวนครั้ง"
 msgid "AI"
 msgstr "AI"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/components/day-popover.tsx
@@ -739,6 +742,9 @@ msgstr "คัดลอกแล้ว"
 msgid "Copied to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ดแล้ว"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -751,6 +757,10 @@ msgstr "คัดลอก {label}"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "คัดลอกที่อยู่ปฏิทิน"
+
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "คัดลอกกิจกรรมนี้"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -1147,6 +1157,11 @@ msgstr "ป้อนรหัสจากแอปยืนยันตัวต
 msgid "Error"
 msgstr "ข้อผิดพลาด"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "คัดลอกกิจกรรมแล้ว"
+
 #: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "สร้างกิจกรรมแล้ว"
@@ -1155,6 +1170,13 @@ msgstr "สร้างกิจกรรมแล้ว"
 msgid "Event deleted"
 msgstr "ลบกิจกรรมแล้ว"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "ย้ายกิจกรรมแล้ว"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "บันทึกกิจกรรมแล้ว"
@@ -1198,6 +1220,10 @@ msgstr "ไม่สามารถเชื่อมต่ออุปกรณ
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "ไม่สามารถคัดลอกได้"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "ไม่สามารถคัดลอกกิจกรรมได้"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1327,6 +1353,10 @@ msgstr "ไม่สามารถบันทึกกิจกรรมได
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "ไม่สามารถสมัครติดตามได้"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "ไม่สามารถเลิกทำได้"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1644,8 +1674,10 @@ msgstr "ย้ายแล้ว"
 msgid "Moved {field}"
 msgstr "ย้าย {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "กำลังย้ายไปยัง {0}"
 
@@ -2293,7 +2325,7 @@ msgstr "กำลังบันทึก..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "ค้นหา"
 
@@ -2651,6 +2683,10 @@ msgstr "ไม่พบเนื้อหาที่ร้องขอ"
 msgid "The server returned a web page instead of data."
 msgstr "เซิร์ฟเวอร์ส่งคืนหน้าเว็บแทนข้อมูล"
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "กิจกรรมนี้และกิจกรรมถัดไป"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "แอปนี้ไม่ได้รับอนุญาตให้ใช้ passkey ของคุณ อนุญาตได้ในการตั้งค่า ภายใต้สิทธิ์"
@@ -2782,6 +2818,10 @@ msgstr "ยังไม่กำหนด"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "ไม่พร้อมใช้งาน"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "เลิกทำ"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts

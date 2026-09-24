@@ -42,14 +42,8 @@ import {
   X,
 } from 'lucide-react'
 import type { Component } from '@/api/types/events'
-import { useCalendarContext } from '@/context/calendar-context'
 import {
-  useCreateEventMutation,
-  useEventQuery,
-  useUpdateEventMutation,
-} from '@/hooks/use-events'
-import { reminderOptions } from '@/hooks/use-options'
-import {
+  anchoredDraft,
   componentDraft,
   draftComponent,
   draftInstants,
@@ -58,10 +52,19 @@ import {
   emptyRepeat,
   masterComponent,
   overrideComponent,
+  splitSeries,
   type EventDraft,
   type Frequency,
   type Scope,
 } from '@/lib/ical'
+import { useCalendarContext } from '@/context/calendar-context'
+import {
+  useCreateEventMutation,
+  useEventQuery,
+  useSplitEventMutation,
+  useUpdateEventMutation,
+} from '@/hooks/use-events'
+import { reminderOptions } from '@/hooks/use-options'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
@@ -86,6 +89,7 @@ export function EventEditor() {
 
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
+  const splitMutation = useSplitEventMutation()
 
   const writable = useMemo(
     () =>
@@ -132,7 +136,9 @@ export function EventEditor() {
   const recurring = Boolean(event?.recurring) && editing?.mode === 'edit'
   // The end may read earlier than the start by the clock, across zones, but
   // never as an instant.
-  const ordered = draft ? draftInstants(draft).finish >= draftInstants(draft).start : true
+  const ordered = draft
+    ? draftInstants(draft).finish >= draftInstants(draft).start
+    : true
   // The zones show only when an end is not in the user's zone, or on request.
   const zones = draft ? foreignZones(draft, format.timezone) || revealed : false
 
@@ -147,6 +153,43 @@ export function EventEditor() {
         toast.success(t`Event created`)
       } else {
         if (!event) return
+        const master = masterComponent(event.components)
+        // This occurrence and the ones after it become a series of their
+        // own, starting where this one now falls. The first occurrence has
+        // nothing before it, so that is the whole series.
+        if (recurring && scope === 'following' && master) {
+          const fromMaster = !overrideComponent(
+            event.components,
+            editing.start,
+            format.timezone
+          )
+          const split = splitSeries(
+            event.components,
+            anchoredDraft(
+              draft,
+              master,
+              editing.start,
+              format.timezone,
+              fromMaster
+            ),
+            editing.start,
+            format.timezone
+          )
+          if (split) {
+            await splitMutation.mutateAsync({
+              event: event.id,
+              etag: event.etag,
+              start: editing.start,
+              components: split.before,
+              following: split.after,
+              calendar: draft.calendar,
+            })
+            toast.success(t`Event saved`)
+            close()
+            return
+          }
+          scope = 'all'
+        }
         const components: Component[] = recurring
           ? editedComponents(
               event.components,
@@ -155,12 +198,7 @@ export function EventEditor() {
               editing.start,
               format.timezone
             )
-          : [
-              draftComponent(
-                draft,
-                masterComponent(event.components) ?? undefined
-              ),
-            ]
+          : [draftComponent(draft, master ?? undefined)]
         await updateMutation.mutateAsync({
           event: event.id,
           etag: event.etag,
@@ -190,7 +228,10 @@ export function EventEditor() {
     else void write('all')
   }
 
-  const pending = createMutation.isPending || updateMutation.isPending
+  const pending =
+    createMutation.isPending ||
+    updateMutation.isPending ||
+    splitMutation.isPending
 
   const open = editing !== null
   const body =
@@ -241,8 +282,7 @@ export function EventEditor() {
     </>
   )
 
-  const title =
-    editing?.mode === 'create' ? t`New event` : t`Edit event`
+  const title = editing?.mode === 'create' ? t`New event` : t`Edit event`
 
   return (
     <>
@@ -357,7 +397,10 @@ function EditorFields({
         start: day,
         startTime: minutes,
         finish: addDays(current.finish, shiftDays),
-        finishTime: Math.max(0, Math.min(1439, current.finishTime + shiftMinutes)),
+        finishTime: Math.max(
+          0,
+          Math.min(1439, current.finishTime + shiftMinutes)
+        ),
       }
     })
   }

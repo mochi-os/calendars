@@ -65,6 +65,7 @@ msgstr "{count, plural, one {#မိ} other {#မိ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ပတ်} other {#ပတ်}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,6 +79,7 @@ msgstr "{days, plural, other {# ရက် အလို}}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} အမည်"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
@@ -243,6 +245,7 @@ msgstr "အကြိမ်အရေအတွက် ပြီးနောက်"
 msgid "AI"
 msgstr "AI"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/components/day-popover.tsx
@@ -739,6 +742,9 @@ msgstr "ကူးယူပြီးပါပြီ"
 msgid "Copied to clipboard"
 msgstr "ကလစ်ဘုတ်သို့ ကူးပြီး"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -751,6 +757,10 @@ msgstr "{label} ကူးမည်"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "ပြက္ခဒိန် လိပ်စာ ကူးမည်"
+
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "ဤအစီအစဉ်ကို ကူးမည်"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -1147,6 +1157,11 @@ msgstr "သင့်အထောက်အထားစိစစ်ရေးကု
 msgid "Error"
 msgstr "အမှား"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "အစီအစဉ် ကူးပြီးပါပြီ"
+
 #: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "အစီအစဉ် ဖန်တီးပြီးပါပြီ"
@@ -1155,6 +1170,13 @@ msgstr "အစီအစဉ် ဖန်တီးပြီးပါပြီ"
 msgid "Event deleted"
 msgstr "အစီအစဉ် ဖျက်ပြီးပါပြီ"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "အစီအစဉ် ရွှေ့ပြီးပါပြီ"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "အစီအစဉ် သိမ်းပြီးပါပြီ"
@@ -1198,6 +1220,10 @@ msgstr "ကိရိယာ ချိတ်ဆက်၍ မရပါ"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "ကူးယူ၍ မရပါ"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "အစီအစဉ် ကူး၍ မရပါ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1327,6 +1353,10 @@ msgstr "အစီအစဉ် သိမ်း၍ မရပါ"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "စာရင်းသွင်း၍ မရပါ"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "ပြန်ဖျက်၍ မရပါ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1644,8 +1674,10 @@ msgstr "ရွှေ့ခဲ့သည်"
 msgid "Moved {field}"
 msgstr "{field} ကို ရွှေ့ခဲ့သည်"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} သို့ ရွှေ့နေသည်"
 
@@ -2293,7 +2325,7 @@ msgstr "သိမ်းနေသည်..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "ရှာဖွေ"
 
@@ -2651,6 +2683,10 @@ msgstr "တောင်းဆိုထားသော အကြောင်း�
 msgid "The server returned a web page instead of data."
 msgstr "ဆာဗာသည် ဒေတာအစား ဝဘ်စာမျက်နှာကို ပြန်ပေးခဲ့သည်။"
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "ဤအစီအစဉ်နှင့် နောက်ပိုင်းများ"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ဤအက်ပ်သည် သင့် passkey ကို အသုံးပြုခွင့်မရှိပါ။ ဆက်တင်များရှိ ခွင့်ပြုချက်များအောက်တွင် ခွင့်ပြုပါ။"
@@ -2782,6 +2818,10 @@ msgstr "မသတ်မှတ်ထား"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "မရရှိနိုင်ပါ"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "ပြန်ဖျက်မည်"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts

@@ -18,7 +18,7 @@ export interface Component {
 }
 
 /** A stored event: its columns, its text and its parsed component tree. */
-interface Event {
+export interface Event {
   id: string
   calendar: string
   slug: string

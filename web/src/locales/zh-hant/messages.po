@@ -65,6 +65,7 @@ msgstr "{count, plural, one {#分鐘} other {#分鐘}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週} other {#週}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,6 +79,7 @@ msgstr "{days, plural, other {# 天前}}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel}名稱"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
@@ -243,6 +245,7 @@ msgstr "在特定次數後"
 msgid "AI"
 msgstr "AI"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/components/day-popover.tsx
@@ -739,6 +742,9 @@ msgstr "已複製"
 msgid "Copied to clipboard"
 msgstr "已複製到剪貼簿"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -751,6 +757,10 @@ msgstr "複製{label}"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "複製行事曆網址"
+
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "複製此活動"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -1147,6 +1157,11 @@ msgstr "請輸入您的驗證器代碼"
 msgid "Error"
 msgstr "錯誤"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "已複製活動"
+
 #: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "已建立活動"
@@ -1155,6 +1170,13 @@ msgstr "已建立活動"
 msgid "Event deleted"
 msgstr "已刪除活動"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "已移動活動"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "已儲存活動"
@@ -1198,6 +1220,10 @@ msgstr "連接裝置失敗"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "複製失敗"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "複製活動失敗"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1327,6 +1353,10 @@ msgstr "儲存活動失敗"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "訂閱失敗"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "復原失敗"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1644,8 +1674,10 @@ msgstr "已移動"
 msgid "Moved {field}"
 msgstr "已移動{field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "正在移動到 {0}"
 
@@ -2293,7 +2325,7 @@ msgstr "儲存中..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "搜尋"
 
@@ -2651,6 +2683,10 @@ msgstr "找不到要求的內容。"
 msgid "The server returned a web page instead of data."
 msgstr "伺服器傳回網頁而非資料。"
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "此活動及後續活動"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "此應用程式無權使用您的 Passkey。請在「設定」的「權限」中允許。"
@@ -2782,6 +2818,10 @@ msgstr "未指派"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "無法使用"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "復原"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts

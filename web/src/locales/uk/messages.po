@@ -65,6 +65,7 @@ msgstr "{count, plural, one {#хв} other {#хв}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#тиж} other {#тиж}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,6 +79,7 @@ msgstr "{days, plural, one {за # день} few {за # дні} many {за # д
 msgid "{entityLabel} name"
 msgstr "Назва {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
@@ -243,6 +245,7 @@ msgstr "Після певної кількості"
 msgid "AI"
 msgstr "ШІ"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/components/day-popover.tsx
@@ -739,6 +742,9 @@ msgstr "Скопійовано"
 msgid "Copied to clipboard"
 msgstr "Скопійовано в буфер обміну"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -751,6 +757,10 @@ msgstr "Копіювати {label}"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Копіювати адресу календаря"
+
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "Копіювати цю подію"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -1147,6 +1157,11 @@ msgstr "Введіть код з програми автентифікації"
 msgid "Error"
 msgstr "Помилка"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "Подію скопійовано"
+
 #: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "Подію створено"
@@ -1155,6 +1170,13 @@ msgstr "Подію створено"
 msgid "Event deleted"
 msgstr "Подію видалено"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "Подію переміщено"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Подію збережено"
@@ -1198,6 +1220,10 @@ msgstr "Не вдалося підключити пристрій"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Не вдалося скопіювати"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "Не вдалося скопіювати подію"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1327,6 +1353,10 @@ msgstr "Не вдалося зберегти подію"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Не вдалося підписатися"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "Не вдалося скасувати"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1644,8 +1674,10 @@ msgstr "Переміщено"
 msgid "Moved {field}"
 msgstr "Переміщено {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Переміщення на {0}"
 
@@ -2293,7 +2325,7 @@ msgstr "Збереження..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Пошук"
 
@@ -2651,6 +2683,10 @@ msgstr "Запитаний вміст не знайдено."
 msgid "The server returned a web page instead of data."
 msgstr "Сервер повернув вебсторінку замість даних."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "Ця і наступні"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Цьому застосунку не дозволено використовувати ваш ключ доступу. Дозвольте це в Налаштуваннях, у розділі Дозволи."
@@ -2782,6 +2818,10 @@ msgstr "Не призначено"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "Недоступно"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "Скасувати"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts

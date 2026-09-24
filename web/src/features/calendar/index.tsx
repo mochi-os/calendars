@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
@@ -60,7 +60,10 @@ export function CalendarPage() {
     day: string
     anchor: DOMRect
   } | null>(null)
-  const [moving, setMoving] = useState<((scope: Scope) => void) | null>(null)
+  const [moving, setMoving] = useState<{
+    run: (scope: Scope) => void
+    copy: boolean
+  } | null>(null)
 
   const mover = useEventMove()
 
@@ -93,8 +96,12 @@ export function CalendarPage() {
     [shown.length, data?.instances, colours]
   )
 
+  // Every occurrence seen, by key: a drag that turns the page carries its
+  // block into a range the occurrence is no longer part of, and the drop
+  // still has to find it.
+  const seen = useRef(new Map<string, Instance>())
   const byKey = useMemo(() => {
-    const out = new Map<string, Instance>()
+    const out = seen.current
     for (const instance of instances) {
       out.set(`${instance.event}:${instance.start}`, instance)
     }
@@ -200,10 +207,16 @@ export function CalendarPage() {
   }
 
   // A drag on a repeating occurrence has to say which occurrences it moved.
-  const requestMove = (instance: Instance, run: (scope: Scope) => void) => {
-    if (instance.recurring) setMoving(() => run)
+  const requestMove = (
+    instance: Instance,
+    run: (scope: Scope) => void,
+    copy = false
+  ) => {
+    if (instance.recurring) setMoving({ run, copy })
     else run('all')
   }
+
+  const page = (direction: number) => setDate(stepDate(view, date, direction))
 
   const grid =
     view === 'list' ? (
@@ -223,15 +236,26 @@ export function CalendarPage() {
         onCreate={(from, to) =>
           setEditing({ mode: 'create', draft: compose(from, to) })
         }
-        onMove={({ key, start: from, finish: to }) => {
+        onMove={({ key, start: from, finish: to, allday, copy, calendar }) => {
           const instance = byKey.get(key)
           if (!instance || instance.readonly) return
-          requestMove(instance, mover.toTime(instance, from, to))
+          const options = { copy }
+          const run = calendar
+            ? mover.toCalendar(instance, calendar, options)
+            : allday
+              ? mover.toAllday(
+                  instance,
+                  format.zonedDay(new Date(from * 1000)),
+                  options
+                )
+              : mover.toTime(instance, from, to, options)
+          requestMove(instance, run, copy)
         }}
         onDay={(day) => {
           setDate(day)
           setView('day')
         }}
+        onStep={page}
       />
     ) : (
       <MonthGrid
@@ -242,10 +266,13 @@ export function CalendarPage() {
         weekNumbers
         onSelect={select}
         onCreate={createOnDay}
-        onMove={(key, day) => {
+        onMove={({ key, day, copy, calendar }) => {
           const instance = byKey.get(key)
           if (!instance || instance.readonly) return
-          requestMove(instance, mover.toDay(instance, day))
+          const run = calendar
+            ? mover.toCalendar(instance, calendar, { copy })
+            : mover.toDay(instance, day, { copy })
+          requestMove(instance, run, copy)
         }}
         onOverflow={(day) => {
           const cell = document.querySelector(`[data-day="${day}"]`)
@@ -257,7 +284,7 @@ export function CalendarPage() {
           setDate(day)
           setView('day')
         }}
-        onStep={(direction) => setDate(stepDate(view, date, direction))}
+        onStep={page}
       />
     )
 
@@ -291,13 +318,13 @@ export function CalendarPage() {
 
       <ScopeDialog
         open={moving !== null}
-        title={t`Move this event`}
+        title={moving?.copy ? t`Copy this event` : t`Move this event`}
         icon={<Check className='size-4' />}
         onOpenChange={(open) => {
           if (!open) setMoving(null)
         }}
         onChoose={(scope) => {
-          const run = moving
+          const run = moving?.run
           setMoving(null)
           run?.(scope)
         }}

@@ -8,7 +8,12 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query'
-import { eventsApi, type CreateEvent, type UpdateEvent } from '@/api/events'
+import {
+  eventsApi,
+  type CreateEvent,
+  type SplitEvent,
+  type UpdateEvent,
+} from '@/api/events'
 import type {
   BoundsResponse,
   EventResponse,
@@ -69,7 +74,9 @@ export const useInstancePages = (
       instances: results
         .flatMap((result) => result.data?.instances ?? [])
         .sort((a: Instance, b: Instance) => a.start - b.start),
-      pending: results.some((result) => result.isPending && result.fetchStatus !== 'idle'),
+      pending: results.some(
+        (result) => result.isPending && result.fetchStatus !== 'idle'
+      ),
     }),
   })
 }
@@ -111,6 +118,9 @@ export const useCreateEventMutation = () =>
 
 export const useUpdateEventMutation = () =>
   useEventMutation((event: UpdateEvent) => eventsApi.update(event))
+
+export const useSplitEventMutation = () =>
+  useEventMutation((event: SplitEvent) => eventsApi.split(event))
 
 export const useDeleteEventMutation = () =>
   useEventMutation(({ event, etag }: { event: string; etag?: string }) =>

@@ -25,8 +25,9 @@ interface Props {
 }
 
 /**
- * Asks whether an action lands on one occurrence or on the whole series. A
- * one-off event has nothing to choose between, so it gets a plain confirm.
+ * Asks whether an action lands on one occurrence, on it and every one after
+ * it, or on the whole series. A one-off event has nothing to choose between,
+ * so it gets a plain confirm.
  */
 export function ScopeDialog({
   open,
@@ -39,7 +40,7 @@ export function ScopeDialog({
 }: Props) {
   return (
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
-      <ResponsiveDialogContent className='sm:max-w-[420px]'>
+      <ResponsiveDialogContent className='sm:max-w-[520px]'>
         <ResponsiveDialogHeader>
           <ResponsiveDialogTitle>{title}</ResponsiveDialogTitle>
         </ResponsiveDialogHeader>
@@ -52,6 +53,10 @@ export function ScopeDialog({
               <Button variant='outline' onClick={() => onChoose('one')}>
                 {icon}
                 <Trans>This event</Trans>
+              </Button>
+              <Button variant='outline' onClick={() => onChoose('following')}>
+                {icon}
+                <Trans>This and following</Trans>
               </Button>
               <Button
                 variant={destructive ? 'destructive' : 'default'}

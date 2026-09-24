@@ -1124,6 +1124,99 @@ def action_event_update(a):
 		return
 	return {"data": {"event": event_full(written)}}
 
+# series_count(ics, start) -> int: how many occurrences of an object's series
+# begin before an instant, which a COUNT carried onto the series' second
+# half must be shortened by.
+def series_count(ics, start):
+	return len(mochi.ical.instances(ics, 0, start))
+
+# rule_shortened(components, count) -> list: the components with the master's
+# RRULE COUNT reduced by `count`, never below one, or as given when its rule
+# has no COUNT.
+def rule_shortened(components, count):
+	out = []
+	for component in components:
+		if type(component) != "dict" or component.get("name") != "VEVENT" or property_value(component, "RECURRENCE-ID"):
+			out.append(component)
+			continue
+		properties = []
+		for p in component.get("properties", []):
+			if type(p) == "dict" and p.get("name") == "RRULE" and type(p.get("value")) == "string":
+				parts = []
+				for part in p["value"].split(";"):
+					if part.upper().startswith("COUNT="):
+						remaining = part[6:]
+						if remaining.isdigit():
+							part = "COUNT=" + str(max(1, int(remaining) - count))
+					parts.append(part)
+				p = dict(p, value=";".join(parts))
+			properties.append(p)
+		out.append(dict(component, properties=properties))
+	return out
+
+# The occurrence at `start` and every one after it become a new event: the
+# old one is rewritten to end before it, from the components the client
+# sends, and the new one is created from the rest, in one step so the series
+# is never left with both halves or neither. With `copy` the old one is left
+# as it is, and the new event is a copy of the series from that occurrence.
+def action_event_split(a):
+	identity = a.user.identity.id
+	body = body_json(a)
+	if body == None:
+		a.error.label(400, "errors.invalid_event")
+		return
+	row = event_get(identity, body.get("event", "") if type(body.get("event")) == "string" else "")
+	if not row:
+		a.error.label(404, "errors.event_not_found")
+		return
+	expected = body.get("etag", "")
+	if expected and expected != row["etag"]:
+		a.error.label(412, "errors.event_changed")
+		return
+	calendar = mochi.db.row("select * from calendars where id=?", row["calendar"])
+	if not calendar or calendar_readonly(calendar):
+		a.error.label(400, "errors.calendar_readonly")
+		return
+	target = calendar
+	if body.get("calendar") and body.get("calendar") != row["calendar"]:
+		target = calendar_get(identity, body.get("calendar"))
+		if not target:
+			a.error.label(404, "errors.calendar_not_found")
+			return
+		if calendar_readonly(target):
+			a.error.label(400, "errors.calendar_readonly")
+			return
+	start = body.get("start")
+	if type(start) != "int" or start <= 0 or not islist(body.get("following")):
+		a.error.label(400, "errors.invalid_event")
+		return
+	copy = body.get("copy") == True
+	before = None if copy else event_text(body.get("components"), row["uid"] or (mochi.uid() + "@mochi"))
+	if before == None and not copy:
+		a.error.label(400, "errors.invalid_event")
+		return
+	if events_full(identity):
+		a.error.label(400, "errors.too_many_events")
+		return
+	following = rule_shortened(body.get("following"), series_count(row["ics"], start))
+	after = event_text(following, mochi.uid() + "@mochi")
+	if after == None:
+		a.error.label(400, "errors.invalid_event")
+		return
+	# The new half first: should it fail, the old event is still whole.
+	created = event_write(identity, target["id"], "", after)
+	if type(created) == "string":
+		event_error(a, created)
+		return
+	if copy:
+		return {"data": {"event": event_full(row), "following": event_full(created)}}
+	written = event_write(identity, row["calendar"], row["slug"], before, row)
+	if type(written) == "string":
+		event_delete(identity, created)
+		event_error(a, written)
+		return
+	return {"data": {"event": event_full(written), "following": event_full(created)}}
+
 def action_event_delete(a):
 	identity = a.user.identity.id
 	row = event_get(identity, a.input("event", ""))

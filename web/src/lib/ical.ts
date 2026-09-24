@@ -2,15 +2,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 /* eslint-disable lingui/no-unlocalized-strings -- every literal here is an
    iCalendar protocol token, never shown to anyone. */
-
 // The editor's own model of an event and the iCalendar component tree the
 // server stores. Everything here is pure: a day is YYYY-MM-DD as it reads in
 // the named zone, a time is minutes since midnight, and instants are unix
 // seconds.
-
 import { addDays, timestampAt, zonedDay, zonedMinutes } from '@mochi/web'
 import type { Component, Property } from '@/api/types/events'
 
@@ -178,7 +175,9 @@ export function repeatRule(repeat: Repeat, timezone: string): string {
   }
   if (repeat.ending === 'until' && repeat.until) {
     // The last moment of the chosen day, so the day itself is included.
-    parts.push(`UNTIL=${utcValue(timestampAt(repeat.until, 1440, timezone) - 1)}`)
+    parts.push(
+      `UNTIL=${utcValue(timestampAt(repeat.until, 1440, timezone) - 1)}`
+    )
   } else if (repeat.ending === 'count') {
     parts.push(`COUNT=${Math.max(1, repeat.count)}`)
   }
@@ -244,9 +243,10 @@ export function reminderTrigger(minutes: number): string {
 
 /** The minutes before the start a TRIGGER names; null when it is not one. */
 export function triggerMinutes(trigger: string): number | null {
-  const match = /^(-?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
-    trigger.trim().toUpperCase()
-  )
+  const match =
+    /^(-?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
+      trigger.trim().toUpperCase()
+    )
   if (!match) return null
   const [, sign, weeks, days, hours, minutes, seconds] = match
   const total =
@@ -284,7 +284,10 @@ export function foreignZones(draft: EventDraft, timezone: string): boolean {
 }
 
 /** The instants a timed draft's two ends name, each read in its own zone. */
-export function draftInstants(draft: EventDraft): { start: number; finish: number } {
+export function draftInstants(draft: EventDraft): {
+  start: number
+  finish: number
+} {
   if (draft.allday) {
     return {
       start: timestampAt(draft.start, 0, draft.zone.start),
@@ -419,7 +422,9 @@ export function componentDraft(
 }
 
 /** The master VEVENT of a stored event: the one with no RECURRENCE-ID. */
-export function masterComponent(components: Component[]): Component | undefined {
+export function masterComponent(
+  components: Component[]
+): Component | undefined {
   return (
     components.find(
       (item) => item.name === 'VEVENT' && !property(item, 'RECURRENCE-ID')
@@ -503,8 +508,11 @@ function withException(
   return { ...master, properties }
 }
 
-/** Where an occurrence sits: the whole series, or one of its occurrences. */
-export type Scope = 'one' | 'all'
+/**
+ * Which occurrences an edit lands on: this one, the whole series, or this
+ * one and every one after it.
+ */
+export type Scope = 'one' | 'all' | 'following'
 
 /**
  * The component list to send for an edit. "All events" rewrites the master and
@@ -522,7 +530,42 @@ export function editedComponents(
   if (!master) return [draftComponent(draft)]
   if (scope === 'all') {
     const rewritten = draftComponent(draft, master)
-    return [rewritten, ...components.filter((item) => item !== master)]
+    // A series that moved takes its overrides and listed dates along.
+    const first = masterStart(master, timezone)
+    const shift = first === null ? 0 : draftInstants(draft).start - first
+    if (shift === 0) {
+      return [rewritten, ...components.filter((item) => item !== master)]
+    }
+    const { after: dates } = cutDates(
+      master.properties,
+      -Infinity,
+      shift,
+      timezone
+    )
+    const head: Component = {
+      ...rewritten,
+      properties: [
+        ...rewritten.properties.filter(
+          (item) => item.name !== 'RDATE' && item.name !== 'EXDATE'
+        ),
+        ...dates.filter(
+          (item) => item.name === 'RDATE' || item.name === 'EXDATE'
+        ),
+      ],
+    }
+    return [
+      head,
+      ...components.filter((item) => item !== master && item.name !== 'VEVENT'),
+      ...carriedOverrides(
+        components,
+        master,
+        head,
+        -Infinity,
+        shift,
+        draft.calendar,
+        timezone
+      ),
+    ]
   }
   const existing = overrideComponent(components, start, timezone)
   // An override carries no rule of its own: it describes one occurrence.
@@ -559,5 +602,260 @@ export function deletedOccurrence(
   const existing = overrideComponent(components, start, timezone)
   return components
     .filter((item) => item !== existing)
-    .map((item) => (item === master ? withException(item, start, timezone) : item))
+    .map((item) =>
+      item === master ? withException(item, start, timezone) : item
+    )
+}
+
+// --- Splitting a series ---
+
+/** The draft with both ends moved by `seconds`, its length and zones kept. */
+export function movedDraft(draft: EventDraft, seconds: number): EventDraft {
+  if (seconds === 0) return draft
+  const { start, finish } = draftInstants(draft)
+  const from = new Date((start + seconds) * 1000)
+  if (draft.allday) {
+    // The instants of an all-day draft run to midnight after its last day.
+    const last = new Date((finish + seconds - 1) * 1000)
+    return {
+      ...draft,
+      start: zonedDay(from, draft.zone.start),
+      finish: zonedDay(last, draft.zone.finish),
+    }
+  }
+  const to = new Date((finish + seconds) * 1000)
+  return {
+    ...draft,
+    start: zonedDay(from, draft.zone.start),
+    startTime: zonedMinutes(from, draft.zone.start),
+    finish: zonedDay(to, draft.zone.finish),
+    finishTime: zonedMinutes(to, draft.zone.finish),
+  }
+}
+
+/**
+ * The instant a series' master begins, or null for a component without a
+ * readable DTSTART.
+ */
+function masterStart(master: Component, timezone: string): number | null {
+  return propertyInstant(property(master, 'DTSTART'), timezone)?.seconds ?? null
+}
+
+/**
+ * A draft of the series as it stands at the occurrence starting at `start`:
+ * the master's own draft with its dates moved onto that occurrence. This is
+ * what a change to this occurrence and the ones after it starts from.
+ */
+export function occurrenceDraft(
+  master: Component,
+  start: number,
+  calendar: string,
+  timezone: string
+): EventDraft {
+  const draft = componentDraft(master, calendar, timezone)
+  const first = masterStart(master, timezone)
+  return first === null ? draft : movedDraft(draft, start - first)
+}
+
+/**
+ * The editor's draft moved onto the occurrence at `start`. A draft read from
+ * the master carries the series' first dates, so it moves by the distance
+ * from the series' start to the occurrence, and the edit's own change of
+ * time comes along; one read from the occurrence's override already sits
+ * on the occurrence and is left alone.
+ */
+export function anchoredDraft(
+  draft: EventDraft,
+  master: Component,
+  start: number,
+  timezone: string,
+  fromMaster: boolean
+): EventDraft {
+  if (!fromMaster) return draft
+  const first = masterStart(master, timezone)
+  return first === null ? draft : movedDraft(draft, start - first)
+}
+
+/** Each value of a list-valued date property, with the instant it names. */
+function dateList(
+  item: Property,
+  timezone: string
+): { value: string; seconds: number | null }[] {
+  return item.value.split(',').map((value) => ({
+    value: value.trim(),
+    seconds: propertyInstant({ ...item, value }, timezone)?.seconds ?? null,
+  }))
+}
+
+/**
+ * A value in the form another value of the same property takes: a whole
+ * day, a UTC instant, or a local time in the property's zone.
+ */
+function valueLike(
+  sample: Property,
+  seconds: number,
+  timezone: string
+): string {
+  const first = sample.value.split(',')[0].trim()
+  const zone = sample.params?.TZID?.[0] ?? ''
+  const date = new Date(seconds * 1000)
+  if (/^\d{8}$/.test(first)) return dateValue(zonedDay(date, zone || timezone))
+  if (first.endsWith('Z')) return utcValue(seconds)
+  return dateTimeValue(
+    zonedDay(date, zone || timezone),
+    zonedMinutes(date, zone || timezone)
+  )
+}
+
+/**
+ * The master's list-valued dates, RDATE and EXDATE, kept to one side of a
+ * cut: `before` keeps those naming instants before `start`, `after` the rest,
+ * each moved by `shift` seconds. A property left with no values is dropped.
+ */
+function cutDates(
+  properties: Property[],
+  start: number,
+  shift: number,
+  timezone: string
+): { before: Property[]; after: Property[] } {
+  const before: Property[] = []
+  const after: Property[] = []
+  for (const item of properties) {
+    if (item.name !== 'RDATE' && item.name !== 'EXDATE') {
+      before.push(item)
+      after.push(item)
+      continue
+    }
+    const early: string[] = []
+    const late: string[] = []
+    for (const entry of dateList(item, timezone)) {
+      if (entry.seconds === null || entry.seconds < start)
+        early.push(entry.value)
+      else late.push(valueLike(item, entry.seconds + shift, timezone))
+    }
+    if (early.length) before.push({ ...item, value: early.join(',') })
+    if (late.length) after.push({ ...item, value: late.join(',') })
+  }
+  return { before, after }
+}
+
+/**
+ * The series cut to end just before the occurrence at `start`: the master's
+ * rule gains an UNTIL there and loses any COUNT, and the overrides and listed
+ * dates from that occurrence on are dropped. Null when the occurrence is the
+ * series' first, since nothing would be left, or when the event is no series.
+ */
+export function truncatedSeries(
+  components: Component[],
+  start: number,
+  timezone: string
+): Component[] | null {
+  const master = masterComponent(components)
+  if (!master) return null
+  const rule = propertyValue(master, 'RRULE')
+  const first = masterStart(master, timezone)
+  if (!rule || first === null || start <= first) return null
+  const dtstart = property(master, 'DTSTART')!
+  const zone = dtstart.params?.TZID?.[0] ?? ''
+  // UNTIL is inclusive, and takes the form of DTSTART: the day before for
+  // a whole-day series, otherwise the second before, in UTC.
+  const until = /^\d{8}$/.test(dtstart.value)
+    ? dateValue(addDays(zonedDay(new Date(start * 1000), zone || timezone), -1))
+    : utcValue(start - 1)
+  const parts = rule.split(';').filter((part) => !/^(UNTIL|COUNT)=/i.test(part))
+  parts.push(`UNTIL=${until}`)
+  const { before } = cutDates(master.properties, start, 0, timezone)
+  const properties = before.map((item) =>
+    item.name === 'RRULE' ? { ...item, value: parts.join(';') } : item
+  )
+  const kept = components.filter((item) => {
+    if (item === master) return false
+    if (item.name !== 'VEVENT') return true
+    const id = property(item, 'RECURRENCE-ID')
+    const instant = id ? propertyInstant(id, timezone) : null
+    return instant === null || instant.seconds < start
+  })
+  return [{ ...master, properties }, ...kept]
+}
+
+/**
+ * An edit of the occurrence at `start` and every one after it: the series is
+ * cut in two. `before` is the old event, ending just before the occurrence;
+ * `after` is a new event whose master is `draft`, the series as it now goes
+ * on from there, so the draft's dates are where this occurrence lands. The
+ * old overrides and listed dates from the cut onwards move to the new event,
+ * shifted as the draft shifted the occurrence, and its rule keeps the old
+ * one's end; a COUNT is left for the server to shorten by the occurrences
+ * the old event keeps. Null when the occurrence is the series' first, which
+ * makes the edit one of the whole series.
+ */
+export function splitSeries(
+  components: Component[],
+  draft: EventDraft,
+  start: number,
+  timezone: string
+): { before: Component[]; after: Component[] } | null {
+  const before = truncatedSeries(components, start, timezone)
+  const master = masterComponent(components)
+  if (!before || !master) return null
+  const shift = draftInstants(draft).start - start
+  const head = draftComponent(draft, master)
+  const { after: dates } = cutDates(master.properties, start, shift, timezone)
+  const listed = dates.filter(
+    (item) => item.name === 'RDATE' || item.name === 'EXDATE'
+  )
+  const properties = [
+    ...head.properties.filter(
+      (item) => item.name !== 'RDATE' && item.name !== 'EXDATE'
+    ),
+    ...listed,
+  ]
+  const carried = carriedOverrides(
+    components,
+    master,
+    head,
+    start,
+    shift,
+    draft.calendar,
+    timezone
+  )
+  return { before, after: [{ ...head, properties }, ...carried] }
+}
+
+/**
+ * The overrides of occurrences at or after `from`, following a master that
+ * moved by `shift` seconds: each keeps its own title and length, moves by
+ * the same shift, and names its occurrence as the new master does.
+ */
+function carriedOverrides(
+  components: Component[],
+  master: Component,
+  head: Component,
+  from: number,
+  shift: number,
+  calendar: string,
+  timezone: string
+): Component[] {
+  const series = new Set(['RECURRENCE-ID', 'RRULE', 'RDATE', 'EXDATE'])
+  const out: Component[] = []
+  for (const item of components) {
+    if (item === master || item.name !== 'VEVENT') continue
+    const id = property(item, 'RECURRENCE-ID')
+    const instant = id ? propertyInstant(id, timezone) : null
+    if (instant === null || instant.seconds < from) continue
+    if (shift === 0) {
+      out.push(item)
+      continue
+    }
+    const own = movedDraft(componentDraft(item, calendar, timezone), shift)
+    const rewritten = draftComponent({ ...own, repeat: emptyRepeat() }, item)
+    out.push({
+      ...rewritten,
+      properties: [
+        ...rewritten.properties.filter((entry) => !series.has(entry.name)),
+        recurrenceIdentifier(head, instant.seconds + shift, timezone),
+      ],
+    })
+  }
+  return out
 }

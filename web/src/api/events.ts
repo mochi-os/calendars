@@ -7,6 +7,7 @@ import endpoints from '@/api/endpoints'
 import type {
   BoundsResponse,
   Component,
+  Event,
   EventResponse,
   InstancesResponse,
 } from '@/api/types/events'
@@ -30,6 +31,30 @@ export interface UpdateEvent {
   etag?: string
   calendar?: string
   components?: Component[]
+}
+
+/**
+ * A series cut in two at an occurrence: the old event rewritten to end
+ * before it, and a new event carrying the series from there on.
+ */
+export interface SplitEvent {
+  event: string
+  etag?: string
+  /** The occurrence the cut falls on, in unix seconds. */
+  start: number
+  /** The old event's components, ending before the occurrence. */
+  components: Component[]
+  /** The new event's components, the series from the occurrence on. */
+  following: Component[]
+  /** The calendar the new event goes in; the old event's by default. */
+  calendar?: string
+  /** Leaves the old event as it is: the new one is a copy from there on. */
+  copy?: boolean
+}
+
+export interface SplitResponse {
+  event: Event
+  following: Event
 }
 
 export const eventsApi = {
@@ -59,9 +84,7 @@ export const eventsApi = {
     requestHelpers.get<BoundsResponse>(endpoints.events.bounds, {
       ...quiet,
       params:
-        calendars && calendars.length
-          ? { calendars: calendars.join(',') }
-          : {},
+        calendars && calendars.length ? { calendars: calendars.join(',') } : {},
     }),
 
   get: (event: string): Promise<EventResponse> =>
@@ -75,6 +98,9 @@ export const eventsApi = {
 
   update: (event: UpdateEvent): Promise<EventResponse> =>
     requestHelpers.post<EventResponse>(endpoints.events.update, event, quiet),
+
+  split: (event: SplitEvent): Promise<SplitResponse> =>
+    requestHelpers.post<SplitResponse>(endpoints.events.split, event, quiet),
 
   delete: (event: string, etag?: string): Promise<Record<string, never>> =>
     requestHelpers.post<Record<string, never>>(

@@ -29,6 +29,7 @@ const endpoints = {
     get: `${prefix}/events/get`,
     create: `${prefix}/events/create`,
     update: `${prefix}/events/update`,
+    split: `${prefix}/events/split`,
     delete: `${prefix}/events/delete`,
   },
   link: {

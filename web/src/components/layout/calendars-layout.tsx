@@ -157,6 +157,8 @@ export function CalendarsLayout() {
         icon: colourCheckbox(calendar.colour, checked),
         checked,
         onClick: () => toggle(calendar.id),
+        // An event dragged from the views lands here to move to this calendar.
+        drop: calendar.readonly ? undefined : calendar.id,
         menu,
       }
     })

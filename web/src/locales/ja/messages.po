@@ -65,6 +65,7 @@ msgstr "{count, plural, one {#分} other {#分}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週間} other {#週間}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,6 +79,7 @@ msgstr "{days, plural, other {# 日前}}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} の名前"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
@@ -243,6 +245,7 @@ msgstr "回数を指定"
 msgid "AI"
 msgstr "AI"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/components/day-popover.tsx
@@ -739,6 +742,9 @@ msgstr "コピーしました"
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -751,6 +757,10 @@ msgstr "{label}をコピー"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "カレンダーのアドレスをコピー"
+
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "この予定をコピー"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -1147,6 +1157,11 @@ msgstr "認証アプリのコードを入力"
 msgid "Error"
 msgstr "エラー"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "予定をコピーしました"
+
 #: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "予定を作成しました"
@@ -1155,6 +1170,13 @@ msgstr "予定を作成しました"
 msgid "Event deleted"
 msgstr "予定を削除しました"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "予定を移動しました"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "予定を保存しました"
@@ -1198,6 +1220,10 @@ msgstr "デバイスの接続に失敗しました"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "コピーに失敗しました"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "予定のコピーに失敗しました"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1327,6 +1353,10 @@ msgstr "予定の保存に失敗しました"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "購読に失敗しました"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "元に戻せませんでした"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1644,8 +1674,10 @@ msgstr "移動しました"
 msgid "Moved {field}"
 msgstr "{field}を移動しました"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} に移動しています"
 
@@ -2293,7 +2325,7 @@ msgstr "保存中..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "検索"
 
@@ -2651,6 +2683,10 @@ msgstr "リクエストされたコンテンツが見つかりませんでした
 msgid "The server returned a web page instead of data."
 msgstr "サーバーがデータではなくウェブページを返しました。"
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "この予定と以降の予定"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "このアプリはパスキーの使用を許可されていません。設定の「権限」で許可してください。"
@@ -2782,6 +2818,10 @@ msgstr "未割り当て"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "利用不可"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "元に戻す"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
