@@ -11,6 +11,7 @@ import {
   draftComponent,
   draftInstants,
   editedComponents,
+  expressible,
   foreignZones,
   emptyRepeat,
   masterComponent,
@@ -832,5 +833,81 @@ describe('moving a whole series', () => {
       ZONE
     )
     expect(renamed[1]).toBe(withOverride[1])
+  })
+})
+
+describe('a rule the editor cannot express', () => {
+  const second = 'FREQ=MONTHLY;BYDAY=2TU'
+  const lastSunday = 'FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU'
+
+  it('is kept as written through a read and a write', () => {
+    expect(repeatRule(ruleRepeat(second, ZONE), ZONE)).toBe(second)
+    expect(repeatRule(ruleRepeat(lastSunday, ZONE), ZONE)).toBe(lastSunday)
+    expect(
+      repeatRule(ruleRepeat('FREQ=MONTHLY;BYMONTHDAY=1,15', ZONE), ZONE)
+    ).toBe('FREQ=MONTHLY;BYMONTHDAY=1,15')
+  })
+
+  it('is written from the settings once they change', () => {
+    const read = ruleRepeat(second, ZONE)
+    expect(repeatRule({ ...read, rule: '', frequency: 'weekly' }, ZONE)).toBe(
+      'FREQ=WEEKLY;BYDAY=TU'
+    )
+    expect(repeatRule({ ...emptyRepeat(), frequency: 'daily' }, ZONE)).toBe(
+      'FREQ=DAILY'
+    )
+  })
+
+  it('tells a rule the settings can say from one they cannot', () => {
+    expect(expressible('')).toBe(true)
+    expect(expressible('FREQ=DAILY')).toBe(true)
+    expect(expressible('FREQ=WEEKLY;INTERVAL=2;BYDAY=MO,WE')).toBe(true)
+    expect(expressible('FREQ=MONTHLY;COUNT=5')).toBe(true)
+    expect(expressible('FREQ=DAILY;UNTIL=20261231T235959Z')).toBe(true)
+    expect(expressible(second)).toBe(false)
+    expect(expressible(lastSunday)).toBe(false)
+    expect(expressible('FREQ=MONTHLY;BYMONTHDAY=15')).toBe(false)
+    expect(expressible('FREQ=MONTHLY;BYDAY=TU')).toBe(false)
+    expect(expressible('FREQ=WEEKLY;BYDAY=MO;BYSETPOS=1')).toBe(false)
+    expect(expressible('FREQ=WEEKLY;BYDAY=MON')).toBe(false)
+    expect(expressible('FREQ=HOURLY')).toBe(false)
+    expect(expressible('FREQ=DAILY;COUNT=3;UNTIL=20261231T235959Z')).toBe(false)
+  })
+
+  it('survives a title change of the whole series', () => {
+    const series = draftComponent(draft({ repeat: ruleRepeat(second, ZONE) }))
+    expect(propertyValue(series, 'RRULE')).toBe(second)
+    const read = componentDraft(series, 'cal1', ZONE)
+    const renamed = editedComponents(
+      [series],
+      { ...read, title: 'Renamed' },
+      'all',
+      propertyInstant(property(series, 'DTSTART'), ZONE)!.seconds,
+      ZONE
+    )
+    expect(propertyValue(renamed[0], 'RRULE')).toBe(second)
+    expect(propertyValue(renamed[0], 'SUMMARY')).toBe('Renamed')
+  })
+
+  it('goes on to the second half of a cut series', () => {
+    const series = draftComponent(
+      draft({
+        start: '2026-09-08',
+        finish: '2026-09-08',
+        repeat: ruleRepeat(second, ZONE),
+      })
+    )
+    // The third occurrence, the second Tuesday of November, moved an hour.
+    const third = propertyInstant(
+      { name: 'DTSTART', params: { TZID: [ZONE] }, value: '20261110T090000' },
+      ZONE
+    )!.seconds
+    const moved = movedDraft(occurrenceDraft(series, third, 'cal1', ZONE), 3600)
+    const split = splitSeries([series], moved, third, ZONE)!
+    expect(propertyValue(split.after[0], 'RRULE')).toBe(second)
+    expect(propertyValue(split.after[0], 'DTSTART')).toBe('20261110T100000')
+    expect(propertyValue(split.before[0], 'RRULE')).toBe(
+      'FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261110T085959Z'
+    )
   })
 })

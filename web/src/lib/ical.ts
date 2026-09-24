@@ -25,6 +25,13 @@ export interface Repeat {
   until: string
   /** How many occurrences, when ending is "count". */
   count: number
+  /**
+   * The RRULE as it was read, written back as it is for as long as the
+   * settings above are untouched, so a rule the editor cannot express, such
+   * as the second Tuesday of every month, survives a title change or a move.
+   * "" once the settings change, or for an event that does not repeat.
+   */
+  rule: string
 }
 
 export interface EventDraft {
@@ -59,6 +66,7 @@ export function emptyRepeat(): Repeat {
     ending: 'never',
     until: '',
     count: 10,
+    rule: '',
   }
 }
 
@@ -162,8 +170,47 @@ export function propertyInstant(
 
 // --- Repeat ---
 
-/** An RRULE value from the editor's repeat settings. */
+/** The parts of a rule the editor's settings can hold. */
+const PLAIN = new Set(['FREQ', 'INTERVAL', 'BYDAY', 'UNTIL', 'COUNT'])
+
+/**
+ * True when the editor's settings can say everything a rule says: a plain
+ * frequency, an interval, weekdays on a weekly rule, and an end by date or
+ * count. A rule with more, a BYMONTHDAY, a BYSETPOS, an ordinal weekday, is
+ * shown as custom and kept as written.
+ */
+export function expressible(rule: string): boolean {
+  if (!rule) return true
+  const fields = new Map<string, string>()
+  for (const part of rule.split(';')) {
+    const at = part.indexOf('=')
+    if (at <= 0) return false
+    fields.set(
+      part.slice(0, at).trim().toUpperCase(),
+      part.slice(at + 1).trim()
+    )
+  }
+  for (const key of fields.keys()) if (!PLAIN.has(key)) return false
+  const frequency = (fields.get('FREQ') ?? '').toUpperCase()
+  if (!['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY'].includes(frequency))
+    return false
+  if (fields.has('UNTIL') && fields.has('COUNT')) return false
+  const byday = fields.get('BYDAY')
+  if (byday !== undefined) {
+    if (frequency !== 'WEEKLY') return false
+    for (const token of byday.split(',')) {
+      if (!WEEKDAYS.includes(token.trim().toUpperCase())) return false
+    }
+  }
+  return true
+}
+
+/**
+ * An RRULE value from the editor's repeat settings: the rule as it was read
+ * while the settings are untouched, else one built from them.
+ */
 export function repeatRule(repeat: Repeat, timezone: string): string {
+  if (repeat.rule) return repeat.rule
   if (repeat.frequency === 'never') return ''
   const parts = [`FREQ=${repeat.frequency.toUpperCase()}`]
   if (repeat.interval > 1) parts.push(`INTERVAL=${repeat.interval}`)
@@ -187,7 +234,8 @@ export function repeatRule(repeat: Repeat, timezone: string): string {
 /** The editor's repeat settings from an RRULE value. */
 export function ruleRepeat(rule: string, timezone: string): Repeat {
   const out = emptyRepeat()
-  if (!rule) return out
+  if (!rule.trim()) return out
+  out.rule = rule.trim()
   const fields = new Map<string, string>()
   for (const part of rule.split(';')) {
     const at = part.indexOf('=')

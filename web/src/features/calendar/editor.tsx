@@ -48,6 +48,7 @@ import {
   draftComponent,
   draftInstants,
   editedComponents,
+  expressible,
   foreignZones,
   emptyRepeat,
   masterComponent,
@@ -370,6 +371,10 @@ function EditorFields({
   const format = useFormat()
   const reminders = reminderOptions()
 
+  // A rule read from the event that the repeat settings cannot express is
+  // shown as custom and written back as it was.
+  const kept = !expressible(draft.repeat.rule)
+
   // The fields only render with a draft in hand, so an update never has to
   // answer for the null the editor starts in.
   const edit = (update: (current: EventDraft) => EventDraft) =>
@@ -597,7 +602,7 @@ function EditorFields({
           <Trans>Repeat</Trans>
         </Label>
         <Select
-          value={custom ? 'custom' : draft.repeat.frequency}
+          value={custom || kept ? 'custom' : draft.repeat.frequency}
           onValueChange={(value) => {
             if (value === 'custom') {
               setCustom(true)
@@ -605,6 +610,7 @@ function EditorFields({
                 ...current,
                 repeat: {
                   ...current.repeat,
+                  rule: '',
                   frequency:
                     current.repeat.frequency === 'never'
                       ? 'weekly'
@@ -632,9 +638,16 @@ function EditorFields({
             <SelectItem value='custom'>{t`Custom`}</SelectItem>
           </SelectContent>
         </Select>
+        {/* A rule the settings cannot express is kept as written; choosing
+            a repeat replaces it. */}
+        {kept && (
+          <p className='text-muted-foreground text-xs' data-testid='kept-rule'>
+            {draft.repeat.rule}
+          </p>
+        )}
       </div>
 
-      {custom && (
+      {custom && !kept && (
         <div className='space-y-3 rounded-lg border p-3'>
           <div className='grid grid-cols-2 gap-3'>
             <div className='space-y-2'>
@@ -648,6 +661,7 @@ function EditorFields({
                     ...current,
                     repeat: {
                       ...current.repeat,
+                      rule: '',
                       frequency: value as Frequency,
                     },
                   }))
@@ -679,6 +693,7 @@ function EditorFields({
                     ...current,
                     repeat: {
                       ...current.repeat,
+                      rule: '',
                       interval: Math.max(1, Number(input.target.value) || 1),
                     },
                   }))
@@ -701,6 +716,7 @@ function EditorFields({
                         ...current,
                         repeat: {
                           ...current.repeat,
+                          rule: '',
                           weekdays: on
                             ? current.repeat.weekdays.filter(
                                 (day) => day !== weekday.day
@@ -735,6 +751,7 @@ function EditorFields({
                     ...current,
                     repeat: {
                       ...current.repeat,
+                      rule: '',
                       ending: value as EventDraft['repeat']['ending'],
                       until:
                         value === 'until' && !current.repeat.until
@@ -767,6 +784,7 @@ function EditorFields({
                       ...current,
                       repeat: {
                         ...current.repeat,
+                        rule: '',
                         until: day,
                       },
                     }))
@@ -790,6 +808,7 @@ function EditorFields({
                       ...current,
                       repeat: {
                         ...current.repeat,
+                        rule: '',
                         count: Math.max(1, Number(input.target.value) || 1),
                       },
                     }))
