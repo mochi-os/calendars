@@ -50,6 +50,7 @@ import {
   draftComponent,
   draftInstants,
   editedComponents,
+  endAfterStart,
   expressible,
   foreignZones,
   emptyRepeat,
@@ -77,7 +78,7 @@ export function EventEditor() {
   const { t } = useLingui()
   const format = useFormat()
   const { isMobile } = useScreenSize()
-  const { editing, setEditing, calendars } = useCalendarContext()
+  const { editing, setEditing, calendars, remember } = useCalendarContext()
 
   const editingEvent = editing?.mode === 'edit' ? editing.event : null
   const { data, isLoading, refetch } = useEventQuery(editingEvent)
@@ -88,6 +89,8 @@ export function EventEditor() {
   const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
   const [asking, setAsking] = useState<'save' | 'copy' | null>(null)
+  // A save tried without a title; the title row says so until one is typed.
+  const [untitled, setUntitled] = useState(false)
   const [confirming, setConfirming] = useState(false)
 
   const createMutation = useCreateEventMutation()
@@ -109,6 +112,7 @@ export function EventEditor() {
   // event, then reads the occurrence's own component where it has one.
   useEffect(() => {
     setRevealed(false)
+    setUntitled(false)
     if (!editing) {
       setDraft(null)
       setAsking(null)
@@ -153,6 +157,7 @@ export function EventEditor() {
           calendar: draft.calendar,
           components: [draftComponent(draft)],
         })
+        remember(draft)
         toast.success(editing.copy ? t`Event copied` : t`Event created`)
       } else {
         if (!event) return
@@ -225,8 +230,16 @@ export function EventEditor() {
     }
   }
 
+  // Save is refused only for a reason the form shows: no title, or an end
+  // before the start, which the End row already says.
   const save = () => {
-    if (!draft || draft.title.trim() === '') return
+    if (!draft) return
+    if (draft.title.trim() === '') {
+      setUntitled(true)
+      document.getElementById('event-title')?.focus()
+      return
+    }
+    if (!ordered) return
     if (recurring) setAsking('save')
     else void write('all')
   }
@@ -267,6 +280,8 @@ export function EventEditor() {
       <EditorFields
         draft={draft}
         zones={zones}
+        ordered={ordered}
+        untitled={untitled && draft.title.trim() === ''}
         onReveal={() => setRevealed(true)}
         setDraft={setDraft}
         custom={custom}
@@ -305,7 +320,7 @@ export function EventEditor() {
       <Button
         onClick={save}
         loading={pending}
-        disabled={!draft || draft.title.trim() === '' || !ordered}
+        disabled={!draft}
         icon={<Check className='size-4' />}
       >
         <Trans>Save</Trans>
@@ -405,6 +420,8 @@ function EditorFields({
   setCustom,
   calendars,
   zones,
+  ordered,
+  untitled,
   onReveal,
 }: {
   draft: EventDraft
@@ -414,6 +431,10 @@ function EditorFields({
   calendars: { id: string; name: string }[]
   /** Whether the zone controls show; a globe reveals them otherwise. */
   zones: boolean
+  /** Whether the end follows the start as instants; Save waits for that. */
+  ordered: boolean
+  /** A save was tried without a title, which the title row says. */
+  untitled: boolean
   onReveal: () => void
 }) {
   const { t } = useLingui()
@@ -479,10 +500,16 @@ function EditorFields({
           id='event-title'
           value={draft.title}
           autoFocus
+          aria-invalid={untitled || undefined}
           onChange={(input) =>
             edit((current) => ({ ...current, title: input.target.value }))
           }
         />
+        {untitled && (
+          <p className='text-destructive text-xs' data-testid='untitled'>
+            {t`Title is required`}
+          </p>
+        )}
       </div>
 
       <div className='space-y-2'>
@@ -554,16 +581,18 @@ function EditorFields({
               value={draft.zone.start}
               onChange={(zone) =>
                 // The end follows the start while the two still agree.
-                edit((current) => ({
-                  ...current,
-                  zone: {
-                    start: zone,
-                    finish:
-                      current.zone.finish === current.zone.start
-                        ? zone
-                        : current.zone.finish,
-                  },
-                }))
+                edit((current) =>
+                  endAfterStart({
+                    ...current,
+                    zone: {
+                      start: zone,
+                      finish:
+                        current.zone.finish === current.zone.start
+                          ? zone
+                          : current.zone.finish,
+                    },
+                  })
+                )
               }
             />
           )}
@@ -618,12 +647,20 @@ function EditorFields({
               label={t`End time zone`}
               value={draft.zone.finish}
               onChange={(zone) =>
-                edit((current) => ({
-                  ...current,
-                  zone: { ...current.zone, finish: zone },
-                }))
+                edit((current) =>
+                  endAfterStart({
+                    ...current,
+                    zone: { ...current.zone, finish: zone },
+                  })
+                )
               }
             />
+          )}
+          {/* Save waits for an end that follows the start; the row says why. */}
+          {!ordered && (
+            <p className='text-destructive text-xs' data-testid='backwards'>
+              {t`Ends before it starts`}
+            </p>
           )}
         </div>
       </div>

@@ -21,8 +21,8 @@ import {
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import {
-  emptyRepeat,
   instanceDraft,
+  newDraft,
   type EventDraft,
   type Scope,
 } from '@/lib/ical'
@@ -51,6 +51,7 @@ export function CalendarPage() {
     calendars,
     workweek,
     setEditing,
+    remembered,
   } = useCalendarContext()
 
   const [lastCalendar, setLastCalendar] = useShellStorage<string>(
@@ -155,44 +156,51 @@ export function CalendarPage() {
     return (last ?? writable.find((c) => c.default) ?? writable[0])?.id ?? ''
   }, [calendars, lastCalendar])
 
+  // A new event reads in the zones the last one used on this device, and
+  // goes in the calendar the last one went in.
   const compose = useCallback(
     (from: number, to: number, allday = false): EventDraft => {
       const calendar = calendarFor()
       setLastCalendar(calendar)
-      return {
-        title: '',
-        calendar,
+      return newDraft(from, to, {
         allday,
-        start: format.zonedDay(new Date(from * 1000)),
-        startTime: format.zonedMinutes(new Date(from * 1000)),
-        finish: format.zonedDay(new Date(to * 1000)),
-        finishTime: format.zonedMinutes(new Date(to * 1000)),
-        zone: { start: format.timezone, finish: format.timezone },
-        location: '',
-        description: '',
-        repeat: emptyRepeat(),
+        calendar,
         reminder: preferences.reminder,
-      }
+        zone: remembered.zone ?? {
+          start: format.timezone,
+          finish: format.timezone,
+        },
+      })
     },
-    [calendarFor, format, preferences.reminder, setLastCalendar]
+    [
+      calendarFor,
+      format.timezone,
+      preferences.reminder,
+      remembered.zone,
+      setLastCalendar,
+    ]
   )
 
-  // "New event" lands on the next whole hour of today, the length the user set.
+  // "New event" lands on the next whole hour of today, the length the user
+  // set, and is all-day when the last new event was: a click on the hour
+  // grid says timed, but the button has nothing else to go on.
   const createNow = () => {
     const now = new Date()
     const hour = Math.min(23, Math.floor(format.zonedMinutes(now) / 60) + 1)
     const from = format.timestampAt(format.zonedDay(now), hour * 60)
     setEditing({
       mode: 'create',
-      draft: compose(from, from + preferences.duration * 60),
+      draft: compose(from, from + preferences.duration * 60, remembered.allday),
     })
   }
 
+  // A day cell in the month views says which day, not which kind, so it
+  // takes the remembered all-day switch like the button does.
   const createOnDay = (day: string) => {
     const from = format.timestampAt(day, preferences.hours.start * 60)
     setEditing({
       mode: 'create',
-      draft: compose(from, from + preferences.duration * 60),
+      draft: compose(from, from + preferences.duration * 60, remembered.allday),
     })
   }
 

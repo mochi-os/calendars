@@ -12,16 +12,20 @@ import {
   draftComponent,
   draftInstants,
   editedComponents,
+  endAfterStart,
   expressible,
   foreignZones,
   emptyRepeat,
   instanceDraft,
   masterComponent,
   movedDraft,
+  newDraft,
   occurrenceDraft,
   property,
   propertyInstant,
   propertyValue,
+  REMEMBERED,
+  remembered,
   reminderTrigger,
   repeatRule,
   ruleRepeat,
@@ -1008,5 +1012,103 @@ describe('the draft a copy opens on', () => {
     expect(copied.allday).toBe(true)
     expect(copied.start).toBe('2026-09-24')
     expect(copied.finish).toBe('2026-09-26')
+  })
+})
+
+describe('what a new event starts from', () => {
+  const nine = Date.UTC(2026, 8, 25, 9) / 1000
+
+  it('reads the span in the zones the last new event used, keeping the instants', () => {
+    const draft = newDraft(nine, nine + 3600, {
+      allday: false,
+      calendar: 'cal1',
+      reminder: 15,
+      zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
+    })
+    // 09:00 UTC is 18:00 in Tokyo, the same instant.
+    expect(draft.start).toBe('2026-09-25')
+    expect(draft.startTime).toBe(18 * 60)
+    expect(draft.finishTime).toBe(19 * 60)
+    expect(draft.zone).toEqual({ start: 'Asia/Tokyo', finish: 'Asia/Tokyo' })
+    expect(draftInstants(draft)).toEqual({ start: nine, finish: nine + 3600 })
+    expect(draft.calendar).toBe('cal1')
+    expect(draft.reminder).toBe(15)
+    expect(draft.title).toBe('')
+    expect(draft.repeat.frequency).toBe('never')
+  })
+
+  it('takes the all-day switch it is given', () => {
+    const draft = newDraft(nine, nine + 3600, {
+      allday: true,
+      calendar: 'cal1',
+      reminder: -1,
+      zone: { start: 'UTC', finish: 'UTC' },
+    })
+    expect(draft.allday).toBe(true)
+    expect(draft.start).toBe('2026-09-25')
+  })
+
+  it('leaves the all-day switch and both zones of a saved event for the next', () => {
+    const saved = draft({
+      title: 'Flight',
+      allday: false,
+      zone: { start: 'Europe/London', finish: 'America/New_York' },
+      location: 'LHR',
+    })
+    expect(remembered(saved)).toEqual({
+      allday: false,
+      zone: { start: 'Europe/London', finish: 'America/New_York' },
+    })
+    expect(remembered({ ...saved, allday: true })).toEqual({
+      allday: true,
+      zone: { start: 'Europe/London', finish: 'America/New_York' },
+    })
+    expect(REMEMBERED).toEqual({ allday: false, zone: null })
+  })
+})
+
+describe('an end that falls before its start after a zone change', () => {
+  const london = draft({
+    start: '2026-09-24',
+    startTime: 11 * 60,
+    finish: '2026-09-24',
+    finishTime: 12 * 60,
+    zone: { start: 'Europe/London', finish: 'Europe/London' },
+  })
+
+  it('moves the end on to the next day when its zone is east of the start', () => {
+    const tokyo = endAfterStart({
+      ...london,
+      zone: { start: 'Europe/London', finish: 'Asia/Tokyo' },
+    })
+    // 12:00 Tokyo on the 24th is 03:00Z, before 11:00 London; the 25th follows.
+    expect(tokyo.finish).toBe('2026-09-25')
+    expect(tokyo.finishTime).toBe(12 * 60)
+    expect(draftInstants(tokyo).finish).toBeGreaterThan(
+      draftInstants(tokyo).start
+    )
+  })
+
+  it('leaves an end that still follows alone, as one west of the start does', () => {
+    const newYork = {
+      ...london,
+      zone: { start: 'Europe/London', finish: 'America/New_York' },
+    }
+    expect(endAfterStart(newYork)).toBe(newYork)
+    expect(endAfterStart(london)).toBe(london)
+  })
+
+  it('moves by as many days as the gap needs', () => {
+    const far = endAfterStart({
+      ...london,
+      finish: '2026-09-18',
+      zone: { start: 'Europe/London', finish: 'Asia/Tokyo' },
+    })
+    expect(far.finish).toBe('2026-09-25')
+  })
+
+  it('never touches an all-day draft, even one that ends before it starts', () => {
+    const whole = { ...london, allday: true, finish: '2026-09-20' }
+    expect(endAfterStart(whole)).toBe(whole)
   })
 })

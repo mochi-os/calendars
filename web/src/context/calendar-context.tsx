@@ -22,7 +22,12 @@ import {
 } from '@mochi/web'
 import type { Calendar } from '@/api/types/calendars'
 import type { Preferences } from '@/api/types/preferences'
-import type { EventDraft } from '@/lib/ical'
+import {
+  REMEMBERED,
+  remembered,
+  type EventDraft,
+  type Remembered,
+} from '@/lib/ical'
 import { useCalendarsQuery } from '@/hooks/use-calendars'
 import { DEFAULTS, usePreferencesQuery } from '@/hooks/use-preferences'
 import { useShownCalendars } from '@/hooks/use-shown'
@@ -67,6 +72,10 @@ interface CalendarContextValue {
   setSearch: (value: string) => void
   editing: Editing | null
   setEditing: (editing: Editing | null) => void
+  /** What the last new event saved on this device leaves for the next. */
+  remembered: Remembered
+  /** Keeps a just-saved new event's settings for the next one. */
+  remember: (draft: EventDraft) => void
 }
 
 const CalendarContext = createContext<CalendarContextValue | null>(null)
@@ -95,6 +104,14 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const [workweek, setWorkweek] = useState(false)
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Editing | null>(null)
+  const [kept, setKept] = useShellStorage<Remembered>(
+    'calendars:new',
+    REMEMBERED
+  )
+  const remember = useCallback(
+    (draft: EventDraft) => setKept(remembered(draft)),
+    [setKept]
+  )
 
   const today = format.zonedDay(new Date())
 
@@ -194,6 +211,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       setSearch: setQuery,
       editing,
       setEditing,
+      remembered: kept,
+      remember,
     }),
     [
       calendars,
@@ -215,6 +234,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       workweek,
       query,
       editing,
+      kept,
+      remember,
     ]
   )
 

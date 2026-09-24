@@ -978,3 +978,75 @@ export function instanceDraft(
     reminder,
   }
 }
+
+// --- New events ---
+
+/**
+ * What the next new event takes from the last one saved on this device:
+ * whether it was all-day, which only "New event" has nothing else to go on
+ * for, and the zones of its two ends, so a run of events entered for a trip
+ * reads in the trip's zone. Nothing else carries over.
+ */
+export interface Remembered {
+  allday: boolean
+  zone: { start: string; finish: string } | null
+}
+
+export const REMEMBERED: Remembered = { allday: false, zone: null }
+
+/** What a saved new event leaves for the next one. */
+export function remembered(draft: EventDraft): Remembered {
+  return { allday: draft.allday, zone: { ...draft.zone } }
+}
+
+/**
+ * The draft a new event opens on: the span in unix seconds, read in the
+ * zones the last new event used, so a tap at ten keeps its instant and the
+ * editor shows it on the remembered clock.
+ */
+export function newDraft(
+  from: number,
+  to: number,
+  options: {
+    allday: boolean
+    calendar: string
+    reminder: number
+    zone: { start: string; finish: string }
+  }
+): EventDraft {
+  const { zone } = options
+  const begins = new Date(from * 1000)
+  const ends = new Date(to * 1000)
+  return {
+    title: '',
+    calendar: options.calendar,
+    allday: options.allday,
+    start: zonedDay(begins, zone.start),
+    startTime: zonedMinutes(begins, zone.start),
+    finish: zonedDay(ends, zone.finish),
+    finishTime: zonedMinutes(ends, zone.finish),
+    zone: { ...zone },
+    location: '',
+    description: '',
+    repeat: emptyRepeat(),
+    reminder: options.reminder,
+  }
+}
+
+/**
+ * The draft with its end no earlier than its start as instants. A zone
+ * change keeps each end's clock reading, so an end zone chosen east of the
+ * start can put the end before the start; the end then moves on by whole
+ * days until it follows, which is where an eastbound arrival lands anyway.
+ */
+export function endAfterStart(draft: EventDraft): EventDraft {
+  if (draft.allday) return draft
+  let out = draft
+  for (let step = 0; step < 3; step++) {
+    const { start, finish } = draftInstants(out)
+    if (finish >= start) return out
+    const days = Math.max(1, Math.ceil((start - finish) / 86400))
+    out = { ...out, finish: addDays(out.finish, days) }
+  }
+  return out
+}
