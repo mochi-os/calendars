@@ -50,16 +50,13 @@ type ConnectDialogProps = {
 
 type View = 'name' | 'credentials' | 'manage'
 
-// The CalDAV engine authenticates on the token alone and ignores the username,
-// and the auth store carries no email to offer instead.
-const USERNAME = 'mochi'
-
 export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const [view, setView] = useState<View>('name')
   const [name, setName] = useState('')
   const [token, setToken] = useState<string | null>(null)
+  const [username, setUsername] = useState('')
   const [deleting, setDeleting] = useState<string | null>(null)
 
   const { data, isLoading } = useTokensQuery(open && view === 'manage')
@@ -96,6 +93,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         error: (error) => getErrorMessage(error, t`Failed to connect device`),
       })
       setToken(result.token)
+      setUsername(result.username)
       setName('')
       setView('credentials')
     } catch {
@@ -117,12 +115,12 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
     }
   }
 
-  // token/list answers with every token the app holds, and the calendar
-  // address links are tokens too. Only the ones bound to the CalDAV route are
-  // devices; deleting an address link from here would quietly break whatever
-  // is subscribed to it.
+  // token/list answers the user's device credentials from both apps, since
+  // one password serves contacts and calendars. The dav scope is what makes
+  // a token a device: the calendar address links are tokens too, and deleting
+  // one from here would quietly break whatever is subscribed to it.
   const tokens = (data?.tokens ?? []).filter((item) =>
-    item.action.startsWith('caldav')
+    item.scopes.includes('dav')
   )
 
   return (
@@ -166,7 +164,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
               />
               <CredentialRow
                 label={t`Username`}
-                value={USERNAME}
+                value={username}
                 copy={copy}
               />
               <CredentialRow label={t`Password`} value={token} copy={copy} />

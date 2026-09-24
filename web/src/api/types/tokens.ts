@@ -18,6 +18,8 @@ interface Token {
 
 export interface CreateTokenResponse {
   token: string
+  /** The username to enter beside it: the account's address. */
+  username: string
 }
 
 export interface GetTokensResponse {

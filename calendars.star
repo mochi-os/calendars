@@ -1814,12 +1814,17 @@ def action_token_create(a):
 	if not token:
 		a.error.label(500, "errors.failed_to_create_token")
 		return
-	return {"data": {"token": token}}
+	# The engine ignores the username; the account's address is what a
+	# client asks for and what the user expects to type.
+	return {"data": {"token": token, "username": a.user.username}}
 
 # Only the device credentials: the app's ICS link tokens are bound to the
 # calendar address and are revoked from the calendar, not from the device list.
 def action_token_list(a):
-	return {"data": {"tokens": [t for t in (mochi.token.list() or []) if t.get("action") == "caldav/*path"]}}
+	# Every device credential the user holds, whichever app minted it: one
+	# password serves contacts and calendars, so both apps list the same
+	# devices. The dav scope leaves the app's ICS link tokens out.
+	return {"data": {"tokens": mochi.token.list("dav") or []}}
 
 def action_token_delete(a):
 	hash = a.input("hash", "").strip()
