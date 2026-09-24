@@ -99,15 +99,26 @@ export const useEventQuery = (event: string | null) =>
     enabled: Boolean(event) && !(event ?? '').startsWith('birthday-'),
   })
 
+/**
+ * A mutation over events, refreshing the instances, the events and the bounds
+ * when it lands. A deletion names the event it removed, which is left out of
+ * the refresh: the dialog that deleted it still holds its query while it
+ * closes, and refreshing that would fetch the event again and be answered 404.
+ */
 function useEventMutation<TVariables, TResult>(
-  action: (variables: TVariables) => Promise<TResult>
+  action: (variables: TVariables) => Promise<TResult>,
+  deleted?: (variables: TVariables) => string
 ) {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: action,
-    onSuccess: () => {
+    onSuccess: (_, variables) => {
+      const removed = deleted?.(variables)
       queryClient.invalidateQueries({ queryKey: ['instances'] })
-      queryClient.invalidateQueries({ queryKey: ['event'] })
+      queryClient.invalidateQueries({
+        queryKey: ['event'],
+        predicate: (query) => query.queryKey[1] !== removed,
+      })
       queryClient.invalidateQueries({ queryKey: ['bounds'] })
     },
   })
@@ -123,6 +134,8 @@ export const useSplitEventMutation = () =>
   useEventMutation((event: SplitEvent) => eventsApi.split(event))
 
 export const useDeleteEventMutation = () =>
-  useEventMutation(({ event, etag }: { event: string; etag?: string }) =>
-    eventsApi.delete(event, etag)
+  useEventMutation(
+    ({ event, etag }: { event: string; etag?: string }) =>
+      eventsApi.delete(event, etag),
+    ({ event }) => event
   )
