@@ -18,7 +18,7 @@
 	"require": {"version": {"minimum": "2.0.3"}},
 
 	"database": {
-		"schema": 2,
+		"schema": 3,
 		"file": "calendars.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},

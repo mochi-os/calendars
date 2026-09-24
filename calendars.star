@@ -72,9 +72,14 @@ def database_upgrade(version):
 		for column, definition in [("href", "text not null default ''"), ("remote", "text not null default ''"), ("dirty", "integer not null default 0")]:
 			if column not in events:
 				mochi.db.execute("alter table events add column " + column + " " + definition)
+	if version == 3:
+		# A linked calendar whose collection the other server does not let
+		# this account write: read-only here too.
+		if "readonly" not in [c["name"] for c in mochi.db.table("calendars")]:
+			mochi.db.execute("alter table calendars add column readonly integer not null default 0")
 
 def database_create():
-	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '' )")
+	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '', readonly integer not null default 0 )")
 	mochi.db.execute("create index if not exists calendars_identity on calendars( identity )")
 	mochi.db.execute("create unique index if not exists calendars_identity_slug on calendars( identity, slug )")
 	# ics holds the object's iCalendar text; the rest are read from it when it
@@ -250,10 +255,10 @@ def calendar_by_slug(identity, slug):
 
 # ignore: let the unique index on (identity, slug) settle a race between two
 # creators of the same slug; the caller reads the slug back to learn who won.
-def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False, account="", collection=""):
+def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False, account="", collection="", readonly=False):
 	now = mochi.time.now()
-	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated, account, collection ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ? )",
-		id, identity, slug, kind, colour, url, _LINK_POLL if kind == "linked" else _POLL_BASE, now, now, account, collection)
+	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated, account, collection, readonly ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, ? )",
+		id, identity, slug, kind, colour, url, _LINK_POLL if kind == "linked" else _POLL_BASE, now, now, account, collection, 1 if readonly else 0)
 
 # calendars_ensure(identity): the default calendar and the birthdays calendar
 # exist from the first request on, each an entity with a fixed slug.
@@ -274,8 +279,15 @@ def calendar_ensure(identity, slug, label, kind, colour):
 	if calendar_by_slug(identity, slug)["id"] != id:
 		mochi.entity.delete(id)
 
+# calendar_readonly(row): whether writes are refused here. A linked calendar
+# is read-only when its collection is on the other server: known at the link
+# from the server's privilege set, or learnt from a refused write.
 def calendar_readonly(row):
-	return row["kind"] != "own" and row["kind"] != "linked"
+	if row["kind"] == "own":
+		return False
+	if row["kind"] == "linked":
+		return bool(row["readonly"])
+	return True
 
 # calendar_polled(row): whether the calendar is kept up to date on a schedule.
 def calendar_polled(row):
@@ -416,8 +428,8 @@ def event_write(identity, calendar, slug, ics, row=None, push=True):
 		holder = mochi.db.row("select * from calendars where id=?", calendar)
 		if holder and holder["kind"] == "linked":
 			code = linked_push(holder, after)
-			if code == "conflict":
-				return "conflict"
+			if code == "conflict" or code == "readonly":
+				return code
 			after = event_get(identity, id)
 	return after
 
@@ -433,6 +445,8 @@ def event_delete(identity, row, push=True):
 			if result.get("error") == "conflict":
 				linked_replace(holder, row)
 				return "conflict"
+			if linked_forbidden(result):
+				return linked_refused(holder, row, False)
 			if result.get("error"):
 				return linked_failure(result)
 	reminders_cancel(row["id"])
@@ -714,9 +728,34 @@ def linked_push(calendar, event):
 	if result["error"] == "conflict":
 		linked_replace(calendar, dict(event, href=href))
 		return "conflict"
+	if linked_forbidden(result):
+		return linked_refused(calendar, dict(event, href=href), not event["href"])
 	mochi.db.execute("update events set dirty=1 where id=?", event["id"])
 	mochi.db.execute("update calendars set failure=? where id=?", linked_failure(result), calendar["id"])
 	return linked_failure(result)
+
+# linked_forbidden(result) -> bool: the other server refused the write as
+# forbidden, the account's credential being good.
+def linked_forbidden(result):
+	return result.get("error") == "unauthorised" and result.get("status") == 403
+
+# linked_refused(calendar, event, created) -> "readonly": the other server
+# refused a write. The server's version takes the event's place here, so no
+# edit is left stranded; and the calendar becomes read-only when the server
+# says its collection is, or when what it refused was a new object, which a
+# collection this account may write never refuses. A refused edit or delete
+# on a server that says nothing is put back and reported alone: it may be
+# that one object the account may not change.
+def linked_refused(calendar, event, created):
+	linked_replace(calendar, event)
+	readonly = created
+	if not readonly:
+		for remote in mochi.caldav.calendars(calendar["account"]).get("calendars", []):
+			if remote["href"] == calendar["collection"] and remote.get("readonly"):
+				readonly = True
+	if readonly:
+		mochi.db.execute("update calendars set readonly=1 where id=?", calendar["id"])
+	return "readonly"
 
 # linked_replace(calendar, event): the other server's version of the object
 # takes the place of the event here, or the event goes when the server no
@@ -782,7 +821,7 @@ def linked_sync(row, force=False):
 	failure = ""
 	for event in mochi.db.rows("select * from events where calendar=? and dirty=1", row["id"]):
 		code = linked_push(row, event)
-		if code == "conflict":
+		if code == "conflict" or code == "readonly":
 			changed = True
 		elif code:
 			failure = code
@@ -790,7 +829,10 @@ def linked_sync(row, force=False):
 	for event in mochi.db.rows("select * from events where calendar=? and href='' and dirty=0", row["id"]):
 		# Written before the calendar was linked, or by a pull that could
 		# not name it: a push gives it an address.
-		if not failure and linked_push(row, event) == "":
+		if failure:
+			break
+		code = linked_push(row, event)
+		if code == "" or code == "readonly":
 			changed = True
 	if not failure:
 		status = mochi.caldav.status(row["account"], row["collection"])
@@ -1207,8 +1249,14 @@ def action_calendar_link(a):
 	name = a.input("name", "").strip()
 	if not name or len(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
 		name = collection.split("//", 1)[1].split("/")[0][:_NAME_MAXIMUM]
+	# The server's word on whether this account may write the collection;
+	# a server that says nothing is taken at its first refused write.
+	readonly = False
+	for remote in mochi.caldav.calendars(account).get("calendars", []):
+		if remote["href"] == collection and remote.get("readonly"):
+			readonly = True
 	id = mochi.entity.create("calendar", name, "private")
-	calendar_insert(identity, id, mochi.entity.fingerprint(id), "linked", colour, account=account, collection=collection)
+	calendar_insert(identity, id, mochi.entity.fingerprint(id), "linked", colour, account=account, collection=collection, readonly=readonly)
 	row = calendar_get(identity, id)
 	linked_sync(row, True)
 	poll_schedule(id, _LINK_POLL)
@@ -1349,6 +1397,8 @@ def event_error(a, code):
 		a.error.label(409, "errors.event_duplicate")
 	elif code == "conflict":
 		a.error.label(412, "errors.event_changed")
+	elif code == "readonly":
+		a.error.label(400, "errors.calendar_readonly")
 	elif code == "unauthorised" or code.startswith("unauthorised:"):
 		a.error.label(502, "errors.account_unauthorised")
 	elif code == "invalid":
@@ -1437,6 +1487,9 @@ def action_event_update(a):
 			return
 		if calendar["kind"] == "linked" and row["href"]:
 			result = mochi.caldav.delete(calendar["account"], row["href"], row["remote"])
+			if linked_forbidden(result):
+				event_error(a, linked_refused(calendar, row, False))
+				return
 			if result.get("error") and result["error"] != "missing":
 				event_error(a, result["error"])
 				return
