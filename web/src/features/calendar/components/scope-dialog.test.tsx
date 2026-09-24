@@ -35,6 +35,26 @@ describe('ScopeDialog', () => {
     expect(onChoose).toHaveBeenLastCalledWith('all')
   })
 
+  it('leaves "This and following" out when asked to', () => {
+    const onChoose = vi.fn()
+    render(
+      <I18nProvider i18n={i18n}>
+        <ScopeDialog
+          open
+          title='Copy this event'
+          following={false}
+          onOpenChange={vi.fn()}
+          onChoose={onChoose}
+        />
+      </I18nProvider>
+    )
+    expect(
+      screen.queryByRole('button', { name: 'This and following' })
+    ).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'All events' }))
+    expect(onChoose).toHaveBeenCalledWith('all')
+  })
+
   it('offers a plain confirm for an event that does not repeat', () => {
     const onChoose = show(false)
     expect(

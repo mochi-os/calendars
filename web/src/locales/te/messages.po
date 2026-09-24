@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "కాపీ చేయండి"
@@ -758,6 +761,11 @@ msgstr "{label} కాపీ చేయండి"
 msgid "Copy calendar address"
 msgstr "క్యాలెండర్ చిరునామాను కాపీ చేయండి"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ఈవెంట్‌ను కాపీ చేయండి"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "ఈ ఈవెంట్‌ను కాపీ చేయండి"
@@ -1157,6 +1165,7 @@ msgstr "మీ ప్రమాణీకరణ కోడ్‌ను నమోద
 msgid "Error"
 msgstr "లోపం"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

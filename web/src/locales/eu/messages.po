@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Arbelera kopiatu da"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopiatu"
@@ -758,6 +761,11 @@ msgstr "Kopiatu {label}"
 msgid "Copy calendar address"
 msgstr "Kopiatu egutegiaren helbidea"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kopiatu gertaera"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kopiatu gertaera hau"
@@ -1157,6 +1165,7 @@ msgstr "Sartu zure autentifikazio-aplikazioaren kodea"
 msgid "Error"
 msgstr "Errorea"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

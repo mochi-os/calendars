@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "A vágólapra másolva"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Másolás"
@@ -758,6 +761,11 @@ msgstr "{label} másolása"
 msgid "Copy calendar address"
 msgstr "Naptár címének másolása"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Esemény másolása"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Ezen esemény másolása"
@@ -1157,6 +1165,7 @@ msgstr "Adja meg a hitelesítő kódját"
 msgid "Error"
 msgstr "Hiba"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

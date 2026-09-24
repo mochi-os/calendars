@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "U kopjua në kujtesën e fragmenteve"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopjo"
@@ -758,6 +761,11 @@ msgstr "Kopjo {label}"
 msgid "Copy calendar address"
 msgstr "Kopjo adresën e kalendarit"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kopjo ngjarjen"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kopjo këtë ngjarje"
@@ -1157,6 +1165,7 @@ msgstr "Vendosni kodin e aplikacionit të vërtetimit"
 msgid "Error"
 msgstr "Gabim"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

@@ -20,7 +20,12 @@ import {
 } from '@mochi/web'
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
-import { emptyRepeat, type EventDraft, type Scope } from '@/lib/ical'
+import {
+  emptyRepeat,
+  instanceDraft,
+  type EventDraft,
+  type Scope,
+} from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
@@ -303,6 +308,23 @@ export function CalendarPage() {
         anchor={selected?.anchor ?? null}
         zones={preferences.zones}
         onClose={() => setSelected(null)}
+        onCopy={(instance) => {
+          // A read-only occurrence has no event the editor could read, so
+          // the copy is what the listing says of it, in the user's calendar.
+          setSelected(null)
+          const calendar = calendarFor()
+          setLastCalendar(calendar)
+          setEditing({
+            mode: 'create',
+            draft: instanceDraft(
+              instance,
+              calendar,
+              preferences.reminder,
+              format.timezone
+            ),
+            copy: true,
+          })
+        }}
       />
 
       <DayPopover

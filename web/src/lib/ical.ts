@@ -907,3 +907,74 @@ function carriedOverrides(
   }
   return out
 }
+
+// --- Copying ---
+
+/**
+ * The draft a copy of an occurrence opens the editor on: for "This event",
+ * the occurrence alone, its own override where it has one and otherwise
+ * the master moved onto it, with no repeat; for "All events", the whole
+ * series as its master describes it. Null without a master to copy.
+ */
+export function copyDraft(
+  components: Component[],
+  start: number,
+  calendar: string,
+  timezone: string,
+  scope: 'one' | 'all'
+): EventDraft | null {
+  const master = masterComponent(components)
+  if (!master) return null
+  if (scope === 'all') return componentDraft(master, calendar, timezone)
+  const override = overrideComponent(components, start, timezone)
+  const own = override
+    ? componentDraft(override, calendar, timezone)
+    : occurrenceDraft(master, start, calendar, timezone)
+  return { ...own, repeat: emptyRepeat() }
+}
+
+/**
+ * The draft a copy of an occurrence with no stored event to read opens on,
+ * such as a subscribed calendar's or a derived birthday: what the listing
+ * itself says about it, as one event in the user's zone.
+ */
+export function instanceDraft(
+  instance: {
+    summary: string
+    location: string
+    description: string
+    start: number
+    finish: number
+    allday: boolean
+    date?: string
+  },
+  calendar: string,
+  reminder: number,
+  timezone: string
+): EventDraft {
+  const begins = new Date(instance.start * 1000)
+  const ends = new Date(instance.finish * 1000)
+  // An all-day occurrence is listed by its date and runs to the midnight
+  // after its last day, so its last day is one short of its length.
+  const date = instance.date ?? zonedDay(begins, timezone)
+  const days = Math.max(
+    1,
+    Math.round((instance.finish - instance.start) / 86400)
+  )
+  return {
+    title: instance.summary,
+    calendar,
+    allday: instance.allday,
+    start: instance.allday ? date : zonedDay(begins, timezone),
+    startTime: instance.allday ? 0 : zonedMinutes(begins, timezone),
+    finish: instance.allday
+      ? addDays(date, days - 1)
+      : zonedDay(ends, timezone),
+    finishTime: instance.allday ? 0 : zonedMinutes(ends, timezone),
+    zone: { start: timezone, finish: timezone },
+    location: instance.location,
+    description: instance.description,
+    repeat: emptyRepeat(),
+    reminder,
+  }
+}

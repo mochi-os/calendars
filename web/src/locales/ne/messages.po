@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "क्लिपबोर्डमा प्रतिलिपि गरियो"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "प्रतिलिपि"
@@ -758,6 +761,11 @@ msgstr "{label} प्रतिलिपि गर्नुहोस्"
 msgid "Copy calendar address"
 msgstr "क्यालेन्डरको ठेगाना प्रतिलिपि गर्नुहोस्"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "कार्यक्रम प्रतिलिपि गर्नुहोस्"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "यो कार्यक्रम प्रतिलिपि गर्नुहोस्"
@@ -1157,6 +1165,7 @@ msgstr "आफ्नो प्रमाणक कोड हाल्नुहो
 msgid "Error"
 msgstr "त्रुटि"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

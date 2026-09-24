@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Хуулбарласан"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Хуулах"
@@ -758,6 +761,11 @@ msgstr "{label} хуулах"
 msgid "Copy calendar address"
 msgstr "Хуанлийн хаягийг хуулах"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Үйл явдлыг хуулах"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Энэ үйл явдлыг хуулах"
@@ -1157,6 +1165,7 @@ msgstr "Баталгаажуулагчийн кодоо оруулна уу"
 msgid "Error"
 msgstr "Алдаа"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

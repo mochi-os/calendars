@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "ڪلپ بورڊ تي ڪاپي ٿيو"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ڪاپي ڪريو"
@@ -758,6 +761,11 @@ msgstr "{label} ڪاپي ڪريو"
 msgid "Copy calendar address"
 msgstr "ڪئلينڊر جو پتو ڪاپي ڪريو"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "واقعو ڪاپي ڪريو"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "هي واقعو ڪاپي ڪريو"
@@ -1157,6 +1165,7 @@ msgstr "پنهنجو تصديق ڪندڙ ڪوڊ داخل ڪريو"
 msgid "Error"
 msgstr "خرابي"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

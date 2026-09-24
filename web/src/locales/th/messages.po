@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ดแล้ว"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "คัดลอก"
@@ -758,6 +761,11 @@ msgstr "คัดลอก {label}"
 msgid "Copy calendar address"
 msgstr "คัดลอกที่อยู่ปฏิทิน"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "คัดลอกกิจกรรม"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "คัดลอกกิจกรรมนี้"
@@ -1157,6 +1165,7 @@ msgstr "ป้อนรหัสจากแอปยืนยันตัวต
 msgid "Error"
 msgstr "ข้อผิดพลาด"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

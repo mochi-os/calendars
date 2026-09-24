@@ -31,7 +31,12 @@ const VIEWS: CalendarView[] = ['day', 'week', 'multiweek', 'month', 'list']
 
 /** What the editor was opened on. */
 export type Editing =
-  | { mode: 'create'; draft: EventDraft }
+  | {
+      mode: 'create'
+      draft: EventDraft
+      /** The draft was copied from another event, so the editor says so. */
+      copy?: boolean
+    }
   | { mode: 'edit'; event: string; start: number }
 
 interface CalendarContextValue {

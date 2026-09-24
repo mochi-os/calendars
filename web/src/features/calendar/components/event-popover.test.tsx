@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { Instance } from '@/api/types/events'
 import { EventPopover } from './event-popover'
@@ -57,6 +57,29 @@ function show(location: string, description = '') {
     </I18nProvider>
   )
 }
+
+describe('EventPopover copy', () => {
+  it('offers Copy when the page can take one, handing the occurrence back', () => {
+    const onCopy = vi.fn()
+    render(
+      <I18nProvider i18n={i18n}>
+        <EventPopover
+          instance={instance('Room 4')}
+          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
+          onClose={vi.fn()}
+          onCopy={onCopy}
+        />
+      </I18nProvider>
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    expect(onCopy).toHaveBeenCalledWith(instance('Room 4'))
+  })
+
+  it('offers no Copy otherwise', () => {
+    show('Room 4')
+    expect(screen.queryByRole('button', { name: 'Copy' })).toBeNull()
+  })
+})
 
 describe('EventPopover location', () => {
   beforeEach(() => {
@@ -144,7 +167,9 @@ describe('EventPopover description', () => {
 
   it('leaves a plain description untouched', () => {
     show('EI59', 'Bring the numbers\na < b')
-    expect(screen.getByText(/Bring/).textContent).toBe('Bring the numbers\na < b')
+    expect(screen.getByText(/Bring/).textContent).toBe(
+      'Bring the numbers\na < b'
+    )
   })
 })
 
@@ -187,10 +212,14 @@ describe('EventPopover zones', () => {
   })
 
   it('says nothing about zones for an event written in the user zone', () => {
-    const text = open({ ...flight, zone: { start: 'UTC', finish: 'UTC' } }, false)
+    const text = open(
+      { ...flight, zone: { start: 'UTC', finish: 'UTC' } },
+      false
+    )
     expect(text).toContain('09:00 to 17:00')
     expect(text).not.toContain('London')
-    expect(open({ ...flight, zone: { start: '', finish: '' } }, true)).not.toContain('UTC')
+    expect(
+      open({ ...flight, zone: { start: '', finish: '' } }, true)
+    ).not.toContain('UTC')
   })
 })
-

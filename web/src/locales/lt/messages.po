@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Nukopijuota į iškarpinę"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopijuoti"
@@ -758,6 +761,11 @@ msgstr "Kopijuoti {label}"
 msgid "Copy calendar address"
 msgstr "Kopijuoti kalendoriaus adresą"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kopijuoti įvykį"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kopijuoti šį įvykį"
@@ -1157,6 +1165,7 @@ msgstr "Įveskite autentifikatoriaus kodą"
 msgid "Error"
 msgstr "Klaida"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

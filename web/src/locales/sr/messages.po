@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Копирано у привремену меморију"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Копирај"
@@ -758,6 +761,11 @@ msgstr "Копирај {label}"
 msgid "Copy calendar address"
 msgstr "Копирај адресу календара"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Копирај догађај"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Копирај овај догађај"
@@ -1157,6 +1165,7 @@ msgstr "Унесите код из апликације за потврду ид
 msgid "Error"
 msgstr "Грешка"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

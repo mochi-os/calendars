@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "કૉપિ કરો"
@@ -758,6 +761,11 @@ msgstr "{label} કૉપિ કરો"
 msgid "Copy calendar address"
 msgstr "કૅલેન્ડરનું સરનામું કૉપિ કરો"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ઇવેન્ટ કૉપિ કરો"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "આ ઇવેન્ટ કૉપિ કરો"
@@ -1157,6 +1165,7 @@ msgstr "તમારો ઑથેન્ટિકેટર કોડ દાખલ
 msgid "Error"
 msgstr "ભૂલ"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

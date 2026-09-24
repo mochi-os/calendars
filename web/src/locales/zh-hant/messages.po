@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "已複製到剪貼簿"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "複製"
@@ -758,6 +761,11 @@ msgstr "複製{label}"
 msgid "Copy calendar address"
 msgstr "複製行事曆網址"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "複製活動"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "複製此活動"
@@ -1157,6 +1165,7 @@ msgstr "請輸入您的驗證器代碼"
 msgid "Error"
 msgstr "錯誤"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

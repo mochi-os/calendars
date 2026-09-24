@@ -18,6 +18,11 @@ interface Props {
   title: string
   /** True when the event repeats, so one occurrence can be told from the set. */
   recurring?: boolean
+  /**
+   * Offers "This and following" beside the two; off for an action that has
+   * no series to cut, such as a copy.
+   */
+  following?: boolean
   destructive?: boolean
   icon?: React.ReactNode
   onOpenChange: (open: boolean) => void
@@ -33,6 +38,7 @@ export function ScopeDialog({
   open,
   title,
   recurring = true,
+  following = true,
   destructive,
   icon,
   onOpenChange,
@@ -54,10 +60,12 @@ export function ScopeDialog({
                 {icon}
                 <Trans>This event</Trans>
               </Button>
-              <Button variant='outline' onClick={() => onChoose('following')}>
-                {icon}
-                <Trans>This and following</Trans>
-              </Button>
+              {following && (
+                <Button variant='outline' onClick={() => onChoose('following')}>
+                  {icon}
+                  <Trans>This and following</Trans>
+                </Button>
+              )}
               <Button
                 variant={destructive ? 'destructive' : 'default'}
                 onClick={() => onChoose('all')}

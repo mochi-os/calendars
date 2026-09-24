@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "പകർത്തുക"
@@ -758,6 +761,11 @@ msgstr "{label} പകർത്തുക"
 msgid "Copy calendar address"
 msgstr "കലണ്ടറിന്റെ വിലാസം പകർത്തുക"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ഇവന്റ് പകർത്തുക"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "ഈ ഇവന്റ് പകർത്തുക"
@@ -1157,6 +1165,7 @@ msgstr "നിങ്ങളുടെ ഓതെന്റിക്കേറ്റ�
 msgid "Error"
 msgstr "പിശക്"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

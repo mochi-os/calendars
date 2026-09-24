@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Đã sao chép vào bộ nhớ tạm"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Sao chép"
@@ -758,6 +761,11 @@ msgstr "Sao chép {label}"
 msgid "Copy calendar address"
 msgstr "Sao chép địa chỉ lịch"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Sao chép sự kiện"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Sao chép sự kiện này"
@@ -1157,6 +1165,7 @@ msgstr "Nhập mã từ ứng dụng xác thực của bạn"
 msgid "Error"
 msgstr "Lỗi"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "நகலெடு"
@@ -758,6 +761,11 @@ msgstr "{label} நகலெடு"
 msgid "Copy calendar address"
 msgstr "நாட்காட்டி முகவரியை நகலெடு"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "நிகழ்வை நகலெடு"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "இந்த நிகழ்வை நகலெடு"
@@ -1157,6 +1165,7 @@ msgstr "உங்கள் அங்கீகரிப்பான் குற�
 msgid "Error"
 msgstr "பிழை"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

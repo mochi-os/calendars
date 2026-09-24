@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Copiado al portapapeles"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Copiar"
@@ -758,6 +761,11 @@ msgstr "Copiar {label}"
 msgid "Copy calendar address"
 msgstr "Copiar dirección del calendario"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Copiar evento"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Copiar este evento"
@@ -1157,6 +1165,7 @@ msgstr "Ingresa el código de tu aplicación de autenticación"
 msgid "Error"
 msgstr "Error"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

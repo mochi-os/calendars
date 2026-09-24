@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Aralyk buferine nusgalandy"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Nusgalamak"
@@ -758,6 +761,11 @@ msgstr "{label} nusgala"
 msgid "Copy calendar address"
 msgstr "Senenamanyň salgysyny nusgala"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Çäräni nusgala"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Şu çäräni nusgala"
@@ -1157,6 +1165,7 @@ msgstr "Autentifikator koduňyzy giriziň"
 msgid "Error"
 msgstr "Ýalňyşlyk"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

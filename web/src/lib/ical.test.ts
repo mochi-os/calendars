@@ -7,6 +7,7 @@ import type { Component } from '@/api/types/events'
 import {
   anchoredDraft,
   componentDraft,
+  copyDraft,
   deletedOccurrence,
   draftComponent,
   draftInstants,
@@ -14,6 +15,7 @@ import {
   expressible,
   foreignZones,
   emptyRepeat,
+  instanceDraft,
   masterComponent,
   movedDraft,
   occurrenceDraft,
@@ -909,5 +911,102 @@ describe('a rule the editor cannot express', () => {
     expect(propertyValue(split.before[0], 'RRULE')).toBe(
       'FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261110T085959Z'
     )
+  })
+})
+
+describe('the draft a copy opens on', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily, location: 'Room 4' }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+  const third = at('20260918T090000')
+
+  it('copies one occurrence as a single event on its own day', () => {
+    const copied = copyDraft([series], third, 'cal2', ZONE, 'one')!
+    expect(copied.title).toBe('Standup')
+    expect(copied.location).toBe('Room 4')
+    expect(copied.calendar).toBe('cal2')
+    expect(copied.start).toBe('2026-09-18')
+    expect(copied.startTime).toBe(9 * 60)
+    expect(copied.repeat.frequency).toBe('never')
+    expect(copied.repeat.rule).toBe('')
+  })
+
+  it('copies one occurrence from its own override when it has one', () => {
+    const edited = editedComponents(
+      [series],
+      draft({
+        title: 'Just once',
+        start: '2026-09-18',
+        startTime: 11 * 60,
+        finish: '2026-09-18',
+        finishTime: 12 * 60,
+      }),
+      'one',
+      third,
+      ZONE
+    )
+    const copied = copyDraft(edited, third, 'cal1', ZONE, 'one')!
+    expect(copied.title).toBe('Just once')
+    expect(copied.startTime).toBe(11 * 60)
+    expect(copied.repeat.frequency).toBe('never')
+  })
+
+  it('copies the whole series with its rule and first day', () => {
+    const copied = copyDraft([series], third, 'cal1', ZONE, 'all')!
+    expect(copied.start).toBe('2026-09-16')
+    expect(copied.repeat.frequency).toBe('daily')
+    expect(repeatRule(copied.repeat, ZONE)).toBe('FREQ=DAILY')
+  })
+
+  it('answers nothing without a master', () => {
+    expect(copyDraft([], third, 'cal1', ZONE, 'one')).toBeNull()
+  })
+
+  it('reads a listed occurrence into a single event in the user zone', () => {
+    const start = Date.UTC(2026, 8, 25, 9) / 1000
+    const copied = instanceDraft(
+      {
+        summary: 'Flight',
+        location: 'LHR',
+        description: 'Gate 12',
+        start,
+        finish: start + 8 * 3600,
+        allday: false,
+      },
+      'cal1',
+      15,
+      'UTC'
+    )
+    expect(copied.title).toBe('Flight')
+    expect(copied.start).toBe('2026-09-25')
+    expect(copied.startTime).toBe(9 * 60)
+    expect(copied.finish).toBe('2026-09-25')
+    expect(copied.finishTime).toBe(17 * 60)
+    expect(copied.zone).toEqual({ start: 'UTC', finish: 'UTC' })
+    expect(copied.reminder).toBe(15)
+    expect(copied.repeat.frequency).toBe('never')
+  })
+
+  it('reads a listed all-day occurrence with its last day, not the exclusive end', () => {
+    const start = Date.UTC(2026, 8, 24) / 1000
+    const copied = instanceDraft(
+      {
+        summary: 'Retreat',
+        location: '',
+        description: '',
+        start,
+        finish: start + 3 * 86400,
+        allday: true,
+        date: '2026-09-24',
+      },
+      'cal1',
+      -1,
+      'UTC'
+    )
+    expect(copied.allday).toBe(true)
+    expect(copied.start).toBe('2026-09-24')
+    expect(copied.finish).toBe('2026-09-26')
   })
 })

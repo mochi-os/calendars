@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Skopírované do schránky"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopírovať"
@@ -758,6 +761,11 @@ msgstr "Kopírovať {label}"
 msgid "Copy calendar address"
 msgstr "Kopírovať adresu kalendára"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kopírovať udalosť"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kopírovať túto udalosť"
@@ -1157,6 +1165,7 @@ msgstr "Zadajte kód z autentifikačnej aplikácie"
 msgid "Error"
 msgstr "Chyba"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

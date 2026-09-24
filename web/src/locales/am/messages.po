@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ቅዳ"
@@ -758,6 +761,11 @@ msgstr "{label} ቅዳ"
 msgid "Copy calendar address"
 msgstr "የቀን መቁጠሪያ አድራሻ ቅዳ"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ክስተት ቅዳ"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "ይህን ክስተት ቅዳ"
@@ -1157,6 +1165,7 @@ msgstr "የአረጋጋጭዎን ኮድ ያስገቡ"
 msgid "Error"
 msgstr "ስህተት"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

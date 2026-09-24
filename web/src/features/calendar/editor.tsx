@@ -36,6 +36,7 @@ import {
   Bell,
   Check,
   Clock,
+  Copy as CopyIcon,
   Globe,
   MapPin,
   Repeat as RepeatIcon,
@@ -45,6 +46,7 @@ import type { Component } from '@/api/types/events'
 import {
   anchoredDraft,
   componentDraft,
+  copyDraft,
   draftComponent,
   draftInstants,
   editedComponents,
@@ -85,7 +87,7 @@ export function EventEditor() {
   // The zone controls, revealed by the globe for the rest of one edit.
   const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
-  const [asking, setAsking] = useState<'save' | 'delete' | null>(null)
+  const [asking, setAsking] = useState<'save' | 'copy' | null>(null)
   const [confirming, setConfirming] = useState(false)
 
   const createMutation = useCreateEventMutation()
@@ -151,7 +153,7 @@ export function EventEditor() {
           calendar: draft.calendar,
           components: [draftComponent(draft)],
         })
-        toast.success(t`Event created`)
+        toast.success(editing.copy ? t`Event copied` : t`Event created`)
       } else {
         if (!event) return
         const master = masterComponent(event.components)
@@ -229,6 +231,25 @@ export function EventEditor() {
     else void write('all')
   }
 
+  // A copy opens the editor again on a new event filled from this one, in
+  // the calendar the form shows; a series asks which of it to copy.
+  const duplicate = (scope: 'one' | 'all') => {
+    if (!draft || !event || editing?.mode !== 'edit') return
+    const copied = copyDraft(
+      event.components,
+      editing.start,
+      draft.calendar,
+      format.timezone,
+      scope
+    )
+    if (copied) setEditing({ mode: 'create', draft: copied, copy: true })
+  }
+
+  const copy = () => {
+    if (recurring) setAsking('copy')
+    else duplicate('one')
+  }
+
   const pending =
     createMutation.isPending ||
     updateMutation.isPending ||
@@ -260,14 +281,23 @@ export function EventEditor() {
   const footer = (
     <>
       {editing?.mode === 'edit' && (
-        <Button
-          variant='outline'
-          className='me-auto'
-          onClick={() => setConfirming(true)}
-          disabled={pending}
-        >
-          <Trans>Delete</Trans>
-        </Button>
+        <>
+          <Button
+            variant='outline'
+            onClick={() => setConfirming(true)}
+            disabled={pending}
+          >
+            <Trans>Delete</Trans>
+          </Button>
+          <Button
+            variant='outline'
+            className='me-auto'
+            onClick={copy}
+            disabled={pending || !event}
+          >
+            <Trans>Copy</Trans>
+          </Button>
+        </>
       )}
       <Button variant='outline' onClick={close} disabled={pending}>
         <Trans>Cancel</Trans>
@@ -283,7 +313,12 @@ export function EventEditor() {
     </>
   )
 
-  const title = editing?.mode === 'create' ? t`New event` : t`Edit event`
+  const title =
+    editing?.mode === 'create'
+      ? editing.copy
+        ? t`Copy event`
+        : t`New event`
+      : t`Edit event`
 
   return (
     <>
@@ -336,6 +371,20 @@ export function EventEditor() {
         onChoose={(scope) => {
           setAsking(null)
           void write(scope)
+        }}
+      />
+
+      <ScopeDialog
+        open={asking === 'copy'}
+        title={t`Copy this event`}
+        following={false}
+        icon={<CopyIcon className='size-4' />}
+        onOpenChange={(next) => {
+          if (!next) setAsking(null)
+        }}
+        onChoose={(scope) => {
+          setAsking(null)
+          duplicate(scope === 'all' ? 'all' : 'one')
         }}
       />
 

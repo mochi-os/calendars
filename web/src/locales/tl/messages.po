@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Nakopya sa clipboard"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopyahin"
@@ -758,6 +761,11 @@ msgstr "Kopyahin ang {label}"
 msgid "Copy calendar address"
 msgstr "Kopyahin ang address ng kalendaryo"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kopyahin ang kaganapan"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kopyahin ang kaganapang ito"
@@ -1157,6 +1165,7 @@ msgstr "Ilagay ang iyong authenticator code"
 msgid "Error"
 msgstr "Error"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

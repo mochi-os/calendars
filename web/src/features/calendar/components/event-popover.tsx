@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useLingui } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
+  Button,
   Popover,
   PopoverAnchor,
   PopoverContent,
@@ -14,7 +15,7 @@ import {
   useLinks,
   zoneCity,
 } from '@mochi/web'
-import { Clock, MapPin, Plane, TextAlignStart } from 'lucide-react'
+import { Clock, Copy, MapPin, Plane, TextAlignStart } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 
 interface Props {
@@ -24,6 +25,8 @@ interface Props {
   /** Whether the views show events in their own zones. */
   zones?: boolean
   onClose: () => void
+  /** Opens the editor on a new event copied from this occurrence. */
+  onCopy?: (instance: Instance) => void
 }
 
 /** The first few lines of a description; the editor shows the whole thing. */
@@ -34,6 +37,7 @@ export function EventPopover({
   anchor,
   zones = false,
   onClose,
+  onCopy,
 }: Props) {
   const { t } = useLingui()
   const format = useFormat()
@@ -177,6 +181,18 @@ export function EventPopover({
               {text.length > DESCRIPTION_HEAD ? '…' : ''}
             </span>
           </p>
+        )}
+        {onCopy && (
+          <div className='flex justify-end pt-1'>
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={() => onCopy(instance)}
+            >
+              <Copy className='size-4' />
+              <Trans>Copy</Trans>
+            </Button>
+          </div>
         )}
       </PopoverContent>
     </Popover>

@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Hat kopîkirin li clipboard"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopî bike"
@@ -758,6 +761,11 @@ msgstr "{label} kopî bike"
 msgid "Copy calendar address"
 msgstr "Navnîşana salnameyê kopî bike"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Bûyerê kopî bike"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Vê bûyerê kopî bike"
@@ -1157,6 +1165,7 @@ msgstr "Koda authenticator-a xwe têkevê"
 msgid "Error"
 msgstr "Çewtî"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "An kwafi zuwa clipboard"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kwafi"
@@ -758,6 +761,11 @@ msgstr "Kwafi {label}"
 msgid "Copy calendar address"
 msgstr "Kwafi adireshin kalanda"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kwafi taron"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kwafi wannan taron"
@@ -1157,6 +1165,7 @@ msgstr "Shigar da lambar mai tantancewarka"
 msgid "Error"
 msgstr "Kuskure"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

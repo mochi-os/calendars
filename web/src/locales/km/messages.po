@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "បានចម្លងទៅក្ដារតម្បៀតខ្ទាស់"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ចម្លង"
@@ -758,6 +761,11 @@ msgstr "ចម្លង {label}"
 msgid "Copy calendar address"
 msgstr "ចម្លងអាសយដ្ឋានប្រតិទិន"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ចម្លងព្រឹត្តិការណ៍"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "ចម្លងព្រឹត្តិការណ៍នេះ"
@@ -1157,6 +1165,7 @@ msgstr "បញ្ចូលកូដ authenticator របស់អ្នក"
 msgid "Error"
 msgstr "កំហុស"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"

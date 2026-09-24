@@ -743,9 +743,12 @@ msgid "Copied to clipboard"
 msgstr "Kukopishelwe kwi-clipboard"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopisha"
@@ -758,6 +761,11 @@ msgstr "Kopisha {label}"
 msgid "Copy calendar address"
 msgstr "Kopisha ikheli lekhalenda"
 
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Kopisha umcimbi"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Kopisha lo mcimbi"
@@ -1157,6 +1165,7 @@ msgstr "Faka ikhodi yakho yesiqinisekisi"
 msgid "Error"
 msgstr "Iphutha"
 
+#: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
