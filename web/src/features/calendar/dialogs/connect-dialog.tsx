@@ -135,7 +135,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         <ResponsiveDialogContent className='sm:max-w-[520px]'>
           <ResponsiveDialogHeader>
             <ResponsiveDialogTitle>
-              <Trans>Connect a device</Trans>
+              <Trans>Connect device</Trans>
             </ResponsiveDialogTitle>
           </ResponsiveDialogHeader>
 

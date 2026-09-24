@@ -245,16 +245,16 @@ export function CalendarsLayout() {
               },
             },
             {
+              id: 'connect-device',
+              title: t`Connect device`,
+              icon: Smartphone,
+              onClick: () => setConnectOpen(true),
+            },
+            {
               id: 'preferences',
               title: t`Preferences`,
               icon: Settings,
               onClick: () => setPreferencesOpen(true),
-            },
-            {
-              id: 'connect-device',
-              title: t`Connect a device`,
-              icon: Smartphone,
-              onClick: () => setConnectOpen(true),
             },
           ],
         },

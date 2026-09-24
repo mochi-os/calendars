@@ -92,10 +92,6 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
 
   return (
     <div className='flex flex-wrap items-center gap-2 border-b px-3 py-2'>
-      <Button variant='outline' size='sm' onClick={() => setDate(today)}>
-        <CalendarCheck className='size-4' />
-        {t`Today`}
-      </Button>
       <div className='flex items-center'>
         <Button
           variant='ghost'
@@ -104,6 +100,10 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
           onClick={() => step(-1)}
         >
           <ChevronLeft className='size-4 rtl:rotate-180' />
+        </Button>
+        <Button variant='outline' size='sm' onClick={() => setDate(today)}>
+          <CalendarCheck className='size-4' />
+          {t`Today`}
         </Button>
         <Button
           variant='ghost'

@@ -64,3 +64,16 @@ describe('Toolbar search', () => {
     expect(context.setView).not.toHaveBeenCalled()
   })
 })
+
+describe('Toolbar navigation', () => {
+  it('puts Today between the previous and next arrows, and jumps to today', () => {
+    show('month')
+    const names = screen
+      .getAllByRole('button')
+      .map((button) => button.getAttribute('aria-label') ?? button.textContent?.trim())
+      .filter((name) => ['Previous', 'Today', 'Next'].includes(name ?? ''))
+    expect(names).toEqual(['Previous', 'Today', 'Next'])
+    fireEvent.click(screen.getByRole('button', { name: 'Today' }))
+    expect(context.setDate).toHaveBeenCalledWith('2026-09-22')
+  })
+})
