@@ -715,7 +715,7 @@ msgstr "Mga komento ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Compact"
-msgstr "Compact"
+msgstr "Siksik"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1552,7 +1552,7 @@ msgstr "ID"
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Image viewer: {0}"
-msgstr "Image viewer: {0}"
+msgstr "Tagatingin ng larawan: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
@@ -1564,7 +1564,7 @@ msgstr "Kasama ang mga anonymous na user"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx
 msgid "Initials avatar"
-msgstr "Initials avatar"
+msgstr "Avatar na inisyal"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx
 msgid "Initials avatar for {name}"
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "Maliwanag"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Link"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "I-link"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Hindi kailanman"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Bago"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Pinakabago"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,9 +1994,13 @@ msgstr "Walang nakita"
 msgid "Notifications: {0}"
 msgstr "Mga notification: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Numero"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Numero"
 
@@ -2488,7 +2500,7 @@ msgstr "Naghahanap..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Pumili"
+msgstr "Pagpipilian"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Itigil ang pagmamasid"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Paksa"
+msgstr "User o grupo"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Mag-sync ngayon"
 msgid "Syncing..."
 msgstr "Nagsi-sync..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -2902,7 +2918,7 @@ msgstr "Masyadong maraming request"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Itaas"
+msgstr "Pinakamahusay"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3048,11 +3064,11 @@ msgstr "Thumbnail ng video"
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Video viewer: {0}"
-msgstr "Video viewer: {0}"
+msgstr "Tagapanood ng video: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Tingnan"
+msgstr "Tanaw"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

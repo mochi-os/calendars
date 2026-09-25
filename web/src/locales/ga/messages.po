@@ -1088,7 +1088,7 @@ msgstr "Dícheangailte"
 #: ../../../lib/web/src/components/restore-banner.tsx
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Dismiss"
-msgstr "Dífhostaigh"
+msgstr "Dún"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
@@ -1515,7 +1515,7 @@ msgstr "Níl cuntais Google cumasaithe ar an bhfreastalaí seo."
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google Calendar"
+msgstr "Google Féilire"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1625,7 +1625,11 @@ msgid "Light"
 msgstr "Geal"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+msgid "Link"
+msgstr "Nasc"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
 msgid "Link"
 msgstr "Nasc"
 
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Riamh"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nua"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Is nuaí"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,9 +1994,13 @@ msgstr "Níor aimsíodh aon rud"
 msgid "Notifications: {0}"
 msgstr "Fógraí: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Uimhir"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Uimhir"
 
@@ -2488,7 +2500,7 @@ msgstr "Ag cuardach..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Roghnaigh"
+msgstr "Roghnúchán"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Stop ag faire"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Ábhar"
+msgstr "Úsáideoir nó grúpa"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Sioncronaigh anois"
 msgid "Syncing..."
 msgstr "Á sioncrónú..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Córas"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Córas"
 
@@ -2902,7 +2918,7 @@ msgstr "An iomarca iarratas"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Barr"
+msgstr "Is fearr"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3052,7 +3068,7 @@ msgstr "Amharcán físeán: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Féach"
+msgstr "Amharc"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

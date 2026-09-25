@@ -280,7 +280,7 @@ msgstr "Àṣìṣe àìròtẹ́lẹ̀ kan wáyé"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Ìfitónilétí push Android"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Another Mochi or CalDAV server"
@@ -395,7 +395,7 @@ msgstr "Pada si ile"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/entity-banner.tsx
 msgid "Banner"
-msgstr "Banner"
+msgstr "Àsíá"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner removed"
@@ -910,7 +910,7 @@ msgstr "Ọjọ́"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Day"
-msgstr "Ọ̀sán"
+msgstr "Ọjọ́"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "Decline"
@@ -1515,7 +1515,7 @@ msgstr "A kò tíì mú àwọn àkáǹtì Google ṣiṣẹ́ lórí sáfà yì
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google Calendar"
+msgstr "Kàlẹ́ńdà Google"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1556,7 +1556,7 @@ msgstr "Ẹ̀rọ ìwo àwòrán: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Òṣùwọ̀n Gẹ̀ẹ́sì"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "Ìmọ́lẹ̀"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Ọna asopọ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "So pọ̀"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Láéláé"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Tuntun"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Tuntun jùlọ"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,9 +1994,13 @@ msgstr "A kò rí ohunkóhun"
 msgid "Notifications: {0}"
 msgstr "Àwọn ìfitónilétí: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Nọ́mbà"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Nọ́mbà"
 
@@ -2488,7 +2500,7 @@ msgstr "Ń wá..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Yan"
+msgstr "Àṣàyàn"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Dáwọ́ ìríran dúró"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Àkòrí"
+msgstr "Olùmúlò tàbí ẹgbẹ́"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Sync báyìí"
 msgid "Syncing..."
 msgstr "Ń sync..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sístẹ́mù"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sístẹ́mù"
 
@@ -2730,7 +2746,7 @@ msgstr "Àmì gbọ́dọ̀ jẹ́ àwọn lẹ́tà 50 tàbí kéré sí"
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
-msgstr "Àwọn tag"
+msgstr "Àwọn àmì"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2902,7 +2918,7 @@ msgstr "Àwọn ìbéèrè ti pọ̀ jù"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Òkè"
+msgstr "Tó dára jùlọ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3052,7 +3068,7 @@ msgstr "Ẹ̀rọ ìwo fídíò: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Wo"
+msgstr "Ìwòye"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

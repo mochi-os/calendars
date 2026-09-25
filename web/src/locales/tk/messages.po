@@ -280,7 +280,7 @@ msgstr "Garaşylmadyk ýalňyşlyk ýüze çykdy"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push bildirişleri"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Another Mochi or CalDAV server"
@@ -503,7 +503,7 @@ msgstr "Senenama täzelenen"
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
-msgstr "Senenamalar"
+msgstr "Kalendarlar"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -1515,7 +1515,7 @@ msgstr "Google hasaplary bu serwerde işjeňleşdirilmedi."
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google Calendar"
+msgstr "Google Kalendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "Açyk"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Salgy"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "Baglanyşdyr"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Hiç haçan"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Täze"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Iň täze"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,11 +1994,15 @@ msgstr "Hiç zat tapylmady"
 msgid "Notifications: {0}"
 msgstr "Bildirişler: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "San"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Belgi"
 
 #: src/features/calendar/editor.tsx
 msgid "Occurrences"
@@ -2410,7 +2422,7 @@ msgstr "Şenbe"
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
-msgstr "Saklaýyş"
+msgstr "Saklamak"
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2488,7 +2500,7 @@ msgstr "Gözlenýär..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Saýla"
+msgstr "Saýlaw"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Synlamagy bes et"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Mowzuk"
+msgstr "Ulanyjy ýa-da topar"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Indi sinhronlaşdyr"
 msgid "Syncing..."
 msgstr "Sinhronlaşdyrylýar..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Ulgam"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Ulgam"
 
@@ -2902,7 +2918,7 @@ msgstr "Aşa köp haýyş"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Ýokarky"
+msgstr "Iň gowy"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3052,7 +3068,7 @@ msgstr "Wideo görkeziji: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Görkez"
+msgstr "Görnüş"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

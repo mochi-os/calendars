@@ -280,7 +280,7 @@ msgstr "Jan suyt'ata juch'a utjawayi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push yatiyawi"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Another Mochi or CalDAV server"
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "Qhana"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Chimpu"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "Chinuña"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Janipuni"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Machaqa"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Machaqanaka"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,9 +1994,13 @@ msgstr "Jan kunas jikxatasiti"
 msgid "Notifications: {0}"
 msgstr "Yatiyawinaka: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Jakhu"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Jakhu"
 
@@ -2488,7 +2500,7 @@ msgstr "Thaqhaski..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Ajllima"
+msgstr "Selección"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Uñch'ukiñ tukuyaña"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Tema"
+msgstr "Apnaqiri jan ukax grupo"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Jichha sync luram"
 msgid "Syncing..."
 msgstr "Sync lurasa..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -2902,7 +2918,7 @@ msgstr "Walja mayiwinaka"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Patxa"
+msgstr "Wali suma"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3052,7 +3068,7 @@ msgstr "Video uñjaña: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Uñjaña"
+msgstr "Uñjäwi"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

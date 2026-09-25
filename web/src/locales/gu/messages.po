@@ -367,7 +367,7 @@ msgstr "પ્રમાણિત વપરાશકર્તાઓ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator કોડ"
+msgstr "ઑથેન્ટિકેટર કોડ"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -503,7 +503,7 @@ msgstr "કૅલેન્ડર અદ્યતન છે"
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
-msgstr "કૅલેન્ડર્સ"
+msgstr "કૅલેન્ડર"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -1515,7 +1515,7 @@ msgstr "આ સર્વર પર Google ખાતાં સક્ષમ કર
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google Calendar"
+msgstr "Google કૅલેન્ડર"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "લાઇટ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "લિંક"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "લિંક કરો"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "ક્યારેય નહીં"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "નવું"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "નવીનતમ"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,11 +1994,15 @@ msgstr "કંઈ મળ્યું નથી"
 msgid "Notifications: {0}"
 msgstr "સૂચનાઓ: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "સંખ્યા"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "ક્રમાંક"
 
 #: src/features/calendar/editor.tsx
 msgid "Occurrences"
@@ -2488,7 +2500,7 @@ msgstr "શોધી રહ્યું છે..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "પસંદ કરો"
+msgstr "પસંદગી"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "જોવાનું બંધ કરો"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "વિષય"
+msgstr "વપરાશકર્તા અથવા ગ્રુપ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "હમણાં સિંક કરો"
 msgid "Syncing..."
 msgstr "સિંક કરી રહ્યું છે..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "સિસ્ટમ"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "સિસ્ટમ"
 
@@ -2902,7 +2918,7 @@ msgstr "ઘણી બધી વિનંતીઓ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "ટોચ"
+msgstr "શ્રેષ્ઠ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3052,7 +3068,7 @@ msgstr "વિડિઓ દર્શક: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "જુઓ"
+msgstr "દૃશ્ય"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

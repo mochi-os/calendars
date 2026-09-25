@@ -1515,7 +1515,7 @@ msgstr "このサーバーでは Google アカウントが有効になってい�
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google Calendar"
+msgstr "Google カレンダー"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1625,7 +1625,11 @@ msgid "Light"
 msgstr "ライト"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+msgid "Link"
+msgstr "リンク"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
 msgid "Link"
 msgstr "リンク"
 
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "なし"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "新規"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "新着"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,11 +1994,15 @@ msgstr "何も見つかりませんでした"
 msgid "Notifications: {0}"
 msgstr "通知: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "数値"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "番号"
 
 #: src/features/calendar/editor.tsx
 msgid "Occurrences"
@@ -2671,7 +2683,7 @@ msgstr "ウォッチを停止"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "件名"
+msgstr "対象"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "今すぐ同期"
 msgid "Syncing..."
 msgstr "同期中..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "システム"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "システム"
 

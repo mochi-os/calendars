@@ -280,7 +280,7 @@ msgstr "Mana suyasqa pantay rikurirqan"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push willakuy"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Another Mochi or CalDAV server"
@@ -503,7 +503,7 @@ msgstr "Calendario musuqmi"
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
-msgstr "Calendariokuna"
+msgstr "Kalendariokuna"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -581,7 +581,7 @@ msgstr "Hukchasqa ruwana"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
-msgstr "Checkbox"
+msgstr "Casilla"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Checking for changes..."
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "Sut'i"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "T'inki"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "T'inkiy"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Mana hayk'aqpas"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Musuq"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Aswan musuq"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,9 +1994,13 @@ msgstr "Mana imapas tarisqachu"
 msgid "Notifications: {0}"
 msgstr "Willakuykuna: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Yupay"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Yupay"
 
@@ -2488,7 +2500,7 @@ msgstr "Maskashan..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Akllay"
+msgstr "Akllana"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Qhaway saqiy"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Tema"
+msgstr "Apaykachaq utaq huñu"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Kunan tinkichiy"
 msgid "Syncing..."
 msgstr "Tinkichichkan..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -2902,7 +2918,7 @@ msgstr "Ancha achka mañakuykuna"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Hawan"
+msgstr "Aswan allin"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3003,7 +3019,7 @@ msgstr "{field} musuqchasqa"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Upload"
-msgstr "Upload"
+msgstr "Wichachiy"
 
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"

@@ -111,7 +111,9 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   const accountsError = accountsQuery.error
   useEffect(() => {
     if (accountsError) {
-      toast.error(getErrorMessage(accountsError, t`Failed to read the accounts`))
+      toast.error(
+        getErrorMessage(accountsError, t`Failed to read the accounts`)
+      )
     }
   }, [accountsError, t])
 
@@ -217,7 +219,9 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   const submitAddress = async () => {
     const trimmed = address.trim()
     if (!trimmed) return
-    const target = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`
+    const target = /^https?:\/\//i.test(trimmed)
+      ? trimmed
+      : `https://${trimmed}`
     await subscribe(target)
   }
 
@@ -252,29 +256,32 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
     (kind !== 'caldav' || server.trim() !== '')
 
   // The kinds read in the order of their names in the user's language.
-  const offered: { kind: SubscribeKind; title: string; icon: React.ReactNode }[] =
-    [
-      {
-        kind: 'google',
-        title: t`Google Calendar`,
-        icon: <CalendarSync className='size-5' />,
-      },
-      {
-        kind: 'apple',
-        title: t`Apple iCloud`,
-        icon: <CalendarSync className='size-5' />,
-      },
-      {
-        kind: 'caldav',
-        title: t`Another Mochi or CalDAV server`,
-        icon: <Server className='size-5' />,
-      },
-      {
-        kind: 'address',
-        title: t`Published calendar address (read-only)`,
-        icon: <Rss className='size-5' />,
-      },
-    ]
+  const offered: {
+    kind: SubscribeKind
+    title: string
+    icon: React.ReactNode
+  }[] = [
+    {
+      kind: 'google',
+      title: t`Google Calendar`,
+      icon: <CalendarSync className='size-5' />,
+    },
+    {
+      kind: 'apple',
+      title: t`Apple iCloud`,
+      icon: <CalendarSync className='size-5' />,
+    },
+    {
+      kind: 'caldav',
+      title: t`Another Mochi or CalDAV server`,
+      icon: <Server className='size-5' />,
+    },
+    {
+      kind: 'address',
+      title: t`Published calendar address (read-only)`,
+      icon: <Rss className='size-5' />,
+    },
+  ]
   const kinds = offered
     .filter((row) => row.kind !== 'google' || google)
     .sort((a, b) => naturalCompare(a.title, b.title))
@@ -282,7 +289,10 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   const accountRow = (row: CalendarAccount) => {
     const allowed = row.granted.includes('calendar')
     return (
-      <div key={row.id} className='flex items-center gap-3 rounded-lg border p-3'>
+      <div
+        key={row.id}
+        className='flex items-center gap-3 rounded-lg border p-3'
+      >
         <button
           type='button'
           disabled={!allowed}
@@ -464,7 +474,10 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
                   <Trans>You haven't connected a Google account.</Trans>
                 </p>
               )}
-              <Button variant='outline' onClick={() => void grant({ provider: 'google' })}>
+              <Button
+                variant='outline'
+                onClick={() => void grant({ provider: 'google' })}
+              >
                 <Trans>Connect Google</Trans>
               </Button>
             </div>
@@ -476,7 +489,9 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
               // step, and is taken to where the client is entered.
               <div className='space-y-3'>
                 <p className='text-muted-foreground text-sm'>
-                  <Trans>Google accounts have not been enabled on this server.</Trans>
+                  <Trans>
+                    Google accounts have not been enabled on this server.
+                  </Trans>
                 </p>
                 <Button
                   variant='outline'
@@ -512,7 +527,11 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
         )}
         <div className='space-y-2'>
           <Label htmlFor='subscribe-username'>
-            {kind === 'apple' ? <Trans>Apple ID</Trans> : <Trans>Username</Trans>}
+            {kind === 'apple' ? (
+              <Trans>Apple ID</Trans>
+            ) : (
+              <Trans>Username</Trans>
+            )}
           </Label>
           <Input
             id='subscribe-username'
@@ -576,7 +595,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
           disabled={collection === ''}
           icon={<Link className='size-4' />}
         >
-          <Trans>Link</Trans>
+          <Trans context='verb'>Link</Trans>
         </Button>
       )
     }

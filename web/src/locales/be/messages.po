@@ -280,7 +280,7 @@ msgstr "Адбылася нечаканая памылка"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Push для Android"
+msgstr "Пуш-апавяшчэнні для Android"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Another Mochi or CalDAV server"
@@ -1088,7 +1088,7 @@ msgstr "Адключана"
 #: ../../../lib/web/src/components/restore-banner.tsx
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Dismiss"
-msgstr "Адхіліць"
+msgstr "Закрыць"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
@@ -1515,7 +1515,7 @@ msgstr "Уліковыя запісы Google не ўключаны на гэты
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google Calendar"
+msgstr "Google Каляндар"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1625,9 +1625,13 @@ msgid "Light"
 msgstr "Светлая"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Link"
 msgstr "Спасылка"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "Звязаць"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Linked"
@@ -1824,9 +1828,13 @@ msgid "Never"
 msgstr "Ніколі"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Новы"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Новае"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1986,11 +1994,15 @@ msgstr "Нічога не знойдзена"
 msgid "Notifications: {0}"
 msgstr "Апавяшчэнні: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Лік"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Нумар"
 
 #: src/features/calendar/editor.tsx
 msgid "Occurrences"
@@ -2082,7 +2094,7 @@ msgstr "Ключы доступу"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys недаступныя ў гэтым браўзеры"
+msgstr "Ключы доступу недаступныя ў гэтым браўзеры"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2172,7 +2184,7 @@ msgstr "Апублікаваны адрас календара (толькі ч�
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push-апавяшчэнне"
+msgstr "Пуш-апавяшчэнне"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2488,7 +2500,7 @@ msgstr "Пошук..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Абраць"
+msgstr "Выбар"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2671,7 +2683,7 @@ msgstr "Спыніць сачэнне"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тэма"
+msgstr "Карыстальнік або група"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2713,9 +2725,13 @@ msgstr "Сінхранізаваць цяпер"
 msgid "Syncing..."
 msgstr "Сінхранізацыя..."
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Сістэма"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Сістэма"
 
@@ -2809,7 +2825,7 @@ msgstr "Запыт мікрафона застаўся без адказу"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Запыт passkey застаўся без адказу"
+msgstr "Запыт ключа доступу застаўся без адказу"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2825,7 +2841,7 @@ msgstr "Гэтая і наступныя"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Гэтай праграме не дазволена выкарыстоўваць ваш passkey. Дазвольце гэта ў Наладах, у раздзеле Дазволы."
+msgstr "Гэтай праграме не дазволена выкарыстоўваць ваш ключ доступу. Дазвольце гэта ў Наладах, у раздзеле Дазволы."
 
 #: src/hooks/use-ics-copy.ts
 msgid "This calendar address was already issued and cannot be shown again."
@@ -2902,7 +2918,7 @@ msgstr "Занадта шмат запытаў"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Верх"
+msgstr "Лепшае"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3052,7 +3068,7 @@ msgstr "Прагляд відэа: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Прагляд"
+msgstr "Выгляд"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
