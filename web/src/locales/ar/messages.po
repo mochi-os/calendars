@@ -40,6 +40,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, zero {# نتائج} one {نتيجة واحدة} two {# نتائج} few {# نتائج} many {# نتائج} other {# نتائج}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, zero {# محدد} one {# محدد} two {# محدد} few {# محدد} many {# محدد} other {# محدد}}"
@@ -607,6 +611,7 @@ msgstr "اختر اللغة"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -622,22 +627,15 @@ msgstr "مسح الكل"
 msgid "Clear search"
 msgstr "مسح البحث"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "إغلاق"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "إغلاق الحوار"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -1099,7 +1097,6 @@ msgid "Does not match the required pattern"
 msgstr "لا يطابق النمط المطلوب"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1262,7 +1259,7 @@ msgstr "توسيع الشريط الجانبي"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
-msgstr "URL خارجي"
+msgstr "رابط خارجي"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Extra large"
@@ -1547,7 +1544,7 @@ msgstr "رائج"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "المعرف"
+msgstr "المعرّف"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2267,6 +2264,8 @@ msgstr "إزالة فلتر {0}"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "إزالة {name}"
 

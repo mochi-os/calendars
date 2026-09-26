@@ -40,6 +40,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# پایله} other {# پایلې}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# ټاکل شوی} other {# ټاکل شوي}}"
@@ -255,7 +259,7 @@ msgstr "ټوله ورځ"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
-msgstr "ټولې پیښې"
+msgstr "ټولې پېښې"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -350,7 +354,7 @@ msgstr "په سمندر کې"
 
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
-msgstr "د پیښې په وخت"
+msgstr "د پېښې په وخت"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -503,7 +507,7 @@ msgstr "کليز تازه دی"
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
-msgstr "کلیزې"
+msgstr "کليزونه"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -607,6 +611,7 @@ msgstr "ژبه وټاکئ"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -622,22 +627,15 @@ msgstr "ټول پاک کړئ"
 msgid "Clear search"
 msgstr "لټون پاک کړئ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "وتړئ"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "ډیالوګ وتړئ"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -813,12 +811,12 @@ msgstr "د کليز پته کاپي کړئ"
 
 #: src/features/calendar/editor.tsx
 msgid "Copy event"
-msgstr "پیښه کاپي کړئ"
+msgstr "پېښه کاپي کړئ"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
-msgstr "دا پیښه کاپي کړئ"
+msgstr "دا پېښه کاپي کړئ"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -926,7 +924,7 @@ msgstr "د AI ډیفالټ حساب"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
-msgstr "د پیښې ډیفالټ اوږدوالی"
+msgstr "د پېښې ډیفالټ اوږدوالی"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default reminder"
@@ -958,7 +956,7 @@ msgstr "ړنګ کړئ"
 #. placeholder {0}: deleting?.name ?? ''
 #: src/components/layout/calendars-layout.tsx
 msgid "Delete <0>{0}</0> and every event on it?"
-msgstr "<0>{0}</0> او په هغه کې ټولې پیښې ړنګ کړئ؟"
+msgstr "<0>{0}</0> او په هغه کې ټولې پېښې ړنګ کړئ؟"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -1010,7 +1008,7 @@ msgstr "اختیار {0} ړنګ کړئ"
 
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
-msgstr "دا پیښه ړنګه کړئ"
+msgstr "دا پېښه ړنګه کړئ"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Delete view"
@@ -1099,7 +1097,6 @@ msgid "Does not match the required pattern"
 msgstr "د اړین نمونې سره سمون نه خوري"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1126,7 +1123,7 @@ msgstr "د لوستلو ستونزې سره مطابقت لري"
 
 #: src/features/calendar/components/agenda.tsx
 msgid "Earlier events"
-msgstr "پخوانۍ پیښې"
+msgstr "پخوانۍ پېښې"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -1143,7 +1140,7 @@ msgstr "تشریح سمول"
 
 #: src/features/calendar/editor.tsx
 msgid "Edit event"
-msgstr "پیښه سمه کړئ"
+msgstr "پېښه سمه کړئ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1224,26 +1221,26 @@ msgstr "تېروتنه"
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
-msgstr "پیښه کاپي شوه"
+msgstr "پېښه کاپي شوه"
 
 #: src/features/calendar/editor.tsx
 msgid "Event created"
-msgstr "پیښه جوړه شوه"
+msgstr "پېښه جوړه شوه"
 
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Event deleted"
-msgstr "پیښه ړنګه شوه"
+msgstr "پېښه ړنګه شوه"
 
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
-msgstr "پیښه ولېږدول شوه"
+msgstr "پېښه ولېږدول شوه"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
-msgstr "پیښه خوندي شوه"
+msgstr "پېښه خوندي شوه"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1295,7 +1292,7 @@ msgstr "د کاپي کولو پاتې راغلل"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
-msgstr "د پیښې کاپي کولو پاتې راغلل"
+msgstr "د پېښې کاپي کولو پاتې راغلل"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1332,7 +1329,7 @@ msgstr "د لینک حذف کولو پاتې راغلل"
 
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to delete the event"
-msgstr "د پیښې ړنګولو پاتې راغلل"
+msgstr "د پېښې ړنګولو پاتې راغلل"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
@@ -1385,7 +1382,7 @@ msgstr "لیږدول ناکام شول"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to move the event"
-msgstr "د پیښې لېږدولو پاتې راغلل"
+msgstr "د پېښې لېږدولو پاتې راغلل"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to post comment"
@@ -1432,7 +1429,7 @@ msgstr "د رنګ خوندي کولو پاتې راغلل"
 
 #: src/features/calendar/editor.tsx
 msgid "Failed to save the event"
-msgstr "د پیښې خوندي کولو پاتې راغلل"
+msgstr "د پېښې خوندي کولو پاتې راغلل"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
@@ -1515,7 +1512,7 @@ msgstr "د Google حسابونه پدې سرور کې نه دي فعال شوي.
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Google Calendar"
-msgstr "Google کلیز"
+msgstr "Google کليز"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1547,7 +1544,7 @@ msgstr "ګرم"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "ID"
+msgstr "پېژندنه"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1769,7 +1766,7 @@ msgstr "نور انتخابونه"
 
 #: src/features/calendar/index.tsx
 msgid "Move this event"
-msgstr "دا پیښه ولېږدوئ"
+msgstr "دا پېښه ولېږدوئ"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved"
@@ -1843,7 +1840,7 @@ msgstr "د کليز نوې پته په کلیپ بورډ کاپي شوه"
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
-msgstr "نوې پیښه"
+msgstr "نوې پېښه"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1889,7 +1886,7 @@ msgstr "هیڅ وسیله وصل نه ده."
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No events"
-msgstr "هیڅ پیښې نشته"
+msgstr "هیڅ پېښې نشته"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2267,6 +2264,8 @@ msgstr "{0} فلټر لرې کړئ"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "{name} لرې کړئ"
 
@@ -2426,7 +2425,7 @@ msgstr "خوندي کول"
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
-msgstr "دا پیښه خوندي کړئ"
+msgstr "دا پېښه خوندي کړئ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2599,7 +2598,7 @@ msgstr "سرچینه او منزل وټاکئ"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Settings"
-msgstr "ترتیبات"
+msgstr "تنظیمات"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
@@ -2849,13 +2848,13 @@ msgstr "دا د کليز پته دمخه صادره شوې او بیا نه ښو
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
-msgstr "دا پیښه"
+msgstr "دا پېښه"
 
 #: src/features/calendar/components/delete-event-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-event-move.ts
 msgid "This event changed somewhere else."
-msgstr "دا پیښه په بل ځای کې بدله شوه."
+msgstr "دا پېښه په بل ځای کې بدله شوه."
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "This permanently deletes the game and its chat. This cannot be undone."
@@ -2910,7 +2909,7 @@ msgstr "د کتل شوي فلټر بدل کړئ"
 
 #: src/features/calendar/index.tsx
 msgid "Too many events to show them all. Choose a shorter range."
-msgstr "پیښې دومره ډېرې دي چې ټولې نه ښودل کیږي. لنډه سلسله وټاکئ."
+msgstr "پېښې دومره ډېرې دي چې ټولې نه ښودل کیږي. لنډه سلسله وټاکئ."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "Too many requests"

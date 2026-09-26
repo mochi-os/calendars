@@ -40,6 +40,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# ئەنجام} other {# ئەنجام}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# هەڵبژێردراو} other {# هەڵبژێردراو}}"
@@ -607,6 +611,7 @@ msgstr "زمان هەڵبژێرە"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -622,22 +627,15 @@ msgstr "پاککردنەوەی هەموو"
 msgid "Clear search"
 msgstr "پاککردنەوەی گەڕان"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "داخستن"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "داخستنی دیالۆگ"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -732,7 +730,7 @@ msgstr "پشتڕاستکردنەوە"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect"
-msgstr "پەیوەندی"
+msgstr "پەیوەندی بکە"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
@@ -1099,7 +1097,6 @@ msgid "Does not match the required pattern"
 msgstr "لەگەڵ ئەو نەخشەیەی داواکراوە ناگونجێت"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1547,7 +1544,7 @@ msgstr "گەرم"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "ئایدی"
+msgstr "ناسنامە"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1592,7 +1589,7 @@ msgstr "وردەکارییەکانی بڕگە"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
-msgstr "ئێستا"
+msgstr "هەر ئێستا"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -1723,7 +1720,7 @@ msgstr "ئەندامەکان"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "مینیو"
+msgstr "مێنیو"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Message"
@@ -1765,7 +1762,7 @@ msgstr "مانگانە"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
-msgstr "هەڵبژاردنی زیاتر"
+msgstr "بژاردەی زیاتر"
 
 #: src/features/calendar/index.tsx
 msgid "Move this event"
@@ -2107,7 +2104,7 @@ msgstr "نموونە (regex)"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "People"
-msgstr "کەسەکان"
+msgstr "خەڵک"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2267,6 +2264,8 @@ msgstr "لابردنی فیلتەری {0}"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "لابردنی {name}"
 

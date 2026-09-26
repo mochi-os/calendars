@@ -40,6 +40,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, other {# លទ្ធផល}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, other {# បានជ្រើសរើស}}"
@@ -289,7 +293,7 @@ msgstr "ម៉ាស៊ីនមេ Mochi ឬ CalDAV ផ្សេងទៀត"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
-msgstr "នរណាម្នាក់"
+msgstr "អ្នកណាក៏បាន"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
@@ -607,6 +611,7 @@ msgstr "ជ្រើសរើសភាសា"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -622,22 +627,15 @@ msgstr "សម្អាតទាំងអស់"
 msgid "Clear search"
 msgstr "សម្អាតការស្វែងរក"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "បិទ"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "បិទប្រអប់"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -1070,7 +1068,7 @@ msgstr "ឈ្មោះឧបករណ៍"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
-msgstr "ថត"
+msgstr "បញ្ជីឈ្មោះ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard"
@@ -1099,7 +1097,6 @@ msgid "Does not match the required pattern"
 msgstr "មិនត្រូវនឹងលំនាំដែលទាមទារ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1547,7 +1544,7 @@ msgstr "ក្ដៅ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "ID"
+msgstr "លេខសម្គាល់"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1747,7 +1744,7 @@ msgstr "Mochi វេប"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
-msgstr "ការត្រួតពិនិត្យ"
+msgstr "ការសម្របសម្រួល"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
@@ -2267,6 +2264,8 @@ msgstr "យកតម្រង {0} ចេញ"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "យក {name} ចេញ"
 

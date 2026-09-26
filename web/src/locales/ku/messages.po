@@ -40,6 +40,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# encam} other {# encam}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# hilbijartî} other {# hilbijartî}}"
@@ -607,6 +611,7 @@ msgstr "Ziman hilbijêre"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -622,22 +627,15 @@ msgstr "Hemûyan paqij bike"
 msgid "Clear search"
 msgstr "Lêgerînê paqij bike"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "Bigire"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "Diyalogê bigire"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -662,7 +660,7 @@ msgstr "Lêgerînê bigire"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Collapse"
-msgstr "Berhevbike"
+msgstr "Berhev bike"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
@@ -732,7 +730,7 @@ msgstr "Piştrast bike"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect"
-msgstr "Girêdan"
+msgstr "Girê bide"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connect another device"
@@ -1070,7 +1068,7 @@ msgstr "Navê cîhazê"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
-msgstr "Peldank"
+msgstr "Rêber"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard"
@@ -1099,7 +1097,6 @@ msgid "Does not match the required pattern"
 msgstr "Bi şablona pêwîst re li hev nake"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1547,7 +1544,7 @@ msgstr "Germ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "ID"
+msgstr "Nasname"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2107,7 +2104,7 @@ msgstr "Şablon (regex)"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "People"
-msgstr "Kes"
+msgstr "Mirov"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2138,7 +2135,7 @@ msgstr "Poste û şîrove"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Preferences"
-msgstr "Tercihan"
+msgstr "Tercîh"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Preferences saved"
@@ -2267,6 +2264,8 @@ msgstr "Fîltera {0} rake"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "{name} rake"
 
