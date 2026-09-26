@@ -201,6 +201,10 @@ msgstr "Přidat popisek"
 msgid "Add checklist item"
 msgstr "Přidat položku checklistu"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "Přidat zařízení"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "Kamera není k dispozici"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "Potvrdit"
 msgid "Connect"
 msgstr "Připojit"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Připojit další zařízení"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Připojit zařízení"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Připojit Google"
@@ -748,6 +744,11 @@ msgstr "Připojit Google"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Připojeno"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Připojená zařízení"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "Zkopírováno"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Zkopírováno do schránky"
 
@@ -800,10 +800,6 @@ msgstr "Zkopírováno do schránky"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Kopírovat"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopírovat {label}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "Odhlašování…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Spravovat kategorie"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Spravovat zařízení"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

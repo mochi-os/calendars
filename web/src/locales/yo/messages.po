@@ -201,6 +201,10 @@ msgstr "Fi àlàyé kún"
 msgid "Add checklist item"
 msgstr "Fi ohun ìmọ́ ìṣàyẹ̀wò kún"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "Fi ẹ̀rọ kan kún"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "Kamẹra kò sí"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "Fọwọ́sí"
 msgid "Connect"
 msgstr "So pọ̀"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "So ẹ̀rọ mìíràn pọ̀"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "So ẹ̀rọ kan pọ̀"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "So Google pọ̀"
@@ -748,6 +744,11 @@ msgstr "So Google pọ̀"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tí a so pọ̀"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Àwọn ẹ̀rọ tí a so pọ̀"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "Ti dàkọ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
 
@@ -800,10 +800,6 @@ msgstr "A ti ṣe àdàkọ sí clipboard"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Ṣe àdàkọ"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Ṣe àdàkọ {label}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "Ń jáde…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Ṣàkóso àwọn ẹ̀ka"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Ṣàkóso àwọn ẹ̀rọ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

@@ -201,6 +201,10 @@ msgstr "تشریح ورزیادول"
 msgid "Add checklist item"
 msgstr "د چک لیست توکی اضافه کړئ"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "وسیله اضافه کړئ"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "کامره شتون نلري"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "تایید کړئ"
 msgid "Connect"
 msgstr "نښلول"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "بله وسیله وصل کړئ"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "وسیله وصل کړئ"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google ونښلوئ"
@@ -748,6 +744,11 @@ msgstr "Google ونښلوئ"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "وصل شو"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "نښلول شوې وسیلې"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "کاپي شو"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "په کلیپ بورډ کاپي شو"
 
@@ -800,10 +800,6 @@ msgstr "په کلیپ بورډ کاپي شو"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "کاپي کړئ"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} کاپي کړئ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "لاګ آوټ کیږي…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "کټګورۍ اداره کړئ"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "وسیلې اداره کړئ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

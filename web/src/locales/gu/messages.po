@@ -201,6 +201,10 @@ msgstr "કૅપ્શન ઉમેરો"
 msgid "Add checklist item"
 msgstr "ચેકલિસ્ટ આઇટમ ઉમેરો"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "ઉપકરણ ઉમેરો"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "કૅમેરો ઉપલબ્ધ નથી"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "પુષ્ટિ કરો"
 msgid "Connect"
 msgstr "કનેક્ટ કરો"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "બીજું ઉપકરણ કનેક્ટ કરો"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ઉપકરણ કનેક્ટ કરો"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google સાથે જોડાઓ"
@@ -748,6 +744,11 @@ msgstr "Google સાથે જોડાઓ"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "જોડાયેલ"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "જોડાયેલાં ઉપકરણો"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "કૉપિ થયું"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 
@@ -800,10 +800,6 @@ msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "કૉપિ કરો"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} કૉપિ કરો"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "લૉગ આઉટ થઈ રહ્યું છે…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "શ્રેણીઓ મેનેજ કરો"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ઉપકરણો મેનેજ કરો"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

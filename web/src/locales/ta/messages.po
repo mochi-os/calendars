@@ -201,6 +201,10 @@ msgstr "படக்குறிப்பைச் சேர்"
 msgid "Add checklist item"
 msgstr "சரிபார்ப்பு பட்டியல் உருப்படி சேர்"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "சாதனத்தைச் சேர்க்கவும்"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "கேமரா கிடைக்கவில்லை"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "உறுதிசெய்"
 msgid "Connect"
 msgstr "இணை"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "மற்றொரு சாதனத்தை இணைக்கவும்"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "சாதனத்தை இணைக்கவும்"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google உடன் இணை"
@@ -748,6 +744,11 @@ msgstr "Google உடன் இணை"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "இணைக்கப்பட்டது"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "இணைக்கப்பட்ட சாதனங்கள்"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "நகலெடுக்கப்பட்டது"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
@@ -800,10 +800,6 @@ msgstr "கிளிப்போர்டுக்கு நகலெடுக�
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "நகலெடு"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} நகலெடு"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "வெளியேறுகிறது…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "வகைகளை நிர்வகி"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "சாதனங்களை நிர்வகி"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

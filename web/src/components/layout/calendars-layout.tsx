@@ -121,7 +121,8 @@ export function CalendarsLayout() {
       await toastAction(pollMutation.mutateAsync(calendar.id), {
         loading: t`Syncing...`,
         success: t`Calendar synced`,
-        error: (error) => getErrorMessage(error, t`Failed to sync the calendar`),
+        error: (error) =>
+          getErrorMessage(error, t`Failed to sync the calendar`),
       })
     } catch {
       // toastAction already showed error
@@ -150,7 +151,9 @@ export function CalendarsLayout() {
     window.history.replaceState(
       null,
       '',
-      window.location.pathname + (query ? `?${query}` : '') + window.location.hash
+      window.location.pathname +
+        (query ? `?${query}` : '') +
+        window.location.hash
     )
     // Deferred a tick: the toaster subscribes in a sibling effect, and a
     // message published before it has is dropped.
@@ -246,7 +249,7 @@ export function CalendarsLayout() {
             },
             {
               id: 'connect-device',
-              title: t`Connect device`,
+              title: t`Connected devices`,
               icon: Smartphone,
               onClick: () => setConnectOpen(true),
             },
@@ -297,7 +300,6 @@ export function CalendarsLayout() {
         onOpenChange={setSubscribeOpen}
         account={subscribeAccount}
       />
-
 
       <RenameDialog calendar={renaming} onClose={() => setRenaming(null)} />
 

@@ -201,6 +201,10 @@ msgstr "ڪيپشن شامل ڪريو"
 msgid "Add checklist item"
 msgstr "چيڪ لسٽ شيءِ شامل ڪريو"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "ڊوائيس شامل ڪريو"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "ڪئميرا موجود ناهي"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "تصديق ڪريو"
 msgid "Connect"
 msgstr "ڳنڍيو"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ٻي ڊوائيس ڳنڍيو"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ڊوائيس ڳنڍيو"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google ڳنڍيو"
@@ -748,6 +744,11 @@ msgstr "Google ڳنڍيو"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ڳنڍيل"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ڳنڍيل ڊوائيس"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "ڪاپي ٿيو"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ڪلپ بورڊ تي ڪاپي ٿيو"
 
@@ -800,10 +800,6 @@ msgstr "ڪلپ بورڊ تي ڪاپي ٿيو"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ڪاپي ڪريو"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} ڪاپي ڪريو"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "لاگ آئوٽ ٿي رهيو آهي…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "زمرن جو انتظام ڪريو"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ڊوائيسون منظم ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

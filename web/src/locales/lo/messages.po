@@ -201,6 +201,10 @@ msgstr "ເພີ່ມຄຳບັນຍາຍ"
 msgid "Add checklist item"
 msgstr "ເພີ່ມລາຍການກວດສອບ"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "ເພີ່ມອຸປະກອນ"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "ບໍ່ມີກ້ອງຖ່າຍຮູບ"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "ຢືນຢັນ"
 msgid "Connect"
 msgstr "ເຊື່ອມຕໍ່"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ເຊື່ອມຕໍ່ອຸປະກອນອື່ນ"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ເຊື່ອມຕໍ່ອຸປະກອນ"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "ເຊື່ອມຕໍ່ Google"
@@ -748,6 +744,11 @@ msgstr "ເຊື່ອມຕໍ່ Google"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ເຊື່ອມຕໍ່ແລ້ວ"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ອຸປະກອນທີ່ເຊື່ອມຕໍ່"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "ສຳເນົາແລ້ວ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ສຳເນົາໄປຄລິບບອດແລ້ວ"
 
@@ -800,10 +800,6 @@ msgstr "ສຳເນົາໄປຄລິບບອດແລ້ວ"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ສຳເນົາ"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "ສຳເນົາ {label}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "ກຳລັງອອກຈາກລະບົບ…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ຈັດການໝວດໝູ່"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ຈັດການອຸປະກອນ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

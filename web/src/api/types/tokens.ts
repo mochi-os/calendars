@@ -24,4 +24,6 @@ export interface CreateTokenResponse {
 
 export interface GetTokensResponse {
   tokens: Token[]
+  /** The account's address, the username every device enters. */
+  username: string
 }

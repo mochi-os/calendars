@@ -201,6 +201,10 @@ msgstr "සිරස්තලයක් එක් කරන්න"
 msgid "Add checklist item"
 msgstr "පරීක්ෂා ලැයිස්තු අයිතමයක් එක් කරන්න"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "උපාංගයක් එක් කරන්න"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "කැමරාව නොමැත"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "තහවුරු කරන්න"
 msgid "Connect"
 msgstr "සම්බන්ධ වන්න"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "තවත් උපාංගයක් සම්බන්ධ කරන්න"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "උපාංගයක් සම්බන්ධ කරන්න"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google සම්බන්ධ කරන්න"
@@ -748,6 +744,11 @@ msgstr "Google සම්බන්ධ කරන්න"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "සම්බන්ධිතයි"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "සම්බන්ධිත උපාංග"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "පිටපත් කළා"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ක්ලිප්බෝඩ් වෙත පිටපත් කරන ලදී"
 
@@ -800,10 +800,6 @@ msgstr "ක්ලිප්බෝඩ් වෙත පිටපත් කරන �
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "පිටපත් කරන්න"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} පිටපත් කරන්න"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "ඉවත් වෙමින්…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ප්‍රවර්ග කළමනාකරණය කරන්න"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "උපාංග කළමනාකරණය කරන්න"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

@@ -201,6 +201,10 @@ msgstr ""
 msgid "Add checklist item"
 msgstr ""
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "相機不可用"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr ""
 msgid "Connect"
 msgstr ""
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr ""
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr ""
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr ""
@@ -748,6 +744,11 @@ msgstr ""
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "已連結"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr ""
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr ""
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -799,10 +799,6 @@ msgstr ""
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
-msgstr ""
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
 msgstr ""
 
 #: src/components/layout/calendars-layout.tsx
@@ -1687,10 +1683,6 @@ msgstr ""
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
-msgstr ""
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx

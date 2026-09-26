@@ -201,6 +201,10 @@ msgstr "അടിക്കുറിപ്പ് ചേർക്കുക"
 msgid "Add checklist item"
 msgstr "ചെക്ക്‌ലിസ്റ്റ് ഇനം ചേർക്കുക"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "ഒരു ഡിവൈസ് ചേർക്കുക"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "ക്യാമറ ലഭ്യമല്ല"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "സ്ഥിരീകരിക്കുക"
 msgid "Connect"
 msgstr "കണക്റ്റ് ചെയ്യുക"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "മറ്റൊരു ഡിവൈസ് ബന്ധിപ്പിക്കുക"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ഒരു ഡിവൈസ് ബന്ധിപ്പിക്കുക"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google കണക്റ്റ് ചെയ്യുക"
@@ -748,6 +744,11 @@ msgstr "Google കണക്റ്റ് ചെയ്യുക"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "കണക്റ്റ് ചെയ്തു"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ബന്ധിപ്പിച്ച ഡിവൈസുകൾ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "പകർത്തി"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി"
 
@@ -800,10 +800,6 @@ msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത�
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "പകർത്തുക"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} പകർത്തുക"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "ലോഗ് ഔട്ട് ചെയ്യുന്നു…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "വിഭാഗങ്ങൾ നിയന്ത്രിക്കുക"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ഡിവൈസുകൾ നിയന്ത്രിക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

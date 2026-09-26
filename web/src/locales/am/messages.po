@@ -201,6 +201,10 @@ msgstr "መግለጫ ጽሑፍ አክል"
 msgid "Add checklist item"
 msgstr "የዝርዝር ንጥል ጨምር"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "መሳሪያ ያክሉ"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "ካሜራ አይገኝም"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "አረጋግጥ"
 msgid "Connect"
 msgstr "አገናኝ"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ሌላ መሳሪያ ያገናኙ"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "መሳሪያ ያገናኙ"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google አገናኝ"
@@ -748,6 +744,11 @@ msgstr "Google አገናኝ"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ተገናኝቷል"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "የተገናኙ መሳሪያዎች"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "ተቀድቷል"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 
@@ -800,10 +800,6 @@ msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ቅዳ"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} ቅዳ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "በመውጣት ላይ…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ምድቦችን ያስተዳድሩ"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "መሳሪያዎችን ያስተዳድሩ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"

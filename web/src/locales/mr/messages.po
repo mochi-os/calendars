@@ -201,6 +201,10 @@ msgstr "कॅप्शन जोडा"
 msgid "Add checklist item"
 msgstr "चेकलिस्ट आयटम जोडा"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "डिव्हाइस जोडा"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -534,6 +538,7 @@ msgstr "कॅमेरा उपलब्ध नाही"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -732,15 +737,6 @@ msgstr "पुष्टी करा"
 msgid "Connect"
 msgstr "कनेक्ट करा"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "दुसरे डिव्हाइस कनेक्ट करा"
-
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect device"
-msgstr "डिव्हाइस कनेक्ट करा"
-
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Connect Google"
 msgstr "Google कनेक्ट करा"
@@ -748,6 +744,11 @@ msgstr "Google कनेक्ट करा"
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "कनेक्ट केले"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "कनेक्ट केलेली डिव्हाइस"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -786,7 +787,6 @@ msgid "Copied"
 msgstr "कॉपी केले"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्डवर कॉपी केले"
 
@@ -800,10 +800,6 @@ msgstr "क्लिपबोर्डवर कॉपी केले"
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "कॉपी करा"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} कॉपी करा"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
@@ -1688,10 +1684,6 @@ msgstr "लॉग आउट करत आहे…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "श्रेणी व्यवस्थापित करा"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "डिव्हाइस व्यवस्थापित करा"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
