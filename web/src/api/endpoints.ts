@@ -22,6 +22,7 @@ const endpoints = {
     delete: `${prefix}/calendars/delete`,
     subscribe: `${prefix}/calendars/subscribe`,
     poll: `${prefix}/calendars/poll`,
+    refresh: `${prefix}/calendars/refresh`,
     accounts: `${prefix}/calendars/accounts`,
     account: `${prefix}/calendars/account`,
     grant: `${prefix}/calendars/grant`,

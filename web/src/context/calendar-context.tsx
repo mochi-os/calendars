@@ -28,7 +28,7 @@ import {
   type EventDraft,
   type Remembered,
 } from '@/lib/ical'
-import { useCalendarsQuery } from '@/hooks/use-calendars'
+import { useCalendarsQuery, useCalendarsRefresh } from '@/hooks/use-calendars'
 import { DEFAULTS, usePreferencesQuery } from '@/hooks/use-preferences'
 import { useShownCalendars } from '@/hooks/use-shown'
 
@@ -90,6 +90,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   }
 
   const { data, isLoading } = useCalendarsQuery()
+  useCalendarsRefresh()
   const calendars = useMemo(() => data?.calendars ?? [], [data?.calendars])
   const { shown, toggle, only, showAll, hideAll, visible } =
     useShownCalendars(calendars)

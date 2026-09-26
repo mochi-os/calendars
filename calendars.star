@@ -41,10 +41,16 @@ _POLL_BUDGET = 50
 
 # A linked calendar is checked this often, the objects it pulls in one
 # multiget, and how many multigets one sync runs before leaving the rest to
-# the next.
-_LINK_POLL = 900
+# the next. A check that finds nothing changed costs the other server one
+# small request.
+_LINK_POLL = 300
 _LINK_BATCH = 50
 _LINK_BATCHES = 20
+
+# A linked calendar synced this recently is left alone when someone looks at
+# it: opening the app, bringing it back to the foreground, or a CalDAV client
+# checking the collection.
+_LINK_FRESH = 60
 
 # Reminders are scheduled per occurrence this far ahead; a fired reminder and
 # the calendar listing top the window up.
@@ -932,6 +938,43 @@ def subscription_fetch(row, force=False):
 	mochi.db.execute("update calendars set interval=?, next=?, fetched=?, failure=? where id=?", interval, now + interval, now, failure, row["id"])
 	return changed
 
+# poll_lock(calendar) -> string or None: take the calendar's sync lock, so a
+# scheduled poll and a refresh never sync it at once. The token frees it.
+def poll_lock(calendar):
+	now = mochi.time.now()
+	token = mochi.uid()
+	mochi.db.execute("delete from polls where expires <= ?", now)
+	mochi.db.execute("insert into polls ( calendar, token, expires ) values ( ?, ?, ? ) on conflict do nothing", calendar, token, now + 400)
+	lock = mochi.db.row("select token from polls where calendar=?", calendar)
+	if not lock or lock["token"] != token:
+		return None
+	return token
+
+def poll_unlock(calendar, token):
+	mochi.db.execute("delete from polls where calendar=? and token=?", calendar, token)
+
+# linked_stale(row) -> bool: a linked calendar not synced in the last minute.
+def linked_stale(row):
+	return row["kind"] == "linked" and row["fetched"] < mochi.time.now() - _LINK_FRESH
+
+# linked_refresh(row) -> bool: sync a linked calendar now, for someone looking
+# at it, unless it is fresh or already syncing. The scheduled poll carries on
+# from the next time the sync sets. Returns whether anything changed.
+def linked_refresh(row):
+	if not linked_stale(row):
+		return False
+	calendar = row["id"]
+	token = poll_lock(calendar)
+	if not token:
+		return False
+	# Read again under the lock: a sync that finished since may have made it fresh.
+	row = mochi.db.row("select * from calendars where id=?", calendar)
+	changed = False
+	if row and linked_stale(row):
+		changed = linked_sync(row)
+	poll_unlock(calendar, token)
+	return changed
+
 def poll_schedule(calendar, delay):
 	mochi.schedule.after("schedule_calendars_poll", {"calendar": calendar}, max(delay, 10))
 
@@ -968,11 +1011,8 @@ def schedule_calendars_poll(e):
 	if not row:
 		return
 	now = mochi.time.now()
-	token = mochi.uid()
-	mochi.db.execute("delete from polls where expires <= ?", now)
-	mochi.db.execute("insert into polls ( calendar, token, expires ) values ( ?, ?, ? ) on conflict do nothing", calendar, token, now + 400)
-	lock = mochi.db.row("select token from polls where calendar=?", calendar)
-	if not lock or lock["token"] != token:
+	token = poll_lock(calendar)
+	if not token:
 		return
 	safety = mochi.schedule.after("schedule_calendars_poll", {"calendar": calendar}, 360)
 	if row["next"] <= now:
@@ -984,7 +1024,16 @@ def schedule_calendars_poll(e):
 	after = mochi.db.row("select next from calendars where id=?", calendar)
 	if after:
 		poll_schedule(calendar, after["next"] - mochi.time.now())
-	mochi.db.execute("delete from polls where calendar=? and token=?", calendar, token)
+	poll_unlock(calendar, token)
+
+# A refresh a CalDAV client's check asked for: one sync, not a schedule of
+# its own, which the calendar's scheduled poll already is.
+def schedule_calendars_refresh(e):
+	if e.source != "schedule":
+		return
+	row = mochi.db.row("select * from calendars where id=? and kind='linked'", e.data.get("calendar", ""))
+	if row:
+		linked_refresh(row)
 
 # === Actions: calendars ===
 
@@ -1111,6 +1160,16 @@ def action_calendar_subscribe(a):
 	poll_schedule(id, _POLL_BASE)
 	ensure_polls()
 	return {"data": {"calendar": calendar_public(calendar_get(identity, id))}}
+
+# The linked calendars someone is looking at, synced when the last sync is
+# more than a minute old: the web and Android clients call this as the app
+# opens and as it comes back to the foreground.
+def action_calendars_refresh(a):
+	changed = False
+	for row in calendars_rows(a.user.identity.id):
+		if row["kind"] == "linked" and linked_refresh(row):
+			changed = True
+	return {"data": {"changed": changed}}
 
 def action_calendar_poll(a):
 	identity = a.user.identity.id
@@ -1854,8 +1913,16 @@ def function_dav_collections(context, identity, collection=None):
 	calendars_ensure(identity)
 	if collection != None:
 		row = calendar_by_slug(identity, collection)
-		return [dav_collection(row)] if row else []
-	return [dav_collection(row) for row in calendars_rows(identity)]
+		rows = [row] if row else []
+	else:
+		rows = calendars_rows(identity)
+	# A client checking a linked calendar gets it synced in the background,
+	# so another server's change reaches it on its next check rather than
+	# after the scheduled poll.
+	for row in rows:
+		if linked_stale(row):
+			mochi.schedule.after("schedule_calendars_refresh", {"calendar": row["id"]}, 0)
+	return [dav_collection(row) for row in rows]
 
 def function_dav_collection_create(context, identity, collection, name="", description=""):
 	if not dav_caller(context):

@@ -12,6 +12,7 @@ import type {
   GrantResponse,
   LinkResponse,
   PollResponse,
+  RefreshResponse,
   RemoteResponse,
 } from '@/api/types/calendars'
 
@@ -82,6 +83,12 @@ export const calendarsApi = {
       body({ calendar }),
       { ...form, ...quiet }
     ),
+
+  refresh: (): Promise<RefreshResponse> =>
+    requestHelpers.post<RefreshResponse>(endpoints.calendars.refresh, '', {
+      ...form,
+      ...quiet,
+    }),
 
   // The connected accounts a calendar can be linked through, and the OAuth
   // providers a new one can be granted from.

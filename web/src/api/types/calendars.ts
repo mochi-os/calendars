@@ -41,6 +41,11 @@ export interface PollResponse {
   calendar: Calendar
 }
 
+/** `-/calendars/refresh`: whether syncing the stale linked calendars changed anything. */
+export interface RefreshResponse {
+  changed: boolean
+}
+
 /** `-/link` answers with the token once, then only that one exists. */
 export interface LinkResponse {
   token?: string

@@ -42,8 +42,9 @@ export const useCreateCalendarMutation = () =>
   )
 
 export const useRenameCalendarMutation = () =>
-  useCalendarMutation(({ calendar, name }: { calendar: string; name: string }) =>
-    calendarsApi.rename(calendar, name)
+  useCalendarMutation(
+    ({ calendar, name }: { calendar: string; name: string }) =>
+      calendarsApi.rename(calendar, name)
   )
 
 export const useColourCalendarMutation = () =>
@@ -60,6 +61,33 @@ export const useSubscribeCalendarMutation = () =>
     ({ url, name, colour }: { url: string; name: string; colour: string }) =>
       calendarsApi.subscribe(url, name, colour)
   )
+
+/**
+ * Linked calendars sync every five minutes. Asking the server to sync them as
+ * the app opens, and whenever it comes back into view, brings another
+ * server's changes in moments after the user looks; the server leaves alone
+ * any synced in the last minute.
+ */
+export const useCalendarsRefresh = () => {
+  const queryClient = useQueryClient()
+  return useQuery({
+    // Not under 'calendars': invalidating those would run it again.
+    queryKey: ['refresh'],
+    queryFn: async () => {
+      const result = await calendarsApi.refresh()
+      if (result.changed) {
+        queryClient.invalidateQueries({ queryKey: calendarKeys.all() })
+        queryClient.invalidateQueries({ queryKey: ['calendar'] })
+        queryClient.invalidateQueries({ queryKey: ['instances'] })
+        queryClient.invalidateQueries({ queryKey: ['bounds'] })
+      }
+      return result
+    },
+    staleTime: 60_000,
+    refetchOnWindowFocus: true,
+    retry: false,
+  })
+}
 
 export const usePollCalendarMutation = () =>
   useCalendarMutation((calendar: string) => calendarsApi.poll(calendar))
