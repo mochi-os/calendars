@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate, useSearch } from '@tanstack/react-router'
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
@@ -209,6 +210,37 @@ export function CalendarPage() {
     : editing?.mode === 'edit'
       ? `${editing.event}:${editing.start}`
       : undefined
+
+  // A reminder opens the calendar at the event it is for: once the day's
+  // occurrences arrive it opens as a click on it would, and leaves the URL so
+  // going back does not open it again.
+  const search = useSearch({ strict: false }) as {
+    event?: string
+    occurrence?: number
+  }
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!search.event) return
+    const key = `${search.event}:${search.occurrence ?? 0}`
+    const instance = instances.find(
+      (item) => `${item.event}:${item.start}` === key
+    )
+    if (!instance) return
+    const anchor =
+      document.querySelector<HTMLElement>(`[data-key="${CSS.escape(key)}"]`) ??
+      document.body
+    open(instance, anchor)
+    void navigate({
+      to: '.',
+      search: (previous: Record<string, unknown>) => ({
+        ...previous,
+        event: undefined,
+        occurrence: undefined,
+      }),
+      replace: true,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- open reads state only
+  }, [search.event, search.occurrence, instances])
 
   const select = (key: string, anchor: HTMLElement) => {
     const instance = byKey.get(key)

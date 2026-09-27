@@ -265,6 +265,7 @@ def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False, acco
 	now = mochi.time.now()
 	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated, account, collection, readonly ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, ? )",
 		id, identity, slug, kind, colour, url, _LINK_POLL if kind == "linked" else _POLL_BASE, now, now, account, collection, 1 if readonly else 0)
+	devices_sync()
 
 # calendars_ensure(identity): the default calendar and the birthdays calendar
 # exist from the first request on, each an entity with a fixed slug.
@@ -323,6 +324,13 @@ def calendars_rows(identity):
 	rows = mochi.db.rows("select * from calendars where identity=? order by created, id", identity)
 	return [r for r in rows if r["slug"] == "default"] + [r for r in rows if r["slug"] != "default"]
 
+# devices_sync(): tell the user's phones their calendars changed, so the Mochi
+# app syncs now rather than at its next scheduled sync. Core merges a burst into
+# one push; a core that predates the call leaves it to the schedule.
+def devices_sync():
+	if hasattr(mochi.account, "sync"):
+		mochi.account.sync("calendars")
+
 # calendar_touch(calendar, event="", deleted=0): bump the calendar's version,
 # the change token DAV clients compare, and log the event's change. One row per
 # event is kept, the latest.
@@ -334,6 +342,7 @@ def calendar_touch(calendar, event="", deleted=0):
 		if row:
 			mochi.db.execute("delete from changes where event=?", event)
 			mochi.db.execute("insert into changes ( identity, calendar, event, deleted, created ) values ( ?, ?, ?, ?, ? )", row["identity"], calendar, event, deleted, now)
+	devices_sync()
 
 def changes_prune(identity):
 	old = mochi.db.row("select max(id) as id from changes where identity=? and deleted=1 and created<?", identity, mochi.time.now() - _TOMBSTONE_RETENTION)
@@ -357,6 +366,7 @@ def calendar_delete(identity, row):
 				se.cancel()
 	mochi.db.execute("delete from calendars where id=? and identity=?", row["id"], identity)
 	mochi.entity.delete(row["id"])
+	devices_sync()
 
 # === Events ===
 
@@ -614,7 +624,8 @@ def schedule_reminder(e):
 	if preferences_load(e.user)["zones"]:
 		zone = found.get("zone", {}).get("start", "")
 	body = mochi.app.label("notifications.reminder.body", time=mochi.time.local(instance, "time", timezone=zone))
-	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone)
+	# The day the occurrence is on, opened at the event itself.
+	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone) + "&event=" + row["id"] + "&occurrence=" + str(instance)
 	mochi.service.call("notifications", "send", "reminder", row["id"], title, body, url,
 		mochi.app.label("notifications.topic.reminder"), event=row["id"] + ":" + str(instance))
 	# A recurring event keeps one occurrence scheduled past the window.
@@ -1100,6 +1111,7 @@ def action_calendar_colour(a):
 			a.error.label(400, "errors.invalid_colour")
 		return
 	mochi.db.execute("update calendars set colour=?, updated=? where id=?", colour, mochi.time.now(), row["id"])
+	devices_sync()
 	return {"data": {"calendar": calendar_public(calendar_get(identity, row["id"]))}}
 
 def action_calendar_delete(a):
