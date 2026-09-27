@@ -26,6 +26,11 @@ msgstr "(an gyara)"
 msgid "(expand)"
 msgstr "(faɗaɗa)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Babu take)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(kai)"
@@ -84,14 +89,11 @@ msgid "{entityLabel} name"
 msgstr "Sunan {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} zuwa {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ƙari} other {+# ƙari}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -255,8 +257,6 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "Duk rana"
@@ -557,6 +557,11 @@ msgstr "Soke amsa"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "An soke"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "An soke"
 
@@ -2237,6 +2242,9 @@ msgstr "Dacewa {relevance}, sha'awa {weight}"
 msgid "Reload"
 msgstr "Sake lodawa"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Tunatarwa"
@@ -2738,6 +2746,11 @@ msgstr "Tag dole ne ya kasance haruffa 50 ko ƙasa"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Alamomi"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Na wucin gadi"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx

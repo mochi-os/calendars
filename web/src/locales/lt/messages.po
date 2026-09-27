@@ -26,6 +26,11 @@ msgstr "(redaguota)"
 msgid "(expand)"
 msgstr "(išskleisti)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Be pavadinimo)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(jūs)"
@@ -84,14 +89,11 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} pavadinimas"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "nuo {from} iki {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# daugiau} few {+# daugiau} many {+# daugiau} other {+# daugiau}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -255,8 +257,6 @@ msgstr "DI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "Visą dieną"
@@ -557,6 +557,11 @@ msgstr "Atšaukti atsakymą"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Atšaukta"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Atšaukta"
 
@@ -2237,6 +2242,9 @@ msgstr "Aktualumas {relevance}, susidomėjimas {weight}"
 msgid "Reload"
 msgstr "Įkelti iš naujo"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Priminimas"
@@ -2738,6 +2746,11 @@ msgstr "Žymė turi būti ne ilgesnė kaip 50 simbolių"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Žymos"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Nepatvirtinta"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx

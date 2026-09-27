@@ -57,6 +57,8 @@ export interface Instance {
   recurring: boolean
   /** True when this occurrence is a RECURRENCE-ID override of its series. */
   exception?: boolean
+  /** The occurrence carries a reminder of its own. */
+  alarm?: boolean
   /**
    * The zone each end was written in, "" for a UTC or floating value; absent
    * on all-day occurrences.

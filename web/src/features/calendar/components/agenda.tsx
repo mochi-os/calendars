@@ -17,9 +17,13 @@ import {
   addDays,
   cn,
   coveredDays,
+  EventDot,
+  EventTitle,
+  eventStatus,
+  finished,
   useFormat,
 } from '@mochi/web'
-import { CalendarDays, ChevronUp, Repeat, Repeat2 } from 'lucide-react'
+import { Bell, CalendarDays, ChevronUp, Repeat, Repeat2 } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import { useCalendarContext } from '@/context/calendar-context'
 import { useBoundsQuery, useInstancePages } from '@/hooks/use-events'
@@ -31,6 +35,8 @@ const PAGE = 92
 const HORIZON = 40
 
 interface Props {
+  /** The occurrence whose summary or editor is open, drawn tinted. */
+  selected?: string
   onSelect: (instance: Instance, anchor: HTMLElement) => void
 }
 
@@ -39,12 +45,17 @@ interface Props {
  * and more as the reader scrolls - earlier pages above, later pages below -
  * until the calendars' first and last events are on the page.
  */
-export function Agenda({ onSelect }: Props) {
+export function Agenda({ selected, onSelect }: Props) {
   const { t } = useLingui()
   const format = useFormat()
   const { date, today, calendars, visible, preferences, search } =
     useCalendarContext()
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
+
+  /** Over already, or cancelled, and drawn quieter. */
+  const over = (instance: Instance) =>
+    eventStatus(instance.status) === 'cancelled' ||
+    finished(instance, Date.now() / 1000, today, format.zonedDay)
 
   // Pages before and after the anchor day; a new anchor starts again.
   const [span, setSpan] = useState({ anchor: date, before: 0, after: 1 })
@@ -229,51 +240,68 @@ export function Agenda({ onSelect }: Props) {
                 )}
               </h2>
               <ul>
-                {list.map((instance) => (
-                  <li key={`${instance.event}:${instance.start}`}>
-                    <button
-                      type='button'
-                      onClick={(pointer) =>
-                        onSelect(instance, pointer.currentTarget)
-                      }
-                      className='hover:bg-hover flex w-full items-center gap-3 border-b px-3 py-2.5 text-start'
-                    >
-                      <span className='text-muted-foreground w-20 shrink-0 text-sm'>
-                        {instance.allday
-                          ? t`All day`
-                          : format.formatClock(
+                {list.map((instance) => {
+                  const key = `${instance.event}:${instance.start}`
+                  const event = {
+                    title: instance.summary,
+                    colour: instance.colour,
+                    status: eventStatus(instance.status),
+                  }
+                  return (
+                    <li key={key}>
+                      <button
+                        type='button'
+                        onClick={(pointer) =>
+                          onSelect(instance, pointer.currentTarget)
+                        }
+                        className={cn(
+                          'hover:bg-hover flex w-full items-center gap-3 border-b px-3 py-2.5 text-start',
+                          over(instance) && 'opacity-60',
+                          key === selected && 'bg-primary/10'
+                        )}
+                      >
+                        <EventDot event={event} className='size-3' />
+                        <EventTitle
+                          event={event}
+                          className='flex-[2] font-medium'
+                        />
+                        {instance.alarm && (
+                          <Bell
+                            className='size-3.5 shrink-0 opacity-70'
+                            aria-label={t`Reminder`}
+                          />
+                        )}
+                        {instance.exception ? (
+                          <Repeat2
+                            className='size-3.5 shrink-0 opacity-70'
+                            aria-label={t`Changed occurrence`}
+                          />
+                        ) : instance.recurring ? (
+                          <Repeat
+                            className='size-3.5 shrink-0 opacity-70'
+                            aria-label={t`Repeats`}
+                          />
+                        ) : null}
+                        {!instance.allday && (
+                          <span className='text-muted-foreground shrink-0 text-sm'>
+                            {format.formatClock(
                               new Date(instance.start * 1000),
-                              preferences.zones ? instance.zone?.start : undefined
+                              preferences.zones
+                                ? instance.zone?.start
+                                : undefined
                             )}
-                      </span>
-                      <span
-                        aria-hidden
-                        className='size-3 shrink-0 rounded-full'
-                        style={{ backgroundColor: instance.colour }}
-                      />
-                      {instance.exception ? (
-                        <Repeat2
-                          className='size-3.5 shrink-0 opacity-70'
-                          aria-label={t`Changed occurrence`}
-                        />
-                      ) : instance.recurring ? (
-                        <Repeat
-                          className='size-3.5 shrink-0 opacity-70'
-                          aria-label={t`Repeats`}
-                        />
-                      ) : null}
-                      <span className='min-w-0 flex-[2] truncate font-medium'>
-                        {instance.summary}
-                      </span>
-                      <span className='text-muted-foreground hidden min-w-0 flex-1 truncate text-sm md:block'>
-                        {instance.location}
-                      </span>
-                      <span className='text-muted-foreground hidden w-40 shrink-0 truncate text-sm md:block'>
-                        {names.get(instance.calendar) ?? ''}
-                      </span>
-                    </button>
-                  </li>
-                ))}
+                          </span>
+                        )}
+                        <span className='text-muted-foreground hidden min-w-0 flex-1 truncate text-sm md:block'>
+                          {instance.location}
+                        </span>
+                        <span className='text-muted-foreground hidden w-40 shrink-0 truncate text-sm md:block'>
+                          {names.get(instance.calendar) ?? ''}
+                        </span>
+                      </button>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))

@@ -48,7 +48,9 @@ vi.mock('@/hooks/use-events', () => ({
   useInstancePages: () => ({
     instances: [
       instance(22, 'Design review'),
-      instance(23, 'Wax boots'),
+      { ...instance(23, 'Wax boots'), recurring: true, alarm: true },
+      { ...instance(24, 'Called off'), status: 'CANCELLED' },
+      { ...instance(24, ''), event: 'e24b', start: noon(2026, 9, 24) + 60 },
       // An all-day occurrence expanded by a server nine hours ahead of this
       // browser's UTC: its instants begin on the 21st, its date is the 22nd.
       {
@@ -63,10 +65,10 @@ vi.mock('@/hooks/use-events', () => ({
   }),
 }))
 
-function show() {
+function show(selected?: string) {
   render(
     <I18nProvider i18n={i18n}>
-      <Agenda onSelect={vi.fn()} />
+      <Agenda selected={selected} onSelect={vi.fn()} />
     </I18nProvider>
   )
   const headings = screen.getAllByRole('heading', { level: 2 })
@@ -102,5 +104,92 @@ describe('Agenda all-day placement', () => {
       .getByText('Laundry')
       .closest('ul')?.previousElementSibling
     expect(group?.textContent).toMatch(/\b22\b/)
+  })
+})
+
+describe('Agenda rows', () => {
+  const row = (summary: string) =>
+    screen.getByText(summary).closest('button') as HTMLElement
+
+  it('reads a timed event as its dot, its title, then its time', () => {
+    show()
+    const review = row('Design review')
+    expect(
+      (review.firstElementChild as HTMLElement).classList.contains(
+        'rounded-full'
+      )
+    ).toBe(true)
+    const text = review.textContent ?? ''
+    expect(text.indexOf('Design review')).toBeLessThan(
+      text.search(/\d{1,2}:\d{2}/)
+    )
+  })
+
+  it('gives an all-day event no time', () => {
+    show()
+    const text = row('Laundry').textContent ?? ''
+    expect(text).not.toMatch(/\d{1,2}:\d{2}/)
+    // Nor a label standing in for one: the row is its dot and its title.
+    expect(text).not.toMatch(/All day/)
+  })
+
+  it('draws an event that is over quieter than one still to come', () => {
+    vi.useFakeTimers({
+      now: new Date(Date.UTC(2026, 8, 22, 18)),
+      toFake: ['Date'],
+    })
+    show()
+    vi.useRealTimers()
+    expect(row('Design review').classList.contains('opacity-60')).toBe(true)
+    expect(row('Wax boots').classList.contains('opacity-60')).toBe(false)
+  })
+
+  it('puts the reminder and repeat marks just before the time', () => {
+    show()
+    const parts = Array.from(row('Wax boots').children) as HTMLElement[]
+    const title = parts.findIndex((part) => part.textContent === 'Wax boots')
+    const bell = parts.findIndex(
+      (part) => part.getAttribute('aria-label') === 'Reminder'
+    )
+    const repeat = parts.findIndex(
+      (part) => part.getAttribute('aria-label') === 'Repeats'
+    )
+    expect(title).toBeLessThan(bell)
+    expect(bell).toBeLessThan(repeat)
+    expect(parts[repeat + 1].textContent).toMatch(/^\d{1,2}:\d{2}/)
+    expect(
+      row('Design review').querySelector('[aria-label="Reminder"]')
+    ).toBeNull()
+  })
+})
+
+describe('Agenda event states', () => {
+  const row = (text: string) =>
+    screen.getByText(text).closest('button') as HTMLElement
+
+  it('strikes through and quietens a cancelled event still to come', () => {
+    vi.useFakeTimers({
+      now: new Date(Date.UTC(2026, 8, 22, 18)),
+      toFake: ['Date'],
+    })
+    show()
+    vi.useRealTimers()
+    expect(
+      screen.getByText('Called off').classList.contains('line-through')
+    ).toBe(true)
+    expect(row('Called off').classList.contains('opacity-60')).toBe(true)
+  })
+
+  it('names an event with no title, quietly', () => {
+    show()
+    expect(
+      screen.getByText('(No title)').classList.contains('text-muted-foreground')
+    ).toBe(true)
+  })
+
+  it('tints the open event', () => {
+    show(`e22:${noon(2026, 9, 22)}`)
+    expect(row('Design review').classList.contains('bg-primary/10')).toBe(true)
+    expect(row('Wax boots').classList.contains('bg-primary/10')).toBe(false)
   })
 })

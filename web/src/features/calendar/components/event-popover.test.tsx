@@ -223,3 +223,49 @@ describe('EventPopover zones', () => {
     ).not.toContain('UTC')
   })
 })
+
+describe('EventPopover status and title', () => {
+  function open(shown: Partial<Instance>) {
+    render(
+      <I18nProvider i18n={i18n}>
+        <EventPopover
+          instance={{ ...instance(''), ...shown }}
+          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
+          onClose={vi.fn()}
+        />
+      </I18nProvider>
+    )
+  }
+
+  it('says a cancelled event is cancelled, and strikes its title through', () => {
+    open({ status: 'CANCELLED' })
+    const line = screen.getByText('Cancelled').parentElement as HTMLElement
+    expect(line.firstElementChild?.classList.contains('lucide-ban')).toBe(true)
+    expect(
+      screen
+        .getByText('DUB:2-DEN 15:25-18:15')
+        .classList.contains('line-through')
+    ).toBe(true)
+  })
+
+  it('says a tentative event is tentative', () => {
+    open({ status: 'TENTATIVE' })
+    const line = screen.getByText('Tentative').parentElement as HTMLElement
+    expect(
+      line.firstElementChild?.classList.contains('lucide-circle-dashed')
+    ).toBe(true)
+  })
+
+  it('says nothing of a confirmed event', () => {
+    open({ status: 'CONFIRMED' })
+    expect(screen.queryByText('Cancelled')).toBeNull()
+    expect(screen.queryByText('Tentative')).toBeNull()
+  })
+
+  it('names an event with no title', () => {
+    open({ summary: '' })
+    expect(screen.getByRole('heading', { level: 2 }).textContent).toBe(
+      '(No title)'
+    )
+  })
+})

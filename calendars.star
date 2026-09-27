@@ -1366,7 +1366,8 @@ def action_events(a):
 			for instance in mochi.ical.instances(row["ics"], start, finish, timezone=timezone):
 				instance["event"] = row["id"]
 				instance["calendar"] = calendar["id"]
-				instance["colour"] = calendar["colour"]
+				# The event's own colour when it carries one, else its calendar's.
+				instance["colour"] = instance.get("colour") or calendar["colour"]
 				instance["readonly"] = readonly
 				out.append(instance)
 				if len(out) >= _INSTANCES_MAXIMUM:

@@ -8,6 +8,7 @@ import {
   addDays,
   dayList,
   dayOfWeek,
+  eventStatus,
   MonthGrid,
   monthOf,
   stepDate,
@@ -30,7 +31,6 @@ import { useCalendarContext } from '@/context/calendar-context'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
 import { Agenda } from '@/features/calendar/components/agenda'
-import { DayPopover } from '@/features/calendar/components/day-popover'
 import { EventPopover } from '@/features/calendar/components/event-popover'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
@@ -50,6 +50,7 @@ export function CalendarPage() {
     visible,
     calendars,
     workweek,
+    editing,
     setEditing,
     remembered,
   } = useCalendarContext()
@@ -60,10 +61,6 @@ export function CalendarPage() {
   )
   const [selected, setSelected] = useState<{
     instance: Instance
-    anchor: DOMRect
-  } | null>(null)
-  const [overflow, setOverflow] = useState<{
-    day: string
     anchor: DOMRect
   } | null>(null)
   const [moving, setMoving] = useState<{
@@ -85,21 +82,11 @@ export function CalendarPage() {
     [view, visible]
   )
   const { data } = useInstancesQuery(start, finish, shown, format.timezone)
-  // A calendar's colour comes from the calendar list, so recolouring one is
-  // seen at once rather than when the range is fetched again.
-  const colours = useMemo(
-    () => new Map(calendars.map((c) => [c.id, c.colour])),
-    [calendars]
-  )
+  // Each occurrence arrives in its event's own colour, else its calendar's;
+  // recolouring a calendar fetches the range again.
   const instances = useMemo(
-    () =>
-      shown.length === 0
-        ? []
-        : (data?.instances ?? []).map((instance) => ({
-            ...instance,
-            colour: colours.get(instance.calendar) ?? instance.colour,
-          })),
-    [shown.length, data?.instances, colours]
+    () => (shown.length === 0 ? [] : (data?.instances ?? [])),
+    [shown.length, data?.instances]
   )
 
   // Every occurrence seen, by key: a drag that turns the page carries its
@@ -129,6 +116,8 @@ export function CalendarPage() {
         readonly: instance.readonly || instance.event.startsWith('birthday-'),
         recurring: instance.recurring,
         exception: instance.exception,
+        alarm: instance.alarm,
+        status: eventStatus(instance.status),
         // Each end's own zone, only when the user shows events in their
         // zones; an end without one is placed in the user's zone.
         zone:
@@ -214,6 +203,13 @@ export function CalendarPage() {
     }
   }
 
+  // The occurrence whose summary or editor is open, which the views tint.
+  const current = selected
+    ? `${selected.instance.event}:${selected.instance.start}`
+    : editing?.mode === 'edit'
+      ? `${editing.event}:${editing.start}`
+      : undefined
+
   const select = (key: string, anchor: HTMLElement) => {
     const instance = byKey.get(key)
     if (instance) open(instance, anchor)
@@ -233,7 +229,7 @@ export function CalendarPage() {
 
   const grid =
     view === 'list' ? (
-      <Agenda onSelect={open} />
+      <Agenda selected={current} onSelect={open} />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
         days={days}
@@ -245,6 +241,7 @@ export function CalendarPage() {
         // With events at their own wall-clock times, the gutter says whose
         // clock its hours are.
         zone={preferences.zones ? offsetLabel(format.timezone) : undefined}
+        selected={current}
         onSelect={select}
         onCreate={(from, to) =>
           setEditing({ mode: 'create', draft: compose(from, to) })
@@ -277,6 +274,7 @@ export function CalendarPage() {
         events={events}
         today={today}
         weekNumbers
+        selected={current}
         onSelect={select}
         onCreate={createOnDay}
         onMove={({ key, day, copy, calendar }) => {
@@ -286,12 +284,6 @@ export function CalendarPage() {
             ? mover.toCalendar(instance, calendar, { copy })
             : mover.toDay(instance, day, { copy })
           requestMove(instance, run, copy)
-        }}
-        onOverflow={(day) => {
-          const cell = document.querySelector(`[data-day="${day}"]`)
-          if (cell) {
-            setOverflow({ day, anchor: cell.getBoundingClientRect() })
-          }
         }}
         onDay={(day) => {
           setDate(day)
@@ -332,17 +324,6 @@ export function CalendarPage() {
             ),
             copy: true,
           })
-        }}
-      />
-
-      <DayPopover
-        day={overflow?.day ?? null}
-        anchor={overflow?.anchor ?? null}
-        instances={instances}
-        onClose={() => setOverflow(null)}
-        onSelect={(instance, anchor) => {
-          setOverflow(null)
-          open(instance, anchor)
         }}
       />
 

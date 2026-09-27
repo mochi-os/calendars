@@ -10,12 +10,23 @@ import {
   PopoverContent,
   coveredDays,
   descriptionText,
+  EventTitle,
+  eventStatus,
   flightNumber,
+  useEventStatus,
   useFormat,
   useLinks,
   zoneCity,
 } from '@mochi/web'
-import { Clock, Copy, MapPin, Plane, TextAlignStart } from 'lucide-react'
+import {
+  Ban,
+  CircleDashed,
+  Clock,
+  Copy,
+  MapPin,
+  Plane,
+  TextAlignStart,
+} from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 
 interface Props {
@@ -42,8 +53,11 @@ export function EventPopover({
   const { t } = useLingui()
   const format = useFormat()
   const links = useLinks()
+  const words = useEventStatus()
   if (!instance || !anchor) return null
 
+  const status = eventStatus(instance.status)
+  const state = words(status)
   const start = new Date(instance.start * 1000)
   const finish = new Date(instance.finish * 1000)
   const lastDay = new Date(Math.max(instance.start, instance.finish - 1) * 1000)
@@ -139,13 +153,26 @@ export function EventPopover({
             />
           </span>
           <h2 className='min-w-0 flex-1 font-semibold break-words'>
-            {instance.summary}
+            <EventTitle
+              event={{ title: instance.summary, status }}
+              className='whitespace-normal'
+            />
           </h2>
         </div>
         <p className='text-muted-foreground flex items-start gap-1.5 text-sm'>
           <Clock className='mt-0.5 size-4 shrink-0' aria-hidden />
           <span className='min-w-0'>{span}</span>
         </p>
+        {state && (
+          <p className='text-muted-foreground flex items-start gap-1.5 text-sm'>
+            {status === 'cancelled' ? (
+              <Ban className='mt-0.5 size-4 shrink-0' aria-hidden />
+            ) : (
+              <CircleDashed className='mt-0.5 size-4 shrink-0' aria-hidden />
+            )}
+            <span className='min-w-0'>{state}</span>
+          </p>
+        )}
         {own && (
           <p className='text-muted-foreground flex items-start gap-1.5 text-sm'>
             <span aria-hidden className='mt-0.5 size-4 shrink-0' />
