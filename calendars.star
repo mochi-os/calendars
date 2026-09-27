@@ -83,6 +83,29 @@ def database_upgrade(version):
 		# this account write: read-only here too.
 		if "readonly" not in [c["name"] for c in mochi.db.table("calendars")]:
 			mochi.db.execute("alter table calendars add column readonly integer not null default 0")
+	if version == 4:
+		# Reminders keyed by the moment they fall due as well as the
+		# occurrence, so each of an event's reminders has its own row and its
+		# job can be cancelled. The rows are rebuilt from the scheduler's own
+		# jobs, which takes in the jobs earlier edits left behind: one for an
+		# event that is gone or a reminder the event no longer has is
+		# cancelled, as is a second job for the same moment.
+		if "due" not in [c["name"] for c in mochi.db.table("reminders")]:
+			mochi.db.execute("drop table reminders")
+			reminders_create()
+			leads = {}
+			for job in mochi.schedule.list():
+				if job.event != "schedule_reminder":
+					continue
+				event = job.data.get("event", "")
+				instance = int(job.data.get("instance", 0))
+				if event not in leads:
+					row = mochi.db.row("select ics from events where id=? and component='VEVENT'", event)
+					leads[event] = event_leads(mochi.ical.parse(row["ics"]) or {}) if row else []
+				if instance - job.due not in leads[event] or mochi.db.exists("select 1 from reminders where event=? and instance=? and due=?", event, instance, job.due):
+					job.cancel()
+					continue
+				mochi.db.execute("insert into reminders ( event, instance, due, schedule ) values ( ?, ?, ?, ? )", event, instance, job.due, job.id)
 
 def database_create():
 	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '', readonly integer not null default 0 )")
@@ -104,8 +127,7 @@ def database_create():
 	# shown again, only replaced.
 	mochi.db.execute("create table if not exists links ( hash text not null primary key, calendar text not null, created integer not null default 0 )")
 	mochi.db.execute("create unique index if not exists links_calendar on links( calendar )")
-	# Reminders scheduled per occurrence, so a changed event can cancel its own.
-	mochi.db.execute("create table if not exists reminders ( event text not null, instance integer not null, schedule integer not null default 0, primary key ( event, instance ) )")
+	reminders_create()
 	# One poll at a time per subscription.
 	mochi.db.execute("create table if not exists polls ( calendar text not null primary key, token text not null, expires integer not null default 0 )")
 
@@ -559,6 +581,11 @@ def event_text(components, uid):
 # Each VALARM with a relative TRIGGER schedules a notification per occurrence
 # within the window. A changed or deleted event cancels its own.
 
+# One row per reminder of an occurrence, keyed by when it falls due, so a
+# changed event can cancel every one of its own.
+def reminders_create():
+	mochi.db.execute("create table if not exists reminders ( event text not null, instance integer not null, due integer not null, schedule integer not null default 0, primary key ( event, instance, due ) )")
+
 def reminders_cancel(event):
 	for row in mochi.db.rows("select schedule from reminders where event=?", event):
 		if row["schedule"] > 0:
@@ -593,11 +620,11 @@ def reminders_schedule(row):
 	now = mochi.time.now()
 	for instance in mochi.ical.instances(row["ics"], now, now + _REMINDER_WINDOW):
 		for lead in leads:
-			at = instance["start"] - lead
-			if at < now:
+			due = instance["start"] - lead
+			if due < now:
 				continue
-			scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": instance["start"], "lead": lead}, at)
-			mochi.db.execute("insert or replace into reminders ( event, instance, schedule ) values ( ?, ?, ? )", row["id"], instance["start"], scheduled.id if scheduled else 0)
+			scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": instance["start"], "lead": lead}, due)
+			mochi.db.execute("insert or replace into reminders ( event, instance, due, schedule ) values ( ?, ?, ?, ? )", row["id"], instance["start"], due, scheduled.id if scheduled else 0)
 
 def schedule_reminder(e):
 	if e.source != "schedule":
@@ -606,7 +633,7 @@ def schedule_reminder(e):
 	row = event_get(e.user.identity.id, data.get("event", "")) if e.user else None
 	# The job's data comes back as JSON numbers, so the start is a float.
 	instance = int(data.get("instance", 0))
-	mochi.db.execute("delete from reminders where event=? and instance=?", data.get("event", ""), instance)
+	mochi.db.execute("delete from reminders where event=? and instance=? and due=?", data.get("event", ""), instance, e.due)
 	if not row:
 		return
 	# The occurrence must still exist: the event may have moved since.
@@ -626,8 +653,11 @@ def schedule_reminder(e):
 	body = mochi.app.label("notifications.reminder.body", time=mochi.time.local(instance, "time", timezone=zone))
 	# The day the occurrence is on, opened at the event itself.
 	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone) + "&event=" + row["id"] + "&occurrence=" + str(instance)
+	# Keyed by when this reminder falls due: the notifications service takes a
+	# key it has seen for a retry, so the occurrence's other reminders need
+	# keys of their own.
 	mochi.service.call("notifications", "send", "reminder", row["id"], title, body, url,
-		mochi.app.label("notifications.topic.reminder"), event=row["id"] + ":" + str(instance))
+		mochi.app.label("notifications.topic.reminder"), event=row["id"] + ":" + str(instance) + ":" + str(e.due))
 	# A recurring event keeps one occurrence scheduled past the window.
 	if row["recurring"] == 1:
 		reminders_topup(row)
@@ -641,11 +671,11 @@ def reminders_topup(row):
 	now = mochi.time.now()
 	for instance in mochi.ical.instances(row["ics"], after + 1, now + _REMINDER_WINDOW):
 		for lead in leads:
-			at = instance["start"] - lead
-			if at < now:
+			due = instance["start"] - lead
+			if due < now:
 				continue
-			scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": instance["start"], "lead": lead}, at)
-			mochi.db.execute("insert or replace into reminders ( event, instance, schedule ) values ( ?, ?, ? )", row["id"], instance["start"], scheduled.id if scheduled else 0)
+			scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": instance["start"], "lead": lead}, due)
+			mochi.db.execute("insert or replace into reminders ( event, instance, due, schedule ) values ( ?, ?, ?, ? )", row["id"], instance["start"], due, scheduled.id if scheduled else 0)
 
 # reminders_ensure(identity): recurring events whose scheduled reminders run
 # out within half the window get more, a few per request.
