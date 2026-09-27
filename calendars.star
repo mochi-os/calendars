@@ -594,7 +594,8 @@ def schedule_reminder(e):
 		return
 	data = e.data
 	row = event_get(e.user.identity.id, data.get("event", "")) if e.user else None
-	instance = data.get("instance", 0)
+	# The job's data comes back as JSON numbers, so the start is a float.
+	instance = int(data.get("instance", 0))
 	mochi.db.execute("delete from reminders where event=? and instance=?", data.get("event", ""), instance)
 	if not row:
 		return
