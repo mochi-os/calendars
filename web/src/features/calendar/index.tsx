@@ -16,7 +16,6 @@ import {
   TimeGrid,
   useFormat,
   usePageTitle,
-  useShellStorage,
   offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
@@ -24,6 +23,7 @@ import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import {
   creationDay,
+  defaultCalendar,
   defaultStart,
   instanceDraft,
   newDraft,
@@ -56,12 +56,9 @@ export function CalendarPage() {
     editing,
     setEditing,
     remembered,
+    reveal,
   } = useCalendarContext()
 
-  const [lastCalendar, setLastCalendar] = useShellStorage<string>(
-    'calendars:last',
-    ''
-  )
   const [selected, setSelected] = useState<{
     instance: Instance
     anchor: DOMRect
@@ -71,7 +68,7 @@ export function CalendarPage() {
     copy: boolean
   } | null>(null)
 
-  const mover = useEventMove()
+  const mover = useEventMove(reveal)
 
   // With events shown in their own zones, a day's occurrences can begin or
   // end up to a day away by the user's clock, so the window grows a day each
@@ -142,18 +139,16 @@ export function CalendarPage() {
     return list
   }, [range.from, range.days, view, workweek, preferences.days])
 
-  const calendarFor = useCallback(() => {
-    const writable = calendars.filter((calendar) => !calendar.readonly)
-    const last = writable.find((calendar) => calendar.id === lastCalendar)
-    return (last ?? writable.find((c) => c.default) ?? writable[0])?.id ?? ''
-  }, [calendars, lastCalendar])
+  // A new event goes in the calendar the preferences name, the same on every
+  // device, and reads in the zones the last one used on this device.
+  const calendarFor = useCallback(
+    () => defaultCalendar(calendars, preferences.calendar),
+    [calendars, preferences.calendar]
+  )
 
-  // A new event reads in the zones the last one used on this device, and
-  // goes in the calendar the last one went in.
   const compose = useCallback(
     (from: number, to: number, allday = false): EventDraft => {
       const calendar = calendarFor()
-      setLastCalendar(calendar)
       return newDraft(from, to, {
         allday,
         calendar,
@@ -164,13 +159,7 @@ export function CalendarPage() {
         },
       })
     },
-    [
-      calendarFor,
-      format.timezone,
-      preferences.reminder,
-      remembered.zone,
-      setLastCalendar,
-    ]
+    [calendarFor, format.timezone, preferences.reminder, remembered.zone]
   )
 
   // A new event with no time of its own: the next whole hour today, the
@@ -354,7 +343,6 @@ export function CalendarPage() {
           // the copy is what the listing says of it, in the user's calendar.
           setSelected(null)
           const calendar = calendarFor()
-          setLastCalendar(calendar)
           setEditing({
             mode: 'create',
             draft: instanceDraft(

@@ -1095,6 +1095,25 @@ export function creationDay(
 }
 
 /**
+ * The calendar a new event opens on: the one the preferences name while the
+ * user can still write to it, else the built-in default calendar, else the
+ * first the user can write to.
+ */
+export function defaultCalendar(
+  calendars: { id: string; readonly: boolean; default?: boolean }[],
+  preference: string
+): string {
+  const writable = calendars.filter((calendar) => !calendar.readonly)
+  return (
+    (
+      writable.find((calendar) => calendar.id === preference) ??
+      writable.find((calendar) => calendar.default) ??
+      writable[0]
+    )?.id ?? ''
+  )
+}
+
+/**
  * The draft a new event opens on: the span in unix seconds, read in the
  * zones the last new event used, so a tap at ten keeps its instant and the
  * editor shows it on the remembered clock.

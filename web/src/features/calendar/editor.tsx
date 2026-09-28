@@ -86,7 +86,8 @@ export function EventEditor() {
   const { t } = useLingui()
   const format = useFormat()
   const { isMobile } = useScreenSize()
-  const { editing, setEditing, calendars, remember } = useCalendarContext()
+  const { editing, setEditing, calendars, remember, reveal } =
+    useCalendarContext()
 
   const editingEvent = editing?.mode === 'edit' ? editing.event : null
   const { data, isLoading, refetch } = useEventQuery(editingEvent)
@@ -166,6 +167,7 @@ export function EventEditor() {
           components: [draftComponent(draft)],
         })
         remember(draft)
+        reveal(draft.calendar)
         toast.success(editing.copy ? t`Event copied` : t`Event created`)
       } else {
         if (!event) return
@@ -200,6 +202,7 @@ export function EventEditor() {
               following: split.after,
               calendar: draft.calendar,
             })
+            reveal(draft.calendar)
             toast.success(t`Event saved`)
             close()
             return
@@ -221,6 +224,7 @@ export function EventEditor() {
           calendar: draft.calendar,
           components,
         })
+        reveal(draft.calendar)
         toast.success(t`Event saved`)
       }
       close()

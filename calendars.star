@@ -1630,7 +1630,7 @@ def action_event_create(a):
 	if body == None:
 		a.error.label(400, "errors.invalid_event")
 		return
-	calendar = calendar_get(identity, body.get("calendar", "")) if body.get("calendar") else calendar_by_slug(identity, "default")
+	calendar = calendar_get(identity, body.get("calendar", "")) if body.get("calendar") else calendar_preferred(identity, a.user)
 	if not calendar:
 		a.error.label(404, "errors.calendar_not_found")
 		return
@@ -1945,8 +1945,10 @@ def action_ics(a):
 # === Actions: preferences ===
 
 # "zones" shows each event at its own wall-clock time, each end in the zone it
-# was written in, rather than converted into the user's zone.
-_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False}
+# was written in, rather than converted into the user's zone. "calendar" is
+# the calendar a new event goes in, one the user can write to; empty means the
+# built-in default calendar.
+_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False, "calendar": ""}
 
 def preferences_read(a):
 	return preferences_load(a.user)
@@ -1958,6 +1960,16 @@ def preferences_load(user):
 	for key in _PREFERENCES:
 		out[key] = stored.get(key, _PREFERENCES[key]) if type(stored) == "dict" else _PREFERENCES[key]
 	return out
+
+# calendar_preferred(identity, user): the calendar a new event goes in when
+# nothing names one: the user's chosen calendar while it exists and can be
+# written, else the built-in default calendar, which cannot be deleted.
+def calendar_preferred(identity, user):
+	chosen = preferences_load(user)["calendar"]
+	row = calendar_get(identity, chosen) if type(chosen) == "string" and chosen else None
+	if row and not calendar_readonly(row):
+		return row
+	return calendar_by_slug(identity, "default")
 
 def action_preferences_get(a):
 	return {"data": {"preferences": preferences_read(a)}}
@@ -1993,6 +2005,20 @@ def action_preferences_set(a):
 	zones = body.get("zones", current["zones"])
 	if type(zones) != "bool":
 		zones = current["zones"]
+	# A calendar named here must be one the user can write to; one kept from
+	# before that has since gone, or become read-only, is let go.
+	calendar = body.get("calendar", current["calendar"])
+	if type(calendar) != "string":
+		calendar = current["calendar"]
+	if calendar:
+		row = calendar_get(a.user.identity.id, calendar)
+		if not row or calendar_readonly(row):
+			if "calendar" in body:
+				a.error.label(400, "errors.invalid_preferences")
+				return
+			calendar = ""
+		else:
+			calendar = row["id"]
 	out = {
 		"hours": {"start": start, "finish": finish},
 		"days": sorted(set(days)) if days else [],
@@ -2001,6 +2027,7 @@ def action_preferences_set(a):
 		"reminder": bounded(body.get("reminder", current["reminder"]), -1, 10080, current["reminder"]),
 		"view": view,
 		"zones": zones,
+		"calendar": calendar,
 	}
 	a.user.preference.set("calendars", json.encode(out))
 	return {"data": {"preferences": out}}

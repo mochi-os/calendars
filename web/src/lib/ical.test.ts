@@ -7,6 +7,7 @@ import type { Component } from '@/api/types/events'
 import {
   alarmMinutes,
   creationDay,
+  defaultCalendar,
   defaultStart,
   nextReminder,
   anchoredDraft,
@@ -1385,5 +1386,41 @@ describe('when a new event starts', () => {
     expect(creationDay(today, '2026-09-29', '2026-09-29', 1)).toBe('2026-09-29')
     // The week before.
     expect(creationDay(today, '2026-09-23', '2026-09-21', 7)).toBe('2026-09-23')
+  })
+})
+
+describe('the calendar a new event goes in', () => {
+  // The built-in default is not first, as nothing orders it so.
+  const calendars = [
+    { id: 'work', readonly: false, default: false },
+    { id: 'birthdays', readonly: true, default: false },
+    { id: 'standard', readonly: false, default: true },
+    { id: 'google', readonly: true, default: false },
+  ]
+
+  it('is the one the preferences name', () => {
+    expect(defaultCalendar(calendars, 'work')).toBe('work')
+  })
+
+  it('is the built-in default when none is named, or the one named is gone or read-only', () => {
+    expect(defaultCalendar(calendars, '')).toBe('standard')
+    expect(defaultCalendar(calendars, 'deleted')).toBe('standard')
+    expect(defaultCalendar(calendars, 'google')).toBe('standard')
+    expect(defaultCalendar(calendars, 'birthdays')).toBe('standard')
+  })
+
+  it('is the first the user can write to without a built-in default, and none without one at all', () => {
+    expect(
+      defaultCalendar(
+        calendars.filter((calendar) => !calendar.default),
+        ''
+      )
+    ).toBe('work')
+    expect(
+      defaultCalendar(
+        calendars.filter((calendar) => calendar.readonly),
+        ''
+      )
+    ).toBe('')
   })
 })

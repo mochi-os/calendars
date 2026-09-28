@@ -27,16 +27,18 @@ import {
 } from '@mochi/web'
 import { Check } from 'lucide-react'
 import type { Preferences } from '@/api/types/preferences'
-import {
-  DEFAULTS,
-  usePreferencesQuery,
-  useSetPreferencesMutation,
-} from '@/hooks/use-preferences'
+import { defaultCalendar } from '@/lib/ical'
+import { useCalendarContext } from '@/context/calendar-context'
 import {
   durationOptions,
   reminderOptions,
   useHourOptions,
 } from '@/hooks/use-options'
+import {
+  DEFAULTS,
+  usePreferencesQuery,
+  useSetPreferencesMutation,
+} from '@/hooks/use-preferences'
 
 interface Props {
   open: boolean
@@ -64,6 +66,9 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
   const finishHours = useHourOptions(1, 24)
   const durations = durationOptions()
   const reminders = reminderOptions()
+  // The calendars a new event can go in, the built-in default first.
+  const { ordered } = useCalendarContext()
+  const writable = ordered.filter((calendar) => !calendar.readonly)
 
   // Weekdays in the order the user's own week runs.
   const weekdays = useMemo(() => {
@@ -255,6 +260,29 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
                   setValues((current) => ({ ...current, reminder }))
                 }
               />
+            </div>
+
+            <div className='space-y-2'>
+              <Label htmlFor='default-calendar'>
+                <Trans>Default calendar</Trans>
+              </Label>
+              <Select
+                value={defaultCalendar(writable, values.calendar)}
+                onValueChange={(calendar) =>
+                  setValues((current) => ({ ...current, calendar }))
+                }
+              >
+                <SelectTrigger id='default-calendar' className='w-full'>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {writable.map((calendar) => (
+                    <SelectItem key={calendar.id} value={calendar.id}>
+                      {calendar.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className='flex items-center justify-between gap-3'>

@@ -104,9 +104,9 @@ const undo = () => {
   options.action.onClick()
 }
 
-function mover() {
+function mover(reveal?: (calendar: string) => void) {
   const client = new QueryClient()
-  return renderHook(() => useEventMove(), {
+  return renderHook(() => useEventMove(reveal), {
     wrapper: ({ children }) => (
       <I18nProvider i18n={i18n}>
         <QueryClientProvider client={client}>{children}</QueryClientProvider>
@@ -318,6 +318,34 @@ describe('useEventMove', () => {
       undo()
     })
     expect(api.update.mock.calls[1][0].calendar).toBe('cal1')
+  })
+
+  it('shows the calendar an event was moved or copied into again', async () => {
+    const single = draftComponent(draft())
+    api.get.mockResolvedValue(stored([single], false))
+    const reveal = vi.fn()
+    const { current } = mover(reveal)
+    await act(() =>
+      current.toCalendar(
+        occurrence(at('20260916T090000'), false),
+        'cal2'
+      )('all')
+    )
+    expect(reveal).toHaveBeenLastCalledWith('cal2')
+    await act(() =>
+      current.toCalendar(occurrence(at('20260916T090000'), false), 'cal3', {
+        copy: true,
+      })('all')
+    )
+    expect(reveal).toHaveBeenLastCalledWith('cal3')
+    await act(() =>
+      current.toTime(
+        occurrence(at('20260916T090000'), false),
+        at('20260916T100000'),
+        at('20260916T110000')
+      )('all')
+    )
+    expect(reveal).toHaveBeenLastCalledWith('cal1')
   })
 
   it('moves one occurrence to another calendar by excluding it and creating it there', async () => {

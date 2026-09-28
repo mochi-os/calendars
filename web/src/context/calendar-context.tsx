@@ -52,6 +52,8 @@ interface CalendarContextValue {
   isLoading: boolean
   shown: (calendar: string) => boolean
   toggle: (calendar: string) => void
+  /** Shows a calendar an event was just saved into, if it was hidden. */
+  reveal: (calendar: string) => void
   only: (calendar: string) => void
   showAll: () => void
   hideAll: () => void
@@ -92,7 +94,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const { data, isLoading } = useCalendarsQuery()
   useCalendarsRefresh()
   const calendars = useMemo(() => data?.calendars ?? [], [data?.calendars])
-  const { shown, toggle, only, showAll, hideAll, visible } =
+  const { shown, toggle, reveal, only, showAll, hideAll, visible } =
     useShownCalendars(calendars)
 
   const { data: preferenceData } = usePreferencesQuery()
@@ -196,6 +198,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       isLoading,
       shown,
       toggle,
+      reveal,
       only,
       showAll,
       hideAll,
@@ -222,6 +225,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       isLoading,
       shown,
       toggle,
+      reveal,
       only,
       showAll,
       hideAll,

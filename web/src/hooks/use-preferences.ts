@@ -4,10 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { preferencesApi } from '@/api/preferences'
-import type {
-  Preferences,
-  PreferencesResponse,
-} from '@/api/types/preferences'
+import type { Preferences, PreferencesResponse } from '@/api/types/preferences'
 
 const preferenceKeys = {
   all: () => ['preferences'] as const,
@@ -22,6 +19,7 @@ export const DEFAULTS: Preferences = {
   reminder: 15,
   view: 'month',
   zones: false,
+  calendar: '',
 }
 
 export const usePreferencesQuery = () =>
