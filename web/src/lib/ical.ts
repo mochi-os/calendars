@@ -10,6 +10,7 @@
 // seconds.
 import {
   addDays,
+  currentZone,
   descriptionText,
   timestampAt,
   zonedDay,
@@ -372,11 +373,14 @@ function alarm(minutes: number, summary: string): Component {
  * Whether a draft's zones are worth showing: a timed event with an end that is
  * not in the user's zone. Both ends in the user's zone, or an event that had
  * no zone at all and so reads in the user's, say nothing the user needs to see.
+ * A zone is the user's under any of its names, Asia/Calcutta as Asia/Kolkata.
  */
 export function foreignZones(draft: EventDraft, timezone: string): boolean {
+  const own = currentZone(timezone)
   return (
     !draft.allday &&
-    (draft.zone.start !== timezone || draft.zone.finish !== timezone)
+    (currentZone(draft.zone.start) !== own ||
+      currentZone(draft.zone.finish) !== own)
   )
 }
 
@@ -1089,6 +1093,18 @@ export function newDraft(
     repeat: emptyRepeat(),
     reminders: defaultReminders(options.reminder),
   }
+}
+
+/**
+ * The zones once the start's is set to `zone`: the end follows the start
+ * while the two agree, under whichever of their names each was written.
+ */
+export function startZone(
+  zones: { start: string; finish: string },
+  zone: string
+): { start: string; finish: string } {
+  const together = currentZone(zones.finish) === currentZone(zones.start)
+  return { start: zone, finish: together ? zone : zones.finish }
 }
 
 /**

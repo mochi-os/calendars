@@ -9,6 +9,7 @@ import {
   PopoverAnchor,
   PopoverContent,
   coveredDays,
+  currentZone,
   descriptionText,
   EventTitle,
   eventStatus,
@@ -61,13 +62,15 @@ export function EventPopover({
   const start = new Date(instance.start * 1000)
   const finish = new Date(instance.finish * 1000)
   const lastDay = new Date(Math.max(instance.start, instance.finish - 1) * 1000)
-  // The zones the ends were written in, when they are not the user's own.
+  // The zones the ends were written in, when they are not the user's own
+  // under any of its names.
   const startZone = instance.zone?.start || undefined
   const finishZone = instance.zone?.finish || undefined
+  const user = currentZone(format.timezone)
   const foreign =
     !instance.allday &&
-    ((startZone !== undefined && startZone !== format.timezone) ||
-      (finishZone !== undefined && finishZone !== format.timezone))
+    ((startZone !== undefined && currentZone(startZone) !== user) ||
+      (finishZone !== undefined && currentZone(finishZone) !== user))
 
   // The span read in a pair of zones, the user's own when none is given.
   // With cities, each end names the city of its zone: "10:00 London to

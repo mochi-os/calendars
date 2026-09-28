@@ -52,6 +52,7 @@ import {
   draftInstants,
   editedComponents,
   endAfterStart,
+  startZone,
   expressible,
   foreignZones,
   emptyRepeat,
@@ -581,17 +582,10 @@ function EditorFields({
               label={t`Start time zone`}
               value={draft.zone.start}
               onChange={(zone) =>
-                // The end follows the start while the two still agree.
                 edit((current) =>
                   endAfterStart({
                     ...current,
-                    zone: {
-                      start: zone,
-                      finish:
-                        current.zone.finish === current.zone.start
-                          ? zone
-                          : current.zone.finish,
-                    },
+                    zone: startZone(current.zone, zone),
                   })
                 )
               }

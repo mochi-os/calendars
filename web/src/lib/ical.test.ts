@@ -32,6 +32,7 @@ import {
   repeatRule,
   ruleRepeat,
   splitSeries,
+  startZone,
   triggerMinutes,
   truncatedSeries,
   utcValue,
@@ -729,6 +730,46 @@ describe('foreignZones', () => {
         user
       )
     ).toBe(false)
+  })
+})
+
+// The tests run on Node, whose zone data names zones as Chrome does:
+// Asia/Calcutta for Asia/Kolkata.
+describe('one zone under two names', () => {
+  it('is the user zone whichever name either side uses', () => {
+    for (const [written, user] of [
+      ['Asia/Calcutta', 'Asia/Kolkata'],
+      ['Asia/Kolkata', 'Asia/Calcutta'],
+      ['Europe/Kiev', 'Europe/Kyiv'],
+    ]) {
+      expect(
+        foreignZones(
+          draft({ allday: false, zone: { start: written, finish: written } }),
+          user
+        )
+      ).toBe(false)
+    }
+    expect(
+      foreignZones(
+        draft({
+          allday: false,
+          zone: { start: 'Asia/Calcutta', finish: 'Europe/Kyiv' },
+        }),
+        'Asia/Kolkata'
+      )
+    ).toBe(true)
+  })
+
+  it('keeps the end following the start while the two agree under any names', () => {
+    expect(
+      startZone(
+        { start: 'Asia/Calcutta', finish: 'Asia/Kolkata' },
+        'Asia/Tokyo'
+      )
+    ).toEqual({ start: 'Asia/Tokyo', finish: 'Asia/Tokyo' })
+    expect(
+      startZone({ start: 'Asia/Calcutta', finish: 'Europe/Kyiv' }, 'Asia/Tokyo')
+    ).toEqual({ start: 'Asia/Tokyo', finish: 'Europe/Kyiv' })
   })
 })
 
