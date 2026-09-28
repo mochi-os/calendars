@@ -23,6 +23,8 @@ import {
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import {
+  creationDay,
+  defaultStart,
   instanceDraft,
   newDraft,
   type EventDraft,
@@ -171,28 +173,35 @@ export function CalendarPage() {
     ]
   )
 
-  // "New event" lands on the next whole hour of today, the length the user
-  // set, and is all-day when the last new event was: a click on the hour
-  // grid says timed, but the button has nothing else to go on.
-  const createNow = () => {
+  // A new event with no time of its own: the next whole hour today, the
+  // start of the working hours on another day, the length the user set, and
+  // all-day when the last new event was. A click on the hour grid says
+  // timed, but the button and a day cell have nothing else to go on.
+  const createAt = (day: string) => {
     const now = new Date()
-    const hour = Math.min(23, Math.floor(format.zonedMinutes(now) / 60) + 1)
-    const from = format.timestampAt(format.zonedDay(now), hour * 60)
+    const start = defaultStart(
+      day,
+      format.zonedDay(now),
+      format.zonedMinutes(now),
+      preferences.hours
+    )
+    const from = format.timestampAt(start.day, start.minutes)
     setEditing({
       mode: 'create',
       draft: compose(from, from + preferences.duration * 60, remembered.allday),
     })
   }
 
+  // "New event" lands on today when today is on screen, and otherwise on
+  // the day the view is on.
+  const createNow = () =>
+    createAt(
+      creationDay(format.zonedDay(new Date()), date, range.from, range.days)
+    )
+
   // A day cell in the month views says which day, not which kind, so it
   // takes the remembered all-day switch like the button does.
-  const createOnDay = (day: string) => {
-    const from = format.timestampAt(day, preferences.hours.start * 60)
-    setEditing({
-      mode: 'create',
-      draft: compose(from, from + preferences.duration * 60, remembered.allday),
-    })
-  }
+  const createOnDay = (day: string) => createAt(day)
 
   // A click opens the editor; a read-only occurrence (a subscription's or a
   // birthday) has nothing to edit, so it opens the summary popover instead.

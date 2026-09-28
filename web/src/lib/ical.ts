@@ -11,6 +11,7 @@
 import {
   addDays,
   currentZone,
+  daysBetween,
   descriptionText,
   timestampAt,
   zonedDay,
@@ -1058,6 +1059,39 @@ export const REMEMBERED: Remembered = { allday: false, zone: null }
 /** What a saved new event leaves for the next one. */
 export function remembered(draft: EventDraft): Remembered {
   return { allday: draft.allday, zone: { ...draft.zone } }
+}
+
+/**
+ * Where a new event with no time of its own starts on `day`: at the next
+ * whole hour when the day is today, at the start of the working hours on any
+ * other day, and at tomorrow's working hours once today has no whole hour
+ * left. `now` is the minutes past midnight today.
+ */
+export function defaultStart(
+  day: string,
+  today: string,
+  now: number,
+  hours: { start: number }
+): { day: string; minutes: number } {
+  if (day !== today) return { day, minutes: hours.start * 60 }
+  const next = Math.floor(now / 60) + 1
+  if (next > 23) return { day: addDays(today, 1), minutes: hours.start * 60 }
+  return { day, minutes: next * 60 }
+}
+
+/**
+ * The day "New event" lands on: today when today is on screen, and otherwise
+ * the day the view is on, since a user paging through another week is
+ * planning that week. `from` and `days` are the range on screen.
+ */
+export function creationDay(
+  today: string,
+  date: string,
+  from: string,
+  days: number
+): string {
+  const offset = daysBetween(from, today)
+  return offset >= 0 && offset < days ? today : date
 }
 
 /**

@@ -6,6 +6,8 @@ import { describe, expect, it } from 'vitest'
 import type { Component } from '@/api/types/events'
 import {
   alarmMinutes,
+  creationDay,
+  defaultStart,
   nextReminder,
   anchoredDraft,
   componentDraft,
@@ -1338,5 +1340,50 @@ describe('an end that falls before its start after a zone change', () => {
   it('never touches an all-day draft, even one that ends before it starts', () => {
     const whole = { ...london, allday: true, finish: '2026-09-20' }
     expect(endAfterStart(whole)).toBe(whole)
+  })
+})
+
+describe('when a new event starts', () => {
+  const hours = { start: 8, finish: 17 }
+  const today = '2026-09-28'
+
+  it('starts today at the next whole hour', () => {
+    expect(defaultStart(today, today, 14 * 60 + 37, hours)).toEqual({
+      day: today,
+      minutes: 15 * 60,
+    })
+    expect(defaultStart(today, today, 22 * 60 + 59, hours)).toEqual({
+      day: today,
+      minutes: 23 * 60,
+    })
+  })
+
+  it('starts on another day at the start of the working hours', () => {
+    expect(defaultStart('2026-10-02', today, 14 * 60 + 37, hours)).toEqual({
+      day: '2026-10-02',
+      minutes: 8 * 60,
+    })
+    expect(defaultStart('2026-10-02', today, 0, { start: 7 })).toEqual({
+      day: '2026-10-02',
+      minutes: 7 * 60,
+    })
+  })
+
+  it("starts at tomorrow's working hours once today has no whole hour left", () => {
+    expect(defaultStart(today, today, 23 * 60 + 10, hours)).toEqual({
+      day: '2026-09-29',
+      minutes: 8 * 60,
+    })
+  })
+
+  it('lands on today when today is on screen, else on the day the view is on', () => {
+    // A week from Monday the 28th, today inside it.
+    expect(creationDay(today, '2026-09-30', '2026-09-28', 7)).toBe(today)
+    // The next week, paged to.
+    expect(creationDay(today, '2026-10-07', '2026-10-05', 7)).toBe('2026-10-07')
+    // A day view of tomorrow.
+    expect(creationDay(today, '2026-09-29', '2026-09-29', 1)).toBe('2026-09-29')
+    // The week before.
+    expect(creationDay(today, '2026-09-23', '2026-09-21', 7)).toBe('2026-09-23')
   })
 })
