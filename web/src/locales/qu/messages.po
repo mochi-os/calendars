@@ -26,6 +26,11 @@ msgstr "(hukchasqa)"
 msgid "(expand)"
 msgstr "(kichay)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Mana sutinchayniyuq)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(qam)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# resultado} other {# resultadokuna}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# akllasqa} other {# akllasqa}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sem} other {#sem}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, one {# p'unchaw ñawpaqta} other {# p'unchaw ñawpaqta}}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} suti"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} {to} kama"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# astawan} other {+# astawan}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -147,7 +155,7 @@ msgstr "Chaskiy"
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "Access denied"
-msgstr "Yaykuy mana saqisqa"
+msgstr "Yaykuy mana saqisqachu"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Access level"
@@ -194,6 +202,10 @@ msgstr "Sut'inchayta yapay"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add checklist item"
 msgstr "Lista item yapay"
+
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "Huk mañanata yapay"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -244,8 +256,7 @@ msgid "AI"
 msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "Tukuy p'unchaw"
@@ -257,6 +268,10 @@ msgstr "Llapan ruwanakuna"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Pillapas {entityLabel} maskananpaq saqiy"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Calendarioman yaykuyta saqiy"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -273,7 +288,11 @@ msgstr "Mana suyasqa pantay rikurirqan"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push willakuy"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Huk Mochi utaq CalDAV servidor"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -287,6 +306,18 @@ msgstr "Pipas yaykusqa"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Kay feed-ta suscribisqa tukuy imapas manaña chaskinqachu. Chaymanta musuq URL-ta copiayta atinki."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "App-paq contraseña"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -320,6 +351,10 @@ msgstr "Saqiyta munanki? {opponentName} pukllayta atipanqa."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Wicharispa"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Mama quchapi"
 
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
@@ -356,6 +391,7 @@ msgstr "{name} avatar"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Kutichiy"
 
@@ -421,6 +457,10 @@ msgstr "calendario"
 msgid "Calendar"
 msgstr "Calendario"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Calendarioman yaykuy mana qusqachu"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -446,10 +486,22 @@ msgstr "Calendario kamarisqa"
 msgid "Calendar deleted"
 msgstr "Calendario wischusqa"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Calendario tinkichisqa"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Calendario sutichasqa"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Calendario servidor"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Calendario sincronizasqa"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -459,7 +511,7 @@ msgstr "Calendario musuqmi"
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
-msgstr "Calendariokuna"
+msgstr "Kalendariokuna"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -486,6 +538,7 @@ msgstr "Cámara mana kanchu"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -504,6 +557,11 @@ msgstr "Kutichiy mana ruway"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Mana ruwasqa"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Mana ruwasqa"
 
@@ -537,7 +595,7 @@ msgstr "Hukchasqa ruwana"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
-msgstr "Checkbox"
+msgstr "Casilla"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Checking for changes..."
@@ -563,6 +621,7 @@ msgstr "Simi akllay"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "Llapan pichay"
 msgid "Clear search"
 msgstr "Maskhay pichay"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "Wichq'ay"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "Diálogo wichq'ay"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "Sidebar pisichay"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "Vista kamariykuna allichay"
 msgid "Confirm"
 msgstr "Takyachiy"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Huk mañanata tinkichiy"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Tinkiy"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Huk mañanatawan tinkichiy"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google tinkiy"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tinkichisqa"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Tinkisqa apaykachanakuna"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "Qatiy"
 msgid "Continue with {label}"
 msgstr "{label} wan catiy"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} wan qatiy"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Kopiasqa"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Clipboard-man copiasqa"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Copiay"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} copiay"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Calendario dirección copiay"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Ruwanata copiay"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "Kay ruwanata copiay"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "Allichay predeterminado"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "Mana mañakusqa patrónwan tupanchu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1059,7 +1128,6 @@ msgstr "Ñawpaq ruwanakuna"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Hukchay"
 
@@ -1109,6 +1177,10 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Email código"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google cuentakunata kallpachay"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Tukukuy"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "Tukukuy pacha"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Tukukuy pacha suyu"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Tukukun"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "Manaraq qallarichkaptin tukun"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1138,6 +1219,12 @@ msgid "Error"
 msgstr "Pantay"
 
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "Ruwana copiasqa"
+
+#: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "Ruwana kamarisqa"
 
@@ -1145,6 +1232,13 @@ msgstr "Ruwana kamarisqa"
 msgid "Event deleted"
 msgstr "Ruwana wischusqa"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "Ruwana astasqa"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Ruwana waqaychasqa"
@@ -1176,6 +1270,10 @@ msgstr "Sinchi hatun"
 msgid "Failed to add account"
 msgstr "Mana cuentata yapayta atinchu"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Calendarioman yaykuyta mañayta mana atirqachu"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Mana calendariota qhawayta atinchu"
@@ -1184,10 +1282,18 @@ msgstr "Mana calendariota qhawayta atinchu"
 msgid "Failed to connect device"
 msgstr "Mana mañanata tinkichiyta atinchu"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Cuentata tinkichiyta mana atirqachu"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Mana kikinchayta atinchu"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "Mana ruwanata copiayta atinchu"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "Mana RSS tokenta chaskiyta atinchu"
 msgid "Failed to get the calendar address"
 msgstr "Mana calendario dirección tariyta atinchu"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Calendariota tinkichiyta mana atirqachu"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Mana wichachiyta atinchu"
@@ -1279,6 +1389,14 @@ msgstr "Mana ruwanata astayta atinchu"
 msgid "Failed to post comment"
 msgstr "Mana comentariota willakuyta atinchu"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Cuentakunata ñawinchayta mana atirqachu"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Calendariokunata ñawinchayta mana atirqachu"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1317,6 +1435,14 @@ msgstr "Mana ruwanata waqaychayta atinchu"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Mana suscribiyta atinchu"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Calendariota sincronizayta mana atirqachu"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "Mana kutichiyta atinchu"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1380,6 +1506,14 @@ msgstr "Temamanta"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Kutiy"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Google cuentakunaqa manam kay servidorpi kallpachasqachu."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1492,6 +1626,15 @@ msgstr "Sut'i"
 msgid "Link"
 msgstr "T'inki"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "T'inkiy"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Tinkichisqa"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Enlacekuna"
@@ -1546,10 +1689,6 @@ msgstr "Lluqsichkan…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Categoríakunata kamachiy"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Mañanakunata kamachiy"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1634,8 +1773,10 @@ msgstr "Astasqa"
 msgid "Moved {field}"
 msgstr "{field} astasqa"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0}-man astachkan"
 
@@ -1649,6 +1790,8 @@ msgstr "Achka semanakuna"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "Mana hayk'aqpas"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Musuq"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Aswan musuq"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1736,7 +1883,7 @@ msgstr "Mana tinkichisqa mañana kanchu."
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No events"
-msgstr "Mana ruwanakuna"
+msgstr "Mana ruwanakuna kanchu"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1841,9 +1988,13 @@ msgstr "Mana imapas tarisqachu"
 msgid "Notifications: {0}"
 msgstr "Willakuykuna: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Yupay"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Yupay"
 
@@ -1940,6 +2091,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Passkeykunaqa manam kay navegadorpi kanchu"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Contraseña"
 
@@ -2020,6 +2172,10 @@ msgstr "Prompt waqaychasqa"
 msgid "Properties"
 msgstr "Kayninkuna"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Publicasqa calendario dirección (ñawinchayllapaq)"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
 msgstr "Push willakuy"
@@ -2086,6 +2242,9 @@ msgstr "Relevancia {relevance}, interés {weight}"
 msgid "Reload"
 msgstr "Wakmanta wichachiy"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Yuyarichiq"
@@ -2105,6 +2264,8 @@ msgstr "{0} filtrota qichuy"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "{name}-ta qichuy"
 
@@ -2283,7 +2444,7 @@ msgstr "Waqaychashan..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Maskay"
 
@@ -2338,7 +2499,7 @@ msgstr "Maskashan..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Akllay"
+msgstr "Akllana"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2411,6 +2572,10 @@ msgstr "Serif"
 msgid "Server"
 msgstr "Servidor"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Servidor dirección"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2439,6 +2604,10 @@ msgstr "Wakichiykuna"
 msgid "Show classes"
 msgstr "Clasekunata rikuchiy"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Ruraykunata kikin pacha suyunpi rikuchiy"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
 msgstr "Campoykunata rikuchiy"
@@ -2453,7 +2622,7 @@ msgstr "{total}manta {totalShown} rikuchichkan"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "Kinray barra"
+msgstr "Waqta barra"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -2502,6 +2671,10 @@ msgstr "Ñawpaq comentariota churaspa rimanakuyta qallariy."
 msgid "Start time"
 msgstr "Qallariy hora"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Qallariy pacha suyu"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "Qhaway saqiy"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Tema"
+msgstr "Apaykachaq utaq huñu"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,9 +2716,21 @@ msgstr "Intichaw"
 msgid "Switch to view 1-9"
 msgstr "1-9 vistaman tikray"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Kunan tinkichiy"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Tinkichichkan..."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -2561,6 +2746,11 @@ msgstr "Etiquetaqa 50 sananchakuna icha pisi kanan"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Unanchakuna"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Manaraq takyachisqa"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "chay direcciónqa mana calendariota quwanchu"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "calendarioqa manaña chay servidorpichu kachkan"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "calendarioqa ancha hatunmi"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "calendarioqa kikin pachapi huk servidorpi t'ikrachisqa karqan"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "calendariop servidorninman chayayta mana atikurqachu"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "calendariop servidornin cuentap credencialninkunata mana chaskirqachu"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2633,6 +2839,10 @@ msgstr "Mañakusqa willaykuna mana tarikunchu."
 msgid "The server returned a web page instead of data."
 msgstr "Servidorqa mana willakuykunatachu kutichirqan, huk web p'anqatam."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "Kay hinaspa qatiqkuna"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Kay aplicacionqa manam passkeykita llamk'achiyta atinchu. Ajustes ukhupi, Permisos ukhupi saqiy."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "Illapachaw"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Pacha zona"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "Sutinchay"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "Sutinchay munasqa"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2708,7 +2922,7 @@ msgstr "Ancha achka mañakuykuna"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Hawan"
+msgstr "Aswan allin"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -2765,6 +2979,10 @@ msgstr "Mana akllasqa"
 msgid "Unavailable"
 msgstr "Mana atikuq"
 
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "Kutichiy"
+
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
@@ -2805,7 +3023,7 @@ msgstr "{field} musuqchasqa"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Upload"
-msgstr "Upload"
+msgstr "Wichachiy"
 
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "Apaykachaq"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Apaykachaq suti"
 
@@ -2944,6 +3163,10 @@ msgstr "Watasapa"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Kay t'aqamanqa mana yaykuyta atinkichu."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Manam ima Google cuentatapas tinkichirqankichu."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

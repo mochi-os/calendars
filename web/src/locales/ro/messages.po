@@ -26,6 +26,11 @@ msgstr "(editat)"
 msgid "(expand)"
 msgstr "(extinde)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Fără titlu)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(tu)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# rezultat} few {# rezultate} other {# de rezultate}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# selectat} few {# selectate} other {# selectate}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#săpt} other {#săpt}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, one {cu # zi înainte} few {cu # zile înainte} other {cu
 msgid "{entityLabel} name"
 msgstr "Numele {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "de la {from} la {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# în plus} few {+# în plus} other {+# în plus}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -195,6 +203,10 @@ msgstr "Adaugă legendă"
 msgid "Add checklist item"
 msgstr "Adaugă element în listă"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "Adaugă un dispozitiv"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -241,11 +253,10 @@ msgstr "După un număr"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
-msgstr "IA"
+msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "Toată ziua"
@@ -257,6 +268,10 @@ msgstr "Toate evenimentele"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Permite oricui să caute {entityLabel}"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Permite accesul la calendar"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -275,6 +290,10 @@ msgstr "A apărut o eroare neașteptată"
 msgid "Android push"
 msgstr "Push Android"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Alt server Mochi sau CalDAV"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -287,6 +306,18 @@ msgstr "Oricine este autentificat"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Tot ce este abonat la acest flux va înceta să îl primească. Puteți copia un URL nou după aceea."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "Parolă specifică aplicației"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -320,6 +351,10 @@ msgstr "Sigur vrei să te retragi? {opponentName} va câștiga jocul."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Crescător"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Pe mare"
 
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
@@ -356,6 +391,7 @@ msgstr "Avatar pentru {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Înapoi"
 
@@ -421,6 +457,10 @@ msgstr "calendar"
 msgid "Calendar"
 msgstr "Calendar"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Accesul la calendar nu a fost acordat"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -446,10 +486,22 @@ msgstr "Calendar creat"
 msgid "Calendar deleted"
 msgstr "Calendar șters"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Calendar conectat"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Calendar redenumit"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Server de calendar"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Calendar sincronizat"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -486,6 +538,7 @@ msgstr "Camera nu este disponibilă"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -504,6 +557,11 @@ msgstr "Anulează răspunsul"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Anulat"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Anulat"
 
@@ -563,6 +621,7 @@ msgstr "Alege limba"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "Golește tot"
 msgid "Clear search"
 msgstr "Golește căutarea"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "Închide"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "Închide dialogul"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "Restrânge bara laterală"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "Configurează setările vizualizării"
 msgid "Confirm"
 msgstr "Confirmă"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Conectează un dispozitiv"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Conectare"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Conectează alt dispozitiv"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Conectare Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Conectat"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Dispozitive conectate"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "Continuă"
 msgid "Continue with {label}"
 msgstr "Continuă cu {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Continuă cu {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Copiat"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Copiat în clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Copiază"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Copiază {label}"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Copiază adresa calendarului"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Copiază evenimentul"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "Copiază acest eveniment"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "Sortare implicită"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "Nu corespunde modelului necesar"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1059,7 +1128,6 @@ msgstr "Evenimente anterioare"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Editează"
 
@@ -1109,6 +1177,10 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Cod email"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Activează conturile Google"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Sfârșit"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "Ora de sfârșit"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Fusul orar al sfârșitului"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Se încheie"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "Se termină înainte să înceapă"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1138,6 +1219,12 @@ msgid "Error"
 msgstr "Eroare"
 
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "Eveniment copiat"
+
+#: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "Eveniment creat"
 
@@ -1145,6 +1232,13 @@ msgstr "Eveniment creat"
 msgid "Event deleted"
 msgstr "Eveniment șters"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "Eveniment mutat"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Eveniment salvat"
@@ -1176,6 +1270,10 @@ msgstr "Extra mare"
 msgid "Failed to add account"
 msgstr "Adăugarea contului a eșuat"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Solicitarea accesului la calendar a eșuat"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Verificarea calendarului a eșuat"
@@ -1184,10 +1282,18 @@ msgstr "Verificarea calendarului a eșuat"
 msgid "Failed to connect device"
 msgstr "Conectarea dispozitivului a eșuat"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Conectarea contului a eșuat"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Copierea a eșuat"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "Copierea evenimentului a eșuat"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "Obținerea tokenului RSS a eșuat"
 msgid "Failed to get the calendar address"
 msgstr "Obținerea adresei calendarului a eșuat"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Conectarea calendarului a eșuat"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Încărcarea a eșuat"
@@ -1279,6 +1389,14 @@ msgstr "Mutarea evenimentului a eșuat"
 msgid "Failed to post comment"
 msgstr "Postarea comentariului a eșuat"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Citirea conturilor a eșuat"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Citirea calendarelor a eșuat"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1317,6 +1435,14 @@ msgstr "Salvarea evenimentului a eșuat"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Abonarea a eșuat"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Sincronizarea calendarului a eșuat"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "Anularea a eșuat"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1380,6 +1506,14 @@ msgstr "Din temă"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Înapoi"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Conturile Google nu sunt activate pe acest server."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Calendar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1492,6 +1626,15 @@ msgstr "Luminos"
 msgid "Link"
 msgstr "Link"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "Conectează"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Conectat"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Linkuri"
@@ -1546,10 +1689,6 @@ msgstr "Se deconectează…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Gestionează categoriile"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Gestionează dispozitivele"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1634,8 +1773,10 @@ msgstr "Mutat"
 msgid "Moved {field}"
 msgstr "Mutat {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Se mută în {0}"
 
@@ -1649,6 +1790,8 @@ msgstr "Mai multe săptămâni"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "Niciodată"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nou"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Cele mai noi"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1841,9 +1988,13 @@ msgstr "Nu s-a găsit nimic"
 msgid "Notifications: {0}"
 msgstr "Notificări: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Număr"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Număr"
 
@@ -1940,6 +2091,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "Cheile de acces nu sunt disponibile în acest browser"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Parolă"
 
@@ -2020,6 +2172,10 @@ msgstr "Prompt salvat"
 msgid "Properties"
 msgstr "Proprietăți"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Adresă de calendar publicată (doar citire)"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
 msgstr "Notificare push"
@@ -2086,6 +2242,9 @@ msgstr "Relevanță {relevance}, interes {weight}"
 msgid "Reload"
 msgstr "Reîncarcă"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Memento"
@@ -2105,6 +2264,8 @@ msgstr "Elimină filtrul {0}"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "Elimină {name}"
 
@@ -2283,7 +2444,7 @@ msgstr "Se salvează..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Caută"
 
@@ -2338,7 +2499,7 @@ msgstr "Se caută..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Selectează"
+msgstr "Selecție"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2411,6 +2572,10 @@ msgstr "Cu serife"
 msgid "Server"
 msgstr "Server"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Adresa serverului"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2438,6 +2603,10 @@ msgstr "Setări"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
 msgstr "Arată clasele"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Afișează evenimentele în propriul lor fus orar"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
@@ -2502,6 +2671,10 @@ msgstr "Începe discuția adăugând primul comentariu."
 msgid "Start time"
 msgstr "Ora de început"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Fusul orar al începutului"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "Nu mai urmări"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Subiect"
+msgstr "Utilizator sau grup"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,9 +2716,21 @@ msgstr "Duminică"
 msgid "Switch to view 1-9"
 msgstr "Comută la vizualizarea 1-9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Sincronizează acum"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Se sincronizează..."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistem"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistem"
 
@@ -2561,6 +2746,11 @@ msgstr "Eticheta trebuie să aibă cel mult 50 de caractere"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Etichete"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Provizoriu"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "adresa nu furnizează un calendar"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "calendarul nu mai este pe acel server"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "calendarul este prea mare"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "calendarul a fost modificat pe celălalt server în același timp"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "serverul calendarului nu a putut fi contactat"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "serverul calendarului a respins datele de autentificare ale contului"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2633,6 +2839,10 @@ msgstr "Conținutul solicitat nu a putut fi găsit."
 msgid "The server returned a web page instead of data."
 msgstr "Serverul a returnat o pagină web în loc de date."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "Acesta și următoarele"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Această aplicație nu are permisiunea de a folosi cheia dvs. de acces. Permiteți-o în Setări, la Permisiuni."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "Joi"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Fus orar"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "Titlu"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "Titlul este obligatoriu"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2708,7 +2922,7 @@ msgstr "Prea multe solicitări"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Sus"
+msgstr "Cele mai bune"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -2764,6 +2978,10 @@ msgstr "Neatribuit"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "Indisponibil"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "Anulează"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "Utilizator"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Nume de utilizator"
 
@@ -2853,7 +3072,7 @@ msgstr "Vizualizator video: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Vizualizează"
+msgstr "Vizualizare"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2944,6 +3163,10 @@ msgstr "Anual"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Nu aveți acces la această secțiune."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Nu ai conectat niciun cont Google."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

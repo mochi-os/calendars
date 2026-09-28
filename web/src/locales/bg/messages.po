@@ -26,6 +26,11 @@ msgstr "(редактирано)"
 msgid "(expand)"
 msgstr "(разгъване)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Без заглавие)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(вие)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# резултат} other {# резултата}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# избран} other {# избрани}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#сед} other {#сед}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, one {# ден преди} other {# дни преди}}"
 msgid "{entityLabel} name"
 msgstr "Име на {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} до {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# още} other {+# още}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -195,6 +203,10 @@ msgstr "Добавяне на надпис"
 msgid "Add checklist item"
 msgstr "Добави елемент от списъка"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "Добавяне на устройство"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -241,11 +253,10 @@ msgstr "След брой"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
-msgstr "ИИ"
+msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "Цял ден"
@@ -257,6 +268,10 @@ msgstr "Всички събития"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Разрешаване на всеки да търси {entityLabel}"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Разреши достъп до календара"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -273,7 +288,11 @@ msgstr "Възникна неочаквана грешка"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Push за Android"
+msgstr "Пуш известия за Android"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Друг сървър на Mochi или CalDAV"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -287,6 +306,18 @@ msgstr "Всеки, който е влязъл"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Всичко, абонирано за този канал, ще спре да го получава. След това можете да копирате нов URL адрес."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "Парола за приложение"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -321,6 +352,10 @@ msgstr "Сигурни ли сте, че искате да се откажете
 msgid "Ascending"
 msgstr "Възходящ"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "В морето"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "В момента на събитието"
@@ -340,7 +375,7 @@ msgstr "Удостоверени потребители"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Код от authenticator"
+msgstr "Код от удостоверител"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -356,6 +391,7 @@ msgstr "Аватар за {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Назад"
 
@@ -421,6 +457,10 @@ msgstr "календар"
 msgid "Calendar"
 msgstr "Календар"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Достъпът до календара не беше разрешен"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -446,10 +486,22 @@ msgstr "Календарът е създаден"
 msgid "Calendar deleted"
 msgstr "Календарът е изтрит"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Календарът е свързан"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Календарът е преименуван"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Сървър за календари"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Календарът е синхронизиран"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -486,6 +538,7 @@ msgstr "Камерата не е достъпна"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -506,6 +559,11 @@ msgstr "Отказ от отговора"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "Отказано"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "Отменено"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -563,6 +621,7 @@ msgstr "Изберете език"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "Изчисти всички"
 msgid "Clear search"
 msgstr "Изчисти търсенето"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "Затвори"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "Затвори диалога"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "Сгъни страничната лента"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "Конфигурирайте настройките на изгледа"
 msgid "Confirm"
 msgstr "Потвърди"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Свързване на устройство"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Свързване"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Свързване на друго устройство"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Свързване с Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Свързано"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Свързани устройства"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "Продължи"
 msgid "Continue with {label}"
 msgstr "Продължи с {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Продължи с {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Копирано"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Копирано в клипборда"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Копирай"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Копирай {label}"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Копирай адреса на календара"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Копиране на събитие"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "Копирай това събитие"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "Сортиране по подразбиране"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "Не съответства на изисквания шаблон"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1059,7 +1128,6 @@ msgstr "По-ранни събития"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Редактиране"
 
@@ -1109,6 +1177,10 @@ msgstr "Имейл"
 msgid "Email code"
 msgstr "Имейл код"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Активиране на акаунти в Google"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Край"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "Час на край"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Часова зона на края"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Завършва"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "Свършва преди да е започнало"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1131,11 +1212,17 @@ msgstr "Въведете кода от имейла си"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Enter your authenticator code"
-msgstr "Въведете кода от приложението за удостоверяване"
+msgstr "Въведете кода от удостоверителя"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Error"
 msgstr "Грешка"
+
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "Събитието е копирано"
 
 #: src/features/calendar/editor.tsx
 msgid "Event created"
@@ -1145,6 +1232,13 @@ msgstr "Събитието е създадено"
 msgid "Event deleted"
 msgstr "Събитието е изтрито"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "Събитието е преместено"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Събитието е запазено"
@@ -1176,6 +1270,10 @@ msgstr "Много голям"
 msgid "Failed to add account"
 msgstr "Неуспешно добавяне на акаунт"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Неуспешно заявяване на достъп до календара"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Неуспешна проверка на календара"
@@ -1184,10 +1282,18 @@ msgstr "Неуспешна проверка на календара"
 msgid "Failed to connect device"
 msgstr "Неуспешно свързване на устройството"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Неуспешно свързване на акаунта"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Неуспешно копиране"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "Неуспешно копиране на събитието"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "Неуспешно получаване на RSS токен"
 msgid "Failed to get the calendar address"
 msgstr "Неуспешно получаване на адреса на календара"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Неуспешно свързване на календара"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Неуспешно зареждане"
@@ -1279,6 +1389,14 @@ msgstr "Неуспешно преместване на събитието"
 msgid "Failed to post comment"
 msgstr "Неуспешно публикуване на коментар"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Неуспешно прочитане на акаунтите"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Неуспешно прочитане на календарите"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1317,6 +1435,14 @@ msgstr "Неуспешно запазване на събитието"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Неуспешно абониране"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Неуспешна синхронизация на календара"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "Неуспешна отмяна"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1380,6 +1506,14 @@ msgstr "От темата"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Назад"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Акаунтите в Google не са активирани на този сървър."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Календар"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1492,6 +1626,15 @@ msgstr "Светъл"
 msgid "Link"
 msgstr "Връзка"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "Свържи"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Свързан"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Връзки"
@@ -1546,10 +1689,6 @@ msgstr "Излизане…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Управление на категориите"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Управление на устройствата"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1634,8 +1773,10 @@ msgstr "Преместено"
 msgid "Moved {field}"
 msgstr "Преместено {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Преместване на {0}"
 
@@ -1649,6 +1790,8 @@ msgstr "Няколко седмици"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "Никога"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Ново"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Най-нови"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1841,9 +1988,13 @@ msgstr "Нищо не е намерено"
 msgid "Notifications: {0}"
 msgstr "Известия: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Номер"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Номер"
 
@@ -1937,9 +2088,10 @@ msgstr "Ключове за достъп"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys не са налични в този браузър"
+msgstr "Ключовете за достъп не са налични в този браузър"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Парола"
 
@@ -2020,9 +2172,13 @@ msgstr "Промптът е запазен"
 msgid "Properties"
 msgstr "Свойства"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Публикуван адрес на календар (само за четене)"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push известие"
+msgstr "Пуш известие"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2086,6 +2242,9 @@ msgstr "Релевантност {relevance}, интерес {weight}"
 msgid "Reload"
 msgstr "Презареди"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Напомняне"
@@ -2105,6 +2264,8 @@ msgstr "Премахни филтър {0}"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "Премахни {name}"
 
@@ -2283,7 +2444,7 @@ msgstr "Запазва се..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Търсене"
 
@@ -2338,7 +2499,7 @@ msgstr "Търси се..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Избери"
+msgstr "Падащ списък"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2411,6 +2572,10 @@ msgstr "Серифен"
 msgid "Server"
 msgstr "Сървър"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Адрес на сървъра"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2438,6 +2603,10 @@ msgstr "Настройки"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
 msgstr "Покажи класовете"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Показвай събитията в собствената им часова зона"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
@@ -2502,6 +2671,10 @@ msgstr "Започнете дискусията, като добавите пъ�
 msgid "Start time"
 msgstr "Начален час"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Часова зона на началото"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "Спри да следиш"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тема"
+msgstr "Потребител или група"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,9 +2716,21 @@ msgstr "Неделя"
 msgid "Switch to view 1-9"
 msgstr "Превключи към изглед 1-9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Синхронизирай сега"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Синхронизация..."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Система"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Система"
 
@@ -2561,6 +2746,11 @@ msgstr "Етикетът трябва да е най-много 50 знака"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Етикети"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Под въпрос"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "адресът не предоставя календар"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "календарът вече не е на този сървър"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "календарът е твърде голям"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "календарът беше променен на другия сървър по същото време"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "сървърът на календара е недостъпен"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "сървърът на календара отхвърли данните за достъп на акаунта"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2623,7 +2829,7 @@ msgstr "Заявката за микрофон остана без отгово�
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Заявката за passkey остана без отговор"
+msgstr "Заявката за ключ за достъп остана без отговор"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2633,9 +2839,13 @@ msgstr "Заявеното съдържание не беше намерено."
 msgid "The server returned a web page instead of data."
 msgstr "Сървърът върна уеб страница вместо данни."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "Това и следващите"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Това приложение няма разрешение да използва вашия passkey. Разрешете го в Настройки, под Разрешения."
+msgstr "Това приложение няма разрешение да използва вашия ключ за достъп. Разрешете го в Настройки, под Разрешения."
 
 #: src/hooks/use-ics-copy.ts
 msgid "This calendar address was already issued and cannot be shown again."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "Четвъртък"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Часова зона"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "Заглавие"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "Заглавието е задължително"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2708,7 +2922,7 @@ msgstr "Твърде много заявки"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Най-горе"
+msgstr "Най-добри"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -2764,6 +2978,10 @@ msgstr "Неприсвоено"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "Недостъпно"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "Отмени"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "Потребител"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Потребителско име"
 
@@ -2853,7 +3072,7 @@ msgstr "Преглед на видео: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Преглед"
+msgstr "Изглед"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2944,6 +3163,10 @@ msgstr "Годишно"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Нямате достъп до този раздел."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Не сте свързали акаунт в Google."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

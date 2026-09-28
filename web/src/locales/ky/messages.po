@@ -26,6 +26,11 @@ msgstr "(өзгөртүлгөн)"
 msgid "(expand)"
 msgstr "(жайып көрсөтүү)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Аталышы жок)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(сиз)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# натыйжа} other {# натыйжа}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# тандалган} other {# тандалган}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#мүн} other {#мүн}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#жума} other {#жума}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, one {# күн мурун} other {# күн мурун}}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} аты"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} - {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# дагы} other {+# дагы}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -195,6 +203,10 @@ msgstr "Түшүндүрмө кошуу"
 msgid "Add checklist item"
 msgstr "Текшерүү тизмесине кошуу"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "Түзмөк кошуу"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -241,11 +253,10 @@ msgstr "Белгилүү сандан кийин"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
-msgstr "ЖИ"
+msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "Күн бою"
@@ -257,6 +268,10 @@ msgstr "Бардык иш-чаралар"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Бардыгы {entityLabel} издей алсын"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "Календарга жетүүгө уруксат берүү"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -273,7 +288,11 @@ msgstr "Күтүлбөгөн ката кетти"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push билдирүүсү"
+msgstr "Android пуш билдирүүсү"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "Башка Mochi же CalDAV сервери"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -287,6 +306,18 @@ msgstr "Кирген ар ким"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Бул тасмага жазылган нерселердин баары аны алууну токтотот. Андан кийин жаңы URL көчүрө аласыз."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "Колдонмого атайын сырсөз"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -321,6 +352,10 @@ msgstr "Багынууну каалайсызбы? Оюнду {opponentName} у�
 msgid "Ascending"
 msgstr "Өсүү тартибинде"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Деңизде"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "Иш-чаранын убагында"
@@ -340,7 +375,7 @@ msgstr "Аутентификацияланган колдонуучулар"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator коду"
+msgstr "Аутентификатор коду"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -356,6 +391,7 @@ msgstr "{name} үчүн аватар"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "Артка"
 
@@ -398,7 +434,7 @@ msgstr "Блоктор"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "Тактай"
+msgstr "Такта"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -420,6 +456,10 @@ msgstr "календарь"
 #: src/features/calendar/editor.tsx
 msgid "Calendar"
 msgstr "Календарь"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "Календарга жетүү берилген жок"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
@@ -446,10 +486,22 @@ msgstr "Календарь түзүлдү"
 msgid "Calendar deleted"
 msgstr "Календарь өчүрүлдү"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "Календарь байланыштырылды"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "Календардын аты өзгөртүлдү"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Календарь сервери"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "Календарь синхрондоштурулду"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -486,6 +538,7 @@ msgstr "Камера жеткиликсиз"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -504,6 +557,11 @@ msgstr "Жоопту жокко чыгаруу"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Жокко чыгарылды"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Жокко чыгарылды"
 
@@ -563,6 +621,7 @@ msgstr "Тилди тандоо"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "Баарын тазалоо"
 msgid "Clear search"
 msgstr "Издөөнү тазалоо"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "Жабуу"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "Диалогду жабуу"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "Каптал тилкесин жыйнап коюу"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "Көрүнүш жөндөөлөрүн тууралоо"
 msgid "Confirm"
 msgstr "Ырастоо"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Түзмөк туташтыруу"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "Туташуу"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Башка түзмөк туташтыруу"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google'га туташуу"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Байланышты"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Туташтырылган түзмөктөр"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "Улантуу"
 msgid "Continue with {label}"
 msgstr "{label} менен улантуу"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} менен улантуу"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Көчүрүлдү"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Алмашуу буферине көчүрүлдү"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "Көчүрүү"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} көчүрүү"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Календардын дарегин көчүрүү"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "Иш-чараны көчүрүү"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "Бул иш-чараны көчүрүү"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "Демейки иргөө"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "Талап кылынган үлгүгө дал келбейт"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1059,7 +1128,6 @@ msgstr "Мурунку иш-чаралар"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Түзөтүү"
 
@@ -1109,6 +1177,10 @@ msgstr "Электрондук почта"
 msgid "Email code"
 msgstr "Электрондук почта коду"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google аккаунттарын иштетүү"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "Аякташы"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "Аяктоо убактысы"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "Аяктоо убакыт алкагы"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "Аяктайт"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "Башталганга чейин аяктайт"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1131,11 +1212,17 @@ msgstr "Электрондук почтаңыздагы кодду киргиз�
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Enter your authenticator code"
-msgstr "Authenticator кодун киргизиңиз"
+msgstr "Аутентификатор кодун киргизиңиз"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Error"
 msgstr "Ката"
+
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "Иш-чара көчүрүлдү"
 
 #: src/features/calendar/editor.tsx
 msgid "Event created"
@@ -1145,6 +1232,13 @@ msgstr "Иш-чара түзүлдү"
 msgid "Event deleted"
 msgstr "Иш-чара өчүрүлдү"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "Иш-чара жылдырылды"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Иш-чара сакталды"
@@ -1176,6 +1270,10 @@ msgstr "Өтө чоң"
 msgid "Failed to add account"
 msgstr "Эсеп кошуу ишке ашкан жок"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "Календарга жетүүнү суроо ишке ашкан жок"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "Календарды текшерүү ишке ашкан жок"
@@ -1184,10 +1282,18 @@ msgstr "Календарды текшерүү ишке ашкан жок"
 msgid "Failed to connect device"
 msgstr "Түзмөктү туташтыруу ишке ашкан жок"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "Аккаунтту туташтыруу ишке ашкан жок"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Көчүрүү ишке ашкан жок"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "Иш-чара көчүрүлгөн жок"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "RSS токенин алуу ишке ашкан жок"
 msgid "Failed to get the calendar address"
 msgstr "Календардын дареги алынган жок"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "Календарды байланыштыруу ишке ашкан жок"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "Жүктөө ишке ашкан жок"
@@ -1279,6 +1389,14 @@ msgstr "Иш-чара жылдырылган жок"
 msgid "Failed to post comment"
 msgstr "Комментарий жазуу ишке ашкан жок"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "Эсептерди окуу ишке ашкан жок"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "Календарларды окуу ишке ашкан жок"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1317,6 +1435,14 @@ msgstr "Иш-чара сакталган жок"
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "Жазылуу ишке ашкан жок"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "Календарды синхрондоштуруу ишке ашкан жок"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "Жокко чыгарылган жок"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1380,6 +1506,14 @@ msgstr "Темадан"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "Артка"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "Бул серверде Google аккаунттары иштетилген эмес."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google Календарь"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1492,6 +1626,15 @@ msgstr "Жарык"
 msgid "Link"
 msgstr "Шилтеме"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "Байланыштыруу"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "Байланыштырылган"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Шилтемелер"
@@ -1546,10 +1689,6 @@ msgstr "Чыгууда…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Категорияларды башкаруу"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Түзмөктөрдү башкаруу"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1634,8 +1773,10 @@ msgstr "Жылдырылды"
 msgid "Moved {field}"
 msgstr "{field} жылдырылды"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} күнүнө жылдырылууда"
 
@@ -1649,6 +1790,8 @@ msgstr "Бир нече жума"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "Эч качан"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Жаңы"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Эң жаңы"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1841,11 +1988,15 @@ msgstr "Эч нерсе табылган жок"
 msgid "Notifications: {0}"
 msgstr "Билдирүүлөр: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Сан"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Номер"
 
 #: src/features/calendar/editor.tsx
 msgid "Occurrences"
@@ -1929,7 +2080,7 @@ msgstr "Мүмкүндүк ачкычы"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "Passkey текшерүүсү ишке ашкан жок. Кайра аракет кылыңыз."
+msgstr "Кирүү ачкычын текшерүү ишке ашкан жок. Кайра аракет кылыңыз."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -1937,9 +2088,10 @@ msgstr "Кирүү ачкычтары"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys бул браузерде жеткиликсиз"
+msgstr "Кирүү ачкычтары бул браузерде жеткиликсиз"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "Сырсөз"
 
@@ -2014,15 +2166,19 @@ msgstr "Иштетилүүдө…"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "Prompt сакталды"
+msgstr "Промпт сакталды"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Касиеттер"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "Жарыяланган календардын дареги (окуу гана)"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push билдирүүсү"
+msgstr "Пуш билдирүүсү"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2086,6 +2242,9 @@ msgstr "Актуалдуулук {relevance}, кызыгуу {weight}"
 msgid "Reload"
 msgstr "Кайра жүктөө"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Эскертме"
@@ -2105,6 +2264,8 @@ msgstr "{0} чыпкасын алуу"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "{name} алуу"
 
@@ -2283,7 +2444,7 @@ msgstr "Сакталууда..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Издөө"
 
@@ -2411,6 +2572,10 @@ msgstr "Серифтүү"
 msgid "Server"
 msgstr "Сервер"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "Сервердин дареги"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2438,6 +2603,10 @@ msgstr "Жөндөөлөр"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
 msgstr "Класстарды көрсөтүү"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "Иш-чараларды өз убакыт алкагында көрсөтүү"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
@@ -2502,6 +2671,10 @@ msgstr "Биринчи комментарий жазып, талкууну ба�
 msgid "Start time"
 msgstr "Башталуу убактысы"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "Башталуу убакыт алкагы"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "Көрүүнү токтотуу"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тема"
+msgstr "Колдонуучу же топ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,11 +2716,23 @@ msgstr "Жекшемби"
 msgid "Switch to view 1-9"
 msgstr "1-9 көрүнүшкө которулуу"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "Азыр синхрондоштуруу"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "Синхрондоштурулууда..."
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "System"
 msgstr "Системалык"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgctxt "actor"
+msgid "System"
+msgstr "Система"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tag already exists"
@@ -2561,6 +2746,11 @@ msgstr "Тег эң көбү 50 белги болушу керек"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Тегдер"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Алдын ала"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "дарек календарь бербейт"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "календарь мындан ары ал серверде жок"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "календарь өтө чоң"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "календарь ошол эле убакта башка серверде өзгөртүлгөн"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "календардын серверине жетүү мүмкүн болгон жок"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "календардын сервери эсептин эсептик дайындарын четке какты"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2623,7 +2829,7 @@ msgstr "Микрофон сурамына жооп берилген жок"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Passkey сурамына жооп берилген жок"
+msgstr "Кирүү ачкычы сурамына жооп берилген жок"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2633,9 +2839,13 @@ msgstr "Суралган мазмун табылган жок."
 msgid "The server returned a web page instead of data."
 msgstr "Сервер маалыматтын ордуна веб-баракты кайтарды."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "Бул жана кийинкилер"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Бул колдонмого сиздин passkey'иңизди колдонууга уруксат жок. Жөндөөлөрдөгү Уруксаттар бөлүмүнөн уруксат бериңиз."
+msgstr "Бул колдонмого сиздин кирүү ачкычыңызды колдонууга уруксат жок. Жөндөөлөрдөгү Уруксаттар бөлүмүнөн уруксат бериңиз."
 
 #: src/hooks/use-ics-copy.ts
 msgid "This calendar address was already issued and cannot be shown again."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "Бейшемби"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "Убакыт алкагы"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "Аталышы"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "Аталышы талап кылынат"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2708,7 +2922,7 @@ msgstr "Суроо-талаптар өтө көп"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Жогорку"
+msgstr "Эң мыктылар"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -2765,6 +2979,10 @@ msgstr "Дайындалган эмес"
 msgid "Unavailable"
 msgstr "Жеткиликсиз"
 
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "Жокко чыгаруу"
+
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
@@ -2813,7 +3031,7 @@ msgstr "Жүктөө жүрүшү"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "Passkey колдонуңуз"
+msgstr "Кирүү ачкычыңызды колдонуңуз"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "Колдонуучу"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "Колдонуучунун аты"
 
@@ -2853,7 +3072,7 @@ msgstr "Видео көрсөткүч: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "Көрүү"
+msgstr "Көрүнүш"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2944,6 +3163,10 @@ msgstr "Жыл сайын"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "Сизде бул бөлүмгө кирүү мүмкүнчүлүгү жок."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "Сиз Google аккаунтун туташтырган жоксуз."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

@@ -22,6 +22,12 @@ const endpoints = {
     delete: `${prefix}/calendars/delete`,
     subscribe: `${prefix}/calendars/subscribe`,
     poll: `${prefix}/calendars/poll`,
+    refresh: `${prefix}/calendars/refresh`,
+    accounts: `${prefix}/calendars/accounts`,
+    account: `${prefix}/calendars/account`,
+    grant: `${prefix}/calendars/grant`,
+    remote: `${prefix}/calendars/remote`,
+    link: `${prefix}/calendars/link`,
   },
   events: {
     list: `${prefix}/events`,
@@ -29,6 +35,7 @@ const endpoints = {
     get: `${prefix}/events/get`,
     create: `${prefix}/events/create`,
     update: `${prefix}/events/update`,
+    split: `${prefix}/events/split`,
     delete: `${prefix}/events/delete`,
   },
   link: {

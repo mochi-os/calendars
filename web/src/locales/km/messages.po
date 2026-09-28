@@ -26,6 +26,11 @@ msgstr "(បានកែ)"
 msgid "(expand)"
 msgstr "(ពង្រីក)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(គ្មានចំណងជើង)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(អ្នក)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, other {# លទ្ធផល}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, other {# បានជ្រើសរើស}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#នាទី} other {#នាទី}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#សប្ដាហ៍} other {#សប្ដាហ៍}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, other {# ថ្ងៃមុន}}"
 msgid "{entityLabel} name"
 msgstr "ឈ្មោះ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} ដល់ {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {+# បន្ថែមទៀត}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -195,6 +203,10 @@ msgstr "បន្ថែមចំណងជើង"
 msgid "Add checklist item"
 msgstr "បន្ថែមធាតុបញ្ជី"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "បន្ថែមឧបករណ៍"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -244,8 +256,7 @@ msgid "AI"
 msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "ពេញមួយថ្ងៃ"
@@ -257,6 +268,10 @@ msgstr "ព្រឹត្តិការណ៍ទាំងអស់"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "អនុញ្ញាតឱ្យអ្នកណាក៏ដោយស្វែងរក {entityLabel}"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "អនុញ្ញាតការចូលប្រើប្រតិទិន"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -275,10 +290,14 @@ msgstr "មានកំហុសដែលមិនបានរំពឹងទុ
 msgid "Android push"
 msgstr "ការជូនដំណឹង Android"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "ម៉ាស៊ីនមេ Mochi ឬ CalDAV ផ្សេងទៀត"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
-msgstr "នរណាម្នាក់"
+msgstr "អ្នកណាក៏បាន"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
@@ -287,6 +306,18 @@ msgstr "នរណាម្នាក់ដែលបានចូល"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "អ្វីៗដែលបានជាវព័ត៌មាននេះនឹងឈប់ទទួលបាន។ បន្ទាប់មកអ្នកអាចចម្លង URL ថ្មី។"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "ពាក្យសម្ងាត់ជាក់លាក់សម្រាប់កម្មវិធី"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -321,6 +352,10 @@ msgstr "តើអ្នកប្រាកដថាចង់លាលែងពី
 msgid "Ascending"
 msgstr "តាមលំដាប់កើន"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "នៅសមុទ្រ"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "នៅពេលព្រឹត្តិការណ៍ចាប់ផ្តើម"
@@ -340,7 +375,7 @@ msgstr "អ្នកប្រើដែលបានផ្ទៀងផ្ទាត
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "កូដ Authenticator"
+msgstr "កូដកម្មវិធីផ្ទៀងផ្ទាត់"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -356,6 +391,7 @@ msgstr "រូបតំណាងសម្រាប់ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "ត្រឡប់"
 
@@ -421,6 +457,10 @@ msgstr "ប្រតិទិន"
 msgid "Calendar"
 msgstr "ប្រតិទិន"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "មិនបានផ្តល់ការចូលប្រើប្រតិទិនទេ"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -446,10 +486,22 @@ msgstr "បានបង្កើតប្រតិទិន"
 msgid "Calendar deleted"
 msgstr "បានលុបប្រតិទិន"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "បានភ្ជាប់ប្រតិទិន"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "បានប្តូរឈ្មោះប្រតិទិន"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ម៉ាស៊ីនមេប្រតិទិន"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "បានធ្វើសមកាលកម្មប្រតិទិន"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -486,6 +538,7 @@ msgstr "កាមេរ៉ាមិនអាចប្រើបាន"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -504,6 +557,11 @@ msgstr "បោះបង់ការឆ្លើយតប"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "បានបោះបង់"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "បានបោះបង់"
 
@@ -563,6 +621,7 @@ msgstr "ជ្រើសរើសភាសា"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "សម្អាតទាំងអស់"
 msgid "Clear search"
 msgstr "សម្អាតការស្វែងរក"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "បិទ"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "បិទប្រអប់"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "បង្រួមរបារចំហៀង"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "កំណត់រចនាសម្ព័ន្ធការកំណត
 msgid "Confirm"
 msgstr "បញ្ជាក់"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "ភ្ជាប់ឧបករណ៍"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "ភ្ជាប់"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ភ្ជាប់ឧបករណ៍ផ្សេងទៀត"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "ភ្ជាប់ Google"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "បានភ្ជាប់"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ឧបករណ៍ដែលបានភ្ជាប់"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "បន្ត"
 msgid "Continue with {label}"
 msgstr "បន្តជាមួយ {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "បន្តជាមួយ {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "បានចម្លង"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "បានចម្លងទៅក្ដារតម្បៀតខ្ទាស់"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "ចម្លង"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "ចម្លង {label}"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "ចម្លងអាសយដ្ឋានប្រតិទិន"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ចម្លងព្រឹត្តិការណ៍"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "ចម្លងព្រឹត្តិការណ៍នេះ"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "ការតម្រៀបលំនាំដើម"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -999,7 +1069,7 @@ msgstr "ឈ្មោះឧបករណ៍"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
-msgstr "ថត"
+msgstr "បញ្ជីឈ្មោះ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard"
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "មិនត្រូវនឹងលំនាំដែលទាមទារ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1059,7 +1128,6 @@ msgstr "ព្រឹត្តិការណ៍មុន"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "កែសម្រួល"
 
@@ -1109,6 +1177,10 @@ msgstr "អ៊ីមែល"
 msgid "Email code"
 msgstr "កូដអ៊ីមែល"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "បើកគណនី Google"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "ចុងបញ្ចប់"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "ម៉ោងបញ្ចប់"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "ល្វែងម៉ោងបញ្ចប់"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "បញ្ចប់"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "បញ្ចប់មុនពេលចាប់ផ្ដើម"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1131,11 +1212,17 @@ msgstr "បញ្ចូលកូដពីអ៊ីមែលរបស់អ្ន
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Enter your authenticator code"
-msgstr "បញ្ចូលកូដ authenticator របស់អ្នក"
+msgstr "បញ្ចូលកូដកម្មវិធីផ្ទៀងផ្ទាត់របស់អ្នក"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Error"
 msgstr "កំហុស"
+
+#: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "បានចម្លងព្រឹត្តិការណ៍"
 
 #: src/features/calendar/editor.tsx
 msgid "Event created"
@@ -1145,6 +1232,13 @@ msgstr "បានបង្កើតព្រឹត្តិការណ៍"
 msgid "Event deleted"
 msgstr "បានលុបព្រឹត្តិការណ៍"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "បានផ្លាស់ទីព្រឹត្តិការណ៍"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "បានរក្សាទុកព្រឹត្តិការណ៍"
@@ -1176,6 +1270,10 @@ msgstr "ធំពិសេស"
 msgid "Failed to add account"
 msgstr "បរាជ័យក្នុងការបន្ថែមគណនី"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "បរាជ័យក្នុងការស្នើសុំការចូលប្រើប្រតិទិន"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "បរាជ័យក្នុងការពិនិត្យប្រតិទិន"
@@ -1184,10 +1282,18 @@ msgstr "បរាជ័យក្នុងការពិនិត្យប្រ
 msgid "Failed to connect device"
 msgstr "បរាជ័យក្នុងការភ្ជាប់ឧបករណ៍"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "បរាជ័យក្នុងការភ្ជាប់គណនី"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "បរាជ័យក្នុងការចម្លង"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "បរាជ័យក្នុងការចម្លងព្រឹត្តិការណ៍"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "បរាជ័យក្នុងការទទួលយកថូខឹ
 msgid "Failed to get the calendar address"
 msgstr "បរាជ័យក្នុងការទទួលបានអាសយដ្ឋានប្រតិទិន"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "បរាជ័យក្នុងការភ្ជាប់ប្រតិទិន"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "បរាជ័យក្នុងការផ្ទុក"
@@ -1279,6 +1389,14 @@ msgstr "បរាជ័យក្នុងការផ្លាស់ទីព្
 msgid "Failed to post comment"
 msgstr "បរាជ័យក្នុងការបង្ហោះមតិយោបល់"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "បរាជ័យក្នុងការអានគណនី"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "បរាជ័យក្នុងការអានប្រតិទិន"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1317,6 +1435,14 @@ msgstr "បរាជ័យក្នុងការរក្សាទុកព្
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "បរាជ័យក្នុងការជាវ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "បរាជ័យក្នុងការធ្វើសមកាលកម្មប្រតិទិន"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "បរាជ័យក្នុងការមិនធ្វើវិញ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1381,6 +1507,14 @@ msgstr "ពីរូបរាង"
 msgid "Go back"
 msgstr "ត្រឡប់ក្រោយ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "គណនី Google មិនត្រូវបានបើកនៅលើម៉ាស៊ីនមេនេះទេ។"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google ប្រតិទិន"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
 msgstr "ក្រុម"
@@ -1403,7 +1537,7 @@ msgstr "ប្រវត្តិ"
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 msgid "Home"
-msgstr "ដើម"
+msgstr "ទំព័រដើម"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
@@ -1411,7 +1545,7 @@ msgstr "ក្ដៅ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "ID"
+msgstr "លេខសម្គាល់"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1492,6 +1626,15 @@ msgstr "ភ្លឺ"
 msgid "Link"
 msgstr "តំណ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "ភ្ជាប់"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "បានភ្ជាប់"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "តំណ"
@@ -1547,13 +1690,9 @@ msgstr "កំពុងចាកចេញ…"
 msgid "Manage categories"
 msgstr "គ្រប់គ្រងប្រភេទ"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "គ្រប់គ្រងឧបករណ៍"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
-msgstr "សៀវភៅណែនាំ"
+msgstr "ដោយដៃ"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -1602,7 +1741,7 @@ msgstr "Mochi វេប"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
-msgstr "ការត្រួតពិនិត្យ"
+msgstr "ការសម្របសម្រួល"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
@@ -1634,8 +1773,10 @@ msgstr "បានផ្លាស់ទី"
 msgid "Moved {field}"
 msgstr "បានផ្លាស់ទី {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "កំពុងផ្លាស់ទីទៅ {0}"
 
@@ -1649,6 +1790,8 @@ msgstr "ច្រើនសប្តាហ៍"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "មិនដែល"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "ថ្មី"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "ថ្មីបំផុត"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1841,9 +1988,13 @@ msgstr "រកមិនឃើញ"
 msgid "Notifications: {0}"
 msgstr "ការជូនដំណឹង៖ {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "លេខ"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "លេខ"
 
@@ -1924,12 +2075,12 @@ msgstr "មេ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Passkey"
-msgstr "សោសម្ងាត់"
+msgstr "កូនសោចូល"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "ការផ្ទៀងផ្ទាត់ passkey បានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត។"
+msgstr "ការផ្ទៀងផ្ទាត់កូនសោចូលបានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត។"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -1937,9 +2088,10 @@ msgstr "កូនសោចូល"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys មិនមាននៅក្នុងកម្មវិធីរុករកនេះទេ"
+msgstr "កូនសោចូលមិនមាននៅក្នុងកម្មវិធីរុករកនេះទេ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "ពាក្យសម្ងាត់"
 
@@ -2014,11 +2166,15 @@ msgstr "កំពុងដំណើរការ…"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "បានរក្សាទុក prompt"
+msgstr "បានរក្សាទុកការសួរ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "លក្ខណៈសម្បត្តិ"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "អាសយដ្ឋានប្រតិទិនដែលបានផ្សព្វផ្សាយ (អានតែប៉ុណ្ណោះ)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2086,6 +2242,9 @@ msgstr "ភាពពាក់ព័ន្ធ {relevance} ចំណាប់អ�
 msgid "Reload"
 msgstr "ផ្ទុកឡើងវិញ"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "ការរំលឹក"
@@ -2105,6 +2264,8 @@ msgstr "យកតម្រង {0} ចេញ"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "យក {name} ចេញ"
 
@@ -2239,7 +2400,7 @@ msgstr "មតិព័ត៌មាន RSS"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS URL copied to clipboard"
-msgstr "បានចម្លង RSS URL ទៅ clipboard"
+msgstr "បានចម្លង RSS URL ទៅ ក្ដារតម្បៀតខ្ទាស់"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Saturday"
@@ -2283,7 +2444,7 @@ msgstr "កំពុងរក្សាទុក..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "ស្វែងរក"
 
@@ -2338,7 +2499,7 @@ msgstr "កំពុងស្វែងរក..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "ជ្រើសរើស"
+msgstr "ការជ្រើសរើស"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2411,6 +2572,10 @@ msgstr "សេរីហ្វ"
 msgid "Server"
 msgstr "ម៉ាស៊ីនមេ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "អាសយដ្ឋានម៉ាស៊ីនមេ"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2438,6 +2603,10 @@ msgstr "ការកំណត់"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
 msgstr "បង្ហាញថ្នាក់"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "បង្ហាញព្រឹត្តិការណ៍តាមល្វែងម៉ោងរបស់វា"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
@@ -2502,6 +2671,10 @@ msgstr "ចាប់ផ្តើមការពិភាក្សាដោយប
 msgid "Start time"
 msgstr "ម៉ោងចាប់ផ្តើម"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "ល្វែងម៉ោងចាប់ផ្ដើម"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "បញ្ឈប់ការតាមដាន"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "ប្រធានបទ"
+msgstr "អ្នកប្រើប្រាស់ ឬក្រុម"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,9 +2716,21 @@ msgstr "ថ្ងៃអាទិត្យ"
 msgid "Switch to view 1-9"
 msgstr "ប្តូរទៅទិដ្ឋភាព 1-9"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ធ្វើសមកាលកម្មឥឡូវនេះ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "កំពុងធ្វើសមកាលកម្ម..."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "ប្រព័ន្ធ"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "ប្រព័ន្ធ"
 
@@ -2561,6 +2746,11 @@ msgstr "ស្លាកត្រូវមានយ៉ាងច្រើន 50 �
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ស្លាក"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "បណ្ដោះអាសន្ន"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "អាសយដ្ឋាននេះមិនផ្ដល់ប្រតិទិនទេ"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "ប្រតិទិនលែងមាននៅលើម៉ាស៊ីនមេនោះទៀតហើយ"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "ប្រតិទិនធំពេក"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "ប្រតិទិនត្រូវបានផ្លាស់ប្តូរនៅលើម៉ាស៊ីនមេផ្សេងក្នុងពេលតែមួយ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "មិនអាចទាក់ទងម៉ាស៊ីនមេប្រតិទិនបានទេ"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "ម៉ាស៊ីនមេប្រតិទិនបានបដិសេធព័ត៌មានសម្គាល់គណនី"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2623,7 +2829,7 @@ msgstr "សំណើមីក្រូហ្វូនមិនត្រូវប
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "សំណើ passkey មិនត្រូវបានឆ្លើយតបទេ"
+msgstr "សំណើកូនសោចូលមិនត្រូវបានឆ្លើយតបទេ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2633,9 +2839,13 @@ msgstr "រកមិនឃើញខ្លឹមសារដែលបានស្
 msgid "The server returned a web page instead of data."
 msgstr "ម៉ាស៊ីនមេបានបញ្ជូនត្រឡប់ទំព័របណ្តាញជំនួសឱ្យទិន្នន័យ។"
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "នេះ និងបន្តបន្ទាប់"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "កម្មវិធីនេះមិនត្រូវបានអនុញ្ញាតឱ្យប្រើ passkey របស់អ្នកទេ។ អនុញ្ញាតវានៅក្នុងការកំណត់ ក្រោមផ្នែកសិទ្ធិ។"
+msgstr "កម្មវិធីនេះមិនត្រូវបានអនុញ្ញាតឱ្យប្រើកូនសោចូលរបស់អ្នកទេ។ អនុញ្ញាតវានៅក្នុងការកំណត់ ក្រោមផ្នែកសិទ្ធិ។"
 
 #: src/hooks/use-ics-copy.ts
 msgid "This calendar address was already issued and cannot be shown again."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "ថ្ងៃព្រហស្បតិ៍"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "តំបន់ម៉ោង"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "ចំណងជើង"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "ចំណងជើងត្រូវបានទាមទារ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2765,6 +2979,10 @@ msgstr "មិនបានកំណត់"
 msgid "Unavailable"
 msgstr "មិនអាចប្រើបាន"
 
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "មិនធ្វើវិញ"
+
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
@@ -2813,7 +3031,7 @@ msgstr "វឌ្ឍនភាពនៃការផ្ទុកឡើង"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "ប្រើ passkey របស់អ្នក"
+msgstr "ប្រើកូនសោចូលរបស់អ្នក"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "អ្នកប្រើប្រាស់"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "ឈ្មោះអ្នកប្រើប្រាស់"
 
@@ -2853,7 +3072,7 @@ msgstr "កម្មវិធីមើលវីដេអូ៖ {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "មើល"
+msgstr "ទិដ្ឋភាព"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2944,6 +3163,10 @@ msgstr "ប្រចាំឆ្នាំ"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "អ្នកមិនមានសិទ្ធិចូលប្រើផ្នែកនេះទេ។"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "អ្នកមិនទាន់បានភ្ជាប់គណនី Google ទេ។"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

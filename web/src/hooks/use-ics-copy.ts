@@ -16,7 +16,7 @@ export function useIcsCopy() {
 
   const copy = async (calendar: string, regenerate = false) => {
     try {
-      const { token, path, exists } = await calendarsApi.link(
+      const { token, path, exists } = await calendarsApi.address(
         calendar,
         regenerate
       )
@@ -47,7 +47,7 @@ export function useIcsCopy() {
 
   const revoke = async (calendar: string) => {
     try {
-      await calendarsApi.linkRevoke(calendar)
+      await calendarsApi.addressRevoke(calendar)
       toast.success(t`Calendar address revoked`)
     } catch (error) {
       toast.error(

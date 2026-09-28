@@ -5,12 +5,12 @@
 import { useLingui } from '@lingui/react/macro'
 import { getErrorMessage, toast, useFormat } from '@mochi/web'
 import { Trash2 } from 'lucide-react'
+import { deletedOccurrence, truncatedSeries, type Scope } from '@/lib/ical'
 import {
   useDeleteEventMutation,
   useEventQuery,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
-import { deletedOccurrence, type Scope } from '@/lib/ical'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
 interface Props {
@@ -27,12 +27,7 @@ interface Props {
  * meant. Removing one occurrence is an edit of the series: the master gains an
  * exception for it.
  */
-export function DeleteEventDialog({
-  event,
-  start,
-  onClose,
-  onDeleted,
-}: Props) {
+export function DeleteEventDialog({ event, start, onClose, onDeleted }: Props) {
   const { t } = useLingui()
   const format = useFormat()
   const { data, refetch } = useEventQuery(event)
@@ -43,17 +38,25 @@ export function DeleteEventDialog({
   const remove = async (scope: Scope) => {
     if (!stored) return
     try {
-      if (scope === 'all' || !stored.recurring) {
+      // The series ending before this occurrence, or nothing at all when
+      // this is its first, which makes the deletion one of the whole series.
+      const shortened =
+        scope === 'following' && stored.recurring
+          ? truncatedSeries(stored.components, start, format.timezone)
+          : null
+      if (
+        scope === 'all' ||
+        !stored.recurring ||
+        (scope === 'following' && !shortened)
+      ) {
         await deleteMutation.mutateAsync({
           event: stored.id,
           etag: stored.etag,
         })
       } else {
-        const components = deletedOccurrence(
-          stored.components,
-          start,
-          format.timezone
-        )
+        const components =
+          shortened ??
+          deletedOccurrence(stored.components, start, format.timezone)
         if (!components) return
         await updateMutation.mutateAsync({
           event: stored.id,

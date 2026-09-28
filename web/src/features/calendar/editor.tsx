@@ -36,30 +36,39 @@ import {
   Bell,
   Check,
   Clock,
+  Copy as CopyIcon,
   Globe,
   MapPin,
   Repeat as RepeatIcon,
   X,
 } from 'lucide-react'
 import type { Component } from '@/api/types/events'
-import { useCalendarContext } from '@/context/calendar-context'
 import {
-  useCreateEventMutation,
-  useEventQuery,
-  useUpdateEventMutation,
-} from '@/hooks/use-events'
-import { reminderOptions } from '@/hooks/use-options'
-import {
+  anchoredDraft,
   componentDraft,
+  copyDraft,
   draftComponent,
+  draftInstants,
   editedComponents,
+  endAfterStart,
+  expressible,
+  foreignZones,
   emptyRepeat,
   masterComponent,
   overrideComponent,
+  splitSeries,
   type EventDraft,
   type Frequency,
   type Scope,
 } from '@/lib/ical'
+import { useCalendarContext } from '@/context/calendar-context'
+import {
+  useCreateEventMutation,
+  useEventQuery,
+  useSplitEventMutation,
+  useUpdateEventMutation,
+} from '@/hooks/use-events'
+import { reminderOptions } from '@/hooks/use-options'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
@@ -69,19 +78,24 @@ export function EventEditor() {
   const { t } = useLingui()
   const format = useFormat()
   const { isMobile } = useScreenSize()
-  const { editing, setEditing, calendars } = useCalendarContext()
+  const { editing, setEditing, calendars, remember } = useCalendarContext()
 
   const editingEvent = editing?.mode === 'edit' ? editing.event : null
   const { data, isLoading, refetch } = useEventQuery(editingEvent)
   const event = data?.event
 
   const [draft, setDraft] = useState<EventDraft | null>(null)
+  // The zone controls, revealed by the globe for the rest of one edit.
+  const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
-  const [asking, setAsking] = useState<'save' | 'delete' | null>(null)
+  const [asking, setAsking] = useState<'save' | 'copy' | null>(null)
+  // A save tried without a title; the title row says so until one is typed.
+  const [untitled, setUntitled] = useState(false)
   const [confirming, setConfirming] = useState(false)
 
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
+  const splitMutation = useSplitEventMutation()
 
   const writable = useMemo(
     () =>
@@ -97,6 +111,8 @@ export function EventEditor() {
   // A create opens on the draft it was given; an edit waits for the stored
   // event, then reads the occurrence's own component where it has one.
   useEffect(() => {
+    setRevealed(false)
+    setUntitled(false)
     if (!editing) {
       setDraft(null)
       setAsking(null)
@@ -125,6 +141,13 @@ export function EventEditor() {
   const close = () => setEditing(null)
 
   const recurring = Boolean(event?.recurring) && editing?.mode === 'edit'
+  // The end may read earlier than the start by the clock, across zones, but
+  // never as an instant.
+  const ordered = draft
+    ? draftInstants(draft).finish >= draftInstants(draft).start
+    : true
+  // The zones show only when an end is not in the user's zone, or on request.
+  const zones = draft ? foreignZones(draft, format.timezone) || revealed : false
 
   const write = async (scope: Scope) => {
     if (!draft || !editing) return
@@ -134,9 +157,47 @@ export function EventEditor() {
           calendar: draft.calendar,
           components: [draftComponent(draft)],
         })
-        toast.success(t`Event created`)
+        remember(draft)
+        toast.success(editing.copy ? t`Event copied` : t`Event created`)
       } else {
         if (!event) return
+        const master = masterComponent(event.components)
+        // This occurrence and the ones after it become a series of their
+        // own, starting where this one now falls. The first occurrence has
+        // nothing before it, so that is the whole series.
+        if (recurring && scope === 'following' && master) {
+          const fromMaster = !overrideComponent(
+            event.components,
+            editing.start,
+            format.timezone
+          )
+          const split = splitSeries(
+            event.components,
+            anchoredDraft(
+              draft,
+              master,
+              editing.start,
+              format.timezone,
+              fromMaster
+            ),
+            editing.start,
+            format.timezone
+          )
+          if (split) {
+            await splitMutation.mutateAsync({
+              event: event.id,
+              etag: event.etag,
+              start: editing.start,
+              components: split.before,
+              following: split.after,
+              calendar: draft.calendar,
+            })
+            toast.success(t`Event saved`)
+            close()
+            return
+          }
+          scope = 'all'
+        }
         const components: Component[] = recurring
           ? editedComponents(
               event.components,
@@ -145,12 +206,7 @@ export function EventEditor() {
               editing.start,
               format.timezone
             )
-          : [
-              draftComponent(
-                draft,
-                masterComponent(event.components) ?? undefined
-              ),
-            ]
+          : [draftComponent(draft, master ?? undefined)]
         await updateMutation.mutateAsync({
           event: event.id,
           etag: event.etag,
@@ -174,13 +230,43 @@ export function EventEditor() {
     }
   }
 
+  // Save is refused only for a reason the form shows: no title, or an end
+  // before the start, which the End row already says.
   const save = () => {
-    if (!draft || draft.title.trim() === '') return
+    if (!draft) return
+    if (draft.title.trim() === '') {
+      setUntitled(true)
+      document.getElementById('event-title')?.focus()
+      return
+    }
+    if (!ordered) return
     if (recurring) setAsking('save')
     else void write('all')
   }
 
-  const pending = createMutation.isPending || updateMutation.isPending
+  // A copy opens the editor again on a new event filled from this one, in
+  // the calendar the form shows; a series asks which of it to copy.
+  const duplicate = (scope: 'one' | 'all') => {
+    if (!draft || !event || editing?.mode !== 'edit') return
+    const copied = copyDraft(
+      event.components,
+      editing.start,
+      draft.calendar,
+      format.timezone,
+      scope
+    )
+    if (copied) setEditing({ mode: 'create', draft: copied, copy: true })
+  }
+
+  const copy = () => {
+    if (recurring) setAsking('copy')
+    else duplicate('one')
+  }
+
+  const pending =
+    createMutation.isPending ||
+    updateMutation.isPending ||
+    splitMutation.isPending
 
   const open = editing !== null
   const body =
@@ -193,6 +279,10 @@ export function EventEditor() {
     ) : draft ? (
       <EditorFields
         draft={draft}
+        zones={zones}
+        ordered={ordered}
+        untitled={untitled && draft.title.trim() === ''}
+        onReveal={() => setRevealed(true)}
         setDraft={setDraft}
         custom={custom}
         setCustom={setCustom}
@@ -206,14 +296,23 @@ export function EventEditor() {
   const footer = (
     <>
       {editing?.mode === 'edit' && (
-        <Button
-          variant='outline'
-          className='me-auto'
-          onClick={() => setConfirming(true)}
-          disabled={pending}
-        >
-          <Trans>Delete</Trans>
-        </Button>
+        <>
+          <Button
+            variant='outline'
+            onClick={() => setConfirming(true)}
+            disabled={pending}
+          >
+            <Trans>Delete</Trans>
+          </Button>
+          <Button
+            variant='outline'
+            className='me-auto'
+            onClick={copy}
+            disabled={pending || !event}
+          >
+            <Trans>Copy</Trans>
+          </Button>
+        </>
       )}
       <Button variant='outline' onClick={close} disabled={pending}>
         <Trans>Cancel</Trans>
@@ -221,7 +320,7 @@ export function EventEditor() {
       <Button
         onClick={save}
         loading={pending}
-        disabled={!draft || draft.title.trim() === ''}
+        disabled={!draft}
         icon={<Check className='size-4' />}
       >
         <Trans>Save</Trans>
@@ -230,7 +329,11 @@ export function EventEditor() {
   )
 
   const title =
-    editing?.mode === 'create' ? t`New event` : t`Edit event`
+    editing?.mode === 'create'
+      ? editing.copy
+        ? t`Copy event`
+        : t`New event`
+      : t`Edit event`
 
   return (
     <>
@@ -286,6 +389,20 @@ export function EventEditor() {
         }}
       />
 
+      <ScopeDialog
+        open={asking === 'copy'}
+        title={t`Copy this event`}
+        following={false}
+        icon={<CopyIcon className='size-4' />}
+        onOpenChange={(next) => {
+          if (!next) setAsking(null)
+        }}
+        onChoose={(scope) => {
+          setAsking(null)
+          duplicate(scope === 'all' ? 'all' : 'one')
+        }}
+      />
+
       <DeleteEventDialog
         event={confirming && editing?.mode === 'edit' ? editing.event : null}
         start={editing?.mode === 'edit' ? editing.start : 0}
@@ -302,16 +419,31 @@ function EditorFields({
   custom,
   setCustom,
   calendars,
+  zones,
+  ordered,
+  untitled,
+  onReveal,
 }: {
   draft: EventDraft
   setDraft: React.Dispatch<React.SetStateAction<EventDraft | null>>
   custom: boolean
   setCustom: (value: boolean) => void
   calendars: { id: string; name: string }[]
+  /** Whether the zone controls show; a globe reveals them otherwise. */
+  zones: boolean
+  /** Whether the end follows the start as instants; Save waits for that. */
+  ordered: boolean
+  /** A save was tried without a title, which the title row says. */
+  untitled: boolean
+  onReveal: () => void
 }) {
   const { t } = useLingui()
   const format = useFormat()
   const reminders = reminderOptions()
+
+  // A rule read from the event that the repeat settings cannot express is
+  // shown as custom and written back as it was.
+  const kept = !expressible(draft.repeat.rule)
 
   // The fields only render with a draft in hand, so an update never has to
   // answer for the null the editor starts in.
@@ -340,7 +472,10 @@ function EditorFields({
         start: day,
         startTime: minutes,
         finish: addDays(current.finish, shiftDays),
-        finishTime: Math.max(0, Math.min(1439, current.finishTime + shiftMinutes)),
+        finishTime: Math.max(
+          0,
+          Math.min(1439, current.finishTime + shiftMinutes)
+        ),
       }
     })
   }
@@ -365,10 +500,16 @@ function EditorFields({
           id='event-title'
           value={draft.title}
           autoFocus
+          aria-invalid={untitled || undefined}
           onChange={(input) =>
             edit((current) => ({ ...current, title: input.target.value }))
           }
         />
+        {untitled && (
+          <p className='text-destructive text-xs' data-testid='untitled'>
+            {t`Title is required`}
+          </p>
+        )}
       </div>
 
       <div className='space-y-2'>
@@ -432,6 +573,29 @@ function EditorFields({
               />
             )}
           </div>
+          {zones && (
+            <TimezoneSelect
+              compact
+              auto={false}
+              label={t`Start time zone`}
+              value={draft.zone.start}
+              onChange={(zone) =>
+                // The end follows the start while the two still agree.
+                edit((current) =>
+                  endAfterStart({
+                    ...current,
+                    zone: {
+                      start: zone,
+                      finish:
+                        current.zone.finish === current.zone.start
+                          ? zone
+                          : current.zone.finish,
+                    },
+                  })
+                )
+              }
+            />
+          )}
         </div>
         <div className='space-y-2'>
           <Label htmlFor='event-finish'>
@@ -463,26 +627,43 @@ function EditorFields({
                 }
               />
             )}
+            {!draft.allday && !zones && (
+              <Button
+                type='button'
+                variant='ghost'
+                size='icon'
+                className='text-muted-foreground shrink-0'
+                aria-label={t`Time zone`}
+                onClick={onReveal}
+              >
+                <Globe className='size-4' />
+              </Button>
+            )}
           </div>
+          {zones && (
+            <TimezoneSelect
+              compact
+              auto={false}
+              label={t`End time zone`}
+              value={draft.zone.finish}
+              onChange={(zone) =>
+                edit((current) =>
+                  endAfterStart({
+                    ...current,
+                    zone: { ...current.zone, finish: zone },
+                  })
+                )
+              }
+            />
+          )}
+          {/* Save waits for an end that follows the start; the row says why. */}
+          {!ordered && (
+            <p className='text-destructive text-xs' data-testid='backwards'>
+              {t`Ends before it starts`}
+            </p>
+          )}
         </div>
       </div>
-
-      {/* Only an event that is not in the user's own zone needs to say which
-          zone it is in. */}
-      {!draft.allday && draft.timezone !== format.timezone && (
-        <div className='space-y-2'>
-          <Label className='flex items-center gap-2'>
-            <Globe className='size-4' />
-            <Trans>Timezone</Trans>
-          </Label>
-          <TimezoneSelect
-            value={draft.timezone}
-            onChange={(value) =>
-              edit((current) => ({ ...current, timezone: value }))
-            }
-          />
-        </div>
-      )}
 
       <div className='space-y-2'>
         <Label htmlFor='event-location' className='flex items-center gap-2'>
@@ -507,7 +688,7 @@ function EditorFields({
           <Trans>Repeat</Trans>
         </Label>
         <Select
-          value={custom ? 'custom' : draft.repeat.frequency}
+          value={custom || kept ? 'custom' : draft.repeat.frequency}
           onValueChange={(value) => {
             if (value === 'custom') {
               setCustom(true)
@@ -515,6 +696,7 @@ function EditorFields({
                 ...current,
                 repeat: {
                   ...current.repeat,
+                  rule: '',
                   frequency:
                     current.repeat.frequency === 'never'
                       ? 'weekly'
@@ -542,9 +724,16 @@ function EditorFields({
             <SelectItem value='custom'>{t`Custom`}</SelectItem>
           </SelectContent>
         </Select>
+        {/* A rule the settings cannot express is kept as written; choosing
+            a repeat replaces it. */}
+        {kept && (
+          <p className='text-muted-foreground text-xs' data-testid='kept-rule'>
+            {draft.repeat.rule}
+          </p>
+        )}
       </div>
 
-      {custom && (
+      {custom && !kept && (
         <div className='space-y-3 rounded-lg border p-3'>
           <div className='grid grid-cols-2 gap-3'>
             <div className='space-y-2'>
@@ -558,6 +747,7 @@ function EditorFields({
                     ...current,
                     repeat: {
                       ...current.repeat,
+                      rule: '',
                       frequency: value as Frequency,
                     },
                   }))
@@ -589,6 +779,7 @@ function EditorFields({
                     ...current,
                     repeat: {
                       ...current.repeat,
+                      rule: '',
                       interval: Math.max(1, Number(input.target.value) || 1),
                     },
                   }))
@@ -611,6 +802,7 @@ function EditorFields({
                         ...current,
                         repeat: {
                           ...current.repeat,
+                          rule: '',
                           weekdays: on
                             ? current.repeat.weekdays.filter(
                                 (day) => day !== weekday.day
@@ -645,6 +837,7 @@ function EditorFields({
                     ...current,
                     repeat: {
                       ...current.repeat,
+                      rule: '',
                       ending: value as EventDraft['repeat']['ending'],
                       until:
                         value === 'until' && !current.repeat.until
@@ -677,6 +870,7 @@ function EditorFields({
                       ...current,
                       repeat: {
                         ...current.repeat,
+                        rule: '',
                         until: day,
                       },
                     }))
@@ -700,6 +894,7 @@ function EditorFields({
                       ...current,
                       repeat: {
                         ...current.repeat,
+                        rule: '',
                         count: Math.max(1, Number(input.target.value) || 1),
                       },
                     }))

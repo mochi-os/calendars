@@ -8,7 +8,12 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query'
-import { eventsApi, type CreateEvent, type UpdateEvent } from '@/api/events'
+import {
+  eventsApi,
+  type CreateEvent,
+  type SplitEvent,
+  type UpdateEvent,
+} from '@/api/events'
 import type {
   BoundsResponse,
   EventResponse,
@@ -17,8 +22,12 @@ import type {
 } from '@/api/types/events'
 
 const eventKeys = {
-  instances: (start: number, finish: number, calendars: string[]) =>
-    ['instances', start, finish, calendars] as const,
+  instances: (
+    start: number,
+    finish: number,
+    calendars: string[],
+    timezone = ''
+  ) => ['instances', start, finish, calendars, timezone] as const,
   event: (event: string) => ['event', event] as const,
   bounds: (calendars: string[]) => ['bounds', calendars] as const,
 }
@@ -31,13 +40,14 @@ const eventKeys = {
 export const useInstancesQuery = (
   start: number,
   finish: number,
-  calendars: string[]
+  calendars: string[],
+  timezone?: string
 ) => {
   // Sorted, so the same set of calendars is always the same cache entry.
   const key = [...calendars].sort()
   return useQuery<InstancesResponse>({
-    queryKey: eventKeys.instances(start, finish, key),
-    queryFn: () => eventsApi.list(start, finish, key),
+    queryKey: eventKeys.instances(start, finish, key, timezone),
+    queryFn: () => eventsApi.list(start, finish, key, timezone),
     enabled: finish > start && key.length > 0,
     placeholderData: (previous) => previous,
   })
@@ -50,20 +60,23 @@ export const useInstancesQuery = (
  */
 export const useInstancePages = (
   pages: { start: number; finish: number }[],
-  calendars: string[]
+  calendars: string[],
+  timezone?: string
 ) => {
   const key = [...calendars].sort()
   return useQueries({
     queries: pages.map((page) => ({
-      queryKey: eventKeys.instances(page.start, page.finish, key),
-      queryFn: () => eventsApi.list(page.start, page.finish, key),
+      queryKey: eventKeys.instances(page.start, page.finish, key, timezone),
+      queryFn: () => eventsApi.list(page.start, page.finish, key, timezone),
       enabled: page.finish > page.start && key.length > 0,
     })),
     combine: (results) => ({
       instances: results
         .flatMap((result) => result.data?.instances ?? [])
         .sort((a: Instance, b: Instance) => a.start - b.start),
-      pending: results.some((result) => result.isPending && result.fetchStatus !== 'idle'),
+      pending: results.some(
+        (result) => result.isPending && result.fetchStatus !== 'idle'
+      ),
     }),
   })
 }
@@ -86,15 +99,26 @@ export const useEventQuery = (event: string | null) =>
     enabled: Boolean(event) && !(event ?? '').startsWith('birthday-'),
   })
 
+/**
+ * A mutation over events, refreshing the instances, the events and the bounds
+ * when it lands. A deletion names the event it removed, which is left out of
+ * the refresh: the dialog that deleted it still holds its query while it
+ * closes, and refreshing that would fetch the event again and be answered 404.
+ */
 function useEventMutation<TVariables, TResult>(
-  action: (variables: TVariables) => Promise<TResult>
+  action: (variables: TVariables) => Promise<TResult>,
+  deleted?: (variables: TVariables) => string
 ) {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: action,
-    onSuccess: () => {
+    onSuccess: (_, variables) => {
+      const removed = deleted?.(variables)
       queryClient.invalidateQueries({ queryKey: ['instances'] })
-      queryClient.invalidateQueries({ queryKey: ['event'] })
+      queryClient.invalidateQueries({
+        queryKey: ['event'],
+        predicate: (query) => query.queryKey[1] !== removed,
+      })
       queryClient.invalidateQueries({ queryKey: ['bounds'] })
     },
   })
@@ -106,7 +130,12 @@ export const useCreateEventMutation = () =>
 export const useUpdateEventMutation = () =>
   useEventMutation((event: UpdateEvent) => eventsApi.update(event))
 
+export const useSplitEventMutation = () =>
+  useEventMutation((event: SplitEvent) => eventsApi.split(event))
+
 export const useDeleteEventMutation = () =>
-  useEventMutation(({ event, etag }: { event: string; etag?: string }) =>
-    eventsApi.delete(event, etag)
+  useEventMutation(
+    ({ event, etag }: { event: string; etag?: string }) =>
+      eventsApi.delete(event, etag),
+    ({ event }) => event
   )

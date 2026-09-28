@@ -42,14 +42,30 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
 
   const [name, setName] = useState('')
   const [colour, setColour] = useState('')
-  // The server records why a poll failed as a token: too_large, invalid, or
-  // status:<n> with 0 for an address that could not be reached. A token this
-  // build has no words for is shown as it is rather than hidden.
+  // The server records why a fetch or a sync failed as a token: too_large,
+  // invalid or status:<n> for a subscription, and unauthorised, transport,
+  // conflict, missing or large for a linked calendar, each of which may carry
+  // the status the other server answered as a :<n> suffix. A token this build
+  // has no words for is shown as it is rather than hidden.
   const failureReason = (failure: string): string => {
-    if (failure === 'too_large') return t`the calendar is too large`
-    if (failure === 'invalid') return t`the address does not serve a calendar`
-    if (failure.startsWith('status:')) {
-      const status = failure.slice('status:'.length)
+    const separator = failure.indexOf(':')
+    const code = separator === -1 ? failure : failure.slice(0, separator)
+    const status = separator === -1 ? '' : failure.slice(separator + 1)
+    if (code === 'too_large' || code === 'large') {
+      return t`the calendar is too large`
+    }
+    if (code === 'invalid') return t`the address does not serve a calendar`
+    if (code === 'unauthorised') {
+      return t`the calendar's server refused the account's credentials`
+    }
+    if (code === 'transport') {
+      return t`the calendar's server could not be reached`
+    }
+    if (code === 'conflict') {
+      return t`the calendar was changed on the other server at the same time`
+    }
+    if (code === 'missing') return t`the calendar is no longer on that server`
+    if (code === 'status') {
       if (status === '0') return t`the address could not be reached`
       return t`the address answered ${status}`
     }
@@ -106,11 +122,14 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
     <Main>
       <PageHeader title={calendar.name} />
       <div className='max-w-lg space-y-6'>
-        {calendar.kind === 'subscription' && calendar.failure !== '' && (
-          <p className='text-destructive text-sm'>
-            <Trans>The last fetch failed: {failureReason(calendar.failure)}</Trans>
-          </p>
-        )}
+        {(calendar.kind === 'subscription' || calendar.kind === 'linked') &&
+          calendar.failure !== '' && (
+            <p className='text-destructive text-sm'>
+              <Trans>
+                The last fetch failed: {failureReason(calendar.failure)}
+              </Trans>
+            </p>
+          )}
         <div className='space-y-2'>
           <Label htmlFor='settings-name'>
             <Trans>Name</Trans>

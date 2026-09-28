@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react/macro'
 import {
   Button,
   DropdownMenu,
+  Input,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
@@ -35,6 +36,7 @@ import {
   MoreHorizontal,
   Plus,
   Rows3,
+  Search,
 } from 'lucide-react'
 import { useCalendarContext } from '@/context/calendar-context'
 
@@ -49,19 +51,23 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
     setDate,
     today,
     range,
-    preferences,
     workweek,
     setWorkweek,
+    search,
+    setSearch,
   } = useCalendarContext()
 
-  const options: { value: CalendarView; label: string; icon: React.ElementType }[] =
-    [
-      { value: 'day', label: t`Day`, icon: Calendar },
-      { value: 'week', label: t`Week`, icon: Columns3 },
-      { value: 'multiweek', label: t`Multiweek`, icon: Rows3 },
-      { value: 'month', label: t`Month`, icon: Grid3x3 },
-      { value: 'list', label: t`List`, icon: List },
-    ]
+  const options: {
+    value: CalendarView
+    label: string
+    icon: React.ElementType
+  }[] = [
+    { value: 'day', label: t`Day`, icon: Calendar },
+    { value: 'week', label: t`Week`, icon: Columns3 },
+    { value: 'multiweek', label: t`Multiweek`, icon: Rows3 },
+    { value: 'month', label: t`Month`, icon: Grid3x3 },
+    { value: 'list', label: t`List`, icon: List },
+  ]
   // Below tablet width there is no room for a grid, so only the two views that
   // read well in a column are offered.
   const offered = isDesktop
@@ -70,14 +76,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
         (option) => option.value === 'day' || option.value === 'list'
       )
 
-  const step = (direction: number) =>
-    setDate(
-      stepDate(view, date, direction, {
-        weekStartsOn: format.weekStartsOn,
-        weeks: preferences.multiweek.weeks,
-        previous: preferences.multiweek.previous,
-      })
-    )
+  const step = (direction: number) => setDate(stepDate(view, date, direction))
 
   const title = rangeTitle(view, range, {
     longDate: (day) =>
@@ -93,10 +92,6 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
 
   return (
     <div className='flex flex-wrap items-center gap-2 border-b px-3 py-2'>
-      <Button variant='outline' size='sm' onClick={() => setDate(today)}>
-        <CalendarCheck className='size-4' />
-        {t`Today`}
-      </Button>
       <div className='flex items-center'>
         <Button
           variant='ghost'
@@ -105,6 +100,10 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
           onClick={() => step(-1)}
         >
           <ChevronLeft className='size-4 rtl:rotate-180' />
+        </Button>
+        <Button variant='outline' size='sm' onClick={() => setDate(today)}>
+          <CalendarCheck className='size-4' />
+          {t`Today`}
         </Button>
         <Button
           variant='ghost'
@@ -131,21 +130,36 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
             </Button>
           </PopoverTrigger>
           <PopoverContent align='start' className='w-72'>
-            <MiniMonth
-              selected={date}
-              today={today}
-              highlight={{ from: range.from, days: range.days }}
-              onSelect={setDate}
-            />
+            <MiniMonth selected={date} today={today} onSelect={setDate} />
           </PopoverContent>
         </Popover>
       )}
+
+      {/* The search box: the list view filters by it, and typing from any
+          other view opens the list, which is where the matches show. */}
+      <div className='relative ms-auto'>
+        <Search
+          className='text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 size-4 -translate-y-1/2'
+          aria-hidden
+        />
+        <Input
+          type='search'
+          aria-label={t`Search`}
+          className='h-9 w-36 ps-8 sm:w-52'
+          value={search}
+          onChange={(input) => {
+            const value = input.target.value
+            setSearch(value)
+            if (value.trim() && view !== 'list') setView('list')
+          }}
+        />
+      </div>
 
       <Select
         value={view}
         onValueChange={(value) => setView(value as CalendarView)}
       >
-        <SelectTrigger className='ms-auto w-auto' aria-label={t`View`}>
+        <SelectTrigger className='w-auto' aria-label={t`View`}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent align='end'>

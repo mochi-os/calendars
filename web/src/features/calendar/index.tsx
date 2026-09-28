@@ -2,28 +2,35 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
   dayList,
   dayOfWeek,
+  eventStatus,
   MonthGrid,
   monthOf,
+  stepDate,
   TimeGrid,
   useFormat,
   usePageTitle,
   useShellStorage,
+  offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
+import {
+  instanceDraft,
+  newDraft,
+  type EventDraft,
+  type Scope,
+} from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
-import { emptyRepeat, type EventDraft, type Scope } from '@/lib/ical'
 import { Agenda } from '@/features/calendar/components/agenda'
-import { DayPopover } from '@/features/calendar/components/day-popover'
 import { EventPopover } from '@/features/calendar/components/event-popover'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
@@ -35,6 +42,7 @@ export function CalendarPage() {
   const {
     view,
     range,
+    date,
     setDate,
     setView,
     today,
@@ -42,7 +50,9 @@ export function CalendarPage() {
     visible,
     calendars,
     workweek,
+    editing,
     setEditing,
+    remembered,
   } = useCalendarContext()
 
   const [lastCalendar, setLastCalendar] = useShellStorage<string>(
@@ -53,41 +63,38 @@ export function CalendarPage() {
     instance: Instance
     anchor: DOMRect
   } | null>(null)
-  const [overflow, setOverflow] = useState<{
-    day: string
-    anchor: DOMRect
+  const [moving, setMoving] = useState<{
+    run: (scope: Scope) => void
+    copy: boolean
   } | null>(null)
-  const [moving, setMoving] = useState<((scope: Scope) => void) | null>(null)
 
   const mover = useEventMove()
 
-  const start = format.timestampAt(range.from, 0)
-  const finish = format.timestampAt(addDays(range.from, range.days), 0)
+  // With events shown in their own zones, a day's occurrences can begin or
+  // end up to a day away by the user's clock, so the window grows a day each
+  // side and the views place what falls on their days.
+  const margin = preferences.zones ? 86400 : 0
+  const start = format.timestampAt(range.from, 0) - margin
+  const finish = format.timestampAt(addDays(range.from, range.days), 0) + margin
   // The list fetches its own pages, so the range query is idle there.
   const shown = useMemo(
     () => (view === 'list' ? [] : visible.map((c) => c.id)),
     [view, visible]
   )
-  const { data } = useInstancesQuery(start, finish, shown)
-  // A calendar's colour comes from the calendar list, so recolouring one is
-  // seen at once rather than when the range is fetched again.
-  const colours = useMemo(
-    () => new Map(calendars.map((c) => [c.id, c.colour])),
-    [calendars]
-  )
+  const { data } = useInstancesQuery(start, finish, shown, format.timezone)
+  // Each occurrence arrives in its event's own colour, else its calendar's;
+  // recolouring a calendar fetches the range again.
   const instances = useMemo(
-    () =>
-      shown.length === 0
-        ? []
-        : (data?.instances ?? []).map((instance) => ({
-            ...instance,
-            colour: colours.get(instance.calendar) ?? instance.colour,
-          })),
-    [shown.length, data?.instances, colours]
+    () => (shown.length === 0 ? [] : (data?.instances ?? [])),
+    [shown.length, data?.instances]
   )
 
+  // Every occurrence seen, by key: a drag that turns the page carries its
+  // block into a range the occurrence is no longer part of, and the drop
+  // still has to find it.
+  const seen = useRef(new Map<string, Instance>())
   const byKey = useMemo(() => {
-    const out = new Map<string, Instance>()
+    const out = seen.current
     for (const instance of instances) {
       out.set(`${instance.event}:${instance.start}`, instance)
     }
@@ -105,11 +112,23 @@ export function CalendarPage() {
         start: instance.start,
         finish: instance.finish,
         allday: instance.allday,
+        date: instance.date,
         readonly: instance.readonly || instance.event.startsWith('birthday-'),
         recurring: instance.recurring,
         exception: instance.exception,
+        alarm: instance.alarm,
+        status: eventStatus(instance.status),
+        // Each end's own zone, only when the user shows events in their
+        // zones; an end without one is placed in the user's zone.
+        zone:
+          preferences.zones && instance.zone
+            ? {
+                start: instance.zone.start || undefined,
+                finish: instance.zone.finish || undefined,
+              }
+            : undefined,
       })),
-    [instances]
+    [instances, preferences.zones]
   )
 
   const days = useMemo(() => {
@@ -126,44 +145,51 @@ export function CalendarPage() {
     return (last ?? writable.find((c) => c.default) ?? writable[0])?.id ?? ''
   }, [calendars, lastCalendar])
 
+  // A new event reads in the zones the last one used on this device, and
+  // goes in the calendar the last one went in.
   const compose = useCallback(
     (from: number, to: number, allday = false): EventDraft => {
       const calendar = calendarFor()
       setLastCalendar(calendar)
-      return {
-        title: '',
-        calendar,
+      return newDraft(from, to, {
         allday,
-        start: format.zonedDay(new Date(from * 1000)),
-        startTime: format.zonedMinutes(new Date(from * 1000)),
-        finish: format.zonedDay(new Date(to * 1000)),
-        finishTime: format.zonedMinutes(new Date(to * 1000)),
-        timezone: format.timezone,
-        location: '',
-        description: '',
-        repeat: emptyRepeat(),
+        calendar,
         reminder: preferences.reminder,
-      }
+        zone: remembered.zone ?? {
+          start: format.timezone,
+          finish: format.timezone,
+        },
+      })
     },
-    [calendarFor, format, preferences.reminder, setLastCalendar]
+    [
+      calendarFor,
+      format.timezone,
+      preferences.reminder,
+      remembered.zone,
+      setLastCalendar,
+    ]
   )
 
-  // "New event" lands on the next whole hour of today, the length the user set.
+  // "New event" lands on the next whole hour of today, the length the user
+  // set, and is all-day when the last new event was: a click on the hour
+  // grid says timed, but the button has nothing else to go on.
   const createNow = () => {
     const now = new Date()
     const hour = Math.min(23, Math.floor(format.zonedMinutes(now) / 60) + 1)
     const from = format.timestampAt(format.zonedDay(now), hour * 60)
     setEditing({
       mode: 'create',
-      draft: compose(from, from + preferences.duration * 60),
+      draft: compose(from, from + preferences.duration * 60, remembered.allday),
     })
   }
 
+  // A day cell in the month views says which day, not which kind, so it
+  // takes the remembered all-day switch like the button does.
   const createOnDay = (day: string) => {
     const from = format.timestampAt(day, preferences.hours.start * 60)
     setEditing({
       mode: 'create',
-      draft: compose(from, from + preferences.duration * 60),
+      draft: compose(from, from + preferences.duration * 60, remembered.allday),
     })
   }
 
@@ -177,20 +203,33 @@ export function CalendarPage() {
     }
   }
 
+  // The occurrence whose summary or editor is open, which the views tint.
+  const current = selected
+    ? `${selected.instance.event}:${selected.instance.start}`
+    : editing?.mode === 'edit'
+      ? `${editing.event}:${editing.start}`
+      : undefined
+
   const select = (key: string, anchor: HTMLElement) => {
     const instance = byKey.get(key)
     if (instance) open(instance, anchor)
   }
 
   // A drag on a repeating occurrence has to say which occurrences it moved.
-  const requestMove = (instance: Instance, run: (scope: Scope) => void) => {
-    if (instance.recurring) setMoving(() => run)
+  const requestMove = (
+    instance: Instance,
+    run: (scope: Scope) => void,
+    copy = false
+  ) => {
+    if (instance.recurring) setMoving({ run, copy })
     else run('all')
   }
 
+  const page = (direction: number) => setDate(stepDate(view, date, direction))
+
   const grid =
     view === 'list' ? (
-      <Agenda onSelect={open} />
+      <Agenda selected={current} onSelect={open} />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
         days={days}
@@ -199,19 +238,34 @@ export function CalendarPage() {
         hours={preferences.hours}
         workdays={preferences.days}
         today={today}
+        // With events at their own wall-clock times, the gutter says whose
+        // clock its hours are.
+        zone={preferences.zones ? offsetLabel(format.timezone) : undefined}
+        selected={current}
         onSelect={select}
         onCreate={(from, to) =>
           setEditing({ mode: 'create', draft: compose(from, to) })
         }
-        onMove={({ key, start: from, finish: to }) => {
+        onMove={({ key, start: from, finish: to, allday, copy, calendar }) => {
           const instance = byKey.get(key)
           if (!instance || instance.readonly) return
-          requestMove(instance, mover.toTime(instance, from, to))
+          const options = { copy }
+          const run = calendar
+            ? mover.toCalendar(instance, calendar, options)
+            : allday
+              ? mover.toAllday(
+                  instance,
+                  format.zonedDay(new Date(from * 1000)),
+                  options
+                )
+              : mover.toTime(instance, from, to, options)
+          requestMove(instance, run, copy)
         }}
         onDay={(day) => {
           setDate(day)
           setView('day')
         }}
+        onStep={page}
       />
     ) : (
       <MonthGrid
@@ -220,23 +274,22 @@ export function CalendarPage() {
         events={events}
         today={today}
         weekNumbers
+        selected={current}
         onSelect={select}
         onCreate={createOnDay}
-        onMove={(key, day) => {
+        onMove={({ key, day, copy, calendar }) => {
           const instance = byKey.get(key)
           if (!instance || instance.readonly) return
-          requestMove(instance, mover.toDay(instance, day))
-        }}
-        onOverflow={(day) => {
-          const cell = document.querySelector(`[data-day="${day}"]`)
-          if (cell) {
-            setOverflow({ day, anchor: cell.getBoundingClientRect() })
-          }
+          const run = calendar
+            ? mover.toCalendar(instance, calendar, { copy })
+            : mover.toDay(instance, day, { copy })
+          requestMove(instance, run, copy)
         }}
         onDay={(day) => {
           setDate(day)
           setView('day')
         }}
+        onStep={page}
       />
     )
 
@@ -253,30 +306,36 @@ export function CalendarPage() {
       <EventPopover
         instance={selected?.instance ?? null}
         anchor={selected?.anchor ?? null}
+        zones={preferences.zones}
         onClose={() => setSelected(null)}
-      />
-
-      <DayPopover
-        day={overflow?.day ?? null}
-        anchor={overflow?.anchor ?? null}
-        instances={instances}
-        onClose={() => setOverflow(null)}
-        onSelect={(instance, anchor) => {
-          setOverflow(null)
-          open(instance, anchor)
+        onCopy={(instance) => {
+          // A read-only occurrence has no event the editor could read, so
+          // the copy is what the listing says of it, in the user's calendar.
+          setSelected(null)
+          const calendar = calendarFor()
+          setLastCalendar(calendar)
+          setEditing({
+            mode: 'create',
+            draft: instanceDraft(
+              instance,
+              calendar,
+              preferences.reminder,
+              format.timezone
+            ),
+            copy: true,
+          })
         }}
       />
 
-
       <ScopeDialog
         open={moving !== null}
-        title={t`Move this event`}
+        title={moving?.copy ? t`Copy this event` : t`Move this event`}
         icon={<Check className='size-4' />}
         onOpenChange={(open) => {
           if (!open) setMoving(null)
         }}
         onChoose={(scope) => {
-          const run = moving
+          const run = moving?.run
           setMoving(null)
           run?.(scope)
         }}

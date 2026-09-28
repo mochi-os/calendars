@@ -26,6 +26,11 @@ msgstr "(എഡിറ്റ് ചെയ്തു)"
 msgid "(expand)"
 msgstr "(വിപുലീകരിക്കുക)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(തലക്കെട്ടില്ല)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(നിങ്ങൾ)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# ഫലം} other {# ഫലങ്ങൾ}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# തിരഞ്ഞെടുത്തു} other {# തിരഞ്ഞെടുത്തു}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#മി} other {#മി}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ആ} other {#ആ}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, one {# ദിവസം മുമ്പ്} other {# ദ�
 msgid "{entityLabel} name"
 msgstr "{entityLabel} പേര്"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} മുതൽ {to} വരെ"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# കൂടി} other {+# കൂടി}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -195,6 +203,10 @@ msgstr "അടിക്കുറിപ്പ് ചേർക്കുക"
 msgid "Add checklist item"
 msgstr "ചെക്ക്‌ലിസ്റ്റ് ഇനം ചേർക്കുക"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "ഒരു ഡിവൈസ് ചേർക്കുക"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -244,8 +256,7 @@ msgid "AI"
 msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "ദിവസം മുഴുവൻ"
@@ -257,6 +268,10 @@ msgstr "എല്ലാ ഇവന്റുകളും"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} ആർക്കും തിരയാൻ അനുവദിക്കുക"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "കലണ്ടർ ആക്സസ് അനുവദിക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -275,6 +290,10 @@ msgstr "അപ്രതീക്ഷിത പിശക് സംഭവിച്�
 msgid "Android push"
 msgstr "Android പുഷ്"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "മറ്റൊരു Mochi അല്ലെങ്കിൽ CalDAV സെർവർ"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -287,6 +306,18 @@ msgstr "ലോഗിൻ ചെയ്ത ആരും"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ഈ ഫീഡ് സബ്‌സ്‌ക്രൈബ് ചെയ്ത എല്ലാം അത് ലഭിക്കുന്നത് നിർത്തും. പിന്നീട് നിങ്ങൾക്ക് ഒരു പുതിയ URL പകർത്താം."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "ആപ്പ്-നിർദിഷ്ട പാസ്‌വേഡ്"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -321,6 +352,10 @@ msgstr "നിങ്ങൾ കീഴടങ്ങാൻ തീർച്ചയാ�
 msgid "Ascending"
 msgstr "ആരോഹണ ക്രമം"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "കടലിൽ"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "ഇവന്റിന്റെ സമയത്ത്"
@@ -340,7 +375,7 @@ msgstr "പ്രാമാണീകരിച്ച ഉപയോക്താക�
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator കോഡ്"
+msgstr "ഓതന്റിക്കേറ്റർ കോഡ്"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -356,6 +391,7 @@ msgstr "{name}-ന്റെ അവതാർ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "തിരികെ"
 
@@ -421,6 +457,10 @@ msgstr "കലണ്ടർ"
 msgid "Calendar"
 msgstr "കലണ്ടർ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "കലണ്ടർ ആക്സസ് നൽകിയിട്ടില്ല"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -446,10 +486,22 @@ msgstr "കലണ്ടർ സൃഷ്ടിച്ചു"
 msgid "Calendar deleted"
 msgstr "കലണ്ടർ ഇല്ലാതാക്കി"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "കലണ്ടർ ലിങ്ക് ചെയ്തു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "കലണ്ടറിന്റെ പേര് മാറ്റി"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "കലണ്ടർ സെർവർ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "കലണ്ടർ സിങ്ക് ചെയ്തു"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -486,6 +538,7 @@ msgstr "ക്യാമറ ലഭ്യമല്ല"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -504,6 +557,11 @@ msgstr "മറുപടി റദ്ദാക്കുക"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "റദ്ദാക്കി"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "റദ്ദാക്കി"
 
@@ -563,6 +621,7 @@ msgstr "ഭാഷ തിരഞ്ഞെടുക്കുക"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "എല്ലാം മായ്ക്കുക"
 msgid "Clear search"
 msgstr "തിരയൽ മായ്ക്കുക"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "അടയ്ക്കുക"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "ഡയലോഗ് അടയ്ക്കുക"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "സൈഡ്ബാർ ചുരുക്കുക"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "കാഴ്ച ക്രമീകരണങ്ങൾ കോൺഫിഗ�
 msgid "Confirm"
 msgstr "സ്ഥിരീകരിക്കുക"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "ഒരു ഡിവൈസ് ബന്ധിപ്പിക്കുക"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "കണക്റ്റ് ചെയ്യുക"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "മറ്റൊരു ഡിവൈസ് ബന്ധിപ്പിക്കുക"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google കണക്റ്റ് ചെയ്യുക"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "കണക്റ്റ് ചെയ്തു"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ബന്ധിപ്പിച്ച ഡിവൈസുകൾ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "തുടരുക"
 msgid "Continue with {label}"
 msgstr "{label} ഉപയോഗിച്ച് തുടരുക"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ഉപയോഗിച്ച് തുടരുക"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "പകർത്തി"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "പകർത്തുക"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} പകർത്തുക"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "കലണ്ടറിന്റെ വിലാസം പകർത്തുക"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "ഇവന്റ് പകർത്തുക"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "ഈ ഇവന്റ് പകർത്തുക"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "ഡിഫോൾട്ട് സോർട്ട്"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "ആവശ്യമായ മാതൃകയുമായി പൊരുത്തപ്പെടുന്നില്ല"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1038,7 +1107,7 @@ msgstr "പൂർത്തിയായി"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Download"
-msgstr "ഡൗൺലോഡ്"
+msgstr "ഡൗൺലോഡ് ചെയ്യുക"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1059,7 +1128,6 @@ msgstr "മുമ്പത്തെ ഇവന്റുകൾ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "എഡിറ്റ് ചെയ്യുക"
 
@@ -1109,6 +1177,10 @@ msgstr "ഇമെയിൽ"
 msgid "Email code"
 msgstr "ഇമെയിൽ കോഡ്"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google അക്കൗണ്ടുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "അവസാനം"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "അവസാനിക്കുന്ന സമയം"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "അവസാന സമയമേഖല"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "അവസാനിക്കുന്നു"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "തുടങ്ങുന്നതിനു മുമ്പ് അവസാനിക്കുന്നു"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1138,6 +1219,12 @@ msgid "Error"
 msgstr "പിശക്"
 
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "ഇവന്റ് പകർത്തി"
+
+#: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "ഇവന്റ് സൃഷ്ടിച്ചു"
 
@@ -1145,6 +1232,13 @@ msgstr "ഇവന്റ് സൃഷ്ടിച്ചു"
 msgid "Event deleted"
 msgstr "ഇവന്റ് ഇല്ലാതാക്കി"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "ഇവന്റ് നീക്കി"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "ഇവന്റ് സേവ് ചെയ്തു"
@@ -1176,6 +1270,10 @@ msgstr "അധിക വലുത്"
 msgid "Failed to add account"
 msgstr "അക്കൗണ്ട് ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "കലണ്ടർ ആക്സസ് ആവശ്യപ്പെടുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "കലണ്ടർ പരിശോധിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1184,10 +1282,18 @@ msgstr "കലണ്ടർ പരിശോധിക്കുന്നതിൽ �
 msgid "Failed to connect device"
 msgstr "ഡിവൈസ് ബന്ധിപ്പിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "അക്കൗണ്ട് കണക്റ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "പകർത്തുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "ഇവന്റ് പകർത്തുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "RSS ടോക്കൺ നേടുന്നതിൽ പരാജയപ
 msgid "Failed to get the calendar address"
 msgstr "കലണ്ടറിന്റെ വിലാസം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "കലണ്ടർ ലിങ്ക് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1279,6 +1389,14 @@ msgstr "ഇവന്റ് നീക്കുന്നതിൽ പരാജയ�
 msgid "Failed to post comment"
 msgstr "അഭിപ്രായം പോസ്റ്റുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "അക്കൗണ്ടുകൾ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "കലണ്ടറുകൾ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1317,6 +1435,14 @@ msgstr "ഇവന്റ് സേവ് ചെയ്യുന്നതിൽ പ
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "സബ്സ്ക്രൈബ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "കലണ്ടർ സിങ്ക് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "പഴയപടിയാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1380,6 +1506,14 @@ msgstr "തീമിൽ നിന്ന്"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Go back"
 msgstr "തിരികെ പോകുക"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "ഈ സെർവറിൽ Google അക്കൗണ്ടുകൾ പ്രവർത്തനക്ഷമമാക്കിയിട്ടില്ല."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google കലണ്ടർ"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
@@ -1492,6 +1626,15 @@ msgstr "ലൈറ്റ്"
 msgid "Link"
 msgstr "ലിങ്ക്"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "ലിങ്ക് ചെയ്യുക"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "ലിങ്ക് ചെയ്തു"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "ലിങ്കുകൾ"
@@ -1546,10 +1689,6 @@ msgstr "ലോഗ് ഔട്ട് ചെയ്യുന്നു…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "വിഭാഗങ്ങൾ നിയന്ത്രിക്കുക"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ഡിവൈസുകൾ നിയന്ത്രിക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1634,8 +1773,10 @@ msgstr "നീക്കി"
 msgid "Moved {field}"
 msgstr "{field} നീക്കി"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} എന്നതിലേക്ക് നീക്കുന്നു"
 
@@ -1649,6 +1790,8 @@ msgstr "ഒന്നിലധികം ആഴ്ചകൾ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "ഒരിക്കലുമില്ല"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "പുതിയത്"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "ഏറ്റവും പുതിയത്"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1748,7 +1895,7 @@ msgstr "ഗ്രൂപ്പുകളൊന്നും ലഭ്യമല്�
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
-msgstr "ഇതുവരെ ഒരു item type-ഉം സൃഷ്ടിക്കാൻ കഴിയില്ല. ആവശ്യമായ parent items ആദ്യം സൃഷ്ടിക്കുക."
+msgstr "ഇതുവരെ ഒരു ഇന തരവും സൃഷ്ടിക്കാൻ കഴിയില്ല. ആവശ്യമായ പാരന്റ് ഇനങ്ങൾ ആദ്യം സൃഷ്ടിക്കുക."
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -1841,11 +1988,15 @@ msgstr "ഒന്നും കണ്ടെത്തിയില്ല"
 msgid "Notifications: {0}"
 msgstr "അറിയിപ്പുകൾ: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "സംഖ്യ"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "നമ്പർ"
 
 #: src/features/calendar/editor.tsx
 msgid "Occurrences"
@@ -1878,7 +2029,7 @@ msgstr "മെനു തുറക്കുക"
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 msgid "Open navigation"
-msgstr "navigation തുറക്കുക"
+msgstr "നാവിഗേഷൻ തുറക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Open option actions"
@@ -1940,6 +2091,7 @@ msgid "Passkeys are not available in this browser"
 msgstr "ഈ ബ്രൗസറിൽ പാസ്കീകൾ ലഭ്യമല്ല"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "പാസ്‌വേഡ്"
 
@@ -2020,6 +2172,10 @@ msgstr "പ്രോംപ്റ്റ് സേവ് ചെയ്തു"
 msgid "Properties"
 msgstr "സവിശേഷതകൾ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "പ്രസിദ്ധീകരിച്ച കലണ്ടർ വിലാസം (വായന മാത്രം)"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
 msgstr "പുഷ് അറിയിപ്പ്"
@@ -2086,6 +2242,9 @@ msgstr "പ്രസക്തി {relevance}, താൽപ്പര്യം {we
 msgid "Reload"
 msgstr "വീണ്ടും ലോഡുചെയ്യുക"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "ഓർമ്മപ്പെടുത്തൽ"
@@ -2105,6 +2264,8 @@ msgstr "{0} ഫിൽട്ടർ നീക്കംചെയ്യുക"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "{name} നീക്കം ചെയ്യുക"
 
@@ -2283,7 +2444,7 @@ msgstr "സേവ് ചെയ്യുന്നു..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "തിരയുക"
 
@@ -2338,7 +2499,7 @@ msgstr "തിരയുന്നു..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "തിരഞ്ഞെടുക്കുക"
+msgstr "തിരഞ്ഞെടുപ്പ്"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2411,6 +2572,10 @@ msgstr "സെരിഫ്"
 msgid "Server"
 msgstr "സെർവർ"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "സെർവർ വിലാസം"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2438,6 +2603,10 @@ msgstr "ക്രമീകരണങ്ങൾ"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
 msgstr "ക്ലാസുകൾ കാണിക്കുക"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "ഇവന്റുകൾ അവയുടെ സ്വന്തം സമയമേഖലയിൽ കാണിക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
@@ -2502,6 +2671,10 @@ msgstr "ആദ്യത്തെ കമന്റ് ചേർത്ത് ചർ
 msgid "Start time"
 msgstr "ആരംഭ സമയം"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "ആരംഭ സമയമേഖല"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "നിരീക്ഷണം നിർത്തുക"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "വിഷയം"
+msgstr "ഉപയോക്താവ് അല്ലെങ്കിൽ ഗ്രൂപ്പ്"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,9 +2716,21 @@ msgstr "ഞായറാഴ്ച"
 msgid "Switch to view 1-9"
 msgstr "കാഴ്ച 1-9 ലേക്ക് മാറുക"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "ഇപ്പോൾ സിങ്ക് ചെയ്യുക"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "സിങ്ക് ചെയ്യുന്നു..."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "സിസ്റ്റം"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "സിസ്റ്റം"
 
@@ -2561,6 +2746,11 @@ msgstr "ടാഗ് 50 പ്രതീകങ്ങളോ അതിൽ കുറ
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ടാഗുകൾ"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "താൽക്കാലികം"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "ഈ വിലാസം കലണ്ടർ നൽകുന്നില്ല"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "കലണ്ടർ ഇനി ആ സെർവറിൽ ഇല്ല"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "കലണ്ടർ വളരെ വലുതാണ്"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "അതേ സമയം മറ്റേ സെർവറിൽ കലണ്ടർ മാറ്റപ്പെട്ടു"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "കലണ്ടറിന്റെ സെർവറിൽ എത്താനായില്ല"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "കലണ്ടറിന്റെ സെർവർ അക്കൗണ്ടിന്റെ ക്രെഡൻഷ്യലുകൾ നിരസിച്ചു"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2633,6 +2839,10 @@ msgstr "അഭ്യർത്ഥിച്ച ഉള്ളടക്കം കണ�
 msgid "The server returned a web page instead of data."
 msgstr "സെർവർ ഡാറ്റയ്ക്ക് പകരം ഒരു വെബ് പേജ് തിരികെ നൽകി."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "ഇതും തുടർന്നുള്ളവയും"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ഈ ആപ്പിന് നിങ്ങളുടെ പാസ്കീ ഉപയോഗിക്കാൻ അനുവാദമില്ല. ക്രമീകരണങ്ങളിൽ, അനുമതികൾക്ക് കീഴിൽ അത് അനുവദിക്കുക."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "വ്യാഴാഴ്ച"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "സമയ മേഖല"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "തലക്കെട്ട്"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "തലക്കെട്ട് ആവശ്യമാണ്"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2708,7 +2922,7 @@ msgstr "വളരെയധികം അഭ്യർത്ഥനകൾ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "മുകളിൽ"
+msgstr "മികച്ചവ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -2764,6 +2978,10 @@ msgstr "നിയോഗിച്ചിട്ടില്ല"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "ലഭ്യമല്ല"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "പഴയപടിയാക്കുക"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "ഉപയോക്താവ്"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "ഉപയോക്തൃനാമം"
 
@@ -2853,7 +3072,7 @@ msgstr "വീഡിയോ വ്യൂവർ: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "കാണുക"
+msgstr "കാഴ്ച"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2944,6 +3163,10 @@ msgstr "വാർഷിക"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ഈ വിഭാഗത്തിലേക്ക് നിങ്ങൾക്ക് പ്രവേശനമില്ല."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "നിങ്ങൾ Google അക്കൗണ്ട് കണക്റ്റ് ചെയ്തിട്ടില്ല."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

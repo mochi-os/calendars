@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
   Skeleton,
+  Switch,
   addDays,
   cn,
   getErrorMessage,
@@ -252,6 +253,19 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
                 options={reminders}
                 onChange={(reminder) =>
                   setValues((current) => ({ ...current, reminder }))
+                }
+              />
+            </div>
+
+            <div className='flex items-center justify-between gap-3'>
+              <Label htmlFor='zones'>
+                <Trans>Show events in their own time zone</Trans>
+              </Label>
+              <Switch
+                id='zones'
+                checked={values.zones}
+                onCheckedChange={(zones) =>
+                  setValues((current) => ({ ...current, zones }))
                 }
               />
             </div>

@@ -26,6 +26,11 @@ msgstr "(සංස්කරණය කළා)"
 msgid "(expand)"
 msgstr "(පුළුල් කරන්න)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(මාතෘකාවක් නැත)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(ඔබ)"
@@ -40,6 +45,10 @@ msgid "{0, plural, one {# result} other {# results}}"
 msgstr "{0, plural, one {# ප්‍රතිඵලය} other {# ප්‍රතිඵල}}"
 
 #. placeholder {0}: displayInfo.count
+#. placeholder {0}: selectedIds.length
+#. placeholder {0}: unknownIds.length
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# තෝරාගත්} other {# තෝරාගත්}}"
@@ -65,6 +74,7 @@ msgstr "{count, plural, one {#මි} other {#මි}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#සති} other {#සති}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{day}, {from} to {to}"
@@ -78,14 +88,12 @@ msgstr "{days, plural, one {දින #කට පෙර} other {දින #ක�
 msgid "{entityLabel} name"
 msgstr "{entityLabel} නම"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
 msgid "{from} to {to}"
 msgstr "{from} සිට {to} දක්වා"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {තවත් +#ක්} other {තවත් +#ක්}}"
 
 #: src/hooks/use-options.ts
 msgid "{hours, plural, one {# hour before} other {# hours before}}"
@@ -195,6 +203,10 @@ msgstr "සිරස්තලයක් එක් කරන්න"
 msgid "Add checklist item"
 msgstr "පරීක්ෂා ලැයිස්තු අයිතමයක් එක් කරන්න"
 
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Add device"
+msgstr "උපාංගයක් එක් කරන්න"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
@@ -244,8 +256,7 @@ msgid "AI"
 msgstr "AI"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
-#: src/features/calendar/components/agenda.tsx
-#: src/features/calendar/components/day-popover.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
 msgid "All day"
 msgstr "මුළු දිනය"
@@ -257,6 +268,10 @@ msgstr "සියලු සිදුවීම්"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ඕනෑම කෙනෙකුට {entityLabel} සෙවීමට ඉඩ දෙන්න"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Allow calendar access"
+msgstr "දින දර්ශන ප්‍රවේශයට ඉඩ දෙන්න"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -275,6 +290,10 @@ msgstr "අනපේක්ෂිත දෝෂයක් සිදු විය"
 msgid "Android push"
 msgstr "Android තල්ලුව"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Another Mochi or CalDAV server"
+msgstr "වෙනත් Mochi හෝ CalDAV සේවාදායකයක්"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
@@ -287,6 +306,18 @@ msgstr "පිවිසී සිටින ඕනෑම කෙනෙක්"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "මෙම සංග්‍රහයට දායක වූ සියල්ල එය ලැබීම නවත්වනු ඇත. පසුව ඔබට නව URL එකක් පිටපත් කළ හැකිය."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "App-specific password"
+msgstr "යෙදුමට විශේෂිත මුරපදය"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple iCloud"
+msgstr "Apple iCloud"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Apple ID"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
@@ -321,6 +352,10 @@ msgstr "ඔබට ඉල්ලා අස්වීමට අවශ්‍ය බ�
 msgid "Ascending"
 msgstr "ආරෝහණ"
 
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "මුහුදේ"
+
 #: src/hooks/use-options.ts
 msgid "At the time of the event"
 msgstr "සිදුවීම ආරම්භ වන විට"
@@ -340,11 +375,11 @@ msgstr "සත්‍යාපිත පරිශීලකයන්"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator කේතය"
+msgstr "සත්‍යාපන කේතය"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
-msgstr "පවතින keyboard shortcuts"
+msgstr "පවතින යතුරුපුවරු කෙටි මං"
 
 #: ../../../lib/web/src/components/entity-avatar.tsx
 msgid "Avatar"
@@ -356,6 +391,7 @@ msgstr "{name} සඳහා අවතාරය"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Back"
 msgstr "ආපසු"
 
@@ -421,6 +457,10 @@ msgstr "දින දර්ශනය"
 msgid "Calendar"
 msgstr "දින දර්ශනය"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar access was not granted"
+msgstr "දින දර්ශන ප්‍රවේශය ලබා දී නැත"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
@@ -446,10 +486,22 @@ msgstr "දින දර්ශනය සාදන ලදී"
 msgid "Calendar deleted"
 msgstr "දින දර්ශනය මකා දමන ලදී"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Calendar linked"
+msgstr "දින දර්ශනය සම්බන්ධ කළා"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
 msgstr "දින දර්ශනය නැවත නම් කරන ලදී"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "දින දර්ශන සේවාදායකය"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar synced"
+msgstr "දින දර්ශනය සමමුහුර්ත කළා"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Calendar up to date"
@@ -486,6 +538,7 @@ msgstr "කැමරාව නොමැත"
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -504,6 +557,11 @@ msgstr "පිළිතුර අවලංගු කරන්න"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "අවලංගු කරන ලදී"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "අවලංගු කරන ලදී"
 
@@ -563,6 +621,7 @@ msgstr "භාෂාව තෝරන්න"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
@@ -578,22 +637,15 @@ msgstr "සියල්ල හිස් කරන්න"
 msgid "Clear search"
 msgstr "සෙවුම හිස් කරන්න"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/dialog.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
+#: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
 msgid "Close"
 msgstr "වසන්න"
-
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-msgid "Close dialog"
-msgstr "සංවාදය වසන්න"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
@@ -628,6 +680,7 @@ msgstr "පැති තීරුව හකුළන්න"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
@@ -685,18 +738,22 @@ msgstr "දැක්ම් සැකසීම් වින්‍යාස කර
 msgid "Confirm"
 msgstr "තහවුරු කරන්න"
 
-#: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "උපාංගයක් සම්බන්ධ කරන්න"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect"
+msgstr "සම්බන්ධ වන්න"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "තවත් උපාංගයක් සම්බන්ධ කරන්න"
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Connect Google"
+msgstr "Google සම්බන්ධ කරන්න"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "සම්බන්ධිතයි"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "සම්බන්ධිත උපාංග"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Connecting device..."
@@ -726,27 +783,41 @@ msgstr "ඉදිරියට"
 msgid "Continue with {label}"
 msgstr "{label} සමඟ ඉදිරියට යන්න"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} සමඟ ඉදිරියට"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "පිටපත් කළා"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Copied to clipboard"
-msgstr "Clipboard එකට පිටපත් කරන ලදී"
+msgstr "ක්ලිප්බෝඩ් වෙත පිටපත් කරන ලදී"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
 msgstr "පිටපත් කරන්න"
 
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} පිටපත් කරන්න"
-
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය පිටපත් කරන්න"
+
+#: src/features/calendar/editor.tsx
+msgid "Copy event"
+msgstr "සිදුවීම පිටපත් කරන්න"
+
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
+msgid "Copy this event"
+msgstr "මෙම සිදුවීම පිටපත් කරන්න"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
@@ -877,7 +948,6 @@ msgstr "පෙරනිමි වර්ග කිරීම"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
-#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -976,7 +1046,7 @@ msgstr "විස්තරය"
 
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
-msgstr "විස්තර Panel"
+msgstr "විස්තර පුවරුව"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/timezone-select.tsx
@@ -1028,7 +1098,6 @@ msgid "Does not match the required pattern"
 msgstr "අවශ්‍ය රටාවට නොගැළපේ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
-#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
@@ -1059,7 +1128,6 @@ msgstr "පෙර සිදුවීම්"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "සංස්කරණය කරන්න"
 
@@ -1109,6 +1177,10 @@ msgstr "ඊමේල්"
 msgid "Email code"
 msgstr "ඊමේල් කේතය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Enable Google accounts"
+msgstr "Google ගිණුම් සක්‍රිය කරන්න"
+
 #: src/features/calendar/editor.tsx
 msgid "End"
 msgstr "අවසානය"
@@ -1118,8 +1190,17 @@ msgid "End time"
 msgstr "අවසන් වන වේලාව"
 
 #: src/features/calendar/editor.tsx
+msgid "End time zone"
+msgstr "අවසාන වේලා කලාපය"
+
+#: src/features/calendar/editor.tsx
 msgid "Ends"
 msgstr "අවසන් වේ"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/editor.tsx
+msgid "Ends before it starts"
+msgstr "ආරම්භ වීමට පෙර අවසන් වේ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1138,6 +1219,12 @@ msgid "Error"
 msgstr "දෝෂයක්"
 
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event copied"
+msgstr "සිදුවීම පිටපත් කරන ලදී"
+
+#: src/features/calendar/editor.tsx
 msgid "Event created"
 msgstr "සිදුවීම සාදන ලදී"
 
@@ -1145,6 +1232,13 @@ msgstr "සිදුවීම සාදන ලදී"
 msgid "Event deleted"
 msgstr "සිදුවීම මකා දමන ලදී"
 
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+#: src/hooks/use-event-move.ts
+msgid "Event moved"
+msgstr "සිදුවීම ගෙන යන ලදී"
+
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "සිදුවීම සුරකින ලදී"
@@ -1176,6 +1270,10 @@ msgstr "අමතර විශාල"
 msgid "Failed to add account"
 msgstr "ගිණුම එක් කිරීමට අසමත් විය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to ask for calendar access"
+msgstr "දින දර්ශන ප්‍රවේශය ඉල්ලීමට අසමත් විය"
+
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to check the calendar"
 msgstr "දින දර්ශනය පරීක්ෂා කිරීමට අසමත් විය"
@@ -1184,10 +1282,18 @@ msgstr "දින දර්ශනය පරීක්ෂා කිරීමට �
 msgid "Failed to connect device"
 msgstr "උපාංගය සම්බන්ධ කිරීමට අසමත් විය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to connect the account"
+msgstr "ගිණුම සම්බන්ධ කිරීමට අසමත් විය"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "පිටපත් කිරීමට අසමත් විය"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to copy the event"
+msgstr "සිදුවීම පිටපත් කිරීමට අසමත් විය"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Failed to create calendar"
@@ -1234,6 +1340,10 @@ msgstr "RSS ටෝකනය ලබා ගැනීමට අසමත් වි�
 msgid "Failed to get the calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය ලබා ගැනීමට අසමත් විය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to link the calendar"
+msgstr "දින දර්ශනය සම්බන්ධ කිරීමට අසමත් විය"
+
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
 msgstr "පූරණය කිරීමට අසමත් විය"
@@ -1279,6 +1389,14 @@ msgstr "සිදුවීම ගෙන යාමට අසමත් විය"
 msgid "Failed to post comment"
 msgstr "අදහස පළ කිරීමට අසමත් විය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the accounts"
+msgstr "ගිණුම් කියවීමට අසමත් විය"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Failed to read the calendars"
+msgstr "දින දර්ශන කියවීමට අසමත් විය"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1286,7 +1404,7 @@ msgstr "දින දර්ශනය නැවත නම් කිරීමට �
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
-msgstr "prompt එක යළි පිහිටුවීමට අසමත් විය"
+msgstr "විමසුම යළි පිහිටුවීමට අසමත් විය"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
@@ -1303,7 +1421,7 @@ msgstr "සුරැකීමට අසමත් විය"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
-msgstr "prompt එක සුරැකීමට අසමත් විය"
+msgstr "විමසුම සුරැකීමට අසමත් විය"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/settings.tsx
@@ -1317,6 +1435,14 @@ msgstr "සිදුවීම සුරැකීමට අසමත් විය
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to subscribe"
 msgstr "දායක වීමට අසමත් විය"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to sync the calendar"
+msgstr "දින දර්ශනය සමමුහුර්ත කිරීමට අසමත් විය"
+
+#: src/hooks/use-event-move.ts
+msgid "Failed to undo"
+msgstr "අහෝසි කිරීමට අසමත් විය"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1381,6 +1507,14 @@ msgstr "තේමාවෙන්"
 msgid "Go back"
 msgstr "ආපසු යන්න"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google accounts have not been enabled on this server."
+msgstr "මෙම සේවාදායකයේ Google ගිණුම් සක්‍රිය කර නැත."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Google Calendar"
+msgstr "Google දින දර්ශනය"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Group"
 msgstr "කණ්ඩායම"
@@ -1411,7 +1545,7 @@ msgstr "උණුසුම්"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
-msgstr "ID"
+msgstr "හැඳුනුම"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1492,6 +1626,15 @@ msgstr "ලා"
 msgid "Link"
 msgstr "සබැඳිය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgctxt "verb"
+msgid "Link"
+msgstr "සම්බන්ධ කරන්න"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Linked"
+msgstr "සම්බන්ධයි"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "සබැඳි"
@@ -1546,10 +1689,6 @@ msgstr "ඉවත් වෙමින්…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ප්‍රවර්ග කළමනාකරණය කරන්න"
-
-#: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "උපාංග කළමනාකරණය කරන්න"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1634,8 +1773,10 @@ msgstr "ගෙන යන ලදී"
 msgid "Moved {field}"
 msgstr "{field} ගෙන යන ලදී"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} වෙත ගෙන යමින්"
 
@@ -1649,6 +1790,8 @@ msgstr "සති කිහිපයක්"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Name"
@@ -1679,9 +1822,13 @@ msgid "Never"
 msgstr "කවදාවත්"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "අලුත්"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "නවතම"
 
 #: src/hooks/use-ics-copy.ts
 msgid "New calendar address copied to clipboard"
@@ -1752,7 +1899,7 @@ msgstr "තවම අයිතම වර්ග සෑදිය නොහැක. 
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
-msgstr "ගැලපෙන objects නැත"
+msgstr "ගැලපෙන වස්තු නැත"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
@@ -1784,7 +1931,7 @@ msgstr "වේලා කලාප හමු නොවීය."
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "No topic record yet — try again after the next notification."
-msgstr "තවම topic වාර්තාවක් නැත — ඊළඟ දැනුම්දීමෙන් පසු නැවත උත්සාහ කරන්න."
+msgstr "තවම මාතෘකා වාර්තාවක් නැත — ඊළඟ දැනුම්දීමෙන් පසු නැවත උත්සාහ කරන්න."
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "No unread notifications"
@@ -1841,9 +1988,13 @@ msgstr "කිසිවක් හමු නොවීය"
 msgid "Notifications: {0}"
 msgstr "දැනුම්දීම්: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "අංකය"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "අංකය"
 
@@ -1890,12 +2041,12 @@ msgstr "තේරූ කාඩ්පත විවෘත කරන්න"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Open view actions"
-msgstr "view ක්‍රියා විවෘත කරන්න"
+msgstr "දසුන් ක්‍රියා විවෘත කරන්න"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Open view controls"
-msgstr "view පාලන විවෘත කරන්න"
+msgstr "දසුන් පාලන විවෘත කරන්න"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
@@ -1937,9 +2088,10 @@ msgstr "මුරයතුරු"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "මෙම බ්‍රව්සරයේ passkeys නොමැත"
+msgstr "මෙම බ්‍රව්සරයේ මුරයතුරු නොමැත"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Password"
 msgstr "මුරපදය"
 
@@ -1980,7 +2132,7 @@ msgstr "පළ කිරීම් සහ අදහස්"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Preferences"
-msgstr "අභිරුචියන්"
+msgstr "මනාපයන්"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Preferences saved"
@@ -2014,11 +2166,15 @@ msgstr "සකසමින්…"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "prompt එක සුරකින ලදී"
+msgstr "විමසුම සුරකින ලදී"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "ගුණාංග"
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Published calendar address (read-only)"
+msgstr "ප්‍රකාශිත දින දර්ශන ලිපිනය (කියවීම පමණි)"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
@@ -2086,6 +2242,9 @@ msgstr "අදාළත්වය {relevance}, උනන්දුව {weight}"
 msgid "Reload"
 msgstr "නැවත පූරණය කරන්න"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "මතක් කිරීම"
@@ -2105,6 +2264,8 @@ msgstr "{0} පෙරහන ඉවත් කරන්න"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
+#: ../../../lib/web/src/components/person-picker.tsx
 msgid "Remove {name}"
 msgstr "{name} ඉවත් කරන්න"
 
@@ -2152,7 +2313,7 @@ msgstr "තීරුව නැවත නම් කරන්න"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
-msgstr "මෙම board තීරුව නැවත නම් කරන්න"
+msgstr "මෙම පුවරු තීරුව නැවත නම් කරන්න"
 
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
@@ -2283,7 +2444,7 @@ msgstr "සුරකිමින්..."
 #: ../../../lib/web/src/components/filter-bar.tsx
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
-#: src/features/calendar/components/agenda.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "සොයන්න"
 
@@ -2338,7 +2499,7 @@ msgstr "සොයමින්..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "තෝරන්න"
+msgstr "තේරීම"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2411,6 +2572,10 @@ msgstr "සෙරිෆ්"
 msgid "Server"
 msgstr "සේවාදායකය"
 
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "Server address"
+msgstr "සේවාදායක ලිපිනය"
+
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
@@ -2437,7 +2602,11 @@ msgstr "සැකසුම්"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
-msgstr "classes පෙන්වන්න"
+msgstr "පන්ති පෙන්වන්න"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Show events in their own time zone"
+msgstr "සිදුවීම් ඒවායේම වේලා කලාපයෙන් පෙන්වන්න"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show fields"
@@ -2453,7 +2622,7 @@ msgstr "{total}න් {totalShown}ක් පෙන්වමින්"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "sidebar"
+msgstr "පැති තීරුව"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -2502,6 +2671,10 @@ msgstr "පළමු අදහස එක් කිරීමෙන් සාක�
 msgid "Start time"
 msgstr "ආරම්භක වේලාව"
 
+#: src/features/calendar/editor.tsx
+msgid "Start time zone"
+msgstr "ආරම්භක වේලා කලාපය"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Stop watching"
@@ -2509,7 +2682,7 @@ msgstr "නැරඹීම නවත්වන්න"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "විෂය"
+msgstr "පරිශීලකයා හෝ කණ්ඩායම"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2543,9 +2716,21 @@ msgstr "ඉරිදා"
 msgid "Switch to view 1-9"
 msgstr "දර්ශනය 1-9 වෙත මාරු වන්න"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Sync now"
+msgstr "දැන් සමමුහුර්ත කරන්න"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Syncing..."
+msgstr "සමමුහුර්ත කරමින්..."
+
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "පද්ධතිය"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "පද්ධතිය"
 
@@ -2561,6 +2746,11 @@ msgstr "ටැගය අක්ෂර 50ක් හෝ ඊට අඩු විය 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ටැග"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "තාවකාලික"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2597,8 +2787,24 @@ msgid "the address does not serve a calendar"
 msgstr "එම ලිපිනය දින දර්ශනයක් සපයන්නේ නැත"
 
 #: src/features/calendar/settings.tsx
+msgid "the calendar is no longer on that server"
+msgstr "දින දර්ශනය තවදුරටත් එම සේවාදායකයේ නැත"
+
+#: src/features/calendar/settings.tsx
 msgid "the calendar is too large"
 msgstr "දින දර්ශනය ඉතා විශාලයි"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar was changed on the other server at the same time"
+msgstr "එම වේලාවේදීම අනෙක් සේවාදායකයේ දින දර්ශනය වෙනස් විය"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server could not be reached"
+msgstr "දින දර්ශනයේ සේවාදායකයට සම්බන්ධ විය නොහැකි විය"
+
+#: src/features/calendar/settings.tsx
+msgid "the calendar's server refused the account's credentials"
+msgstr "දින දර්ශනයේ සේවාදායකය ගිණුමේ අක්තපත්‍ර ප්‍රතික්ෂේප කළා"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera is already in use"
@@ -2623,7 +2829,7 @@ msgstr "මයික්‍රොෆෝන ඉල්ලීමට පිළිත�
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Passkey ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
+msgstr "මුරයතුරු ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2633,9 +2839,13 @@ msgstr "ඉල්ලූ අන්තර්ගතය සොයාගත නොහ
 msgid "The server returned a web page instead of data."
 msgstr "සේවාදායකය දත්ත වෙනුවට වෙබ් පිටුවක් ලබා දුන්නේය."
 
+#: src/features/calendar/components/scope-dialog.tsx
+msgid "This and following"
+msgstr "මෙය සහ ඉදිරි ඒවා"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "මෙම යෙදුමට ඔබගේ passkey භාවිතා කිරීමට අවසර නැත. සැකසුම් තුළ, අවසර යටතේ එයට ඉඩ දෙන්න."
+msgstr "මෙම යෙදුමට ඔබගේ මුරයතුර භාවිතා කිරීමට අවසර නැත. සැකසුම් තුළ, අවසර යටතේ එයට ඉඩ දෙන්න."
 
 #: src/hooks/use-ics-copy.ts
 msgid "This calendar address was already issued and cannot be shown again."
@@ -2660,12 +2870,16 @@ msgid "Thursday"
 msgstr "බ්‍රහස්පතින්දා"
 
 #: src/features/calendar/editor.tsx
-msgid "Timezone"
+msgid "Time zone"
 msgstr "කාල කලාපය"
 
 #: src/features/calendar/editor.tsx
 msgid "Title"
 msgstr "මාතෘකාව"
+
+#: src/features/calendar/editor.tsx
+msgid "Title is required"
+msgstr "මාතෘකාව අවශ්‍යයි"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2708,7 +2922,7 @@ msgstr "ඉල්ලීම් ඕනෑවට වඩා වැඩියි"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "ඉහළ"
+msgstr "හොඳම"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -2755,7 +2969,7 @@ msgstr "දුරස්ථ සේවාදායකයට සම්බන්ධ 
 #: ../../../lib/web/src/lib/auth-manager.ts
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
-msgstr "login එකට යළි-යොමු කළ නොහැක. කරුණාකර නැවත උත්සාහ කරන්න."
+msgstr "පිවිසුමට යළි-යොමු කළ නොහැක. කරුණාකර නැවත උත්සාහ කරන්න."
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Unassigned"
@@ -2764,6 +2978,10 @@ msgstr "පවරා නැත"
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"
 msgstr "ලබා ගත නොහැක"
+
+#: src/hooks/use-event-move.ts
+msgid "Undo"
+msgstr "අහෝසි කරන්න"
 
 #: ../../../lib/web/src/lib/request.ts
 #: ../../../lib/web/src/lib/request.ts
@@ -2822,6 +3040,7 @@ msgid "User"
 msgstr "පරිශීලකයා"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Username"
 msgstr "පරිශීලක නාමය"
 
@@ -2853,7 +3072,7 @@ msgstr "වීඩියෝ දර්ශකය: {0}"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "View"
-msgstr "බලන්න"
+msgstr "දසුන"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2944,6 +3163,10 @@ msgstr "වාර්ෂික"
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
 msgstr "ඔබට මෙම කොටසට ප්‍රවේශය නොමැත."
+
+#: src/features/calendar/dialogs/subscribe-dialog.tsx
+msgid "You haven't connected a Google account."
+msgstr "ඔබ Google ගිණුමක් සම්බන්ධ කර නැත."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

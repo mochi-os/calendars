@@ -7,6 +7,8 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   ConfirmDialog,
+  DataChip,
+  FieldRow,
   Input,
   Label,
   ResponsiveDialog,
@@ -17,12 +19,10 @@ import {
   Skeleton,
   getAppPath,
   getErrorMessage,
-  shellClipboardWrite,
-  toast,
   toastAction,
   useFormat,
 } from '@mochi/web'
-import { ArrowLeft, Check, Copy, Plus, Smartphone, Trash2 } from 'lucide-react'
+import { ArrowLeft, Check, Plus, Trash2 } from 'lucide-react'
 import {
   useCreateTokenMutation,
   useDeleteTokenMutation,
@@ -34,21 +34,20 @@ type ConnectDialogProps = {
   onOpenChange: (open: boolean) => void
 }
 
-type View = 'name' | 'credentials' | 'manage'
-
-// The CalDAV engine authenticates on the token alone and ignores the username,
-// and the auth store carries no email to offer instead.
-const USERNAME = 'mochi'
+type View = 'list' | 'name' | 'credentials'
 
 export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
-  const [view, setView] = useState<View>('name')
+  const [view, setView] = useState<View>('list')
   const [name, setName] = useState('')
   const [token, setToken] = useState<string | null>(null)
+  const [username, setUsername] = useState('')
   const [deleting, setDeleting] = useState<string | null>(null)
 
-  const { data, isLoading } = useTokensQuery(open && view === 'manage')
+  // Fetched whenever the dialog is open: the list carries the account's
+  // username, which the connection details show before any device exists.
+  const { data, isLoading } = useTokensQuery(open)
   const createMutation = useCreateTokenMutation()
   const deleteMutation = useDeleteTokenMutation()
 
@@ -56,7 +55,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   // one and only way it is discarded.
   useEffect(() => {
     if (!open) {
-      setView('name')
+      setView('list')
       setName('')
       setToken(null)
       setDeleting(null)
@@ -65,12 +64,6 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
 
   const server = `${window.location.origin}/`
   const address = `${window.location.origin}${getAppPath()}/caldav/`
-
-  const copy = async (text: string) => {
-    if (await shellClipboardWrite(text)) {
-      toast.success(t`Copied to clipboard`)
-    }
-  }
 
   const create = async () => {
     const trimmed = name.trim()
@@ -82,6 +75,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         error: (error) => getErrorMessage(error, t`Failed to connect device`),
       })
       setToken(result.token)
+      setUsername(result.username)
       setName('')
       setView('credentials')
     } catch {
@@ -103,12 +97,25 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
     }
   }
 
-  // token/list answers with every token the app holds, and the calendar
-  // address links are tokens too. Only the ones bound to the CalDAV route are
-  // devices; deleting an address link from here would quietly break whatever
-  // is subscribed to it.
+  // A new device's own answer covers a list that has not come back.
+  const account = data?.username || username
+
+  // Only the password is secret: the server, the address and the username
+  // are the same for every device, so they stay on show.
+  const details = (
+    <>
+      <Detail label={t`Server`} value={server} />
+      <Detail label={t`Calendar address`} value={address} />
+      {account && <Detail label={t`Username`} value={account} />}
+    </>
+  )
+
+  // token/list answers the user's device credentials from both apps, since
+  // one password serves contacts and calendars. The dav scope is what makes
+  // a token a device: the calendar address links are tokens too, and deleting
+  // one from here would quietly break whatever is subscribed to it.
   const tokens = (data?.tokens ?? []).filter((item) =>
-    item.action.startsWith('caldav')
+    item.scopes.includes('dav')
   )
 
   return (
@@ -118,10 +125,10 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         onOpenChange={onOpenChange}
         shouldCloseOnInteractOutside={false}
       >
-        <ResponsiveDialogContent className='sm:max-w-[520px]'>
+        <ResponsiveDialogContent className='sm:max-w-[720px]'>
           <ResponsiveDialogHeader>
             <ResponsiveDialogTitle>
-              <Trans>Connect a device</Trans>
+              <Trans>Connected devices</Trans>
             </ResponsiveDialogTitle>
           </ResponsiveDialogHeader>
 
@@ -134,6 +141,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
                 id='device-name'
                 value={name}
                 maxLength={100}
+                autoFocus
                 onChange={(event) => setName(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') void create()
@@ -144,22 +152,19 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
 
           {view === 'credentials' && token && (
             <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
-              <CredentialRow label={t`Server`} value={server} copy={copy} />
-              <CredentialRow
-                label={t`Calendar address`}
-                value={address}
-                copy={copy}
-              />
-              <CredentialRow label={t`Username`} value={USERNAME} copy={copy} />
-              <CredentialRow label={t`Password`} value={token} copy={copy} />
+              <div>
+                {details}
+                <Detail label={t`Password`} value={token} />
+              </div>
               <p className='text-sm'>
                 <Trans>Save this password now. It cannot be shown again.</Trans>
               </p>
             </div>
           )}
 
-          {view === 'manage' && (
-            <div className='px-4 pb-4 sm:px-0 sm:pb-0'>
+          {view === 'list' && (
+            <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+              <div>{details}</div>
               {isLoading ? (
                 <div className='space-y-2'>
                   <Skeleton className='h-12 w-full' />
@@ -208,11 +213,24 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           )}
 
           <ResponsiveDialogFooter className='gap-2'>
+            {view === 'list' && (
+              <>
+                <Button variant='outline' onClick={() => onOpenChange(false)}>
+                  <Trans>Cancel</Trans>
+                </Button>
+                <Button
+                  onClick={() => setView('name')}
+                  icon={<Plus className='size-4' />}
+                >
+                  <Trans>Add device</Trans>
+                </Button>
+              </>
+            )}
             {view === 'name' && (
               <>
-                <Button variant='outline' onClick={() => setView('manage')}>
-                  <Smartphone className='size-4' />
-                  <Trans>Manage devices</Trans>
+                <Button variant='outline' onClick={() => setView('list')}>
+                  <ArrowLeft className='size-4 rtl:rotate-180' />
+                  <Trans>Back</Trans>
                 </Button>
                 <Button
                   onClick={() => void create()}
@@ -225,24 +243,16 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
               </>
             )}
             {view === 'credentials' && (
-              <Button variant='outline' onClick={() => onOpenChange(false)}>
+              <Button
+                variant='outline'
+                onClick={() => {
+                  setToken(null)
+                  setView('list')
+                }}
+              >
                 <Check className='size-4' />
                 <Trans>Done</Trans>
               </Button>
-            )}
-            {view === 'manage' && (
-              <>
-                <Button variant='outline' onClick={() => setView('name')}>
-                  <ArrowLeft className='size-4 rtl:rotate-180' />
-                  <Trans>Back</Trans>
-                </Button>
-                <Button
-                  onClick={() => setView('name')}
-                  icon={<Plus className='size-4' />}
-                >
-                  <Trans>Connect another device</Trans>
-                </Button>
-              </>
             )}
           </ResponsiveDialogFooter>
         </ResponsiveDialogContent>
@@ -263,32 +273,20 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   )
 }
 
-function CredentialRow({
-  label,
-  value,
-  copy,
-}: {
-  label: string
-  value: string
-  copy: (text: string) => void
-}) {
-  const { t } = useLingui()
+/** A label and its value on one row, the value copyable, as settings shows them. */
+function Detail({ label, value }: { label: string; value: string }) {
   return (
-    <div className='space-y-1'>
-      <p className='text-muted-foreground text-xs font-medium'>{label}</p>
-      <div className='bg-muted flex items-center gap-2 rounded-md p-2 font-mono text-sm'>
-        <code className='flex-1 overflow-x-auto whitespace-nowrap select-all'>
-          {value}
-        </code>
-        <Button
-          variant='ghost'
-          size='icon'
-          className='shrink-0'
-          onClick={() => copy(value)}
-          icon={<Copy className='size-4' />}
-          aria-label={t`Copy ${label}`}
-        />
-      </div>
-    </div>
+    <FieldRow
+      label={label}
+      className='py-1 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-3'
+    >
+      <DataChip
+        value={value}
+        truncate='none'
+        copyButtonMode='always'
+        className='w-full'
+        chipClassName='flex-1'
+      />
+    </FieldRow>
   )
 }

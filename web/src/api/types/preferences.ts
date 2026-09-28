@@ -17,6 +17,11 @@ export interface Preferences {
   /** Default reminder in minutes before the start; -1 is none. */
   reminder: number
   view: View
+  /**
+   * Show each event at its own wall-clock time, each end in the zone it was
+   * written in, rather than converted into the user's zone.
+   */
+  zones: boolean
 }
 
 export interface PreferencesResponse {

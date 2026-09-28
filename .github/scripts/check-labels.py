@@ -26,6 +26,8 @@ KEEP_WORDS = {
     "teal", "terracotta", "url", "version", "violet", "wiki", "wikis",
     "caldav", "carddav", "webdav", "vcard", "icalendar", "ics", "thunderbird",
     "contacts",
+    "apple", "microsoft", "facebook", "x", "android", "mac",
+
 }
 
 # Exact-string allowlist, checked before word matching. A digit-bearing
@@ -44,6 +46,8 @@ KEEP_ENGLISH = frozenset({
     "ntfy",
     "CalDAV", "CardDAV", "WebDAV", "vCard", "iCalendar", "ICS", "DAVx5", "Thunderbird",
     "Contacts",
+    "Apple", "Microsoft", "Facebook", "X", "Android", "Mac",
+
 })
 
 def _strip_placeholders(value):
@@ -87,6 +91,8 @@ KEEP_LOCALE = frozenset({
     ("sl", "Interval"), ("su", "Interval"),
     ("da", "Region"), ("de", "Region"), ("nb", "Region"),
     ("nn", "Region"), ("sv", "Region"),
+    # Polish "region" and the Welsh loanword "tag" are the languages' own words.
+    ("pl", "Region"), ("cy", "Tag"),
     ("da", "Type"), ("fr", "Type"), ("nb", "Type"), ("nn", "Type"),
     ("fr", "Description"), ("fr", "Notes"), ("sv", "Information"),
     # "Error" is the Catalan and Spanish word, and the loanword Filipino UI
@@ -134,6 +140,19 @@ KEEP_LOCALE = frozenset({
     # Yoruba keeps "feed" as a loanword throughout its catalogues, so the bare
     # label is the same word; "Ìjì" (storm) was the mistranslation it replaced.
     ('yo', 'Feed'),
+    # Every catalogue of these locales writes "feed" as a loanword (Feedovi,
+    # Feednaka, Alle Feeds), so the bare label is the same word.
+    ('ay', 'Feed'), ('bs', 'Feed'), ('da', 'Feed'), ('de', 'Feed'), ('es', 'Feed'),
+    ('hr', 'Feed'), ('it', 'Feed'), ('jv', 'Feed'), ('ku', 'Feed'), ('mt', 'Feed'),
+    ('nl', 'Feed'), ('om', 'Feed'), ('pt', 'Feed'), ('qu', 'Feed'), ('sq', 'Feed'),
+    ('su', 'Feed'), ('tl', 'Feed'),
+    # The locale's own word, spelt as the English, in every catalogue of it.
+    ('ro', 'Calendar'), ('ca', 'Notes'), ('nl', 'Type'), ('nl-be', 'Type'),
+    # Loanwords Javanese and Filipino interfaces use; the "Dhaptar" and
+    # "Listahan" they replaced mean a list.
+    ('jv', 'Listing'), ('tl', 'Listing'), ('tl', 'Verification code'),
+    ("it", "Password"), ("mt", "Password"), ("tl", "Password"), ("tl", "Username"),
+
 })
 
 
