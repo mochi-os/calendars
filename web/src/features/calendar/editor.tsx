@@ -28,7 +28,6 @@ import {
   cn,
   daysBetween,
   getErrorMessage,
-  timestampAt,
   naturalCompare,
   toast,
   useFormat,
@@ -66,17 +65,14 @@ import {
   type Frequency,
   type Scope,
 } from '@/lib/ical'
-import { blocks, stripped } from '@/lib/strip'
 import { useCalendarContext } from '@/context/calendar-context'
 import {
   useCreateEventMutation,
   useEventQuery,
-  useInstancesQuery,
   useSplitEventMutation,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
 import { reminderChoices } from '@/hooks/use-options'
-import { DayStrip } from '@/features/calendar/components/day-strip'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
@@ -451,46 +447,10 @@ function EditorFields({
 }) {
   const { t } = useLingui()
   const format = useFormat()
-  const {
-    visible,
-    preferences,
-    editing,
-    calendars: every,
-  } = useCalendarContext()
 
   // A rule read from the event that the repeat settings cannot express is
   // shown as custom and written back as it was.
   const kept = !expressible(draft.repeat.rule)
-
-  // The event's day with the user's other events on it, beneath the times,
-  // for an event that starts and ends on one day in one zone.
-  const strip = stripped(draft)
-  const from = timestampAt(draft.start, 0, draft.zone.start)
-  const to = timestampAt(addDays(draft.start, 1), 0, draft.zone.start)
-  const { data: day } = useInstancesQuery(
-    from,
-    to,
-    strip ? visible.map((calendar) => calendar.id) : [],
-    format.timezone
-  )
-  const others = useMemo(
-    () =>
-      strip
-        ? blocks(
-            day?.instances ?? [],
-            from,
-            to,
-            draft.zone.start,
-            editing?.mode === 'edit'
-              ? { event: editing.event, start: editing.start }
-              : undefined
-          )
-        : [],
-    [strip, day?.instances, from, to, draft.zone.start, editing]
-  )
-  const colour =
-    every.find((calendar) => calendar.id === draft.calendar)?.colour ??
-    'var(--primary)'
 
   // The fields only render with a draft in hand, so an update never has to
   // answer for the null the editor starts in.
@@ -686,21 +646,6 @@ function EditorFields({
           )}
         </div>
       </div>
-
-      {strip && (
-        <DayStrip
-          key={`${draft.start}|${draft.zone.start}`}
-          start={draft.startTime}
-          finish={draft.finishTime}
-          colour={colour}
-          others={others}
-          hours={preferences.hours}
-          onMove={(minutes) => moveStart(draft.start, minutes)}
-          onResize={(minutes) =>
-            edit((current) => ({ ...current, finishTime: minutes }))
-          }
-        />
-      )}
 
       <div className='space-y-2'>
         <Label htmlFor='event-location' className='flex items-center gap-2'>
