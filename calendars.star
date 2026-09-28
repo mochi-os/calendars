@@ -731,7 +731,7 @@ def schedule_reminder(e):
 	zone = ""
 	if preferences_load(e.user)["zones"]:
 		zone = found.get("zone", {}).get("start", "")
-	body = mochi.app.label("notifications.reminder.body", time=mochi.time.local(instance, "time", timezone=zone))
+	body = reminder_body(found, zone)
 	# The day the occurrence is on, opened at the event itself.
 	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone) + "&event=" + row["id"] + "&occurrence=" + str(instance)
 	# Keyed by when this reminder falls due: the notifications service takes a
@@ -742,6 +742,30 @@ def schedule_reminder(e):
 	# A series schedules its next reminders as each one fires.
 	if row["recurring"] == 1:
 		reminders_topup(row)
+
+# reminder_body(occurrence, zone) -> string: when the occurrence starts, as the
+# user reads it in zone: the time if it is today, tomorrow and the time, or its
+# date and the time; an all-day event's day alone.
+def reminder_body(occurrence, zone):
+	now = mochi.time.now()
+	today = mochi.time.local(now, "date", timezone=zone)
+	# The next day by the calendar, not twenty-four hours on: a day can have 23
+	# or 25 hours.
+	tomorrow = mochi.time.local(mochi.time.parse(today.replace("-", ""), "ical") + 86400, "date", timezone="UTC")
+	if occurrence.get("allday"):
+		day = occurrence.get("date") or mochi.time.local(occurrence["start"], "date")
+		if day == today:
+			return mochi.app.label("notifications.reminder.allday.today")
+		if day == tomorrow:
+			return mochi.app.label("notifications.reminder.allday.tomorrow")
+		return mochi.app.label("notifications.reminder.allday.later", date=mochi.time.local(occurrence["start"], "day"))
+	day = mochi.time.local(occurrence["start"], "date", timezone=zone)
+	time = mochi.time.local(occurrence["start"], "clock", timezone=zone)
+	if day == today:
+		return mochi.app.label("notifications.reminder.body", time=time)
+	if day == tomorrow:
+		return mochi.app.label("notifications.reminder.tomorrow", time=time)
+	return mochi.app.label("notifications.reminder.later", date=mochi.time.local(occurrence["start"], "day", timezone=zone), time=time)
 
 def reminders_topup(row):
 	latest = mochi.db.row("select max(instance) as instance from reminders where event=?", row["id"])
