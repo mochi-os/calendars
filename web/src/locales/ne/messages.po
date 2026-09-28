@@ -269,6 +269,10 @@ msgstr "दिनभरि"
 msgid "All events"
 msgstr "सबै कार्यक्रमहरू"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "दिनभरिका कार्यक्रमहरू"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "जो कोहीलाई {entityLabel} खोज्न अनुमति दिनुहोस्"
@@ -1494,6 +1498,11 @@ msgstr "फाइलहरू"
 msgid "Finish moving your account"
 msgstr "आफ्नो खाता सार्ने काम सम्पन्न गर्नुहोस्"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "सुरुमा"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "फ्ल्यागहरू"
@@ -1628,6 +1637,11 @@ msgstr "किबोर्ड सर्टकटहरू"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ठूलो"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "अन्त्यमा"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

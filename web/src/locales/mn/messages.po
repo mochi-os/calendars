@@ -269,6 +269,10 @@ msgstr "Өдөржин"
 msgid "All events"
 msgstr "Бүх үйл явдал"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Өдөржингийн үйл явдал"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Хүн бүр {entityLabel} хайж болохыг зөвшөөрөх"
@@ -1494,6 +1498,11 @@ msgstr "Файлууд"
 msgid "Finish moving your account"
 msgstr "Бүртгэлээ шилжүүлэхийг дуусгана уу"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Эхэнд"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "Тэмдэгт"
@@ -1628,6 +1637,11 @@ msgstr "Гарын товчлолууд"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Том"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Төгсгөлд"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

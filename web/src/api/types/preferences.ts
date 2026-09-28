@@ -27,6 +27,11 @@ export interface Preferences {
    * write to, means the built-in default calendar.
    */
   calendar: string
+  /**
+   * Where a day's all-day events go among its timed ones in the month and
+   * multiweek views.
+   */
+  allday: 'first' | 'last'
 }
 
 export interface PreferencesResponse {

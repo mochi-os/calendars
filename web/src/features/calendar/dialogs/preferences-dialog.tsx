@@ -235,6 +235,33 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
             </div>
 
             <div className='space-y-2'>
+              <Label htmlFor='allday-order'>
+                <Trans>All-day events</Trans>
+              </Label>
+              <Select
+                value={values.allday}
+                onValueChange={(allday) =>
+                  setValues((current) => ({
+                    ...current,
+                    allday: allday as Preferences['allday'],
+                  }))
+                }
+              >
+                <SelectTrigger id='allday-order' className='w-full'>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value='first'>
+                    {t({ message: 'First', context: 'order' })}
+                  </SelectItem>
+                  <SelectItem value='last'>
+                    {t({ message: 'Last', context: 'order' })}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className='space-y-2'>
               <Label htmlFor='default-duration'>
                 <Trans>Default event length</Trans>
               </Label>

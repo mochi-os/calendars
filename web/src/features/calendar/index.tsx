@@ -304,6 +304,7 @@ export function CalendarPage() {
         events={events}
         today={today}
         weekNumbers
+        allday={preferences.allday}
         selected={current}
         onSelect={select}
         onCreate={createOnDay}

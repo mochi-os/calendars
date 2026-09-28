@@ -1947,8 +1947,9 @@ def action_ics(a):
 # "zones" shows each event at its own wall-clock time, each end in the zone it
 # was written in, rather than converted into the user's zone. "calendar" is
 # the calendar a new event goes in, one the user can write to; empty means the
-# built-in default calendar.
-_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False, "calendar": ""}
+# built-in default calendar. "allday" is where a day's all-day events go among
+# its timed ones in the month and multiweek views, "first" or "last".
+_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False, "calendar": "", "allday": "first"}
 
 def preferences_read(a):
 	return preferences_load(a.user)
@@ -2005,6 +2006,9 @@ def action_preferences_set(a):
 	zones = body.get("zones", current["zones"])
 	if type(zones) != "bool":
 		zones = current["zones"]
+	allday = body.get("allday", current["allday"])
+	if allday not in ("first", "last"):
+		allday = current["allday"]
 	# A calendar named here must be one the user can write to; one kept from
 	# before that has since gone, or become read-only, is let go.
 	calendar = body.get("calendar", current["calendar"])
@@ -2028,6 +2032,7 @@ def action_preferences_set(a):
 		"view": view,
 		"zones": zones,
 		"calendar": calendar,
+		"allday": allday,
 	}
 	a.user.preference.set("calendars", json.encode(out))
 	return {"data": {"preferences": out}}

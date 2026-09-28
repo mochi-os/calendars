@@ -269,6 +269,10 @@ msgstr "ሙሉ ቀን"
 msgid "All events"
 msgstr "ሁሉም ክስተቶች"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "የሙሉ ቀን ክስተቶች"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ማንኛውም ሰው {entityLabel} እንዲፈልግ ፍቀድ"
@@ -1494,6 +1498,11 @@ msgstr "ፋይሎች"
 msgid "Finish moving your account"
 msgstr "የመለያ ዝውውርን አጠናቅ"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "መጀመሪያ ላይ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "ባንዲራዎች"
@@ -1628,6 +1637,11 @@ msgstr "የቁልፍ ሰሌዳ አቋራጮች"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ትልቅ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "መጨረሻ ላይ"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

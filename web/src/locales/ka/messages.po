@@ -269,6 +269,10 @@ msgstr "მთელი დღე"
 msgid "All events"
 msgstr "ყველა ღონისძიება"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "მთელი დღის ღონისძიებები"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ყველას შეეძლოს მოძებნოს {entityLabel}"
@@ -1494,6 +1498,11 @@ msgstr "ფაილები"
 msgid "Finish moving your account"
 msgstr "დაასრულეთ ანგარიშის გადატანა"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "დასაწყისში"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "დროშები"
@@ -1628,6 +1637,11 @@ msgstr "კლავიატურის მალსახმობები"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "დიდი"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "ბოლოს"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

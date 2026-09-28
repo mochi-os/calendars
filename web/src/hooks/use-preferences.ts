@@ -20,6 +20,7 @@ export const DEFAULTS: Preferences = {
   view: 'month',
   zones: false,
   calendar: '',
+  allday: 'first',
 }
 
 export const usePreferencesQuery = () =>

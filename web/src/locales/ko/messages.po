@@ -269,6 +269,10 @@ msgstr "종일"
 msgid "All events"
 msgstr "모든 일정"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "종일 일정"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "누구나 {entityLabel} 검색을 허용"
@@ -1494,6 +1498,11 @@ msgstr "파일"
 msgid "Finish moving your account"
 msgstr "계정 이전 완료"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "맨 앞"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "플래그"
@@ -1628,6 +1637,11 @@ msgstr "키보드 단축키"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "크게"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "맨 뒤"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

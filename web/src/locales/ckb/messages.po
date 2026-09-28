@@ -269,6 +269,10 @@ msgstr "هەموو ڕۆژ"
 msgid "All events"
 msgstr "هەموو ڕووداوەکان"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "ڕووداوەکانی هەموو ڕۆژ"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ڕێگە بدە بە هەموان بۆ گەڕان بەدوای {entityLabel}"
@@ -1494,6 +1498,11 @@ msgstr "فایلەکان"
 msgid "Finish moving your account"
 msgstr "گواستنەوەی هەژمارەکەت تەواو بکە"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "لە سەرەتادا"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "ئاڵاکان"
@@ -1628,6 +1637,11 @@ msgstr "کورتە کلیلەکان"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "گەورە"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "لە کۆتاییدا"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

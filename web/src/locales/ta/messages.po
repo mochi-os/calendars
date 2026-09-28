@@ -269,6 +269,10 @@ msgstr "நாள் முழுவதும்"
 msgid "All events"
 msgstr "அனைத்து நிகழ்வுகள்"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "நாள் முழுவதுமான நிகழ்வுகள்"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} தேட அனைவரையும் அனுமதி"
@@ -1494,6 +1498,11 @@ msgstr "கோப்புகள்"
 msgid "Finish moving your account"
 msgstr "கணக்கை நகர்த்துவதை முடிக்கவும்"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "தொடக்கத்தில்"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "கொடிகள்"
@@ -1628,6 +1637,11 @@ msgstr "விசைப்பலகை குறுக்குவழிகள�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "பெரியது"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "இறுதியில்"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"

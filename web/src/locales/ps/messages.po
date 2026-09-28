@@ -269,6 +269,10 @@ msgstr "ټوله ورځ"
 msgid "All events"
 msgstr "ټولې پېښې"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "د ټولې ورځې پېښې"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "هر چا ته اجازه ورکړئ چې {entityLabel} ولټوي"
@@ -1494,6 +1498,11 @@ msgstr "فایلونه"
 msgid "Finish moving your account"
 msgstr "د خپل حساب لیږد پای ته ورسوئ"
 
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "په پیل کې"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
 msgstr "بیرغونه"
@@ -1628,6 +1637,11 @@ msgstr "د کیبورډ شارټ کټونه"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "لوی"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "په پای کې"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
