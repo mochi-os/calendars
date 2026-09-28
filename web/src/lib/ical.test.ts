@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest'
 import type { Component } from '@/api/types/events'
 import {
   alarmMinutes,
+  nextReminder,
   anchoredDraft,
   componentDraft,
   copyDraft,
@@ -66,7 +67,7 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     location: '',
     description: '',
     repeat: emptyRepeat(),
-    reminder: 15,
+    reminders: [15],
     ...overrides,
   }
 }
@@ -220,6 +221,14 @@ describe('reminders', () => {
   })
 })
 
+describe('adding a reminder', () => {
+  it('adds the first offered reminder the event lacks', () => {
+    expect(nextReminder([])).toBe(15)
+    expect(nextReminder([15])).toBe(0)
+    expect(nextReminder([15, 0, 5])).toBe(30)
+  })
+})
+
 describe('draftComponent', () => {
   it('writes a timed event with its zone', () => {
     const component = draftComponent(draft())
@@ -250,11 +259,32 @@ describe('draftComponent', () => {
     expect(property(component, 'DESCRIPTION')).toBeUndefined()
   })
 
-  it('writes the reminder as an alarm and none when there is none', () => {
-    const withAlarm = draftComponent(draft({ reminder: 30 }))
+  it('writes each reminder as an alarm and none when there are none', () => {
+    const withAlarm = draftComponent(draft({ reminders: [30] }))
     expect(withAlarm.components).toHaveLength(1)
     expect(propertyValue(withAlarm.components[0], 'TRIGGER')).toBe('-PT30M')
-    expect(draftComponent(draft({ reminder: -1 })).components).toHaveLength(0)
+    const two = draftComponent(draft({ reminders: [30, 1440] }))
+    expect(
+      two.components.map((item) => propertyValue(item, 'TRIGGER'))
+    ).toEqual(['-PT30M', '-P1D'])
+    expect(draftComponent(draft({ reminders: [] })).components).toHaveLength(0)
+  })
+
+  it("keeps an event's every reminder through a save that changed something else", () => {
+    const previous: Component = {
+      name: 'VEVENT',
+      properties: [],
+      components: [valarm('-PT10M'), valarm('-PT1H')],
+    }
+    const read = componentDraft(
+      { ...draftComponent(draft()), components: previous.components },
+      'cal1',
+      'UTC'
+    )
+    const saved = draftComponent({ ...read, title: 'Renamed' }, previous)
+    expect(
+      saved.components.map((item) => propertyValue(item, 'TRIGGER'))
+    ).toEqual(['-PT10M', '-PT1H'])
   })
 
   it('keeps the alarms the reminder setting cannot say, replacing the rest', () => {
@@ -268,7 +298,7 @@ describe('draftComponent', () => {
         valarm('PT10M'),
       ],
     }
-    const component = draftComponent(draft({ reminder: 5 }), previous)
+    const component = draftComponent(draft({ reminders: [5] }), previous)
     expect(
       component.components.map((item) => [
         propertyValue(item, 'TRIGGER'),
@@ -295,7 +325,7 @@ describe('draftComponent', () => {
         { name: 'VOTHER', properties: [], components: [] },
       ],
     }
-    const component = draftComponent(draft({ reminder: -1 }), previous)
+    const component = draftComponent(draft({ reminders: [] }), previous)
     expect(propertyValue(component, 'SUMMARY')).toBe('Standup')
     expect(propertyValue(component, 'TRANSP')).toBe('TRANSPARENT')
     expect(propertyValue(component, 'CLASS')).toBe('PRIVATE')
@@ -304,15 +334,19 @@ describe('draftComponent', () => {
 })
 
 describe('componentDraft', () => {
-  it('reads the reminder from the first alarm the setting can say', () => {
-    const component = draftComponent(draft({ reminder: -1 }))
+  it('reads every alarm the reminder setting can say, once each', () => {
+    const component = draftComponent(draft({ reminders: [] }))
     component.components = [
       valarm('-PT15M', { RELATED: ['END'] }),
       valarm('-PT30M'),
+      valarm('-P1D'),
+      valarm('-PT30M'),
     ]
-    expect(componentDraft(component, 'cal1', 'UTC').reminder).toBe(30)
+    expect(componentDraft(component, 'cal1', 'UTC').reminders).toEqual([
+      30, 1440,
+    ])
     component.components = [valarm('-PT15M', { RELATED: ['END'] })]
-    expect(componentDraft(component, 'cal1', 'UTC').reminder).toBe(-1)
+    expect(componentDraft(component, 'cal1', 'UTC').reminders).toEqual([])
   })
 
   it('reads a timed event back into the same draft', () => {
@@ -1050,7 +1084,7 @@ describe('the draft a copy opens on', () => {
     expect(copied.finish).toBe('2026-09-25')
     expect(copied.finishTime).toBe(17 * 60)
     expect(copied.zone).toEqual({ start: 'UTC', finish: 'UTC' })
-    expect(copied.reminder).toBe(15)
+    expect(copied.reminders).toEqual([15])
     expect(copied.repeat.frequency).toBe('never')
   })
 
@@ -1070,6 +1104,7 @@ describe('the draft a copy opens on', () => {
       -1,
       'UTC'
     )
+    expect(copied.reminders).toEqual([])
     expect(copied.allday).toBe(true)
     expect(copied.start).toBe('2026-09-24')
     expect(copied.finish).toBe('2026-09-26')
@@ -1093,7 +1128,7 @@ describe('what a new event starts from', () => {
     expect(draft.zone).toEqual({ start: 'Asia/Tokyo', finish: 'Asia/Tokyo' })
     expect(draftInstants(draft)).toEqual({ start: nine, finish: nine + 3600 })
     expect(draft.calendar).toBe('cal1')
-    expect(draft.reminder).toBe(15)
+    expect(draft.reminders).toEqual([15])
     expect(draft.title).toBe('')
     expect(draft.repeat.frequency).toBe('never')
   })

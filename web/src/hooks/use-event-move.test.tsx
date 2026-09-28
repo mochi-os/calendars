@@ -52,7 +52,7 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     location: '',
     description: '',
     repeat: emptyRepeat(),
-    reminder: -1,
+    reminders: [],
     ...overrides,
   }
 }

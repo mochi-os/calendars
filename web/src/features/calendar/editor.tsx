@@ -39,6 +39,7 @@ import {
   Copy as CopyIcon,
   Globe,
   MapPin,
+  Plus,
   Repeat as RepeatIcon,
   X,
 } from 'lucide-react'
@@ -55,6 +56,7 @@ import {
   foreignZones,
   emptyRepeat,
   masterComponent,
+  nextReminder,
   overrideComponent,
   splitSeries,
   type EventDraft,
@@ -68,7 +70,7 @@ import {
   useSplitEventMutation,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
-import { reminderOptions } from '@/hooks/use-options'
+import { reminderChoices } from '@/hooks/use-options'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
@@ -439,7 +441,6 @@ function EditorFields({
 }) {
   const { t } = useLingui()
   const format = useFormat()
-  const reminders = reminderOptions()
 
   // A rule read from the event that the repeat settings cannot express is
   // shown as custom and written back as it was.
@@ -911,23 +912,68 @@ function EditorFields({
           <Bell className='size-4' />
           <Trans>Reminder</Trans>
         </Label>
-        <Select
-          value={String(draft.reminder)}
-          onValueChange={(value) =>
-            edit((current) => ({ ...current, reminder: Number(value) }))
+        {draft.reminders.map((minutes, index) => (
+          <div key={index} className='flex items-center gap-1'>
+            <Select
+              value={String(minutes)}
+              onValueChange={(value) =>
+                edit((current) => ({
+                  ...current,
+                  reminders: current.reminders.map((each, at) =>
+                    at === index ? Number(value) : each
+                  ),
+                }))
+              }
+            >
+              <SelectTrigger
+                id={index === 0 ? 'event-reminder' : undefined}
+                aria-label={t`Reminder`}
+                className='w-full'
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {reminderChoices(minutes).map((option) => (
+                  <SelectItem key={option.value} value={String(option.value)}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button
+              type='button'
+              variant='ghost'
+              size='icon'
+              aria-label={t`Remove reminder`}
+              onClick={() =>
+                edit((current) => ({
+                  ...current,
+                  reminders: current.reminders.filter((_, at) => at !== index),
+                }))
+              }
+            >
+              <X className='size-4' />
+            </Button>
+          </div>
+        ))}
+        <Button
+          type='button'
+          variant='outline'
+          size='sm'
+          id={draft.reminders.length === 0 ? 'event-reminder' : undefined}
+          onClick={() =>
+            edit((current) => ({
+              ...current,
+              reminders: [
+                ...current.reminders,
+                nextReminder(current.reminders),
+              ],
+            }))
           }
         >
-          <SelectTrigger id='event-reminder' className='w-full'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {reminders.map((option) => (
-              <SelectItem key={option.value} value={String(option.value)}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+          <Plus className='size-4' />
+          <Trans>Add reminder</Trans>
+        </Button>
       </div>
 
       <div className='space-y-2'>

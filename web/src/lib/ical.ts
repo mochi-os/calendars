@@ -52,11 +52,31 @@ export interface EventDraft {
   location: string
   description: string
   repeat: Repeat
-  /** Minutes before the start; -1 is no reminder. */
-  reminder: number
+  /**
+   * Each reminder the editor can say, in minutes before the start, in the
+   * order the event holds them.
+   */
+  reminders: number[]
 }
 
+/** The default reminder preference's value for none. */
 export const NO_REMINDER = -1
+
+/** The reminders the editor offers, in minutes before the start. */
+export const REMINDER_LEADS = [0, 5, 15, 30, 60, 1440]
+
+/** The reminders a new event opens with, from the default reminder preference. */
+export function defaultReminders(preference: number): number[] {
+  return preference === NO_REMINDER ? [] : [preference]
+}
+
+/** The reminder "Add reminder" adds: the first offered the event lacks. */
+export function nextReminder(reminders: number[]): number {
+  return (
+    [15, ...REMINDER_LEADS].find((minutes) => !reminders.includes(minutes)) ??
+    15
+  )
+}
 
 export function emptyRepeat(): Repeat {
   return {
@@ -432,8 +452,8 @@ export function draftComponent(
       item.name !== 'VALARM' ||
       (property(item, 'TRIGGER') !== undefined && alarmMinutes(item) === null)
   )
-  if (draft.reminder !== NO_REMINDER) {
-    components.push(alarm(draft.reminder, draft.title))
+  for (const minutes of new Set(draft.reminders)) {
+    components.push(alarm(minutes, draft.title))
   }
   return {
     name: 'VEVENT',
@@ -464,12 +484,15 @@ export function componentDraft(
       : finish.seconds
     : startSeconds
 
-  // The first alarm the reminder setting can say; others are kept as they are.
-  const trigger =
-    component.components
-      .filter((item) => item.name === 'VALARM')
-      .map(alarmMinutes)
-      .find((minutes) => minutes !== null) ?? null
+  // The alarms the reminder setting can say; others are kept as they are.
+  const reminders = [
+    ...new Set(
+      component.components
+        .filter((item) => item.name === 'VALARM')
+        .map(alarmMinutes)
+        .filter((minutes): minutes is number => minutes !== null)
+    ),
+  ]
 
   return {
     title: propertyValue(component, 'SUMMARY'),
@@ -483,7 +506,7 @@ export function componentDraft(
     location: propertyValue(component, 'LOCATION'),
     description: propertyValue(component, 'DESCRIPTION'),
     repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
-    reminder: trigger === null ? NO_REMINDER : trigger,
+    reminders,
   }
 }
 
@@ -993,7 +1016,7 @@ export function instanceDraft(
     location: instance.location,
     description: instance.description,
     repeat: emptyRepeat(),
-    reminder,
+    reminders: defaultReminders(reminder),
   }
 }
 
@@ -1047,7 +1070,7 @@ export function newDraft(
     location: '',
     description: '',
     repeat: emptyRepeat(),
-    reminder: options.reminder,
+    reminders: defaultReminders(options.reminder),
   }
 }
 
