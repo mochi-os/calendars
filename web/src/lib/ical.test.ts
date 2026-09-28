@@ -66,6 +66,7 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     zone: { start: ZONE, finish: ZONE },
     location: '',
     description: '',
+    original: '',
     repeat: emptyRepeat(),
     reminders: [15],
     ...overrides,
@@ -350,7 +351,11 @@ describe('componentDraft', () => {
   })
 
   it('reads a timed event back into the same draft', () => {
-    const original = draft({ location: 'Room 1', description: 'Notes' })
+    const original = draft({
+      location: 'Room 1',
+      description: 'Notes',
+      original: 'Notes',
+    })
     const read = componentDraft(draftComponent(original), 'cal1', 'UTC')
     expect(read).toEqual(original)
   })
@@ -1010,6 +1015,92 @@ describe('a rule the editor cannot express', () => {
     expect(propertyValue(split.before[0], 'RRULE')).toBe(
       'FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261110T085959Z'
     )
+  })
+})
+
+describe('a description written as HTML', () => {
+  const html = 'PNR: 2YHEIJ<br>Class: <b>Business</b> &amp; lounge'
+  const text = 'PNR: 2YHEIJ\nClass: Business & lounge'
+  const described = (component: Component): Component => ({
+    ...component,
+    properties: [
+      ...component.properties,
+      { name: 'DESCRIPTION', params: {}, value: html },
+    ],
+  })
+  const stored = described(draftComponent(draft()))
+
+  it('opens in the editor as its text', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    expect(read.description).toBe(text)
+    expect(read.original).toBe(html)
+  })
+
+  it('keeps its markup through a save that changed something else', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, title: 'Flight' }, stored)
+    expect(propertyValue(saved, 'DESCRIPTION')).toBe(html)
+  })
+
+  it('is saved as the text typed once edited', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent(
+      { ...read, description: `${read.description}\nSeat 2A` },
+      stored
+    )
+    expect(propertyValue(saved, 'DESCRIPTION')).toBe(`${text}\nSeat 2A`)
+  })
+
+  it('is dropped when its text is cleared', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, description: '' }, stored)
+    expect(property(saved, 'DESCRIPTION')).toBeUndefined()
+  })
+
+  it("keeps its markup on one occurrence's override", () => {
+    const series = described(
+      draftComponent(
+        draft({ repeat: { ...emptyRepeat(), frequency: 'daily' } })
+      )
+    )
+    const second = propertyInstant(
+      { name: 'DTSTART', params: { TZID: [ZONE] }, value: '20260917T090000' },
+      ZONE
+    )!.seconds
+    const read = occurrenceDraft(series, second, 'cal1', ZONE)
+    const [, override] = editedComponents(
+      [series],
+      { ...read, title: 'Moved' },
+      'one',
+      second,
+      ZONE
+    )
+    expect(propertyValue(override, 'DESCRIPTION')).toBe(html)
+  })
+
+  it('keeps its markup in a copy, which has no stored event to fall back on', () => {
+    const copied = copyDraft([stored], 0, 'cal2', ZONE, 'all')!
+    expect(copied.description).toBe(text)
+    expect(propertyValue(draftComponent(copied), 'DESCRIPTION')).toBe(html)
+  })
+
+  it('opens as text in a copy of a listed occurrence, and keeps its markup', () => {
+    const start = Date.UTC(2026, 8, 25, 9) / 1000
+    const copied = instanceDraft(
+      {
+        summary: 'Flight',
+        location: '',
+        description: html,
+        start,
+        finish: start + 3600,
+        allday: false,
+      },
+      'cal1',
+      15,
+      'UTC'
+    )
+    expect(copied.description).toBe(text)
+    expect(propertyValue(draftComponent(copied), 'DESCRIPTION')).toBe(html)
   })
 })
 

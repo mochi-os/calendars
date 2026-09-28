@@ -8,7 +8,13 @@
 // server stores. Everything here is pure: a day is YYYY-MM-DD as it reads in
 // the named zone, a time is minutes since midnight, and instants are unix
 // seconds.
-import { addDays, timestampAt, zonedDay, zonedMinutes } from '@mochi/web'
+import {
+  addDays,
+  descriptionText,
+  timestampAt,
+  zonedDay,
+  zonedMinutes,
+} from '@mochi/web'
 import type { Component, Property } from '@/api/types/events'
 
 export type Frequency = 'never' | 'daily' | 'weekly' | 'monthly' | 'yearly'
@@ -50,7 +56,14 @@ export interface EventDraft {
    */
   zone: { start: string; finish: string }
   location: string
+  /** The description as text, which is what the editor shows and edits. */
   description: string
+  /**
+   * The description as the event holds it, which may be HTML, as a Google
+   * calendar's is. While `description` still reads as its text, the event
+   * keeps this as it was, markup and all.
+   */
+  original: string
   repeat: Repeat
   /**
    * Each reminder the editor can say, in minutes before the start, in the
@@ -437,12 +450,12 @@ export function draftComponent(
   if (draft.location) {
     properties.push({ name: 'LOCATION', params: {}, value: draft.location })
   }
-  if (draft.description) {
-    properties.push({
-      name: 'DESCRIPTION',
-      params: {},
-      value: draft.description,
-    })
+  const description =
+    draft.description === descriptionText(draft.original)
+      ? draft.original
+      : draft.description
+  if (description) {
+    properties.push({ name: 'DESCRIPTION', params: {}, value: description })
   }
   const rule = repeatRule(draft.repeat, draft.zone.start)
   if (rule) properties.push({ name: 'RRULE', params: {}, value: rule })
@@ -484,6 +497,7 @@ export function componentDraft(
       : finish.seconds
     : startSeconds
 
+  const description = propertyValue(component, 'DESCRIPTION')
   // The alarms the reminder setting can say; others are kept as they are.
   const reminders = [
     ...new Set(
@@ -504,7 +518,8 @@ export function componentDraft(
     finishTime: zonedMinutes(new Date(finishSeconds * 1000), finishZone),
     zone: { start: zone, finish: finishZone },
     location: propertyValue(component, 'LOCATION'),
-    description: propertyValue(component, 'DESCRIPTION'),
+    description: descriptionText(description),
+    original: description,
     repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
     reminders,
   }
@@ -1014,7 +1029,8 @@ export function instanceDraft(
     finishTime: instance.allday ? 0 : zonedMinutes(ends, timezone),
     zone: { start: timezone, finish: timezone },
     location: instance.location,
-    description: instance.description,
+    description: descriptionText(instance.description),
+    original: instance.description,
     repeat: emptyRepeat(),
     reminders: defaultReminders(reminder),
   }
@@ -1069,6 +1085,7 @@ export function newDraft(
     zone: { ...zone },
     location: '',
     description: '',
+    original: '',
     repeat: emptyRepeat(),
     reminders: defaultReminders(options.reminder),
   }

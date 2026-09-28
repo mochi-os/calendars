@@ -51,6 +51,7 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     zone: { start: ZONE, finish: ZONE },
     location: '',
     description: '',
+    original: '',
     repeat: emptyRepeat(),
     reminders: [],
     ...overrides,
