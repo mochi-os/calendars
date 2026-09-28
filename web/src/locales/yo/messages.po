@@ -490,6 +490,10 @@ msgstr "A ti pa kàlẹ́ńdà rẹ́"
 msgid "Calendar linked"
 msgstr "A ti so kàlẹ́ńdà pọ̀"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "A ti yọ kàlẹ́ńdà kúrò"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "Kò lè ka àwọn àkáǹtì"
 msgid "Failed to read the calendars"
 msgstr "Kò lè ka àwọn kàlẹ́ńdà"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Kò lè yọ kàlẹ́ńdà kúrò"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "Ó dàbí pé ojú-ìwé tí o ń wá <0/>kò sí tàbí a ti yọ ọ́
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "Àwọn àlàyé ohun"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Àwọn ìṣẹ̀lẹ̀ rẹ̀ ṣì wà nínú kàlẹ́ńdà àtilẹ̀wá."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "Ìránnilétí"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Yọ kúrò"
 
@@ -2269,6 +2283,11 @@ msgstr "Yọ àyẹ̀wò {0} kúrò"
 msgid "Remove {name}"
 msgstr "Yọ {name} kúrò"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Yọ <0>{0}</0> kúrò nínú Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "Yọ òfin ìwọlé fún \"{0}\" kúrò?"
 msgid "Remove access?"
 msgstr "Yọ àyè kúrò?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Yọ kàlẹ́ńdà kúrò"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "Yọ item kúrò"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Yọ ọ̀nà ìjápọ̀ kúrò"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Ń yọ kàlẹ́ńdà kúrò..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

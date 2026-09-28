@@ -490,6 +490,10 @@ msgstr "Kalendārs dzēsts"
 msgid "Calendar linked"
 msgstr "Kalendārs saistīts"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Kalendārs noņemts"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "Neizdevās nolasīt kontus"
 msgid "Failed to read the calendars"
 msgstr "Neizdevās nolasīt kalendārus"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Neizdevās noņemt kalendāru"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "Šķiet, ka meklētā lapa <0/>neeksistē vai ir noņemta."
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "Vienuma informācija"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Tā notikumi paliek sākotnējā kalendārā."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "Atgādinājums"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Noņemt"
 
@@ -2269,6 +2283,11 @@ msgstr "Noņemt {0} filtru"
 msgid "Remove {name}"
 msgstr "Noņemt {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Noņemt <0>{0}</0> no Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "Vai noņemt piekļuves noteikumu “{0}”?"
 msgid "Remove access?"
 msgstr "Noņemt piekļuvi?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Noņemt kalendāru"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "Noņemt vienumu"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Noņemt saiti"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Noņem kalendāru..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

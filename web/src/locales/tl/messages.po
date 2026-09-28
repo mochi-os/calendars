@@ -490,6 +490,10 @@ msgstr "Na-delete ang kalendaryo"
 msgid "Calendar linked"
 msgstr "Na-link ang kalendaryo"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Naalis ang kalendaryo"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "Nabigong basahin ang mga account"
 msgid "Failed to read the calendars"
 msgstr "Nabigong basahin ang mga kalendaryo"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Hindi naalis ang kalendaryo"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "Mukhang ang pahinang hinahanap mo <0/>ay wala o maaaring inalis na."
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "Detalye ng item"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Mananatili ang mga kaganapan nito sa orihinal na kalendaryo."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "Paalala"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Alisin"
 
@@ -2269,6 +2283,11 @@ msgstr "Alisin ang filter na {0}"
 msgid "Remove {name}"
 msgstr "Alisin ang {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Alisin ang <0>{0}</0> sa Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "Alisin ang panuntunan sa access para sa \"{0}\"?"
 msgid "Remove access?"
 msgstr "Alisin ang access?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Alisin ang kalendaryo"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "Alisin ang item"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Alisin ang link"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Inaalis ang kalendaryo..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

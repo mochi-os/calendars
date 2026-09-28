@@ -490,6 +490,10 @@ msgstr "कॅलेंडर हटवले"
 msgid "Calendar linked"
 msgstr "कॅलेंडर जोडले"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "कॅलेंडर काढले"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "खाती वाचण्यात अयशस्वी"
 msgid "Failed to read the calendars"
 msgstr "कॅलेंडर वाचण्यात अयशस्वी"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "कॅलेंडर काढण्यात अयशस्वी"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "असे दिसते की तुम्ही शोधत अस�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "आयटम तपशील"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "त्याचे कार्यक्रम मूळ कॅलेंडरमध्येच राहतील."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "स्मरणपत्र"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "काढा"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} फिल्टर काढा"
 msgid "Remove {name}"
 msgstr "{name} काढा"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi मधून काढायचे?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "\"{0}\" साठी प्रवेश नियम काढायच�
 msgid "Remove access?"
 msgstr "प्रवेश काढायचा?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "कॅलेंडर काढा"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "आयटम काढा"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "दुवा काढा"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "कॅलेंडर काढत आहे..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

@@ -490,6 +490,10 @@ msgstr "Chaidh am mìosachan a sguabadh às"
 msgid "Calendar linked"
 msgstr "Mìosachan ceangailte"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Chaidh am mìosachan a thoirt air falbh"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "Cha b' urrainn na cunntasan a leughadh"
 msgid "Failed to read the calendars"
 msgstr "Cha b' urrainn na mìosachain a leughadh"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Cha b' urrainn am mìosachan a thoirt air falbh"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "Tha coltas nach eil an duilleag a tha thu a' sireadh <0/>ann no gun deac
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "Mion-fhiosrachadh an nì"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Fanaidh na tachartasan aige sa mhìosachan thùsail."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "Cuimhneachan"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Thoir air falbh"
 
@@ -2269,6 +2283,11 @@ msgstr "Thoir an criathrag {0} air falbh"
 msgid "Remove {name}"
 msgstr "Thoir {name} air falbh"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "A bheil thu airson <0>{0}</0> a thoirt air falbh à Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "A bheil thu airson riaghailt inntrigidh \"{0}\" a thoirt air falbh?"
 msgid "Remove access?"
 msgstr "Thoir an cothrom air falbh?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Thoir air falbh am mìosachan"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "Thoir an nì air falbh"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Thoir an ceangal air falbh"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "A' toirt air falbh a' mhìosachain..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

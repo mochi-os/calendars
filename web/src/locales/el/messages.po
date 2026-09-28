@@ -490,6 +490,10 @@ msgstr "Το ημερολόγιο διαγράφηκε"
 msgid "Calendar linked"
 msgstr "Το ημερολόγιο συνδέθηκε"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Το ημερολόγιο αφαιρέθηκε"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "Αποτυχία ανάγνωσης των λογαριασμών"
 msgid "Failed to read the calendars"
 msgstr "Αποτυχία ανάγνωσης των ημερολογίων"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Αποτυχία αφαίρεσης ημερολογίου"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "Φαίνεται ότι η σελίδα που αναζητάτε <0/>δ
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "Λεπτομέρειες στοιχείου"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Τα συμβάντα του παραμένουν στο αρχικό ημερολόγιο."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "Υπενθύμιση"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Αφαίρεση"
 
@@ -2269,6 +2283,11 @@ msgstr "Αφαίρεση φίλτρου {0}"
 msgid "Remove {name}"
 msgstr "Αφαίρεση {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Αφαίρεση του <0>{0}</0> από το Mochi;"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "Κατάργηση κανόνα πρόσβασης για «{0}»;"
 msgid "Remove access?"
 msgstr "Αφαίρεση πρόσβασης;"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Αφαίρεση ημερολογίου"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "Αφαίρεση στοιχείου"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Αφαίρεση συνδέσμου"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Αφαίρεση ημερολογίου..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

@@ -490,6 +490,10 @@ msgstr "දින දර්ශනය මකා දමන ලදී"
 msgid "Calendar linked"
 msgstr "දින දර්ශනය සම්බන්ධ කළා"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "දින දර්ශනය ඉවත් කරන ලදී"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "ගිණුම් කියවීමට අසමත් විය"
 msgid "Failed to read the calendars"
 msgstr "දින දර්ශන කියවීමට අසමත් විය"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "දින දර්ශනය ඉවත් කිරීමට අසමත් විය"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "ඔබ සොයන පිටුව <0/>නොපවතින බවක�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "අයිතම විස්තර"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "එහි සිදුවීම් මුල් දින දර්ශනයේම පවතී."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "මතක් කිරීම"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "ඉවත් කරන්න"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} පෙරහන ඉවත් කරන්න"
 msgid "Remove {name}"
 msgstr "{name} ඉවත් කරන්න"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi වෙතින් ඉවත් කරන්නද?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "\"{0}\" සඳහා ප්‍රවේශ නීතිය ඉවත් 
 msgid "Remove access?"
 msgstr "ප්‍රවේශය ඉවත් කරන්නද?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "දින දර්ශනය ඉවත් කරන්න"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "අයිතමය ඉවත් කරන්න"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "සබැඳිය ඉවත් කරන්න"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "දින දර්ශනය ඉවත් කරමින්..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

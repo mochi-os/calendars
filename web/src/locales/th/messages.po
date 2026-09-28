@@ -490,6 +490,10 @@ msgstr "ลบปฏิทินแล้ว"
 msgid "Calendar linked"
 msgstr "เชื่อมโยงปฏิทินแล้ว"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ลบปฏิทินออกแล้ว"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "ไม่สามารถอ่านบัญชีได้"
 msgid "Failed to read the calendars"
 msgstr "ไม่สามารถอ่านปฏิทินได้"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ไม่สามารถลบปฏิทินออกได้"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "ดูเหมือนว่าหน้าที่คุณกำล
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "รายละเอียดรายการ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "กิจกรรมของปฏิทินนี้ยังคงอยู่ในปฏิทินต้นทาง"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "การแจ้งเตือน"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "ลบ"
 
@@ -2269,6 +2283,11 @@ msgstr "ลบตัวกรอง {0}"
 msgid "Remove {name}"
 msgstr "ลบ {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "ลบ <0>{0}</0> ออกจาก Mochi ไหม?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "นำกฎการเข้าถึงสำหรับ \"{0}\" อ
 msgid "Remove access?"
 msgstr "ลบสิทธิ์การเข้าถึง?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "ลบปฏิทินออก"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "ลบรายการ"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "ลบลิงก์"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "กำลังลบปฏิทินออก..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

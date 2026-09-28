@@ -490,6 +490,10 @@ msgstr "קאַלענדאַר אויסגעמעקט"
 msgid "Calendar linked"
 msgstr "קאַלענדאַר פֿאַרבונדן"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "קאַלענדאַר אַראָפּגענומען"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "ניט געלונגען צו לייענען די קאָנטעס"
 msgid "Failed to read the calendars"
 msgstr "ניט געלונגען צו לייענען די קאַלענדאַרן"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ניט געלונגען אַראָפּצונעמען קאַלענדאַר"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "עס װײַזט אױס אַז די זײַט װאָס איר זוכט <0/
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "פּונקט־דעטאַלן"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "זײַנע געשעענישן בלײַבן אין דעם אָריגינעלן קאַלענדאַר."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "דערמאָנונג"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "אַראָפּנעמען"
 
@@ -2269,6 +2283,11 @@ msgstr "אַראָפּנעמען {0} פֿילטער"
 msgid "Remove {name}"
 msgstr "אַראָפּנעמען {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "אַראָפּנעמען <0>{0}</0> פֿון Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "אַראָפּנעמען די צוטריט־כּלל פֿאַר \"{0}\"?
 msgid "Remove access?"
 msgstr "אַראָפּנעמען צוטריט?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "אַראָפּנעמען קאַלענדאַר"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "אַראָפּנעמען עלעמענט"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "אַראָפּנעמען לינק"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "אַראָפּנעמען קאַלענדאַר..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

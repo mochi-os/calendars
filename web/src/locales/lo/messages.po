@@ -490,6 +490,10 @@ msgstr "ລຶບປະຕິທິນແລ້ວ"
 msgid "Calendar linked"
 msgstr "ເຊື່ອມຕໍ່ປະຕິທິນແລ້ວ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ລຶບປະຕິທິນອອກແລ້ວ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "ອ່ານບັນຊີລົ້ມເຫຼວ"
 msgid "Failed to read the calendars"
 msgstr "ອ່ານປະຕິທິນລົ້ມເຫຼວ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ລຶບປະຕິທິນອອກລົ້ມເຫຼວ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "ເບິ່ງຄືວ່າໜ້າທີ່ທ່ານກຳລັ
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "ລາຍລະອຽດລາຍການ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ເຫດການຂອງປະຕິທິນນີ້ຍັງຄົງຢູ່ໃນປະຕິທິນຕົ້ນສະບັບ"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "ການແຈ້ງເຕືອນ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "ລຶບອອກ"
 
@@ -2269,6 +2283,11 @@ msgstr "ລຶບຕົວກອງ {0}"
 msgid "Remove {name}"
 msgstr "ລຶບ {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "ລຶບ <0>{0}</0> ອອກຈາກ Mochi ບໍ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "ລຶບກົດການເຂົ້າເຖິງສຳລັບ \"
 msgid "Remove access?"
 msgstr "ລຶບການເຂົ້າເຖິງ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "ລຶບປະຕິທິນອອກ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "ລຶບລາຍການ"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "ລຶບລິ້ງ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "ກຳລັງລຶບປະຕິທິນອອກ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

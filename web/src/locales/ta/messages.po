@@ -490,6 +490,10 @@ msgstr "நாட்காட்டி நீக்கப்பட்டது"
 msgid "Calendar linked"
 msgstr "நாட்காட்டி இணைக்கப்பட்டது"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "நாட்காட்டி அகற்றப்பட்டது"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "கணக்குகளைப் படிக்க முடியவ�
 msgid "Failed to read the calendars"
 msgstr "நாட்காட்டிகளைப் படிக்க முடியவில்லை"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "நாட்காட்டியை அகற்ற முடியவில்லை"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "நீங்கள் தேடும் பக்கம் <0/>இல�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "உருப்படி விவரங்கள்"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "அதன் நிகழ்வுகள் அசல் நாட்காட்டியிலேயே இருக்கும்."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "நினைவூட்டல்"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "அகற்று"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} வடிகட்டியை அகற்று"
 msgid "Remove {name}"
 msgstr "{name}-ஐ அகற்று"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0>-ஐ Mochi-இலிருந்து அகற்றவா?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "\"{0}\" க்கான அணுகல் விதியை அகற�
 msgid "Remove access?"
 msgstr "அணுகலை அகற்றவா?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "நாட்காட்டியை அகற்று"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "உருப்படியை அகற்று"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "இணைப்பை அகற்று"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "நாட்காட்டி அகற்றப்படுகிறது..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

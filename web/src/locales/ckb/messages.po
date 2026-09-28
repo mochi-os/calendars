@@ -490,6 +490,10 @@ msgstr "ڕۆژژمێر سڕایەوە"
 msgid "Calendar linked"
 msgstr "ڕۆژژمێر بەستراوە"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ڕۆژژمێر لابرا"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "خوێندنەوەی هەژمارەکان سەرکەوتوو نەبوو"
 msgid "Failed to read the calendars"
 msgstr "خوێندنەوەی ڕۆژژمێرەکان سەرکەوتوو نەبوو"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "لابردنی ڕۆژژمێر سەرکەوتوو نەبوو"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "وا دیارە ئەو پەڕەیەی بەدوایدا دەگەڕێیت 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "وردەکارییەکانی بڕگە"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ڕووداوەکانی لە ڕۆژژمێرە ڕەسەنەکەدا دەمێننەوە."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "بیرخەرەوە"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "لابردن"
 
@@ -2269,6 +2283,11 @@ msgstr "لابردنی فیلتەری {0}"
 msgid "Remove {name}"
 msgstr "لابردنی {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> لە Mochi لاببرێت؟"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "یاسای دەستپێگەیشتن بۆ \"{0}\" لابردرێت؟"
 msgid "Remove access?"
 msgstr "دەستڕاگەیشتن لاببەیت؟"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "لابردنی ڕۆژژمێر"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "لابردنی بڕگە"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "بەستەر بسڕەوە"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "لابردنی ڕۆژژمێر..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

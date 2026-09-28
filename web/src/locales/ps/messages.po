@@ -490,6 +490,10 @@ msgstr "کليز ړنګ شو"
 msgid "Calendar linked"
 msgstr "کليز ونښلول شو"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "کليز لرې شو"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "د حسابونو لوستل پاتې راغلل"
 msgid "Failed to read the calendars"
 msgstr "د کليزونو لوستل پاتې راغلل"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "د کليز لرې کولو پاتې راغلل"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "داسې ښکاري چې هغه مخ چې تاسو یې لټوئ <0/>ش�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "د توکي جزئیات"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "د هغه پېښې په اصلي کليز کې پاتې کېږي."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "یادونه"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "لرې کول"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} فلټر لرې کړئ"
 msgid "Remove {name}"
 msgstr "{name} لرې کړئ"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> له Mochi څخه لرې کړئ؟"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "د \"{0}\" لپاره د لاسرسي قاعده لرې شي؟"
 msgid "Remove access?"
 msgstr "لاسرسی لرې کړو؟"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "کليز لرې کړئ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "توکی لرې کړئ"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "لینک لرې کړئ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "د کليز لرې کول..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

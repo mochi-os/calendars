@@ -490,6 +490,10 @@ msgstr "የቀን መቁጠሪያ ተሰርዟል"
 msgid "Calendar linked"
 msgstr "የቀን መቁጠሪያ ተገናኝቷል"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "የቀን መቁጠሪያ ተወግዷል"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "መለያዎችን ማንበብ አልተሳካም"
 msgid "Failed to read the calendars"
 msgstr "የቀን መቁጠሪያዎችን ማንበብ አልተሳካም"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "የቀን መቁጠሪያ ማስወገድ አልተሳካም"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "የሚፈልጉት ገጽ <0/>የለም ወይም ተወግዷል።"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "የንጥል ዝርዝሮች"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ክስተቶቹ በመጀመሪያው የቀን መቁጠሪያ ውስጥ ይቆያሉ።"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "አስታዋሽ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "አስወግድ"
 
@@ -2269,6 +2283,11 @@ msgstr "የ{0} ማጣሪያን ያስወግዱ"
 msgid "Remove {name}"
 msgstr "{name}ን አስወግድ"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> ከMochi ይወገድ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "የ\"{0}\" የመዳረሻ ደንብ ይወገድ?"
 msgid "Remove access?"
 msgstr "ድረሳ ይወገድ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "የቀን መቁጠሪያ አስወግድ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "ንጥል አስወግድ"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "አገናኙን አስወግድ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "የቀን መቁጠሪያ በማስወገድ ላይ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

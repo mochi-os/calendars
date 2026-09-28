@@ -490,6 +490,10 @@ msgstr "കലണ്ടർ ഇല്ലാതാക്കി"
 msgid "Calendar linked"
 msgstr "കലണ്ടർ ലിങ്ക് ചെയ്തു"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "കലണ്ടർ നീക്കം ചെയ്തു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "അക്കൗണ്ടുകൾ വായിക്കുന്നത�
 msgid "Failed to read the calendars"
 msgstr "കലണ്ടറുകൾ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "കലണ്ടർ നീക്കം ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "നിങ്ങൾ തിരയുന്ന പേജ് <0/>നില�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "ഇനം വിശദാംശങ്ങൾ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ഇതിന്റെ ഇവന്റുകൾ യഥാർത്ഥ കലണ്ടറിൽ തന്നെ തുടരും."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "ഓർമ്മപ്പെടുത്തൽ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} ഫിൽട്ടർ നീക്കംചെയ്യുക"
 msgid "Remove {name}"
 msgstr "{name} നീക്കം ചെയ്യുക"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi-യിൽ നിന്ന് നീക്കം ചെയ്യണോ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "\"{0}\" എന്നതിനുള്ള ആക്‌സസ് നി�
 msgid "Remove access?"
 msgstr "ആക്സസ് നീക്കം ചെയ്യണോ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "കലണ്ടർ നീക്കം ചെയ്യുക"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "ഇനം നീക്കം ചെയ്യുക"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "ലിങ്ക് നീക്കം ചെയ്യുക"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "കലണ്ടർ നീക്കം ചെയ്യുന്നു..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

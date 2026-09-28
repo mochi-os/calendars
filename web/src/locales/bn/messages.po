@@ -490,6 +490,10 @@ msgstr "ক্যালেন্ডার মুছে ফেলা হয়ে
 msgid "Calendar linked"
 msgstr "ক্যালেন্ডার লিঙ্ক করা হয়েছে"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ক্যালেন্ডার সরানো হয়েছে"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "অ্যাকাউন্টগুলি পড়া যায়ন�
 msgid "Failed to read the calendars"
 msgstr "ক্যালেন্ডারগুলি পড়া যায়নি"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ক্যালেন্ডার সরানো যায়নি"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "আপনি যে পৃষ্ঠাটি খুঁজছেন <0/>�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "আইটেমের বিবরণ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "এর ইভেন্টগুলো মূল ক্যালেন্ডারে থেকে যাবে।"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "অনুস্মারক"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "সরান"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} ফিল্টার সরান"
 msgid "Remove {name}"
 msgstr "{name} সরান"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Mochi থেকে <0>{0}</0> সরাবেন?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "\"{0}\" এর জন্য অ্যাক্সেস নিয়ম 
 msgid "Remove access?"
 msgstr "অ্যাক্সেস সরাবেন?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "ক্যালেন্ডার সরান"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "আইটেম সরান"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "লিঙ্ক সরান"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "ক্যালেন্ডার সরানো হচ্ছে..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

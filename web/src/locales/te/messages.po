@@ -490,6 +490,10 @@ msgstr "క్యాలెండర్ తొలగించబడింది"
 msgid "Calendar linked"
 msgstr "క్యాలెండర్ లింక్ చేయబడింది"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "క్యాలెండర్ తొలగించబడింది"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -1397,6 +1401,10 @@ msgstr "ఖాతాలను చదవడంలో విఫలమైంది"
 msgid "Failed to read the calendars"
 msgstr "క్యాలెండర్‌లను చదవడంలో విఫలమైంది"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "క్యాలెండర్‌ను తొలగించడంలో విఫలమైంది"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1587,6 +1595,10 @@ msgstr "మీరు వెతుకుతున్న పేజీ <0/>లే�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Item details"
 msgstr "అంశం వివరాలు"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "దాని ఈవెంట్‌లు అసలు క్యాలెండర్‌లోనే ఉంటాయి."
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
@@ -2253,6 +2265,8 @@ msgstr "రిమైండర్"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "తొలగించండి"
 
@@ -2269,6 +2283,11 @@ msgstr "{0} ఫిల్టర్‌ను తొలగించండి"
 msgid "Remove {name}"
 msgstr "{name}ని తొలగించండి"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> ను Mochi నుండి తొలగించాలా?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2283,6 +2302,10 @@ msgstr "\"{0}\" కోసం యాక్సెస్ నియమాన్న�
 msgid "Remove access?"
 msgstr "యాక్సెస్‌ను తొలగించాలా?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "క్యాలెండర్‌ను తొలగించండి"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2296,6 +2319,10 @@ msgstr "ఐటెంను తొలగించండి"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "లింక్‌ను తీసివేయి"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "క్యాలెండర్‌ను తొలగిస్తోంది..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
