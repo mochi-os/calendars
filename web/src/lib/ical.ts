@@ -307,6 +307,22 @@ export function triggerMinutes(trigger: string): number | null {
   return sign === '-' ? total : -total
 }
 
+/**
+ * The minutes before the start an alarm fires, when the reminder setting can
+ * say it: a duration relative to the start, at or before it. An alarm relative
+ * to the end, after the start or at a fixed time is null; the editor leaves it
+ * as it is.
+ */
+export function alarmMinutes(alarm: Component): number | null {
+  const trigger = property(alarm, 'TRIGGER')
+  if (!trigger) return null
+  const related = trigger.params?.RELATED?.[0]?.toUpperCase()
+  const kind = trigger.params?.VALUE?.[0]?.toUpperCase()
+  if (related === 'END' || kind === 'DATE-TIME') return null
+  const minutes = triggerMinutes(trigger.value)
+  return minutes !== null && minutes >= 0 ? minutes : null
+}
+
 function alarm(minutes: number, summary: string): Component {
   return {
     name: 'VALARM',
@@ -384,7 +400,7 @@ function finishProperty(draft: EventDraft): Property {
 /**
  * The VEVENT an editor draft describes. Properties the editor does not own are
  * carried over from `previous`, as are that component's own sub-components
- * other than its alarms, which the reminder setting replaces.
+ * other than the alarms the reminder setting can say, which it replaces.
  */
 export function draftComponent(
   draft: EventDraft,
@@ -412,7 +428,9 @@ export function draftComponent(
   if (rule) properties.push({ name: 'RRULE', params: {}, value: rule })
 
   const components = (previous?.components ?? []).filter(
-    (item) => item.name !== 'VALARM'
+    (item) =>
+      item.name !== 'VALARM' ||
+      (property(item, 'TRIGGER') !== undefined && alarmMinutes(item) === null)
   )
   if (draft.reminder !== NO_REMINDER) {
     components.push(alarm(draft.reminder, draft.title))
@@ -446,12 +464,12 @@ export function componentDraft(
       : finish.seconds
     : startSeconds
 
-  const reminderAlarm = component.components.find(
-    (item) => item.name === 'VALARM'
-  )
-  const trigger = reminderAlarm
-    ? triggerMinutes(propertyValue(reminderAlarm, 'TRIGGER'))
-    : null
+  // The first alarm the reminder setting can say; others are kept as they are.
+  const trigger =
+    component.components
+      .filter((item) => item.name === 'VALARM')
+      .map(alarmMinutes)
+      .find((minutes) => minutes !== null) ?? null
 
   return {
     title: propertyValue(component, 'SUMMARY'),

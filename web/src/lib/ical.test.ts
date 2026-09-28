@@ -5,6 +5,7 @@
 import { describe, expect, it } from 'vitest'
 import type { Component } from '@/api/types/events'
 import {
+  alarmMinutes,
   anchoredDraft,
   componentDraft,
   copyDraft,
@@ -37,6 +38,20 @@ import {
 } from './ical'
 
 const ZONE = 'Europe/London'
+
+function valarm(
+  trigger: string,
+  params: Record<string, string[]> = {}
+): Component {
+  return {
+    name: 'VALARM',
+    properties: [
+      { name: 'ACTION', params: {}, value: 'DISPLAY' },
+      { name: 'TRIGGER', params, value: trigger },
+    ],
+    components: [],
+  }
+}
 
 function draft(overrides: Partial<EventDraft> = {}): EventDraft {
   return {
@@ -193,6 +208,16 @@ describe('reminders', () => {
     expect(triggerMinutes('PT30M')).toBe(-30)
     expect(triggerMinutes('nonsense')).toBeNull()
   })
+
+  it('reads only the alarms the reminder setting can say', () => {
+    expect(alarmMinutes(valarm('-PT15M'))).toBe(15)
+    expect(alarmMinutes(valarm('PT0M'))).toBe(0)
+    expect(alarmMinutes(valarm('-PT15M', { RELATED: ['END'] }))).toBeNull()
+    expect(
+      alarmMinutes(valarm('20260927T120000Z', { VALUE: ['DATE-TIME'] }))
+    ).toBeNull()
+    expect(alarmMinutes(valarm('PT10M'))).toBeNull()
+  })
 })
 
 describe('draftComponent', () => {
@@ -232,6 +257,31 @@ describe('draftComponent', () => {
     expect(draftComponent(draft({ reminder: -1 })).components).toHaveLength(0)
   })
 
+  it('keeps the alarms the reminder setting cannot say, replacing the rest', () => {
+    const previous: Component = {
+      name: 'VEVENT',
+      properties: [],
+      components: [
+        valarm('-PT15M'),
+        valarm('-PT30M', { RELATED: ['END'] }),
+        valarm('20260927T120000Z', { VALUE: ['DATE-TIME'] }),
+        valarm('PT10M'),
+      ],
+    }
+    const component = draftComponent(draft({ reminder: 5 }), previous)
+    expect(
+      component.components.map((item) => [
+        propertyValue(item, 'TRIGGER'),
+        property(item, 'TRIGGER')?.params,
+      ])
+    ).toEqual([
+      ['-PT30M', { RELATED: ['END'] }],
+      ['20260927T120000Z', { VALUE: ['DATE-TIME'] }],
+      ['PT10M', {}],
+      ['-PT5M', {}],
+    ])
+  })
+
   it('carries over properties the editor does not own', () => {
     const previous: Component = {
       name: 'VEVENT',
@@ -254,6 +304,17 @@ describe('draftComponent', () => {
 })
 
 describe('componentDraft', () => {
+  it('reads the reminder from the first alarm the setting can say', () => {
+    const component = draftComponent(draft({ reminder: -1 }))
+    component.components = [
+      valarm('-PT15M', { RELATED: ['END'] }),
+      valarm('-PT30M'),
+    ]
+    expect(componentDraft(component, 'cal1', 'UTC').reminder).toBe(30)
+    component.components = [valarm('-PT15M', { RELATED: ['END'] })]
+    expect(componentDraft(component, 'cal1', 'UTC').reminder).toBe(-1)
+  })
+
   it('reads a timed event back into the same draft', () => {
     const original = draft({ location: 'Room 1', description: 'Notes' })
     const read = componentDraft(draftComponent(original), 'cal1', 'UTC')
