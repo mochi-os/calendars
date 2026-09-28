@@ -627,7 +627,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
             <Trans>Subscribe to calendar</Trans>
           </ResponsiveDialogTitle>
         </ResponsiveDialogHeader>
-        <div className='max-h-[60vh] space-y-4 overflow-y-auto px-4 pb-4 sm:px-0 sm:pb-0'>
+        <div className='max-h-[60vh] space-y-4 overflow-y-auto'>
           {kind !== null && (
             <Button variant='ghost' size='sm' className='-ms-2' onClick={back}>
               <ChevronLeft className='size-4' />

@@ -133,7 +133,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           </ResponsiveDialogHeader>
 
           {view === 'name' && (
-            <div className='space-y-2 px-4 pb-4 sm:px-0 sm:pb-0'>
+            <div className='space-y-2'>
               <Label htmlFor='device-name'>
                 <Trans>Device name</Trans>
               </Label>
@@ -151,7 +151,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           )}
 
           {view === 'credentials' && token && (
-            <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+            <div className='space-y-4'>
               <div>
                 {details}
                 <Detail label={t`Password`} value={token} />
@@ -163,7 +163,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           )}
 
           {view === 'list' && (
-            <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+            <div className='space-y-4'>
               <div>{details}</div>
               {isLoading ? (
                 <div className='space-y-2'>

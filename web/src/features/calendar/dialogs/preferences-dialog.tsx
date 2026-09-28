@@ -103,17 +103,17 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
         </ResponsiveDialogHeader>
 
         {isLoading ? (
-          <div className='space-y-3 px-4 py-2 sm:px-0'>
+          <div className='space-y-3 py-2'>
             <Skeleton className='h-10 w-full' />
             <Skeleton className='h-10 w-full' />
             <Skeleton className='h-10 w-full' />
           </div>
         ) : isError ? (
-          <p className='text-destructive px-4 py-2 text-sm sm:px-0'>
+          <p className='text-destructive py-2 text-sm'>
             {getErrorMessage(error, t`Failed to load your preferences`)}
           </p>
         ) : (
-          <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+          <div className='space-y-4'>
             <div className='grid grid-cols-2 gap-3'>
               <div className='space-y-2'>
                 <Label htmlFor='hours-start'>

@@ -71,7 +71,7 @@ export function RenameDialog({ calendar, onClose }: Props) {
             <Trans>Rename calendar</Trans>
           </ResponsiveDialogTitle>
         </ResponsiveDialogHeader>
-        <div className='space-y-2 px-4 pb-4 sm:px-0 sm:pb-0'>
+        <div className='space-y-2'>
           <Label htmlFor='calendar-name'>
             <Trans>Name</Trans>
           </Label>
