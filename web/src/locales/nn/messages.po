@@ -1477,6 +1477,7 @@ msgstr "Klarte ikkje abonnera"
 msgid "Failed to sync the calendar"
 msgstr "Klarte ikkje synkronisere kalenderen"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Klarte ikkje angra"
@@ -1943,6 +1944,10 @@ msgstr "Ingen grupper tilgjengelege"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ingen elementtypar kan opprettast enno. Opprett dei påkravde overordna elementa først."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Lagrar..."
 msgid "Search"
 msgstr "Søk"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Søk etter ein kommando å køyre..."
@@ -3061,6 +3070,7 @@ msgstr "Ikkje tildelt"
 msgid "Unavailable"
 msgstr "Ikkje tilgjengeleg"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Angre"

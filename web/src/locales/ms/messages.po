@@ -1477,6 +1477,7 @@ msgstr "Gagal melanggan"
 msgid "Failed to sync the calendar"
 msgstr "Gagal menyegerakkan kalendar"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Gagal membuat asal"
@@ -1943,6 +1944,10 @@ msgstr "Tiada kumpulan tersedia"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Tiada jenis item boleh dicipta lagi. Cipta item induk yang diperlukan dahulu."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Sedang menyimpan..."
 msgid "Search"
 msgstr "Cari"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Cari perintah untuk dijalankan..."
@@ -3061,6 +3070,7 @@ msgstr "Tidak diberikan"
 msgid "Unavailable"
 msgstr "Tidak tersedia"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Buat asal"

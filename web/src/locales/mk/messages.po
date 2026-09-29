@@ -1477,6 +1477,7 @@ msgstr "Неуспешна претплата"
 msgid "Failed to sync the calendar"
 msgstr "Неуспешна синхронизација на календарот"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Неуспешно поништување"
@@ -1943,6 +1944,10 @@ msgstr "Нема достапни групи"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Сè уште не може да се креираат типови ставки. Прво креирајте ги потребните родителски ставки."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Зачувување..."
 msgid "Search"
 msgstr "Барај"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Пребарај команда за извршување..."
@@ -3061,6 +3070,7 @@ msgstr "Недоделено"
 msgid "Unavailable"
 msgstr "Недостапно"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Поништи"

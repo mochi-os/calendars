@@ -1477,6 +1477,7 @@ msgstr "Janiw suscribiña atinkti"
 msgid "Failed to sync the calendar"
 msgstr "Janiw calendario sincronizañ atkiti"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Janiw kutikipaña atinkti"
@@ -1943,6 +1944,10 @@ msgstr "Jan tamanak utjki"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Janiraw item tipo lurañ atititi. Nayraqat parent itemanak munaski lurma."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Imaski..."
 msgid "Search"
 msgstr "Thaqhama"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Mä kamachi lurañataki thaqhaña..."
@@ -3061,6 +3070,7 @@ msgstr "Jan asignata"
 msgid "Unavailable"
 msgstr "Janiw utjkiti"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Kutikipaña"

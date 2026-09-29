@@ -1477,6 +1477,7 @@ msgstr "Nabigong mag-subscribe"
 msgid "Failed to sync the calendar"
 msgstr "Nabigong i-sync ang kalendaryo"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Nabigong i-undo"
@@ -1943,6 +1944,10 @@ msgstr "Walang available na grupo"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Wala pang uri ng item na magagawa. Gumawa muna ng kinakailangang parent item."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Sini-save..."
 msgid "Search"
 msgstr "Maghanap"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Maghanap ng command na patatakbuhin..."
@@ -3061,6 +3070,7 @@ msgstr "Walang nakatalaga"
 msgid "Unavailable"
 msgstr "Hindi available"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "I-undo"

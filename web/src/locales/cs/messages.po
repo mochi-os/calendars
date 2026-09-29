@@ -1477,6 +1477,7 @@ msgstr "Nepodařilo se přihlásit k odběru"
 msgid "Failed to sync the calendar"
 msgstr "Nepodařilo se synchronizovat kalendář"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Nepodařilo se vrátit zpět"
@@ -1943,6 +1944,10 @@ msgstr "Žádné skupiny k dispozici"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Zatím nelze vytvořit žádné typy položek. Nejprve vytvořte potřebné nadřazené položky."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Ukládá se..."
 msgid "Search"
 msgstr "Hledat"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Hledat příkaz ke spuštění..."
@@ -3061,6 +3070,7 @@ msgstr "Nepřiřazeno"
 msgid "Unavailable"
 msgstr "Nedostupné"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Zpět"

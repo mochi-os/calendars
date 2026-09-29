@@ -1477,6 +1477,7 @@ msgstr "ניט געלונגען צו אַבאָנירן"
 msgid "Failed to sync the calendar"
 msgstr "ניט געלונגען צו סינכראָניזירן דעם קאַלענדאַר"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "ניט געלונגען צו אָפּטאָן"
@@ -1943,6 +1944,10 @@ msgstr "קיין גרופּעס פֿאַראַן"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "קיין עלעמענט טיפּן קענען נאָך ניט זײַן באַשאַפֿן. באַשאַף די נייטיקע עלטערן עלעמענטן ערשט."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "היטן..."
 msgid "Search"
 msgstr "זוך"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "זוכט אַ באַפֿעל צו לױפֿן..."
@@ -3061,6 +3070,7 @@ msgstr "אומצוגעטיילט"
 msgid "Unavailable"
 msgstr "נישט פֿאַראַן"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "אָפּטאָן"

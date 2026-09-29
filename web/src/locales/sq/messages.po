@@ -1477,6 +1477,7 @@ msgstr "Abonimi dështoi"
 msgid "Failed to sync the calendar"
 msgstr "Sinkronizimi i kalendarit dështoi"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Zhbërja dështoi"
@@ -1943,6 +1944,10 @@ msgstr "Asnjë grup i disponueshëm"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Asnjë lloj artikulli nuk mund të krijohet ende. Krijoni fillimisht artikujt prind të kërkuar."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Duke ruajtur..."
 msgid "Search"
 msgstr "Kërko"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Kërko një komandë për të ekzekutuar..."
@@ -3061,6 +3070,7 @@ msgstr "I pacaktuar"
 msgid "Unavailable"
 msgstr "I padisponueshëm"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Zhbëj"

@@ -23,7 +23,14 @@ import {
   finished,
   useFormat,
 } from '@mochi/web'
-import { Bell, CalendarDays, ChevronUp, Repeat, Repeat2 } from 'lucide-react'
+import {
+  Bell,
+  CalendarDays,
+  ChevronUp,
+  Repeat,
+  Repeat2,
+  Search,
+} from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import { useCalendarContext } from '@/context/calendar-context'
 import { useBoundsQuery, useInstancePages } from '@/hooks/use-events'
@@ -190,6 +197,10 @@ export function Agenda({ selected, onSelect }: Props) {
   }, [instances])
 
   const empty = !pending && instances.length === 0 && !earlier && !later
+  // A search that matched nothing in everything there is to load, which is
+  // not the same as a calendar with nothing on it.
+  const unmatched =
+    search.trim() !== '' && !pending && matches.length === 0 && !later
 
   return (
     <div className='flex h-full min-h-0 flex-col'>
@@ -224,6 +235,8 @@ export function Agenda({ selected, onSelect }: Props) {
         )}
         {empty ? (
           <EmptyState icon={CalendarDays} title={t`No events`} />
+        ) : unmatched ? (
+          <EmptyState icon={Search} title={t`No matches`} />
         ) : (
           days.map(([day, list]) => (
             <div key={day}>

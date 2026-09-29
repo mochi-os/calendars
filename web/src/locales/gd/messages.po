@@ -1477,6 +1477,7 @@ msgstr "Cha b' urrainn fo-sgrìobhadh"
 msgid "Failed to sync the calendar"
 msgstr "Cha b' urrainn am mìosachan a shioncronachadh"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Cha b' urrainn a neo-dhèanamh"
@@ -1943,6 +1944,10 @@ msgstr "Chan eil buidhnean rim faotainn"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Chan urrainnear seòrsa nì sam bith a chruthachadh fhathast. Cruthaich na nithean pàrant riatanach an toiseach."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "A' sàbhaladh..."
 msgid "Search"
 msgstr "Lorg"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Lorg àithne ri ruith..."
@@ -3061,6 +3070,7 @@ msgstr "Gun shònrachadh"
 msgid "Unavailable"
 msgstr "Cha eil ri làimh"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Neo-dhèan"

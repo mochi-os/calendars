@@ -1477,6 +1477,7 @@ msgstr "सबस्क्राइब करण्यात अयशस्व�
 msgid "Failed to sync the calendar"
 msgstr "कॅलेंडर सिंक करण्यात अयशस्वी"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "पूर्ववत करण्यात अयशस्वी"
@@ -1943,6 +1944,10 @@ msgstr "गट उपलब्ध नाहीत"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "अद्याप कोणतेही आयटम प्रकार तयार करता येणार नाहीत. आधी आवश्यक पॅरेंट आयटम्स तयार करा."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "जतन करत आहे..."
 msgid "Search"
 msgstr "शोधा"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "चालवण्यासाठी कमांड शोधा..."
@@ -3061,6 +3070,7 @@ msgstr "नियुक्त न केलेले"
 msgid "Unavailable"
 msgstr "अनुपलब्ध"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "पूर्ववत करा"

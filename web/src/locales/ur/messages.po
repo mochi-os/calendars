@@ -1477,6 +1477,7 @@ msgstr "سبسکرائب کرنے میں ناکامی"
 msgid "Failed to sync the calendar"
 msgstr "کیلنڈر سنک کرنے میں ناکامی"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "واپس نہیں ہو سکا"
@@ -1943,6 +1944,10 @@ msgstr "کوئی گروپ دستیاب نہیں"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ابھی کوئی آئٹم اقسام نہیں بنائی جا سکتیں۔ پہلے درکار پیرنٹ آئٹمز بنائیں۔"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "محفوظ کیا جا رہا ہے..."
 msgid "Search"
 msgstr "تلاش کریں"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "چلانے کے لیے کمانڈ تلاش کریں..."
@@ -3061,6 +3070,7 @@ msgstr "غیر تفویض شدہ"
 msgid "Unavailable"
 msgstr "ناقابل رسائی"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "واپس کریں"

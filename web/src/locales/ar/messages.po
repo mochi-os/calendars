@@ -1477,6 +1477,7 @@ msgstr "فشل الاشتراك"
 msgid "Failed to sync the calendar"
 msgstr "تعذّرت مزامنة التقويم"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "فشل التراجع"
@@ -1943,6 +1944,10 @@ msgstr "لا توجد مجموعات متاحة"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "لا يمكن إنشاء أنواع عناصر بعد. أنشئ العناصر الأصلية المطلوبة أولاً."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "جاري الحفظ..."
 msgid "Search"
 msgstr "بحث"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "ابحث عن أمر لتشغيله..."
@@ -3061,6 +3070,7 @@ msgstr "غير معين"
 msgid "Unavailable"
 msgstr "غير متاح"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "تراجع"

@@ -1477,6 +1477,7 @@ msgstr "Kò lè ṣe alábàápín"
 msgid "Failed to sync the calendar"
 msgstr "Kò lè mú kàlẹ́ńdà bá ara mu"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Kò lè dá padà"
@@ -1943,6 +1944,10 @@ msgstr "Kò sí ẹgbẹ́ tó wà"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "A kò lè dá oríṣi item kankan sílẹ̀ síbẹ̀. Dá àwọn item òbí tí a nílò sílẹ̀ ní àkọ́kọ́."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Ń fi pamọ́..."
 msgid "Search"
 msgstr "Wá"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Wá àṣẹ láti ṣiṣẹ́..."
@@ -3061,6 +3070,7 @@ msgstr "Aláìyàn"
 msgid "Unavailable"
 msgstr "Kò sí"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Dá padà"

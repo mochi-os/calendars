@@ -1477,6 +1477,7 @@ msgstr "সাবস্ক্রাইব করতে ব্যর্থ"
 msgid "Failed to sync the calendar"
 msgstr "ক্যালেন্ডার সিঙ্ক করা যায়নি"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "পূর্বাবস্থায় ফেরানো যায়নি"
@@ -1943,6 +1944,10 @@ msgstr "কোনো গ্রুপ উপলব্ধ নেই"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "এখনও কোনো আইটেম টাইপ তৈরি করা যাবে না। প্রথমে প্রয়োজনীয় প্যারেন্ট আইটেম তৈরি করুন।"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "সংরক্ষণ করা হচ্ছে..."
 msgid "Search"
 msgstr "অনুসন্ধান"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "চালানোর জন্য একটি কমান্ড খুঁজুন..."
@@ -3061,6 +3070,7 @@ msgstr "অ্যাসাইন করা হয়নি"
 msgid "Unavailable"
 msgstr "অনুপলব্ধ"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "পূর্বাবস্থায় ফেরান"

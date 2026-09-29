@@ -1477,6 +1477,7 @@ msgstr "දායක වීමට අසමත් විය"
 msgid "Failed to sync the calendar"
 msgstr "දින දර්ශනය සමමුහුර්ත කිරීමට අසමත් විය"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "අහෝසි කිරීමට අසමත් විය"
@@ -1943,6 +1944,10 @@ msgstr "කණ්ඩායම් ලබා ගත නොහැක"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "තවම අයිතම වර්ග සෑදිය නොහැක. අවශ්‍ය මූලික අයිතම පළමුව සාදන්න."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "සුරකිමින්..."
 msgid "Search"
 msgstr "සොයන්න"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "ධාවනය කිරීමට විධානයක් සොයන්න..."
@@ -3061,6 +3070,7 @@ msgstr "පවරා නැත"
 msgid "Unavailable"
 msgstr "ලබා ගත නොහැක"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "අහෝසි කරන්න"

@@ -1477,6 +1477,7 @@ msgstr "Gagal langganan"
 msgid "Failed to sync the calendar"
 msgstr "Gagal nyinkronake kalender"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Gagal mbatalake"
@@ -1943,6 +1944,10 @@ msgstr "Ora ana grup kasedhiya"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Durung ana jenis item sing bisa digawé. Gawé item induk sing dibutuhaké luwih dhisik."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Lagi nyimpen..."
 msgid "Search"
 msgstr "Goleki"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Golek printah kanggo mlaku..."
@@ -3061,6 +3070,7 @@ msgstr "Ora ditugasaké"
 msgid "Unavailable"
 msgstr "Ora kasedhiya"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Batalake"

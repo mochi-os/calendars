@@ -1477,6 +1477,7 @@ msgstr "Неуспешно абониране"
 msgid "Failed to sync the calendar"
 msgstr "Неуспешна синхронизация на календара"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Неуспешна отмяна"
@@ -1943,6 +1944,10 @@ msgstr "Няма налични групи"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Все още не може да се създават типове елементи. Първо създайте необходимите родителски елементи."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Запазва се..."
 msgid "Search"
 msgstr "Търсене"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Търсене на команда за изпълнение..."
@@ -3061,6 +3070,7 @@ msgstr "Неприсвоено"
 msgid "Unavailable"
 msgstr "Недостъпно"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Отмени"

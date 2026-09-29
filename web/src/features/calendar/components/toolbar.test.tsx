@@ -25,14 +25,20 @@ vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => context,
 }))
 
+const { size } = vi.hoisted(() => ({
+  size: { isDesktop: true, isMobile: false },
+}))
+
 vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
-  return { ...original, useScreenSize: () => ({ isDesktop: true }) }
+  return { ...original, useScreenSize: () => size }
 })
 
 afterEach(() => {
   cleanup()
   vi.clearAllMocks()
+  size.isDesktop = true
+  size.isMobile = false
 })
 
 function show(view: string) {
@@ -44,6 +50,30 @@ function show(view: string) {
   )
   return screen.getByRole('searchbox', { name: 'Search' })
 }
+
+// The views the picker offers, read from its open list.
+function views() {
+  fireEvent.pointerDown(screen.getByRole('combobox', { name: 'View' }), {
+    button: 0,
+    pointerType: 'mouse',
+  })
+  return screen.getAllByRole('option').map((option) => option.textContent)
+}
+
+describe('Toolbar views', () => {
+  it('offers every view on a tablet', () => {
+    size.isDesktop = false
+    show('day')
+    expect(views()).toEqual(['Day', 'Week', 'Multiweek', 'Month', 'List'])
+  })
+
+  it('offers only the day and the list on a phone', () => {
+    size.isDesktop = false
+    size.isMobile = true
+    show('day')
+    expect(views()).toEqual(['Day', 'List'])
+  })
+})
 
 describe('Toolbar search', () => {
   it('sets the term and opens the list view when typed from another view', () => {

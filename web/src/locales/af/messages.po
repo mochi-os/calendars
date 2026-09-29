@@ -1477,6 +1477,7 @@ msgstr "Kon nie inteken nie"
 msgid "Failed to sync the calendar"
 msgstr "Kon nie die kalender sinkroniseer nie"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Kon nie ontdoen nie"
@@ -1943,6 +1944,10 @@ msgstr "Geen groepe beskikbaar nie"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Geen itemtipes kan nog geskep word nie. Skep eers die vereiste ouer-items."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Besig om te stoor..."
 msgid "Search"
 msgstr "Soek"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Soek 'n opdrag om te loop..."
@@ -3061,6 +3070,7 @@ msgstr "Nie toegewys nie"
 msgid "Unavailable"
 msgstr "Nie beskikbaar nie"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Ontdoen"

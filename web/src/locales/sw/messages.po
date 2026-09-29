@@ -1477,6 +1477,7 @@ msgstr "Imeshindwa kujisajili"
 msgid "Failed to sync the calendar"
 msgstr "Imeshindwa kusawazisha kalenda"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Imeshindwa kutendua"
@@ -1943,6 +1944,10 @@ msgstr "Hakuna vikundi vinavyopatikana"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Hakuna aina za vipengele zinazoweza kuundwa bado. Unda vipengele vya mzazi vinavyohitajika kwanza."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Inahifadhi..."
 msgid "Search"
 msgstr "Tafuta"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Tafuta amri ya kuendesha..."
@@ -3061,6 +3070,7 @@ msgstr "Haijapewa"
 msgid "Unavailable"
 msgstr "Haipatikani"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Tendua"

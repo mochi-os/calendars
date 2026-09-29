@@ -26,7 +26,6 @@ import {
   TimezoneSelect,
   addDays,
   cn,
-  daysBetween,
   getErrorMessage,
   naturalCompare,
   toast,
@@ -59,6 +58,7 @@ import {
   foreignZones,
   emptyRepeat,
   masterComponent,
+  movedStart,
   nextReminder,
   overrideComponent,
   splitSeries,
@@ -493,24 +493,8 @@ function EditorFields({
   const edit = (update: (current: EventDraft) => EventDraft) =>
     setDraft((current) => (current ? update(current) : current))
 
-  // Moving the start carries the end with it, which is what every calendar
-  // does: the length the user set is the thing worth keeping.
-  const moveStart = (day: string, minutes: number) => {
-    edit((current) => {
-      const shiftDays = daysBetween(current.start, day)
-      const shiftMinutes = minutes - current.startTime
-      return {
-        ...current,
-        start: day,
-        startTime: minutes,
-        finish: addDays(current.finish, shiftDays),
-        finishTime: Math.max(
-          0,
-          Math.min(1439, current.finishTime + shiftMinutes)
-        ),
-      }
-    })
-  }
+  const moveStart = (day: string, minutes: number) =>
+    edit((current) => movedStart(current, day, minutes))
 
   const weekdays = useMemo(() => {
     const out: { day: number; label: string }[] = []

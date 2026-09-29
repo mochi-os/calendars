@@ -1477,6 +1477,7 @@ msgstr "Захиалж чадсангүй"
 msgid "Failed to sync the calendar"
 msgstr "Хуанлийг синк хийж чадсангүй"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Буцааж чадсангүй"
@@ -1943,6 +1944,10 @@ msgstr "Боломжит групп байхгүй"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Одоогоор зүйл үүсгэх боломжгүй. Эхлээд шаардлагатай эх зүйлийг үүсгэнэ үү."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Хадгалж байна..."
 msgid "Search"
 msgstr "Хайх"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Ажиллуулах команд хайх..."
@@ -3061,6 +3070,7 @@ msgstr "Хариуцсан хүн оноогоогүй"
 msgid "Unavailable"
 msgstr "Боломжгүй"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Буцаах"

@@ -24,6 +24,8 @@ interface Props {
    */
   following?: boolean
   destructive?: boolean
+  /** The chosen action is running, so no choice can be made twice. */
+  pending?: boolean
   icon?: React.ReactNode
   onOpenChange: (open: boolean) => void
   onChoose: (scope: Scope) => void
@@ -40,6 +42,7 @@ export function ScopeDialog({
   recurring = true,
   following = true,
   destructive,
+  pending = false,
   icon,
   onOpenChange,
   onChoose,
@@ -56,12 +59,20 @@ export function ScopeDialog({
           </Button>
           {recurring ? (
             <>
-              <Button variant='outline' onClick={() => onChoose('one')}>
+              <Button
+                variant='outline'
+                onClick={() => onChoose('one')}
+                disabled={pending}
+              >
                 {icon}
                 <Trans>This event</Trans>
               </Button>
               {following && (
-                <Button variant='outline' onClick={() => onChoose('following')}>
+                <Button
+                  variant='outline'
+                  onClick={() => onChoose('following')}
+                  disabled={pending}
+                >
                   {icon}
                   <Trans>This and following</Trans>
                 </Button>
@@ -69,6 +80,7 @@ export function ScopeDialog({
               <Button
                 variant={destructive ? 'destructive' : 'default'}
                 onClick={() => onChoose('all')}
+                disabled={pending}
                 icon={icon}
               >
                 <Trans>All events</Trans>
@@ -78,6 +90,7 @@ export function ScopeDialog({
             <Button
               variant={destructive ? 'destructive' : 'default'}
               onClick={() => onChoose('all')}
+              disabled={pending}
               icon={icon}
             >
               {destructive ? <Trans>Delete</Trans> : <Trans>Save</Trans>}

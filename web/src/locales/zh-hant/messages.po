@@ -1477,6 +1477,7 @@ msgstr "訂閱失敗"
 msgid "Failed to sync the calendar"
 msgstr "同步行事曆失敗"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "復原失敗"
@@ -1943,6 +1944,10 @@ msgstr "無可用的群組"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "尚無法建立任何項目類型。請先建立所需的父項目。"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "儲存中..."
 msgid "Search"
 msgstr "搜尋"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "搜尋要執行的命令..."
@@ -3061,6 +3070,7 @@ msgstr "未指派"
 msgid "Unavailable"
 msgstr "無法使用"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "復原"

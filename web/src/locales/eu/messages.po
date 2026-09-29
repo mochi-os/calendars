@@ -1477,6 +1477,7 @@ msgstr "Ezin izan da harpidetu"
 msgid "Failed to sync the calendar"
 msgstr "Ezin izan da egutegia sinkronizatu"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Ezin izan da desegin"
@@ -1943,6 +1944,10 @@ msgstr "Ez dago talde erabilgarririk"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Oraindik ezin da elementu motarik sortu. Sortu lehenik beharrezko elementu gurasoak."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Gordetzen..."
 msgid "Search"
 msgstr "Bilatu"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Bilatu exekutatzeko komando bat..."
@@ -3061,6 +3070,7 @@ msgstr "Esleitu gabe"
 msgid "Unavailable"
 msgstr "Ez dago erabilgarri"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Desegin"

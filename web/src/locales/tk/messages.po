@@ -1477,6 +1477,7 @@ msgstr "Abuna bolunmady"
 msgid "Failed to sync the calendar"
 msgstr "Senenamany sinhronlaşdyrmak başartmady"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Yzyna gaýtarmak başartmady"
@@ -1943,6 +1944,10 @@ msgstr "Elýeterli toparlar ýok"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Heniz hiç bir element görnüşi döredilip bilinmez. Ilki bilen zerur ene-atalar elementlerini dörediň."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Saklanýar..."
 msgid "Search"
 msgstr "Gözle"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Işletmek üçin buýruk gözle..."
@@ -3061,6 +3070,7 @@ msgstr "Bellenilmedik"
 msgid "Unavailable"
 msgstr "Elýeterli däl"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Yzyna gaýtar"

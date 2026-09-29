@@ -1477,6 +1477,7 @@ msgstr "Tókst ekki að gerast áskrifandi"
 msgid "Failed to sync the calendar"
 msgstr "Tókst ekki að samstilla dagatalið"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Tókst ekki að afturkalla"
@@ -1943,6 +1944,10 @@ msgstr "Engir hópar tiltækir"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ekki er enn hægt að búa til neinar tegundir atriða. Búðu fyrst til nauðsynleg foreldraatriði."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Vista..."
 msgid "Search"
 msgstr "Leita"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Leita að skipun til að keyra..."
@@ -3061,6 +3070,7 @@ msgstr "Ekki úthlutað"
 msgid "Unavailable"
 msgstr "Ekki tiltækt"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Afturkalla"

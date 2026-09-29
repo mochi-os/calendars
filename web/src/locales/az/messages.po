@@ -1477,6 +1477,7 @@ msgstr "Abunə olmaq alınmadı"
 msgid "Failed to sync the calendar"
 msgstr "Təqvimi sinxronlaşdırmaq alınmadı"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Geri qaytarmaq alınmadı"
@@ -1943,6 +1944,10 @@ msgstr "Mövcud qrup yoxdur"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Hələ heç bir element növü yaradıla bilməz. Əvvəlcə tələb olunan əsas elementləri yaradın."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Saxlanılır..."
 msgid "Search"
 msgstr "Axtar"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "İcra ediləcək əmr axtarın..."
@@ -3061,6 +3070,7 @@ msgstr "Təyin edilməyib"
 msgid "Unavailable"
 msgstr "Əlçatan deyil"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Geri qaytar"

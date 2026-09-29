@@ -1161,6 +1161,32 @@ export function startZone(
 }
 
 /**
+ * The draft with its start moved to a day and a clock, and its end moved by
+ * the same amount, which is what every calendar does: the length the user set
+ * is the thing worth keeping. An end pushed past midnight lands on the next
+ * day rather than stopping at 23:59, and one pulled before midnight on the
+ * day before.
+ */
+export function movedStart(
+  draft: EventDraft,
+  day: string,
+  minutes: number
+): EventDraft {
+  // Minutes from midnight of the old start day, where both ends are measured.
+  const shift = daysBetween(draft.start, day) * 1440 + minutes - draft.startTime
+  const finish =
+    daysBetween(draft.start, draft.finish) * 1440 + draft.finishTime + shift
+  const days = Math.floor(finish / 1440)
+  return {
+    ...draft,
+    start: day,
+    startTime: minutes,
+    finish: addDays(draft.start, days),
+    finishTime: finish - days * 1440,
+  }
+}
+
+/**
  * The draft with its end no earlier than its start as instants. A zone
  * change keeps each end's clock reading, so an end zone chosen east of the
  * start can put the end before the start; the end then moves on by whole

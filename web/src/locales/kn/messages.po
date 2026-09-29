@@ -1477,6 +1477,7 @@ msgstr "ಚಂದಾದಾರರಾಗಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to sync the calendar"
 msgstr "ಕ್ಯಾಲೆಂಡರ್ ಸಿಂಕ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "ರದ್ದುಗೊಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
@@ -1943,6 +1944,10 @@ msgstr "ಯಾವುದೇ ಗ್ರೂಪ್‌ಗಳು ಲಭ್ಯವಿಲ�
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ಇನ್ನೂ ಯಾವುದೇ ಐಟಂ ಪ್ರಕಾರಗಳನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮೊದಲು ಅಗತ್ಯವಿರುವ ಪೋಷಕ ಐಟಂಗಳನ್ನು ರಚಿಸಿ."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "ಉಳಿಸಲಾಗುತ್ತಿದೆ..."
 msgid "Search"
 msgstr "ಹುಡುಕಿ"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "ರನ್ ಮಾಡಲು ಆಜ್ಞೆಯನ್ನು ಹುಡುಕಿ..."
@@ -3061,6 +3070,7 @@ msgstr "ನಿಯೋಜಿಸದ"
 msgid "Unavailable"
 msgstr "ಲಭ್ಯವಿಲ್ಲ"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "ರದ್ದುಗೊಳಿಸಿ"

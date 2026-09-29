@@ -1477,6 +1477,7 @@ msgstr "Abonebûn neserkeftî bû"
 msgid "Failed to sync the calendar"
 msgstr "Hevdemkirina salnameyê neserkeftî bû"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Vegerandin neserkeftî bû"
@@ -1943,6 +1944,10 @@ msgstr "Tu kom berdest nîn in"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Hêj tu cure babetan nikarin werin afirandin. Pêşî babetên dê yên pêwîst biafirîne."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Tê tomarkirin..."
 msgid "Search"
 msgstr "Lêger"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Li fermanekê bigere ku bimeşe..."
@@ -3061,6 +3070,7 @@ msgstr "Nehatiye diyarkirin"
 msgid "Unavailable"
 msgstr "Ne berdest"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Vegerîne"

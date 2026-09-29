@@ -18,6 +18,7 @@ import {
   draftInstants,
   editedComponents,
   endAfterStart,
+  movedStart,
   expressible,
   foreignZones,
   emptyRepeat,
@@ -76,6 +77,44 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     ...overrides,
   }
 }
+
+describe('movedStart', () => {
+  it('carries the end past midnight instead of stopping at 23:59', () => {
+    const moved = movedStart(
+      draft({ startTime: 22 * 60, finishTime: 23 * 60 + 30 }),
+      '2026-09-16',
+      23 * 60
+    )
+    expect(moved.finish).toBe('2026-09-17')
+    expect(moved.finishTime).toBe(30)
+  })
+
+  it('pulls the end back before midnight with the start', () => {
+    const moved = movedStart(
+      draft({ startTime: 60, finish: '2026-09-16', finishTime: 90 }),
+      '2026-09-15',
+      23 * 60
+    )
+    expect(moved.start).toBe('2026-09-15')
+    expect(moved.finish).toBe('2026-09-15')
+    expect(moved.finishTime).toBe(23 * 60 + 30)
+  })
+
+  it('keeps the length when the day changes', () => {
+    const moved = movedStart(draft(), '2026-09-20', 9 * 60)
+    expect(moved.finish).toBe('2026-09-20')
+    expect(moved.finishTime).toBe(10 * 60)
+  })
+
+  it('moves an all-day event by whole days', () => {
+    const moved = movedStart(
+      draft({ allday: true, finish: '2026-09-18' }),
+      '2026-09-20',
+      9 * 60
+    )
+    expect(moved.finish).toBe('2026-09-22')
+  })
+})
 
 describe('property values', () => {
   it('reads a whole-day value as the start of that day in the zone', () => {

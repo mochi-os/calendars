@@ -1477,6 +1477,7 @@ msgstr "ສະໝັກລົ້ມເຫຼວ"
 msgid "Failed to sync the calendar"
 msgstr "ຊິງຄ໌ປະຕິທິນລົ້ມເຫຼວ"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "ຍົກເລີກລົ້ມເຫຼວ"
@@ -1943,6 +1944,10 @@ msgstr "ບໍ່ມີກຸ່ມທີ່ມີຢູ່"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ຍັງບໍ່ສາມາດສ້າງປະເພດລາຍການໄດ້. ສ້າງລາຍການແມ່ທີ່ຕ້ອງການກ່ອນ."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "ກຳລັງບັນທຶກ..."
 msgid "Search"
 msgstr "ຄົ້ນຫາ"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "ຄົ້ນຫາຄຳສັ່ງເພື່ອແລ່ນ..."
@@ -3061,6 +3070,7 @@ msgstr "ບໍ່ໄດ້ມອບໝາຍ"
 msgid "Unavailable"
 msgstr "ບໍ່ມີໃຫ້ບໍລິການ"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "ຍົກເລີກ"

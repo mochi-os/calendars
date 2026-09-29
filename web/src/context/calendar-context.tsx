@@ -84,7 +84,7 @@ const CalendarContext = createContext<CalendarContextValue | null>(null)
 
 export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const format = useFormat()
-  const { isDesktop } = useScreenSize()
+  const { isMobile } = useScreenSize()
   const navigate = useNavigate()
   const search = useSearch({ strict: false }) as {
     view?: string
@@ -121,12 +121,12 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const urlView = VIEWS.includes(search.view as CalendarView)
     ? (search.view as CalendarView)
     : null
-  // Below tablet width there is no room for a grid, so a grid view falls back
-  // to the list. The URL keeps what the user asked for, so widening the window
-  // puts it back.
+  // Below tablet width (768px) there is no room for a grid, so a grid view
+  // falls back to the list; a tablet has the grids. The URL keeps what the
+  // user asked for, so widening the window puts it back.
   const requested = urlView ?? lastView
   const view =
-    isDesktop || requested === 'day' || requested === 'list'
+    !isMobile || requested === 'day' || requested === 'list'
       ? requested
       : 'list'
   const date = /^\d{4}-\d{2}-\d{2}$/.test(search.date ?? '')
@@ -141,6 +141,9 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const setView = useCallback(
     (next: CalendarView) => {
       setLastView(next)
+      // Only the list filters by the search, so a grid would keep a box that
+      // looks like a filter and filters nothing.
+      if (next !== 'list') setQuery('')
       void navigate({
         to: '/',
         search: (previous: Record<string, unknown>) => ({

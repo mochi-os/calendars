@@ -1477,6 +1477,7 @@ msgstr "구독에 실패했어요"
 msgid "Failed to sync the calendar"
 msgstr "캘린더를 동기화하지 못했어요"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "실행 취소에 실패했어요"
@@ -1943,6 +1944,10 @@ msgstr "이용 가능한 그룹이 없어요"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "아직 항목 유형을 만들 수 없어요. 먼저 필요한 상위 항목을 만들어 주세요."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "저장 중..."
 msgid "Search"
 msgstr "검색"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "실행할 명령 검색..."
@@ -3061,6 +3070,7 @@ msgstr "할당되지 않음"
 msgid "Unavailable"
 msgstr "사용할 수 없음"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "실행 취소"

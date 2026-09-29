@@ -5,16 +5,17 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi } from 'vitest'
+import { afterEach, describe, it, expect, vi } from 'vitest'
 import type { Instance } from '@/api/types/events'
 import { Agenda } from './agenda'
 
 const calendar = { id: 'c1', name: 'Test calendar', colour: '#60a5fa' }
+const { typed } = vi.hoisted(() => ({ typed: { search: '' } }))
 
 vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => ({
     preferences: { zones: false },
-    search: '',
+    search: typed.search,
     date: '2026-09-22',
     today: '2026-09-22',
     calendars: [calendar],
@@ -78,6 +79,34 @@ function show(selected?: string) {
     ) as HTMLElement
   return { today: of(22), other: of(23) }
 }
+
+describe('Agenda search', () => {
+  afterEach(() => {
+    typed.search = ''
+  })
+
+  it('says a search matched nothing, rather than that there are no events', () => {
+    typed.search = 'dentist'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(screen.getByText('No matches')).toBeInTheDocument()
+    expect(screen.queryByText('No events')).toBeNull()
+  })
+
+  it('lists what a search matched', () => {
+    typed.search = 'boots'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(screen.getByText('Wax boots')).toBeInTheDocument()
+    expect(screen.queryByText('No matches')).toBeNull()
+  })
+})
 
 describe('Agenda', () => {
   it("fills today's heading in the primary colour with contrasting text", () => {

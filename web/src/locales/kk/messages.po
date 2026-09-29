@@ -1477,6 +1477,7 @@ msgstr "Жазылу сәтсіз аяқталды"
 msgid "Failed to sync the calendar"
 msgstr "Күнтізбені синхрондау сәтсіз аяқталды"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Болдырмау сәтсіз аяқталды"
@@ -1943,6 +1944,10 @@ msgstr "Топтар қолжетімсіз"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Әлі бірде-бір элемент түрі жасалмайды. Алдымен қажетті ата-аналық элементтерді жасаңыз."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Сақталуда..."
 msgid "Search"
 msgstr "Іздеу"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Орындалатын пәрменді іздеу..."
@@ -3061,6 +3070,7 @@ msgstr "Тағайындалмаған"
 msgid "Unavailable"
 msgstr "Қолжетімсіз"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Болдырмау"

@@ -1477,6 +1477,7 @@ msgstr "購読に失敗しました"
 msgid "Failed to sync the calendar"
 msgstr "カレンダーを同期できませんでした"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "元に戻せませんでした"
@@ -1943,6 +1944,10 @@ msgstr "利用可能なグループがありません"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "まだ作成可能な項目タイプがありません。必要な親項目を先に作成してください。"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "保存中..."
 msgid "Search"
 msgstr "検索"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "実行するコマンドを検索..."
@@ -3061,6 +3070,7 @@ msgstr "未割り当て"
 msgid "Unavailable"
 msgstr "利用不可"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "元に戻す"

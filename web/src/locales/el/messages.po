@@ -1477,6 +1477,7 @@ msgstr "Αποτυχία εγγραφής"
 msgid "Failed to sync the calendar"
 msgstr "Αποτυχία συγχρονισμού του ημερολογίου"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Αποτυχία αναίρεσης"
@@ -1943,6 +1944,10 @@ msgstr "Δεν υπάρχουν διαθέσιμες ομάδες"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Δεν μπορούν να δημιουργηθούν ακόμη τύποι στοιχείων. Δημιουργήστε πρώτα τα απαιτούμενα γονικά στοιχεία."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Αποθήκευση..."
 msgid "Search"
 msgstr "Αναζήτηση"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Αναζήτηση εντολής προς εκτέλεση..."
@@ -3061,6 +3070,7 @@ msgstr "Χωρίς ανάθεση"
 msgid "Unavailable"
 msgstr "Μη διαθέσιμο"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Αναίρεση"

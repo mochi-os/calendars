@@ -1477,6 +1477,7 @@ msgstr "Abonarea a eșuat"
 msgid "Failed to sync the calendar"
 msgstr "Sincronizarea calendarului a eșuat"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Anularea a eșuat"
@@ -1943,6 +1944,10 @@ msgstr "Niciun grup disponibil"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Încă nu pot fi create tipuri de elemente. Creează mai întâi elementele părinte necesare."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Se salvează..."
 msgid "Search"
 msgstr "Caută"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Căutați o comandă de executat..."
@@ -3061,6 +3070,7 @@ msgstr "Neatribuit"
 msgid "Unavailable"
 msgstr "Indisponibil"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Anulează"

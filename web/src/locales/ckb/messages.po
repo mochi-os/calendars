@@ -1477,6 +1477,7 @@ msgstr "بەشداریبوون سەرکەوتوو نەبوو"
 msgid "Failed to sync the calendar"
 msgstr "هاوکاتکردنی ڕۆژژمێر سەرکەوتوو نەبوو"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "گەڕاندنەوە سەرکەوتوو نەبوو"
@@ -1943,6 +1944,10 @@ msgstr "هیچ گرووپێک بەردەست نییە"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "هێشتا هیچ جۆرە بڕگەیەک ناتوانرێت دروست بکرێت. سەرەتا بڕگە باوانە پێویستەکان دروست بکە."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "پاشەکەوتکردن..."
 msgid "Search"
 msgstr "گەڕان"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "بەدوای فەرمانێکدا بگەڕێ بۆ جێبەجێکردن..."
@@ -3061,6 +3070,7 @@ msgstr "دیارینەکراو"
 msgid "Unavailable"
 msgstr "بەردەست نییە"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "گەڕاندنەوە"

@@ -1477,6 +1477,7 @@ msgstr "ไม่สามารถสมัครติดตามได้"
 msgid "Failed to sync the calendar"
 msgstr "ไม่สามารถซิงค์ปฏิทินได้"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "ไม่สามารถเลิกทำได้"
@@ -1943,6 +1944,10 @@ msgstr "ไม่มีกลุ่มที่ใช้งานได้"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ยังไม่สามารถสร้างประเภทรายการได้ กรุณาสร้างรายการแม่ที่จำเป็นก่อน"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "กำลังบันทึก..."
 msgid "Search"
 msgstr "ค้นหา"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "ค้นหาคำสั่งที่จะเรียกใช้..."
@@ -3061,6 +3070,7 @@ msgstr "ยังไม่กำหนด"
 msgid "Unavailable"
 msgstr "ไม่พร้อมใช้งาน"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "เลิกทำ"

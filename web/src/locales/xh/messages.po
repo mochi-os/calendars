@@ -1477,6 +1477,7 @@ msgstr "Ayiphumelelanga ukurhuma"
 msgid "Failed to sync the calendar"
 msgstr "Ayiphumelelanga ukulungelelanisa ikhalenda"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Ayiphumelelanga ukubuyisela umva"
@@ -1943,6 +1944,10 @@ msgstr "Akukho maqela afumanekayo"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Akukho ntlobo zezinto ezinokwenziwa okwangoku. Yenza izinto zomzali ezifunekayo kuqala."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2529,6 +2534,10 @@ msgstr "Iyagcina..."
 msgid "Search"
 msgstr "Khangela"
 
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
 msgstr "Khangela umyalelo ozokusebenza..."
@@ -3061,6 +3070,7 @@ msgstr "Akwabelwanga"
 msgid "Unavailable"
 msgstr "Ayifumaneki"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Buyisela umva"
