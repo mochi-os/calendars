@@ -78,6 +78,7 @@ export function RenameDialog({ calendar, onClose }: Props) {
           <Input
             id='calendar-name'
             value={name}
+            maxLength={100}
             onChange={(event) => setName(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'Enter') void submit()

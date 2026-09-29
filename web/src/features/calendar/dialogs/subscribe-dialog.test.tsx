@@ -314,6 +314,31 @@ describe('SubscribeDialog', () => {
     await waitFor(() => expect(wizard.holds('hunter2-secret')).toBe(false))
   })
 
+  it('stops every name field at the 100 characters the server accepts', async () => {
+    show()
+    fireEvent.click(screen.getByText('Another Mochi or CalDAV server'))
+    expect(screen.getByLabelText('Name')).toHaveAttribute('maxlength', '100')
+    fireEvent.change(screen.getByLabelText('Server address'), {
+      target: { value: 'https://home.test/dav/' },
+    })
+    fireEvent.change(screen.getByLabelText('Username'), {
+      target: { value: 'me' },
+    })
+    fireEvent.change(screen.getByLabelText('Password'), {
+      target: { value: 'secret' },
+    })
+    fireEvent.click(screen.getByRole('button', { name: 'Connect' }))
+    expect(await screen.findByText('Team')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Team'))
+    expect(screen.getByLabelText('Name')).toHaveAttribute('maxlength', '100')
+  })
+
+  it('stops a published address subscription name at 100 characters', () => {
+    show()
+    fireEvent.click(screen.getByText('Published calendar address (read-only)'))
+    expect(screen.getByLabelText('Name')).toHaveAttribute('maxlength', '100')
+  })
+
   it('asks Apple for an Apple ID and an app-specific password', () => {
     show()
     fireEvent.click(screen.getByText('Apple iCloud'))

@@ -138,6 +138,7 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
             <Input
               id='settings-name'
               value={name}
+              maxLength={100}
               disabled={calendar.readonly && calendar.kind === 'birthdays'}
               onChange={(input) => setName(input.target.value)}
             />

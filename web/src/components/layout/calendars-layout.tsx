@@ -306,6 +306,7 @@ export function CalendarsLayout() {
         icon={CalendarDays}
         title={t`Create calendar`}
         entityLabel={t`calendar`}
+        maximum={100}
         showDescription={false}
         showColour
         onSubmit={create}

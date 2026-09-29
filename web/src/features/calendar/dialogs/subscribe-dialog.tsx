@@ -379,6 +379,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
             <Input
               id='subscribe-name'
               value={name}
+              maxLength={100}
               onChange={(event) => setName(event.target.value)}
             />
           </div>
@@ -450,6 +451,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
                 <Input
                   id='link-name'
                   value={name}
+                  maxLength={100}
                   onChange={(event) => setName(event.target.value)}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') void link()
@@ -578,6 +580,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
           <Input
             id='subscribe-label'
             value={label}
+            maxLength={100}
             onChange={(event) => setLabel(event.target.value)}
           />
         </div>

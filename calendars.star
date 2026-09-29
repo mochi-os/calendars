@@ -182,12 +182,18 @@ def colour_valid(colour):
 			return False
 	return True
 
+# length(s) -> int: how many characters s holds. len counts UTF-8 bytes, so a
+# limit a person types against, and every client counts in characters, is
+# measured here.
+def length(s):
+	return len(list(s.codepoints()))
+
 def name_input(a, key="name"):
 	name = a.input(key, "").strip()
 	if not name:
 		a.error.label(400, "errors.name_is_required")
 		return None
-	if len(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
+	if length(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
 		a.error.label(400, "errors.invalid_name")
 		return None
 	return name
@@ -1343,7 +1349,7 @@ def action_calendar_subscribe(a):
 		a.error.label(502, "errors.calendar_invalid")
 		return
 	name = a.input("name", "").strip() or property_value(tree, "X-WR-CALNAME").strip()
-	if not name or len(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
+	if not name or length(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
 		name = url.split("//", 1)[1].split("/")[0][:_NAME_MAXIMUM]
 	id = mochi.entity.create("calendar", name, "private")
 	calendar_insert(identity, id, mochi.entity.fingerprint(id), "subscription", colour, url)
@@ -1507,7 +1513,7 @@ def action_calendar_link(a):
 	if colour == None:
 		return
 	name = a.input("name", "").strip()
-	if not name or len(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
+	if not name or length(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
 		name = collection.split("//", 1)[1].split("/")[0][:_NAME_MAXIMUM]
 	# The server's word on whether this account may write the collection;
 	# a server that says nothing is taken at its first refused write.
@@ -2090,7 +2096,7 @@ def token_name_input(a):
 	if not name:
 		a.error.label(400, "errors.name_is_required")
 		return None
-	if len(name) > 100:
+	if length(name) > 100:
 		a.error.label(400, "errors.token_name_is_too_long_max_100_characters")
 		return None
 	return name
@@ -2166,7 +2172,7 @@ def function_dav_collection_create(context, identity, collection, name="", descr
 		return {"error": "exists"}
 	calendars_ensure(identity)
 	label = name.strip() if type(name) == "string" else ""
-	if not label or len(label) > _NAME_MAXIMUM or not mochi.text.valid(label, "name"):
+	if not label or length(label) > _NAME_MAXIMUM or not mochi.text.valid(label, "name"):
 		label = collection
 	id = mochi.entity.create("calendar", label, "private")
 	# Two MKCALENDARs for one slug at once both pass the check above. The
