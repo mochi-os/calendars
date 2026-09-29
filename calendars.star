@@ -124,6 +124,9 @@ def database_upgrade(version):
 		# versions scheduled from the series for occurrences that change them.
 		for row in mochi.db.rows("select * from events where component='VEVENT' and recurring=1 and ics like '%BEGIN:VALARM%'"):
 			reminders_schedule(row)
+	if version == 7:
+		# Every event write replaces the event's change row, found by event.
+		mochi.db.execute("create index if not exists changes_event on changes( event )")
 
 def database_create():
 	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '', readonly integer not null default 0 )")
@@ -140,6 +143,7 @@ def database_create():
 	# how far deletions have been forgotten.
 	mochi.db.execute("create table if not exists changes ( id integer primary key autoincrement, identity text not null, calendar text not null, event text not null, deleted integer not null default 0, created integer not null default 0 )")
 	mochi.db.execute("create index if not exists changes_identity on changes( identity, id )")
+	mochi.db.execute("create index if not exists changes_event on changes( event )")
 	mochi.db.execute("create table if not exists pruned ( identity text not null primary key, change integer not null default 0 )")
 	# The token behind a calendar's ICS link, hash only: the link cannot be
 	# shown again, only replaced.
