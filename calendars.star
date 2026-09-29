@@ -243,6 +243,17 @@ def timezones_named(components, present=[]):
 		pending.extend([c for c in component.get("components", []) if type(c) == "dict"])
 	return out
 
+# decimal(value) -> bool: whether value is a non-empty ASCII decimal string.
+# isdigit() also accepts other scripts' digits (Arabic-Indic, Devanagari),
+# which int() rejects, so a guard built on it lets them through to an abort.
+def decimal(value):
+	if not value:
+		return False
+	for c in value.elems():
+		if c not in "0123456789":
+			return False
+	return True
+
 # duration_seconds(text) -> int or None: an iCalendar duration such as -PT15M,
 # -P1D or PT0S, as signed seconds.
 def duration_seconds(text):
@@ -261,7 +272,7 @@ def duration_seconds(text):
 	number = ""
 	time = False
 	for c in text.elems():
-		if c.isdigit():
+		if c in "0123456789":
 			number += c
 		elif c == "T":
 			time = True
@@ -1488,7 +1499,7 @@ def action_calendar_link(a):
 def range_input(a):
 	start = a.input("start", "")
 	finish = a.input("finish", "")
-	if not start.isdigit() or not finish.isdigit() or len(start) > 12 or len(finish) > 12:
+	if not decimal(start) or not decimal(finish) or len(start) > 12 or len(finish) > 12:
 		a.error.label(400, "errors.invalid_range")
 		return None
 	start, finish = int(start), int(finish)
@@ -1745,7 +1756,7 @@ def rule_shortened(components, count):
 				for part in p["value"].split(";"):
 					if part.upper().startswith("COUNT="):
 						remaining = part[6:]
-						if remaining.isdigit():
+						if decimal(remaining):
 							part = "COUNT=" + str(max(1, int(remaining) - count))
 					parts.append(part)
 				p = dict(p, value=";".join(parts))
@@ -1839,7 +1850,7 @@ def action_event_delete(a):
 def action_events_changes(a):
 	identity = a.user.identity.id
 	since = a.input("since", "0") or "0"
-	if not since.isdigit() or len(since) > 18:
+	if not decimal(since) or len(since) > 18:
 		a.error.label(400, "errors.invalid_since")
 		return
 	since = int(since)
