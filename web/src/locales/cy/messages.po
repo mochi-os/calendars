@@ -92,6 +92,7 @@ msgstr "Enw {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} i {to}"
 
@@ -228,6 +229,10 @@ msgstr "Ychwanegu dolen"
 msgid "Add option"
 msgstr "Ychwanegu opsiwn"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Ychwanegu nodyn atgoffa"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Ychwanegu tag..."
@@ -264,6 +269,10 @@ msgstr "Trwy'r dydd"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Pob digwyddiad"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Digwyddiadau trwy'r dydd"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Calendr wedi'i ddileu"
 msgid "Calendar linked"
 msgstr "Cysylltwyd y calendr"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Calendr wedi'i dynnu"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Dewiswch ddyddiad"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Dewiswch gêm o'r bar ochr neu dechreuwch un newydd."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Dewiswch amser"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Diofyn"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Cyfrif AI diofyn"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Calendr diofyn"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Digwyddiad wedi'i gadw"
 msgid "Every"
 msgstr "Bob"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Pob munud"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Methwyd darllen y cyfrifon"
 msgid "Failed to read the calendars"
 msgstr "Methwyd darllen y calendrau"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Methwyd tynnu'r calendr"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Ffeiliau"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Gorffennwch symud eich cyfrif"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Yn gyntaf"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Mae'n ymddangos nad yw'r dudalen rydych yn chwilio amdani <0/>yn bodoli 
 msgid "Item details"
 msgstr "Manylion yr eitem"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Mae ei ddigwyddiadau'n aros yn y calendr gwreiddiol."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Nawr"
@@ -1598,6 +1636,11 @@ msgstr "Llwybrau byr bysellfwrdd"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Mawr"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Yn olaf"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Ail-lwytho"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Nodyn atgoffa"
 
@@ -2251,6 +2295,8 @@ msgstr "Nodyn atgoffa"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Tynnu"
 
@@ -2267,6 +2313,11 @@ msgstr "Tynnu hidlydd {0}"
 msgid "Remove {name}"
 msgstr "Tynnu {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Tynnu <0>{0}</0> o Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Tynnu'r rheol mynediad ar gyfer \"{0}\"?"
 msgid "Remove access?"
 msgstr "Tynnu mynediad?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Tynnu calendr"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Tynnu eitem"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Tynnu dolen"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Tynnu nodyn atgoffa"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Yn tynnu calendr..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

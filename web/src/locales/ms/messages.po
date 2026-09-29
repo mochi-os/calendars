@@ -92,6 +92,7 @@ msgstr "Nama {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} hingga {to}"
 
@@ -228,6 +229,10 @@ msgstr "Tambah pautan"
 msgid "Add option"
 msgstr "Tambah pilihan"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Tambah peringatan"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Tambah tag..."
@@ -264,6 +269,10 @@ msgstr "Sepanjang hari"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Semua acara"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Acara sepanjang hari"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Kalendar dipadamkan"
 msgid "Calendar linked"
 msgstr "Kalendar dipautkan"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Kalendar dialih keluar"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Pilih tarikh"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Pilih permainan daripada bar sisi atau mulakan yang baharu."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Pilih masa"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Lalai"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Akaun AI lalai"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Kalendar lalai"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Acara disimpan"
 msgid "Every"
 msgstr "Setiap"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Setiap minit"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Gagal membaca akaun"
 msgid "Failed to read the calendars"
 msgstr "Gagal membaca kalendar"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Gagal mengalih keluar kalendar"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Fail"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Selesaikan pemindahan akaun anda"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Di awal"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Nampaknya halaman yang anda cari <0/>tidak wujud atau telah dialih kelua
 msgid "Item details"
 msgstr "Butiran item"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Acaranya kekal dalam kalendar asal."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Sebentar tadi"
@@ -1598,6 +1636,11 @@ msgstr "Pintasan papan kekunci"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Besar"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Di akhir"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Muat semula"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Peringatan"
 
@@ -2251,6 +2295,8 @@ msgstr "Peringatan"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Alih keluar"
 
@@ -2267,6 +2313,11 @@ msgstr "Buang penapis {0}"
 msgid "Remove {name}"
 msgstr "Alih keluar {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Alih keluar <0>{0}</0> daripada Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Alih keluar peraturan akses untuk \"{0}\"?"
 msgid "Remove access?"
 msgstr "Alih keluar akses?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Alih keluar kalendar"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Alih keluar item"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Alih keluar pautan"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Alih keluar peringatan"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Mengalih keluar kalendar..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

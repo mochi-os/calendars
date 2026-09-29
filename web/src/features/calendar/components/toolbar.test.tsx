@@ -70,10 +70,39 @@ describe('Toolbar navigation', () => {
     show('month')
     const names = screen
       .getAllByRole('button')
-      .map((button) => button.getAttribute('aria-label') ?? button.textContent?.trim())
+      .map(
+        (button) =>
+          button.getAttribute('aria-label') ?? button.textContent?.trim()
+      )
       .filter((name) => ['Previous', 'Today', 'Next'].includes(name ?? ''))
     expect(names).toEqual(['Previous', 'Today', 'Next'])
     fireEvent.click(screen.getByRole('button', { name: 'Today' }))
     expect(context.setDate).toHaveBeenCalledWith('2026-09-22')
+  })
+})
+
+describe('Toolbar heading', () => {
+  const heading = () => screen.getByRole('heading').textContent
+
+  it("writes a day in the user's date format", () => {
+    context.range = { from: '2026-09-22', days: 1, date: '2026-09-22' }
+    show('day')
+    expect(heading()).toBe('2026-09-22')
+  })
+
+  it("writes a week or a multiweek span as its first and last dates in the user's date format", () => {
+    context.range = { from: '2026-09-21', days: 7, date: '2026-09-22' }
+    show('week')
+    expect(heading()).toBe('2026-09-21 to 2026-09-27')
+    cleanup()
+    context.range = { from: '2026-09-21', days: 28, date: '2026-09-22' }
+    show('multiweek')
+    expect(heading()).toBe('2026-09-21 to 2026-10-18')
+  })
+
+  it('names the month in the month view', () => {
+    context.range = { from: '2026-08-31', days: 42, date: '2026-09-22' }
+    show('month')
+    expect(heading()).toMatch(/September 2026/)
   })
 })

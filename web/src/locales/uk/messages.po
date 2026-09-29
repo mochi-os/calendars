@@ -92,6 +92,7 @@ msgstr "Назва {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "з {from} до {to}"
 
@@ -228,6 +229,10 @@ msgstr "Додати посилання"
 msgid "Add option"
 msgstr "Додати варіант"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Додати нагадування"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Додати тег..."
@@ -264,6 +269,10 @@ msgstr "Увесь день"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Усі події"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Події на весь день"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Календар видалено"
 msgid "Calendar linked"
 msgstr "Календар пов'язано"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Календар видалено"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Виберіть дату"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Виберіть гру на бічній панелі або почніть нову."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Виберіть час"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "За замовчуванням"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "AI-обліковий запис за замовчуванням"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Календар за замовчуванням"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Подію збережено"
 msgid "Every"
 msgstr "Кожні"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Кожна хвилина"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Не вдалося прочитати облікові записи"
 msgid "Failed to read the calendars"
 msgstr "Не вдалося прочитати календарі"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Не вдалося видалити календар"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Файли"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Завершіть переміщення облікового запису"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "На початку"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Схоже, сторінка, яку ви шукаєте, <0/>не іс�
 msgid "Item details"
 msgstr "Деталі елемента"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Його події залишаться в початковому календарі."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Щойно"
@@ -1598,6 +1636,11 @@ msgstr "Комбінації клавіш"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Великий"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "У кінці"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Перезавантажити"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Нагадування"
 
@@ -2251,6 +2295,8 @@ msgstr "Нагадування"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Видалити"
 
@@ -2267,6 +2313,11 @@ msgstr "Видалити фільтр {0}"
 msgid "Remove {name}"
 msgstr "Видалити {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Видалити <0>{0}</0> з Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Вилучити правило доступу для «{0}»?"
 msgid "Remove access?"
 msgstr "Видалити доступ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Видалити календар"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Видалити елемент"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Видалити посилання"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Видалити нагадування"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Видалення календаря..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

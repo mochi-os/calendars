@@ -8,7 +8,15 @@
 // server stores. Everything here is pure: a day is YYYY-MM-DD as it reads in
 // the named zone, a time is minutes since midnight, and instants are unix
 // seconds.
-import { addDays, timestampAt, zonedDay, zonedMinutes } from '@mochi/web'
+import {
+  addDays,
+  currentZone,
+  daysBetween,
+  descriptionText,
+  timestampAt,
+  zonedDay,
+  zonedMinutes,
+} from '@mochi/web'
 import type { Component, Property } from '@/api/types/events'
 
 export type Frequency = 'never' | 'daily' | 'weekly' | 'monthly' | 'yearly'
@@ -50,13 +58,40 @@ export interface EventDraft {
    */
   zone: { start: string; finish: string }
   location: string
+  /** The description as text, which is what the editor shows and edits. */
   description: string
+  /**
+   * The description as the event holds it, which may be HTML, as a Google
+   * calendar's is. While `description` still reads as its text, the event
+   * keeps this as it was, markup and all.
+   */
+  original: string
   repeat: Repeat
-  /** Minutes before the start; -1 is no reminder. */
-  reminder: number
+  /**
+   * Each reminder the editor can say, in minutes before the start, in the
+   * order the event holds them.
+   */
+  reminders: number[]
 }
 
+/** The default reminder preference's value for none. */
 export const NO_REMINDER = -1
+
+/** The reminders the editor offers, in minutes before the start. */
+export const REMINDER_LEADS = [0, 5, 15, 30, 60, 1440]
+
+/** The reminders a new event opens with, from the default reminder preference. */
+export function defaultReminders(preference: number): number[] {
+  return preference === NO_REMINDER ? [] : [preference]
+}
+
+/** The reminder "Add reminder" adds: the first offered the event lacks. */
+export function nextReminder(reminders: number[]): number {
+  return (
+    [15, ...REMINDER_LEADS].find((minutes) => !reminders.includes(minutes)) ??
+    15
+  )
+}
 
 export function emptyRepeat(): Repeat {
   return {
@@ -307,6 +342,22 @@ export function triggerMinutes(trigger: string): number | null {
   return sign === '-' ? total : -total
 }
 
+/**
+ * The minutes before the start an alarm fires, when the reminder setting can
+ * say it: a duration relative to the start, at or before it. An alarm relative
+ * to the end, after the start or at a fixed time is null; the editor leaves it
+ * as it is.
+ */
+export function alarmMinutes(alarm: Component): number | null {
+  const trigger = property(alarm, 'TRIGGER')
+  if (!trigger) return null
+  const related = trigger.params?.RELATED?.[0]?.toUpperCase()
+  const kind = trigger.params?.VALUE?.[0]?.toUpperCase()
+  if (related === 'END' || kind === 'DATE-TIME') return null
+  const minutes = triggerMinutes(trigger.value)
+  return minutes !== null && minutes >= 0 ? minutes : null
+}
+
 function alarm(minutes: number, summary: string): Component {
   return {
     name: 'VALARM',
@@ -323,11 +374,14 @@ function alarm(minutes: number, summary: string): Component {
  * Whether a draft's zones are worth showing: a timed event with an end that is
  * not in the user's zone. Both ends in the user's zone, or an event that had
  * no zone at all and so reads in the user's, say nothing the user needs to see.
+ * A zone is the user's under any of its names, Asia/Calcutta as Asia/Kolkata.
  */
 export function foreignZones(draft: EventDraft, timezone: string): boolean {
+  const own = currentZone(timezone)
   return (
     !draft.allday &&
-    (draft.zone.start !== timezone || draft.zone.finish !== timezone)
+    (currentZone(draft.zone.start) !== own ||
+      currentZone(draft.zone.finish) !== own)
   )
 }
 
@@ -384,7 +438,7 @@ function finishProperty(draft: EventDraft): Property {
 /**
  * The VEVENT an editor draft describes. Properties the editor does not own are
  * carried over from `previous`, as are that component's own sub-components
- * other than its alarms, which the reminder setting replaces.
+ * other than the alarms the reminder setting can say, which it replaces.
  */
 export function draftComponent(
   draft: EventDraft,
@@ -401,21 +455,23 @@ export function draftComponent(
   if (draft.location) {
     properties.push({ name: 'LOCATION', params: {}, value: draft.location })
   }
-  if (draft.description) {
-    properties.push({
-      name: 'DESCRIPTION',
-      params: {},
-      value: draft.description,
-    })
+  const description =
+    draft.description === descriptionText(draft.original)
+      ? draft.original
+      : draft.description
+  if (description) {
+    properties.push({ name: 'DESCRIPTION', params: {}, value: description })
   }
   const rule = repeatRule(draft.repeat, draft.zone.start)
   if (rule) properties.push({ name: 'RRULE', params: {}, value: rule })
 
   const components = (previous?.components ?? []).filter(
-    (item) => item.name !== 'VALARM'
+    (item) =>
+      item.name !== 'VALARM' ||
+      (property(item, 'TRIGGER') !== undefined && alarmMinutes(item) === null)
   )
-  if (draft.reminder !== NO_REMINDER) {
-    components.push(alarm(draft.reminder, draft.title))
+  for (const minutes of new Set(draft.reminders)) {
+    components.push(alarm(minutes, draft.title))
   }
   return {
     name: 'VEVENT',
@@ -446,12 +502,16 @@ export function componentDraft(
       : finish.seconds
     : startSeconds
 
-  const reminderAlarm = component.components.find(
-    (item) => item.name === 'VALARM'
-  )
-  const trigger = reminderAlarm
-    ? triggerMinutes(propertyValue(reminderAlarm, 'TRIGGER'))
-    : null
+  const description = propertyValue(component, 'DESCRIPTION')
+  // The alarms the reminder setting can say; others are kept as they are.
+  const reminders = [
+    ...new Set(
+      component.components
+        .filter((item) => item.name === 'VALARM')
+        .map(alarmMinutes)
+        .filter((minutes): minutes is number => minutes !== null)
+    ),
+  ]
 
   return {
     title: propertyValue(component, 'SUMMARY'),
@@ -463,9 +523,10 @@ export function componentDraft(
     finishTime: zonedMinutes(new Date(finishSeconds * 1000), finishZone),
     zone: { start: zone, finish: finishZone },
     location: propertyValue(component, 'LOCATION'),
-    description: propertyValue(component, 'DESCRIPTION'),
+    description: descriptionText(description),
+    original: description,
     repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
-    reminder: trigger === null ? NO_REMINDER : trigger,
+    reminders,
   }
 }
 
@@ -973,9 +1034,10 @@ export function instanceDraft(
     finishTime: instance.allday ? 0 : zonedMinutes(ends, timezone),
     zone: { start: timezone, finish: timezone },
     location: instance.location,
-    description: instance.description,
+    description: descriptionText(instance.description),
+    original: instance.description,
     repeat: emptyRepeat(),
-    reminder,
+    reminders: defaultReminders(reminder),
   }
 }
 
@@ -997,6 +1059,58 @@ export const REMEMBERED: Remembered = { allday: false, zone: null }
 /** What a saved new event leaves for the next one. */
 export function remembered(draft: EventDraft): Remembered {
   return { allday: draft.allday, zone: { ...draft.zone } }
+}
+
+/**
+ * Where a new event with no time of its own starts on `day`: at the next
+ * whole hour when the day is today, at the start of the working hours on any
+ * other day, and at tomorrow's working hours once today has no whole hour
+ * left. `now` is the minutes past midnight today.
+ */
+export function defaultStart(
+  day: string,
+  today: string,
+  now: number,
+  hours: { start: number }
+): { day: string; minutes: number } {
+  if (day !== today) return { day, minutes: hours.start * 60 }
+  const next = Math.floor(now / 60) + 1
+  if (next > 23) return { day: addDays(today, 1), minutes: hours.start * 60 }
+  return { day, minutes: next * 60 }
+}
+
+/**
+ * The day "New event" lands on: today when today is on screen, and otherwise
+ * the day the view is on, since a user paging through another week is
+ * planning that week. `from` and `days` are the range on screen.
+ */
+export function creationDay(
+  today: string,
+  date: string,
+  from: string,
+  days: number
+): string {
+  const offset = daysBetween(from, today)
+  return offset >= 0 && offset < days ? today : date
+}
+
+/**
+ * The calendar a new event opens on: the one the preferences name while the
+ * user can still write to it, else the built-in default calendar, else the
+ * first the user can write to.
+ */
+export function defaultCalendar(
+  calendars: { id: string; readonly: boolean; default?: boolean }[],
+  preference: string
+): string {
+  const writable = calendars.filter((calendar) => !calendar.readonly)
+  return (
+    (
+      writable.find((calendar) => calendar.id === preference) ??
+      writable.find((calendar) => calendar.default) ??
+      writable[0]
+    )?.id ?? ''
+  )
 }
 
 /**
@@ -1028,9 +1142,22 @@ export function newDraft(
     zone: { ...zone },
     location: '',
     description: '',
+    original: '',
     repeat: emptyRepeat(),
-    reminder: options.reminder,
+    reminders: defaultReminders(options.reminder),
   }
+}
+
+/**
+ * The zones once the start's is set to `zone`: the end follows the start
+ * while the two agree, under whichever of their names each was written.
+ */
+export function startZone(
+  zones: { start: string; finish: string },
+  zone: string
+): { start: string; finish: string } {
+  const together = currentZone(zones.finish) === currentZone(zones.start)
+  return { start: zone, finish: together ? zone : zones.finish }
 }
 
 /**

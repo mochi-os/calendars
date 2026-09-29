@@ -92,6 +92,7 @@ msgstr "{entityLabel} के नाम"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} से {to} तक"
 
@@ -228,6 +229,10 @@ msgstr "लिंक जोड़ीं"
 msgid "Add option"
 msgstr "विकल्प जोड़ीं"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "रिमाइंडर जोड़ीं"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "टैग जोड़ीं..."
@@ -264,6 +269,10 @@ msgstr "पूरा दिन"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "सब कार्यक्रम"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "पूरा दिन के कार्यक्रम"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "कैलेंडर मेटा गइल"
 msgid "Calendar linked"
 msgstr "कैलेंडर जुड़ गइल"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "कैलेंडर हटा दिहल गइल"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "तारीख चुनीं"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "साइडबार से एगो खेल चुनीं भा एगो नया शुरू करीं।"
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "समय चुनीं"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "डिफ़ॉल्ट"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "डिफ़ॉल्ट AI खाता"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "डिफ़ॉल्ट कैलेंडर"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "कार्यक्रम सहेजल गइल"
 msgid "Every"
 msgstr "हर"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "हर मिनट"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "खाता सब पढ़े में विफल"
 msgid "Failed to read the calendars"
 msgstr "कैलेंडर सब पढ़े में विफल"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "कैलेंडर हटावे में विफल"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "फाइल"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "आपन खाता हिलावल पूरा करीं"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "सुरुआत में"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "लागत बा कि रउआ जवन पन्ना खोज
 msgid "Item details"
 msgstr "आइटम विवरण"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "एकर कार्यक्रम मूल कैलेंडर में बनल रही।"
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "अबहीं"
@@ -1598,6 +1636,11 @@ msgstr "कीबोर्ड शॉर्टकट"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "बड़ा"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "आखिर में"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "फेर से लोड करीं"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "रिमाइंडर"
 
@@ -2251,6 +2295,8 @@ msgstr "रिमाइंडर"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "हटाईं"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} फिल्टर हटाईं"
 msgid "Remove {name}"
 msgstr "{name} हटाईं"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> के Mochi से हटाईं?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" खातिर पहुँच नियम हटावल ज
 msgid "Remove access?"
 msgstr "पहुँच हटाईं?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "कैलेंडर हटाईं"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "आइटम हटाईं"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "लिंक हटाईं"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "रिमाइंडर हटाईं"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "कैलेंडर हटावल जा रहल बा..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

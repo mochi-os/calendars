@@ -92,6 +92,7 @@ msgstr "{entityLabel}-namn"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} til {to}"
 
@@ -228,6 +229,10 @@ msgstr "Legg til lenkje"
 msgid "Add option"
 msgstr "Legg til val"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Legg til påminning"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Legg til etikett..."
@@ -264,6 +269,10 @@ msgstr "Heile dagen"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Alle hendingar"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Heildagshendingar"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Kalender sletta"
 msgid "Calendar linked"
 msgstr "Kalender kopla"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Kalender fjerna"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Vel ein dato"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Vel eit spel frå sidestolpen eller start eit nytt."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Vel eit klokkeslett"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Standard"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Standard KI-konto"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Standardkalender"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Hending lagra"
 msgid "Every"
 msgstr "Kvar"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Kvart minutt"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Klarte ikkje lese kontoane"
 msgid "Failed to read the calendars"
 msgstr "Klarte ikkje lese kalendrane"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Klarte ikkje fjerna kalender"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Filer"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Fullfør flyttinga av kontoen din"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Først"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Det ser ut til at sida du leitar etter <0/>ikkje finst eller er fjerna."
 msgid "Item details"
 msgstr "Detaljar om element"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Hendingane i han blir verande i den opphavlege kalenderen."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Nettopp no"
@@ -1598,6 +1636,11 @@ msgstr "Snøggtastar"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Stor"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Sist"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Last inn på nytt"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Påminning"
 
@@ -2251,6 +2295,8 @@ msgstr "Påminning"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Fjern"
 
@@ -2267,6 +2313,11 @@ msgstr "Fjern {0}-filter"
 msgid "Remove {name}"
 msgstr "Fjern {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Fjerne <0>{0}</0> frå Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Fjerne tilgangsregel for «{0}»?"
 msgid "Remove access?"
 msgstr "Fjern tilgang?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Fjern kalender"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Fjern element"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Fjern lenkja"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Fjern påminning"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Fjernar kalender..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

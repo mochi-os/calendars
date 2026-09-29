@@ -92,6 +92,7 @@ msgstr "Igama le-{entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "kusukela ku-{from} kuya ku-{to}"
 
@@ -228,6 +229,10 @@ msgstr "Engeza isixhumanisi"
 msgid "Add option"
 msgstr "Engeza inketho"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Engeza isikhumbuzi"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Engeza ithegi..."
@@ -264,6 +269,10 @@ msgstr "Usuku lonke"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Yonke imicimbi"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Imicimbi yosuku lonke"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Ikhalenda isusiwe"
 msgid "Calendar linked"
 msgstr "Ikhalenda ixhunyiwe"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Ikhalenda ikhishiwe"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Khetha usuku"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Khetha umdlalo kubha eseceleni noma uqale omusha."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Khetha isikhathi"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Okuzenzakalelayo"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "I-akhawunti ye-AI ezenzakalelayo"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Ikhalenda ezenzakalelayo"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Umcimbi ulondoloziwe"
 msgid "Every"
 msgstr "Njalo"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Umzuzu ngamunye"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Kuhlulekile ukufunda ama-akhawunti"
 msgid "Failed to read the calendars"
 msgstr "Kuhlulekile ukufunda amakhalenda"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Kuhlulekile ukukhipha ikhalenda"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Amafayela"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Qeda ukudlulisa i-akhawunti yakho"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Ekuqaleni"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Kubonakala sengathi ikhasi olifunayo <0/>alikho noma lisusiwe."
 msgid "Item details"
 msgstr "Imininingwane yento"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Imicimbi yayo ihlala ekhalendeni yokuqala."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Manje nje"
@@ -1598,6 +1636,11 @@ msgstr "Izinqamuleli zekhibhodi"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Okukhulu"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Ekugcineni"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Layisha kabusha"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Isikhumbuzi"
 
@@ -2251,6 +2295,8 @@ msgstr "Isikhumbuzi"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Khipha"
 
@@ -2267,6 +2313,11 @@ msgstr "Susa isihlungi se-{0}"
 msgid "Remove {name}"
 msgstr "Khipha {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Khipha u-<0>{0}</0> ku-Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Susa umthetho wokufinyelela we-\"{0}\"?"
 msgid "Remove access?"
 msgstr "Khipha ukufinyelela?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Khipha ikhalenda"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Khipha into"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Susa isixhumanisi"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Khipha isikhumbuzi"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Kukhishwa ikhalenda..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

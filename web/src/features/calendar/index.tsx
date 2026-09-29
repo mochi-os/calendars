@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate, useSearch } from '@tanstack/react-router'
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
@@ -15,13 +16,15 @@ import {
   TimeGrid,
   useFormat,
   usePageTitle,
-  useShellStorage,
   offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import {
+  creationDay,
+  defaultCalendar,
+  defaultStart,
   instanceDraft,
   newDraft,
   type EventDraft,
@@ -53,12 +56,9 @@ export function CalendarPage() {
     editing,
     setEditing,
     remembered,
+    reveal,
   } = useCalendarContext()
 
-  const [lastCalendar, setLastCalendar] = useShellStorage<string>(
-    'calendars:last',
-    ''
-  )
   const [selected, setSelected] = useState<{
     instance: Instance
     anchor: DOMRect
@@ -68,7 +68,7 @@ export function CalendarPage() {
     copy: boolean
   } | null>(null)
 
-  const mover = useEventMove()
+  const mover = useEventMove(reveal)
 
   // With events shown in their own zones, a day's occurrences can begin or
   // end up to a day away by the user's clock, so the window grows a day each
@@ -139,18 +139,16 @@ export function CalendarPage() {
     return list
   }, [range.from, range.days, view, workweek, preferences.days])
 
-  const calendarFor = useCallback(() => {
-    const writable = calendars.filter((calendar) => !calendar.readonly)
-    const last = writable.find((calendar) => calendar.id === lastCalendar)
-    return (last ?? writable.find((c) => c.default) ?? writable[0])?.id ?? ''
-  }, [calendars, lastCalendar])
+  // A new event goes in the calendar the preferences name, the same on every
+  // device, and reads in the zones the last one used on this device.
+  const calendarFor = useCallback(
+    () => defaultCalendar(calendars, preferences.calendar),
+    [calendars, preferences.calendar]
+  )
 
-  // A new event reads in the zones the last one used on this device, and
-  // goes in the calendar the last one went in.
   const compose = useCallback(
     (from: number, to: number, allday = false): EventDraft => {
       const calendar = calendarFor()
-      setLastCalendar(calendar)
       return newDraft(from, to, {
         allday,
         calendar,
@@ -161,37 +159,38 @@ export function CalendarPage() {
         },
       })
     },
-    [
-      calendarFor,
-      format.timezone,
-      preferences.reminder,
-      remembered.zone,
-      setLastCalendar,
-    ]
+    [calendarFor, format.timezone, preferences.reminder, remembered.zone]
   )
 
-  // "New event" lands on the next whole hour of today, the length the user
-  // set, and is all-day when the last new event was: a click on the hour
-  // grid says timed, but the button has nothing else to go on.
-  const createNow = () => {
+  // A new event with no time of its own: the next whole hour today, the
+  // start of the working hours on another day, the length the user set, and
+  // all-day when the last new event was. A click on the hour grid says
+  // timed, but the button and a day cell have nothing else to go on.
+  const createAt = (day: string) => {
     const now = new Date()
-    const hour = Math.min(23, Math.floor(format.zonedMinutes(now) / 60) + 1)
-    const from = format.timestampAt(format.zonedDay(now), hour * 60)
+    const start = defaultStart(
+      day,
+      format.zonedDay(now),
+      format.zonedMinutes(now),
+      preferences.hours
+    )
+    const from = format.timestampAt(start.day, start.minutes)
     setEditing({
       mode: 'create',
       draft: compose(from, from + preferences.duration * 60, remembered.allday),
     })
   }
+
+  // "New event" lands on today when today is on screen, and otherwise on
+  // the day the view is on.
+  const createNow = () =>
+    createAt(
+      creationDay(format.zonedDay(new Date()), date, range.from, range.days)
+    )
 
   // A day cell in the month views says which day, not which kind, so it
   // takes the remembered all-day switch like the button does.
-  const createOnDay = (day: string) => {
-    const from = format.timestampAt(day, preferences.hours.start * 60)
-    setEditing({
-      mode: 'create',
-      draft: compose(from, from + preferences.duration * 60, remembered.allday),
-    })
-  }
+  const createOnDay = (day: string) => createAt(day)
 
   // A click opens the editor; a read-only occurrence (a subscription's or a
   // birthday) has nothing to edit, so it opens the summary popover instead.
@@ -209,6 +208,37 @@ export function CalendarPage() {
     : editing?.mode === 'edit'
       ? `${editing.event}:${editing.start}`
       : undefined
+
+  // A reminder opens the calendar at the event it is for: once the day's
+  // occurrences arrive it opens as a click on it would, and leaves the URL so
+  // going back does not open it again.
+  const search = useSearch({ strict: false }) as {
+    event?: string
+    occurrence?: number
+  }
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!search.event) return
+    const key = `${search.event}:${search.occurrence ?? 0}`
+    const instance = instances.find(
+      (item) => `${item.event}:${item.start}` === key
+    )
+    if (!instance) return
+    const anchor =
+      document.querySelector<HTMLElement>(`[data-key="${CSS.escape(key)}"]`) ??
+      document.body
+    open(instance, anchor)
+    void navigate({
+      to: '.',
+      search: (previous: Record<string, unknown>) => ({
+        ...previous,
+        event: undefined,
+        occurrence: undefined,
+      }),
+      replace: true,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- open reads state only
+  }, [search.event, search.occurrence, instances])
 
   const select = (key: string, anchor: HTMLElement) => {
     const instance = byKey.get(key)
@@ -274,6 +304,7 @@ export function CalendarPage() {
         events={events}
         today={today}
         weekNumbers
+        allday={preferences.allday}
         selected={current}
         onSelect={select}
         onCreate={createOnDay}
@@ -313,7 +344,6 @@ export function CalendarPage() {
           // the copy is what the listing says of it, in the user's calendar.
           setSelected(null)
           const calendar = calendarFor()
-          setLastCalendar(calendar)
           setEditing({
             mode: 'create',
             draft: instanceDraft(

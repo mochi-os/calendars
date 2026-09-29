@@ -92,6 +92,7 @@ msgstr "Isem ta' {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "minn {from} sa {to}"
 
@@ -228,6 +229,10 @@ msgstr "Żid link"
 msgid "Add option"
 msgstr "Żid għażla"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Żid tfakkira"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Żid tag..."
@@ -264,6 +269,10 @@ msgstr "Il-ġurnata kollha"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "L-avvenimenti kollha"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Avvenimenti tal-ġurnata kollha"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Tħassar il-kalendarju"
 msgid "Calendar linked"
 msgstr "Il-kalendarju ġie llinkjat"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Tneħħa l-kalendarju"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Agħżel data"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Agħżel logħba mill-barra tal-ġenb jew ibda waħda ġdida."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Agħżel ħin"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Prestabbilit"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Kont AI default"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Kalendarju prestabbilit"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "L-avveniment ġie ssejvjat"
 msgid "Every"
 msgstr "Kull"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Kull minuta"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Ma rnexxiex jinqraw il-kontijiet"
 msgid "Failed to read the calendars"
 msgstr "Ma rnexxiex jinqraw il-kalendarji"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Ma rnexxiex jitneħħa l-kalendarju"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Fajls"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Lesti t-trasferiment tal-kont tiegħek"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Fil-bidu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Jidher li l-paġna li qed tfittex <0/>ma teżistix jew tneħħiet."
 msgid "Item details"
 msgstr "Dettalji tal-oġġett"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "L-avvenimenti tiegħu jibqgħu fil-kalendarju oriġinali."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Issa"
@@ -1598,6 +1636,11 @@ msgstr "Shortcuts tat-tastiera"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Kbir"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Fl-aħħar"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Erġa' għabbi"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Tfakkira"
 
@@ -2251,6 +2295,8 @@ msgstr "Tfakkira"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Neħħi"
 
@@ -2267,6 +2313,11 @@ msgstr "Neħħi l-filter ta' {0}"
 msgid "Remove {name}"
 msgstr "Neħħi {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Tneħħi <0>{0}</0> minn Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Tneħħi r-regola ta' aċċess għal \"{0}\"?"
 msgid "Remove access?"
 msgstr "Tneħħi l-aċċess?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Neħħi l-kalendarju"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Neħħi oġġett"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Neħħi l-link"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Neħħi t-tfakkira"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Qed jitneħħa l-kalendarju..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

@@ -92,6 +92,7 @@ msgstr "{entityLabel} 이름"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from}~{to}"
 
@@ -228,6 +229,10 @@ msgstr "링크 추가"
 msgid "Add option"
 msgstr "옵션 추가"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "알림 추가"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "태그 추가..."
@@ -264,6 +269,10 @@ msgstr "종일"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "모든 일정"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "종일 일정"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "캘린더가 삭제되었어요"
 msgid "Calendar linked"
 msgstr "캘린더를 연결했어요"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "캘린더가 제거되었어요"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "날짜 선택"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "사이드바에서 게임을 선택하거나 새로 시작하세요."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "시간 선택"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "기본값"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "기본 AI 계정"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "기본 캘린더"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "일정이 저장되었어요"
 msgid "Every"
 msgstr "간격"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "1분 단위"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "계정을 읽지 못했어요"
 msgid "Failed to read the calendars"
 msgstr "캘린더를 읽지 못했어요"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "캘린더 제거에 실패했어요"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "파일"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "계정 이전 완료"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "맨 앞"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "찾으시는 페이지가 <0/>존재하지 않거나 삭제된 것 같�
 msgid "Item details"
 msgstr "항목 세부 정보"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "일정은 원래 캘린더에 그대로 남아 있어요."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "방금"
@@ -1598,6 +1636,11 @@ msgstr "키보드 단축키"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "크게"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "맨 뒤"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "다시 불러오기"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "알림"
 
@@ -2251,6 +2295,8 @@ msgstr "알림"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "제거"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} 필터 제거"
 msgid "Remove {name}"
 msgstr "{name} 제거"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0>을(를) Mochi에서 제거할까요?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\"의 접근 규칙을 제거할까요?"
 msgid "Remove access?"
 msgstr "접근 권한을 제거할까요?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "캘린더 제거"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "항목 제거"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "링크 제거"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "알림 제거"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "캘린더 제거 중..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

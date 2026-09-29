@@ -92,6 +92,7 @@ msgstr "{entityLabel}-ի անունը"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from}-ից մինչև {to}"
 
@@ -228,6 +229,10 @@ msgstr "Ավելացնել հղում"
 msgid "Add option"
 msgstr "Ավելացնել տարբերակ"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Ավելացնել հիշեցում"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Ավելացնել պիտակ..."
@@ -264,6 +269,10 @@ msgstr "Ամբողջ օրը"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Բոլոր միջոցառումները"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Ամբողջ օրվա միջոցառումներ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Օրացույցը ջնջվեց"
 msgid "Calendar linked"
 msgstr "Օրացույցը կապված է"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Օրացույցը հեռացվեց"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Ընտրեք ամսաթիվ"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Ընտրեք խաղ կողագոտուց կամ սկսեք նորը։"
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Ընտրեք ժամը"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Լռելյայն"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Լռելյայն AI հաշիվ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Լռելյայն օրացույց"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Միջոցառումը պահպանվեց"
 msgid "Every"
 msgstr "Ամեն"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Յուրաքանչյուր րոպե"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Չհաջողվեց կարդալ հաշիվները"
 msgid "Failed to read the calendars"
 msgstr "Չհաջողվեց կարդալ օրացույցները"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Չհաջողվեց հեռացնել օրացույցը"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Ֆայլեր"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Ավարտեք ձեր հաշվի տեղափոխությունը"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Սկզբում"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Կարծես թե ձեր փնտրած էջը <0/>գոյություն չ
 msgid "Item details"
 msgstr "Տարրի մանրամասներ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Դրա միջոցառումները մնում են սկզբնական օրացույցում։"
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Հենց հիմա"
@@ -1598,6 +1636,11 @@ msgstr "Ստեղնաշարի դյուրանցումներ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Մեծ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Վերջում"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Վերաբեռնել"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Հիշեցում"
 
@@ -2251,6 +2295,8 @@ msgstr "Հիշեցում"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Հեռացնել"
 
@@ -2267,6 +2313,11 @@ msgstr "Հեռացնել {0} զտիչը"
 msgid "Remove {name}"
 msgstr "Հեռացնել {name}-ը"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Հեռացնե՞լ <0>{0}</0>-ը Mochi-ից։"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Հեռացնե՞լ «{0}»-ի մուտքի կանոնը։"
 msgid "Remove access?"
 msgstr "Հեռացնե՞լ մուտքը։"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Հեռացնել օրացույցը"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Հեռացնել տարրը"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Հեռացնել հղումը"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Հեռացնել հիշեցումը"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Օրացույցը հեռացվում է..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

@@ -92,6 +92,7 @@ msgstr "{entityLabel} аты"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} - {to}"
 
@@ -228,6 +229,10 @@ msgstr "Шилтеме кошуу"
 msgid "Add option"
 msgstr "Тандоо кошуу"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Эскертме кошуу"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Тег кошуу..."
@@ -264,6 +269,10 @@ msgstr "Күн бою"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Бардык иш-чаралар"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Күн бою иш-чаралар"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Календарь өчүрүлдү"
 msgid "Calendar linked"
 msgstr "Календарь байланыштырылды"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Календарь алып салынды"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Күндү тандаңыз"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Каптал тилкесинен оюнду тандаңыз же жаңысын баштаңыз."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Убакытты тандаңыз"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Демейки"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Демейки AI аккаунту"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Демейки календарь"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Иш-чара сакталды"
 msgid "Every"
 msgstr "Ар"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Ар бир мүнөт"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Эсептерди окуу ишке ашкан жок"
 msgid "Failed to read the calendars"
 msgstr "Календарларды окуу ишке ашкан жок"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Календарь алып салынган жок"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Файлдар"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Аккаунтуңузду көчүрүүнү аяктаңыз"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Башында"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Сиз издеген бет <0/>жок же өчүрүлгөн окшо
 msgid "Item details"
 msgstr "Нерсе чоо-жайы"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Анын иш-чаралары баштапкы календарда калат."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Азыр эле"
@@ -1598,6 +1636,11 @@ msgstr "Баскычтоп жарлыктары"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Чоң"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Аягында"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Кайра жүктөө"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Эскертме"
 
@@ -2251,6 +2295,8 @@ msgstr "Эскертме"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Алуу"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} чыпкасын алуу"
 msgid "Remove {name}"
 msgstr "{name} алуу"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi-ден алып салынсынбы?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" үчүн жетүү эрежеси өчүрүлсүнбү?"
 msgid "Remove access?"
 msgstr "Кирүүнү аласызбы?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Календарды алып салуу"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Нерсени алуу"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Шилтемени өчүрүү"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Эскертмени алып салуу"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Календарь алып салынууда..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

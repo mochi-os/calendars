@@ -22,6 +22,16 @@ export interface Preferences {
    * written in, rather than converted into the user's zone.
    */
   zones: boolean
+  /**
+   * The calendar a new event opens on; empty, or one the user can no longer
+   * write to, means the built-in default calendar.
+   */
+  calendar: string
+  /**
+   * Where a day's all-day events go among its timed ones in the month and
+   * multiweek views.
+   */
+  allday: 'first' | 'last'
 }
 
 export interface PreferencesResponse {

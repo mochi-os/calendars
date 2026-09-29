@@ -78,16 +78,19 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
 
   const step = (direction: number) => setDate(stepDate(view, date, direction))
 
+  // A day read at its noon, so the user's zone cannot tip it into the next.
+  const dated = (day: string) =>
+    format.formatDate(new Date(format.timestampAt(day, 720) * 1000))
+  // The dates in the user's date format; a month names only itself.
   const title = rangeTitle(view, range, {
-    longDate: (day) =>
-      format.formatLongDate(new Date(format.timestampAt(day, 720) * 1000)),
+    longDate: dated,
     monthYear: (day) =>
       format.formatMonthYear(new Date(format.timestampAt(day, 720) * 1000)),
-    dayRange: (from, to) =>
-      format.formatDayRange(
-        new Date(format.timestampAt(from, 720) * 1000),
-        new Date(format.timestampAt(to, 720) * 1000)
-      ),
+    dayRange: (first, last) => {
+      const from = dated(first)
+      const to = dated(last)
+      return t`${from} to ${to}`
+    },
   })
 
   return (

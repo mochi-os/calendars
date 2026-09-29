@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { plural, t } from '@lingui/core/macro'
 import { useFormat } from '@mochi/web'
-import { NO_REMINDER } from '@/lib/ical'
+import { NO_REMINDER, REMINDER_LEADS } from '@/lib/ical'
 
 export interface Option {
   value: number
@@ -27,12 +27,29 @@ export function durationOptions(): Option[] {
 export function reminderOptions(): Option[] {
   return [
     { value: NO_REMINDER, label: t`None` },
-    { value: 0, label: t`At the time of the event` },
-    ...[5, 15, 30, 60, 1440].map((minutes) => ({
+    ...REMINDER_LEADS.map((minutes) => ({
       value: minutes,
-      label: beforeLabel(minutes),
+      label: reminderLabel(minutes),
     })),
   ]
+}
+
+/**
+ * The choices for one of an event's reminders: those offered, and the one it
+ * has when that is not among them, as a reminder another calendar set can be.
+ */
+export function reminderChoices(current: number): Option[] {
+  const leads = REMINDER_LEADS.includes(current)
+    ? REMINDER_LEADS
+    : [...REMINDER_LEADS, current].sort((a, b) => a - b)
+  return leads.map((minutes) => ({
+    value: minutes,
+    label: reminderLabel(minutes),
+  }))
+}
+
+function reminderLabel(minutes: number): string {
+  return minutes === 0 ? t`At the time of the event` : beforeLabel(minutes)
 }
 
 function durationLabel(minutes: number): string {

@@ -92,6 +92,7 @@ msgstr "{entityLabel} neve"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} és {to} között"
 
@@ -228,6 +229,10 @@ msgstr "Hivatkozás hozzáadása"
 msgid "Add option"
 msgstr "Beállítás hozzáadása"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Emlékeztető hozzáadása"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Címke hozzáadása..."
@@ -264,6 +269,10 @@ msgstr "Egész nap"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Összes esemény"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Egész napos események"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Naptár törölve"
 msgid "Calendar linked"
 msgstr "Naptár összekapcsolva"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Naptár eltávolítva"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Válasszon dátumot"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Válasszon egy játékot az oldalsávból, vagy kezdjen újat."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Válasszon időpontot"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Alapértelmezett"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Alapértelmezett MI-fiók"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Alapértelmezett naptár"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Esemény mentve"
 msgid "Every"
 msgstr "Minden"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Minden perc"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Nem sikerült beolvasni a fiókokat"
 msgid "Failed to read the calendars"
 msgstr "Nem sikerült beolvasni a naptárakat"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Nem sikerült eltávolítani a naptárat"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Fájlok"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Fejezze be a fiók áthelyezését"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Az elején"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Úgy tűnik, a keresett oldal <0/>nem létezik, vagy eltávolították."
 msgid "Item details"
 msgstr "Elem részletei"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Az eseményei az eredeti naptárban maradnak."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Épp most"
@@ -1598,6 +1636,11 @@ msgstr "Billentyűparancsok"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Nagy"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "A végén"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Újratöltés"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Emlékeztető"
 
@@ -2251,6 +2295,8 @@ msgstr "Emlékeztető"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Eltávolítás"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} szűrő eltávolítása"
 msgid "Remove {name}"
 msgstr "{name} eltávolítása"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Eltávolítja a Mochiból a következőt: <0>{0}</0>?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Eltávolítja a(z) „{0}” hozzáférési szabályát?"
 msgid "Remove access?"
 msgstr "Eltávolítja a hozzáférést?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Naptár eltávolítása"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Elem eltávolítása"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Hivatkozás eltávolítása"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Emlékeztető eltávolítása"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Naptár eltávolítása..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

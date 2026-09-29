@@ -61,7 +61,7 @@ function single(draft: EventDraft, previous?: Component): Component {
  * the editor would, so a series keeps its rule and an override keeps being
  * an override. Every write says what it did, with a way back.
  */
-export function useEventMove() {
+export function useEventMove(reveal?: (calendar: string) => void) {
   const { t } = useLingui()
   const format = useFormat()
   const createMutation = useCreateEventMutation()
@@ -96,6 +96,12 @@ export function useEventMove() {
       const override = overrideComponent(event.components, instance.start, zone)
       const own = override ?? master
       const target = options.calendar ?? event.calendar
+      // The calendar written to shows again, so the event does not vanish
+      // from view as if it had not moved.
+      const saved = (message: string, undo: () => Promise<unknown>) => {
+        reveal?.(target)
+        done(message, undo)
+      }
       const restore = (etag: string) =>
         updateMutation.mutateAsync({
           event: event.id,
@@ -124,9 +130,9 @@ export function useEventMove() {
             copy: options.copy,
           })
           if (options.copy) {
-            done(t`Event copied`, () => remove(following))
+            saved(t`Event copied`, () => remove(following))
           } else {
-            done(t`Event moved`, async () => {
+            saved(t`Event moved`, async () => {
               await remove(following)
               await restore(kept.etag)
             })
@@ -164,7 +170,7 @@ export function useEventMove() {
           calendar: target,
           components,
         })
-        done(t`Event copied`, () => remove(created))
+        saved(t`Event copied`, () => remove(created))
         return
       }
 
@@ -191,7 +197,7 @@ export function useEventMove() {
           etag: event.etag,
           components,
         })
-        done(t`Event moved`, async () => {
+        saved(t`Event moved`, async () => {
           await remove(created)
           await restore(written.etag)
         })
@@ -207,7 +213,7 @@ export function useEventMove() {
         calendar: target,
         components,
       })
-      done(t`Event moved`, () => restore(written.etag))
+      saved(t`Event moved`, () => restore(written.etag))
     } catch (error) {
       if ((error as { status?: number })?.status === 412) {
         toast.error(t`This event changed somewhere else.`)

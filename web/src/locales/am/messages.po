@@ -92,6 +92,7 @@ msgstr "የ{entityLabel} ስም"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "ከ{from} እስከ {to}"
 
@@ -228,6 +229,10 @@ msgstr "አገናኝ ጨምር"
 msgid "Add option"
 msgstr "አማራጭ ጨምር"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "አስታዋሽ ጨምር"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "መለያ ጨምር..."
@@ -264,6 +269,10 @@ msgstr "ሙሉ ቀን"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "ሁሉም ክስተቶች"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "የሙሉ ቀን ክስተቶች"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "የቀን መቁጠሪያ ተሰርዟል"
 msgid "Calendar linked"
 msgstr "የቀን መቁጠሪያ ተገናኝቷል"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "የቀን መቁጠሪያ ተወግዷል"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "ቀን ይምረጡ"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "ከጎን አሞሌ ጨዋታ ምረጥ ወይም አዲስ ጀምር።"
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "ሰዓት ይምረጡ"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "ነባሪ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "ነባሪ የAI መለያ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "ነባሪ የቀን መቁጠሪያ"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "ክስተት ተቀምጧል"
 msgid "Every"
 msgstr "በየ"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "በየደቂቃው"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "መለያዎችን ማንበብ አልተሳካም"
 msgid "Failed to read the calendars"
 msgstr "የቀን መቁጠሪያዎችን ማንበብ አልተሳካም"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "የቀን መቁጠሪያ ማስወገድ አልተሳካም"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "ፋይሎች"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "የመለያ ዝውውርን አጠናቅ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "መጀመሪያ ላይ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "የሚፈልጉት ገጽ <0/>የለም ወይም ተወግዷል።"
 msgid "Item details"
 msgstr "የንጥል ዝርዝሮች"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ክስተቶቹ በመጀመሪያው የቀን መቁጠሪያ ውስጥ ይቆያሉ።"
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "አሁን"
@@ -1598,6 +1636,11 @@ msgstr "የቁልፍ ሰሌዳ አቋራጮች"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ትልቅ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "መጨረሻ ላይ"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "እንደገና ጫን"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "አስታዋሽ"
 
@@ -2251,6 +2295,8 @@ msgstr "አስታዋሽ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "አስወግድ"
 
@@ -2267,6 +2313,11 @@ msgstr "የ{0} ማጣሪያን ያስወግዱ"
 msgid "Remove {name}"
 msgstr "{name}ን አስወግድ"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> ከMochi ይወገድ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "የ\"{0}\" የመዳረሻ ደንብ ይወገድ?"
 msgid "Remove access?"
 msgstr "ድረሳ ይወገድ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "የቀን መቁጠሪያ አስወግድ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "ንጥል አስወግድ"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "አገናኙን አስወግድ"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "አስታዋሽ አስወግድ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "የቀን መቁጠሪያ በማስወገድ ላይ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

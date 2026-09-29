@@ -92,6 +92,7 @@ msgstr "{entityLabel} nomi"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} – {to}"
 
@@ -228,6 +229,10 @@ msgstr "Havola qoʻshish"
 msgid "Add option"
 msgstr "Variant qoʻshish"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Eslatma qoʻshish"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Teg qoʻshish..."
@@ -264,6 +269,10 @@ msgstr "Kun boʻyi"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Barcha tadbirlar"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Kun boʻyi tadbirlar"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Kalendar oʻchirildi"
 msgid "Calendar linked"
 msgstr "Kalendar bogʻlandi"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Kalendar olib tashlandi"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Sanani tanlang"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Yon paneldan oʻyin tanlang yoki yangisini boshlang."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Vaqtni tanlang"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Standart"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Standart AI hisobi"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Standart kalendar"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Tadbir saqlandi"
 msgid "Every"
 msgstr "Har"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Har daqiqa"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Hisoblarni oʻqib boʻlmadi"
 msgid "Failed to read the calendars"
 msgstr "Kalendarlarni oʻqib boʻlmadi"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Kalendarni olib tashlab boʻlmadi"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Fayllar"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Hisobni ko'chirishni yakunlang"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Boshida"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Siz qidirayotgan sahifa <0/>mavjud emas yoki o'chirilgan ko'rinadi."
 msgid "Item details"
 msgstr "Element tafsilotlari"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Uning tadbirlari asl kalendarda qoladi."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Hozirgina"
@@ -1598,6 +1636,11 @@ msgstr "Klaviatura yorliqlari"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Katta"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Oxirida"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Qayta yuklash"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Eslatma"
 
@@ -2251,6 +2295,8 @@ msgstr "Eslatma"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Olib tashlash"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} filtrini olib tashlash"
 msgid "Remove {name}"
 msgstr "{name} ni olib tashlash"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi’dan olib tashlansinmi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" uchun kirish qoidasi olib tashlansinmi?"
 msgid "Remove access?"
 msgstr "Kirishni olib tashlasinmi?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Kalendarni olib tashlash"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Elementni olib tashlash"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Havolani olib tashlash"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Eslatmani olib tashlash"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Kalendar olib tashlanmoqda..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

@@ -92,6 +92,7 @@ msgstr "اسم {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} إلى {to}"
 
@@ -228,6 +229,10 @@ msgstr "إضافة رابط"
 msgid "Add option"
 msgstr "إضافة خيار"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "إضافة تذكير"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "إضافة وسم..."
@@ -264,6 +269,10 @@ msgstr "طوال اليوم"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "جميع الأحداث"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "أحداث طوال اليوم"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "تم حذف التقويم"
 msgid "Calendar linked"
 msgstr "تم ربط التقويم"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "تمت إزالة التقويم"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "اختر تاريخًا"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "اختر لعبة من الشريط الجانبي أو ابدأ لعبة جديدة."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "اختر وقتًا"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "افتراضي"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "حساب الذكاء الاصطناعي الافتراضي"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "التقويم الافتراضي"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "تم حفظ الحدث"
 msgid "Every"
 msgstr "كل"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "كل دقيقة"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "تعذّرت قراءة الحسابات"
 msgid "Failed to read the calendars"
 msgstr "تعذّرت قراءة التقويمات"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "فشلت إزالة التقويم"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "الملفات"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "أتمم نقل حسابك"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "في البداية"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "يبدو أن الصفحة التي تبحث عنها <0/>غير موج�
 msgid "Item details"
 msgstr "تفاصيل العنصر"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "تبقى أحداثه في التقويم الأصلي."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "الآن"
@@ -1598,6 +1636,11 @@ msgstr "اختصارات لوحة المفاتيح"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "كبير"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "في النهاية"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "إعادة التحميل"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "التذكير"
 
@@ -2251,6 +2295,8 @@ msgstr "التذكير"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "إزالة"
 
@@ -2267,6 +2313,11 @@ msgstr "إزالة فلتر {0}"
 msgid "Remove {name}"
 msgstr "إزالة {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "إزالة <0>{0}</0> من Mochi؟"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "إزالة قاعدة الوصول لـ \"{0}\"؟"
 msgid "Remove access?"
 msgstr "إزالة الوصول؟"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "إزالة التقويم"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "إزالة العنصر"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "إزالة الرابط"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "إزالة التذكير"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "جارٍ إزالة التقويم..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

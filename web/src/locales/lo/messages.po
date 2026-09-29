@@ -92,6 +92,7 @@ msgstr "ຊື່ {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} ຫາ {to}"
 
@@ -228,6 +229,10 @@ msgstr "ເພີ່ມລິ້ງ"
 msgid "Add option"
 msgstr "ເພີ່ມຕົວເລືອກ"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "ເພີ່ມການແຈ້ງເຕືອນ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ເພີ່ມແທັກ..."
@@ -264,6 +269,10 @@ msgstr "ຕະຫຼອດມື້"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "ເຫດການທັງໝົດ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "ເຫດການຕະຫຼອດມື້"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "ລຶບປະຕິທິນແລ້ວ"
 msgid "Calendar linked"
 msgstr "ເຊື່ອມຕໍ່ປະຕິທິນແລ້ວ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ລຶບປະຕິທິນອອກແລ້ວ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "ເລືອກວັນທີ"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "ເລືອກເກມຈາກແຖບຂ້າງ ຫຼື ເລີ່ມຕົ້ນອັນໃໝ່."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "ເລືອກເວລາ"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "ຄ່າເລີ່ມຕົ້ນ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "ບັນຊີ AI ເລີ່ມຕົ້ນ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "ປະຕິທິນເລີ່ມຕົ້ນ"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "ບັນທຶກເຫດການແລ້ວ"
 msgid "Every"
 msgstr "ທຸກ"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "ທຸກນາທີ"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "ອ່ານບັນຊີລົ້ມເຫຼວ"
 msgid "Failed to read the calendars"
 msgstr "ອ່ານປະຕິທິນລົ້ມເຫຼວ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ລຶບປະຕິທິນອອກລົ້ມເຫຼວ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "ໄຟລ໌"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "ສຳເລັດການຍ້າຍບັນຊີ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "ຢູ່ຕົ້ນ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "ເບິ່ງຄືວ່າໜ້າທີ່ທ່ານກຳລັ
 msgid "Item details"
 msgstr "ລາຍລະອຽດລາຍການ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ເຫດການຂອງປະຕິທິນນີ້ຍັງຄົງຢູ່ໃນປະຕິທິນຕົ້ນສະບັບ"
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ຫາກໍ່ດຽວນີ້"
@@ -1598,6 +1636,11 @@ msgstr "ປຸ່ມລັດແປ້ນພິມ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ໃຫຍ່"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "ຢູ່ທ້າຍ"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "ໂຫຼດໃໝ່"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "ການແຈ້ງເຕືອນ"
 
@@ -2251,6 +2295,8 @@ msgstr "ການແຈ້ງເຕືອນ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "ລຶບອອກ"
 
@@ -2267,6 +2313,11 @@ msgstr "ລຶບຕົວກອງ {0}"
 msgid "Remove {name}"
 msgstr "ລຶບ {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "ລຶບ <0>{0}</0> ອອກຈາກ Mochi ບໍ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "ລຶບກົດການເຂົ້າເຖິງສຳລັບ \"
 msgid "Remove access?"
 msgstr "ລຶບການເຂົ້າເຖິງ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "ລຶບປະຕິທິນອອກ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "ລຶບລາຍການ"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "ລຶບລິ້ງ"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "ລຶບການແຈ້ງເຕືອນອອກ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "ກຳລັງລຶບປະຕິທິນອອກ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

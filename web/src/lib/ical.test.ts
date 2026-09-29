@@ -5,6 +5,11 @@
 import { describe, expect, it } from 'vitest'
 import type { Component } from '@/api/types/events'
 import {
+  alarmMinutes,
+  creationDay,
+  defaultCalendar,
+  defaultStart,
+  nextReminder,
   anchoredDraft,
   componentDraft,
   copyDraft,
@@ -30,6 +35,7 @@ import {
   repeatRule,
   ruleRepeat,
   splitSeries,
+  startZone,
   triggerMinutes,
   truncatedSeries,
   utcValue,
@@ -37,6 +43,20 @@ import {
 } from './ical'
 
 const ZONE = 'Europe/London'
+
+function valarm(
+  trigger: string,
+  params: Record<string, string[]> = {}
+): Component {
+  return {
+    name: 'VALARM',
+    properties: [
+      { name: 'ACTION', params: {}, value: 'DISPLAY' },
+      { name: 'TRIGGER', params, value: trigger },
+    ],
+    components: [],
+  }
+}
 
 function draft(overrides: Partial<EventDraft> = {}): EventDraft {
   return {
@@ -50,8 +70,9 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     zone: { start: ZONE, finish: ZONE },
     location: '',
     description: '',
+    original: '',
     repeat: emptyRepeat(),
-    reminder: 15,
+    reminders: [15],
     ...overrides,
   }
 }
@@ -193,6 +214,24 @@ describe('reminders', () => {
     expect(triggerMinutes('PT30M')).toBe(-30)
     expect(triggerMinutes('nonsense')).toBeNull()
   })
+
+  it('reads only the alarms the reminder setting can say', () => {
+    expect(alarmMinutes(valarm('-PT15M'))).toBe(15)
+    expect(alarmMinutes(valarm('PT0M'))).toBe(0)
+    expect(alarmMinutes(valarm('-PT15M', { RELATED: ['END'] }))).toBeNull()
+    expect(
+      alarmMinutes(valarm('20260927T120000Z', { VALUE: ['DATE-TIME'] }))
+    ).toBeNull()
+    expect(alarmMinutes(valarm('PT10M'))).toBeNull()
+  })
+})
+
+describe('adding a reminder', () => {
+  it('adds the first offered reminder the event lacks', () => {
+    expect(nextReminder([])).toBe(15)
+    expect(nextReminder([15])).toBe(0)
+    expect(nextReminder([15, 0, 5])).toBe(30)
+  })
 })
 
 describe('draftComponent', () => {
@@ -225,11 +264,57 @@ describe('draftComponent', () => {
     expect(property(component, 'DESCRIPTION')).toBeUndefined()
   })
 
-  it('writes the reminder as an alarm and none when there is none', () => {
-    const withAlarm = draftComponent(draft({ reminder: 30 }))
+  it('writes each reminder as an alarm and none when there are none', () => {
+    const withAlarm = draftComponent(draft({ reminders: [30] }))
     expect(withAlarm.components).toHaveLength(1)
     expect(propertyValue(withAlarm.components[0], 'TRIGGER')).toBe('-PT30M')
-    expect(draftComponent(draft({ reminder: -1 })).components).toHaveLength(0)
+    const two = draftComponent(draft({ reminders: [30, 1440] }))
+    expect(
+      two.components.map((item) => propertyValue(item, 'TRIGGER'))
+    ).toEqual(['-PT30M', '-P1D'])
+    expect(draftComponent(draft({ reminders: [] })).components).toHaveLength(0)
+  })
+
+  it("keeps an event's every reminder through a save that changed something else", () => {
+    const previous: Component = {
+      name: 'VEVENT',
+      properties: [],
+      components: [valarm('-PT10M'), valarm('-PT1H')],
+    }
+    const read = componentDraft(
+      { ...draftComponent(draft()), components: previous.components },
+      'cal1',
+      'UTC'
+    )
+    const saved = draftComponent({ ...read, title: 'Renamed' }, previous)
+    expect(
+      saved.components.map((item) => propertyValue(item, 'TRIGGER'))
+    ).toEqual(['-PT10M', '-PT1H'])
+  })
+
+  it('keeps the alarms the reminder setting cannot say, replacing the rest', () => {
+    const previous: Component = {
+      name: 'VEVENT',
+      properties: [],
+      components: [
+        valarm('-PT15M'),
+        valarm('-PT30M', { RELATED: ['END'] }),
+        valarm('20260927T120000Z', { VALUE: ['DATE-TIME'] }),
+        valarm('PT10M'),
+      ],
+    }
+    const component = draftComponent(draft({ reminders: [5] }), previous)
+    expect(
+      component.components.map((item) => [
+        propertyValue(item, 'TRIGGER'),
+        property(item, 'TRIGGER')?.params,
+      ])
+    ).toEqual([
+      ['-PT30M', { RELATED: ['END'] }],
+      ['20260927T120000Z', { VALUE: ['DATE-TIME'] }],
+      ['PT10M', {}],
+      ['-PT5M', {}],
+    ])
   })
 
   it('carries over properties the editor does not own', () => {
@@ -245,7 +330,7 @@ describe('draftComponent', () => {
         { name: 'VOTHER', properties: [], components: [] },
       ],
     }
-    const component = draftComponent(draft({ reminder: -1 }), previous)
+    const component = draftComponent(draft({ reminders: [] }), previous)
     expect(propertyValue(component, 'SUMMARY')).toBe('Standup')
     expect(propertyValue(component, 'TRANSP')).toBe('TRANSPARENT')
     expect(propertyValue(component, 'CLASS')).toBe('PRIVATE')
@@ -254,8 +339,27 @@ describe('draftComponent', () => {
 })
 
 describe('componentDraft', () => {
+  it('reads every alarm the reminder setting can say, once each', () => {
+    const component = draftComponent(draft({ reminders: [] }))
+    component.components = [
+      valarm('-PT15M', { RELATED: ['END'] }),
+      valarm('-PT30M'),
+      valarm('-P1D'),
+      valarm('-PT30M'),
+    ]
+    expect(componentDraft(component, 'cal1', 'UTC').reminders).toEqual([
+      30, 1440,
+    ])
+    component.components = [valarm('-PT15M', { RELATED: ['END'] })]
+    expect(componentDraft(component, 'cal1', 'UTC').reminders).toEqual([])
+  })
+
   it('reads a timed event back into the same draft', () => {
-    const original = draft({ location: 'Room 1', description: 'Notes' })
+    const original = draft({
+      location: 'Room 1',
+      description: 'Notes',
+      original: 'Notes',
+    })
     const read = componentDraft(draftComponent(original), 'cal1', 'UTC')
     expect(read).toEqual(original)
   })
@@ -632,6 +736,46 @@ describe('foreignZones', () => {
   })
 })
 
+// The tests run on Node, whose zone data names zones as Chrome does:
+// Asia/Calcutta for Asia/Kolkata.
+describe('one zone under two names', () => {
+  it('is the user zone whichever name either side uses', () => {
+    for (const [written, user] of [
+      ['Asia/Calcutta', 'Asia/Kolkata'],
+      ['Asia/Kolkata', 'Asia/Calcutta'],
+      ['Europe/Kiev', 'Europe/Kyiv'],
+    ]) {
+      expect(
+        foreignZones(
+          draft({ allday: false, zone: { start: written, finish: written } }),
+          user
+        )
+      ).toBe(false)
+    }
+    expect(
+      foreignZones(
+        draft({
+          allday: false,
+          zone: { start: 'Asia/Calcutta', finish: 'Europe/Kyiv' },
+        }),
+        'Asia/Kolkata'
+      )
+    ).toBe(true)
+  })
+
+  it('keeps the end following the start while the two agree under any names', () => {
+    expect(
+      startZone(
+        { start: 'Asia/Calcutta', finish: 'Asia/Kolkata' },
+        'Asia/Tokyo'
+      )
+    ).toEqual({ start: 'Asia/Tokyo', finish: 'Asia/Tokyo' })
+    expect(
+      startZone({ start: 'Asia/Calcutta', finish: 'Europe/Kyiv' }, 'Asia/Tokyo')
+    ).toEqual({ start: 'Asia/Tokyo', finish: 'Europe/Kyiv' })
+  })
+})
+
 describe('cutting a series at an occurrence', () => {
   const daily = { ...emptyRepeat(), frequency: 'daily' as const }
   const series = draftComponent(draft({ repeat: daily }))
@@ -918,6 +1062,92 @@ describe('a rule the editor cannot express', () => {
   })
 })
 
+describe('a description written as HTML', () => {
+  const html = 'PNR: 2YHEIJ<br>Class: <b>Business</b> &amp; lounge'
+  const text = 'PNR: 2YHEIJ\nClass: Business & lounge'
+  const described = (component: Component): Component => ({
+    ...component,
+    properties: [
+      ...component.properties,
+      { name: 'DESCRIPTION', params: {}, value: html },
+    ],
+  })
+  const stored = described(draftComponent(draft()))
+
+  it('opens in the editor as its text', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    expect(read.description).toBe(text)
+    expect(read.original).toBe(html)
+  })
+
+  it('keeps its markup through a save that changed something else', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, title: 'Flight' }, stored)
+    expect(propertyValue(saved, 'DESCRIPTION')).toBe(html)
+  })
+
+  it('is saved as the text typed once edited', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent(
+      { ...read, description: `${read.description}\nSeat 2A` },
+      stored
+    )
+    expect(propertyValue(saved, 'DESCRIPTION')).toBe(`${text}\nSeat 2A`)
+  })
+
+  it('is dropped when its text is cleared', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, description: '' }, stored)
+    expect(property(saved, 'DESCRIPTION')).toBeUndefined()
+  })
+
+  it("keeps its markup on one occurrence's override", () => {
+    const series = described(
+      draftComponent(
+        draft({ repeat: { ...emptyRepeat(), frequency: 'daily' } })
+      )
+    )
+    const second = propertyInstant(
+      { name: 'DTSTART', params: { TZID: [ZONE] }, value: '20260917T090000' },
+      ZONE
+    )!.seconds
+    const read = occurrenceDraft(series, second, 'cal1', ZONE)
+    const [, override] = editedComponents(
+      [series],
+      { ...read, title: 'Moved' },
+      'one',
+      second,
+      ZONE
+    )
+    expect(propertyValue(override, 'DESCRIPTION')).toBe(html)
+  })
+
+  it('keeps its markup in a copy, which has no stored event to fall back on', () => {
+    const copied = copyDraft([stored], 0, 'cal2', ZONE, 'all')!
+    expect(copied.description).toBe(text)
+    expect(propertyValue(draftComponent(copied), 'DESCRIPTION')).toBe(html)
+  })
+
+  it('opens as text in a copy of a listed occurrence, and keeps its markup', () => {
+    const start = Date.UTC(2026, 8, 25, 9) / 1000
+    const copied = instanceDraft(
+      {
+        summary: 'Flight',
+        location: '',
+        description: html,
+        start,
+        finish: start + 3600,
+        allday: false,
+      },
+      'cal1',
+      15,
+      'UTC'
+    )
+    expect(copied.description).toBe(text)
+    expect(propertyValue(draftComponent(copied), 'DESCRIPTION')).toBe(html)
+  })
+})
+
 describe('the draft a copy opens on', () => {
   const daily = { ...emptyRepeat(), frequency: 'daily' as const }
   const series = draftComponent(draft({ repeat: daily, location: 'Room 4' }))
@@ -989,7 +1219,7 @@ describe('the draft a copy opens on', () => {
     expect(copied.finish).toBe('2026-09-25')
     expect(copied.finishTime).toBe(17 * 60)
     expect(copied.zone).toEqual({ start: 'UTC', finish: 'UTC' })
-    expect(copied.reminder).toBe(15)
+    expect(copied.reminders).toEqual([15])
     expect(copied.repeat.frequency).toBe('never')
   })
 
@@ -1009,6 +1239,7 @@ describe('the draft a copy opens on', () => {
       -1,
       'UTC'
     )
+    expect(copied.reminders).toEqual([])
     expect(copied.allday).toBe(true)
     expect(copied.start).toBe('2026-09-24')
     expect(copied.finish).toBe('2026-09-26')
@@ -1032,7 +1263,7 @@ describe('what a new event starts from', () => {
     expect(draft.zone).toEqual({ start: 'Asia/Tokyo', finish: 'Asia/Tokyo' })
     expect(draftInstants(draft)).toEqual({ start: nine, finish: nine + 3600 })
     expect(draft.calendar).toBe('cal1')
-    expect(draft.reminder).toBe(15)
+    expect(draft.reminders).toEqual([15])
     expect(draft.title).toBe('')
     expect(draft.repeat.frequency).toBe('never')
   })
@@ -1110,5 +1341,86 @@ describe('an end that falls before its start after a zone change', () => {
   it('never touches an all-day draft, even one that ends before it starts', () => {
     const whole = { ...london, allday: true, finish: '2026-09-20' }
     expect(endAfterStart(whole)).toBe(whole)
+  })
+})
+
+describe('when a new event starts', () => {
+  const hours = { start: 8, finish: 17 }
+  const today = '2026-09-28'
+
+  it('starts today at the next whole hour', () => {
+    expect(defaultStart(today, today, 14 * 60 + 37, hours)).toEqual({
+      day: today,
+      minutes: 15 * 60,
+    })
+    expect(defaultStart(today, today, 22 * 60 + 59, hours)).toEqual({
+      day: today,
+      minutes: 23 * 60,
+    })
+  })
+
+  it('starts on another day at the start of the working hours', () => {
+    expect(defaultStart('2026-10-02', today, 14 * 60 + 37, hours)).toEqual({
+      day: '2026-10-02',
+      minutes: 8 * 60,
+    })
+    expect(defaultStart('2026-10-02', today, 0, { start: 7 })).toEqual({
+      day: '2026-10-02',
+      minutes: 7 * 60,
+    })
+  })
+
+  it("starts at tomorrow's working hours once today has no whole hour left", () => {
+    expect(defaultStart(today, today, 23 * 60 + 10, hours)).toEqual({
+      day: '2026-09-29',
+      minutes: 8 * 60,
+    })
+  })
+
+  it('lands on today when today is on screen, else on the day the view is on', () => {
+    // A week from Monday the 28th, today inside it.
+    expect(creationDay(today, '2026-09-30', '2026-09-28', 7)).toBe(today)
+    // The next week, paged to.
+    expect(creationDay(today, '2026-10-07', '2026-10-05', 7)).toBe('2026-10-07')
+    // A day view of tomorrow.
+    expect(creationDay(today, '2026-09-29', '2026-09-29', 1)).toBe('2026-09-29')
+    // The week before.
+    expect(creationDay(today, '2026-09-23', '2026-09-21', 7)).toBe('2026-09-23')
+  })
+})
+
+describe('the calendar a new event goes in', () => {
+  // The built-in default is not first, as nothing orders it so.
+  const calendars = [
+    { id: 'work', readonly: false, default: false },
+    { id: 'birthdays', readonly: true, default: false },
+    { id: 'standard', readonly: false, default: true },
+    { id: 'google', readonly: true, default: false },
+  ]
+
+  it('is the one the preferences name', () => {
+    expect(defaultCalendar(calendars, 'work')).toBe('work')
+  })
+
+  it('is the built-in default when none is named, or the one named is gone or read-only', () => {
+    expect(defaultCalendar(calendars, '')).toBe('standard')
+    expect(defaultCalendar(calendars, 'deleted')).toBe('standard')
+    expect(defaultCalendar(calendars, 'google')).toBe('standard')
+    expect(defaultCalendar(calendars, 'birthdays')).toBe('standard')
+  })
+
+  it('is the first the user can write to without a built-in default, and none without one at all', () => {
+    expect(
+      defaultCalendar(
+        calendars.filter((calendar) => !calendar.default),
+        ''
+      )
+    ).toBe('work')
+    expect(
+      defaultCalendar(
+        calendars.filter((calendar) => calendar.readonly),
+        ''
+      )
+    ).toBe('')
   })
 })

@@ -92,6 +92,7 @@ msgstr "Ainm {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} gu {to}"
 
@@ -228,6 +229,10 @@ msgstr "Cuir ceangal ris"
 msgid "Add option"
 msgstr "Cuir roghainn ris"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Cuir cuimhneachan ris"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Cuir taga ris..."
@@ -264,6 +269,10 @@ msgstr "Fad an latha"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "A h-uile tachartas"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Tachartasan fad an latha"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Chaidh am mìosachan a sguabadh às"
 msgid "Calendar linked"
 msgstr "Mìosachan ceangailte"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Chaidh am mìosachan a thoirt air falbh"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Tagh ceann-là"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Tagh geama bhon bhàr-thaobh no tòisich fear ùr."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Tagh àm"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Bunaiteach"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Cunntas AI bunaiteach"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Mìosachan bunaiteach"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Chaidh an tachartas a shàbhaladh"
 msgid "Every"
 msgstr "Gach"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Gach mionaid"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Cha b' urrainn na cunntasan a leughadh"
 msgid "Failed to read the calendars"
 msgstr "Cha b' urrainn na mìosachain a leughadh"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Cha b' urrainn am mìosachan a thoirt air falbh"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Faidhlichean"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Crìochnaich gluasad do chunntas"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "An toiseach"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Tha coltas nach eil an duilleag a tha thu a' sireadh <0/>ann no gun deac
 msgid "Item details"
 msgstr "Mion-fhiosrachadh an nì"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Fanaidh na tachartasan aige sa mhìosachan thùsail."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "An-dràsta fhèin"
@@ -1598,6 +1636,11 @@ msgstr "Ath-ghoiridean a' mheur-chlàir"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Mòr"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Aig an deireadh"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Ath-luchdaich"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Cuimhneachan"
 
@@ -2251,6 +2295,8 @@ msgstr "Cuimhneachan"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Thoir air falbh"
 
@@ -2267,6 +2313,11 @@ msgstr "Thoir an criathrag {0} air falbh"
 msgid "Remove {name}"
 msgstr "Thoir {name} air falbh"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "A bheil thu airson <0>{0}</0> a thoirt air falbh à Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "A bheil thu airson riaghailt inntrigidh \"{0}\" a thoirt air falbh?"
 msgid "Remove access?"
 msgstr "Thoir an cothrom air falbh?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Thoir air falbh am mìosachan"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Thoir an nì air falbh"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Thoir an ceangal air falbh"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Thoir air falbh an cuimhneachan"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "A' toirt air falbh a' mhìosachain..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

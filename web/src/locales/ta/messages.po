@@ -92,6 +92,7 @@ msgstr "{entityLabel} பெயர்"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} முதல் {to} வரை"
 
@@ -228,6 +229,10 @@ msgstr "இணைப்பு சேர்"
 msgid "Add option"
 msgstr "விருப்பம் சேர்"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "நினைவூட்டலைச் சேர்"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "டேக் சேர்..."
@@ -264,6 +269,10 @@ msgstr "நாள் முழுவதும்"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "அனைத்து நிகழ்வுகள்"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "நாள் முழுவதுமான நிகழ்வுகள்"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "நாட்காட்டி நீக்கப்பட்டது"
 msgid "Calendar linked"
 msgstr "நாட்காட்டி இணைக்கப்பட்டது"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "நாட்காட்டி அகற்றப்பட்டது"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "தேதியைத் தேர்ந்தெடுக்கவு�
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "பக்கப்பட்டியில் இருந்து ஒரு விளையாட்டைத் தேர்ந்தெடுக்கவும் அல்லது புதிய ஒன்றைத் தொடங்கவும்."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "நேரத்தைத் தேர்ந்தெடுக்கவும்"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "இயல்புநிலை"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "இயல்புநிலை AI கணக்கு"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "இயல்புநிலை நாட்காட்டி"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "நிகழ்வு சேமிக்கப்பட்டது"
 msgid "Every"
 msgstr "ஒவ்வொரு"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "ஒவ்வொரு நிமிடமும்"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "கணக்குகளைப் படிக்க முடியவ�
 msgid "Failed to read the calendars"
 msgstr "நாட்காட்டிகளைப் படிக்க முடியவில்லை"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "நாட்காட்டியை அகற்ற முடியவில்லை"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "கோப்புகள்"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "கணக்கை நகர்த்துவதை முடிக்கவும்"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "தொடக்கத்தில்"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "நீங்கள் தேடும் பக்கம் <0/>இல�
 msgid "Item details"
 msgstr "உருப்படி விவரங்கள்"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "அதன் நிகழ்வுகள் அசல் நாட்காட்டியிலேயே இருக்கும்."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "இப்போதுதான்"
@@ -1598,6 +1636,11 @@ msgstr "விசைப்பலகை குறுக்குவழிகள�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "பெரியது"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "இறுதியில்"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "மீண்டும் ஏற்று"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "நினைவூட்டல்"
 
@@ -2251,6 +2295,8 @@ msgstr "நினைவூட்டல்"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "அகற்று"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} வடிகட்டியை அகற்று"
 msgid "Remove {name}"
 msgstr "{name}-ஐ அகற்று"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0>-ஐ Mochi-இலிருந்து அகற்றவா?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" க்கான அணுகல் விதியை அகற�
 msgid "Remove access?"
 msgstr "அணுகலை அகற்றவா?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "நாட்காட்டியை அகற்று"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "உருப்படியை அகற்று"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "இணைப்பை அகற்று"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "நினைவூட்டலை அகற்று"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "நாட்காட்டி அகற்றப்படுகிறது..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

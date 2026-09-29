@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "0.8",
+	"version": "0.14",
 	"label": "app.name",
 	"classes": ["calendar"],
 	"paths": ["calendars"],
@@ -15,10 +15,10 @@
 	"execute": ["calendars.star"],
 
 	// Set to "2.0" at release: the dev build reports the Makefile version.
-	"require": {"version": {"minimum": "2.0.3"}},
+	"require": {"version": {"minimum": "2.0.9"}},
 
 	"database": {
-		"schema": 3,
+		"schema": 6,
 		"file": "calendars.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},

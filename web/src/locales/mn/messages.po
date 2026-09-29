@@ -92,6 +92,7 @@ msgstr "{entityLabel} нэр"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} - {to}"
 
@@ -228,6 +229,10 @@ msgstr "Холбоос нэмэх"
 msgid "Add option"
 msgstr "Сонголт нэмэх"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Сануулга нэмэх"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Шошго нэмэх..."
@@ -264,6 +269,10 @@ msgstr "Өдөржин"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Бүх үйл явдал"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Өдөржингийн үйл явдал"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Хуанли устлаа"
 msgid "Calendar linked"
 msgstr "Хуанли холбогдлоо"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Хуанли хасагдлаа"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Огноо сонгох"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Хажуугийн талбараас тоглоом сонгох эсвэл шинээр эхлүүлнэ үү."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Цаг сонгох"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Үндсэн"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Үндсэн AI бүртгэл"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Үндсэн хуанли"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Үйл явдал хадгалагдлаа"
 msgid "Every"
 msgstr "Тутам"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Минут бүр"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Бүртгэлүүдийг уншиж чадсангүй"
 msgid "Failed to read the calendars"
 msgstr "Хуанлиудыг уншиж чадсангүй"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Хуанли хасаж чадсангүй"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Файлууд"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Бүртгэлээ шилжүүлэхийг дуусгана уу"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Эхэнд"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Таны хайж буй хуудас <0/>байхгүй эсвэл ус
 msgid "Item details"
 msgstr "Зүйлийн дэлгэрэнгүй"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Түүн дэх үйл явдлууд эх хуанлидаа хэвээр үлдэнэ."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Дөнгөж сая"
@@ -1598,6 +1636,11 @@ msgstr "Гарын товчлолууд"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Том"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Төгсгөлд"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Дахин ачаалах"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Сануулга"
 
@@ -2251,6 +2295,8 @@ msgstr "Сануулга"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Хасах"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} шүүлтүүр хасах"
 msgid "Remove {name}"
 msgstr "{name} хасах"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0>-г Mochi-оос хасах уу?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\"-ийн хандалтын дүрмийг устгах уу?"
 msgid "Remove access?"
 msgstr "Хандалтыг хасах уу?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Хуанли хасах"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Зүйл хасах"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Холбоосыг хасах"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Сануулга хасах"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Хуанлийг хасаж байна..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

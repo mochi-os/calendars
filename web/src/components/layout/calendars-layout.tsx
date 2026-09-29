@@ -52,6 +52,12 @@ import { EventEditor } from '@/features/calendar/editor'
 // replaceState below is dropped, so the query is still there on the second run.
 const grantShown = new Set<string>()
 
+// A linked or subscribed calendar is a copy of one held elsewhere: deleting it
+// here unlinks it and leaves the original and its events alone.
+function detached(calendar: Calendar) {
+  return calendar.kind === 'linked' || calendar.kind === 'subscription'
+}
+
 export function CalendarsLayout() {
   const { t } = useLingui()
   const { isDesktop } = useScreenSize()
@@ -90,11 +96,22 @@ export function CalendarsLayout() {
   const confirmDelete = async () => {
     if (!deleting) return
     try {
-      await toastAction(deleteMutation.mutateAsync(deleting.id), {
-        loading: t`Deleting calendar...`,
-        success: t`Calendar deleted`,
-        error: (error) => getErrorMessage(error, t`Failed to delete calendar`),
-      })
+      await toastAction(
+        deleteMutation.mutateAsync(deleting.id),
+        detached(deleting)
+          ? {
+              loading: t`Removing calendar...`,
+              success: t`Calendar removed`,
+              error: (error) =>
+                getErrorMessage(error, t`Failed to remove calendar`),
+            }
+          : {
+              loading: t`Deleting calendar...`,
+              success: t`Calendar deleted`,
+              error: (error) =>
+                getErrorMessage(error, t`Failed to delete calendar`),
+            }
+      )
       setDeleting(null)
     } catch {
       // toastAction already showed error
@@ -206,7 +223,7 @@ export function CalendarsLayout() {
         })
         if (!calendar.default) {
           menu.push({
-            title: t`Delete`,
+            title: detached(calendar) ? t`Remove` : t`Delete`,
             icon: Trash2,
             destructive: true,
             onClick: () => setDeleting(calendar),
@@ -322,20 +339,41 @@ export function CalendarsLayout() {
         onOpenChange={(open) => {
           if (!open) setDeleting(null)
         }}
-        title={t`Delete calendar`}
+        title={
+          deleting && detached(deleting)
+            ? t`Remove calendar`
+            : t`Delete calendar`
+        }
         desc={
-          <Trans>
-            Delete{' '}
-            <span className='text-foreground font-semibold'>
-              {deleting?.name ?? ''}
-            </span>{' '}
-            and every event on it?
-          </Trans>
+          deleting && detached(deleting) ? (
+            <>
+              <Trans>
+                Remove{' '}
+                <span className='text-foreground font-semibold'>
+                  {deleting.name}
+                </span>{' '}
+                from Mochi?
+              </Trans>{' '}
+              <Trans>Its events stay in the original calendar.</Trans>
+            </>
+          ) : (
+            <Trans>
+              Delete{' '}
+              <span className='text-foreground font-semibold'>
+                {deleting?.name ?? ''}
+              </span>{' '}
+              and every event on it?
+            </Trans>
+          )
         }
         confirmText={
           <>
             <Trash2 className='size-4' />
-            <Trans>Delete</Trans>
+            {deleting && detached(deleting) ? (
+              <Trans>Remove</Trans>
+            ) : (
+              <Trans>Delete</Trans>
+            )}
           </>
         }
         destructive

@@ -92,6 +92,7 @@ msgstr "{entityLabel} പേര്"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} മുതൽ {to} വരെ"
 
@@ -228,6 +229,10 @@ msgstr "ലിങ്ക് ചേർക്കുക"
 msgid "Add option"
 msgstr "ഓപ്ഷൻ ചേർക്കുക"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "ഓർമ്മപ്പെടുത്തൽ ചേർക്കുക"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ടാഗ് ചേർക്കുക..."
@@ -264,6 +269,10 @@ msgstr "ദിവസം മുഴുവൻ"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "എല്ലാ ഇവന്റുകളും"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "ദിവസം മുഴുവനുമുള്ള ഇവന്റുകൾ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "കലണ്ടർ ഇല്ലാതാക്കി"
 msgid "Calendar linked"
 msgstr "കലണ്ടർ ലിങ്ക് ചെയ്തു"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "കലണ്ടർ നീക്കം ചെയ്തു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "ഒരു തീയതി തിരഞ്ഞെടുക്കുക"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "സൈഡ്ബാറിൽ നിന്ന് ഒരു ഗെയിം തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ ഒരു പുതിയത് ആരംഭിക്കുക."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "ഒരു സമയം തിരഞ്ഞെടുക്കുക"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "ഡിഫോൾട്ട്"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "ഡിഫോൾട്ട് AI അക്കൗണ്ട്"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "ഡിഫോൾട്ട് കലണ്ടർ"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "ഇവന്റ് സേവ് ചെയ്തു"
 msgid "Every"
 msgstr "ഓരോ"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "ഓരോ മിനിറ്റും"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "അക്കൗണ്ടുകൾ വായിക്കുന്നത�
 msgid "Failed to read the calendars"
 msgstr "കലണ്ടറുകൾ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "കലണ്ടർ നീക്കം ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "ഫയലുകൾ"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "നിങ്ങളുടെ അക്കൗണ്ട് മാറ്റൽ പൂർത്തിയാക്കുക"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "തുടക്കത്തിൽ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "നിങ്ങൾ തിരയുന്ന പേജ് <0/>നില�
 msgid "Item details"
 msgstr "ഇനം വിശദാംശങ്ങൾ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ഇതിന്റെ ഇവന്റുകൾ യഥാർത്ഥ കലണ്ടറിൽ തന്നെ തുടരും."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ഇപ്പോൾ"
@@ -1598,6 +1636,11 @@ msgstr "കീബോർഡ് കുറുക്കുവഴികൾ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "വലുത്"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "അവസാനം"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "വീണ്ടും ലോഡുചെയ്യുക"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "ഓർമ്മപ്പെടുത്തൽ"
 
@@ -2251,6 +2295,8 @@ msgstr "ഓർമ്മപ്പെടുത്തൽ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} ഫിൽട്ടർ നീക്കംചെയ്യുക"
 msgid "Remove {name}"
 msgstr "{name} നീക്കം ചെയ്യുക"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi-യിൽ നിന്ന് നീക്കം ചെയ്യണോ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" എന്നതിനുള്ള ആക്‌സസ് നി�
 msgid "Remove access?"
 msgstr "ആക്സസ് നീക്കം ചെയ്യണോ?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "കലണ്ടർ നീക്കം ചെയ്യുക"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "ഇനം നീക്കം ചെയ്യുക"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "ലിങ്ക് നീക്കം ചെയ്യുക"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "ഓർമ്മപ്പെടുത്തൽ നീക്കം ചെയ്യുക"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "കലണ്ടർ നീക്കം ചെയ്യുന്നു..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

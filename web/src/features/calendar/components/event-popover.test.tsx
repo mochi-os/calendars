@@ -13,6 +13,8 @@ import { EventPopover } from './event-popover'
 // preference the shell carries.
 let service = 'openstreetmap'
 let tracker = 'flightradar24'
+// The user's zone where a test names one; otherwise the provider's, UTC.
+let user: string | undefined
 
 vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
@@ -22,6 +24,10 @@ vi.mock('@mochi/web', async (importOriginal) => {
       map: (location: string) => original.mapLink(location, service),
       flight: (flight: string) => original.flightLink(flight, tracker),
     }),
+    useFormat: () => {
+      const format = original.useFormat()
+      return user ? { ...format, timezone: user } : format
+    },
   }
 })
 
@@ -209,6 +215,23 @@ describe('EventPopover zones', () => {
     const text = open(flight, false)
     expect(text).toContain('09:00 to 17:00')
     expect(text).toContain('10:00 London to 13:00 New York')
+  })
+
+  it('says nothing about zones for an event written in the user zone under another name', () => {
+    user = 'Asia/Kolkata'
+    try {
+      const text = open(
+        {
+          ...flight,
+          zone: { start: 'Asia/Calcutta', finish: 'Asia/Calcutta' },
+        },
+        false
+      )
+      expect(text).not.toContain('Calcutta')
+      expect(text).not.toContain('Kolkata')
+    } finally {
+      user = undefined
+    }
   })
 
   it('says nothing about zones for an event written in the user zone', () => {

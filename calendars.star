@@ -56,6 +56,9 @@ _LINK_FRESH = 60
 # the calendar listing top the window up.
 _REMINDER_WINDOW = 30 * 86400
 _REMINDER_TOPUP = 20
+# How far past the window a series' next occurrence is looked for: a rule can
+# skip years, as one on the 29th of February does.
+_REMINDER_REACH = 5 * 366 * 86400
 _REMINDER_DEFAULT = 15
 
 _COLOUR_DEFAULT = "#60a5fa"
@@ -83,6 +86,44 @@ def database_upgrade(version):
 		# this account write: read-only here too.
 		if "readonly" not in [c["name"] for c in mochi.db.table("calendars")]:
 			mochi.db.execute("alter table calendars add column readonly integer not null default 0")
+	if version == 4:
+		# Reminders keyed by the moment they fall due as well as the
+		# occurrence, so each of an event's reminders has its own row and its
+		# job can be cancelled. The rows are rebuilt from the scheduler's own
+		# jobs, which takes in the jobs earlier edits left behind: one for an
+		# event that is gone or a reminder the event no longer has is
+		# cancelled, as is a second job for the same moment.
+		if "due" not in [c["name"] for c in mochi.db.table("reminders")]:
+			mochi.db.execute("drop table reminders")
+			reminders_create()
+			offsets = {}
+			for job in mochi.schedule.list():
+				if job.event != "schedule_reminder":
+					continue
+				event = job.data.get("event", "")
+				instance = int(job.data.get("instance", 0))
+				if event not in offsets:
+					row = mochi.db.row("select ics from events where id=? and component='VEVENT'", event)
+					alarms = event_alarms(mochi.ical.parse(row["ics"]) or {}) if row else []
+					offsets[event] = [alarm["offset"] for alarm in alarms if alarm.get("related") == "start"]
+				if job.due - instance not in offsets[event] or mochi.db.exists("select 1 from reminders where event=? and instance=? and due=?", event, instance, job.due):
+					job.cancel()
+					continue
+				mochi.db.execute("insert into reminders ( event, instance, due, schedule ) values ( ?, ?, ?, ? )", event, instance, job.due, job.id)
+	if version == 5:
+		# Each event with an alarm is scheduled again: earlier versions never
+		# scheduled the reminders of events further away than the window when
+		# written, of a series whose next occurrence lay beyond it, or of alarms
+		# after the start or at a fixed time, and put one relative to the end at
+		# the start.
+		for row in mochi.db.rows("select * from events where component='VEVENT' and ics like '%BEGIN:VALARM%' and ( recurring=1 or finish>=? )", mochi.time.now()):
+			reminders_schedule(row)
+	if version == 6:
+		# A changed occurrence reminds by its own alarms, not the series': each
+		# series with an alarm is scheduled again, dropping the reminders earlier
+		# versions scheduled from the series for occurrences that change them.
+		for row in mochi.db.rows("select * from events where component='VEVENT' and recurring=1 and ics like '%BEGIN:VALARM%'"):
+			reminders_schedule(row)
 
 def database_create():
 	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '', readonly integer not null default 0 )")
@@ -104,8 +145,7 @@ def database_create():
 	# shown again, only replaced.
 	mochi.db.execute("create table if not exists links ( hash text not null primary key, calendar text not null, created integer not null default 0 )")
 	mochi.db.execute("create unique index if not exists links_calendar on links( calendar )")
-	# Reminders scheduled per occurrence, so a changed event can cancel its own.
-	mochi.db.execute("create table if not exists reminders ( event text not null, instance integer not null, schedule integer not null default 0, primary key ( event, instance ) )")
+	reminders_create()
 	# One poll at a time per subscription.
 	mochi.db.execute("create table if not exists polls ( calendar text not null primary key, token text not null, expires integer not null default 0 )")
 
@@ -265,6 +305,7 @@ def calendar_insert(identity, id, slug, kind, colour, url="", ignore=False, acco
 	now = mochi.time.now()
 	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into calendars ( id, identity, slug, kind, colour, url, interval, next, created, updated, account, collection, readonly ) values ( ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, ? )",
 		id, identity, slug, kind, colour, url, _LINK_POLL if kind == "linked" else _POLL_BASE, now, now, account, collection, 1 if readonly else 0)
+	devices_sync()
 
 # calendars_ensure(identity): the default calendar and the birthdays calendar
 # exist from the first request on, each an entity with a fixed slug.
@@ -323,6 +364,13 @@ def calendars_rows(identity):
 	rows = mochi.db.rows("select * from calendars where identity=? order by created, id", identity)
 	return [r for r in rows if r["slug"] == "default"] + [r for r in rows if r["slug"] != "default"]
 
+# devices_sync(): tell the user's phones their calendars changed, so the Mochi
+# app syncs now rather than at its next scheduled sync. Core merges a burst into
+# one push; a core that predates the call leaves it to the schedule.
+def devices_sync():
+	if hasattr(mochi.account, "sync"):
+		mochi.account.sync("calendars")
+
 # calendar_touch(calendar, event="", deleted=0): bump the calendar's version,
 # the change token DAV clients compare, and log the event's change. One row per
 # event is kept, the latest.
@@ -334,6 +382,7 @@ def calendar_touch(calendar, event="", deleted=0):
 		if row:
 			mochi.db.execute("delete from changes where event=?", event)
 			mochi.db.execute("insert into changes ( identity, calendar, event, deleted, created ) values ( ?, ?, ?, ?, ? )", row["identity"], calendar, event, deleted, now)
+	devices_sync()
 
 def changes_prune(identity):
 	old = mochi.db.row("select max(id) as id from changes where identity=? and deleted=1 and created<?", identity, mochi.time.now() - _TOMBSTONE_RETENTION)
@@ -357,6 +406,7 @@ def calendar_delete(identity, row):
 				se.cancel()
 	mochi.db.execute("delete from calendars where id=? and identity=?", row["id"], identity)
 	mochi.entity.delete(row["id"])
+	devices_sync()
 
 # === Events ===
 
@@ -546,8 +596,14 @@ def event_text(components, uid):
 	return text
 
 # === Reminders ===
-# Each VALARM with a relative TRIGGER schedules a notification per occurrence
-# within the window. A changed or deleted event cancels its own.
+# Each VALARM schedules a notification per occurrence, at the time its TRIGGER
+# names: relative to the occurrence's start or end, or fixed. A changed or
+# deleted event cancels its own.
+
+# One row per reminder of an occurrence, keyed by when it falls due, so a
+# changed event can cancel every one of its own.
+def reminders_create():
+	mochi.db.execute("create table if not exists reminders ( event text not null, instance integer not null, due integer not null, schedule integer not null default 0, primary key ( event, instance, due ) )")
 
 def reminders_cancel(event):
 	for row in mochi.db.rows("select schedule from reminders where event=?", event):
@@ -555,47 +611,126 @@ def reminders_cancel(event):
 			mochi.schedule.cancel(row["schedule"])
 	mochi.db.execute("delete from reminders where event=?", event)
 
-def event_leads(tree):
-	leads = []
-	for component in tree.get("components", []):
-		if type(component) != "dict" or component.get("name") != "VEVENT":
+# event_alarms(tree) -> list: the event's alarms, each {"related": "start" or
+# "end", "offset": seconds} for a trigger relative to an occurrence, or {"at":
+# seconds} for one at a fixed time. Read from the master, the component with no
+# RECURRENCE-ID; overrides carry its alarms in practice.
+def event_alarms(tree):
+	events = [c for c in tree.get("components", []) if type(c) == "dict" and c.get("name") == "VEVENT"]
+	masters = [c for c in events if not property_value(c, "RECURRENCE-ID")]
+	source = masters[0] if masters else (events[0] if events else None)
+	alarms = []
+	if not source:
+		return alarms
+	for alarm in source.get("components", []):
+		if type(alarm) != "dict" or alarm.get("name") != "VALARM":
 			continue
-		for alarm in component.get("components", []):
-			if type(alarm) != "dict" or alarm.get("name") != "VALARM":
+		trigger = None
+		for p in alarm.get("properties", []):
+			if type(p) == "dict" and p.get("name") == "TRIGGER":
+				trigger = p
+				break
+		if not trigger:
+			continue
+		params = trigger.get("params") or {}
+		value = trigger.get("value", "")
+		seconds = None
+		if "DATE-TIME" not in [v.upper() for v in params.get("VALUE", [])]:
+			seconds = duration_seconds(value)
+		if seconds != None:
+			related = "end" if "END" in [v.upper() for v in params.get("RELATED", [])] else "start"
+			entry = {"related": related, "offset": seconds}
+		else:
+			at = mochi.time.parse(value, "ical")
+			if at == None:
 				continue
-			seconds = duration_seconds(property_value(alarm, "TRIGGER"))
-			if seconds != None and seconds <= 0 and -seconds not in leads:
-				leads.append(-seconds)
-		# Overrides carry the master's alarms in practice; one pass is enough.
-		break
-	return leads
+			entry = {"at": at}
+		if entry not in alarms:
+			alarms.append(entry)
+	return alarms
 
-def reminders_schedule(row):
-	reminders_cancel(row["id"])
-	if not row or row["component"] != "VEVENT":
-		return
-	tree = mochi.ical.parse(row["ics"])
-	if not tree:
-		return
-	leads = event_leads(tree)
-	if not leads:
+# alarm_due(alarm, occurrence) -> int: when the alarm falls due for the occurrence.
+def alarm_due(alarm, occurrence):
+	if "at" in alarm:
+		return alarm["at"]
+	if alarm["related"] == "end":
+		return occurrence["finish"] + alarm["offset"]
+	return occurrence["start"] + alarm["offset"]
+
+# reminder_add(row, occurrence, due, now) -> bool: schedule one reminder unless
+# it is past or already scheduled; whether it is still to come.
+def reminder_add(row, occurrence, due, now):
+	if due < now:
+		return False
+	if not mochi.db.exists("select 1 from reminders where event=? and instance=? and due=?", row["id"], occurrence["start"], due):
+		scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": occurrence["start"]}, due)
+		mochi.db.execute("insert into reminders ( event, instance, due, schedule ) values ( ?, ?, ?, ? )", row["id"], occurrence["start"], due, scheduled.id if scheduled else 0)
+	return True
+
+# reminders_add(row, after): schedule the event's reminders still to come for
+# its occurrences from after to the end of the window, each occurrence by its
+# own alarms: an override's for the occurrence it changes, which replaces it
+# whole, so one with none reminds of nothing, and the event's for the rest. A
+# one-off event's are scheduled however far away it is. A series with none
+# left in the window keeps its next occurrence's scheduled, however far away,
+# so each reminder that fires schedules the next. An alarm at a fixed time
+# goes with the occurrence it comes before, when that occurrence has it.
+# Scheduling what is already scheduled does nothing.
+def reminders_add(row, after):
+	if row["component"] != "VEVENT" or "BEGIN:VALARM" not in row["ics"]:
 		return
 	now = mochi.time.now()
-	for instance in mochi.ical.instances(row["ics"], now, now + _REMINDER_WINDOW):
-		for lead in leads:
-			at = instance["start"] - lead
-			if at < now:
+	if row["recurring"] != 1:
+		for occurrence in mochi.ical.instances(row["ics"], alarms=True):
+			for alarm in occurrence["alarms"]:
+				reminder_add(row, occurrence, alarm_due(alarm, occurrence), now)
+		return
+	pending = False
+	relative = False
+	listed = False
+	fixed = []
+	for occurrence in mochi.ical.instances(row["ics"], after, now + _REMINDER_WINDOW, alarms=True):
+		listed = True
+		for alarm in occurrence["alarms"]:
+			if "at" in alarm:
+				if alarm["at"] not in fixed:
+					fixed.append(alarm["at"])
 				continue
-			scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": instance["start"], "lead": lead}, at)
-			mochi.db.execute("insert or replace into reminders ( event, instance, schedule ) values ( ?, ?, ? )", row["id"], instance["start"], scheduled.id if scheduled else 0)
+			relative = True
+			if reminder_add(row, occurrence, alarm_due(alarm, occurrence), now):
+				pending = True
+	if not pending and (relative or not listed):
+		beyond = max(after, now + _REMINDER_WINDOW)
+		for occurrence in mochi.ical.instances(row["ics"], beyond, beyond + _REMINDER_REACH, alarms=True):
+			found = False
+			for alarm in occurrence["alarms"]:
+				if "at" in alarm:
+					if alarm["at"] not in fixed:
+						fixed.append(alarm["at"])
+				elif reminder_add(row, occurrence, alarm_due(alarm, occurrence), now):
+					found = True
+			if found:
+				break
+	for at in fixed:
+		for occurrence in mochi.ical.instances(row["ics"], at, at + _REMINDER_REACH, alarms=True):
+			if {"at": at} in occurrence["alarms"]:
+				reminder_add(row, occurrence, at, now)
+			break
+
+def reminders_schedule(row):
+	if not row:
+		return
+	reminders_cancel(row["id"])
+	reminders_add(row, mochi.time.now())
 
 def schedule_reminder(e):
 	if e.source != "schedule":
 		return
 	data = e.data
 	row = event_get(e.user.identity.id, data.get("event", "")) if e.user else None
-	instance = data.get("instance", 0)
-	mochi.db.execute("delete from reminders where event=? and instance=?", data.get("event", ""), instance)
+	# The job's data comes back as JSON numbers, so the start is a float.
+	instance = int(data.get("instance", 0))
+	mochi.db.execute("delete from reminders where event=? and instance=? and due=?", data.get("event", ""), instance, e.due)
 	if not row:
 		return
 	# The occurrence must still exist: the event may have moved since.
@@ -612,28 +747,45 @@ def schedule_reminder(e):
 	zone = ""
 	if preferences_load(e.user)["zones"]:
 		zone = found.get("zone", {}).get("start", "")
-	body = mochi.app.label("notifications.reminder.body", time=mochi.time.local(instance, "time", timezone=zone))
-	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone)
+	body = reminder_body(found, zone)
+	# The day the occurrence is on, opened at the event itself.
+	url = "/calendars/?view=day&date=" + mochi.time.local(instance, "date", timezone=zone) + "&event=" + row["id"] + "&occurrence=" + str(instance)
+	# Keyed by when this reminder falls due: the notifications service takes a
+	# key it has seen for a retry, so the occurrence's other reminders need
+	# keys of their own.
 	mochi.service.call("notifications", "send", "reminder", row["id"], title, body, url,
-		mochi.app.label("notifications.topic.reminder"), event=row["id"] + ":" + str(instance))
-	# A recurring event keeps one occurrence scheduled past the window.
+		mochi.app.label("notifications.topic.reminder"), event=row["id"] + ":" + str(instance) + ":" + str(e.due))
+	# A series schedules its next reminders as each one fires.
 	if row["recurring"] == 1:
 		reminders_topup(row)
 
+# reminder_body(occurrence, zone) -> string: when the occurrence starts, as the
+# user reads it in zone: the time if it is today, tomorrow and the time, or its
+# date and the time; an all-day event's day alone.
+def reminder_body(occurrence, zone):
+	now = mochi.time.now()
+	today = mochi.time.local(now, "date", timezone=zone)
+	# The next day by the calendar, not twenty-four hours on: a day can have 23
+	# or 25 hours.
+	tomorrow = mochi.time.local(mochi.time.parse(today.replace("-", ""), "ical") + 86400, "date", timezone="UTC")
+	if occurrence.get("allday"):
+		day = occurrence.get("date") or mochi.time.local(occurrence["start"], "date")
+		if day == today:
+			return mochi.app.label("notifications.reminder.allday.today")
+		if day == tomorrow:
+			return mochi.app.label("notifications.reminder.allday.tomorrow")
+		return mochi.app.label("notifications.reminder.allday.later", date=mochi.time.local(occurrence["start"], "day"))
+	day = mochi.time.local(occurrence["start"], "date", timezone=zone)
+	time = mochi.time.local(occurrence["start"], "clock", timezone=zone)
+	if day == today:
+		return mochi.app.label("notifications.reminder.body", time=time)
+	if day == tomorrow:
+		return mochi.app.label("notifications.reminder.tomorrow", time=time)
+	return mochi.app.label("notifications.reminder.later", date=mochi.time.local(occurrence["start"], "day", timezone=zone), time=time)
+
 def reminders_topup(row):
 	latest = mochi.db.row("select max(instance) as instance from reminders where event=?", row["id"])
-	after = latest["instance"] if latest and latest["instance"] else mochi.time.now()
-	leads = event_leads(mochi.ical.parse(row["ics"]) or {})
-	if not leads:
-		return
-	now = mochi.time.now()
-	for instance in mochi.ical.instances(row["ics"], after + 1, now + _REMINDER_WINDOW):
-		for lead in leads:
-			at = instance["start"] - lead
-			if at < now:
-				continue
-			scheduled = mochi.schedule.at("schedule_reminder", {"event": row["id"], "instance": instance["start"], "lead": lead}, at)
-			mochi.db.execute("insert or replace into reminders ( event, instance, schedule ) values ( ?, ?, ? )", row["id"], instance["start"], scheduled.id if scheduled else 0)
+	reminders_add(row, latest["instance"] if latest and latest["instance"] else mochi.time.now())
 
 # reminders_ensure(identity): recurring events whose scheduled reminders run
 # out within half the window get more, a few per request.
@@ -1099,6 +1251,7 @@ def action_calendar_colour(a):
 			a.error.label(400, "errors.invalid_colour")
 		return
 	mochi.db.execute("update calendars set colour=?, updated=? where id=?", colour, mochi.time.now(), row["id"])
+	devices_sync()
 	return {"data": {"calendar": calendar_public(calendar_get(identity, row["id"]))}}
 
 def action_calendar_delete(a):
@@ -1477,7 +1630,7 @@ def action_event_create(a):
 	if body == None:
 		a.error.label(400, "errors.invalid_event")
 		return
-	calendar = calendar_get(identity, body.get("calendar", "")) if body.get("calendar") else calendar_by_slug(identity, "default")
+	calendar = calendar_get(identity, body.get("calendar", "")) if body.get("calendar") else calendar_preferred(identity, a.user)
 	if not calendar:
 		a.error.label(404, "errors.calendar_not_found")
 		return
@@ -1792,8 +1945,11 @@ def action_ics(a):
 # === Actions: preferences ===
 
 # "zones" shows each event at its own wall-clock time, each end in the zone it
-# was written in, rather than converted into the user's zone.
-_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False}
+# was written in, rather than converted into the user's zone. "calendar" is
+# the calendar a new event goes in, one the user can write to; empty means the
+# built-in default calendar. "allday" is where a day's all-day events go among
+# its timed ones in the month and multiweek views, "first" or "last".
+_PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False, "calendar": "", "allday": "first"}
 
 def preferences_read(a):
 	return preferences_load(a.user)
@@ -1805,6 +1961,16 @@ def preferences_load(user):
 	for key in _PREFERENCES:
 		out[key] = stored.get(key, _PREFERENCES[key]) if type(stored) == "dict" else _PREFERENCES[key]
 	return out
+
+# calendar_preferred(identity, user): the calendar a new event goes in when
+# nothing names one: the user's chosen calendar while it exists and can be
+# written, else the built-in default calendar, which cannot be deleted.
+def calendar_preferred(identity, user):
+	chosen = preferences_load(user)["calendar"]
+	row = calendar_get(identity, chosen) if type(chosen) == "string" and chosen else None
+	if row and not calendar_readonly(row):
+		return row
+	return calendar_by_slug(identity, "default")
 
 def action_preferences_get(a):
 	return {"data": {"preferences": preferences_read(a)}}
@@ -1840,6 +2006,23 @@ def action_preferences_set(a):
 	zones = body.get("zones", current["zones"])
 	if type(zones) != "bool":
 		zones = current["zones"]
+	allday = body.get("allday", current["allday"])
+	if allday not in ("first", "last"):
+		allday = current["allday"]
+	# A calendar named here must be one the user can write to; one kept from
+	# before that has since gone, or become read-only, is let go.
+	calendar = body.get("calendar", current["calendar"])
+	if type(calendar) != "string":
+		calendar = current["calendar"]
+	if calendar:
+		row = calendar_get(a.user.identity.id, calendar)
+		if not row or calendar_readonly(row):
+			if "calendar" in body:
+				a.error.label(400, "errors.invalid_preferences")
+				return
+			calendar = ""
+		else:
+			calendar = row["id"]
 	out = {
 		"hours": {"start": start, "finish": finish},
 		"days": sorted(set(days)) if days else [],
@@ -1848,6 +2031,8 @@ def action_preferences_set(a):
 		"reminder": bounded(body.get("reminder", current["reminder"]), -1, 10080, current["reminder"]),
 		"view": view,
 		"zones": zones,
+		"calendar": calendar,
+		"allday": allday,
 	}
 	a.user.preference.set("calendars", json.encode(out))
 	return {"data": {"preferences": out}}

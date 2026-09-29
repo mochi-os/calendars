@@ -92,6 +92,7 @@ msgstr "{entityLabel} အမည်"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} မှ {to}"
 
@@ -228,6 +229,10 @@ msgstr "လင့်ခ် ထည့်မည်"
 msgid "Add option"
 msgstr "ရွေးချယ်စရာ ထည့်မည်"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "သတိပေးချက် ထည့်မည်"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "တက်ဂ် ထည့်ရန်..."
@@ -264,6 +269,10 @@ msgstr "တစ်နေကုန်"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "အစီအစဉ်အားလုံး"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "တစ်နေကုန် အစီအစဉ်များ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "ပြက္ခဒိန် ဖျက်ပြီးပါပြီ"
 msgid "Calendar linked"
 msgstr "ပြက္ခဒိန် ချိတ်ဆက်ပြီးပါပြီ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ပြက္ခဒိန် ဖယ်ရှားပြီးပါပြီ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "ရက်စွဲ ရွေးပါ"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "ဘေးဘားမှ ဂိမ်းတစ်ခုကို ရွေးချယ်ပါ သို့မဟုတ် အသစ်တစ်ခု စတင်ပါ။"
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "အချိန် ရွေးပါ"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "မူရင်း"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "မူရင်း AI အကောင့်"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "မူရင်း ပြက္ခဒိန်"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "အစီအစဉ် သိမ်းပြီးပါပြီ"
 msgid "Every"
 msgstr "ကြားကာလ"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "မိနစ်တိုင်း"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "အကောင့်များ ဖတ်၍ မရပါ"
 msgid "Failed to read the calendars"
 msgstr "ပြက္ခဒိန်များ ဖတ်၍ မရပါ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ပြက္ခဒိန် ဖယ်ရှား၍ မရပါ"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "ဖိုင်များ"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "အကောင့်ရွှေ့ပြောင်းခြင်း ပြီးဆုံးပါ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "အစတွင်"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "သင်ရှာဖွေနေသော စာမျက်နှာ�
 msgid "Item details"
 msgstr "ပစ္စည်း အသေးစိတ်"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "၎င်း၏ အစီအစဉ်များသည် မူလ ပြက္ခဒိန်တွင် ဆက်ရှိနေပါမည်။"
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "အခုပဲ"
@@ -1598,6 +1636,11 @@ msgstr "ကီးဘုတ် ဖြတ်လမ်းများ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ကြီး"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "အဆုံးတွင်"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "ပြန်တင်မည်"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "သတိပေးချက်"
 
@@ -2251,6 +2295,8 @@ msgstr "သတိပေးချက်"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "ဖယ်ရှား"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} စစ်ထုတ်မှု ဖယ်ရှား"
 msgid "Remove {name}"
 msgstr "{name} ဖယ်ရှား"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> ကို Mochi မှ ဖယ်ရှားမလား?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" အတွက် ဝင်ရောက်ခွင့်စည်
 msgid "Remove access?"
 msgstr "ဝင်ရောက်ခွင့် ဖယ်ရှားမလား?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "ပြက္ခဒိန် ဖယ်ရှားမည်"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "အရာ ဖယ်ရှား"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "လင့်ခ် ဖယ်ရှားရန်"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "သတိပေးချက် ဖယ်ရှားမည်"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "ပြက္ခဒိန် ဖယ်ရှားနေသည်..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

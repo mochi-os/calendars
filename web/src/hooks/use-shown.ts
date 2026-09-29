@@ -45,7 +45,18 @@ export function useShownCalendars(calendars: Calendar[]) {
     [calendars, setHidden]
   )
 
+  // A calendar an event was just saved into shows again, so the event does
+  // not vanish from view as if it had not saved.
+  const reveal = useCallback(
+    (calendar: string) => {
+      if (hidden.includes(calendar)) {
+        setHidden(hidden.filter((id) => id !== calendar))
+      }
+    },
+    [hidden, setHidden]
+  )
+
   const visible = calendars.filter((calendar) => shown(calendar.id))
 
-  return { shown, toggle, only, showAll, hideAll, visible }
+  return { shown, toggle, reveal, only, showAll, hideAll, visible }
 }

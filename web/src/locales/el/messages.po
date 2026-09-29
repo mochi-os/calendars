@@ -92,6 +92,7 @@ msgstr "Όνομα {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} έως {to}"
 
@@ -228,6 +229,10 @@ msgstr "Προσθήκη συνδέσμου"
 msgid "Add option"
 msgstr "Προσθήκη επιλογής"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Προσθήκη υπενθύμισης"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Προσθήκη ετικέτας..."
@@ -264,6 +269,10 @@ msgstr "Ολοήμερο"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Όλα τα συμβάντα"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Ολοήμερα συμβάντα"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Το ημερολόγιο διαγράφηκε"
 msgid "Calendar linked"
 msgstr "Το ημερολόγιο συνδέθηκε"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Το ημερολόγιο αφαιρέθηκε"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Επιλέξτε ημερομηνία"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Επιλέξτε ένα παιχνίδι από την πλαϊνή στήλη ή ξεκινήστε ένα νέο."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Επιλέξτε ώρα"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Προεπιλογή"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Προεπιλεγμένος λογαριασμός AI"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Προεπιλεγμένο ημερολόγιο"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Το συμβάν αποθηκεύτηκε"
 msgid "Every"
 msgstr "Κάθε"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Κάθε λεπτό"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Αποτυχία ανάγνωσης των λογαριασμών"
 msgid "Failed to read the calendars"
 msgstr "Αποτυχία ανάγνωσης των ημερολογίων"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Αποτυχία αφαίρεσης ημερολογίου"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Αρχεία"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Ολοκληρώστε τη μεταφορά του λογαριασμού σας"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Στην αρχή"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Φαίνεται ότι η σελίδα που αναζητάτε <0/>δ
 msgid "Item details"
 msgstr "Λεπτομέρειες στοιχείου"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Τα συμβάντα του παραμένουν στο αρχικό ημερολόγιο."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Μόλις τώρα"
@@ -1598,6 +1636,11 @@ msgstr "Συντομεύσεις πληκτρολογίου"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Μεγάλο"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Στο τέλος"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Επαναφόρτωση"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Υπενθύμιση"
 
@@ -2251,6 +2295,8 @@ msgstr "Υπενθύμιση"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Αφαίρεση"
 
@@ -2267,6 +2313,11 @@ msgstr "Αφαίρεση φίλτρου {0}"
 msgid "Remove {name}"
 msgstr "Αφαίρεση {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Αφαίρεση του <0>{0}</0> από το Mochi;"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Κατάργηση κανόνα πρόσβασης για «{0}»;"
 msgid "Remove access?"
 msgstr "Αφαίρεση πρόσβασης;"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Αφαίρεση ημερολογίου"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Αφαίρεση στοιχείου"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Αφαίρεση συνδέσμου"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Αφαίρεση υπενθύμισης"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Αφαίρεση ημερολογίου..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

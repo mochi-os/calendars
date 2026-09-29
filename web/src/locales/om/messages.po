@@ -92,6 +92,7 @@ msgstr "Maqaa {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} hanga {to}"
 
@@ -228,6 +229,10 @@ msgstr "Hidhaa dabali"
 msgid "Add option"
 msgstr "Filannoo dabali"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Yaadachiisa dabali"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Tag dabali..."
@@ -264,6 +269,10 @@ msgstr "Guyyaa guutuu"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Taateewwan hunda"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Taateewwan guyyaa guutuu"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Kaalaandariin haqame"
 msgid "Calendar linked"
 msgstr "Kaalaandariin walitti hidhame"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Kaalaandariin haqame"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Guyyaa filadhu"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Cinaa keessaa tapha filadhu ykn haaraa eegali."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Yeroo filadhu"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Idilee"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Akkaawuntii AI idilee"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Kaalaandarii idilee"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Taateen olkaa'ame"
 msgid "Every"
 msgstr "Hunda"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Daqiiqaa hunda"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Akkaawuntiiwwan dubbisuu hin dandeenye"
 msgid "Failed to read the calendars"
 msgstr "Kaalaandaroota dubbisuu hin dandeenye"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Kaalaandarii haquu hin dandeenye"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Faayilota"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Akkaawuntii kee jijjiiruu fixadhu"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Jalqaba irratti"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Fuulli ati barbaadaa jirtu <0/>hin jiru yookaan haqameera fakkaata."
 msgid "Item details"
 msgstr "Bal'ina iddoo"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Taateewwan isaa kaalaandarii jalqabaa keessatti hafu."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Amma"
@@ -1598,6 +1636,11 @@ msgstr "Karoora keyboardii"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Guddaa"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Dhuma irratti"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Irra deebi'ii fe'i"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Yaadachiisa"
 
@@ -2251,6 +2295,8 @@ msgstr "Yaadachiisa"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Haqi"
 
@@ -2267,6 +2313,11 @@ msgstr "Calaltuu {0} haqi"
 msgid "Remove {name}"
 msgstr "{name} haqi"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> Mochi irraa haquu?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Seera argannoo \"{0}\" haquu?"
 msgid "Remove access?"
 msgstr "Itti seenumsa haquuf?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Kaalaandarii haqi"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Meeshaa haqi"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Hidhata haquu"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Yaadachiisa haqi"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Kaalaandarii haqaa jira..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

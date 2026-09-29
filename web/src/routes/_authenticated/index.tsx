@@ -8,6 +8,9 @@ import { CalendarPage } from '@/features/calendar'
 interface SearchParams {
   view?: string
   date?: string
+  /** A reminder's event and occurrence, opened once and then dropped. */
+  event?: string
+  occurrence?: number
 }
 
 export const Route = createFileRoute('/_authenticated/')({
@@ -17,6 +20,12 @@ export const Route = createFileRoute('/_authenticated/')({
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
     view: typeof search.view === 'string' ? search.view : undefined,
     date: typeof search.date === 'string' ? search.date : undefined,
+    event: typeof search.event === 'string' ? search.event : undefined,
+    occurrence:
+      search.occurrence !== undefined &&
+      Number.isFinite(Number(search.occurrence))
+        ? Number(search.occurrence)
+        : undefined,
   }),
   component: CalendarPage,
 })

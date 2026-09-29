@@ -92,6 +92,7 @@ msgstr "שם {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} עד {to}"
 
@@ -228,6 +229,10 @@ msgstr "הוסף קישור"
 msgid "Add option"
 msgstr "הוסף אפשרות"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "הוספת תזכורת"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "הוסף תגית..."
@@ -264,6 +269,10 @@ msgstr "כל היום"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "כל האירועים"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "אירועים של יום שלם"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "היומן נמחק"
 msgid "Calendar linked"
 msgstr "היומן קושר"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "היומן הוסר"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "בחירת תאריך"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "בחר משחק מהסרגל הצדדי או התחל אחד חדש."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "בחירת שעה"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "ברירת מחדל"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "חשבון AI ברירת מחדל"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "יומן ברירת מחדל"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "האירוע נשמר"
 msgid "Every"
 msgstr "כל"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "כל דקה"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "קריאת החשבונות נכשלה"
 msgid "Failed to read the calendars"
 msgstr "קריאת היומנים נכשלה"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "הסרת היומן נכשלה"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "קבצים"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "סיים את העברת החשבון"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "בהתחלה"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "נראה שהדף שאתה מחפש <0/>אינו קיים או שהוס�
 msgid "Item details"
 msgstr "פרטי פריט"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "האירועים שלו נשארים ביומן המקורי."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "הרגע"
@@ -1598,6 +1636,11 @@ msgstr "קיצורי מקלדת"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "גדול"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "בסוף"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "טען מחדש"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "תזכורת"
 
@@ -2251,6 +2295,8 @@ msgstr "תזכורת"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "הסר"
 
@@ -2267,6 +2313,11 @@ msgstr "הסר סינון {0}"
 msgid "Remove {name}"
 msgstr "הסר {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "להסיר את <0>{0}</0> מ-Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "להסיר את כלל הגישה עבור \"{0}\"?"
 msgid "Remove access?"
 msgstr "להסיר גישה?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "הסר יומן"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "הסר פריט"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "הסרת קישור"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "הסרת תזכורת"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "מסיר יומן..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

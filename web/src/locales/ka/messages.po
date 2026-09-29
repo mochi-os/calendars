@@ -92,6 +92,7 @@ msgstr "{entityLabel}-ის სახელი"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from}-დან {to}-მდე"
 
@@ -228,6 +229,10 @@ msgstr "ბმულის დამატება"
 msgid "Add option"
 msgstr "ვარიანტის დამატება"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "შეხსენების დამატება"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ტეგის დამატება..."
@@ -264,6 +269,10 @@ msgstr "მთელი დღე"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "ყველა ღონისძიება"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "მთელი დღის ღონისძიებები"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "კალენდარი წაიშალა"
 msgid "Calendar linked"
 msgstr "კალენდარი დაკავშირდა"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "კალენდარი წაიშალა"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "აირჩიეთ თარიღი"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "აირჩიეთ თამაში გვერდითა პანელიდან ან დაიწყეთ ახალი."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "აირჩიეთ დრო"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "ნაგულისხმევი"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "ნაგულისხმევი AI ანგარიში"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "ნაგულისხმევი კალენდარი"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "ღონისძიება შეინახა"
 msgid "Every"
 msgstr "ყოველ"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "ყოველი წუთი"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "ანგარიშების წაკითხვა ვერ მ
 msgid "Failed to read the calendars"
 msgstr "კალენდრების წაკითხვა ვერ მოხერხდა"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "კალენდრის წაშლა ვერ მოხერხდა"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "ფაილები"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "დაასრულეთ ანგარიშის გადატანა"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "დასაწყისში"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "როგორც ჩანს, გვერდი, რომელს�
 msgid "Item details"
 msgstr "ელემენტის დეტალები"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "მისი ღონისძიებები თავდაპირველ კალენდარში რჩება."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ახლახან"
@@ -1598,6 +1636,11 @@ msgstr "კლავიატურის მალსახმობები"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "დიდი"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "ბოლოს"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "ხელახლა ჩატვირთვა"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "შეხსენება"
 
@@ -2251,6 +2295,8 @@ msgstr "შეხსენება"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "წაშლა"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} ფილტრის წაშლა"
 msgid "Remove {name}"
 msgstr "{name}-ის წაშლა"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "წაიშალოს <0>{0}</0> Mochi-დან?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "წავშალოთ წვდომის წესი „{0}“-�
 msgid "Remove access?"
 msgstr "წვდომის წაშლა?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "კალენდრის წაშლა"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "ნივთის წაშლა"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "ბმულის წაშლა"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "შეხსენების წაშლა"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "მიმდინარეობს კალენდრის წაშლა..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

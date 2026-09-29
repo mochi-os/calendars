@@ -92,6 +92,7 @@ msgstr "Nom de {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} a {to}"
 
@@ -228,6 +229,10 @@ msgstr "Afegeix un enllaç"
 msgid "Add option"
 msgstr "Afegeix una opció"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Afegeix un recordatori"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Afegeix una etiqueta..."
@@ -264,6 +269,10 @@ msgstr "Tot el dia"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Tots els esdeveniments"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Esdeveniments de tot el dia"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "S'ha suprimit el calendari"
 msgid "Calendar linked"
 msgstr "Calendari vinculat"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "S'ha eliminat el calendari"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Tria una data"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Tria una partida de la barra lateral o inicia'n una de nova."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Tria una hora"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Per defecte"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Compte d'IA per defecte"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Calendari per defecte"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "S'ha desat l'esdeveniment"
 msgid "Every"
 msgstr "Cada"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Cada minut"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "No s'han pogut llegir els comptes"
 msgid "Failed to read the calendars"
 msgstr "No s'han pogut llegir els calendaris"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "No s'ha pogut eliminar el calendari"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Fitxers"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Acabeu de moure el compte"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Al principi"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Sembla que la pàgina que cerqueu <0/>no existeix o s'ha eliminat."
 msgid "Item details"
 msgstr "Detalls de l'element"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Els seus esdeveniments es mantenen al calendari original."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ara mateix"
@@ -1598,6 +1636,11 @@ msgstr "Dreceres de teclat"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Gran"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Al final"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Torna a carregar"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Recordatori"
 
@@ -2251,6 +2295,8 @@ msgstr "Recordatori"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Elimina"
 
@@ -2267,6 +2313,11 @@ msgstr "Elimina el filtre {0}"
 msgid "Remove {name}"
 msgstr "Elimina {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Voleu eliminar <0>{0}</0> de Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Voleu eliminar la regla d'accés per a «{0}»?"
 msgid "Remove access?"
 msgstr "Vols eliminar l'accés?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Elimina el calendari"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Elimina l'element"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Elimina l'enllaç"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Elimina el recordatori"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "S'està eliminant el calendari..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

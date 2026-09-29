@@ -92,6 +92,7 @@ msgstr "Navê {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "ji {from} heta {to}"
 
@@ -228,6 +229,10 @@ msgstr "Girêdan zêde bike"
 msgid "Add option"
 msgstr "Vebijêrk zêde bike"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Bîranînê zêde bike"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Etîket zêde bike..."
@@ -264,6 +269,10 @@ msgstr "Tevahiya rojê"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Hemû bûyer"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Bûyerên tevahiya rojê"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Salname hate jêbirin"
 msgid "Calendar linked"
 msgstr "Salname hat girêdan"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Salname hate rakirin"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Dîrokekê hilbijêre"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Lîstikekê ji panela kêlekê hilbijêre an yeke nû dest pê bike."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Demekê hilbijêre"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Standard"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Hesabê standard yê AI"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Salnameya standard"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Bûyer hate tomarkirin"
 msgid "Every"
 msgstr "Her"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Her deqîqe"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Xwendina hesaban neserkeftî bû"
 msgid "Failed to read the calendars"
 msgstr "Xwendina salnameyan neserkeftî bû"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Rakirina salnameyê neserkeftî bû"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Pelan"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Veguheztina hesabê xwe biqedînin"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Di destpêkê de"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Wisa xuya dike ku rûpela ku tu lê digerî <0/>tune ye an hatiye rakiri
 msgid "Item details"
 msgstr "Hûrgiliyên xalê"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Bûyerên wê di salnameya eslî de dimînin."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Nuha"
@@ -1598,6 +1636,11 @@ msgstr "Kurtek klavyeyê"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Mezin"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Di dawiyê de"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Ji nû ve bar bike"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Bîranîn"
 
@@ -2251,6 +2295,8 @@ msgstr "Bîranîn"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Rake"
 
@@ -2267,6 +2313,11 @@ msgstr "Fîltera {0} rake"
 msgid "Remove {name}"
 msgstr "{name} rake"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> ji Mochi were rakirin?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Rêbaza gihîştinê ya \"{0}\" were rakirin?"
 msgid "Remove access?"
 msgstr "Destpêkirinê rake?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Salnameyê rake"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Babetê rake"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Girêdanê rake"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Bîranînê rake"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Salname tê rakirin..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

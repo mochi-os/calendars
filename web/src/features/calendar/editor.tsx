@@ -22,6 +22,7 @@ import {
   Skeleton,
   Switch,
   Textarea,
+  TimePicker,
   TimezoneSelect,
   addDays,
   cn,
@@ -39,6 +40,7 @@ import {
   Copy as CopyIcon,
   Globe,
   MapPin,
+  Plus,
   Repeat as RepeatIcon,
   X,
 } from 'lucide-react'
@@ -51,10 +53,12 @@ import {
   draftInstants,
   editedComponents,
   endAfterStart,
+  startZone,
   expressible,
   foreignZones,
   emptyRepeat,
   masterComponent,
+  nextReminder,
   overrideComponent,
   splitSeries,
   type EventDraft,
@@ -68,7 +72,7 @@ import {
   useSplitEventMutation,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
-import { reminderOptions } from '@/hooks/use-options'
+import { reminderChoices } from '@/hooks/use-options'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
@@ -78,7 +82,8 @@ export function EventEditor() {
   const { t } = useLingui()
   const format = useFormat()
   const { isMobile } = useScreenSize()
-  const { editing, setEditing, calendars, remember } = useCalendarContext()
+  const { editing, setEditing, calendars, remember, reveal } =
+    useCalendarContext()
 
   const editingEvent = editing?.mode === 'edit' ? editing.event : null
   const { data, isLoading, refetch } = useEventQuery(editingEvent)
@@ -158,6 +163,7 @@ export function EventEditor() {
           components: [draftComponent(draft)],
         })
         remember(draft)
+        reveal(draft.calendar)
         toast.success(editing.copy ? t`Event copied` : t`Event created`)
       } else {
         if (!event) return
@@ -192,6 +198,7 @@ export function EventEditor() {
               following: split.after,
               calendar: draft.calendar,
             })
+            reveal(draft.calendar)
             toast.success(t`Event saved`)
             close()
             return
@@ -213,6 +220,7 @@ export function EventEditor() {
           calendar: draft.calendar,
           components,
         })
+        reveal(draft.calendar)
         toast.success(t`Event saved`)
       }
       close()
@@ -439,7 +447,6 @@ function EditorFields({
 }) {
   const { t } = useLingui()
   const format = useFormat()
-  const reminders = reminderOptions()
 
   // A rule read from the event that the repeat settings cannot express is
   // shown as custom and written back as it was.
@@ -449,17 +456,6 @@ function EditorFields({
   // answer for the null the editor starts in.
   const edit = (update: (current: EventDraft) => EventDraft) =>
     setDraft((current) => (current ? update(current) : current))
-
-  const clock = (minutes: number) =>
-    `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(
-      minutes % 60
-    ).padStart(2, '0')}`
-
-  const minutesOf = (value: string) => {
-    const [hour, minute] = value.split(':').map(Number)
-    if (!Number.isFinite(hour) || !Number.isFinite(minute)) return 0
-    return hour * 60 + minute
-  }
 
   // Moving the start carries the end with it, which is what every calendar
   // does: the length the user set is the thing worth keeping.
@@ -562,14 +558,11 @@ function EditorFields({
               onChange={(day) => moveStart(day || draft.start, draft.startTime)}
             />
             {!draft.allday && (
-              <Input
-                type='time'
-                className='w-auto shrink-0'
+              <TimePicker
+                className='w-32 shrink-0'
                 aria-label={t`Start time`}
-                value={clock(draft.startTime)}
-                onChange={(input) =>
-                  moveStart(draft.start, minutesOf(input.target.value))
-                }
+                value={draft.startTime}
+                onChange={(minutes) => moveStart(draft.start, minutes)}
               />
             )}
           </div>
@@ -580,17 +573,10 @@ function EditorFields({
               label={t`Start time zone`}
               value={draft.zone.start}
               onChange={(zone) =>
-                // The end follows the start while the two still agree.
                 edit((current) =>
                   endAfterStart({
                     ...current,
-                    zone: {
-                      start: zone,
-                      finish:
-                        current.zone.finish === current.zone.start
-                          ? zone
-                          : current.zone.finish,
-                    },
+                    zone: startZone(current.zone, zone),
                   })
                 )
               }
@@ -614,16 +600,12 @@ function EditorFields({
               }
             />
             {!draft.allday && (
-              <Input
-                type='time'
-                className='w-auto shrink-0'
+              <TimePicker
+                className='w-32 shrink-0'
                 aria-label={t`End time`}
-                value={clock(draft.finishTime)}
-                onChange={(input) =>
-                  edit((current) => ({
-                    ...current,
-                    finishTime: minutesOf(input.target.value),
-                  }))
+                value={draft.finishTime}
+                onChange={(minutes) =>
+                  edit((current) => ({ ...current, finishTime: minutes }))
                 }
               />
             )}
@@ -911,23 +893,68 @@ function EditorFields({
           <Bell className='size-4' />
           <Trans>Reminder</Trans>
         </Label>
-        <Select
-          value={String(draft.reminder)}
-          onValueChange={(value) =>
-            edit((current) => ({ ...current, reminder: Number(value) }))
+        {draft.reminders.map((minutes, index) => (
+          <div key={index} className='flex items-center gap-1'>
+            <Select
+              value={String(minutes)}
+              onValueChange={(value) =>
+                edit((current) => ({
+                  ...current,
+                  reminders: current.reminders.map((each, at) =>
+                    at === index ? Number(value) : each
+                  ),
+                }))
+              }
+            >
+              <SelectTrigger
+                id={index === 0 ? 'event-reminder' : undefined}
+                aria-label={t`Reminder`}
+                className='w-full'
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {reminderChoices(minutes).map((option) => (
+                  <SelectItem key={option.value} value={String(option.value)}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button
+              type='button'
+              variant='ghost'
+              size='icon'
+              aria-label={t`Remove reminder`}
+              onClick={() =>
+                edit((current) => ({
+                  ...current,
+                  reminders: current.reminders.filter((_, at) => at !== index),
+                }))
+              }
+            >
+              <X className='size-4' />
+            </Button>
+          </div>
+        ))}
+        <Button
+          type='button'
+          variant='outline'
+          size='sm'
+          id={draft.reminders.length === 0 ? 'event-reminder' : undefined}
+          onClick={() =>
+            edit((current) => ({
+              ...current,
+              reminders: [
+                ...current.reminders,
+                nextReminder(current.reminders),
+              ],
+            }))
           }
         >
-          <SelectTrigger id='event-reminder' className='w-full'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {reminders.map((option) => (
-              <SelectItem key={option.value} value={String(option.value)}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+          <Plus className='size-4' />
+          <Trans>Add reminder</Trans>
+        </Button>
       </div>
 
       <div className='space-y-2'>

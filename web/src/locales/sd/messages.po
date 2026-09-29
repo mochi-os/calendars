@@ -92,6 +92,7 @@ msgstr "{entityLabel} جو نالو"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "{from} کان {to}"
 
@@ -228,6 +229,10 @@ msgstr "لنڪ شامل ڪريو"
 msgid "Add option"
 msgstr "اختيار شامل ڪريو"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "ياددهاني شامل ڪريو"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ٽيگ شامل ڪريو..."
@@ -264,6 +269,10 @@ msgstr "سڄو ڏينهن"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "سڀ واقعا"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "سڄي ڏينهن جا واقعا"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "ڪئلينڊر ختم ٿي ويو"
 msgid "Calendar linked"
 msgstr "ڪئلينڊر ڳنڍجي ويو"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "ڪئلينڊر هٽايو ويو"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "تاريخ چونڊيو"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "سائڊبار مان راند چونڊيو يا نئين شروع ڪريو."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "وقت چونڊيو"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "ڊفالٽ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "ڊفالٽ AI اڪائونٽ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "ڊفالٽ ڪئلينڊر"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "واقعو محفوظ ٿيو"
 msgid "Every"
 msgstr "هر"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "هر منٽ"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "اڪائونٽ پڙهڻ ۾ ناڪام"
 msgid "Failed to read the calendars"
 msgstr "ڪئلينڊر پڙهڻ ۾ ناڪام"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "ڪئلينڊر هٽائڻ ۾ ناڪام"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "فائلون"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "پنهنجو اڪائونٽ منتقل ڪرڻ پورو ڪريو"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "شروع ۾"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "لڳي ٿو ته جيڪو صفحو توھان ڳولي رھيا آھيو
 msgid "Item details"
 msgstr "شيءِ جا تفصيل"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "ان جا واقعا اصل ڪئلينڊر ۾ رهندا."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "هينئر ئي"
@@ -1598,6 +1636,11 @@ msgstr "ڪيبورڊ شارٽ ڪٽَ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "وڏو"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "آخر ۾"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "ٻيهر لوڊ ڪريو"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "ياددهاني"
 
@@ -2251,6 +2295,8 @@ msgstr "ياددهاني"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "هٽايو"
 
@@ -2267,6 +2313,11 @@ msgstr "{0} فلٽر هٽايو"
 msgid "Remove {name}"
 msgstr "{name} هٽايو"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "<0>{0}</0> کي Mochi مان هٽائجي؟"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "\"{0}\" لاءِ رسائي جو قاعدو هٽايو؟"
 msgid "Remove access?"
 msgstr "رسائي هٽائجي؟"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "ڪئلينڊر هٽايو"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "شيءِ هٽايو"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "لنڪ هٽايو"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "ياددهاني هٽايو"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "ڪئلينڊر هٽي رهيو آهي..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

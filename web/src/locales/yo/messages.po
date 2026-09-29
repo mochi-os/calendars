@@ -92,6 +92,7 @@ msgstr "Orúkọ {entityLabel}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "láti {from} sí {to}"
 
@@ -228,6 +229,10 @@ msgstr "Fi ọ̀nà kún"
 msgid "Add option"
 msgstr "Fi àṣàyàn kún"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Fi ìránnilétí kún"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Fi tag kún..."
@@ -264,6 +269,10 @@ msgstr "Gbogbo ọjọ́"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Gbogbo ìṣẹ̀lẹ̀"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Àwọn ìṣẹ̀lẹ̀ gbogbo ọjọ́"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "A ti pa kàlẹ́ńdà rẹ́"
 msgid "Calendar linked"
 msgstr "A ti so kàlẹ́ńdà pọ̀"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "A ti yọ kàlẹ́ńdà kúrò"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Yan ọjọ́ kan"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Yan eré kan láti ọ̀pá ẹ̀gbẹ́ tàbí bẹ̀rẹ̀ ọ̀kan tuntun."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Yan àkókò kan"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Àìyípadà"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Àkáǹtì AI àìyípadà"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Kàlẹ́ńdà àìyípadà"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "A ti fi ìṣẹ̀lẹ̀ pamọ́"
 msgid "Every"
 msgstr "Ní gbogbo"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Ìṣẹ́jú kọ̀ọ̀kan"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Kò lè ka àwọn àkáǹtì"
 msgid "Failed to read the calendars"
 msgstr "Kò lè ka àwọn kàlẹ́ńdà"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Kò lè yọ kàlẹ́ńdà kúrò"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Àwọn fáìlì"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Pari gbigbe akonti rẹ"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Ní ìbẹ̀rẹ̀"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Ó dàbí pé ojú-ìwé tí o ń wá <0/>kò sí tàbí a ti yọ ọ́
 msgid "Item details"
 msgstr "Àwọn àlàyé ohun"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Àwọn ìṣẹ̀lẹ̀ rẹ̀ ṣì wà nínú kàlẹ́ńdà àtilẹ̀wá."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ní báyìí"
@@ -1598,6 +1636,11 @@ msgstr "Àwọn ọ̀nà kúkurú kọ́kọ́rọ́"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Tóbi"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Ní ìparí"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Tún ṣí"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Ìránnilétí"
 
@@ -2251,6 +2295,8 @@ msgstr "Ìránnilétí"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Yọ kúrò"
 
@@ -2267,6 +2313,11 @@ msgstr "Yọ àyẹ̀wò {0} kúrò"
 msgid "Remove {name}"
 msgstr "Yọ {name} kúrò"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Yọ <0>{0}</0> kúrò nínú Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Yọ òfin ìwọlé fún \"{0}\" kúrò?"
 msgid "Remove access?"
 msgstr "Yọ àyè kúrò?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Yọ kàlẹ́ńdà kúrò"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Yọ item kúrò"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Yọ ọ̀nà ìjápọ̀ kúrò"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Yọ ìránnilétí kúrò"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Ń yọ kàlẹ́ńdà kúrò..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx

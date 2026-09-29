@@ -92,6 +92,7 @@ msgstr "{entityLabel} pavadinimas"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "{from} to {to}"
 msgstr "nuo {from} iki {to}"
 
@@ -228,6 +229,10 @@ msgstr "Pridėti nuorodą"
 msgid "Add option"
 msgstr "Pridėti parinktį"
 
+#: src/features/calendar/editor.tsx
+msgid "Add reminder"
+msgstr "Pridėti priminimą"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Pridėti žymą..."
@@ -264,6 +269,10 @@ msgstr "Visą dieną"
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "All events"
 msgstr "Visi įvykiai"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "All-day events"
+msgstr "Visos dienos įvykiai"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -490,6 +499,10 @@ msgstr "Kalendorius ištrintas"
 msgid "Calendar linked"
 msgstr "Kalendorius susietas"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar removed"
+msgstr "Kalendorius pašalintas"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar renamed"
@@ -610,6 +623,10 @@ msgstr "Pasirinkite datą"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Pasirinkite žaidimą iš šoninės juostos arba pradėkite naują."
+
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Choose a time"
+msgstr "Pasirinkite laiką"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -920,6 +937,10 @@ msgstr "Numatytasis"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
 msgstr "Numatytoji DI paskyra"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgid "Default calendar"
+msgstr "Numatytasis kalendorius"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Default event length"
@@ -1245,6 +1266,10 @@ msgstr "Įvykis išsaugotas"
 msgid "Every"
 msgstr "Kas"
 
+#: ../../../lib/web/src/components/ui/time-picker.tsx
+msgid "Every minute"
+msgstr "Kiekviena minutė"
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -1395,6 +1420,10 @@ msgstr "Nepavyko nuskaityti paskyrų"
 msgid "Failed to read the calendars"
 msgstr "Nepavyko nuskaityti kalendorių"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to remove calendar"
+msgstr "Nepavyko pašalinti kalendoriaus"
+
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Failed to rename calendar"
@@ -1467,6 +1496,11 @@ msgstr "Failai"
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
 msgstr "Užbaikite paskyros perkėlimą"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "First"
+msgstr "Pradžioje"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1586,6 +1620,10 @@ msgstr "Atrodo, kad ieškomo puslapio <0/>nėra arba jis buvo pašalintas."
 msgid "Item details"
 msgstr "Elemento informacija"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Its events stay in the original calendar."
+msgstr "Jo įvykiai lieka pradiniame kalendoriuje."
+
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ką tik"
@@ -1598,6 +1636,11 @@ msgstr "Klaviatūros sparčiosios klavišų kombinacijos"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Didelis"
+
+#: src/features/calendar/dialogs/preferences-dialog.tsx
+msgctxt "order"
+msgid "Last"
+msgstr "Pabaigoje"
 
 #: src/features/calendar/editor.tsx
 msgid "Last day"
@@ -2244,6 +2287,7 @@ msgstr "Įkelti iš naujo"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/components/agenda.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Reminder"
 msgstr "Priminimas"
 
@@ -2251,6 +2295,8 @@ msgstr "Priminimas"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Remove"
 msgstr "Šalinti"
 
@@ -2267,6 +2313,11 @@ msgstr "Šalinti filtrą {0}"
 msgid "Remove {name}"
 msgstr "Šalinti {name}"
 
+#. placeholder {0}: deleting.name
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove <0>{0}</0> from Mochi?"
+msgstr "Šalinti <0>{0}</0> iš Mochi?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule"
@@ -2281,6 +2332,10 @@ msgstr "Pašalinti prieigos taisyklę „{0}“?"
 msgid "Remove access?"
 msgstr "Šalinti prieigą?"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Remove calendar"
+msgstr "Šalinti kalendorių"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Remove interest"
@@ -2294,6 +2349,14 @@ msgstr "Šalinti elementą"
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
 msgstr "Pašalinti nuorodą"
+
+#: src/features/calendar/editor.tsx
+msgid "Remove reminder"
+msgstr "Šalinti priminimą"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Removing calendar..."
+msgstr "Šalinamas kalendorius..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
