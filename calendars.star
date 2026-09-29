@@ -2058,7 +2058,10 @@ def action_preferences_set(a):
 
 def token_name_input(a):
 	name = a.input("name", "").strip()
-	if not name or len(name) > 100:
+	if not name:
+		a.error.label(400, "errors.name_is_required")
+		return None
+	if len(name) > 100:
 		a.error.label(400, "errors.token_name_is_too_long_max_100_characters")
 		return None
 	return name

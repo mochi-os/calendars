@@ -111,6 +111,9 @@ export const useAddCalendarAccountMutation = () => {
       password: string
       label?: string
     }) => calendarsApi.account(fields),
+    // The variables carry the account's password: once the wizard lets go of
+    // them, the cache drops them too.
+    gcTime: 0,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['calendars', 'accounts'] })
     },

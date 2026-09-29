@@ -9,6 +9,7 @@ import {
   ConfirmDialog,
   DataChip,
   FieldRow,
+  GeneralError,
   Input,
   Label,
   ResponsiveDialog,
@@ -47,27 +48,32 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
 
   // Fetched whenever the dialog is open: the list carries the account's
   // username, which the connection details show before any device exists.
-  const { data, isLoading } = useTokensQuery(open)
+  const { data, error, isLoading, refetch } = useTokensQuery(open)
   const createMutation = useCreateTokenMutation()
   const deleteMutation = useDeleteTokenMutation()
 
-  // The plaintext token lives only in this dialog's state: closing it is the
-  // one and only way it is discarded.
+  // The plaintext token lives in this dialog's state and in the create
+  // request's result; Done and closing discard both. The dialog stays mounted,
+  // so neither goes on its own.
+  const resetCreate = createMutation.reset
   useEffect(() => {
     if (!open) {
       setView('list')
       setName('')
       setToken(null)
       setDeleting(null)
+      resetCreate()
     }
-  }, [open])
+  }, [open, resetCreate])
 
   const server = `${window.location.origin}/`
   const address = `${window.location.origin}${getAppPath()}/caldav/`
 
   const create = async () => {
     const trimmed = name.trim()
-    if (!trimmed) return
+    // Enter reaches here as well as the button, which is disabled meanwhile:
+    // each call mints another credential.
+    if (!trimmed || createMutation.isPending) return
     try {
       const result = await toastAction(createMutation.mutateAsync(trimmed), {
         loading: t`Connecting device...`,
@@ -170,6 +176,13 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
                   <Skeleton className='h-12 w-full' />
                   <Skeleton className='h-12 w-full' />
                 </div>
+              ) : error ? (
+                <GeneralError
+                  error={error}
+                  minimal
+                  mode='inline'
+                  reset={() => void refetch()}
+                />
               ) : tokens.length === 0 ? (
                 <p className='text-muted-foreground py-4 text-center text-sm'>
                   <Trans>No devices connected.</Trans>
@@ -247,6 +260,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
                 variant='outline'
                 onClick={() => {
                   setToken(null)
+                  createMutation.reset()
                   setView('list')
                 }}
               >
@@ -264,8 +278,14 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           if (!isOpen) setDeleting(null)
         }}
         title={t`Delete device?`}
-        desc={t`The device will no longer be able to sync calendars.`}
-        confirmText={t`Delete`}
+        desc={t`The device will no longer be able to sync contacts or calendars.`}
+        confirmText={
+          <>
+            <Trash2 className='size-4' />
+            <Trans>Delete</Trans>
+          </>
+        }
+        destructive
         isLoading={deleteMutation.isPending}
         handleConfirm={() => void remove()}
       />

@@ -108,6 +108,17 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
     }
   }, [open, account])
 
+  // The password is a credential for another server: closing the wizard
+  // drops it from the form and from the request that sent it, since the
+  // wizard stays mounted.
+  const resetAccount = accountMutation.reset
+  useEffect(() => {
+    if (!open) {
+      setPassword('')
+      resetAccount()
+    }
+  }, [open, resetAccount])
+
   const accountsError = accountsQuery.error
   useEffect(() => {
     if (accountsError) {

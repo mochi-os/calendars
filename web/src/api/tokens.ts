@@ -4,10 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
-import type {
-  CreateTokenResponse,
-  GetTokensResponse,
-} from '@/api/types/tokens'
+import type { CreateTokenResponse, GetTokensResponse } from '@/api/types/tokens'
 
 const quiet = { mochi: { showGlobalErrorToast: false } } as const
 
@@ -29,7 +26,10 @@ export const tokensApi = {
     ),
 
   list: (): Promise<GetTokensResponse> =>
-    requestHelpers.post<GetTokensResponse>(endpoints.tokens.list, '', form),
+    requestHelpers.post<GetTokensResponse>(endpoints.tokens.list, '', {
+      ...form,
+      ...quiet,
+    }),
 
   delete: (hash: string): Promise<{ ok: boolean }> =>
     requestHelpers.post<{ ok: boolean }>(
