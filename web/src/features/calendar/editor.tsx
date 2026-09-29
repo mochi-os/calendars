@@ -46,12 +46,9 @@ import {
 } from 'lucide-react'
 import type { Component } from '@/api/types/events'
 import {
-  anchoredDraft,
-  componentDraft,
   copyDraft,
   draftComponent,
   draftInstants,
-  editedComponents,
   endAfterStart,
   startZone,
   expressible,
@@ -59,7 +56,8 @@ import {
   emptyRepeat,
   masterComponent,
   nextReminder,
-  overrideComponent,
+  openedDraft,
+  savedComponents,
   splitSeries,
   type EventDraft,
   type Frequency,
@@ -130,11 +128,14 @@ export function EventEditor() {
       return
     }
     if (!event) return
-    const own =
-      overrideComponent(event.components, editing.start, format.timezone) ??
-      masterComponent(event.components)
-    if (!own) return
-    const read = componentDraft(own, event.calendar, format.timezone)
+    const read = openedDraft(
+      event.components,
+      editing.start,
+      event.calendar,
+      format.timezone,
+      event.recurring
+    )
+    if (!read) return
     setDraft(read)
     setCustom(
       read.repeat.interval > 1 ||
@@ -172,20 +173,9 @@ export function EventEditor() {
         // own, starting where this one now falls. The first occurrence has
         // nothing before it, so that is the whole series.
         if (recurring && scope === 'following' && master) {
-          const fromMaster = !overrideComponent(
-            event.components,
-            editing.start,
-            format.timezone
-          )
           const split = splitSeries(
             event.components,
-            anchoredDraft(
-              draft,
-              master,
-              editing.start,
-              format.timezone,
-              fromMaster
-            ),
+            draft,
             editing.start,
             format.timezone
           )
@@ -206,7 +196,7 @@ export function EventEditor() {
           scope = 'all'
         }
         const components: Component[] = recurring
-          ? editedComponents(
+          ? savedComponents(
               event.components,
               draft,
               scope,

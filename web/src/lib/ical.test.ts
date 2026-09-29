@@ -10,7 +10,6 @@ import {
   defaultCalendar,
   defaultStart,
   nextReminder,
-  anchoredDraft,
   componentDraft,
   copyDraft,
   deletedOccurrence,
@@ -26,6 +25,7 @@ import {
   movedDraft,
   newDraft,
   occurrenceDraft,
+  openedDraft,
   property,
   propertyInstant,
   propertyValue,
@@ -34,6 +34,7 @@ import {
   reminderTrigger,
   repeatRule,
   ruleRepeat,
+  savedComponents,
   splitSeries,
   startZone,
   triggerMinutes,
@@ -889,24 +890,6 @@ describe('cutting a series at an occurrence', () => {
     expect(split.before).toHaveLength(1)
   })
 
-  it('moves a draft read from the master onto the occurrence, keeping the edit', () => {
-    // The editor showed the 16th and the user set 11:00; the third
-    // occurrence therefore lands on the 18th at 11:00.
-    const anchored = anchoredDraft(
-      draft({ startTime: 11 * 60, finishTime: 12 * 60, repeat: daily }),
-      series,
-      third,
-      ZONE,
-      true
-    )
-    expect(anchored.start).toBe('2026-09-18')
-    expect(anchored.startTime).toBe(11 * 60)
-    expect(anchored.finish).toBe('2026-09-18')
-    // A draft read from the occurrence's own override already sits there.
-    const own = draft({ start: '2026-09-18', finish: '2026-09-18' })
-    expect(anchoredDraft(own, series, third, ZONE, false)).toBe(own)
-  })
-
   it('reads the series as it stands at a later occurrence', () => {
     const read = occurrenceDraft(series, third, 'cal1', ZONE)
     expect(read.start).toBe('2026-09-18')
@@ -983,6 +966,102 @@ describe('moving a whole series', () => {
       ZONE
     )
     expect(renamed[1]).toBe(withOverride[1])
+  })
+})
+
+describe('opening an occurrence of a series', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+  // The third occurrence, 2026-09-18 09:00 London.
+  const third = at('20260918T090000')
+  const opened = () => openedDraft([series], third, 'cal1', ZONE, true)!
+
+  it('reads a plain occurrence on its own day', () => {
+    const read = opened()
+    expect(read.start).toBe('2026-09-18')
+    expect(read.startTime).toBe(9 * 60)
+    expect(read.finish).toBe('2026-09-18')
+    expect(read.repeat.frequency).toBe('daily')
+  })
+
+  it('reads an occurrence that has an override from the override', () => {
+    const changed = editedComponents(
+      [series],
+      draft({
+        title: 'Once',
+        start: '2026-09-18',
+        startTime: 14 * 60,
+        finish: '2026-09-18',
+        finishTime: 15 * 60,
+      }),
+      'one',
+      third,
+      ZONE
+    )
+    const read = openedDraft(changed, third, 'cal1', ZONE, true)!
+    expect(read.title).toBe('Once')
+    expect(read.start).toBe('2026-09-18')
+    expect(read.startTime).toBe(14 * 60)
+  })
+
+  it('reads an event that does not repeat as it is', () => {
+    const single = draftComponent(draft())
+    const read = openedDraft([single], third, 'cal1', ZONE, false)!
+    expect(read.start).toBe('2026-09-16')
+    expect(read.startTime).toBe(9 * 60)
+  })
+
+  it('writes "This event" on the occurrence\'s own day', () => {
+    const written = savedComponents(
+      [series],
+      { ...opened(), title: 'Renamed' },
+      'one',
+      third,
+      ZONE
+    )
+    expect(written[0]).toBe(series)
+    const override = written[1]
+    expect(propertyValue(override, 'SUMMARY')).toBe('Renamed')
+    expect(propertyValue(override, 'DTSTART')).toBe('20260918T090000')
+    expect(propertyValue(override, 'DTEND')).toBe('20260918T100000')
+    expect(propertyValue(override, 'RECURRENCE-ID')).toBe('20260918T090000')
+  })
+
+  it('keeps the series start when "All events" changes only the title', () => {
+    const written = savedComponents(
+      [series],
+      { ...opened(), title: 'Renamed' },
+      'all',
+      third,
+      ZONE
+    )
+    expect(written).toHaveLength(1)
+    expect(propertyValue(written[0], 'SUMMARY')).toBe('Renamed')
+    expect(propertyValue(written[0], 'DTSTART')).toBe('20260916T090000')
+    expect(propertyValue(written[0], 'RRULE')).toBe('FREQ=DAILY')
+  })
+
+  it('moves every occurrence when "All events" changes the time', () => {
+    const written = savedComponents(
+      [series],
+      { ...opened(), startTime: 11 * 60, finishTime: 12 * 60 },
+      'all',
+      third,
+      ZONE
+    )
+    expect(propertyValue(written[0], 'DTSTART')).toBe('20260916T110000')
+    expect(propertyValue(written[0], 'DTEND')).toBe('20260916T120000')
+  })
+
+  it('splits "This and following" at the occurrence', () => {
+    const split = splitSeries([series], opened(), third, ZONE)!
+    expect(propertyValue(split.after[0], 'DTSTART')).toBe('20260918T090000')
+    expect(propertyValue(split.before[0], 'RRULE')).toBe(
+      'FREQ=DAILY;UNTIL=20260918T075959Z'
+    )
   })
 })
 

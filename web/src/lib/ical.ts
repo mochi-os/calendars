@@ -767,22 +767,52 @@ export function occurrenceDraft(
 }
 
 /**
- * The editor's draft moved onto the occurrence at `start`. A draft read from
- * the master carries the series' first dates, so it moves by the distance
- * from the series' start to the occurrence, and the edit's own change of
- * time comes along; one read from the occurrence's override already sits
- * on the occurrence and is left alone.
+ * The draft the editor opens an occurrence of a series on, as the Android
+ * editor does: the occurrence's own override where it has one, else the
+ * master moved onto the occurrence, so the form shows the day that was
+ * opened. An event that does not repeat reads as it is.
  */
-export function anchoredDraft(
-  draft: EventDraft,
-  master: Component,
+export function openedDraft(
+  components: Component[],
   start: number,
+  calendar: string,
   timezone: string,
-  fromMaster: boolean
-): EventDraft {
-  if (!fromMaster) return draft
-  const first = masterStart(master, timezone)
-  return first === null ? draft : movedDraft(draft, start - first)
+  recurring: boolean
+): EventDraft | null {
+  const master = masterComponent(components)
+  if (!recurring)
+    return master ? componentDraft(master, calendar, timezone) : null
+  const own = overrideComponent(components, start, timezone)
+  if (own) return componentDraft(own, calendar, timezone)
+  return master ? occurrenceDraft(master, start, calendar, timezone) : null
+}
+
+/**
+ * What saving the editor's draft for the occurrence at `start` writes. A
+ * draft opened on a plain occurrence holds that occurrence's dates
+ * (openedDraft), so "All events" first moves it back by the occurrence's
+ * distance from the series' start: a change made to this occurrence's time
+ * then lands on every one. One read from an override describes that override
+ * and is written as it is.
+ */
+export function savedComponents(
+  components: Component[],
+  draft: EventDraft,
+  scope: Scope,
+  start: number,
+  timezone: string
+): Component[] {
+  const master = masterComponent(components)
+  let written = draft
+  if (
+    scope === 'all' &&
+    master &&
+    !overrideComponent(components, start, timezone)
+  ) {
+    const first = masterStart(master, timezone)
+    if (first !== null) written = movedDraft(draft, first - start)
+  }
+  return editedComponents(components, written, scope, start, timezone)
 }
 
 /** Each value of a list-valued date property, with the instant it names. */
