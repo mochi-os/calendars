@@ -65,6 +65,9 @@ _COLOUR_DEFAULT = "#60a5fa"
 
 # A change in the log is kept this long after the event is deleted.
 _TOMBSTONE_RETENTION = 7776000
+# Events removed per statement when many go at once, well inside SQLite's
+# parameter limit.
+_REMOVE_BATCH = 500
 
 def database_upgrade(version):
 	if version == 2:
@@ -409,8 +412,7 @@ def changes_prune(identity):
 # Deleting a linked calendar unlinks it: the events go here and stay on the
 # other server.
 def calendar_delete(identity, row):
-	for event in mochi.db.rows("select * from events where calendar=?", row["id"]):
-		event_delete(identity, event, push=False)
+	events_remove(identity, row["id"])
 	for link in mochi.db.rows("select hash from links where calendar=?", row["id"]):
 		mochi.token.delete(link["hash"])
 	mochi.db.execute("delete from links where calendar=?", row["id"])
@@ -525,6 +527,34 @@ def event_delete(identity, row, push=True):
 	calendar_touch(row["calendar"], row["id"], 1)
 	changes_prune(identity)
 	return ""
+
+# events_remove(identity, calendar, ids=None): remove a calendar's events in
+# bulk, every one or those named, as event_delete does one at a time: their
+# reminders cancelled and a deletion logged for each, then the calendar touched
+# and the log pruned once. Nothing is sent to a linked calendar's server.
+def events_remove(identity, calendar, ids=None):
+	if ids == None:
+		chunks = [None]
+	else:
+		chunks = [ids[i:i + _REMOVE_BATCH] for i in range(0, len(ids), _REMOVE_BATCH)]
+	if not chunks:
+		return
+	now = mochi.time.now()
+	for chunk in chunks:
+		where = "identity=? and calendar=?"
+		args = [identity, calendar]
+		if chunk != None:
+			where += " and id in (" + ", ".join(["?"] * len(chunk)) + ")"
+			args += chunk
+		chosen = "select id from events where " + where
+		for row in mochi.db.rows("select schedule from reminders where schedule>0 and event in (" + chosen + ")", *args):
+			mochi.schedule.cancel(row["schedule"])
+		mochi.db.execute("delete from reminders where event in (" + chosen + ")", *args)
+		mochi.db.execute("delete from changes where event in (" + chosen + ")", *args)
+		mochi.db.execute("insert into changes ( identity, calendar, event, deleted, created ) select identity, calendar, id, 1, ? from events where " + where, now, *args)
+		mochi.db.execute("delete from events where " + where, *args)
+	calendar_touch(calendar)
+	changes_prune(identity)
 
 # component_clean(component, depth) -> dict or None: a client's component tree
 # in stored form. Names are the format's tokens; every value a string; only
@@ -979,10 +1009,10 @@ def linked_pull(row):
 			if type(written) == "dict":
 				mochi.db.execute("update events set href=?, remote=?, dirty=0 where id=?", o["href"], o.get("etag", ""), written["id"])
 				changed = True
-	for href in local:
-		if href not in remote:
-			event_delete(row["identity"], local[href], push=False)
-			changed = True
+	gone = [local[href]["id"] for href in local if href not in remote]
+	if gone:
+		events_remove(row["identity"], row["id"], gone)
+		changed = True
 	return (changed, complete)
 
 # linked_sync(row, force=False) -> bool: push what is still to push, then
@@ -1061,9 +1091,8 @@ def subscription_ingest(row, text):
 		written = event_write(identity, row["id"], slug, ics, existing)
 		if type(written) == "dict":
 			seen[written["id"]] = True
-	for event in mochi.db.rows("select * from events where calendar=?", row["id"]):
-		if event["id"] not in seen:
-			event_delete(identity, event)
+	gone = [event["id"] for event in mochi.db.rows("select id from events where calendar=?", row["id"]) if event["id"] not in seen]
+	events_remove(identity, row["id"], gone)
 	return len(seen)
 
 def header_value(headers, name):
