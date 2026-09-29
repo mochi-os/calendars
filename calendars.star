@@ -1642,7 +1642,7 @@ def action_events_batch(a):
 	body = body_json(a)
 	ids = body.get("events") if body else None
 	if not islist(ids) or len(ids) > 500:
-		a.error.label(400, "errors.event_not_found")
+		a.error.label(400, "errors.invalid_request")
 		return
 	out = []
 	for id in ids:
