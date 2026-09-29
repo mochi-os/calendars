@@ -308,6 +308,10 @@ msgstr "Jiný server Mochi nebo CalDAV"
 msgid "Anyone"
 msgstr "Kdokoli"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Anyone subscribed to the current address stops getting updates."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Kdokoli, kdo je přihlášen"
@@ -404,6 +408,10 @@ msgstr "Avatar uživatele {name}"
 msgid "Back"
 msgstr "Zpět"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -470,14 +478,11 @@ msgstr "Kalendář"
 msgid "Calendar access was not granted"
 msgstr "Přístup ke kalendáři nebyl udělen"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
 msgstr "Adresa kalendáře"
-
-#: src/hooks/use-ics-copy.ts
-msgid "Calendar address copied to clipboard"
-msgstr "Adresa kalendáře zkopírována do schránky"
 
 #: src/hooks/use-ics-copy.ts
 msgid "Calendar address revoked"
@@ -1118,6 +1123,7 @@ msgstr "Neodpovídá požadovanému vzoru"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Hotovo"
@@ -1187,6 +1193,10 @@ msgstr "Upravit vybranou kartu"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Edit view"
 msgstr "Upravit pohled"
+
+#: src/features/calendar/editor.tsx
+msgid "Editing a copy. Save to keep it."
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Email"
@@ -1871,10 +1881,6 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Nejnovější"
 
-#: src/hooks/use-ics-copy.ts
-msgid "New calendar address copied to clipboard"
-msgstr "Nová adresa kalendáře zkopírována do schránky"
-
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2391,9 +2397,14 @@ msgstr "Opakování"
 msgid "Repeats"
 msgstr "Opakuje se"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/hooks/use-ics-copy.ts
 msgid "Replace"
 msgstr "Nahradit"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Replace calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2430,6 +2441,7 @@ msgid "Retry"
 msgstr "Zkusit znovu"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
 msgid "Revoke"
 msgstr "Odvolat"
@@ -2437,6 +2449,10 @@ msgstr "Odvolat"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
 msgstr "Zrušit přístup"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Revoke calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2483,6 +2499,10 @@ msgstr "Sobota"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Uložit"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Save this address now. It cannot be shown again."
+msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2658,6 +2678,7 @@ msgstr "Nastavit výchozí bod a cíl"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -3236,6 +3257,10 @@ msgstr "Váš účet byl přesunut sem z {source}. Dokud ho tam nesmažete, zpr�
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "Vaše přílohy budou ztraceny."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

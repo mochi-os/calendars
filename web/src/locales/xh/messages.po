@@ -308,6 +308,10 @@ msgstr "Enye iseva ye-Mochi okanye ye-CalDAV"
 msgid "Anyone"
 msgstr "Nabani na"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Anyone subscribed to the current address stops getting updates."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Nabani na ongenileyo"
@@ -404,6 +408,10 @@ msgstr "I-avatar ka-{name}"
 msgid "Back"
 msgstr "Buyela"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -470,14 +478,11 @@ msgstr "Ikhalenda"
 msgid "Calendar access was not granted"
 msgstr "Ufikelelo lwekhalenda alunikwanga"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
 msgstr "Idilesi yekhalenda"
-
-#: src/hooks/use-ics-copy.ts
-msgid "Calendar address copied to clipboard"
-msgstr "Idilesi yekhalenda ikhutshelwe ku-clipboard"
 
 #: src/hooks/use-ics-copy.ts
 msgid "Calendar address revoked"
@@ -1118,6 +1123,7 @@ msgstr "Ayihambelani nepateni efunekayo"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Kwenziwe"
@@ -1187,6 +1193,10 @@ msgstr "Hlela ikhadi elikhethiweyo"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Edit view"
 msgstr "Hlela imbonakalo"
+
+#: src/features/calendar/editor.tsx
+msgid "Editing a copy. Save to keep it."
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Email"
@@ -1871,10 +1881,6 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Ezintsha"
 
-#: src/hooks/use-ics-copy.ts
-msgid "New calendar address copied to clipboard"
-msgstr "Idilesi entsha yekhalenda ikhutshelwe ku-clipboard"
-
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2391,9 +2397,14 @@ msgstr "Ukuphindaphinda"
 msgid "Repeats"
 msgstr "Iyaphindaphindwa"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/hooks/use-ics-copy.ts
 msgid "Replace"
 msgstr "Ngenisa endaweni"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Replace calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2430,6 +2441,7 @@ msgid "Retry"
 msgstr "Zama kwakhona"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
 msgid "Revoke"
 msgstr "Rhoxisa"
@@ -2437,6 +2449,10 @@ msgstr "Rhoxisa"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
 msgstr "Rhoxisa ufikelelo"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Revoke calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2483,6 +2499,10 @@ msgstr "Umgqibelo"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Gcina"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Save this address now. It cannot be shown again."
+msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2658,6 +2678,7 @@ msgstr "Misa indawo yokuqala neyokugqibela"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Iisetingi"
 
@@ -3236,6 +3257,10 @@ msgstr "I-akhawunti yakho ihanjiswe apha ukusuka ku-{source}. Kude ukuze uyicime
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "Iziqhoboshelo zakho ziza kulahleka."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

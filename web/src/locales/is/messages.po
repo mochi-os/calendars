@@ -308,6 +308,10 @@ msgstr "Annar Mochi- eða CalDAV-þjónn"
 msgid "Anyone"
 msgstr "Hver sem er"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Anyone subscribed to the current address stops getting updates."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Allir sem eru skráðir inn"
@@ -404,6 +408,10 @@ msgstr "Auðkennismynd fyrir {name}"
 msgid "Back"
 msgstr "Til baka"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -470,14 +478,11 @@ msgstr "Dagatal"
 msgid "Calendar access was not granted"
 msgstr "Dagatalsaðgangur var ekki veittur"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
 msgstr "Vistfang dagatals"
-
-#: src/hooks/use-ics-copy.ts
-msgid "Calendar address copied to clipboard"
-msgstr "Vistfang dagatals afritað á klippiborðið"
 
 #: src/hooks/use-ics-copy.ts
 msgid "Calendar address revoked"
@@ -1118,6 +1123,7 @@ msgstr "Samsvarar ekki tilskildu mynstri"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Lokið"
@@ -1187,6 +1193,10 @@ msgstr "Breyta völdu spjaldi"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Edit view"
 msgstr "Breyta skoðun"
+
+#: src/features/calendar/editor.tsx
+msgid "Editing a copy. Save to keep it."
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Email"
@@ -1871,10 +1881,6 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Nýjast"
 
-#: src/hooks/use-ics-copy.ts
-msgid "New calendar address copied to clipboard"
-msgstr "Nýtt vistfang dagatals afritað á klippiborðið"
-
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2391,9 +2397,14 @@ msgstr "Endurtekning"
 msgid "Repeats"
 msgstr "Endurtekur sig"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/hooks/use-ics-copy.ts
 msgid "Replace"
 msgstr "Skipta út"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Replace calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2430,6 +2441,7 @@ msgid "Retry"
 msgstr "Reyna aftur"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
 msgid "Revoke"
 msgstr "Afturkalla"
@@ -2437,6 +2449,10 @@ msgstr "Afturkalla"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
 msgstr "Afturkalla aðgang"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Revoke calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2483,6 +2499,10 @@ msgstr "Laugardagur"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Vista"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Save this address now. It cannot be shown again."
+msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2658,6 +2678,7 @@ msgstr "Stilltu upphafsstað og áfangastað"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Stillingar"
 
@@ -3236,6 +3257,10 @@ msgstr "Reikningurinn þinn var fluttur hingað frá {source}. Þar til þú ey�
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "Viðhengin þín glatast."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

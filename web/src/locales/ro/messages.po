@@ -308,6 +308,10 @@ msgstr "Alt server Mochi sau CalDAV"
 msgid "Anyone"
 msgstr "Oricine"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Anyone subscribed to the current address stops getting updates."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Oricine este autentificat"
@@ -404,6 +408,10 @@ msgstr "Avatar pentru {name}"
 msgid "Back"
 msgstr "Înapoi"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -470,14 +478,11 @@ msgstr "Calendar"
 msgid "Calendar access was not granted"
 msgstr "Accesul la calendar nu a fost acordat"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
 msgstr "Adresa calendarului"
-
-#: src/hooks/use-ics-copy.ts
-msgid "Calendar address copied to clipboard"
-msgstr "Adresa calendarului a fost copiată în clipboard"
 
 #: src/hooks/use-ics-copy.ts
 msgid "Calendar address revoked"
@@ -1118,6 +1123,7 @@ msgstr "Nu corespunde modelului necesar"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Terminat"
@@ -1187,6 +1193,10 @@ msgstr "Editează cardul selectat"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Edit view"
 msgstr "Editează vizualizarea"
+
+#: src/features/calendar/editor.tsx
+msgid "Editing a copy. Save to keep it."
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Email"
@@ -1871,10 +1881,6 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Cele mai noi"
 
-#: src/hooks/use-ics-copy.ts
-msgid "New calendar address copied to clipboard"
-msgstr "Noua adresă a calendarului a fost copiată în clipboard"
-
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2391,9 +2397,14 @@ msgstr "Repetare"
 msgid "Repeats"
 msgstr "Se repetă"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/hooks/use-ics-copy.ts
 msgid "Replace"
 msgstr "Înlocuiește"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Replace calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2430,6 +2441,7 @@ msgid "Retry"
 msgstr "Reîncearcă"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
 msgid "Revoke"
 msgstr "Revocă"
@@ -2437,6 +2449,10 @@ msgstr "Revocă"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
 msgstr "Revocă accesul"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Revoke calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2483,6 +2499,10 @@ msgstr "Sâmbătă"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Salvează"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Save this address now. It cannot be shown again."
+msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2658,6 +2678,7 @@ msgstr "Setează originea și destinația"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Setări"
 
@@ -3236,6 +3257,10 @@ msgstr "Contul dvs. a fost mutat aici de la {source}. Până când îl ștergeț
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "Atașamentele tale se vor pierde."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

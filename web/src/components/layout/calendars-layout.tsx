@@ -3,6 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useParams } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   AuthenticatedLayout,
@@ -21,6 +22,7 @@ import {
 } from '@mochi/web'
 import {
   CalendarDays,
+  CircleAlert,
   Copy,
   Eye,
   Palette,
@@ -29,6 +31,7 @@ import {
   RefreshCw,
   Rss,
   Settings,
+  Settings2,
   Smartphone,
   Trash2,
 } from 'lucide-react'
@@ -40,6 +43,7 @@ import {
   usePollCalendarMutation,
 } from '@/hooks/use-calendars'
 import { useIcsCopy } from '@/hooks/use-ics-copy'
+import { AddressDialogs } from '@/features/calendar/dialogs/address-dialogs'
 import { ColourDialog } from '@/features/calendar/dialogs/colour-dialog'
 import { ConnectDialog } from '@/features/calendar/dialogs/connect-dialog'
 import { PreferencesDialog } from '@/features/calendar/dialogs/preferences-dialog'
@@ -77,7 +81,12 @@ export function CalendarsLayout() {
   const createMutation = useCreateCalendarMutation()
   const deleteMutation = useDeleteCalendarMutation()
   const pollMutation = usePollCalendarMutation()
-  const { copy } = useIcsCopy()
+  const { copy, dialogs } = useIcsCopy()
+  const navigate = useNavigate()
+  // The calendar whose settings page is open, if one is.
+  const { calendarId } = useParams({ strict: false }) as {
+    calendarId?: string
+  }
 
   const create = async (values: CreateEntityValues) => {
     await toastAction(
@@ -112,6 +121,8 @@ export function CalendarsLayout() {
                 getErrorMessage(error, t`Failed to delete calendar`),
             }
       )
+      // Its settings page has nothing left to show, so go to the calendar.
+      if (deleting.fingerprint === calendarId) void navigate({ to: '/' })
       setDeleting(null)
     } catch {
       // toastAction already showed error
@@ -216,11 +227,22 @@ export function CalendarsLayout() {
             onClick: () => void sync(calendar),
           })
         }
-        menu.push({
-          title: t`Copy calendar address`,
-          icon: Copy,
-          onClick: () => void copy(calendar.id),
-        })
+        menu.push(
+          {
+            title: t`Copy calendar address`,
+            icon: Copy,
+            onClick: () => void copy(calendar.id),
+          },
+          {
+            title: t`Settings`,
+            icon: Settings2,
+            onClick: () =>
+              void navigate({
+                to: '/$calendarId',
+                params: { calendarId: calendar.fingerprint },
+              }),
+          }
+        )
         if (!calendar.default) {
           menu.push({
             title: detached(calendar) ? t`Remove` : t`Delete`,
@@ -235,6 +257,12 @@ export function CalendarsLayout() {
         title: calendar.name,
         icon: colourCheckbox(calendar.colour, checked),
         checked,
+        // A subscription or linked calendar whose last fetch failed; its
+        // settings page says why.
+        endIcon: calendar.failure ? CircleAlert : undefined,
+        endIconClassName: calendar.failure
+          ? 'text-destructive opacity-100'
+          : undefined,
         onClick: () => toggle(calendar.id),
         // An event dragged from the views lands here to move to this calendar.
         drop: calendar.readonly ? undefined : calendar.id,
@@ -331,6 +359,8 @@ export function CalendarsLayout() {
       />
 
       <ConnectDialog open={connectOpen} onOpenChange={setConnectOpen} />
+
+      <AddressDialogs state={dialogs} />
 
       <EventEditor />
 

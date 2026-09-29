@@ -308,6 +308,10 @@ msgstr "Server Mochi jew CalDAV ieħor"
 msgid "Anyone"
 msgstr "Kulħadd"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Anyone subscribed to the current address stops getting updates."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Kull min hu llogjat"
@@ -404,6 +408,10 @@ msgstr "Avatar għal {name}"
 msgid "Back"
 msgstr "Lura"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -470,14 +478,11 @@ msgstr "Kalendarju"
 msgid "Calendar access was not granted"
 msgstr "L-aċċess għall-kalendarju ma ngħatax"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
 msgstr "Indirizz tal-kalendarju"
-
-#: src/hooks/use-ics-copy.ts
-msgid "Calendar address copied to clipboard"
-msgstr "L-indirizz tal-kalendarju ġie kkupjat fil-clipboard"
 
 #: src/hooks/use-ics-copy.ts
 msgid "Calendar address revoked"
@@ -1118,6 +1123,7 @@ msgstr "Ma jaqbilx mal-mudell meħtieġ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Lest"
@@ -1187,6 +1193,10 @@ msgstr "Editja l-kard magħżula"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Edit view"
 msgstr "Editja l-veduta"
+
+#: src/features/calendar/editor.tsx
+msgid "Editing a copy. Save to keep it."
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Email"
@@ -1871,10 +1881,6 @@ msgctxt "sort order"
 msgid "New"
 msgstr "L-aktar ġodda"
 
-#: src/hooks/use-ics-copy.ts
-msgid "New calendar address copied to clipboard"
-msgstr "L-indirizz ġdid tal-kalendarju ġie kkupjat fil-clipboard"
-
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2391,9 +2397,14 @@ msgstr "Repetizzjoni"
 msgid "Repeats"
 msgstr "Jirrepeti"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/hooks/use-ics-copy.ts
 msgid "Replace"
 msgstr "Ibdel"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Replace calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2430,6 +2441,7 @@ msgid "Retry"
 msgstr "Erġa' pprova"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
 msgid "Revoke"
 msgstr "Irrevoka"
@@ -2437,6 +2449,10 @@ msgstr "Irrevoka"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
 msgstr "Irrevoka l-aċċess"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Revoke calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2483,6 +2499,10 @@ msgstr "Is-Sibt"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Issejvja"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Save this address now. It cannot be shown again."
+msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2658,6 +2678,7 @@ msgstr "Issettja oriġini u destinazzjoni"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Issettjar"
 
@@ -3236,6 +3257,10 @@ msgstr "Il-kont tiegħek ġie miċċaqqlaq hawn minn {source}. Sakemm tħassru h
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "L-annessi tiegħek se jintilfu."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

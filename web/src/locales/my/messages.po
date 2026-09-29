@@ -308,6 +308,10 @@ msgstr "အခြား Mochi သို့မဟုတ် CalDAV ဆာဗာ"
 msgid "Anyone"
 msgstr "မည်သူမဆို"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Anyone subscribed to the current address stops getting updates."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "ဝင်ရောက်ထားသူ မည်သူမဆို"
@@ -404,6 +408,10 @@ msgstr "{name} အတွက် အသွင်ပုံ"
 msgid "Back"
 msgstr "နောက်သို့"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -470,14 +478,11 @@ msgstr "ပြက္ခဒိန်"
 msgid "Calendar access was not granted"
 msgstr "ပြက္ခဒိန် ဝင်ရောက်ခွင့် မရရှိပါ"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendar address"
 msgstr "ပြက္ခဒိန် လိပ်စာ"
-
-#: src/hooks/use-ics-copy.ts
-msgid "Calendar address copied to clipboard"
-msgstr "ပြက္ခဒိန် လိပ်စာကို ကလစ်ဘုတ်သို့ ကူးပြီး"
 
 #: src/hooks/use-ics-copy.ts
 msgid "Calendar address revoked"
@@ -1118,6 +1123,7 @@ msgstr "လိုအပ်သော ပုံစံနှင့် မကို�
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "ပြီးပါပြီ"
@@ -1187,6 +1193,10 @@ msgstr "ရွေးချယ်ထားသော ကတ် တည်းဖြ�
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Edit view"
 msgstr "မြင်ကွင်း တည်းဖြတ်"
+
+#: src/features/calendar/editor.tsx
+msgid "Editing a copy. Save to keep it."
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Email"
@@ -1871,10 +1881,6 @@ msgctxt "sort order"
 msgid "New"
 msgstr "အသစ်ဆုံး"
 
-#: src/hooks/use-ics-copy.ts
-msgid "New calendar address copied to clipboard"
-msgstr "ပြက္ခဒိန် လိပ်စာအသစ်ကို ကလစ်ဘုတ်သို့ ကူးပြီး"
-
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2391,9 +2397,14 @@ msgstr "ထပ်ခါထပ်ခါ"
 msgid "Repeats"
 msgstr "ထပ်ခါထပ်ခါ ဖြစ်သည်"
 
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/hooks/use-ics-copy.ts
 msgid "Replace"
 msgstr "အစားထိုးပါ"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Replace calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2430,6 +2441,7 @@ msgid "Retry"
 msgstr "ထပ်စမ်းကြည့်ပါ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
 msgid "Revoke"
 msgstr "ရုပ်သိမ်း"
@@ -2437,6 +2449,10 @@ msgstr "ရုပ်သိမ်း"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
 msgstr "အသုံးပြုခွင့် ရုပ်သိမ်းရန်"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Revoke calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2483,6 +2499,10 @@ msgstr "စနေနေ့"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "သိမ်းမည်"
+
+#: src/features/calendar/dialogs/address-dialogs.tsx
+msgid "Save this address now. It cannot be shown again."
+msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2658,6 +2678,7 @@ msgstr "မူရင်းနှင့် ဦးတည်ရာ သတ်မှ�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "ဆက်တင်များ"
 
@@ -3236,6 +3257,10 @@ msgstr "သင်၏အကောင့်ကို {source} မှ ဤနေရ�
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "သင့်ပူးတွဲဖိုင်များ ပျောက်ဆုံးသွားပါမည်။"
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

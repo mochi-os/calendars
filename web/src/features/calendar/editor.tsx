@@ -30,6 +30,7 @@ import {
   getErrorMessage,
   naturalCompare,
   toast,
+  useDiscardGuard,
   useFormat,
   useScreenSize,
 } from '@mochi/web'
@@ -90,6 +91,9 @@ export function EventEditor() {
   const event = data?.event
 
   const [draft, setDraft] = useState<EventDraft | null>(null)
+  // The draft as the editor opened on it, so closing can tell whether
+  // anything typed would be lost.
+  const [initial, setInitial] = useState<EventDraft | null>(null)
   // The zone controls, revealed by the globe for the rest of one edit.
   const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
@@ -120,12 +124,14 @@ export function EventEditor() {
     setUntitled(false)
     if (!editing) {
       setDraft(null)
+      setInitial(null)
       setAsking(null)
       setConfirming(false)
       return
     }
     if (editing.mode === 'create') {
       setDraft(editing.draft)
+      setInitial(editing.draft)
       setCustom(false)
       return
     }
@@ -136,6 +142,7 @@ export function EventEditor() {
     if (!own) return
     const read = componentDraft(own, event.calendar, format.timezone)
     setDraft(read)
+    setInitial(read)
     setCustom(
       read.repeat.interval > 1 ||
         read.repeat.weekdays.length > 0 ||
@@ -263,7 +270,19 @@ export function EventEditor() {
       format.timezone,
       scope
     )
-    if (copied) setEditing({ mode: 'create', draft: copied, copy: true })
+    if (!copied) return
+    setEditing({ mode: 'create', draft: copied, copy: true })
+    // The form swaps in place and looks the same, so say that it is now a
+    // copy waiting for Save, and put the cursor in its title: the button that
+    // was clicked has gone with the Delete beside it.
+    toast.info(t`Editing a copy. Save to keep it.`)
+    requestAnimationFrame(() => {
+      const title = document.getElementById('event-title')
+      if (title instanceof HTMLInputElement) {
+        title.focus()
+        title.select()
+      }
+    })
   }
 
   const copy = () => {
@@ -275,6 +294,21 @@ export function EventEditor() {
     createMutation.isPending ||
     updateMutation.isPending ||
     splitMutation.isPending
+
+  const changed =
+    draft !== null &&
+    initial !== null &&
+    JSON.stringify(draft) !== JSON.stringify(initial)
+
+  // Escape, a click outside, the X and Cancel all come through here: a form
+  // with changes asks first, and nothing closes while a save is in flight.
+  const { requestClose, discardDialog } = useDiscardGuard({
+    hasText: changed,
+    hasFiles: false,
+    onDiscard: close,
+    locked: pending,
+    desc: t`Your changes will be lost.`,
+  })
 
   const open = editing !== null
   const body =
@@ -322,7 +356,7 @@ export function EventEditor() {
           </Button>
         </>
       )}
-      <Button variant='outline' onClick={close} disabled={pending}>
+      <Button variant='outline' onClick={requestClose} disabled={pending}>
         <Trans>Cancel</Trans>
       </Button>
       <Button
@@ -352,7 +386,7 @@ export function EventEditor() {
               <Button
                 variant='ghost'
                 size='icon'
-                onClick={close}
+                onClick={requestClose}
                 aria-label={t`Close`}
               >
                 <X className='size-4' />
@@ -369,7 +403,7 @@ export function EventEditor() {
         <Dialog
           open={open}
           onOpenChange={(next) => {
-            if (!next) close()
+            if (!next) requestClose()
           }}
         >
           <DialogContent className='sm:max-w-[720px]'>
@@ -410,6 +444,8 @@ export function EventEditor() {
           duplicate(scope === 'all' ? 'all' : 'one')
         }}
       />
+
+      {discardDialog}
 
       <DeleteEventDialog
         event={confirming && editing?.mode === 'edit' ? editing.event : null}
@@ -545,7 +581,9 @@ function EditorFields({
         />
       </div>
 
-      <div className='grid grid-cols-2 gap-3'>
+      {/* One above the other on a phone: side by side, the 128px time
+          pickers leave the dates no room. */}
+      <div className='grid gap-3 sm:grid-cols-2'>
         <div className='space-y-2'>
           <Label htmlFor='event-start'>
             <Trans>Start</Trans>

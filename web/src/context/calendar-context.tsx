@@ -142,7 +142,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     (next: CalendarView) => {
       setLastView(next)
       void navigate({
-        to: '.',
+        to: '/',
         search: (previous: Record<string, unknown>) => ({
           ...previous,
           view: next,
@@ -154,8 +154,10 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
 
   const setDate = useCallback(
     (next: string) => {
+      // To the calendar, not '.': the sidebar's month picker is also on a
+      // calendar's settings page, where a date on its own URL shows nothing.
       void navigate({
-        to: '.',
+        to: '/',
         search: (previous: Record<string, unknown>) => ({
           ...previous,
           date: next,

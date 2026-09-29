@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useNavigate } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
@@ -26,6 +27,7 @@ import {
   useRenameCalendarMutation,
 } from '@/hooks/use-calendars'
 import { useIcsCopy } from '@/hooks/use-ics-copy'
+import { AddressDialogs } from '@/features/calendar/dialogs/address-dialogs'
 
 /**
  * A calendar's own page at /calendars/<fingerprint>: what it is called, what
@@ -73,7 +75,8 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
   }
   const renameMutation = useRenameCalendarMutation()
   const colourMutation = useColourCalendarMutation()
-  const { copy, revoke } = useIcsCopy()
+  const { copy, revoke, dialogs } = useIcsCopy()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (calendar) {
@@ -82,9 +85,24 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
     }
   }, [calendar])
 
-  if (isLoading) return <DetailSkeleton />
-  if (isError || !calendar) {
-    return <GeneralError minimal reset={() => void refetch()} />
+  // The way back shows in every state: a calendar deleted or unlinked
+  // elsewhere leaves only the error, and the sidebar has no link home.
+  const back = {
+    label: t`Back to calendars`,
+    onFallback: () => void navigate({ to: '/' }),
+  }
+
+  if (isLoading || isError || !calendar) {
+    return (
+      <Main>
+        <PageHeader title='' back={back} />
+        {isLoading ? (
+          <DetailSkeleton />
+        ) : (
+          <GeneralError minimal reset={() => void refetch()} />
+        )}
+      </Main>
+    )
   }
 
   const saveName = async () => {
@@ -120,7 +138,10 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
 
   return (
     <Main>
-      <PageHeader title={calendar.name} />
+      <PageHeader
+        title={calendar.name}
+        back={back}
+      />
       <div className='max-w-lg space-y-6'>
         {(calendar.kind === 'subscription' || calendar.kind === 'linked') &&
           calendar.failure !== '' && (
@@ -182,13 +203,14 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
               <Copy className='size-4' />
               <Trans>Copy</Trans>
             </Button>
-            <Button variant='outline' onClick={() => void revoke(calendar.id)}>
+            <Button variant='outline' onClick={() => revoke(calendar.id)}>
               <Link2 className='size-4' />
               <Trans>Revoke</Trans>
             </Button>
           </div>
         </div>
       </div>
+      <AddressDialogs state={dialogs} />
     </Main>
   )
 }
