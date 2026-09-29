@@ -1943,6 +1943,13 @@ def action_link_revoke(a):
 	mochi.db.execute("delete from links where calendar=?", row["id"])
 	return {"data": {}}
 
+# text_escape(s) -> string: s written as an iCalendar text value, as
+# mochi.ical.format writes one: backslash, semicolon and comma escaped, and
+# each line break as \n.
+def text_escape(s):
+	s = s.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,")
+	return s.replace("\r\n", "\\n").replace("\n", "\\n").replace("\r", "\\n")
+
 # calendar_text(row) -> string: the whole calendar as one iCalendar text.
 def calendar_text(row):
 	name = mochi.entity.name(row["id"]) or ""
@@ -1954,7 +1961,10 @@ def calendar_text(row):
 			if tree:
 				components.extend(tree.get("components", []))
 	else:
-		for event in mochi.db.rows("select ics from events where calendar=? order by start limit ?", row["id"], _INSTANCES_MAXIMUM):
+		# Own events are bounded per identity, so an own calendar is served
+		# whole; a calendar past the bound drops its oldest events, never the
+		# upcoming ones a subscriber reads it for.
+		for event in mochi.db.rows("select ics from events where calendar=? order by recurring desc, start desc limit ?", row["id"], _EVENTS_MAXIMUM):
 			tree = mochi.ical.parse(event["ics"])
 			if not tree:
 				continue
@@ -1970,7 +1980,7 @@ def calendar_text(row):
 		calendar["properties"].append({"name": "X-WR-CALNAME", "params": {}, "value": name})
 	if not components:
 		# An empty VCALENDAR is not valid; a placeholder keeps the link usable.
-		return "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:" + _PRODID + "\r\nX-WR-CALNAME:" + name.replace("\n", " ") + "\r\nEND:VCALENDAR\r\n"
+		return "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:" + _PRODID + "\r\nX-WR-CALNAME:" + text_escape(name) + "\r\nEND:VCALENDAR\r\n"
 	return mochi.ical.format(calendar)
 
 # Public, token-gated. An anonymous request runs as the calendar's owner, so
