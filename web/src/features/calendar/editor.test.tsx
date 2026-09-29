@@ -5,12 +5,15 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { EventEditor } from './editor'
 
-const { setEditing, noon } = vi.hoisted(() => ({
+const { setEditing, noon, state } = vi.hoisted(() => ({
   setEditing: vi.fn(),
   noon: Date.UTC(2026, 8, 25, 12) / 1000,
+  // What the editor is open on, and the stored event an edit reads; set
+  // before rendering, so each stays one object for the render's life.
+  state: { editing: null as unknown, event: undefined as unknown },
 }))
 
 // Built once: the editor re-reads its draft whenever `editing` changes, so a
@@ -18,15 +21,18 @@ const { setEditing, noon } = vi.hoisted(() => ({
 vi.mock('@/context/calendar-context', async () => {
   const { newDraft } =
     await vi.importActual<typeof import('@/lib/ical')>('@/lib/ical')
+  const creating = {
+    mode: 'create',
+    draft: newDraft(noon, noon + 3600, {
+      allday: false,
+      calendar: 'c1',
+      reminder: -1,
+      zone: { start: 'UTC', finish: 'UTC' },
+    }),
+  }
   const context = {
-    editing: {
-      mode: 'create',
-      draft: newDraft(noon, noon + 3600, {
-        allday: false,
-        calendar: 'c1',
-        reminder: -1,
-        zone: { start: 'UTC', finish: 'UTC' },
-      }),
+    get editing() {
+      return state.editing ?? creating
     },
     setEditing,
     calendars: [{ id: 'c1', name: 'Personal', readonly: false, default: true }],
@@ -40,7 +46,7 @@ vi.mock('@/hooks/use-events', () => {
   const mutation = () => ({ mutateAsync: vi.fn(), isPending: false })
   return {
     useEventQuery: () => ({
-      data: undefined,
+      data: state.event ? { event: state.event } : undefined,
       isLoading: false,
       refetch: vi.fn(),
     }),
@@ -89,5 +95,55 @@ describe('EventEditor closing', () => {
     fireEvent.keyDown(title, { key: 'Escape' })
     expect(setEditing).not.toHaveBeenCalled()
     expect(screen.getByText('Discard draft?')).toBeInTheDocument()
+  })
+})
+
+describe('EventEditor copying', () => {
+  beforeEach(async () => {
+    setEditing.mockClear()
+    const { draftComponent, newDraft } =
+      await vi.importActual<typeof import('@/lib/ical')>('@/lib/ical')
+    const stored = newDraft(noon, noon + 3600, {
+      allday: false,
+      calendar: 'c1',
+      reminder: -1,
+      zone: { start: 'UTC', finish: 'UTC' },
+    })
+    state.event = {
+      id: 'e1',
+      calendar: 'c1',
+      etag: 'v1',
+      recurring: false,
+      components: [draftComponent({ ...stored, title: 'Dentist' })],
+    }
+    state.editing = { mode: 'edit', event: 'e1', start: noon }
+  })
+
+  afterEach(() => {
+    state.editing = null
+    state.event = undefined
+  })
+
+  it('carries edits not yet saved into the copy, and still guards them', () => {
+    show()
+    fireEvent.change(screen.getByLabelText('Title'), {
+      target: { value: 'Dentist, moved' },
+    })
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    const next = setEditing.mock.lastCall?.[0] as {
+      draft: { title: string }
+      initial: { title: string }
+    }
+    expect(next.draft.title).toBe('Dentist, moved')
+    expect(next.initial.title).toBe('Dentist')
+  })
+
+  it('copies the stored event when nothing was changed', () => {
+    show()
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    const next = setEditing.mock.lastCall?.[0] as {
+      draft: { title: string }
+    }
+    expect(next.draft.title).toBe('Dentist')
   })
 })

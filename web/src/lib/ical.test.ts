@@ -13,6 +13,7 @@ import {
   anchoredDraft,
   componentDraft,
   copyDraft,
+  formCopy,
   deletedOccurrence,
   draftComponent,
   draftInstants,
@@ -1235,6 +1236,46 @@ describe('the draft a copy opens on', () => {
 
   it('answers nothing without a master', () => {
     expect(copyDraft([], third, 'cal1', ZONE, 'one')).toBeNull()
+  })
+
+  it('copies a one-off event as the form reads, edits and all', () => {
+    const single = draftComponent(draft())
+    const form = draft({ title: 'Edited', location: 'Room 9' })
+    const copied = formCopy(form, [single], 0, ZONE, 'one', false)
+    expect(copied.title).toBe('Edited')
+    expect(copied.location).toBe('Room 9')
+  })
+
+  it('moves the edited form onto the occurrence for "This event"', () => {
+    // The form of an occurrence with no override reads the master, so it
+    // carries the series' first day until the copy moves it.
+    const form = draft({ repeat: daily, title: 'Edited', location: 'Room 4' })
+    const copied = formCopy(form, [series], third, ZONE, 'one', true)
+    expect(copied.title).toBe('Edited')
+    expect(copied.start).toBe('2026-09-18')
+    expect(copied.repeat.frequency).toBe('never')
+  })
+
+  it('copies the edited form as the series for "All events"', () => {
+    const form = draft({ repeat: daily, title: 'Edited' })
+    const copied = formCopy(form, [series], third, ZONE, 'all', true)
+    expect(copied.title).toBe('Edited')
+    expect(copied.start).toBe('2026-09-16')
+    expect(copied.repeat.frequency).toBe('daily')
+  })
+
+  it('copies the stored series for "All events" from an edited override', () => {
+    const edited = editedComponents(
+      [series],
+      draft({ title: 'Just once', start: '2026-09-18', finish: '2026-09-18' }),
+      'one',
+      third,
+      ZONE
+    )
+    const form = draft({ title: 'Changed again', start: '2026-09-18' })
+    const copied = formCopy(form, edited, third, ZONE, 'all', true)
+    expect(copied.title).toBe('Standup')
+    expect(copied.repeat.frequency).toBe('daily')
   })
 
   it('reads a listed occurrence into a single event in the user zone', () => {

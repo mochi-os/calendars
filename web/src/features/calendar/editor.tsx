@@ -49,6 +49,7 @@ import {
   anchoredDraft,
   componentDraft,
   copyDraft,
+  formCopy,
   draftComponent,
   draftInstants,
   editedComponents,
@@ -131,7 +132,7 @@ export function EventEditor() {
     }
     if (editing.mode === 'create') {
       setDraft(editing.draft)
-      setInitial(editing.draft)
+      setInitial(editing.initial ?? editing.draft)
       setCustom(false)
       return
     }
@@ -153,6 +154,13 @@ export function EventEditor() {
   const close = () => setEditing(null)
 
   const recurring = Boolean(event?.recurring) && editing?.mode === 'edit'
+  // Whether the form holds anything not yet saved: closing asks first, and a
+  // copy carries it over.
+  const changed =
+    draft !== null &&
+    initial !== null &&
+    JSON.stringify(draft) !== JSON.stringify(initial)
+
   // The end may read earlier than the start by the clock, across zones, but
   // never as an instant.
   const ordered = draft
@@ -263,15 +271,27 @@ export function EventEditor() {
   // the calendar the form shows; a series asks which of it to copy.
   const duplicate = (scope: 'one' | 'all') => {
     if (!draft || !event || editing?.mode !== 'edit') return
-    const copied = copyDraft(
+    const stored = copyDraft(
       event.components,
       editing.start,
       draft.calendar,
       format.timezone,
       scope
     )
-    if (!copied) return
-    setEditing({ mode: 'create', draft: copied, copy: true })
+    if (!stored) return
+    // Edits not yet saved go into the copy rather than being dropped; the
+    // stored copy is what closing measures against, so it still asks.
+    const copied = changed
+      ? formCopy(
+          draft,
+          event.components,
+          editing.start,
+          format.timezone,
+          scope,
+          recurring
+        )
+      : stored
+    setEditing({ mode: 'create', draft: copied, copy: true, initial: stored })
     // The form swaps in place and looks the same, so say that it is now a
     // copy waiting for Save, and put the cursor in its title: the button that
     // was clicked has gone with the Delete beside it.
@@ -294,11 +314,6 @@ export function EventEditor() {
     createMutation.isPending ||
     updateMutation.isPending ||
     splitMutation.isPending
-
-  const changed =
-    draft !== null &&
-    initial !== null &&
-    JSON.stringify(draft) !== JSON.stringify(initial)
 
   // Escape, a click outside, the X and Cancel all come through here: a form
   // with changes asks first, and nothing closes while a save is in flight.

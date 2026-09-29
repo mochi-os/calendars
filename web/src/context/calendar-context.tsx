@@ -41,6 +41,11 @@ export type Editing =
       draft: EventDraft
       /** The draft was copied from another event, so the editor says so. */
       copy?: boolean
+      /**
+       * What closing measures the draft against, when not the draft itself:
+       * a copy carrying edits never saved asks before they are dropped.
+       */
+      initial?: EventDraft
     }
   | { mode: 'edit'; event: string; start: number }
 
