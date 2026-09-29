@@ -64,7 +64,7 @@ export function ColourDialog({ calendar, onClose }: Props) {
             <Trans>Calendar colour</Trans>
           </ResponsiveDialogTitle>
         </ResponsiveDialogHeader>
-        <div className='px-4 pb-4 sm:px-0 sm:pb-0'>
+        <div>
           <ColourPicker value={colour} onChange={setColour} />
         </div>
         <ResponsiveDialogFooter className='gap-2'>

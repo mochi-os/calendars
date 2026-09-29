@@ -545,12 +545,10 @@ msgstr "کامێرا بەردەست نییە"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
@@ -2325,7 +2323,7 @@ msgstr "<0>{0}</0> لە Mochi لاببرێت؟"
 msgid "Remove access rule"
 msgstr "لابردنی ڕێسای دەستڕاگەیشتن"
 
-#. placeholder {0}: formatSubject(subject, data.name)
+#. placeholder {0}: formatSubject(removeSubject ?? '', removeData?.name)
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Remove access rule for \"{0}\"?"
 msgstr "یاسای دەستپێگەیشتن بۆ \"{0}\" لابردرێت؟"
