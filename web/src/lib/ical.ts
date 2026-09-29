@@ -770,7 +770,9 @@ export function occurrenceDraft(
  * The draft the editor opens an occurrence of a series on, as the Android
  * editor does: the occurrence's own override where it has one, else the
  * master moved onto the occurrence, so the form shows the day that was
- * opened. An event that does not repeat reads as it is.
+ * opened. An override carries no rule, so its draft takes the series' own,
+ * which "All events" and "This and following" keep and "This event" drops.
+ * An event that does not repeat reads as it is.
  */
 export function openedDraft(
   components: Component[],
@@ -780,20 +782,23 @@ export function openedDraft(
   recurring: boolean
 ): EventDraft | null {
   const master = masterComponent(components)
-  if (!recurring)
-    return master ? componentDraft(master, calendar, timezone) : null
+  if (!master) return null
+  if (!recurring) return componentDraft(master, calendar, timezone)
   const own = overrideComponent(components, start, timezone)
-  if (own) return componentDraft(own, calendar, timezone)
-  return master ? occurrenceDraft(master, start, calendar, timezone) : null
+  if (!own) return occurrenceDraft(master, start, calendar, timezone)
+  return {
+    ...componentDraft(own, calendar, timezone),
+    repeat: componentDraft(master, calendar, timezone).repeat,
+  }
 }
 
 /**
- * What saving the editor's draft for the occurrence at `start` writes. A
- * draft opened on a plain occurrence holds that occurrence's dates
- * (openedDraft), so "All events" first moves it back by the occurrence's
- * distance from the series' start: a change made to this occurrence's time
- * then lands on every one. One read from an override describes that override
- * and is written as it is.
+ * What saving the editor's draft for the occurrence at `start` writes. The
+ * draft holds that occurrence's dates (openedDraft), so "All events" first
+ * moves it by the occurrence's distance from the series' start: the series
+ * lands where the form puts this occurrence, measured from its place in the
+ * series. The draft also replaces the occurrence's own override, if it had
+ * one, rather than leaving it over the series.
  */
 export function savedComponents(
   components: Component[],
@@ -803,16 +808,52 @@ export function savedComponents(
   timezone: string
 ): Component[] {
   const master = masterComponent(components)
-  let written = draft
-  if (
-    scope === 'all' &&
-    master &&
-    !overrideComponent(components, start, timezone)
-  ) {
-    const first = masterStart(master, timezone)
-    if (first !== null) written = movedDraft(draft, first - start)
+  if (scope !== 'all' || !master) {
+    return editedComponents(components, draft, scope, start, timezone)
   }
-  return editedComponents(components, written, scope, start, timezone)
+  const first = masterStart(master, timezone)
+  const written = first === null ? draft : movedDraft(draft, first - start)
+  return editedComponents(
+    replaced(components, start, timezone),
+    written,
+    'all',
+    start,
+    timezone
+  )
+}
+
+/**
+ * The two events saving the editor's draft for "This and following" writes,
+ * as splitSeries builds them, less the override of the occurrence the draft
+ * was opened on, which the new series' first occurrence now describes. Null
+ * on the series' first occurrence, as splitSeries.
+ */
+export function savedSplit(
+  components: Component[],
+  draft: EventDraft,
+  start: number,
+  timezone: string
+): { before: Component[]; after: Component[] } | null {
+  return splitSeries(
+    replaced(components, start, timezone),
+    draft,
+    start,
+    timezone
+  )
+}
+
+/**
+ * The event without the override of the occurrence at `start`. Only the
+ * editor drops it: a drag starts from the master and moves the override
+ * along with its occurrence.
+ */
+function replaced(
+  components: Component[],
+  start: number,
+  timezone: string
+): Component[] {
+  const own = overrideComponent(components, start, timezone)
+  return own ? components.filter((item) => item !== own) : components
 }
 
 /** Each value of a list-valued date property, with the instant it names. */

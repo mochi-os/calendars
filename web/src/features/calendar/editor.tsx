@@ -58,7 +58,7 @@ import {
   nextReminder,
   openedDraft,
   savedComponents,
-  splitSeries,
+  savedSplit,
   type EventDraft,
   type Frequency,
   type Scope,
@@ -173,7 +173,7 @@ export function EventEditor() {
         // own, starting where this one now falls. The first occurrence has
         // nothing before it, so that is the whole series.
         if (recurring && scope === 'following' && master) {
-          const split = splitSeries(
+          const split = savedSplit(
             event.components,
             draft,
             editing.start,

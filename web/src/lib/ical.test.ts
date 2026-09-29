@@ -35,6 +35,7 @@ import {
   repeatRule,
   ruleRepeat,
   savedComponents,
+  savedSplit,
   splitSeries,
   startZone,
   triggerMinutes,
@@ -1062,6 +1063,96 @@ describe('opening an occurrence of a series', () => {
     expect(propertyValue(split.before[0], 'RRULE')).toBe(
       'FREQ=DAILY;UNTIL=20260918T075959Z'
     )
+  })
+})
+
+describe('saving a changed occurrence', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+  const third = at('20260918T090000')
+  // The 18th renamed and moved to 14:00, and the 20th renamed.
+  const changed = editedComponents(
+    editedComponents(
+      [series],
+      draft({
+        title: 'Once',
+        start: '2026-09-18',
+        startTime: 14 * 60,
+        finish: '2026-09-18',
+        finishTime: 15 * 60,
+      }),
+      'one',
+      third,
+      ZONE
+    ),
+    draft({ title: 'Later', start: '2026-09-20', finish: '2026-09-20' }),
+    'one',
+    at('20260920T090000'),
+    ZONE
+  )
+  // The 18th opened in the editor and given a location.
+  const edited = () => ({
+    ...openedDraft(changed, third, 'cal1', ZONE, true)!,
+    location: 'Room 2',
+  })
+  const summaries = (list: Component[]) =>
+    list.map((item) => propertyValue(item, 'SUMMARY'))
+
+  it("opens on the override's own values with the series' rule", () => {
+    const read = openedDraft(changed, third, 'cal1', ZONE, true)!
+    expect(read.title).toBe('Once')
+    expect(read.startTime).toBe(14 * 60)
+    expect(read.repeat.frequency).toBe('daily')
+  })
+
+  it('writes "This event" as the override, with no rule', () => {
+    const written = savedComponents(changed, edited(), 'one', third, ZONE)
+    expect(propertyValue(written[0], 'RRULE')).toBe('FREQ=DAILY')
+    const override = written[written.length - 1]
+    expect(propertyValue(override, 'LOCATION')).toBe('Room 2')
+    expect(propertyValue(override, 'DTSTART')).toBe('20260918T140000')
+    expect(propertyValue(override, 'RECURRENCE-ID')).toBe('20260918T090000')
+    expect(property(override, 'RRULE')).toBeUndefined()
+  })
+
+  it('makes "All events" the form as shown, measured from the occurrence\'s place', () => {
+    const written = savedComponents(changed, edited(), 'all', third, ZONE)
+    const master = written[0]
+    expect(propertyValue(master, 'RRULE')).toBe('FREQ=DAILY')
+    expect(propertyValue(master, 'DTSTART')).toBe('20260916T140000')
+    expect(propertyValue(master, 'SUMMARY')).toBe('Once')
+    expect(propertyValue(master, 'LOCATION')).toBe('Room 2')
+    // The 18th's override is what the form replaced; the 20th's stays,
+    // moved the five hours the series moved.
+    expect(summaries(written)).toEqual(['Once', 'Later'])
+    expect(propertyValue(written[1], 'RECURRENCE-ID')).toBe('20260920T140000')
+  })
+
+  it('starts "This and following" from the form, still repeating, without the old override', () => {
+    const split = savedSplit(changed, edited(), third, ZONE)!
+    expect(propertyValue(split.before[0], 'RRULE')).toBe(
+      'FREQ=DAILY;UNTIL=20260918T075959Z'
+    )
+    const head = split.after[0]
+    expect(propertyValue(head, 'RRULE')).toBe('FREQ=DAILY')
+    expect(propertyValue(head, 'DTSTART')).toBe('20260918T140000')
+    expect(propertyValue(head, 'LOCATION')).toBe('Room 2')
+    expect(summaries(split.after)).toEqual(['Once', 'Later'])
+    expect(propertyValue(split.after[1], 'RECURRENCE-ID')).toBe(
+      '20260920T140000'
+    )
+  })
+
+  it("carries a dragged occurrence's override along, since a drag starts from the master", () => {
+    const dragged = movedDraft(
+      occurrenceDraft(series, third, 'cal1', ZONE),
+      3600
+    )
+    const split = splitSeries(changed, dragged, third, ZONE)!
+    expect(summaries(split.after)).toEqual(['Standup', 'Once', 'Later'])
   })
 })
 
