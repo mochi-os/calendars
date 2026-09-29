@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { describe, expect, it } from 'vitest'
-import type { Component } from '@/api/types/events'
+import type { Component, Property } from '@/api/types/events'
 import {
   alarmMinutes,
   creationDay,
@@ -407,6 +407,66 @@ describe('componentDraft', () => {
     expect(read.start).toBe('2026-09-16')
     expect(read.startTime).toBe(540)
     expect(read.finishTime).toBe(540)
+  })
+
+  describe('an event written with a DURATION in place of a DTEND', () => {
+    const lasting = (start: Property, duration: string): Component => ({
+      name: 'VEVENT',
+      properties: [
+        { name: 'SUMMARY', params: {}, value: 'Standup' },
+        start,
+        { name: 'DURATION', params: {}, value: duration },
+      ],
+      components: [],
+    })
+    const at = (value: string): Property => ({
+      name: 'DTSTART',
+      params: { TZID: [ZONE] },
+      value,
+    })
+
+    it('ends that long after it starts', () => {
+      const read = componentDraft(
+        lasting(at('20260916T090000'), 'PT1H30M'),
+        'cal1',
+        ZONE
+      )
+      expect(read.finish).toBe('2026-09-16')
+      expect(read.finishTime).toBe(10 * 60 + 30)
+      expect(read.zone.finish).toBe(ZONE)
+    })
+
+    it('counts a day as a calendar day across a change of clocks', () => {
+      // London's clocks go back an hour early on 25 October 2026.
+      const read = componentDraft(
+        lasting(at('20261024T090000'), 'P1D'),
+        'cal1',
+        ZONE
+      )
+      expect(read.finish).toBe('2026-10-25')
+      expect(read.finishTime).toBe(9 * 60)
+    })
+
+    it('covers whole days when it is all day', () => {
+      const read = componentDraft(
+        lasting(
+          { name: 'DTSTART', params: { VALUE: ['DATE'] }, value: '20260916' },
+          'P2D'
+        ),
+        'cal1',
+        ZONE
+      )
+      expect(read.allday).toBe(true)
+      expect(read.start).toBe('2026-09-16')
+      expect(read.finish).toBe('2026-09-17')
+    })
+
+    it('keeps its length when saved, as a DTEND', () => {
+      const stored = lasting(at('20260916T090000'), 'PT1H30M')
+      const saved = draftComponent(componentDraft(stored, 'cal1', ZONE), stored)
+      expect(propertyValue(saved, 'DTEND')).toBe('20260916T103000')
+      expect(property(saved, 'DURATION')).toBeUndefined()
+    })
   })
 })
 

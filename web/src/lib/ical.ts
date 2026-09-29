@@ -324,22 +324,37 @@ export function reminderTrigger(minutes: number): string {
   return `-PT${minutes}M`
 }
 
-/** The minutes before the start a TRIGGER names; null when it is not one. */
-export function triggerMinutes(trigger: string): number | null {
+/**
+ * An iCalendar duration value read as its sign, its whole days (weeks
+ * counted as seven) and the exact seconds of its time part; null when the
+ * value is not one.
+ */
+function durationParts(
+  value: string
+): { negative: boolean; days: number; seconds: number } | null {
   const match =
-    /^(-?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
-      trigger.trim().toUpperCase()
+    /^([+-]?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
+      value.trim().toUpperCase()
     )
   if (!match) return null
   const [, sign, weeks, days, hours, minutes, seconds] = match
-  const total =
-    Number(weeks ?? 0) * 10080 +
-    Number(days ?? 0) * 1440 +
-    Number(hours ?? 0) * 60 +
-    Number(minutes ?? 0) +
-    Number(seconds ?? 0) / 60
+  return {
+    negative: sign === '-',
+    days: Number(weeks ?? 0) * 7 + Number(days ?? 0),
+    seconds:
+      Number(hours ?? 0) * 3600 +
+      Number(minutes ?? 0) * 60 +
+      Number(seconds ?? 0),
+  }
+}
+
+/** The minutes before the start a TRIGGER names; null when it is not one. */
+export function triggerMinutes(trigger: string): number | null {
+  const parts = durationParts(trigger)
+  if (!parts) return null
+  const total = parts.days * 1440 + parts.seconds / 60
   if (total === 0) return 0
-  return sign === '-' ? total : -total
+  return parts.negative ? total : -total
 }
 
 /**
@@ -480,6 +495,33 @@ export function draftComponent(
   }
 }
 
+/**
+ * Where an event written with a DURATION rather than a DTEND ends, in the
+ * form componentDraft holds an end: the last second of an all-day event's
+ * last day. Weeks and days are calendar days in the start's zone, so a day
+ * across a change of clocks still ends at the same time of day; hours,
+ * minutes and seconds are exact. An event whose duration is missing or will
+ * not read ends where it starts, and an all-day one covers its first day.
+ */
+function durationFinish(
+  start: number,
+  value: string,
+  allday: boolean,
+  zone: string
+): number {
+  const parts = value ? durationParts(value) : null
+  if (!parts || parts.negative) return start
+  const from = new Date(start * 1000)
+  const day = zonedDay(from, zone)
+  if (allday) {
+    return timestampAt(addDays(day, Math.max(parts.days, 1)), 0, zone) - 1
+  }
+  const moved = parts.days
+    ? timestampAt(addDays(day, parts.days), zonedMinutes(from, zone), zone)
+    : start
+  return moved + parts.seconds
+}
+
 /** The editor's draft for an existing VEVENT. */
 export function componentDraft(
   component: Component,
@@ -494,13 +536,19 @@ export function componentDraft(
   const finishZone = property(component, 'DTEND')?.params?.TZID?.[0] ?? zone
   const allday = start?.allday ?? false
   const startSeconds = start?.seconds ?? Math.floor(Date.now() / 1000)
-  // A whole-day DTEND is the day after the last, and an event with neither
-  // DTEND nor DURATION ends where it starts.
+  // A whole-day DTEND is the day after the last. An event written with a
+  // DURATION in its place ends that long after it starts, and one with
+  // neither ends where it starts.
   const finishSeconds = finish
     ? allday
       ? finish.seconds - 1
       : finish.seconds
-    : startSeconds
+    : durationFinish(
+        startSeconds,
+        propertyValue(component, 'DURATION'),
+        allday,
+        zone
+      )
 
   const description = propertyValue(component, 'DESCRIPTION')
   // The alarms the reminder setting can say; others are kept as they are.
