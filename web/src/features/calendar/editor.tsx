@@ -329,6 +329,9 @@ export function EventEditor() {
         ordered={ordered}
         untitled={untitled && draft.title.trim() === ''}
         onReveal={() => setRevealed(true)}
+        onSave={() => {
+          if (!pending) save()
+        }}
         setDraft={setDraft}
         custom={custom}
         setCustom={setCustom}
@@ -360,9 +363,13 @@ export function EventEditor() {
           </Button>
         </>
       )}
-      <Button variant='outline' onClick={requestClose} disabled={pending}>
-        <Trans>Cancel</Trans>
-      </Button>
+      {/* A phone's header X already closes, and four buttons do not fit
+          across one. */}
+      {!isMobile && (
+        <Button variant='outline' onClick={requestClose} disabled={pending}>
+          <Trans>Cancel</Trans>
+        </Button>
+      )}
       <Button
         onClick={save}
         loading={pending}
@@ -471,6 +478,7 @@ function EditorFields({
   ordered,
   untitled,
   onReveal,
+  onSave,
 }: {
   draft: EventDraft
   setDraft: React.Dispatch<React.SetStateAction<EventDraft | null>>
@@ -484,6 +492,8 @@ function EditorFields({
   /** A save was tried without a title, which the title row says. */
   untitled: boolean
   onReveal: () => void
+  /** Enter in the title: the Save button's own path, asks and all. */
+  onSave: () => void
 }) {
   const { t } = useLingui()
   const format = useFormat()
@@ -524,6 +534,14 @@ function EditorFields({
           onChange={(input) =>
             edit((current) => ({ ...current, title: input.target.value }))
           }
+          // Only the title: the pickers and selects below take Enter for
+          // themselves. A key that ends an IME composition is not a save.
+          onKeyDown={(key) => {
+            if (key.key === 'Enter' && !key.nativeEvent.isComposing) {
+              key.preventDefault()
+              onSave()
+            }
+          }}
         />
         {untitled && (
           <p className='text-destructive text-xs' data-testid='untitled'>

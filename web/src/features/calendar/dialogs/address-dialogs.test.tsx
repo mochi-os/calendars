@@ -97,4 +97,22 @@ describe('calendar address', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Replace' }))
     await waitFor(() => expect(address).toHaveBeenLastCalledWith('c1', true))
   })
+
+  it('keeps the Replace confirm open when replacing fails', async () => {
+    address.mockResolvedValueOnce({ exists: true })
+    show()
+    fireEvent.click(screen.getByText('copy'))
+    await waitFor(() => expect(info).toHaveBeenCalled())
+
+    const action = info.mock.calls[0][1].action as { onClick: () => void }
+    address.mockRejectedValueOnce(new Error('offline'))
+    act(action.onClick)
+    fireEvent.click(screen.getByRole('button', { name: 'Replace' }))
+    await waitFor(() => expect(address).toHaveBeenCalledTimes(2))
+    // Settled: the button is back from its loading state, still in the confirm.
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'Replace' })).toBeEnabled()
+    )
+    expect(screen.getByText('Replace calendar address?')).toBeInTheDocument()
+  })
 })

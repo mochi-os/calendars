@@ -109,7 +109,11 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     'calendars:view',
     preferences.view
   )
-  const [workweek, setWorkweek] = useState(false)
+  // Kept per device like the last view, so a reload does not lose it.
+  const [workweek, setWorkweek] = useShellStorage<boolean>(
+    'calendars:workweek',
+    false
+  )
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Editing | null>(null)
   const [kept, setKept] = useShellStorage<Remembered>(

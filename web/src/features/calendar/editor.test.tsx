@@ -13,8 +13,24 @@ const { setEditing, noon, state } = vi.hoisted(() => ({
   noon: Date.UTC(2026, 8, 25, 12) / 1000,
   // What the editor is open on, and the stored event an edit reads; set
   // before rendering, so each stays one object for the render's life.
-  state: { editing: null as unknown, event: undefined as unknown },
+  state: {
+    editing: null as unknown,
+    event: undefined as unknown,
+    mobile: false,
+  },
 }))
+
+// The phone layout on demand; every other test keeps the real width.
+vi.mock('@mochi/web', async (importOriginal) => {
+  const original = await importOriginal<typeof import('@mochi/web')>()
+  return {
+    ...original,
+    useScreenSize: () => {
+      const real = original.useScreenSize()
+      return state.mobile ? { ...real, isMobile: true, isDesktop: false } : real
+    },
+  }
+})
 
 // Built once: the editor re-reads its draft whenever `editing` changes, so a
 // fresh object on every render would never settle.
@@ -95,6 +111,39 @@ describe('EventEditor closing', () => {
     fireEvent.keyDown(title, { key: 'Escape' })
     expect(setEditing).not.toHaveBeenCalled()
     expect(screen.getByText('Discard draft?')).toBeInTheDocument()
+  })
+})
+
+describe('EventEditor saving', () => {
+  it('saves on Enter in the title, as the Save button does', () => {
+    show()
+    expect(screen.queryByTestId('untitled')).toBeNull()
+    // An empty title is the save's own refusal, so it proves Enter reached it.
+    fireEvent.keyDown(screen.getByLabelText('Title'), { key: 'Enter' })
+    expect(screen.getByTestId('untitled')).toBeInTheDocument()
+  })
+
+  it('does not save on the Enter that ends an IME composition', () => {
+    show()
+    fireEvent.keyDown(screen.getByLabelText('Title'), {
+      key: 'Enter',
+      isComposing: true,
+    })
+    expect(screen.queryByTestId('untitled')).toBeNull()
+  })
+})
+
+describe('EventEditor on a phone', () => {
+  afterEach(() => {
+    state.mobile = false
+  })
+
+  it('leaves Cancel to the header X', () => {
+    state.mobile = true
+    show()
+    expect(screen.queryByRole('button', { name: 'Cancel' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument()
   })
 })
 

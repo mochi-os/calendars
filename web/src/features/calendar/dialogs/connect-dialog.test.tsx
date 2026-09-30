@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { ConnectDialog } from './connect-dialog'
 
@@ -101,9 +101,13 @@ describe('ConnectDialog', () => {
     expect(screen.queryByLabelText('Device name')).toBeNull()
   })
 
-  it('closes on Cancel', () => {
+  it('closes on Close', () => {
     const onOpenChange = show()
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+    // The footer's Close, beside Add device; the corner X shares the name.
+    const footer = screen.getByRole('button', {
+      name: 'Add device',
+    }).parentElement!
+    fireEvent.click(within(footer).getByRole('button', { name: 'Close' }))
     expect(onOpenChange).toHaveBeenCalledWith(false)
   })
 

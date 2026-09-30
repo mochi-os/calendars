@@ -215,8 +215,9 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           <ResponsiveDialogFooter className='gap-2'>
             {view === 'list' && (
               <>
+                {/* Nothing here to cancel: the list only shows. */}
                 <Button variant='outline' onClick={() => onOpenChange(false)}>
-                  <Trans>Cancel</Trans>
+                  <Trans>Close</Trans>
                 </Button>
                 <Button
                   onClick={() => setView('name')}

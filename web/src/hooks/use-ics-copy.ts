@@ -24,7 +24,11 @@ export function useIcsCopy() {
   const [revoking, setRevoking] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
 
-  const issue = async (calendar: string, regenerate: boolean) => {
+  // False only when the request failed, which has already said so.
+  const issue = async (
+    calendar: string,
+    regenerate: boolean
+  ): Promise<boolean> => {
     try {
       const { token, path, exists } = await calendarsApi.address(
         calendar,
@@ -40,11 +44,13 @@ export function useIcsCopy() {
             },
           }
         )
-        return
+        return true
       }
       setIssued(`${window.location.origin}${path}?token=${token}`)
+      return true
     } catch (error) {
       toast.error(getErrorMessage(error, t`Failed to get the calendar address`))
+      return false
     }
   }
 
@@ -53,9 +59,10 @@ export function useIcsCopy() {
   const replace = async () => {
     if (!replacing) return
     setBusy(true)
-    await issue(replacing, true)
+    const done = await issue(replacing, true)
     setBusy(false)
-    setReplacing(null)
+    // A failure keeps the confirm open to try again, as Revoke does.
+    if (done) setReplacing(null)
   }
 
   const revoke = async () => {
