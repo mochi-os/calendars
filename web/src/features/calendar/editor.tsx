@@ -46,13 +46,10 @@ import {
 } from 'lucide-react'
 import type { Component } from '@/api/types/events'
 import {
-  anchoredDraft,
-  componentDraft,
   copyDraft,
   formCopy,
   draftComponent,
   draftInstants,
-  editedComponents,
   endAfterStart,
   startZone,
   expressible,
@@ -61,8 +58,9 @@ import {
   masterComponent,
   movedStart,
   nextReminder,
-  overrideComponent,
-  splitSeries,
+  openedDraft,
+  savedComponents,
+  savedSplit,
   type EventDraft,
   type Frequency,
   type Scope,
@@ -137,11 +135,14 @@ export function EventEditor() {
       return
     }
     if (!event) return
-    const own =
-      overrideComponent(event.components, editing.start, format.timezone) ??
-      masterComponent(event.components)
-    if (!own) return
-    const read = componentDraft(own, event.calendar, format.timezone)
+    const read = openedDraft(
+      event.components,
+      editing.start,
+      event.calendar,
+      format.timezone,
+      event.recurring
+    )
+    if (!read) return
     setDraft(read)
     setInitial(read)
     setCustom(
@@ -187,20 +188,9 @@ export function EventEditor() {
         // own, starting where this one now falls. The first occurrence has
         // nothing before it, so that is the whole series.
         if (recurring && scope === 'following' && master) {
-          const fromMaster = !overrideComponent(
+          const split = savedSplit(
             event.components,
-            editing.start,
-            format.timezone
-          )
-          const split = splitSeries(
-            event.components,
-            anchoredDraft(
-              draft,
-              master,
-              editing.start,
-              format.timezone,
-              fromMaster
-            ),
+            draft,
             editing.start,
             format.timezone
           )
@@ -221,7 +211,7 @@ export function EventEditor() {
           scope = 'all'
         }
         const components: Component[] = recurring
-          ? editedComponents(
+          ? savedComponents(
               event.components,
               draft,
               scope,

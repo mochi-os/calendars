@@ -3,14 +3,13 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { describe, expect, it } from 'vitest'
-import type { Component } from '@/api/types/events'
+import type { Component, Property } from '@/api/types/events'
 import {
   alarmMinutes,
   creationDay,
   defaultCalendar,
   defaultStart,
   nextReminder,
-  anchoredDraft,
   componentDraft,
   copyDraft,
   formCopy,
@@ -28,6 +27,7 @@ import {
   movedDraft,
   newDraft,
   occurrenceDraft,
+  openedDraft,
   property,
   propertyInstant,
   propertyValue,
@@ -36,6 +36,8 @@ import {
   reminderTrigger,
   repeatRule,
   ruleRepeat,
+  savedComponents,
+  savedSplit,
   splitSeries,
   startZone,
   triggerMinutes,
@@ -445,6 +447,66 @@ describe('componentDraft', () => {
     expect(read.start).toBe('2026-09-16')
     expect(read.startTime).toBe(540)
     expect(read.finishTime).toBe(540)
+  })
+
+  describe('an event written with a DURATION in place of a DTEND', () => {
+    const lasting = (start: Property, duration: string): Component => ({
+      name: 'VEVENT',
+      properties: [
+        { name: 'SUMMARY', params: {}, value: 'Standup' },
+        start,
+        { name: 'DURATION', params: {}, value: duration },
+      ],
+      components: [],
+    })
+    const at = (value: string): Property => ({
+      name: 'DTSTART',
+      params: { TZID: [ZONE] },
+      value,
+    })
+
+    it('ends that long after it starts', () => {
+      const read = componentDraft(
+        lasting(at('20260916T090000'), 'PT1H30M'),
+        'cal1',
+        ZONE
+      )
+      expect(read.finish).toBe('2026-09-16')
+      expect(read.finishTime).toBe(10 * 60 + 30)
+      expect(read.zone.finish).toBe(ZONE)
+    })
+
+    it('counts a day as a calendar day across a change of clocks', () => {
+      // London's clocks go back an hour early on 25 October 2026.
+      const read = componentDraft(
+        lasting(at('20261024T090000'), 'P1D'),
+        'cal1',
+        ZONE
+      )
+      expect(read.finish).toBe('2026-10-25')
+      expect(read.finishTime).toBe(9 * 60)
+    })
+
+    it('covers whole days when it is all day', () => {
+      const read = componentDraft(
+        lasting(
+          { name: 'DTSTART', params: { VALUE: ['DATE'] }, value: '20260916' },
+          'P2D'
+        ),
+        'cal1',
+        ZONE
+      )
+      expect(read.allday).toBe(true)
+      expect(read.start).toBe('2026-09-16')
+      expect(read.finish).toBe('2026-09-17')
+    })
+
+    it('keeps its length when saved, as a DTEND', () => {
+      const stored = lasting(at('20260916T090000'), 'PT1H30M')
+      const saved = draftComponent(componentDraft(stored, 'cal1', ZONE), stored)
+      expect(propertyValue(saved, 'DTEND')).toBe('20260916T103000')
+      expect(property(saved, 'DURATION')).toBeUndefined()
+    })
   })
 })
 
@@ -929,24 +991,6 @@ describe('cutting a series at an occurrence', () => {
     expect(split.before).toHaveLength(1)
   })
 
-  it('moves a draft read from the master onto the occurrence, keeping the edit', () => {
-    // The editor showed the 16th and the user set 11:00; the third
-    // occurrence therefore lands on the 18th at 11:00.
-    const anchored = anchoredDraft(
-      draft({ startTime: 11 * 60, finishTime: 12 * 60, repeat: daily }),
-      series,
-      third,
-      ZONE,
-      true
-    )
-    expect(anchored.start).toBe('2026-09-18')
-    expect(anchored.startTime).toBe(11 * 60)
-    expect(anchored.finish).toBe('2026-09-18')
-    // A draft read from the occurrence's own override already sits there.
-    const own = draft({ start: '2026-09-18', finish: '2026-09-18' })
-    expect(anchoredDraft(own, series, third, ZONE, false)).toBe(own)
-  })
-
   it('reads the series as it stands at a later occurrence', () => {
     const read = occurrenceDraft(series, third, 'cal1', ZONE)
     expect(read.start).toBe('2026-09-18')
@@ -1023,6 +1067,192 @@ describe('moving a whole series', () => {
       ZONE
     )
     expect(renamed[1]).toBe(withOverride[1])
+  })
+})
+
+describe('opening an occurrence of a series', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+  // The third occurrence, 2026-09-18 09:00 London.
+  const third = at('20260918T090000')
+  const opened = () => openedDraft([series], third, 'cal1', ZONE, true)!
+
+  it('reads a plain occurrence on its own day', () => {
+    const read = opened()
+    expect(read.start).toBe('2026-09-18')
+    expect(read.startTime).toBe(9 * 60)
+    expect(read.finish).toBe('2026-09-18')
+    expect(read.repeat.frequency).toBe('daily')
+  })
+
+  it('reads an occurrence that has an override from the override', () => {
+    const changed = editedComponents(
+      [series],
+      draft({
+        title: 'Once',
+        start: '2026-09-18',
+        startTime: 14 * 60,
+        finish: '2026-09-18',
+        finishTime: 15 * 60,
+      }),
+      'one',
+      third,
+      ZONE
+    )
+    const read = openedDraft(changed, third, 'cal1', ZONE, true)!
+    expect(read.title).toBe('Once')
+    expect(read.start).toBe('2026-09-18')
+    expect(read.startTime).toBe(14 * 60)
+  })
+
+  it('reads an event that does not repeat as it is', () => {
+    const single = draftComponent(draft())
+    const read = openedDraft([single], third, 'cal1', ZONE, false)!
+    expect(read.start).toBe('2026-09-16')
+    expect(read.startTime).toBe(9 * 60)
+  })
+
+  it('writes "This event" on the occurrence\'s own day', () => {
+    const written = savedComponents(
+      [series],
+      { ...opened(), title: 'Renamed' },
+      'one',
+      third,
+      ZONE
+    )
+    expect(written[0]).toBe(series)
+    const override = written[1]
+    expect(propertyValue(override, 'SUMMARY')).toBe('Renamed')
+    expect(propertyValue(override, 'DTSTART')).toBe('20260918T090000')
+    expect(propertyValue(override, 'DTEND')).toBe('20260918T100000')
+    expect(propertyValue(override, 'RECURRENCE-ID')).toBe('20260918T090000')
+  })
+
+  it('keeps the series start when "All events" changes only the title', () => {
+    const written = savedComponents(
+      [series],
+      { ...opened(), title: 'Renamed' },
+      'all',
+      third,
+      ZONE
+    )
+    expect(written).toHaveLength(1)
+    expect(propertyValue(written[0], 'SUMMARY')).toBe('Renamed')
+    expect(propertyValue(written[0], 'DTSTART')).toBe('20260916T090000')
+    expect(propertyValue(written[0], 'RRULE')).toBe('FREQ=DAILY')
+  })
+
+  it('moves every occurrence when "All events" changes the time', () => {
+    const written = savedComponents(
+      [series],
+      { ...opened(), startTime: 11 * 60, finishTime: 12 * 60 },
+      'all',
+      third,
+      ZONE
+    )
+    expect(propertyValue(written[0], 'DTSTART')).toBe('20260916T110000')
+    expect(propertyValue(written[0], 'DTEND')).toBe('20260916T120000')
+  })
+
+  it('splits "This and following" at the occurrence', () => {
+    const split = splitSeries([series], opened(), third, ZONE)!
+    expect(propertyValue(split.after[0], 'DTSTART')).toBe('20260918T090000')
+    expect(propertyValue(split.before[0], 'RRULE')).toBe(
+      'FREQ=DAILY;UNTIL=20260918T075959Z'
+    )
+  })
+})
+
+describe('saving a changed occurrence', () => {
+  const daily = { ...emptyRepeat(), frequency: 'daily' as const }
+  const series = draftComponent(draft({ repeat: daily }))
+  const at = (value: string) =>
+    propertyInstant({ name: 'DTSTART', params: { TZID: [ZONE] }, value }, ZONE)!
+      .seconds
+  const third = at('20260918T090000')
+  // The 18th renamed and moved to 14:00, and the 20th renamed.
+  const changed = editedComponents(
+    editedComponents(
+      [series],
+      draft({
+        title: 'Once',
+        start: '2026-09-18',
+        startTime: 14 * 60,
+        finish: '2026-09-18',
+        finishTime: 15 * 60,
+      }),
+      'one',
+      third,
+      ZONE
+    ),
+    draft({ title: 'Later', start: '2026-09-20', finish: '2026-09-20' }),
+    'one',
+    at('20260920T090000'),
+    ZONE
+  )
+  // The 18th opened in the editor and given a location.
+  const edited = () => ({
+    ...openedDraft(changed, third, 'cal1', ZONE, true)!,
+    location: 'Room 2',
+  })
+  const summaries = (list: Component[]) =>
+    list.map((item) => propertyValue(item, 'SUMMARY'))
+
+  it("opens on the override's own values with the series' rule", () => {
+    const read = openedDraft(changed, third, 'cal1', ZONE, true)!
+    expect(read.title).toBe('Once')
+    expect(read.startTime).toBe(14 * 60)
+    expect(read.repeat.frequency).toBe('daily')
+  })
+
+  it('writes "This event" as the override, with no rule', () => {
+    const written = savedComponents(changed, edited(), 'one', third, ZONE)
+    expect(propertyValue(written[0], 'RRULE')).toBe('FREQ=DAILY')
+    const override = written[written.length - 1]
+    expect(propertyValue(override, 'LOCATION')).toBe('Room 2')
+    expect(propertyValue(override, 'DTSTART')).toBe('20260918T140000')
+    expect(propertyValue(override, 'RECURRENCE-ID')).toBe('20260918T090000')
+    expect(property(override, 'RRULE')).toBeUndefined()
+  })
+
+  it('makes "All events" the form as shown, measured from the occurrence\'s place', () => {
+    const written = savedComponents(changed, edited(), 'all', third, ZONE)
+    const master = written[0]
+    expect(propertyValue(master, 'RRULE')).toBe('FREQ=DAILY')
+    expect(propertyValue(master, 'DTSTART')).toBe('20260916T140000')
+    expect(propertyValue(master, 'SUMMARY')).toBe('Once')
+    expect(propertyValue(master, 'LOCATION')).toBe('Room 2')
+    // The 18th's override is what the form replaced; the 20th's stays,
+    // moved the five hours the series moved.
+    expect(summaries(written)).toEqual(['Once', 'Later'])
+    expect(propertyValue(written[1], 'RECURRENCE-ID')).toBe('20260920T140000')
+  })
+
+  it('starts "This and following" from the form, still repeating, without the old override', () => {
+    const split = savedSplit(changed, edited(), third, ZONE)!
+    expect(propertyValue(split.before[0], 'RRULE')).toBe(
+      'FREQ=DAILY;UNTIL=20260918T075959Z'
+    )
+    const head = split.after[0]
+    expect(propertyValue(head, 'RRULE')).toBe('FREQ=DAILY')
+    expect(propertyValue(head, 'DTSTART')).toBe('20260918T140000')
+    expect(propertyValue(head, 'LOCATION')).toBe('Room 2')
+    expect(summaries(split.after)).toEqual(['Once', 'Later'])
+    expect(propertyValue(split.after[1], 'RECURRENCE-ID')).toBe(
+      '20260920T140000'
+    )
+  })
+
+  it("carries a dragged occurrence's override along, since a drag starts from the master", () => {
+    const dragged = movedDraft(
+      occurrenceDraft(series, third, 'cal1', ZONE),
+      3600
+    )
+    const split = splitSeries(changed, dragged, third, ZONE)!
+    expect(summaries(split.after)).toEqual(['Standup', 'Once', 'Later'])
   })
 })
 

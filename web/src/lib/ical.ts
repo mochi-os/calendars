@@ -324,22 +324,37 @@ export function reminderTrigger(minutes: number): string {
   return `-PT${minutes}M`
 }
 
-/** The minutes before the start a TRIGGER names; null when it is not one. */
-export function triggerMinutes(trigger: string): number | null {
+/**
+ * An iCalendar duration value read as its sign, its whole days (weeks
+ * counted as seven) and the exact seconds of its time part; null when the
+ * value is not one.
+ */
+function durationParts(
+  value: string
+): { negative: boolean; days: number; seconds: number } | null {
   const match =
-    /^(-?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
-      trigger.trim().toUpperCase()
+    /^([+-]?)P(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/.exec(
+      value.trim().toUpperCase()
     )
   if (!match) return null
   const [, sign, weeks, days, hours, minutes, seconds] = match
-  const total =
-    Number(weeks ?? 0) * 10080 +
-    Number(days ?? 0) * 1440 +
-    Number(hours ?? 0) * 60 +
-    Number(minutes ?? 0) +
-    Number(seconds ?? 0) / 60
+  return {
+    negative: sign === '-',
+    days: Number(weeks ?? 0) * 7 + Number(days ?? 0),
+    seconds:
+      Number(hours ?? 0) * 3600 +
+      Number(minutes ?? 0) * 60 +
+      Number(seconds ?? 0),
+  }
+}
+
+/** The minutes before the start a TRIGGER names; null when it is not one. */
+export function triggerMinutes(trigger: string): number | null {
+  const parts = durationParts(trigger)
+  if (!parts) return null
+  const total = parts.days * 1440 + parts.seconds / 60
   if (total === 0) return 0
-  return sign === '-' ? total : -total
+  return parts.negative ? total : -total
 }
 
 /**
@@ -480,6 +495,33 @@ export function draftComponent(
   }
 }
 
+/**
+ * Where an event written with a DURATION rather than a DTEND ends, in the
+ * form componentDraft holds an end: the last second of an all-day event's
+ * last day. Weeks and days are calendar days in the start's zone, so a day
+ * across a change of clocks still ends at the same time of day; hours,
+ * minutes and seconds are exact. An event whose duration is missing or will
+ * not read ends where it starts, and an all-day one covers its first day.
+ */
+function durationFinish(
+  start: number,
+  value: string,
+  allday: boolean,
+  zone: string
+): number {
+  const parts = value ? durationParts(value) : null
+  if (!parts || parts.negative) return start
+  const from = new Date(start * 1000)
+  const day = zonedDay(from, zone)
+  if (allday) {
+    return timestampAt(addDays(day, Math.max(parts.days, 1)), 0, zone) - 1
+  }
+  const moved = parts.days
+    ? timestampAt(addDays(day, parts.days), zonedMinutes(from, zone), zone)
+    : start
+  return moved + parts.seconds
+}
+
 /** The editor's draft for an existing VEVENT. */
 export function componentDraft(
   component: Component,
@@ -494,13 +536,19 @@ export function componentDraft(
   const finishZone = property(component, 'DTEND')?.params?.TZID?.[0] ?? zone
   const allday = start?.allday ?? false
   const startSeconds = start?.seconds ?? Math.floor(Date.now() / 1000)
-  // A whole-day DTEND is the day after the last, and an event with neither
-  // DTEND nor DURATION ends where it starts.
+  // A whole-day DTEND is the day after the last. An event written with a
+  // DURATION in its place ends that long after it starts, and one with
+  // neither ends where it starts.
   const finishSeconds = finish
     ? allday
       ? finish.seconds - 1
       : finish.seconds
-    : startSeconds
+    : durationFinish(
+        startSeconds,
+        propertyValue(component, 'DURATION'),
+        allday,
+        zone
+      )
 
   const description = propertyValue(component, 'DESCRIPTION')
   // The alarms the reminder setting can say; others are kept as they are.
@@ -767,22 +815,93 @@ export function occurrenceDraft(
 }
 
 /**
- * The editor's draft moved onto the occurrence at `start`. A draft read from
- * the master carries the series' first dates, so it moves by the distance
- * from the series' start to the occurrence, and the edit's own change of
- * time comes along; one read from the occurrence's override already sits
- * on the occurrence and is left alone.
+ * The draft the editor opens an occurrence of a series on, as the Android
+ * editor does: the occurrence's own override where it has one, else the
+ * master moved onto the occurrence, so the form shows the day that was
+ * opened. An override carries no rule, so its draft takes the series' own,
+ * which "All events" and "This and following" keep and "This event" drops.
+ * An event that does not repeat reads as it is.
  */
-export function anchoredDraft(
-  draft: EventDraft,
-  master: Component,
+export function openedDraft(
+  components: Component[],
   start: number,
+  calendar: string,
   timezone: string,
-  fromMaster: boolean
-): EventDraft {
-  if (!fromMaster) return draft
+  recurring: boolean
+): EventDraft | null {
+  const master = masterComponent(components)
+  if (!master) return null
+  if (!recurring) return componentDraft(master, calendar, timezone)
+  const own = overrideComponent(components, start, timezone)
+  if (!own) return occurrenceDraft(master, start, calendar, timezone)
+  return {
+    ...componentDraft(own, calendar, timezone),
+    repeat: componentDraft(master, calendar, timezone).repeat,
+  }
+}
+
+/**
+ * What saving the editor's draft for the occurrence at `start` writes. The
+ * draft holds that occurrence's dates (openedDraft), so "All events" first
+ * moves it by the occurrence's distance from the series' start: the series
+ * lands where the form puts this occurrence, measured from its place in the
+ * series. The draft also replaces the occurrence's own override, if it had
+ * one, rather than leaving it over the series.
+ */
+export function savedComponents(
+  components: Component[],
+  draft: EventDraft,
+  scope: Scope,
+  start: number,
+  timezone: string
+): Component[] {
+  const master = masterComponent(components)
+  if (scope !== 'all' || !master) {
+    return editedComponents(components, draft, scope, start, timezone)
+  }
   const first = masterStart(master, timezone)
-  return first === null ? draft : movedDraft(draft, start - first)
+  const written = first === null ? draft : movedDraft(draft, first - start)
+  return editedComponents(
+    replaced(components, start, timezone),
+    written,
+    'all',
+    start,
+    timezone
+  )
+}
+
+/**
+ * The two events saving the editor's draft for "This and following" writes,
+ * as splitSeries builds them, less the override of the occurrence the draft
+ * was opened on, which the new series' first occurrence now describes. Null
+ * on the series' first occurrence, as splitSeries.
+ */
+export function savedSplit(
+  components: Component[],
+  draft: EventDraft,
+  start: number,
+  timezone: string
+): { before: Component[]; after: Component[] } | null {
+  return splitSeries(
+    replaced(components, start, timezone),
+    draft,
+    start,
+    timezone
+  )
+}
+
+/**
+ * The event without the override of the occurrence at `start`. Only the
+ * editor drops it: a drag starts from the master and moves the override
+ * along with its occurrence.
+ */
+function replaced(
+  components: Component[],
+  start: number,
+  timezone: string
+): Component[] {
+  const own = overrideComponent(components, start, timezone)
+  return own ? components.filter((item) => item !== own) : components
 }
 
 /** Each value of a list-valued date property, with the instant it names. */
