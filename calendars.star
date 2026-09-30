@@ -18,11 +18,11 @@
 
 _PRODID = "-//Mochisoft//Mochi Calendars//EN"
 
-# Bounds. An event's text; events per identity; events one subscription may
-# hold; the bytes one subscription fetch may carry; components in one object.
+# Bounds. An event's text; the bytes one subscription fetch may carry, which
+# is as much as mochi.ical.parse reads; components in one object. There is no
+# bound on how many events a person or a calendar holds: refusing a person's
+# own calendar breaks it, where a large one only costs storage.
 _ICS_MAXIMUM = 1048576
-_EVENTS_MAXIMUM = 20000
-_SUBSCRIPTION_EVENTS_MAXIMUM = 5000
 _SUBSCRIPTION_BYTES_MAXIMUM = 16777216
 _COMPONENTS_MAXIMUM = 50
 _PROPERTIES_MAXIMUM = 200
@@ -235,6 +235,17 @@ def timezones_named(components, present=[]):
 		if type(tz) == "dict":
 			held[property_value(tz, "TZID")] = True
 	out = []
+	for name in zones(components):
+		if name not in held:
+			tz = mochi.ical.timezone(name)
+			if tz:
+				out.append(tz)
+	return out
+
+# zones(components) -> list: the zones the components' TZID parameters name,
+# each once.
+def zones(components):
+	named = {}
 	# The components and their children, walked without recursion, which
 	# Starlark refuses: an override's alarm sits two levels down.
 	pending = [c for c in components if type(c) == "dict"]
@@ -244,13 +255,10 @@ def timezones_named(components, present=[]):
 			if type(p) != "dict":
 				continue
 			for name in (p.get("params") or {}).get("TZID", []):
-				if name and name not in held:
-					held[name] = True
-					tz = mochi.ical.timezone(name)
-					if tz:
-						out.append(tz)
+				if name:
+					named[name] = True
 		pending.extend([c for c in component.get("components", []) if type(c) == "dict"])
-	return out
+	return list(named.keys())
 
 # decimal(value) -> bool: whether value is a non-empty ASCII decimal string.
 # isdigit() also accepts other scripts' digits (Arabic-Indic, Devanagari),
@@ -442,10 +450,6 @@ def event_by_slug(calendar, slug):
 	if not slug_valid(slug):
 		return None
 	return mochi.db.row("select * from events where calendar=? and slug=?", calendar, slug)
-
-def events_full(identity):
-	row = mochi.db.row("select count(*) as count from events where identity=?", identity)
-	return row != None and row["count"] >= _EVENTS_MAXIMUM
 
 def event_public(row):
 	return {
@@ -1070,7 +1074,10 @@ def subscription_ingest(row, text):
 	tree = mochi.ical.parse(text)
 	if not tree:
 		return "invalid"
-	timezones = [c for c in tree.get("components", []) if type(c) == "dict" and c.get("name") == "VTIMEZONE"]
+	timezones = {}
+	for c in tree.get("components", []):
+		if type(c) == "dict" and c.get("name") == "VTIMEZONE":
+			timezones[property_value(c, "TZID")] = c
 	groups = {}
 	order = []
 	for c in tree.get("components", []):
@@ -1080,13 +1087,14 @@ def subscription_ingest(row, text):
 		if uid not in groups:
 			groups[uid] = []
 			order.append(uid)
-			if len(order) > _SUBSCRIPTION_EVENTS_MAXIMUM:
-				return "too_large"
 		groups[uid].append(c)
 	identity = row["identity"]
 	seen = {}
 	for uid in order:
-		ics = mochi.ical.format(calendar_wrap(groups[uid], timezones))
+		# Each event carries the zones it names, the feed's own where it has
+		# them: a feed's full set in every event multiplies its storage.
+		named = [timezones[name] for name in zones(groups[uid]) if name in timezones]
+		ics = mochi.ical.format(calendar_wrap(groups[uid], named + timezones_named(groups[uid], named)))
 		if not ics or len(ics) > _ICS_MAXIMUM:
 			continue
 		slug = mochi.crypto.hash.sha256(uid)[:32]
@@ -1180,6 +1188,14 @@ def linked_refresh(row):
 def poll_schedule(calendar, delay):
 	mochi.schedule.after("schedule_calendars_poll", {"calendar": calendar}, max(delay, 10))
 
+# poll_booked(calendar) -> bool: whether a poll of the calendar is booked. A
+# job is gone from the list once it runs, so a poll never finds itself.
+def poll_booked(calendar):
+	for se in mochi.schedule.list():
+		if se.event == "schedule_calendars_poll" and se.data.get("calendar", "") == calendar:
+			return True
+	return False
+
 # ensure_polls(): a poll scheduled for every subscription, and the daily
 # watchdog that re-creates lost ones. One schedule listing covers them all.
 def ensure_polls():
@@ -1215,6 +1231,12 @@ def schedule_calendars_poll(e):
 	now = mochi.time.now()
 	token = poll_lock(calendar)
 	if not token:
+		# Another sync holds the calendar. The poll carries on only through the
+		# job it books next, so one that loses to a refresh, a manual poll or a
+		# lock left by a sync that died books a retry. A running poll's safety
+		# net is a booked poll, so one that loses to another poll books none.
+		if not poll_booked(calendar):
+			poll_schedule(calendar, 60)
 		return
 	safety = mochi.schedule.after("schedule_calendars_poll", {"calendar": calendar}, 360)
 	if row["next"] <= now:
@@ -1316,6 +1338,18 @@ def action_calendar_delete(a):
 	calendar_delete(identity, row)
 	return {"data": {}}
 
+# address_name(url) -> string: the name a calendar takes from its address
+# when it has none of its own: the host alone, without the login, port, path
+# or query the address may carry, or the default calendar name when the host
+# is not a usable name.
+def address_name(url):
+	rest = url.split("//", 1)[1] if "//" in url else url
+	rest = rest.split("/", 1)[0].split("?", 1)[0]
+	host = rest.split("@")[-1].split(":", 1)[0]
+	if not host or length(host) > _NAME_MAXIMUM or not mochi.text.valid(host, "name"):
+		return mochi.app.label("calendar.default")
+	return host
+
 def action_calendar_subscribe(a):
 	identity = a.user.identity.id
 	calendars_ensure(identity)
@@ -1350,7 +1384,7 @@ def action_calendar_subscribe(a):
 		return
 	name = a.input("name", "").strip() or property_value(tree, "X-WR-CALNAME").strip()
 	if not name or length(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
-		name = url.split("//", 1)[1].split("/")[0][:_NAME_MAXIMUM]
+		name = address_name(url)
 	id = mochi.entity.create("calendar", name, "private")
 	calendar_insert(identity, id, mochi.entity.fingerprint(id), "subscription", colour, url)
 	row = calendar_get(identity, id)
@@ -1380,10 +1414,15 @@ def action_calendar_poll(a):
 	if not row or not calendar_polled(row):
 		a.error.label(404, "errors.calendar_not_found")
 		return
+	token = poll_lock(row["id"])
+	if not token:
+		a.error.label(409, "errors.calendar_syncing")
+		return
 	if row["kind"] == "linked":
 		changed = linked_sync(row, True)
 	else:
 		changed = subscription_fetch(row, True)
+	poll_unlock(row["id"], token)
 	return {"data": {"changed": changed, "calendar": calendar_public(calendar_get(identity, row["id"]))}}
 
 # === Actions: linked calendars ===
@@ -1514,7 +1553,7 @@ def action_calendar_link(a):
 		return
 	name = a.input("name", "").strip()
 	if not name or length(name) > _NAME_MAXIMUM or not mochi.text.valid(name, "name"):
-		name = collection.split("//", 1)[1].split("/")[0][:_NAME_MAXIMUM]
+		name = address_name(collection)
 	# The server's word on whether this account may write the collection;
 	# a server that says nothing is taken at its first refused write.
 	readonly = False
@@ -1524,7 +1563,12 @@ def action_calendar_link(a):
 	id = mochi.entity.create("calendar", name, "private")
 	calendar_insert(identity, id, mochi.entity.fingerprint(id), "linked", colour, account=account, collection=collection, readonly=readonly)
 	row = calendar_get(identity, id)
-	linked_sync(row, True)
+	# A CalDAV client's check can find the new calendar stale and refresh it
+	# already; that sync stands in for this one.
+	token = poll_lock(id)
+	if token:
+		linked_sync(row, True)
+		poll_unlock(id, token)
 	poll_schedule(id, _LINK_POLL)
 	ensure_polls()
 	return {"data": {"calendar": calendar_public(calendar_get(identity, id))}}
@@ -1695,9 +1739,6 @@ def action_event_create(a):
 		existing = event_by_slug(calendar["id"], slug)
 		if existing:
 			return {"data": {"event": event_full(existing)}}
-	if events_full(identity):
-		a.error.label(400, "errors.too_many_events")
-		return
 	uid = mochi.uid() + "@mochi"
 	ics = event_text(body.get("components"), uid)
 	if ics == None:
@@ -1840,9 +1881,6 @@ def action_event_split(a):
 	if before == None and not copy:
 		a.error.label(400, "errors.invalid_event")
 		return
-	if events_full(identity):
-		a.error.label(400, "errors.too_many_events")
-		return
 	following = rule_shortened(body.get("following"), series_count(row["ics"], start))
 	after = event_text(following, mochi.uid() + "@mochi")
 	if after == None:
@@ -1961,10 +1999,7 @@ def calendar_text(row):
 			if tree:
 				components.extend(tree.get("components", []))
 	else:
-		# Own events are bounded per identity, so an own calendar is served
-		# whole; a calendar past the bound drops its oldest events, never the
-		# upcoming ones a subscriber reads it for.
-		for event in mochi.db.rows("select ics from events where calendar=? order by recurring desc, start desc limit ?", row["id"], _EVENTS_MAXIMUM):
+		for event in mochi.db.rows("select ics from events where calendar=?", row["id"]):
 			tree = mochi.ical.parse(event["ics"])
 			if not tree:
 				continue
@@ -2265,8 +2300,6 @@ def function_dav_put(context, identity, collection, name, ics, match="", absent=
 		return {"error": "conflict"}
 	if match and match != "*" and (not row or row["etag"] != match):
 		return {"error": "conflict"}
-	if not row and events_full(identity):
-		return {"error": "full"}
 	written = event_write(identity, calendar["id"], name, ics, row)
 	if type(written) == "string":
 		return {"error": written}
