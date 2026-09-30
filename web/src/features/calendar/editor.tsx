@@ -282,10 +282,9 @@ export function EventEditor() {
         )
       : stored
     setEditing({ mode: 'create', draft: copied, copy: true, initial: stored })
-    // The form swaps in place and looks the same, so say that it is now a
-    // copy waiting for Save, and put the cursor in its title: the button that
-    // was clicked has gone with the Delete beside it.
-    toast.info(t`Editing a copy. Save to keep it.`)
+    // The form swaps in place, and its heading turning to "Copy event" is
+    // what says so; the cursor goes to the title, since the button that was
+    // clicked has gone with the Delete beside it.
     requestAnimationFrame(() => {
       const title = document.getElementById('event-title')
       if (title instanceof HTMLInputElement) {

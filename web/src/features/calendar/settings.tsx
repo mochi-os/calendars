@@ -95,7 +95,9 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
   if (isLoading || isError || !calendar) {
     return (
       <Main>
-        <PageHeader title='' back={back} />
+        {/* No name to show yet, or none to find: the heading says what the
+            tab title does, rather than standing empty. */}
+        <PageHeader title={t`Calendars`} back={back} />
         {isLoading ? (
           <DetailSkeleton />
         ) : (
