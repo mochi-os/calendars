@@ -472,14 +472,16 @@ msgstr "Дастрасӣ ба тақвим дода нашуд"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Суроғаи тақвим"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Суроғаи тақвим ба буфер нусха карда шуд"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Суроғаи тақвим бекор карда шуд"
 
@@ -525,6 +527,10 @@ msgstr "Тақвим навтарин аст"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Тақвимҳо"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Тақвимҳое, ки ба ин суроға обуна шудаанд, дигар навсозӣ намешаванд."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Тоза кардани ҷустуҷӯ"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Пӯшидан"
 
@@ -1359,7 +1366,7 @@ msgstr "Нест кардани рӯйдод ба анҷом нарасид"
 msgid "Failed to get RSS token"
 msgstr "Гирифтани токени RSS ба анҷом нарасид"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Гирифтани суроғаи тақвим ба анҷом нарасид"
 
@@ -1437,7 +1444,7 @@ msgstr "Барқарор кардани дархост ба анҷом нара�
 msgid "Failed to revoke RSS access"
 msgstr "Бекор кардани дастрасии RSS ноком шуд"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Бекор кардани суроғаи тақвим ба анҷом нарасид"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Навтарин"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Суроғаи нави тақвим ба буфер нусха карда шуд"
 
@@ -2391,7 +2398,7 @@ msgstr "Такрор"
 msgid "Repeats"
 msgstr "Такрор мешавад"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Иваз кардан"
 
@@ -2431,6 +2438,7 @@ msgstr "Аз нав кӯшиш кунед"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Бекор кардан"
 
@@ -2441,6 +2449,10 @@ msgstr "Дастрасиро бекор кунед"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Дастрасии RSS бекор карда шавад?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Суроғаи тақвим бекор карда шавад?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Ин ва баъдӣ"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ба ин барнома иҷозат дода нашудааст, ки калиди дастрасии шуморо истифода барад. Дар Танзимот, дар қисми Иҷозатҳо ба он иҷозат диҳед."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Ин суроғаи тақвим аллакай дода шудааст ва дубора нишон дода намешавад."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Ин тақвим суроғае барои бекор кардан надорад"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

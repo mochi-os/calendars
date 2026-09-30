@@ -472,14 +472,16 @@ msgstr "Seensi kaalaandarii hin kennamne"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Teessoo kaalaandarii"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Teessoon kaalaandarii saanduqa garagalchaatti garagalfame"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Teessoon kaalaandarii haqame"
 
@@ -525,6 +527,10 @@ msgstr "Kaalaandariin haaraadha"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kaalandariilee"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kaalandariileen teessoo kana irratti galmaa'an kana booda hin haaromfaman."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Barbaadii cilliisi"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Cufi"
 
@@ -1359,7 +1366,7 @@ msgstr "Taatee haquu hin dandeenye"
 msgid "Failed to get RSS token"
 msgstr "Mallattoo RSS argachuu hin dandeenye"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Teessoo kaalaandarii argachuu hin dandeenye"
 
@@ -1437,7 +1444,7 @@ msgstr "Boorsa deebii idilee taasisuu hin dandeenye"
 msgid "Failed to revoke RSS access"
 msgstr "Argama RSS haquun hin milkoofne"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Teessoo kaalaandarii haquu hin dandeenye"
 
@@ -1473,11 +1480,11 @@ msgstr "Duubatti deebisuu hin dandeenye"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
-msgstr "Dabballaa toattaachuu hin dandeenye"
+msgstr "Dabballaa haaromsuu hin dandeenye"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"
-msgstr "Yaada toattaachuu hin dandeenye"
+msgstr "Yaada haaromsuu hin dandeenye"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to update watching"
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Haaraa dura"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Teessoon kaalaandarii haaraan saanduqa garagalchaatti garagalfame"
 
@@ -2391,7 +2398,7 @@ msgstr "Irra deebi'uu"
 msgid "Repeats"
 msgstr "Ni irra deebi'a"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Bakka buusi"
 
@@ -2431,6 +2438,7 @@ msgstr "Irra deebi'ii yaali"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Haqi"
 
@@ -2441,6 +2449,10 @@ msgstr "Argama haqi"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Argaa RSS haqamuu?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Teessoo kaalaandarii haquu barbaaddaa?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Kana fi kanneen itti aanan"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Appiin kun passkey kee fayyadamuuf hayyama hin qabu. Qindaa'ina keessatti, Hayyamoota jalatti hayyami."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Teessoon kaalaandarii kun duraan kennameera, ammas agarsiifamuu hin danda'u."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kaalaandariin kun teessoo haqamu hin qabu"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

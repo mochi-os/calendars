@@ -472,14 +472,16 @@ msgstr "קאַלענדאַר־צוטריט איז ניט געגעבן געווא
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "קאַלענדאַר־אַדרעס"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "קאַלענדאַר־אַדרעס קאָפּירט צו קליפּברעט"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "קאַלענדאַר־אַדרעס אָפּגערופֿן"
 
@@ -525,6 +527,10 @@ msgstr "קאַלענדאַר איז אַקטועל"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "קאַלענדאַרן"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "קאַלענדאַרן וואָס זענען אַבאָנירט אויף דעם אַדרעס וועלן מער ניט ווערן דערהיינטיקט."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "רייניקן זוכן"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "פֿאַרמאַכן"
 
@@ -1359,7 +1366,7 @@ msgstr "ניט געלונגען צו מעקן די געשעעניש"
 msgid "Failed to get RSS token"
 msgstr "ניט געלונגען צו באַקומען RSS־טאָקען"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ניט געלונגען צו באַקומען דעם קאַלענדאַר־אַדרעס"
 
@@ -1437,7 +1444,7 @@ msgstr "ניט געלונגען צו אָפּשטעלן פּראָמפּט"
 msgid "Failed to revoke RSS access"
 msgstr "דורכפֿאַל צו רופֿן צוריק RSS צוטריט"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ניט געלונגען אָפּצורופֿן דעם קאַלענדאַר־אַדרעס"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "נײַסטע"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "נײַער קאַלענדאַר־אַדרעס קאָפּירט צו קליפּברעט"
 
@@ -2391,7 +2398,7 @@ msgstr "איבערחזרונג"
 msgid "Repeats"
 msgstr "חזרט זיך"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "פארטוישן"
 
@@ -2431,6 +2438,7 @@ msgstr "פּרוּווט נאָך אַ מאָל"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "אָפּזאָגן"
 
@@ -2441,6 +2449,10 @@ msgstr "רופֿט צוריק צוטריט"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "אַנולירן RSS צוטריט?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "אָפּרופֿן דעם קאַלענדאַר־אַדרעס?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "די און די קומענדיקע"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "די אַפּ איז נישט דערלויבט צו נוצן דײַן פּאַסקיי. דערלויבט עס אין אײַנשטעלונגען, אונטער דערלויבענישן."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "דער קאַלענדאַר־אַדרעס איז שוין אַרויסגעגעבן געוואָרן און קען ניט ווידער געוויזן ווערן."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "דער קאַלענדאַר האָט ניט קיין אַדרעס אָפּצורופֿן"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -472,14 +472,16 @@ msgstr "Quyền truy cập lịch chưa được cấp"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Địa chỉ lịch"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Đã sao chép địa chỉ lịch vào bộ nhớ tạm"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Đã thu hồi địa chỉ lịch"
 
@@ -525,6 +527,10 @@ msgstr "Lịch đã được cập nhật"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Lịch"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Các lịch đã đăng ký địa chỉ này sẽ ngừng cập nhật."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Xóa tìm kiếm"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Đóng"
 
@@ -1359,7 +1366,7 @@ msgstr "Không xóa được sự kiện"
 msgid "Failed to get RSS token"
 msgstr "Không lấy token RSS được"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Không lấy được địa chỉ lịch"
 
@@ -1437,7 +1444,7 @@ msgstr "Không đặt lại lời nhắc được"
 msgid "Failed to revoke RSS access"
 msgstr "Không thể thu hồi quyền truy cập RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Không thu hồi được địa chỉ lịch"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Mới nhất"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Đã sao chép địa chỉ lịch mới vào bộ nhớ tạm"
 
@@ -2391,7 +2398,7 @@ msgstr "Lặp lại"
 msgid "Repeats"
 msgstr "Được lặp lại"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Thay thế"
 
@@ -2431,6 +2438,7 @@ msgstr "Thử lại"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Thu hồi"
 
@@ -2441,6 +2449,10 @@ msgstr "Thu hồi quyền truy cập"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Thu hồi quyền truy cập RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Thu hồi địa chỉ lịch?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Sự kiện này và các sự kiện sau"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ứng dụng này không được phép sử dụng passkey của bạn. Hãy cho phép trong Cài đặt, mục Quyền."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Địa chỉ lịch này đã được cấp và không thể hiển thị lại."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Lịch này không có địa chỉ nào để thu hồi"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

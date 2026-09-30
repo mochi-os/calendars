@@ -472,14 +472,16 @@ msgstr "دەستڕاگەیشتنی ڕۆژژمێر نەدرا"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ناونیشانی ڕۆژژمێر"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "ناونیشانی ڕۆژژمێر کۆپی کرا بۆ کلیپبۆرد"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "ناونیشانی ڕۆژژمێر ڕەتکرایەوە"
 
@@ -525,6 +527,10 @@ msgstr "ڕۆژژمێر نوێیە"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ڕۆژژمێرەکان"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ئەو ڕۆژژمێرانەی بەشداری ئەم ناونیشانەیان کردووە، چیتر نوێ ناکرێنەوە."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "پاککردنەوەی گەڕان"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "داخستن"
 
@@ -1359,7 +1366,7 @@ msgstr "سڕینەوەی ڕووداوەکە سەرکەوتوو نەبوو"
 msgid "Failed to get RSS token"
 msgstr "وەرگرتنی تۆکنی RSS سەرکەوتوو نەبوو"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "وەرگرتنی ناونیشانی ڕۆژژمێر سەرکەوتوو نەبوو"
 
@@ -1437,7 +1444,7 @@ msgstr "ڕێکخستنەوەی پرۆمپت سەرکەوتوو نەبوو"
 msgid "Failed to revoke RSS access"
 msgstr "ڕەتکردنەوەی دەستپێگەیشتنی RSS سەرکەوتوو نەبوو"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ڕەتکردنەوەی ناونیشانی ڕۆژژمێر سەرکەوتوو نەبوو"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "نوێترین"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "ناونیشانی نوێی ڕۆژژمێر کۆپی کرا بۆ کلیپبۆرد"
 
@@ -2391,7 +2398,7 @@ msgstr "دووبارەکردنەوە"
 msgid "Repeats"
 msgstr "دووبارە دەبێتەوە"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "بیگۆڕە"
 
@@ -2431,6 +2438,7 @@ msgstr "دووبارە هەوڵبدەرەوە"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "ڕاگرتن"
 
@@ -2441,6 +2449,10 @@ msgstr "ڕەتکردنەوەی دەستپێگەیشتن"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "دەستڕاگەیشتنی RSS هەڵبوەشێنرێتەوە؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "ناونیشانی ڕۆژژمێر ڕەتبکرێتەوە؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "ئەمە و داهاتووەکان"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ئەم بەرنامەیە ڕێگەپێدراو نییە پاسکییەکەت بەکاربهێنێت. لە ڕێکخستنەکان، لەژێر ڕێگەپێدانەکان ڕێگەی پێبدە."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "ئەم ناونیشانەی ڕۆژژمێر پێشتر دەرکراوە و ناتوانرێت دووبارە پیشان بدرێت."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ئەم ڕۆژژمێرە هیچ ناونیشانێکی نییە بۆ ڕەتکردنەوە"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -35,7 +35,7 @@ import { useShownCalendars } from '@/hooks/use-shown'
 const VIEWS: CalendarView[] = ['day', 'week', 'multiweek', 'month', 'list']
 
 /** What the editor was opened on. */
-export type Editing =
+type Editing =
   | {
       mode: 'create'
       draft: EventDraft
@@ -55,8 +55,6 @@ interface CalendarContextValue {
   /** Shows a calendar an event was just saved into, if it was hidden. */
   reveal: (calendar: string) => void
   only: (calendar: string) => void
-  showAll: () => void
-  hideAll: () => void
   preferences: Preferences
   view: CalendarView
   setView: (view: CalendarView) => void
@@ -65,7 +63,6 @@ interface CalendarContextValue {
   setDate: (date: string) => void
   today: string
   range: CalendarRange
-  /** List view: how many days the chosen span covers. */
   /** Week view: hide the days that are not work days. */
   workweek: boolean
   setWorkweek: (value: boolean) => void
@@ -94,7 +91,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const { data, isLoading } = useCalendarsQuery()
   useCalendarsRefresh()
   const calendars = useMemo(() => data?.calendars ?? [], [data?.calendars])
-  const { shown, toggle, reveal, only, showAll, hideAll, visible } =
+  const { shown, toggle, reveal, only, visible } =
     useShownCalendars(calendars)
 
   const { data: preferenceData } = usePreferencesQuery()
@@ -200,8 +197,6 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       toggle,
       reveal,
       only,
-      showAll,
-      hideAll,
       preferences,
       view,
       setView,
@@ -227,8 +222,6 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       toggle,
       reveal,
       only,
-      showAll,
-      hideAll,
       preferences,
       view,
       setView,

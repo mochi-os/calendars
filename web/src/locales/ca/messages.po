@@ -472,14 +472,16 @@ msgstr "No s'ha concedit l'accés al calendari"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Adreça del calendari"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Adreça del calendari copiada al porta-retalls"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Adreça del calendari revocada"
 
@@ -525,6 +527,10 @@ msgstr "El calendari està actualitzat"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Calendaris"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Els calendaris subscrits a aquesta adreça deixaran d'actualitzar-se."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Esborra la cerca"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Tanca"
 
@@ -1359,7 +1366,7 @@ msgstr "No s'ha pogut suprimir l'esdeveniment"
 msgid "Failed to get RSS token"
 msgstr "No s'ha pogut obtenir el testimoni RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "No s'ha pogut obtenir l'adreça del calendari"
 
@@ -1437,7 +1444,7 @@ msgstr "No s'ha pogut restablir l'indicador"
 msgid "Failed to revoke RSS access"
 msgstr "No s'ha pogut revocar l'accés RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "No s'ha pogut revocar l'adreça del calendari"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Recent"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nova adreça del calendari copiada al porta-retalls"
 
@@ -2391,7 +2398,7 @@ msgstr "Repetició"
 msgid "Repeats"
 msgstr "Es repeteix"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Substitueix"
 
@@ -2431,6 +2438,7 @@ msgstr "Torna-ho a provar"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Revoca"
 
@@ -2441,6 +2449,10 @@ msgstr "Revoca l'accés"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Voleu revocar l'accés RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Revocar l'adreça del calendari?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Aquest i els següents"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Aquesta aplicació no té permís per utilitzar la vostra clau d'accés. Permeteu-ho a Configuració, sota Permisos."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Aquesta adreça del calendari ja s'ha emès i no es pot tornar a mostrar."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Aquest calendari no té cap adreça per revocar"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

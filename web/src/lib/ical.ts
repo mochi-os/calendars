@@ -81,7 +81,7 @@ export const NO_REMINDER = -1
 export const REMINDER_LEADS = [0, 5, 15, 30, 60, 1440]
 
 /** The reminders a new event opens with, from the default reminder preference. */
-export function defaultReminders(preference: number): number[] {
+function defaultReminders(preference: number): number[] {
   return preference === NO_REMINDER ? [] : [preference]
 }
 
@@ -129,6 +129,10 @@ export function property(
 ): Property | undefined {
   return component.properties.find((item) => item.name === name)
 }
+
+// propertyValue, utcValue, propertyInstant, repeatRule, ruleRepeat,
+// reminderTrigger, triggerMinutes, alarmMinutes and movedDraft are exported for
+// ical.test.ts as well as used here: pure helpers, tested directly.
 
 export function propertyValue(component: Component, name: string): string {
   return property(component, name)?.value ?? ''

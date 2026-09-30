@@ -77,7 +77,7 @@ export function CalendarsLayout() {
   const createMutation = useCreateCalendarMutation()
   const deleteMutation = useDeleteCalendarMutation()
   const pollMutation = usePollCalendarMutation()
-  const { copy } = useIcsCopy()
+  const { copy, dialogs } = useIcsCopy()
 
   const create = async (values: CreateEntityValues) => {
     await toastAction(
@@ -334,6 +334,8 @@ export function CalendarsLayout() {
       <ConnectDialog open={connectOpen} onOpenChange={setConnectOpen} />
 
       <EventEditor />
+
+      {dialogs}
 
       <ConfirmDialog
         open={deleting !== null}

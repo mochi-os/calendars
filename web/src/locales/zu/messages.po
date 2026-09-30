@@ -472,14 +472,16 @@ msgstr "Ukufinyelela kwekhalenda akunikeziwe"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Ikheli lekhalenda"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Ikheli lekhalenda likopishelwe kwi-clipboard"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Ikheli lekhalenda libuyiselwe"
 
@@ -525,6 +527,10 @@ msgstr "Ikhalenda ibuyekeziwe"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Amakhalenda"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Amakhalenda abhalisele leli kheli azoyeka ukubuyekezwa."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Sula usesho"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Vala"
 
@@ -1359,7 +1366,7 @@ msgstr "Kuhlulekile ukususa umcimbi"
 msgid "Failed to get RSS token"
 msgstr "Kuhlulekile ukuthola ithokeni ye-RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kuhlulekile ukuthola ikheli lekhalenda"
 
@@ -1437,7 +1444,7 @@ msgstr "Kuhlulekile ukusetha kabusha umyalo"
 msgid "Failed to revoke RSS access"
 msgstr "Yehlulekile ukubuyisela ukufinyelela kwe-RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kuhlulekile ukubuyisela ikheli lekhalenda"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Okusha kakhulu"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Ikheli elisha lekhalenda likopishelwe kwi-clipboard"
 
@@ -2168,7 +2175,7 @@ msgstr "Okuthunyelwe"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
-msgstr "Okwabiwayo namazwana"
+msgstr "Okuthunyelwe namazwana"
 
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2391,7 +2398,7 @@ msgstr "Ukuphinda"
 msgid "Repeats"
 msgstr "Iyaphindwa"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Buyisela"
 
@@ -2431,6 +2438,7 @@ msgstr "Zama futhi"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Hoxisa"
 
@@ -2441,6 +2449,10 @@ msgstr "Buyisela ukufinyelela"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Hoxisa ukufinyelela kwe-RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Buyisela ikheli lekhalenda?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Lo nalandelayo"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Le app ayivunyelwe ukusebenzisa i-passkey yakho. Yivumele kuzilungiselelo, ngaphansi kwezimvume."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Leli kheli lekhalenda selikhishiwe futhi alikwazi ukuboniswa futhi."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Leli khalenda alinalo ikheli lokubuyisela"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearch } from '@tanstack/react-router'
 import { useLingui } from '@lingui/react/macro'
 import {
@@ -33,6 +33,7 @@ import {
 import { useCalendarContext } from '@/context/calendar-context'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
+import { useReminder } from '@/hooks/use-reminder'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { EventPopover } from '@/features/calendar/components/event-popover'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
@@ -81,7 +82,12 @@ export function CalendarPage() {
     () => (view === 'list' ? [] : visible.map((c) => c.id)),
     [view, visible]
   )
-  const { data } = useInstancesQuery(start, finish, shown, format.timezone)
+  const { data, isSuccess, isPlaceholderData } = useInstancesQuery(
+    start,
+    finish,
+    shown,
+    format.timezone
+  )
   // Each occurrence arrives in its event's own colour, else its calendar's;
   // recolouring a calendar fetches the range again.
   const instances = useMemo(
@@ -209,36 +215,39 @@ export function CalendarPage() {
       ? `${editing.event}:${editing.start}`
       : undefined
 
-  // A reminder opens the calendar at the event it is for: once the day's
-  // occurrences arrive it opens as a click on it would, and leaves the URL so
-  // going back does not open it again.
+  // A reminder's link opens the calendar at the event it is for.
   const search = useSearch({ strict: false }) as {
     event?: string
     occurrence?: number
   }
   const navigate = useNavigate()
-  useEffect(() => {
-    if (!search.event) return
-    const key = `${search.event}:${search.occurrence ?? 0}`
-    const instance = instances.find(
-      (item) => `${item.event}:${item.start}` === key
-    )
-    if (!instance) return
-    const anchor =
-      document.querySelector<HTMLElement>(`[data-key="${CSS.escape(key)}"]`) ??
-      document.body
-    open(instance, anchor)
-    void navigate({
-      to: '.',
-      search: (previous: Record<string, unknown>) => ({
-        ...previous,
-        event: undefined,
-        occurrence: undefined,
+  useReminder({
+    event: search.event,
+    occurrence: search.occurrence,
+    instances,
+    // Until the shown calendars' own occurrences arrive, one missing from
+    // them proves nothing: the previous range's stand in while they load.
+    loading: shown.length > 0 && (!isSuccess || isPlaceholderData),
+    visible,
+    reveal,
+    open: (instance, key) =>
+      open(
+        instance,
+        document.querySelector<HTMLElement>(
+          `[data-key="${CSS.escape(key)}"]`
+        ) ?? document.body
+      ),
+    clear: () =>
+      void navigate({
+        to: '.',
+        search: (previous: Record<string, unknown>) => ({
+          ...previous,
+          event: undefined,
+          occurrence: undefined,
+        }),
+        replace: true,
       }),
-      replace: true,
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- open reads state only
-  }, [search.event, search.occurrence, instances])
+  })
 
   const select = (key: string, anchor: HTMLElement) => {
     const instance = byKey.get(key)

@@ -472,14 +472,16 @@ msgstr "Хуанлийн хандалт олгогдсонгүй"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Хуанлийн хаяг"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Хуанлийн хаяг түр санах ой руу хуулагдсан"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Хуанлийн хаягийг цуцаллаа"
 
@@ -525,6 +527,10 @@ msgstr "Хуанли шинэчлэгдсэн байна"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Календарууд"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Энэ хаягийг захиалсан календарууд шинэчлэгдэхээ болино."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Хайлтыг цэвэрлэх"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Хаах"
 
@@ -1359,7 +1366,7 @@ msgstr "Үйл явдлыг устгаж чадсангүй"
 msgid "Failed to get RSS token"
 msgstr "RSS токен авч чадсангүй"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Хуанлийн хаягийг авч чадсангүй"
 
@@ -1437,7 +1444,7 @@ msgstr "Промптыг дахин тохируулж чадсангүй"
 msgid "Failed to revoke RSS access"
 msgstr "RSS хандалтыг цуцалж чадсангүй"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Хуанлийн хаягийг цуцалж чадсангүй"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Хамгийн шинэ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Хуанлийн шинэ хаяг түр санах ой руу хуулагдсан"
 
@@ -2391,7 +2398,7 @@ msgstr "Давтах"
 msgid "Repeats"
 msgstr "Давтагдана"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Солих"
 
@@ -2431,6 +2438,7 @@ msgstr "Дахин оролдох"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Цуцлах"
 
@@ -2441,6 +2449,10 @@ msgstr "Хандалтыг цуцлах"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS хандалтыг цуцлах уу?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Хуанлийн хаягийг цуцлах уу?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Энэ болон дараагийнх"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Энэ аппад таны нэвтрэх түлхүүрийг ашиглахыг зөвшөөрөөгүй. Тохиргооны Зөвшөөрөл хэсэгт зөвшөөрнө үү."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Энэ хуанлийн хаяг аль хэдийн олгогдсон бөгөөд дахин харуулах боломжгүй."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Энэ хуанлид цуцлах хаяг байхгүй"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

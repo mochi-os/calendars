@@ -472,14 +472,16 @@ msgstr "ไม่ได้รับอนุญาตให้เข้าถึ
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ที่อยู่ปฏิทิน"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "คัดลอกที่อยู่ปฏิทินไปยังคลิปบอร์ดแล้ว"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "เพิกถอนที่อยู่ปฏิทินแล้ว"
 
@@ -525,6 +527,10 @@ msgstr "ปฏิทินเป็นข้อมูลล่าสุดแล
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ปฏิทิน"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ปฏิทินที่สมัครรับที่อยู่นี้จะไม่ได้รับการปรับปรุงอีก"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "ล้างการค้นหา"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "ปิด"
 
@@ -1359,7 +1366,7 @@ msgstr "ไม่สามารถลบกิจกรรมได้"
 msgid "Failed to get RSS token"
 msgstr "ไม่สามารถรับโทเคน RSS ได้"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ไม่สามารถรับที่อยู่ปฏิทินได้"
 
@@ -1437,7 +1444,7 @@ msgstr "ไม่สามารถรีเซ็ตพรอมต์ได้
 msgid "Failed to revoke RSS access"
 msgstr "ไม่สามารถเพิกถอนการเข้าถึง RSS ได้"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ไม่สามารถเพิกถอนที่อยู่ปฏิทินได้"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "ใหม่ล่าสุด"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "คัดลอกที่อยู่ปฏิทินใหม่ไปยังคลิปบอร์ดแล้ว"
 
@@ -2391,7 +2398,7 @@ msgstr "ทำซ้ำ"
 msgid "Repeats"
 msgstr "ทำซ้ำ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "แทนที่"
 
@@ -2431,6 +2438,7 @@ msgstr "ลองอีกครั้ง"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "เพิกถอน"
 
@@ -2441,6 +2449,10 @@ msgstr "เพิกถอนการเข้าถึง"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "เพิกถอนการเข้าถึง RSS หรือไม่"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "เพิกถอนที่อยู่ปฏิทินหรือไม่"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "กิจกรรมนี้และกิจกรรมถัดไ
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "แอปนี้ไม่ได้รับอนุญาตให้ใช้พาสคีย์ของคุณ อนุญาตได้ในการตั้งค่า ภายใต้สิทธิ์"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "ที่อยู่ปฏิทินนี้ออกให้ไปแล้วและไม่สามารถแสดงซ้ำได้"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ปฏิทินนี้ไม่มีที่อยู่ให้เพิกถอน"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

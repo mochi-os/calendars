@@ -472,14 +472,16 @@ msgstr "د کليز لاسرسی ور نه کړل شو"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "د کليز پته"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "د کليز پته په کلیپ بورډ کاپي شوه"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "د کليز پته لغوه شوه"
 
@@ -525,6 +527,10 @@ msgstr "کليز تازه دی"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "کليزونه"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "هغه کليزونه چې دې پتې ته ګډون لري نور به نه تازه کیږي."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "لټون پاک کړئ"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "وتړئ"
 
@@ -1359,7 +1366,7 @@ msgstr "د پېښې ړنګولو پاتې راغلل"
 msgid "Failed to get RSS token"
 msgstr "د RSS ټوکن ترلاسه کولو پاتې راغلل"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "د کليز د پتې ترلاسه کولو پاتې راغلل"
 
@@ -1437,7 +1444,7 @@ msgstr "د پرامپټ د بیا تنظیم پاتې راغلل"
 msgid "Failed to revoke RSS access"
 msgstr "د RSS لاسرسي لغوه کول ناکام شول"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "د کليز د پتې لغوه کولو پاتې راغلل"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "تر ټولو نوي"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "د کليز نوې پته په کلیپ بورډ کاپي شوه"
 
@@ -2391,7 +2398,7 @@ msgstr "تکرار"
 msgid "Repeats"
 msgstr "تکراریږي"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "بدلول"
 
@@ -2431,6 +2438,7 @@ msgstr "بیا هڅه وکړئ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "لغوه کول"
 
@@ -2441,6 +2449,10 @@ msgstr "لاسرسی لغوه کړئ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "د RSS لاسرسی لغوه شي؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "د کليز پته لغوه کړئ؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "دا او راتلونکې"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "دې اپ ته اجازه نشته چې ستاسو پاسکي وکاروي. په تنظیماتو کې، د اجازو لاندې یې اجازه ورکړئ."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "دا د کليز پته دمخه صادره شوې او بیا نه ښودل کیږي."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "دا کليز د لغوه کولو لپاره پته نه لري"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -472,14 +472,16 @@ msgstr "Prístup ku kalendáru nebol udelený"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Adresa kalendára"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Adresa kalendára skopírovaná do schránky"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Adresa kalendára bola odvolaná"
 
@@ -525,6 +527,10 @@ msgstr "Kalendár je aktuálny"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendáre"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalendáre prihlásené na odber tejto adresy sa prestanú aktualizovať."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Vymazať vyhľadávanie"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Zavrieť"
 
@@ -1359,7 +1366,7 @@ msgstr "Nepodarilo sa odstrániť udalosť"
 msgid "Failed to get RSS token"
 msgstr "Nepodarilo sa získať RSS token"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Nepodarilo sa získať adresu kalendára"
 
@@ -1437,7 +1444,7 @@ msgstr "Nepodarilo sa obnoviť výzvu"
 msgid "Failed to revoke RSS access"
 msgstr "Zrušenie prístupu RSS zlyhalo"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Nepodarilo sa odvolať adresu kalendára"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Najnovšie"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nová adresa kalendára skopírovaná do schránky"
 
@@ -2391,7 +2398,7 @@ msgstr "Opakovanie"
 msgid "Repeats"
 msgstr "Opakuje sa"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Nahradiť"
 
@@ -2431,6 +2438,7 @@ msgstr "Skúsiť znova"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Odvolať"
 
@@ -2441,6 +2449,10 @@ msgstr "Zrušiť prístup"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Odvolať prístup RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Odvolať adresu kalendára?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Táto a nasledujúce"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Táto aplikácia nemá povolenie používať váš prístupový kľúč. Povoľte ho v Nastaveniach v časti Povolenia."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Táto adresa kalendára už bola vydaná a nedá sa znova zobraziť."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Tento kalendár nemá žiadnu adresu na odvolanie"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

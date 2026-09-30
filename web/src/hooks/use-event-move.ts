@@ -37,7 +37,7 @@ import {
 } from '@/hooks/use-events'
 
 /** What a drag asks for beyond a new time: a copy, or another calendar. */
-export interface MoveOptions {
+interface MoveOptions {
   copy?: boolean
   calendar?: string
 }

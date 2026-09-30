@@ -472,14 +472,16 @@ msgstr "Cha deach inntrigeadh mìosachain a cheadachadh"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Seòladh a' mhìosachain"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Chaidh seòladh a' mhìosachain a lethbhreacadh dhan stòr-bhòrd"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Chaidh seòladh a' mhìosachain a chùl-ghairm"
 
@@ -525,6 +527,10 @@ msgstr "Tha am mìosachan ùraichte"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Mìosachain"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Cha tèid na mìosachain a tha fo-sgrìobhte ris an t-seòladh seo ùrachadh tuilleadh."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Falamhaich an lorg"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Dùin"
 
@@ -1359,7 +1366,7 @@ msgstr "Cha b' urrainn an tachartas a sguabadh às"
 msgid "Failed to get RSS token"
 msgstr "Cha b' urrainn tòcan RSS fhaighinn"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Cha b' urrainn seòladh a' mhìosachain fhaighinn"
 
@@ -1437,7 +1444,7 @@ msgstr "Cha b' urrainn am brodadh ath-shuidheachadh"
 msgid "Failed to revoke RSS access"
 msgstr "Cha b' urrainn inntrigeadh RSS a chùl-ghairm"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Cha b' urrainn seòladh a' mhìosachain a chùl-ghairm"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "As ùire"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Chaidh seòladh ùr a' mhìosachain a lethbhreacadh dhan stòr-bhòrd"
 
@@ -2391,7 +2398,7 @@ msgstr "Ath-aithris"
 msgid "Repeats"
 msgstr "Ag ath-aithris"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Cuir 'na àite"
 
@@ -2431,6 +2438,7 @@ msgstr "Feuch ris a-rithist"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Cùl-ghairm"
 
@@ -2441,6 +2449,10 @@ msgstr "Cùl-ghairm inntrigeadh"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "A bheil thu airson inntrigeadh RSS a chùl-ghairm?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "A bheil thu airson seòladh a' mhìosachain a chùl-ghairm?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Am fear seo agus an fheadhainn às a dhèidh"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Chan eil cead aig an aplacaid seo am pasgair agad a chleachdadh. Ceadaich e ann an Roghainnean, fo Ceadan."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Chaidh seòladh a' mhìosachain seo a thoirt seachad mar-thà agus chan urrainn dhuinn a shealltainn a-rithist."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Chan eil seòladh aig a' mhìosachan seo ri chùl-ghairm"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

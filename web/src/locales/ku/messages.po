@@ -472,14 +472,16 @@ msgstr "Gihîştina salnameyê nehat dayîn"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Navnîşana salnameyê"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Navnîşana salnameyê hate kopîkirin"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Navnîşana salnameyê hate betalkirin"
 
@@ -525,6 +527,10 @@ msgstr "Salname nûjen e"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Salname"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Salnameyên ku bi vê navnîşanê ve abone ne dê êdî nûve nebin."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Lêgerînê paqij bike"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Bigire"
 
@@ -1359,7 +1366,7 @@ msgstr "Jêbirina bûyerê neserkeftî bû"
 msgid "Failed to get RSS token"
 msgstr "Wergirtina tokena RSS neserkeftî bû"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Wergirtina navnîşana salnameyê neserkeftî bû"
 
@@ -1437,7 +1444,7 @@ msgstr "Sifirkirina prompt neserkeftî bû"
 msgid "Failed to revoke RSS access"
 msgstr "Betalkirina gihîştina RSS bi ser neket"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Betalkirina navnîşana salnameyê neserkeftî bû"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Herî nû"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Navnîşana nû ya salnameyê hate kopîkirin"
 
@@ -2391,7 +2398,7 @@ msgstr "Dubarekirin"
 msgid "Repeats"
 msgstr "Dubare dibe"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Biguhêre"
 
@@ -2431,6 +2438,7 @@ msgstr "Dîsa biceribîne"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Vekişîne"
 
@@ -2441,6 +2449,10 @@ msgstr "Gihîştinê betal bike"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Gihîştina RSS were vekişandin?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Navnîşana salnameyê were betalkirin?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Ev û yên piştî wê"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ev sepan destûr nîne ku passkey-a te bi kar bîne. Di Mîhengan de, di bin Destûran de destûrê bide."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Ev navnîşana salnameyê berê hatiye dayîn û careke din nayê nîşandan."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Vê salnameyê navnîşanek ji bo betalkirinê tune ye"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

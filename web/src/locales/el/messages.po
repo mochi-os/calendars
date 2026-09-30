@@ -472,14 +472,16 @@ msgstr "Δεν δόθηκε πρόσβαση στο ημερολόγιο"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Διεύθυνση ημερολογίου"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Η διεύθυνση του ημερολογίου αντιγράφηκε στο πρόχειρο"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Η διεύθυνση του ημερολογίου ανακλήθηκε"
 
@@ -525,6 +527,10 @@ msgstr "Το ημερολόγιο είναι ενημερωμένο"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Ημερολόγια"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Τα ημερολόγια που έχουν εγγραφεί σε αυτή τη διεύθυνση θα σταματήσουν να ενημερώνονται."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Εκκαθάριση αναζήτησης"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -1359,7 +1366,7 @@ msgstr "Αποτυχία διαγραφής του συμβάντος"
 msgid "Failed to get RSS token"
 msgstr "Αποτυχία λήψης διακριτικού RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Αποτυχία λήψης της διεύθυνσης του ημερολογίου"
 
@@ -1437,7 +1444,7 @@ msgstr "Αποτυχία επαναφοράς προτροπής"
 msgid "Failed to revoke RSS access"
 msgstr "Αποτυχία ανάκλησης πρόσβασης RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Αποτυχία ανάκλησης της διεύθυνσης του ημερολογίου"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Νεότερα"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Η νέα διεύθυνση του ημερολογίου αντιγράφηκε στο πρόχειρο"
 
@@ -2391,7 +2398,7 @@ msgstr "Επανάληψη"
 msgid "Repeats"
 msgstr "Επαναλαμβάνεται"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
@@ -2431,6 +2438,7 @@ msgstr "Δοκιμή ξανά"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Ανάκληση"
 
@@ -2441,6 +2449,10 @@ msgstr "Ανάκληση πρόσβασης"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Ανάκληση πρόσβασης RSS;"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Ανάκληση της διεύθυνσης του ημερολογίου;"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Αυτό και τα επόμενα"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Αυτή η εφαρμογή δεν επιτρέπεται να χρησιμοποιήσει το κλειδί πρόσβασής σας. Επιτρέψτε το στις Ρυθμίσεις, στην ενότητα Δικαιώματα."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Αυτή η διεύθυνση ημερολογίου έχει ήδη εκδοθεί και δεν μπορεί να εμφανιστεί ξανά."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Αυτό το ημερολόγιο δεν έχει διεύθυνση για ανάκληση"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

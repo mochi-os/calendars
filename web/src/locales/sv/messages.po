@@ -472,14 +472,16 @@ msgstr "Kalenderåtkomst beviljades inte"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Kalenderadress"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Kalenderadressen kopierad till urklipp"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Kalenderadressen återkallad"
 
@@ -525,6 +527,10 @@ msgstr "Kalendern är uppdaterad"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendrar"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalendrar som prenumererar på den här adressen slutar att uppdateras."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Rensa sökning"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Stäng"
 
@@ -1359,7 +1366,7 @@ msgstr "Kunde inte ta bort händelsen"
 msgid "Failed to get RSS token"
 msgstr "Kunde inte hämta RSS-token"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kunde inte hämta kalenderadressen"
 
@@ -1437,7 +1444,7 @@ msgstr "Kunde inte återställa uppmaning"
 msgid "Failed to revoke RSS access"
 msgstr "Det gick inte att återkalla RSS-åtkomst"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kunde inte återkalla kalenderadressen"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Nyast"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Ny kalenderadress kopierad till urklipp"
 
@@ -2391,7 +2398,7 @@ msgstr "Upprepning"
 msgid "Repeats"
 msgstr "Upprepas"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Ersätt"
 
@@ -2431,6 +2438,7 @@ msgstr "Försök igen"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Återkalla"
 
@@ -2441,6 +2449,10 @@ msgstr "Återkalla åtkomst"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Återkalla RSS-åtkomst?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Återkalla kalenderadressen?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Denna och följande"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Den här appen får inte använda din passkey. Tillåt det i Inställningar under Behörigheter."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Den här kalenderadressen har redan utfärdats och kan inte visas igen."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Den här kalendern har ingen adress att återkalla"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

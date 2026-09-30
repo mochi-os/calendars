@@ -472,14 +472,16 @@ msgstr "Օրացույցի մուտքը չի տրամադրվել"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Օրացույցի հասցե"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Օրացույցի հասցեն պատճենվեց սեղմատախտակին"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Օրացույցի հասցեն չեղարկվել է"
 
@@ -525,6 +527,10 @@ msgstr "Օրացույցը թարմ է"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Օրացույցներ"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Այս հասցեին բաժանորդագրված օրացույցներն այլևս չեն թարմացվի։"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Մաքրել որոնումը"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Փակել"
 
@@ -1359,7 +1366,7 @@ msgstr "Չհաջողվեց ջնջել միջոցառումը"
 msgid "Failed to get RSS token"
 msgstr "Չհաջողվեց ստանալ RSS տոկենը"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Չհաջողվեց ստանալ օրացույցի հասցեն"
 
@@ -1437,7 +1444,7 @@ msgstr "Չհաջողվեց զրոյացնել հուշումը"
 msgid "Failed to revoke RSS access"
 msgstr "RSS մուտքի չեղարկումը ձախողվեց"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Չհաջողվեց չեղարկել օրացույցի հասցեն"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Նորերը"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Օրացույցի նոր հասցեն պատճենվեց սեղմատախտակին"
 
@@ -2391,7 +2398,7 @@ msgstr "Կրկնություն"
 msgid "Repeats"
 msgstr "Կրկնվում է"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Փոխարինել"
 
@@ -2431,6 +2438,7 @@ msgstr "Կրկին փորձել"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Հետ վերցնել"
 
@@ -2441,6 +2449,10 @@ msgstr "Չեղարկել մուտքը"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Չեղարկե՞լ RSS մուտքը"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Չեղարկե՞լ օրացույցի հասցեն"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Այս և հաջորդները"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Այս հավելվածին թույլատրված չէ օգտագործել ձեր անցաբանալին։ Թույլատրեք այն Կարգավորումներում՝ Թույլտվություններ բաժնում։"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Օրացույցի այս հասցեն արդեն տրվել է և չի կարող կրկին ցուցադրվել։"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Այս օրացույցը չեղարկելու հասցե չունի"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

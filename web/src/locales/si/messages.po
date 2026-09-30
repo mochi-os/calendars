@@ -472,14 +472,16 @@ msgstr "දින දර්ශන ප්‍රවේශය ලබා දී න�
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "දින දර්ශනයේ ලිපිනය ක්ලිප්බෝඩ් වෙත පිටපත් කරන ලදී"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "දින දර්ශනයේ ලිපිනය අවලංගු කරන ලදී"
 
@@ -525,6 +527,10 @@ msgstr "දින දර්ශනය යාවත්කාලීනයි"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "දින දර්ශන"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "මෙම ලිපිනයට දායක වූ දින දර්ශන යාවත්කාලීන වීම නවතිනු ඇත."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "සෙවුම හිස් කරන්න"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "වසන්න"
 
@@ -1359,7 +1366,7 @@ msgstr "සිදුවීම මැකීමට අසමත් විය"
 msgid "Failed to get RSS token"
 msgstr "RSS ටෝකනය ලබා ගැනීමට අසමත් විය"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය ලබා ගැනීමට අසමත් විය"
 
@@ -1437,7 +1444,7 @@ msgstr "විමසුම යළි පිහිටුවීමට අසමත
 msgid "Failed to revoke RSS access"
 msgstr "RSS ප්‍රවේශය අවලංගු කිරීමට අසමත් විය"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය අවලංගු කිරීමට අසමත් විය"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "නවතම"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "නව දින දර්ශන ලිපිනය ක්ලිප්බෝඩ් වෙත පිටපත් කරන ලදී"
 
@@ -2391,7 +2398,7 @@ msgstr "පුනරාවර්තනය"
 msgid "Repeats"
 msgstr "පුනරාවර්තනය වේ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "ප්‍රතිස්ථාපනය"
 
@@ -2431,6 +2438,7 @@ msgstr "නැවත උත්සාහ කරන්න"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "අවලංගු කරන්න"
 
@@ -2441,6 +2449,10 @@ msgstr "ප්‍රවේශය අවලංගු කරන්න"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS ප්‍රවේශය අවලංගු කරන්නද?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "දින දර්ශනයේ ලිපිනය අවලංගු කරන්නද?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "මෙය සහ ඉදිරි ඒවා"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "මෙම යෙදුමට ඔබගේ මුරයතුර භාවිතා කිරීමට අවසර නැත. සැකසුම් තුළ, අවසර යටතේ එයට ඉඩ දෙන්න."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "මෙම දින දර්ශන ලිපිනය දැනටමත් නිකුත් කර ඇති අතර එය නැවත පෙන්විය නොහැක."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "මෙම දින දර්ශනයට අවලංගු කිරීමට ලිපිනයක් නැත"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

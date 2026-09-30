@@ -472,14 +472,16 @@ msgstr "Dagatalsaðgangur var ekki veittur"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Vistfang dagatals"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Vistfang dagatals afritað á klippiborðið"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Vistfang dagatals afturkallað"
 
@@ -525,6 +527,10 @@ msgstr "Dagatalið er uppfært"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Dagatöl"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Dagatöl sem eru áskrifandi að þessu vistfangi hætta að uppfærast."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Hreinsa leit"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Loka"
 
@@ -1359,7 +1366,7 @@ msgstr "Tókst ekki að eyða viðburðinum"
 msgid "Failed to get RSS token"
 msgstr "Tókst ekki að fá RSS-tóka"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Tókst ekki að sækja vistfang dagatalsins"
 
@@ -1437,7 +1444,7 @@ msgstr "Tókst ekki að endurstilla kvaðningu"
 msgid "Failed to revoke RSS access"
 msgstr "Ekki tókst að afturkalla RSS-aðgang"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Tókst ekki að afturkalla vistfang dagatalsins"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Nýjast"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nýtt vistfang dagatals afritað á klippiborðið"
 
@@ -2391,7 +2398,7 @@ msgstr "Endurtekning"
 msgid "Repeats"
 msgstr "Endurtekur sig"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Skipta út"
 
@@ -2431,6 +2438,7 @@ msgstr "Reyna aftur"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Afturkalla"
 
@@ -2441,6 +2449,10 @@ msgstr "Afturkalla aðgang"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Afturkalla RSS-aðgang?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Afturkalla vistfang dagatalsins?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Þessi og þeir sem á eftir koma"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Þetta forrit má ekki nota aðgangslykilinn þinn. Leyfðu það í Stillingum, undir Heimildir."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Þetta vistfang dagatals hefur þegar verið gefið út og ekki er hægt að birta það aftur."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Þetta dagatal hefur ekkert vistfang til að afturkalla"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

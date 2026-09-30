@@ -472,14 +472,16 @@ msgstr "O acesso ao calendário não foi concedido"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Endereço do calendário"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Endereço do calendário copiado para a área de transferência"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Endereço do calendário revogado"
 
@@ -525,6 +527,10 @@ msgstr "Calendário atualizado"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Calendários"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Os calendários inscritos neste endereço deixarão de ser atualizados."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Limpar pesquisa"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Fechar"
 
@@ -1359,7 +1366,7 @@ msgstr "Falha ao excluir o evento"
 msgid "Failed to get RSS token"
 msgstr "Falha ao obter token RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Falha ao obter o endereço do calendário"
 
@@ -1437,7 +1444,7 @@ msgstr "Falha ao redefinir prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Falha ao revogar o acesso RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Falha ao revogar o endereço do calendário"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Recentes"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Novo endereço do calendário copiado para a área de transferência"
 
@@ -2391,7 +2398,7 @@ msgstr "Repetição"
 msgid "Repeats"
 msgstr "Repete"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Substituir"
 
@@ -2431,6 +2438,7 @@ msgstr "Tentar novamente"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Revogar"
 
@@ -2441,6 +2449,10 @@ msgstr "Revogar acesso"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Revogar o acesso RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Revogar o endereço do calendário?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Este e os seguintes"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Este aplicativo não tem permissão para usar sua passkey. Permita em Configurações, em Permissões."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Este endereço do calendário já foi emitido e não pode ser exibido novamente."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Este calendário não tem endereço para revogar"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

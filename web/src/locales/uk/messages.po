@@ -472,14 +472,16 @@ msgstr "Доступ до календаря не надано"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Адреса календаря"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Адресу календаря скопійовано в буфер обміну"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Адресу календаря відкликано"
 
@@ -525,6 +527,10 @@ msgstr "Календар актуальний"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Календарі"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Календарі, підписані на цю адресу, перестануть оновлюватися."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Очистити пошук"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Закрити"
 
@@ -1359,7 +1366,7 @@ msgstr "Не вдалося видалити подію"
 msgid "Failed to get RSS token"
 msgstr "Не вдалося отримати RSS-токен"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Не вдалося отримати адресу календаря"
 
@@ -1437,7 +1444,7 @@ msgstr "Не вдалося скинути запит"
 msgid "Failed to revoke RSS access"
 msgstr "Не вдалося відкликати доступ RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Не вдалося відкликати адресу календаря"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Нові"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Нову адресу календаря скопійовано в буфер обміну"
 
@@ -2391,7 +2398,7 @@ msgstr "Повтор"
 msgid "Repeats"
 msgstr "Повторюється"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Замінити"
 
@@ -2431,6 +2438,7 @@ msgstr "Повторити"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Відкликати"
 
@@ -2441,6 +2449,10 @@ msgstr "Відкликати доступ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Відкликати доступ RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Відкликати адресу календаря?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Ця і наступні"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Цьому застосунку не дозволено використовувати ваш ключ доступу. Дозвольте це в Налаштуваннях, у розділі Дозволи."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Цю адресу календаря вже видано, і її не можна показати знову."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Цей календар не має адреси, яку можна відкликати"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -472,14 +472,16 @@ msgstr "Calendario mantañax janiw iyawsatäkiti"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Calendario dirección"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Calendario dirección clipboard-ru copiata"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Calendario dirección apaqata"
 
@@ -525,6 +527,10 @@ msgstr "Calendario machaqawa"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Calendarionaka"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Aka direcciónar qillqantat calendarionakax janiw juk'amp machaqtayatäxaniti."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Thaqaña q'umachaña"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Jist'antaña"
 
@@ -1359,7 +1366,7 @@ msgstr "Janiw lurawi chhaqtayaña atinkti"
 msgid "Failed to get RSS token"
 msgstr "Janiw RSS token jikhxataña atinkti"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Janiw calendario dirección katuqaña atinkti"
 
@@ -1437,7 +1444,7 @@ msgstr "Janiw prompt wasitat qalltayaña atinkti"
 msgid "Failed to revoke RSS access"
 msgstr "RSS mantaña jarq'añax jan walikiti"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Janiw calendario dirección apaqaña atinkti"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Machaqanaka"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Machaqa calendario dirección clipboard-ru copiata"
 
@@ -2391,7 +2398,7 @@ msgstr "Kutiptaña"
 msgid "Repeats"
 msgstr "Kutiptiwa"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Lantiri"
 
@@ -2431,6 +2438,7 @@ msgstr "Wasitat yant'aña"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Aparma"
 
@@ -2441,6 +2449,10 @@ msgstr "Mantaña jarq'aña"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "¿RSS mantaña apsuña?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "¿Calendario dirección apaqañati?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Akata ukat jutirinaka"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Aka aplicacionax janiw passkeymamp apnaqañ yatiykiti. Ajustes ukan, Permisos ukan iyawsam."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Aka calendario dirección nayraqat churatawa, janiw wasitat uñachayañjamakiti."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Aka calendariox janiw apaqañatak dirección utjkiti"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -472,14 +472,16 @@ msgstr "કૅલેન્ડર ઍક્સેસ આપવામાં આવ
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "કૅલેન્ડરનું સરનામું"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "કૅલેન્ડરનું સરનામું ક્લિપબોર્ડ પર કૉપિ થયું"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "કૅલેન્ડરનું સરનામું રદ કર્યું"
 
@@ -525,6 +527,10 @@ msgstr "કૅલેન્ડર અદ્યતન છે"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "કૅલેન્ડર"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "આ સરનામાંની સદસ્યતા ધરાવતાં કૅલેન્ડર હવે અદ્યતન થશે નહીં."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "શોધ સાફ કરો"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "બંધ કરો"
 
@@ -1359,7 +1366,7 @@ msgstr "ઇવેન્ટ કાઢી નાખવામાં નિષ્ફ
 msgid "Failed to get RSS token"
 msgstr "RSS ટોકન મેળવવામાં નિષ્ફળ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "કૅલેન્ડરનું સરનામું મેળવવામાં નિષ્ફળ"
 
@@ -1437,7 +1444,7 @@ msgstr "પ્રોમ્પ્ટ રીસેટ કરવામાં નિ
 msgid "Failed to revoke RSS access"
 msgstr "RSS ઍક્સેસ રદ કરવામાં નિષ્ફળ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "કૅલેન્ડરનું સરનામું રદ કરવામાં નિષ્ફળ"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "નવીનતમ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "નવું કૅલેન્ડર સરનામું ક્લિપબોર્ડ પર કૉપિ થયું"
 
@@ -2391,7 +2398,7 @@ msgstr "પુનરાવર્તન"
 msgid "Repeats"
 msgstr "પુનરાવર્તિત થાય છે"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "બદલો"
 
@@ -2431,6 +2438,7 @@ msgstr "ફરી પ્રયાસ કરો"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "રદ કરો"
 
@@ -2441,6 +2449,10 @@ msgstr "ઍક્સેસ રદ કરો"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS ઍક્સેસ રદ કરવો છે?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "કૅલેન્ડરનું સરનામું રદ કરવું છે?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "આ અને પછીના"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "આ ઍપને તમારી પાસકી વાપરવાની પરવાનગી નથી. સેટિંગ્સમાં, પરવાનગીઓ હેઠળ તેને મંજૂરી આપો."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "આ કૅલેન્ડર સરનામું પહેલેથી જ જારી કરવામાં આવ્યું છે અને ફરીથી બતાવી શકાશે નહીં."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "આ કૅલેન્ડર પાસે રદ કરવા માટે કોઈ સરનામું નથી"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

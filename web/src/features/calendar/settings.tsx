@@ -73,7 +73,7 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
   }
   const renameMutation = useRenameCalendarMutation()
   const colourMutation = useColourCalendarMutation()
-  const { copy, revoke } = useIcsCopy()
+  const { copy, revoke, dialogs } = useIcsCopy()
 
   useEffect(() => {
     if (calendar) {
@@ -183,13 +183,14 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
               <Copy className='size-4' />
               <Trans>Copy</Trans>
             </Button>
-            <Button variant='outline' onClick={() => void revoke(calendar.id)}>
+            <Button variant='outline' onClick={() => revoke(calendar.id)}>
               <Link2 className='size-4' />
               <Trans>Revoke</Trans>
             </Button>
           </div>
         </div>
       </div>
+      {dialogs}
     </Main>
   )
 }

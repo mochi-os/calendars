@@ -472,14 +472,16 @@ msgstr "Ufikiaji wa kalenda haukutolewa"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Anwani ya kalenda"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Anwani ya kalenda imenakiliwa kwenye ubao wa kunakili"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Anwani ya kalenda imebatilishwa"
 
@@ -525,6 +527,10 @@ msgstr "Kalenda imesasishwa"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalenda"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalenda zilizojisajili kwenye anwani hii zitaacha kusasishwa."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Futa utafutaji"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Funga"
 
@@ -1359,7 +1366,7 @@ msgstr "Imeshindwa kufuta tukio"
 msgid "Failed to get RSS token"
 msgstr "Imeshindwa kupata tokeni ya RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Imeshindwa kupata anwani ya kalenda"
 
@@ -1437,7 +1444,7 @@ msgstr "Imeshindwa kuweka upya kichocheo"
 msgid "Failed to revoke RSS access"
 msgstr "Imeshindwa kubatilisha ufikiaji wa RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Imeshindwa kubatilisha anwani ya kalenda"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Mpya zaidi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Anwani mpya ya kalenda imenakiliwa kwenye ubao wa kunakili"
 
@@ -2391,7 +2398,7 @@ msgstr "Kurudia"
 msgid "Repeats"
 msgstr "Hurudiwa"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Badilisha"
 
@@ -2431,6 +2438,7 @@ msgstr "Jaribu tena"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Batilisha"
 
@@ -2441,6 +2449,10 @@ msgstr "Batilisha ufikiaji"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Ubatilishe ufikiaji wa RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Je, ubatilishe anwani ya kalenda?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Hili na yanayofuata"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Programu hii hairuhusiwi kutumia passkey yako. Iruhusu katika Mipangilio, chini ya Ruhusa."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Anwani hii ya kalenda tayari imetolewa na haiwezi kuonyeshwa tena."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kalenda hii haina anwani ya kubatilisha"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

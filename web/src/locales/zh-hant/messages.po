@@ -472,14 +472,16 @@ msgstr "未授予行事曆存取權限"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "行事曆網址"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "已將行事曆網址複製到剪貼簿"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "已撤銷行事曆網址"
 
@@ -525,6 +527,10 @@ msgstr "行事曆已是最新"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "行事曆"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "訂閱此網址的行事曆將停止更新。"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "清除搜尋"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "關閉"
 
@@ -1359,7 +1366,7 @@ msgstr "刪除活動失敗"
 msgid "Failed to get RSS token"
 msgstr "取得 RSS 權杖失敗"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "取得行事曆網址失敗"
 
@@ -1437,7 +1444,7 @@ msgstr "重設提示失敗"
 msgid "Failed to revoke RSS access"
 msgstr "撤銷 RSS 存取權限失敗"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "撤銷行事曆網址失敗"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "最新"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "已將新的行事曆網址複製到剪貼簿"
 
@@ -2391,7 +2398,7 @@ msgstr "重複"
 msgid "Repeats"
 msgstr "會重複"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "取代"
 
@@ -2431,6 +2438,7 @@ msgstr "重試"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "撤銷"
 
@@ -2441,6 +2449,10 @@ msgstr "撤銷存取權限"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "撤銷 RSS 存取權嗎？"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "要撤銷行事曆網址嗎？"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "此活動及後續活動"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "此應用程式無權使用您的通行密鑰。請在「設定」的「權限」中允許。"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "此行事曆網址已發出，無法再次顯示。"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "此行事曆沒有可撤銷的網址"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

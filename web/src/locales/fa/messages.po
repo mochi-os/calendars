@@ -472,14 +472,16 @@ msgstr "دسترسی به تقویم داده نشد"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "نشانی تقویم"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "نشانی تقویم در کلیپ‌بورد کپی شد"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "نشانی تقویم باطل شد"
 
@@ -525,6 +527,10 @@ msgstr "تقویم به‌روز است"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "تقویم‌ها"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "تقویم‌هایی که در این نشانی مشترک شده‌اند دیگر به‌روزرسانی نمی‌شوند."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "پاک کردن جست‌وجو"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "بستن"
 
@@ -1359,7 +1366,7 @@ msgstr "حذف رویداد ناموفق بود"
 msgid "Failed to get RSS token"
 msgstr "دریافت توکن RSS ناموفق بود"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "دریافت نشانی تقویم ناموفق بود"
 
@@ -1437,7 +1444,7 @@ msgstr "بازنشانی پرامپت ناموفق بود"
 msgid "Failed to revoke RSS access"
 msgstr "لغو دسترسی RSS ناموفق بود"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ابطال نشانی تقویم ناموفق بود"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "جدیدترین"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "نشانی جدید تقویم در کلیپ‌بورد کپی شد"
 
@@ -2391,7 +2398,7 @@ msgstr "تکرار"
 msgid "Repeats"
 msgstr "تکرار می‌شود"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "جایگزینی"
 
@@ -2431,6 +2438,7 @@ msgstr "تلاش دوباره"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "لغو"
 
@@ -2441,6 +2449,10 @@ msgstr "لغو دسترسی"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "دسترسی RSS لغو شود؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "نشانی تقویم باطل شود؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "این و بعدی‌ها"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "این برنامه اجازه استفاده از پسکی شما را ندارد. در تنظیمات، بخش مجوزها به آن اجازه دهید."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "این نشانی تقویم قبلاً صادر شده است و نمی‌توان آن را دوباره نمایش داد."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "این تقویم نشانی‌ای برای ابطال ندارد"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

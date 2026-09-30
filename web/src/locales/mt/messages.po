@@ -472,14 +472,16 @@ msgstr "L-aċċess għall-kalendarju ma ngħatax"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Indirizz tal-kalendarju"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "L-indirizz tal-kalendarju ġie kkupjat fil-clipboard"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "L-indirizz tal-kalendarju ġie rrevokat"
 
@@ -525,6 +527,10 @@ msgstr "Il-kalendarju huwa aġġornat"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendarji"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Il-kalendarji abbonati għal dan l-indirizz ma jibqgħux jiġu aġġornati."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Naddaf it-tiftix"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Agħlaq"
 
@@ -1359,7 +1366,7 @@ msgstr "Ma rnexxiex jitħassar l-avveniment"
 msgid "Failed to get RSS token"
 msgstr "Ma rnexxiex jinkiseb it-token tar-RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Ma rnexxiex jinkiseb l-indirizz tal-kalendarju"
 
@@ -1437,7 +1444,7 @@ msgstr "Ma rnexxiex jiġi reset il-prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Ma rnexxiex jiġi rrevokat l-aċċess RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Ma rnexxiex jiġi rrevokat l-indirizz tal-kalendarju"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "L-aktar ġodda"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "L-indirizz ġdid tal-kalendarju ġie kkupjat fil-clipboard"
 
@@ -2391,7 +2398,7 @@ msgstr "Repetizzjoni"
 msgid "Repeats"
 msgstr "Jirrepeti"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Ibdel"
 
@@ -2431,6 +2438,7 @@ msgstr "Erġa' pprova"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Irrevoka"
 
@@ -2441,6 +2449,10 @@ msgstr "Irrevoka l-aċċess"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Tirrevoka l-aċċess RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Tirrevoka l-indirizz tal-kalendarju?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Dan u dawk ta’ wara"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Din l-app mhijiex permessa tuża l-passkey tiegħek. Ippermettiha fl-Issettjar, taħt Permessi."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Dan l-indirizz tal-kalendarju diġà nħareġ u ma jistax jintwera mill-ġdid."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Dan il-kalendarju m'għandu l-ebda indirizz biex jiġi rrevokat"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

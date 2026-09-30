@@ -21,7 +21,11 @@ export const useCalendarsQuery = () =>
   })
 
 function useCalendarMutation<TVariables, TResult>(
-  action: (variables: TVariables) => Promise<TResult>
+  action: (variables: TVariables) => Promise<TResult>,
+  // Further queries the change reaches. The accounts and their remote
+  // calendars are keyed apart, so a calendar change does not ask the other
+  // server again unless it changes what that list shows.
+  also: string[][] = []
 ) {
   const queryClient = useQueryClient()
   return useMutation({
@@ -32,6 +36,7 @@ function useCalendarMutation<TVariables, TResult>(
       queryClient.invalidateQueries({ queryKey: ['calendar'] })
       queryClient.invalidateQueries({ queryKey: ['instances'] })
       queryClient.invalidateQueries({ queryKey: ['bounds'] })
+      for (const key of also) queryClient.invalidateQueries({ queryKey: key })
     },
   })
 }
@@ -53,8 +58,12 @@ export const useColourCalendarMutation = () =>
       calendarsApi.colour(calendar, colour)
   )
 
+// Deleting a linked calendar frees its collection in the remote list.
 export const useDeleteCalendarMutation = () =>
-  useCalendarMutation((calendar: string) => calendarsApi.delete(calendar))
+  useCalendarMutation(
+    (calendar: string) => calendarsApi.delete(calendar),
+    [['remote']]
+  )
 
 export const useSubscribeCalendarMutation = () =>
   useCalendarMutation(
@@ -95,7 +104,7 @@ export const usePollCalendarMutation = () =>
 /** The connected accounts a calendar can be linked through. */
 export const useCalendarAccountsQuery = (enabled: boolean) =>
   useQuery<AccountsResponse>({
-    queryKey: ['calendars', 'accounts'],
+    queryKey: ['accounts'],
     queryFn: () => calendarsApi.accounts(),
     enabled,
   })
@@ -115,7 +124,7 @@ export const useAddCalendarAccountMutation = () => {
     // them, the cache drops them too.
     gcTime: 0,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['calendars', 'accounts'] })
+      queryClient.invalidateQueries({ queryKey: ['accounts'] })
     },
   })
 }
@@ -123,7 +132,7 @@ export const useAddCalendarAccountMutation = () => {
 /** The calendars an account's own server offers. */
 export const useRemoteCalendarsQuery = (account: string | null) =>
   useQuery<RemoteResponse>({
-    queryKey: ['calendars', 'remote', account],
+    queryKey: ['remote', account],
     queryFn: () => calendarsApi.remote(account ?? ''),
     enabled: account !== null && account !== '',
   })
@@ -135,7 +144,8 @@ export const useLinkCalendarMutation = () =>
       collection: string
       name: string
       colour: string
-    }) => calendarsApi.link(fields)
+    }) => calendarsApi.link(fields),
+    [['remote']]
   )
 
 export const useGrantCalendarMutation = () =>

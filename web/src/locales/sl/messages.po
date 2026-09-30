@@ -472,14 +472,16 @@ msgstr "Dostop do koledarja ni bil odobren"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Naslov koledarja"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Naslov koledarja kopiran v odložišče"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Naslov koledarja preklican"
 
@@ -525,6 +527,10 @@ msgstr "Koledar je posodobljen"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Koledarji"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Koledarji, naročeni na ta naslov, se ne bodo več posodabljali."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Počisti iskanje"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Zapri"
 
@@ -1359,7 +1366,7 @@ msgstr "Neuspešno brisanje dogodka"
 msgid "Failed to get RSS token"
 msgstr "Neuspešno pridobivanje RSS žetona"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Neuspešno pridobivanje naslova koledarja"
 
@@ -1437,7 +1444,7 @@ msgstr "Neuspešna ponastavitev poziva"
 msgid "Failed to revoke RSS access"
 msgstr "Preklic dostopa RSS ni uspel"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Neuspešen preklic naslova koledarja"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Najnovejše"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nov naslov koledarja kopiran v odložišče"
 
@@ -2391,7 +2398,7 @@ msgstr "Ponavljanje"
 msgid "Repeats"
 msgstr "Se ponavlja"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Zamenjaj"
 
@@ -2431,6 +2438,7 @@ msgstr "Poskusi znova"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Prekliči"
 
@@ -2441,6 +2449,10 @@ msgstr "Prekliči dostop"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Ali želite preklicati dostop RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Preklicati naslov koledarja?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Ta in naslednji"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ta aplikacija ne sme uporabljati vašega geslo-ključa. Dovolite ji to v Nastavitvah, pod Dovoljenja."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Ta naslov koledarja je bil že izdan in ga ni mogoče znova prikazati."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Ta koledar nima naslova za preklic"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

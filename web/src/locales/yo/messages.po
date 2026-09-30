@@ -472,14 +472,16 @@ msgstr "A kò fún ni ìwọlé kàlẹ́ńdà"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Àdírẹ́sì kàlẹ́ńdà"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "A ti ṣe àdàkọ àdírẹ́sì kàlẹ́ńdà sí clipboard"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "A ti fagilé àdírẹ́sì kàlẹ́ńdà"
 
@@ -525,6 +527,10 @@ msgstr "Kàlẹ́ńdà ti wà ní tuntun"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Àwọn kàlẹ́ńdà"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Àwọn kàlẹ́ńdà tí wọ́n forúkọ sílẹ̀ fún àdírẹ́sì yìí kò ní ṣe ìmúdójúìwọ̀n mọ́."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Pa àwárí rẹ́"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Tì"
 
@@ -1359,7 +1366,7 @@ msgstr "Kò lè pa ìṣẹ̀lẹ̀ náà rẹ́"
 msgid "Failed to get RSS token"
 msgstr "Kò lè rí token RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kò lè rí àdírẹ́sì kàlẹ́ńdà"
 
@@ -1437,7 +1444,7 @@ msgstr "Kò lè tún prompt ṣe"
 msgid "Failed to revoke RSS access"
 msgstr "Ìkùnà láti fagilé ìwọlé RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kò lè fagilé àdírẹ́sì kàlẹ́ńdà"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Tuntun jùlọ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "A ti ṣe àdàkọ àdírẹ́sì kàlẹ́ńdà tuntun sí clipboard"
 
@@ -2391,7 +2398,7 @@ msgstr "Ìtúnwáyé"
 msgid "Repeats"
 msgstr "Ó máa ń tún wáyé"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Rọ́pò"
 
@@ -2431,6 +2438,7 @@ msgstr "Gbìyànjú lẹ́ẹ̀kan sí i"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Fagi lé"
 
@@ -2441,6 +2449,10 @@ msgstr "Fagilé ìwọlé"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Fagilé àǹfààní RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Ṣé kí a fagilé àdírẹ́sì kàlẹ́ńdà?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Èyí àti àwọn tó tẹ̀lé e"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ìṣàmúlò yìí kò ní àṣẹ láti lo passkey rẹ. Fàyè gbà á ní Ètò, lábẹ́ Àwọn Àṣẹ."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "A ti fún ni àdírẹ́sì kàlẹ́ńdà yìí tẹ́lẹ̀, a kò sì lè fi hàn mọ́."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kàlẹ́ńdà yìí kò ní àdírẹ́sì kankan láti fagilé"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

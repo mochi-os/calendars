@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import { body, form, quiet } from '@/api/request'
 import type {
   AccountResponse,
   AccountsResponse,
@@ -15,17 +16,6 @@ import type {
   RefreshResponse,
   RemoteResponse,
 } from '@/api/types/calendars'
-
-// The dialogs render their own failures, so the global toast would be a second
-// copy of the same message.
-const quiet = { mochi: { showGlobalErrorToast: false } } as const
-
-const form = {
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-} as const
-
-const body = (fields: Record<string, string>) =>
-  new URLSearchParams(fields).toString()
 
 export const calendarsApi = {
   list: (): Promise<CalendarsResponse> =>
@@ -161,8 +151,8 @@ export const calendarsApi = {
       { ...form, ...quiet }
     ),
 
-  addressRevoke: (calendar: string): Promise<Record<string, never>> =>
-    requestHelpers.post<Record<string, never>>(
+  addressRevoke: (calendar: string): Promise<{ revoked: boolean }> =>
+    requestHelpers.post<{ revoked: boolean }>(
       endpoints.link.revoke,
       body({ calendar }),
       { ...form, ...quiet }

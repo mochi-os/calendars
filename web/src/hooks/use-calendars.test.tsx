@@ -5,9 +5,23 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { renderHook, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { useCalendarsRefresh } from './use-calendars'
+import {
+  useCalendarAccountsQuery,
+  useCalendarsRefresh,
+  useDeleteCalendarMutation,
+  useLinkCalendarMutation,
+  useRemoteCalendarsQuery,
+  useRenameCalendarMutation,
+} from './use-calendars'
 
-const api = vi.hoisted(() => ({ refresh: vi.fn() }))
+const api = vi.hoisted(() => ({
+  refresh: vi.fn(),
+  rename: vi.fn(),
+  delete: vi.fn(),
+  link: vi.fn(),
+  remote: vi.fn(),
+  accounts: vi.fn(),
+}))
 
 vi.mock('@/api/calendars', () => ({ calendarsApi: api }))
 
@@ -51,5 +65,66 @@ describe('useCalendarsRefresh', () => {
     expect(api.refresh).toHaveBeenCalledTimes(1)
     expect(invalidated(['calendars'])).toBe(false)
     expect(invalidated(['instances', 0, 1, 'c1', 'UTC'])).toBe(false)
+  })
+})
+
+describe('calendar changes and the remote lists', () => {
+  beforeEach(() => {
+    for (const f of Object.values(api)) f.mockReset().mockResolvedValue({})
+    api.remote.mockResolvedValue({ calendars: [] })
+    api.accounts.mockResolvedValue({
+      accounts: [],
+      providers: [],
+      administrator: false,
+    })
+  })
+
+  // The wizard open on an account: its connected accounts and that account's
+  // remote calendars, each fetched from the other server once.
+  async function open<T>(mutation: () => T) {
+    const { wrapper } = setup()
+    const { result } = renderHook(
+      () => ({
+        accounts: useCalendarAccountsQuery(true),
+        remote: useRemoteCalendarsQuery('a1'),
+        mutation: mutation(),
+      }),
+      { wrapper }
+    )
+    await waitFor(() => {
+      expect(result.current.accounts.isSuccess).toBe(true)
+      expect(result.current.remote.isSuccess).toBe(true)
+    })
+    expect(api.remote).toHaveBeenCalledTimes(1)
+    return result
+  }
+
+  const settle = () => new Promise((resolve) => setTimeout(resolve, 50))
+
+  it('a rename does not ask the remote server or the accounts again', async () => {
+    const result = await open(() => useRenameCalendarMutation())
+    await result.current.mutation.mutateAsync({ calendar: 'c1', name: 'Work' })
+    await settle()
+    expect(api.remote).toHaveBeenCalledTimes(1)
+    expect(api.accounts).toHaveBeenCalledTimes(1)
+  })
+
+  it('deleting a calendar asks the remote server again, where a linked one frees its collection', async () => {
+    const result = await open(() => useDeleteCalendarMutation())
+    await result.current.mutation.mutateAsync('c1')
+    await waitFor(() => expect(api.remote).toHaveBeenCalledTimes(2))
+    await settle()
+    expect(api.accounts).toHaveBeenCalledTimes(1)
+  })
+
+  it('linking a calendar asks the remote server again, which marks it linked', async () => {
+    const result = await open(() => useLinkCalendarMutation())
+    await result.current.mutation.mutateAsync({
+      account: 'a1',
+      collection: 'https://example.test/c/',
+      name: 'Remote',
+      colour: '#000000',
+    })
+    await waitFor(() => expect(api.remote).toHaveBeenCalledTimes(2))
   })
 })

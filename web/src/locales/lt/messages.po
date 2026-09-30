@@ -472,14 +472,16 @@ msgstr "Prieiga prie kalendoriaus nesuteikta"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Kalendoriaus adresas"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Kalendoriaus adresas nukopijuotas į iškarpinę"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Kalendoriaus adresas atšauktas"
 
@@ -525,6 +527,10 @@ msgstr "Kalendorius atnaujintas"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendoriai"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalendoriai, užsiprenumeravę šį adresą, nebebus atnaujinami."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Išvalyti paiešką"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Uždaryti"
 
@@ -1359,7 +1366,7 @@ msgstr "Nepavyko ištrinti įvykio"
 msgid "Failed to get RSS token"
 msgstr "Nepavyko gauti RSS raktelio"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Nepavyko gauti kalendoriaus adreso"
 
@@ -1437,7 +1444,7 @@ msgstr "Nepavyko atstatyti raginimo"
 msgid "Failed to revoke RSS access"
 msgstr "Nepavyko atšaukti RSS prieigos"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Nepavyko atšaukti kalendoriaus adreso"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Naujausi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Naujas kalendoriaus adresas nukopijuotas į iškarpinę"
 
@@ -2391,7 +2398,7 @@ msgstr "Kartojimas"
 msgid "Repeats"
 msgstr "Kartojasi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Pakeisti"
 
@@ -2431,6 +2438,7 @@ msgstr "Bandyti dar kartą"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Atšaukti"
 
@@ -2441,6 +2449,10 @@ msgstr "Atšaukti prieigą"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Atšaukti RSS prieigą?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Atšaukti kalendoriaus adresą?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Šis ir vėlesni"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Šiai programai neleidžiama naudoti jūsų slaptarakčio. Leiskite tai Nustatymuose, skiltyje Leidimai."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Šis kalendoriaus adresas jau buvo išduotas ir jo nebus galima parodyti dar kartą."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Šis kalendorius neturi adreso, kurį būtų galima atšaukti"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

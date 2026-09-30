@@ -472,14 +472,16 @@ msgstr "Kalenterin käyttöoikeutta ei myönnetty"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Kalenterin osoite"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Kalenterin osoite kopioitu leikepöydälle"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Kalenterin osoite peruutettu"
 
@@ -525,6 +527,10 @@ msgstr "Kalenteri on ajan tasalla"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalenterit"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Tämän osoitteen tilanneet kalenterit lakkaavat päivittymästä."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Tyhjennä haku"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Sulje"
 
@@ -1359,7 +1366,7 @@ msgstr "Tapahtuman poisto epäonnistui"
 msgid "Failed to get RSS token"
 msgstr "RSS-tunnisteen hakeminen epäonnistui"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kalenterin osoitteen haku epäonnistui"
 
@@ -1437,7 +1444,7 @@ msgstr "Kehotteen nollaus epäonnistui"
 msgid "Failed to revoke RSS access"
 msgstr "RSS-käyttöoikeuden peruuttaminen epäonnistui"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kalenterin osoitteen peruuttaminen epäonnistui"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Uusimmat"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Uusi kalenterin osoite kopioitu leikepöydälle"
 
@@ -2391,7 +2398,7 @@ msgstr "Toisto"
 msgid "Repeats"
 msgstr "Toistuu"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Korvaa"
 
@@ -2431,6 +2438,7 @@ msgstr "Yritä uudelleen"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Peruuta"
 
@@ -2441,6 +2449,10 @@ msgstr "Peruuta käyttöoikeus"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Kumotaanko RSS-käyttöoikeus?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Peruutetaanko kalenterin osoite?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Tämä ja seuraavat"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Tämä sovellus ei saa käyttää avainkoodiasi. Salli se Asetuksissa kohdassa Käyttöoikeudet."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Tämä kalenterin osoite on jo myönnetty, eikä sitä voi näyttää uudelleen."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Tällä kalenterilla ei ole peruutettavaa osoitetta"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

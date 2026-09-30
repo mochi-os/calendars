@@ -472,14 +472,16 @@ msgstr "ບໍ່ໄດ້ຮັບການເຂົ້າເຖິງປະຕ
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ທີ່ຢູ່ປະຕິທິນ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "ສຳເນົາທີ່ຢູ່ປະຕິທິນໄປຄລິບບອດແລ້ວ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "ຖອນທີ່ຢູ່ປະຕິທິນແລ້ວ"
 
@@ -525,6 +527,10 @@ msgstr "ປະຕິທິນເປັນຂໍ້ມູນຫຼ້າສຸດ
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ປະຕິທິນ"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ປະຕິທິນທີ່ສະໝັກຮັບທີ່ຢູ່ນີ້ຈະບໍ່ຖືກປັບປຸງອີກ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "ລ້າງການຄົ້ນຫາ"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "ປິດ"
 
@@ -1359,7 +1366,7 @@ msgstr "ລຶບເຫດການລົ້ມເຫຼວ"
 msgid "Failed to get RSS token"
 msgstr "ໄດ້ຮັບໂທເຄັນ RSS ລົ້ມເຫຼວ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ຮັບທີ່ຢູ່ປະຕິທິນລົ້ມເຫຼວ"
 
@@ -1437,7 +1444,7 @@ msgstr "ຣີເຊັດພຣອມທ໌ລົ້ມເຫຼວ"
 msgid "Failed to revoke RSS access"
 msgstr "ຖອນການເຂົ້າເຖິງ RSS ບໍ່ສຳເລັດ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ຖອນທີ່ຢູ່ປະຕິທິນລົ້ມເຫຼວ"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "ໃໝ່ລ່າສຸດ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "ສຳເນົາທີ່ຢູ່ປະຕິທິນໃໝ່ໄປຄລິບບອດແລ້ວ"
 
@@ -2391,7 +2398,7 @@ msgstr "ການເຮັດຊ້ຳ"
 msgid "Repeats"
 msgstr "ເຮັດຊ້ຳ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "ແທນທີ່"
 
@@ -2431,6 +2438,7 @@ msgstr "ລອງໃໝ່"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "ຖອນ"
 
@@ -2441,6 +2449,10 @@ msgstr "ຖອນການເຂົ້າເຖິງ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "ຖອນສິດເຂົ້າເຖິງ RSS ບໍ?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "ຖອນທີ່ຢູ່ປະຕິທິນບໍ?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "ອັນນີ້ ແລະ ອັນຕໍ່ໄປ"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ແອັບນີ້ບໍ່ໄດ້ຮັບອະນຸຍາດໃຫ້ໃຊ້ ກະແຈຜ່ານຂອງທ່ານ. ອະນຸຍາດໃນການຕັ້ງຄ່າ, ພາຍໃຕ້ການອະນຸຍາດ."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "ທີ່ຢູ່ປະຕິທິນນີ້ຖືກອອກໃຫ້ແລ້ວ ແລະ ບໍ່ສາມາດສະແດງຄືນໄດ້"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ປະຕິທິນນີ້ບໍ່ມີທີ່ຢູ່ໃຫ້ຖອນ"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

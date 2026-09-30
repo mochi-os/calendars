@@ -472,14 +472,16 @@ msgstr "Ndoje'ẽi jeike arapapahápe"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Arapapaha dirección"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Arapapaha dirección oñekopiáma clipboard-pe"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Arapapaha dirección oñemboguéma"
 
@@ -525,6 +527,10 @@ msgstr "Arapapaha ipyahu porã"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Arapapahakuéra"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Umi arapapahakuéra oñemboheraguapýva ko dirección-pe ndoñembohekopyahumo'ãvéima."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Embopotĩ jeheka"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Mboty"
 
@@ -1359,7 +1366,7 @@ msgstr "Ndaikatúi ojehundi evento"
 msgid "Failed to get RSS token"
 msgstr "Ndaikatúi oguenohẽ RSS token"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Ndaikatúi ojejuhu arapapaha dirección"
 
@@ -1437,7 +1444,7 @@ msgstr "Ndaikatúi oñembogue jey prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Ndaikatúi omboyke RSS jeike"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Ndaikatúi oñembogue arapapaha dirección"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Ipyahuvéva"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Arapapaha dirección pyahu oñekopiáma clipboard-pe"
 
@@ -2391,7 +2398,7 @@ msgstr "Jey jey"
 msgid "Repeats"
 msgstr "Oiko jey"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Embyekovia"
 
@@ -2431,6 +2438,7 @@ msgstr "Eha'ã jey"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Embogue"
 
@@ -2441,6 +2449,10 @@ msgstr "Emboyke jeike"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "¿Emboyke RSS jeike?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "¿Remboguesépa arapapaha dirección?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Kóva ha upe rire oúva"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ko aplicación ndaikatúi oiporu nde passkey. Emoneĩ Ajustes-pe, Permisos guýpe."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Ko arapapaha dirección oñeme'ẽma, ndaikatumo'ãvéima ojehechauka jey."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Ko arapapaha ndorekói dirección oñembogue hag̃ua"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

@@ -472,14 +472,16 @@ msgstr "Təqvimə giriş verilmədi"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Təqvim ünvanı"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Təqvim ünvanı mübadilə yaddaşına kopyalandı"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Təqvim ünvanı ləğv edildi"
 
@@ -525,6 +527,10 @@ msgstr "Təqvim güncəldir"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Təqvimlər"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Bu ünvana abunə olan təqvimlər yenilənməyi dayandıracaq."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Axtarışı təmizlə"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Bağla"
 
@@ -1359,7 +1366,7 @@ msgstr "Tədbiri silmək alınmadı"
 msgid "Failed to get RSS token"
 msgstr "RSS tokenini almaq alınmadı"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Təqvim ünvanını almaq alınmadı"
 
@@ -1437,7 +1444,7 @@ msgstr "Promptu sıfırlamaq alınmadı"
 msgid "Failed to revoke RSS access"
 msgstr "RSS girişini ləğv etmək alınmadı"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Təqvim ünvanını ləğv etmək alınmadı"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Ən yeni"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Yeni təqvim ünvanı mübadilə yaddaşına kopyalandı"
 
@@ -2391,7 +2398,7 @@ msgstr "Təkrar"
 msgid "Repeats"
 msgstr "Təkrarlanır"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Əvəz et"
 
@@ -2431,6 +2438,7 @@ msgstr "Yenidən cəhd et"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Geri çağır"
 
@@ -2441,6 +2449,10 @@ msgstr "Girişi ləğv et"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS girişi ləğv edilsin?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Təqvim ünvanı ləğv edilsin?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Bu və sonrakılar"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Bu tətbiqin passkey-inizi istifadə etməsinə icazə verilmir. Ayarlarda, İcazələr bölməsində icazə verin."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Bu təqvim ünvanı artıq verilib və bir daha göstərilə bilməz."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Bu təqvimin ləğv ediləcək ünvanı yoxdur"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

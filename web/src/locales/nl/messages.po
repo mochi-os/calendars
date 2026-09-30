@@ -472,14 +472,16 @@ msgstr "Agendatoegang is niet verleend"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Agenda-adres"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Agenda-adres gekopieerd naar klembord"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Agenda-adres ingetrokken"
 
@@ -525,6 +527,10 @@ msgstr "Agenda is actueel"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Agenda's"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Agenda's die op dit adres zijn geabonneerd, worden niet meer bijgewerkt."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Zoekopdracht wissen"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Sluiten"
 
@@ -1359,7 +1366,7 @@ msgstr "Afspraak verwijderen mislukt"
 msgid "Failed to get RSS token"
 msgstr "RSS-token ophalen mislukt"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Agenda-adres ophalen mislukt"
 
@@ -1437,7 +1444,7 @@ msgstr "Prompt resetten mislukt"
 msgid "Failed to revoke RSS access"
 msgstr "Kan RSS-toegang niet intrekken"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Agenda-adres intrekken mislukt"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Nieuwste"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nieuw agenda-adres gekopieerd naar klembord"
 
@@ -2391,7 +2398,7 @@ msgstr "Herhaling"
 msgid "Repeats"
 msgstr "Herhaalt"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Vervangen"
 
@@ -2431,6 +2438,7 @@ msgstr "Opnieuw proberen"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Intrekken"
 
@@ -2441,6 +2449,10 @@ msgstr "Toegang intrekken"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS-toegang intrekken?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Agenda-adres intrekken?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Deze en volgende"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Deze app mag uw passkey niet gebruiken. Sta dit toe in Instellingen, onder Machtigingen."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Dit agenda-adres is al uitgegeven en kan niet opnieuw worden getoond."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Deze agenda heeft geen adres om in te trekken"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

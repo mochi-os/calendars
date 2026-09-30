@@ -472,14 +472,16 @@ msgstr "Hindi ibinigay ang access sa kalendaryo"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Address ng kalendaryo"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Nakopya ang address ng kalendaryo sa clipboard"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Nabawi ang address ng kalendaryo"
 
@@ -525,6 +527,10 @@ msgstr "Napapanahon ang kalendaryo"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Mga kalendaryo"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Hindi na mapapanibago ang mga kalendaryong sumusubaybay sa address na ito."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Burahin ang paghahanap"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Isara"
 
@@ -1359,7 +1366,7 @@ msgstr "Nabigong i-delete ang kaganapan"
 msgid "Failed to get RSS token"
 msgstr "Nabigong makakuha ng RSS token"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Nabigong makuha ang address ng kalendaryo"
 
@@ -1437,7 +1444,7 @@ msgstr "Nabigong i-reset ang prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Nabigong bawiin ang RSS access"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Nabigong bawiin ang address ng kalendaryo"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Pinakabago"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nakopya ang bagong address ng kalendaryo sa clipboard"
 
@@ -2391,7 +2398,7 @@ msgstr "Pag-ulit"
 msgid "Repeats"
 msgstr "Paulit-ulit"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Palitan"
 
@@ -2431,6 +2438,7 @@ msgstr "Subukang muli"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Bawiin"
 
@@ -2441,6 +2449,10 @@ msgstr "Bawiin ang access"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Bawiin ang access sa RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Bawiin ang address ng kalendaryo?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Ito at ang mga susunod"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Hindi pinapayagan ang app na ito na gamitin ang iyong passkey. Payagan ito sa Mga Setting, sa ilalim ng Mga Pahintulot."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Naibigay na ang address ng kalendaryong ito at hindi na ito maipapakita muli."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Walang address na mababawi ang kalendaryong ito"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

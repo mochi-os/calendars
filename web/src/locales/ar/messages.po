@@ -472,14 +472,16 @@ msgstr "لم يُمنح الوصول إلى التقويم"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "عنوان التقويم"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "تم نسخ عنوان التقويم إلى الحافظة"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "تم إلغاء عنوان التقويم"
 
@@ -525,6 +527,10 @@ msgstr "التقويم محدَّث"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "التقويمات"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ستتوقف التقويمات المشتركة في هذا العنوان عن التحديث."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "مسح البحث"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "إغلاق"
 
@@ -1359,7 +1366,7 @@ msgstr "فشل حذف الحدث"
 msgid "Failed to get RSS token"
 msgstr "فشل الحصول على رمز RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "فشل الحصول على عنوان التقويم"
 
@@ -1437,7 +1444,7 @@ msgstr "فشل إعادة تعيين المطالبة"
 msgid "Failed to revoke RSS access"
 msgstr "فشل إلغاء وصول RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "فشل إلغاء عنوان التقويم"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "الأحدث"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "تم نسخ عنوان التقويم الجديد إلى الحافظة"
 
@@ -2391,7 +2398,7 @@ msgstr "التكرار"
 msgid "Repeats"
 msgstr "يتكرر"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "استبدال"
 
@@ -2431,6 +2438,7 @@ msgstr "إعادة المحاولة"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "إلغاء"
 
@@ -2441,6 +2449,10 @@ msgstr "إلغاء الوصول"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "إلغاء وصول RSS؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "إلغاء عنوان التقويم؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "هذا والأحداث التالية"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "لا يُسمح لهذا التطبيق باستخدام مفتاح المرور الخاص بك. اسمح له في الإعدادات، ضمن الأذونات."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "تم إصدار عنوان التقويم هذا مسبقاً ولا يمكن عرضه مرة أخرى."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "لا يوجد لهذا التقويم عنوان لإلغائه"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

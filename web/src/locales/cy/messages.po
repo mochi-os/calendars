@@ -472,14 +472,16 @@ msgstr "Ni roddwyd mynediad i'r calendr"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Cyfeiriad y calendr"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Cyfeiriad y calendr wedi'i gopïo i'r clipfwrdd"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Cyfeiriad y calendr wedi'i ddirymu"
 
@@ -525,6 +527,10 @@ msgstr "Mae'r calendr yn gyfredol"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Calendrau"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Bydd calendrau sydd wedi tanysgrifio i'r cyfeiriad hwn yn peidio â chael eu diweddaru."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Clirio chwiliad"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Cau"
 
@@ -1359,7 +1366,7 @@ msgstr "Methwyd dileu'r digwyddiad"
 msgid "Failed to get RSS token"
 msgstr "Methwyd cael tocyn RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Methwyd cael cyfeiriad y calendr"
 
@@ -1437,7 +1444,7 @@ msgstr "Methwyd ailosod yr anogiad"
 msgid "Failed to revoke RSS access"
 msgstr "Methwyd â dirymu mynediad RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Methwyd dirymu cyfeiriad y calendr"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Diweddaraf"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Cyfeiriad calendr newydd wedi'i gopïo i'r clipfwrdd"
 
@@ -2391,7 +2398,7 @@ msgstr "Ailadrodd"
 msgid "Repeats"
 msgstr "Yn ailadrodd"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Newid"
 
@@ -2431,6 +2438,7 @@ msgstr "Ail-geisio"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Dirymu"
 
@@ -2441,6 +2449,10 @@ msgstr "Dirymu mynediad"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Dirymu mynediad RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Dirymu cyfeiriad y calendr?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Hwn a'r rhai canlynol"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Nid yw'r ap hwn yn cael defnyddio eich pasallwedd. Caniatewch hynny yn Gosodiadau, o dan Caniatadau."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Cafodd cyfeiriad y calendr hwn ei gyhoeddi eisoes ac ni ellir ei ddangos eto."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Nid oes gan y calendr hwn gyfeiriad i'w ddirymu"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

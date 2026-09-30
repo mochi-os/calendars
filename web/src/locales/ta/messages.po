@@ -472,14 +472,16 @@ msgstr "நாட்காட்டி அணுகல் வழங்கப்�
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "நாட்காட்டி முகவரி"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "நாட்காட்டி முகவரி கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "நாட்காட்டி முகவரி ரத்து செய்யப்பட்டது"
 
@@ -525,6 +527,10 @@ msgstr "நாட்காட்டி புதுப்பித்த நி�
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "நாள்காட்டிகள்"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "இந்த முகவரிக்குக் குழுசேர்ந்த நாள்காட்டிகள் இனி புதுப்பிக்கப்படாது."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "தேடலை அழி"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "மூடு"
 
@@ -1359,7 +1366,7 @@ msgstr "நிகழ்வை நீக்க முடியவில்லை"
 msgid "Failed to get RSS token"
 msgstr "RSS டோக்கனைப் பெற முடியவில்லை"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "நாட்காட்டி முகவரியைப் பெற முடியவில்லை"
 
@@ -1437,7 +1444,7 @@ msgstr "ப்ராம்ப்டை மீட்டமைக்க முட�
 msgid "Failed to revoke RSS access"
 msgstr "RSS அணுகலை நீக்க முடியவில்லை"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "நாட்காட்டி முகவரியை ரத்து செய்ய முடியவில்லை"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "சமீபத்தியவை"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "புதிய நாட்காட்டி முகவரி கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
@@ -2391,7 +2398,7 @@ msgstr "மீண்டும் நிகழ்தல்"
 msgid "Repeats"
 msgstr "மீண்டும் நிகழ்கிறது"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "மாற்று"
 
@@ -2431,6 +2438,7 @@ msgstr "மீண்டும் முயற்சிக்கவும்"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "திரும்பப் பெறு"
 
@@ -2441,6 +2449,10 @@ msgstr "அணுகலை நீக்கு"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS அணுகலை ரத்துசெய்யவா?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "நாட்காட்டி முகவரியை ரத்து செய்யவா?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "இதுவும் இதற்குப் பின்வருப�
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "இந்த ஆப்ஸுக்கு உங்கள் கடவுக்குறியைப் பயன்படுத்த அனுமதி இல்லை. அமைப்புகளில், அனுமதிகள் பிரிவில் அதை அனுமதிக்கவும்."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "இந்த நாட்காட்டி முகவரி ஏற்கனவே வழங்கப்பட்டது, மீண்டும் காட்ட முடியாது."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "இந்த நாட்காட்டியில் ரத்து செய்ய முகவரி இல்லை"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

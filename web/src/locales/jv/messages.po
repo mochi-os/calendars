@@ -472,14 +472,16 @@ msgstr "Akses kalender ora diwenehake"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Alamat kalender"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Alamat kalender disalin menyang clipboard"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Alamat kalender dibatalake"
 
@@ -525,6 +527,10 @@ msgstr "Kalender wis paling anyar"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalèndher"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalèndher sing langganan alamat iki bakal mandheg dianyari."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Resiki panggolékan"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Tutup"
 
@@ -1359,7 +1366,7 @@ msgstr "Gagal mbusak acara"
 msgid "Failed to get RSS token"
 msgstr "Gagal njupuk token RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Gagal njupuk alamat kalender"
 
@@ -1437,7 +1444,7 @@ msgstr "Gagal mbalèkaké prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Gagal mbatalake akses RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Gagal mbatalake alamat kalender"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Paling anyar"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Alamat kalender anyar disalin menyang clipboard"
 
@@ -2391,7 +2398,7 @@ msgstr "Baleni"
 msgid "Repeats"
 msgstr "Dibaleni"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Ganti"
 
@@ -2431,6 +2438,7 @@ msgstr "Coba maneh"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Cabut"
 
@@ -2441,6 +2449,10 @@ msgstr "Batalake akses"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Batalake akses RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Batalake alamat kalender?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Iki lan sabanjure"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Aplikasi iki ora diidini nggunakake passkey sampeyan. Idini ing Setelan, ing bagean Idin."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Alamat kalender iki wis diwènèhaké lan ora bisa ditampilake manèh."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kalender iki ora duwe alamat sing bisa dibatalake"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

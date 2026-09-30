@@ -472,14 +472,16 @@ msgstr "Senenama elýeterliligi berilmedi"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Senenamanyň salgysy"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Senenamanyň salgysy aralyk buferine nusgalandy"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Senenamanyň salgysy ýatyryldy"
 
@@ -525,6 +527,10 @@ msgstr "Senenama täzelenen"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendarlar"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Bu salga ýazylan kalendarlar mundan beýläk täzelenmez."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Gözlegi arassalamak"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Ýapmak"
 
@@ -1359,7 +1366,7 @@ msgstr "Çäräni pozmak başartmady"
 msgid "Failed to get RSS token"
 msgstr "RSS tokeni alynmady"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Senenamanyň salgysyny almak başartmady"
 
@@ -1437,7 +1444,7 @@ msgstr "Görkezme täzeden düzülmedi"
 msgid "Failed to revoke RSS access"
 msgstr "RSS elýeterliligini ýatyrmak başartmady"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Senenamanyň salgysyny ýatyrmak başartmady"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Iň täze"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Täze senenama salgysy aralyk buferine nusgalandy"
 
@@ -2391,7 +2398,7 @@ msgstr "Gaýtalanma"
 msgid "Repeats"
 msgstr "Gaýtalanýar"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Çalşyr"
 
@@ -2431,6 +2438,7 @@ msgstr "Gaýtadan synanyş"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Ýatyr"
 
@@ -2441,6 +2449,10 @@ msgstr "Elýeterliligi ýatyr"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS elýeterliligi ýatyrylsynmy?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Senenamanyň salgysy ýatyrylsynmy?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Şu we indikiler"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Bu programma siziň passkey-iňizi ulanmaga rugsat berilmedi. Sazlamalarda, Rugsatlar bölüminde rugsat beriň."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Bu senenama salgysy eýýäm berildi we ony gaýtadan görkezip bolmaz."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Bu senenamanyň ýatyryljak salgysy ýok"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

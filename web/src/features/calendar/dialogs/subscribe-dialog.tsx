@@ -45,7 +45,7 @@ import {
 } from '@/hooks/use-calendars'
 
 /** What the wizard adds: three two-way kinds through an account, and a published address. */
-export type SubscribeKind = 'google' | 'apple' | 'caldav' | 'address'
+type SubscribeKind = 'google' | 'apple' | 'caldav' | 'address'
 
 // The colour a linked calendar takes when the other server names none, and
 // the one a subscription starts on.
@@ -534,7 +534,6 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
               type='url'
               value={server}
               onChange={(event) => setServer(event.target.value)}
-              placeholder='https://example.com/calendars/caldav/'
             />
           </div>
         )}

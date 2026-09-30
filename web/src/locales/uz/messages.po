@@ -472,14 +472,16 @@ msgstr "Kalendarga kirish berilmadi"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Kalendar manzili"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Kalendar manzili buferga nusxalandi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Kalendar manzili bekor qilindi"
 
@@ -525,6 +527,10 @@ msgstr "Kalendar yangilangan"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendarlar"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Bu manzilga obuna boʻlgan kalendarlar endi yangilanmaydi."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Qidiruvni tozalash"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Yopish"
 
@@ -1359,7 +1366,7 @@ msgstr "Tadbirni oʻchirib boʻlmadi"
 msgid "Failed to get RSS token"
 msgstr "RSS tokenini olib boʻlmadi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kalendar manzilini olib boʻlmadi"
 
@@ -1437,7 +1444,7 @@ msgstr "Soʻrovni tiklab boʻlmadi"
 msgid "Failed to revoke RSS access"
 msgstr "RSS kirishini bekor qilib bo'lmadi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kalendar manzilini bekor qilib boʻlmadi"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Eng yangi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Yangi kalendar manzili buferga nusxalandi"
 
@@ -2391,7 +2398,7 @@ msgstr "Takrorlash"
 msgid "Repeats"
 msgstr "Takrorlanadi"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Almashtirish"
 
@@ -2431,6 +2438,7 @@ msgstr "Qayta urinish"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Bekor qilish"
 
@@ -2441,6 +2449,10 @@ msgstr "Kirishni bekor qilish"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS kirishi bekor qilinsinmi?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Kalendar manzili bekor qilinsinmi?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Bu va keyingilari"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Bu ilovaga passkey’ingizdan foydalanishga ruxsat berilmagan. Sozlamalardagi Ruxsatlar bo‘limida ruxsat bering."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Bu kalendar manzili allaqachon berilgan va qayta koʻrsatilmaydi."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Bu kalendarda bekor qilinadigan manzil yoʻq"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"

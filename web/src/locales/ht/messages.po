@@ -472,14 +472,16 @@ msgstr "Yo pa bay aksè kalandriye"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Adrès kalandriye a"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address copied to clipboard"
 msgstr "Adrès kalandriye a kopye nan clipboard"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Adrès kalandriye a revoke"
 
@@ -525,6 +527,10 @@ msgstr "Kalandriye a ajou"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalandriye"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalandriye ki abòne ak adrès sa a p ap mete ajou ankò."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -659,6 +665,7 @@ msgstr "Efase rechèch"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Fèmen"
 
@@ -1359,7 +1366,7 @@ msgstr "Echwe pou efase evènman an"
 msgid "Failed to get RSS token"
 msgstr "Echwe pou jwenn token RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Echwe pou jwenn adrès kalandriye a"
 
@@ -1437,7 +1444,7 @@ msgstr "Echwe pou reset prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Echwe pou revoke aksè RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Echwe pou revoke adrès kalandriye a"
 
@@ -1871,7 +1878,7 @@ msgctxt "sort order"
 msgid "New"
 msgstr "Pi nouvo"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "New calendar address copied to clipboard"
 msgstr "Nouvo adrès kalandriye a kopye nan clipboard"
 
@@ -2391,7 +2398,7 @@ msgstr "Repetisyon"
 msgid "Repeats"
 msgstr "Li repete"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Ranplase"
 
@@ -2431,6 +2438,7 @@ msgstr "Eseye ankò"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Anile"
 
@@ -2441,6 +2449,10 @@ msgstr "Revoke aksè"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Revoke aksè RSS la?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Anile adrès kalandriye a?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2908,9 +2920,13 @@ msgstr "Sa a ak sa k ap vini yo"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Aplikasyon sa a pa gen dwa itilize passkey ou. Bay li pèmisyon nan Paramèt, anba Pèmisyon."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Adrès kalandriye sa a te deja bay epi li pa ka parèt ankò."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kalandriye sa a pa gen okenn adrès pou anile"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
