@@ -130,6 +130,15 @@ def database_upgrade(version):
 	if version == 7:
 		# Every event write replaces the event's change row, found by event.
 		mochi.db.execute("create index if not exists changes_event on changes( event )")
+	if version == 8:
+		# When each event's last occurrence finishes, worked out once as it is
+		# written rather than by expanding every series whenever the list view
+		# asks where the events end.
+		if "ends" not in [c["name"] for c in mochi.db.table("events")]:
+			mochi.db.execute("alter table events add column ends integer not null default 0")
+		mochi.db.execute("update events set ends=max(start, finish) where recurring=0")
+		for row in mochi.db.rows("select id, ics, component, start, finish, recurring from events where recurring=1"):
+			mochi.db.execute("update events set ends=? where id=?", event_ends(row["ics"], row), row["id"])
 
 def database_create():
 	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '', readonly integer not null default 0 )")
@@ -137,8 +146,9 @@ def database_create():
 	mochi.db.execute("create unique index if not exists calendars_identity_slug on calendars( identity, slug )")
 	# ics holds the object's iCalendar text; the rest are read from it when it
 	# is written, for listing and the CalDAV time-range prefilter. A recurring
-	# event's finish is 0: open-ended.
-	mochi.db.execute("create table if not exists events ( id text not null primary key, calendar text not null, identity text not null, slug text not null default '', uid text not null default '', etag text not null default '', ics text not null default '', component text not null default 'VEVENT', summary text not null default '', start integer not null default 0, finish integer not null default 0, allday integer not null default 0, recurring integer not null default 0, created integer not null default 0, updated integer not null default 0, href text not null default '', remote text not null default '', dirty integer not null default 0 )")
+	# event's finish is 0: open-ended. ends is when its last occurrence
+	# finishes, -1 for a series with no end.
+	mochi.db.execute("create table if not exists events ( id text not null primary key, calendar text not null, identity text not null, slug text not null default '', uid text not null default '', etag text not null default '', ics text not null default '', component text not null default 'VEVENT', summary text not null default '', start integer not null default 0, finish integer not null default 0, allday integer not null default 0, recurring integer not null default 0, created integer not null default 0, updated integer not null default 0, href text not null default '', remote text not null default '', dirty integer not null default 0, ends integer not null default 0 )")
 	mochi.db.execute("create index if not exists events_calendar_start on events( calendar, start )")
 	mochi.db.execute("create unique index if not exists events_calendar_slug on events( calendar, slug )")
 	mochi.db.execute("create unique index if not exists events_calendar_uid on events( calendar, uid ) where uid != ''")
@@ -482,6 +492,30 @@ def event_full(row):
 # it came from there: a conflict there is answered as one here, with the
 # other server's version stored in place of the write, and a server that
 # cannot be reached leaves the write marked to push at the next sync.
+# event_ends(ics, summary) -> int: when the object's last occurrence
+# finishes, or -1 for a series with no end. summary holds the object's start,
+# finish, component and whether it recurs, as mochi.ical.summary reads them.
+# The rule is read through the parser, so a folded line or a parameter on it
+# reads as any other; a series with more occurrences than an expansion
+# returns ends at the last one it reaches.
+def event_ends(ics, summary):
+	start = summary.get("start", 0)
+	if not summary.get("recurring"):
+		return max(start, summary.get("finish", 0))
+	tree = mochi.ical.parse(ics) or {}
+	for c in tree.get("components", []):
+		if type(c) != "dict" or c.get("name") != summary.get("component") or property_value(c, "RECURRENCE-ID"):
+			continue
+		rule = property_value(c, "RRULE").upper()
+		if rule and "UNTIL=" not in rule and "COUNT=" not in rule:
+			return -1
+		break
+	last = start
+	for instance in mochi.ical.instances(ics, start, start + 100 * 366 * 86400):
+		if instance["finish"] > last:
+			last = instance["finish"]
+	return last
+
 def event_write(identity, calendar, slug, ics, row=None, push=True):
 	if type(ics) != "string" or len(ics) > _ICS_MAXIMUM:
 		return "too_large"
@@ -496,14 +530,15 @@ def event_write(identity, calendar, slug, ics, row=None, push=True):
 		return "duplicate"
 	now = mochi.time.now()
 	etag = mochi.crypto.hash.sha256(ics)
+	ends = event_ends(ics, summary)
 	if row:
-		mochi.db.execute("update events set uid=?, etag=?, ics=?, component=?, summary=?, start=?, finish=?, allday=?, recurring=?, updated=? where id=?",
-			uid, etag, ics, summary["component"], summary.get("summary", ""), summary.get("start", 0), summary.get("finish", 0), 1 if summary.get("allday") else 0, 1 if summary.get("recurring") else 0, now, row["id"])
+		mochi.db.execute("update events set uid=?, etag=?, ics=?, component=?, summary=?, start=?, finish=?, allday=?, recurring=?, ends=?, updated=? where id=?",
+			uid, etag, ics, summary["component"], summary.get("summary", ""), summary.get("start", 0), summary.get("finish", 0), 1 if summary.get("allday") else 0, 1 if summary.get("recurring") else 0, ends, now, row["id"])
 		id = row["id"]
 	else:
 		id = mochi.uid()
-		mochi.db.execute("insert into events ( id, calendar, identity, slug, uid, etag, ics, component, summary, start, finish, allday, recurring, created, updated ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )",
-			id, calendar, identity, slug or id, uid, etag, ics, summary["component"], summary.get("summary", ""), summary.get("start", 0), summary.get("finish", 0), 1 if summary.get("allday") else 0, 1 if summary.get("recurring") else 0, now, now)
+		mochi.db.execute("insert into events ( id, calendar, identity, slug, uid, etag, ics, component, summary, start, finish, allday, recurring, ends, created, updated ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )",
+			id, calendar, identity, slug or id, uid, etag, ics, summary["component"], summary.get("summary", ""), summary.get("start", 0), summary.get("finish", 0), 1 if summary.get("allday") else 0, 1 if summary.get("recurring") else 0, ends, now, now)
 	calendar_touch(calendar, id)
 	after = event_get(identity, id)
 	reminders_schedule(after)
@@ -1629,25 +1664,6 @@ def instances_sorted(instances):
 # that scrolls knows where to stop. A recurrence with neither COUNT nor UNTIL,
 # and the birthdays calendar, go on for ever: "endless" says so and "last" is
 # then the last bounded moment.
-def recurrence_ends(row):
-	for line in row["ics"].replace("\r\n ", "").split("\r\n"):
-		if not line.startswith("RRULE:"):
-			continue
-		rule = line[6:]
-		if "UNTIL=" not in rule and "COUNT=" not in rule:
-			return None
-		last = 0
-		for instance in mochi.ical.instances(row["ics"], row["start"], row["start"] + 100 * 366 * 86400):
-			if instance["finish"] > last:
-				last = instance["finish"]
-		return last
-	# RDATE-only recurrences are bounded by their dates.
-	last = 0
-	for instance in mochi.ical.instances(row["ics"], row["start"], row["start"] + 100 * 366 * 86400):
-		if instance["finish"] > last:
-			last = instance["finish"]
-	return last
-
 def action_events_bounds(a):
 	identity = a.user.identity.id
 	calendars_ensure(identity)
@@ -1666,17 +1682,13 @@ def action_events_bounds(a):
 						first = born
 				endless = True
 			continue
-		for row in mochi.db.rows("select id, ics, start, finish, recurring from events where calendar=? and component='VEVENT'", calendar["id"]):
-			if row["start"] and (first == 0 or row["start"] < first):
-				first = row["start"]
-			if row["recurring"] == 1:
-				ends = recurrence_ends(row)
-				if ends == None:
-					endless = True
-				elif ends > last:
-					last = ends
-			elif max(row["finish"], row["start"]) > last:
-				last = max(row["finish"], row["start"])
+		row = mochi.db.row("select min(case when start>0 then start end) as first, max(ends) as last, min(ends) as least from events where calendar=? and component='VEVENT'", calendar["id"])
+		if row and row["first"] and (first == 0 or row["first"] < first):
+			first = row["first"]
+		if row and row["last"] and row["last"] > last:
+			last = row["last"]
+		if row and row["least"] == -1:
+			endless = True
 	return {"data": {"first": first, "last": last, "endless": endless}}
 
 def action_event_get(a):
