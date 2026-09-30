@@ -58,6 +58,10 @@ export interface EventDraft {
    */
   zone: { start: string; finish: string }
   location: string
+  /** Optional event-specific colour; blank uses the calendar colour. */
+  colour?: string
+  /** A web address attached to the event. */
+  url?: string
   /** The description as text, which is what the editor shows and edits. */
   description: string
   /**
@@ -113,6 +117,8 @@ const MANAGED = new Set([
   'DTEND',
   'DURATION',
   'LOCATION',
+  'COLOR',
+  'URL',
   'DESCRIPTION',
   'RRULE',
   'UID',
@@ -470,6 +476,11 @@ export function draftComponent(
   if (draft.location) {
     properties.push({ name: 'LOCATION', params: {}, value: draft.location })
   }
+  const colour =
+    draft.colour ?? (previous ? propertyValue(previous, 'COLOR') : '')
+  const url = draft.url ?? (previous ? propertyValue(previous, 'URL') : '')
+  if (colour) properties.push({ name: 'COLOR', params: {}, value: colour })
+  if (url) properties.push({ name: 'URL', params: {}, value: url })
   const description =
     draft.description === descriptionText(draft.original)
       ? draft.original
@@ -571,6 +582,8 @@ export function componentDraft(
     finishTime: zonedMinutes(new Date(finishSeconds * 1000), finishZone),
     zone: { start: zone, finish: finishZone },
     location: propertyValue(component, 'LOCATION'),
+    colour: propertyValue(component, 'COLOR'),
+    url: propertyValue(component, 'URL'),
     description: descriptionText(description),
     original: description,
     repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
@@ -1176,6 +1189,8 @@ export function instanceDraft(
     finishTime: instance.allday ? 0 : zonedMinutes(ends, timezone),
     zone: { start: timezone, finish: timezone },
     location: instance.location,
+    colour: '',
+    url: '',
     description: descriptionText(instance.description),
     original: instance.description,
     repeat: emptyRepeat(),
@@ -1283,6 +1298,8 @@ export function newDraft(
     finishTime: zonedMinutes(ends, zone.finish),
     zone: { ...zone },
     location: '',
+    colour: '',
+    url: '',
     description: '',
     original: '',
     repeat: emptyRepeat(),

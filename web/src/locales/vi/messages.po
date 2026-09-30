@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, one {# phản hồi} other {+# phản hồi n
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Mở menu (# thông báo chưa đọc)} other {Mở menu (# thông báo chưa đọc)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 giờ"
@@ -703,6 +708,7 @@ msgstr "Thu gọn thanh bên"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Màu"
@@ -711,6 +717,10 @@ msgstr "Màu"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "Đã lưu màu"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "Sao chép sự kiện"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Sao chép sự kiện này"
@@ -973,6 +984,7 @@ msgstr "Sắp xếp mặc định"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "Sự kiện trước"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Sửa"
 
@@ -1321,6 +1334,7 @@ msgstr "Không kết nối được tài khoản"
 msgid "Failed to copy"
 msgstr "Không sao chép được"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "Không sao chép được sự kiện"
@@ -3117,6 +3131,10 @@ msgstr "Tải lên"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "Tiến trình tải lên"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

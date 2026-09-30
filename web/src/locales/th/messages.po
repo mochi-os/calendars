@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, one {# การตอบกลับ} other 
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {เปิดเมนู (การแจ้งเตือนที่ยังไม่ได้อ่าน # รายการ)} other {เปิดเมนู (การแจ้งเตือนที่ยังไม่ได้อ่าน # รายการ)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 ชั่วโมง"
@@ -703,6 +708,7 @@ msgstr "ย่อแถบด้านข้าง"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "สี"
@@ -711,6 +717,10 @@ msgstr "สี"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "บันทึกสีแล้ว"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "คัดลอกกิจกรรม"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "คัดลอกกิจกรรมนี้"
@@ -973,6 +984,7 @@ msgstr "การเรียงลำดับเริ่มต้น"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "กิจกรรมก่อนหน้า"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "แก้ไข"
 
@@ -1321,6 +1334,7 @@ msgstr "ไม่สามารถเชื่อมต่อบัญชีไ
 msgid "Failed to copy"
 msgstr "ไม่สามารถคัดลอกได้"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "ไม่สามารถคัดลอกกิจกรรมได้"
@@ -3117,6 +3131,10 @@ msgstr "อัปโหลด"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "ความคืบหน้าการอัปโหลด"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

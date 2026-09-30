@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, one {# жооп} other {+# дагы жооп}
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Менюну ачуу (# окулбаган билдирүү)} other {Менюну ачуу (# окулбаган билдирүү)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 саат"
@@ -703,6 +708,7 @@ msgstr "Каптал тилкесин жыйнап коюу"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Түс"
@@ -711,6 +717,10 @@ msgstr "Түс"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "Түс сакталды"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "Иш-чараны көчүрүү"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Бул иш-чараны көчүрүү"
@@ -973,6 +984,7 @@ msgstr "Демейки иргөө"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "Мурунку иш-чаралар"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Түзөтүү"
 
@@ -1321,6 +1334,7 @@ msgstr "Аккаунтту туташтыруу ишке ашкан жок"
 msgid "Failed to copy"
 msgstr "Көчүрүү ишке ашкан жок"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "Иш-чара көчүрүлгөн жок"
@@ -3117,6 +3131,10 @@ msgstr "Жүктөө"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "Жүктөө жүрүшү"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

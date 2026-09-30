@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, one {# 条回复} other {+# 条更多回复}}
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {打开菜单（# 条未读通知）} other {打开菜单（# 条未读通知）}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 小时"
@@ -703,6 +708,7 @@ msgstr "折叠侧边栏"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "颜色"
@@ -711,6 +717,10 @@ msgstr "颜色"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "颜色已保存"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "复制活动"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "复制此活动"
@@ -973,6 +984,7 @@ msgstr "默认排序"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "更早的活动"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "编辑"
 
@@ -1321,6 +1334,7 @@ msgstr "连接账户失败"
 msgid "Failed to copy"
 msgstr "复制失败"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "复制活动失败"
@@ -3117,6 +3131,10 @@ msgstr "上传"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "上传进度"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

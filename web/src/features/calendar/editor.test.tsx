@@ -115,6 +115,12 @@ describe('EventEditor closing', () => {
 })
 
 describe('EventEditor saving', () => {
+  it('shows event colour and URL fields', () => {
+    show()
+    expect(screen.getByText('Colour')).toBeInTheDocument()
+    expect(screen.getByLabelText('URL')).toBeInTheDocument()
+  })
+
   it('saves on Enter in the title, as the Save button does', () => {
     show()
     expect(screen.queryByTestId('untitled')).toBeNull()
@@ -185,6 +191,23 @@ describe('EventEditor copying', () => {
     }
     expect(next.draft.title).toBe('Dentist, moved')
     expect(next.initial.title).toBe('Dentist')
+  })
+
+  it('shows an existing named event colour for editing', () => {
+    const stored = state.event as {
+      components: {
+        properties: { name: string; params: object; value: string }[]
+      }[]
+    }
+    stored.components[0].properties.push({
+      name: 'COLOR',
+      params: {},
+      value: 'Turquoise',
+    })
+    show()
+    expect(screen.getByRole('textbox', { name: 'Colour value' })).toHaveValue(
+      'Turquoise'
+    )
   })
 
   it('copies the stored event when nothing was changed', () => {

@@ -73,6 +73,8 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     finishTime: 10 * 60,
     zone: { start: ZONE, finish: ZONE },
     location: '',
+    colour: '',
+    url: '',
     description: '',
     original: '',
     repeat: emptyRepeat(),
@@ -120,6 +122,27 @@ describe('movedStart', () => {
 })
 
 describe('property values', () => {
+  it('reads and writes an event colour and URL without duplicating properties', () => {
+    const original = draftComponent(draft())
+    original.properties.push(
+      { name: 'COLOR', params: {}, value: '#ff8800' },
+      { name: 'URL', params: {}, value: 'https://example.com/meeting' }
+    )
+    const read = componentDraft(original, 'cal1', ZONE)
+    expect(read.colour).toBe('#ff8800')
+    expect(read.url).toBe('https://example.com/meeting')
+    const saved = draftComponent(
+      { ...read, colour: '#00aaff', url: 'https://example.com/new' },
+      original
+    )
+    expect(saved.properties.filter((item) => item.name === 'COLOR')).toEqual([
+      { name: 'COLOR', params: {}, value: '#00aaff' },
+    ])
+    expect(saved.properties.filter((item) => item.name === 'URL')).toEqual([
+      { name: 'URL', params: {}, value: 'https://example.com/new' },
+    ])
+  })
+
   it('reads a whole-day value as the start of that day in the zone', () => {
     const instant = propertyInstant(
       { name: 'DTSTART', params: { VALUE: ['DATE'] }, value: '20260916' },

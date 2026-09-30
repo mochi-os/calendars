@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, one {# răspuns} few {+# răspunsuri în plus
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Deschideți meniul (# notificare necitită)} few {Deschideți meniul (# notificări necitite)} other {Deschideți meniul (# de notificări necitite)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 ore"
@@ -703,6 +708,7 @@ msgstr "Restrânge bara laterală"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Culoare"
@@ -711,6 +717,10 @@ msgstr "Culoare"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "Culoare salvată"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "Copiază evenimentul"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "Copiază acest eveniment"
@@ -973,6 +984,7 @@ msgstr "Sortare implicită"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "Evenimente anterioare"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "Editează"
 
@@ -1321,6 +1334,7 @@ msgstr "Conectarea contului a eșuat"
 msgid "Failed to copy"
 msgstr "Copierea a eșuat"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "Copierea evenimentului a eșuat"
@@ -3117,6 +3131,10 @@ msgstr "Încarcă"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "Progresul încărcării"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

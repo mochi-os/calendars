@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, other {+ ပြန်ဖြေချက် # 
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, other {မီနူးဖွင့်ရန် (မဖတ်ရသေးသော အကြောင်းကြားချက် # ခု)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "၁၂ နာရီ"
@@ -703,6 +708,7 @@ msgstr "ဘေးဘား ခေါက်မည်"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "အရောင်"
@@ -711,6 +717,10 @@ msgstr "အရောင်"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "အရောင် သိမ်းပြီးပါပြီ"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "အစီအစဉ်ကို ကူးမည်"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "ဤအစီအစဉ်ကို ကူးမည်"
@@ -973,6 +984,7 @@ msgstr "မူရင်း စီစဉ်မှု"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "ယခင် အစီအစဉ်များ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "တည်းဖြတ်"
 
@@ -1321,6 +1334,7 @@ msgstr "အကောင့် ချိတ်ဆက်၍ မရပါ"
 msgid "Failed to copy"
 msgstr "ကူးယူ၍ မရပါ"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "အစီအစဉ် ကူး၍ မရပါ"
@@ -3117,6 +3131,10 @@ msgstr "အပ်လုဒ် လုပ်မည်"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "အပ်လုဒ်တိုးတက်မှု"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

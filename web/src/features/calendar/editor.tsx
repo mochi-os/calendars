@@ -7,6 +7,7 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import {
   DatePicker,
   Button,
+  ColourPicker,
   Dialog,
   DialogContent,
   DialogFooter,
@@ -704,6 +705,43 @@ function EditorFields({
               ...current,
               location: input.target.value,
             }))
+          }
+        />
+      </div>
+
+      <div className='space-y-2'>
+        <Label>
+          <Trans>Colour</Trans>
+        </Label>
+        {draft.colour && !/^#[0-9a-fA-F]{6}$/.test(draft.colour) && (
+          <Input
+            aria-label={t`Colour value`}
+            value={draft.colour}
+            onChange={(input) =>
+              edit((current) => ({ ...current, colour: input.target.value }))
+            }
+          />
+        )}
+        <ColourPicker
+          collapsible
+          value={
+            /^#[0-9a-fA-F]{6}$/.test(draft.colour ?? '') ? draft.colour! : ''
+          }
+          onChange={(colour) => edit((current) => ({ ...current, colour }))}
+          onClear={() => edit((current) => ({ ...current, colour: '' }))}
+        />
+      </div>
+
+      <div className='space-y-2'>
+        <Label htmlFor='event-url'>
+          <Trans>URL</Trans>
+        </Label>
+        <Input
+          id='event-url'
+          type='url'
+          value={draft.url ?? ''}
+          onChange={(input) =>
+            edit((current) => ({ ...current, url: input.target.value }))
           }
         />
       </div>

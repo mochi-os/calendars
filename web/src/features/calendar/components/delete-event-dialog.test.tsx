@@ -8,23 +8,29 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DeleteEventDialog } from './delete-event-dialog'
 
-const { stored, create, remove, update, success, pending } = vi.hoisted(() => ({
-  stored: {
-    id: 'e1',
-    calendar: 'c1',
-    etag: 'v1',
-    recurring: false,
-    components: [{ name: 'VEVENT', properties: [], components: [] }],
-  },
-  create: vi.fn(),
-  remove: vi.fn(),
-  update: vi.fn(),
-  success: vi.fn(),
-  pending: { value: false },
-}))
+const { stored, create, remove, update, success, pending, loaded } = vi.hoisted(
+  () => ({
+    stored: {
+      id: 'e1',
+      calendar: 'c1',
+      etag: 'v1',
+      recurring: false,
+      components: [{ name: 'VEVENT', properties: [], components: [] }],
+    },
+    create: vi.fn(),
+    remove: vi.fn(),
+    update: vi.fn(),
+    success: vi.fn(),
+    pending: { value: false },
+    loaded: { value: true },
+  })
+)
 
 vi.mock('@/hooks/use-events', () => ({
-  useEventQuery: () => ({ data: { event: stored }, refetch: vi.fn() }),
+  useEventQuery: () => ({
+    data: loaded.value ? { event: stored } : undefined,
+    refetch: vi.fn(),
+  }),
   useCreateEventMutation: () => ({ mutateAsync: create, isPending: false }),
   useDeleteEventMutation: () => ({
     mutateAsync: remove,
@@ -55,6 +61,20 @@ describe('DeleteEventDialog', () => {
     remove.mockReset().mockResolvedValue({})
     success.mockReset()
     pending.value = false
+    loaded.value = true
+  })
+
+  it('waits for the stored event, showing the scope the listing gave', () => {
+    loaded.value = false
+    render(
+      <I18nProvider i18n={i18n}>
+        <DeleteEventDialog event='e1' start={0} recurring onClose={vi.fn()} />
+      </I18nProvider>
+    )
+    const all = screen.getByRole('button', { name: 'All events' })
+    expect(all).toBeDisabled()
+    fireEvent.click(all)
+    expect(remove).not.toHaveBeenCalled()
   })
 
   it('offers Undo, which puts the deleted event back', async () => {

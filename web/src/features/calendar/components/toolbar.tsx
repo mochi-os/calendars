@@ -146,6 +146,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
           aria-hidden
         />
         <Input
+          id='calendar-search'
           type='search'
           aria-label={t`Search`}
           placeholder={t`Search events`}

@@ -133,6 +133,11 @@ msgstr "{totalDescendants, plural, one {# ಪ್ರತ್ಯುತ್ತರ} oth
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {ಮೆನು ತೆರೆಯಿರಿ (# ಓದದ ಅಧಿಸೂಚನೆ)} other {ಮೆನು ತೆರೆಯಿರಿ (# ಓದದ ಅಧಿಸೂಚನೆಗಳು)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 ಗಂಟೆಗಳು"
@@ -703,6 +708,7 @@ msgstr "ಸೈಡ್‌ಬಾರ್ ಮಡಚಿ"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "ಬಣ್ಣ"
@@ -711,6 +717,10 @@ msgstr "ಬಣ್ಣ"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "ಬಣ್ಣವನ್ನು ಉಳಿಸಲಾಗಿದೆ"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -836,6 +846,7 @@ msgid "Copy event"
 msgstr "ಈವೆಂಟ್ ನಕಲಿಸಿ"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/features/calendar/index.tsx
 msgid "Copy this event"
 msgstr "ಈ ಈವೆಂಟ್ ಅನ್ನು ನಕಲಿಸಿ"
@@ -973,6 +984,7 @@ msgstr "ಡೀಫಾಲ್ಟ್ ವಿಂಗಡಣೆ"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/components/event-popover.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -1154,6 +1166,7 @@ msgstr "ಹಿಂದಿನ ಈವೆಂಟ್‌ಗಳು"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/calendar/components/event-popover.tsx
 msgid "Edit"
 msgstr "ಸಂಪಾದಿಸಿ"
 
@@ -1321,6 +1334,7 @@ msgstr "ಖಾತೆಯನ್ನು ಸಂಪರ್ಕಿಸಲು ವಿಫಲ�
 msgid "Failed to copy"
 msgstr "ನಕಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to copy the event"
 msgstr "ಈವೆಂಟ್ ಅನ್ನು ನಕಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
@@ -3117,6 +3131,10 @@ msgstr "ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "ಅಪ್‌ಲೋಡ್ ಪ್ರಗತಿ"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"

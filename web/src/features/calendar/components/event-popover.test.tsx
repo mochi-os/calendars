@@ -65,6 +65,31 @@ function show(location: string, description = '') {
 }
 
 describe('EventPopover copy', () => {
+  it('offers Edit, Delete and Copy for an own event', () => {
+    const own = { ...instance('Room 4'), readonly: false }
+    const onEdit = vi.fn()
+    const onDelete = vi.fn()
+    const onCopyOwn = vi.fn()
+    render(
+      <I18nProvider i18n={i18n}>
+        <EventPopover
+          instance={own}
+          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
+          onClose={vi.fn()}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onCopyOwn={onCopyOwn}
+        />
+      </I18nProvider>
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Edit' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Delete' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    expect(onEdit).toHaveBeenCalledWith(own)
+    expect(onDelete).toHaveBeenCalledWith(own)
+    expect(onCopyOwn).toHaveBeenCalledWith(own)
+  })
+
   it('offers Copy when the page can take one, handing the occurrence back', () => {
     const onCopy = vi.fn()
     render(

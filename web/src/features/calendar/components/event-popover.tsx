@@ -24,9 +24,11 @@ import {
   CircleDashed,
   Clock,
   Copy,
+  Pencil,
   MapPin,
   Plane,
   TextAlignStart,
+  Trash2,
 } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 
@@ -39,6 +41,9 @@ interface Props {
   onClose: () => void
   /** Opens the editor on a new event copied from this occurrence. */
   onCopy?: (instance: Instance) => void
+  onEdit?: (instance: Instance) => void
+  onDelete?: (instance: Instance) => void
+  onCopyOwn?: (instance: Instance) => void
 }
 
 /** The first few lines of a description; the editor shows the whole thing. */
@@ -50,6 +55,9 @@ export function EventPopover({
   zones = false,
   onClose,
   onCopy,
+  onEdit,
+  onDelete,
+  onCopyOwn,
 }: Props) {
   const { t } = useLingui()
   const format = useFormat()
@@ -212,16 +220,38 @@ export function EventPopover({
             </span>
           </p>
         )}
-        {onCopy && (
-          <div className='flex justify-end pt-1'>
-            <Button
-              variant='outline'
-              size='sm'
-              onClick={() => onCopy(instance)}
-            >
-              <Copy className='size-4' />
-              <Trans>Copy</Trans>
-            </Button>
+        {(onCopy || onEdit || onDelete || onCopyOwn) && (
+          <div className='flex justify-end gap-2 pt-1'>
+            {onDelete && (
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => onDelete(instance)}
+              >
+                <Trash2 className='size-4' />
+                <Trans>Delete</Trans>
+              </Button>
+            )}
+            {(onCopyOwn || onCopy) && (
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => (onCopyOwn ?? onCopy)?.(instance)}
+              >
+                <Copy className='size-4' />
+                <Trans>Copy</Trans>
+              </Button>
+            )}
+            {onEdit && (
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => onEdit(instance)}
+              >
+                <Pencil className='size-4' />
+                <Trans>Edit</Trans>
+              </Button>
+            )}
           </div>
         )}
       </PopoverContent>

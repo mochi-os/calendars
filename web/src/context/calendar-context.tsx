@@ -251,6 +251,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       today,
       range,
       workweek,
+      setWorkweek,
       query,
       editing,
       kept,

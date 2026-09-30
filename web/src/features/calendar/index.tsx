@@ -10,19 +10,23 @@ import {
   dayList,
   dayOfWeek,
   eventStatus,
+  getErrorMessage,
   MonthGrid,
   monthOf,
   stepDate,
   TimeGrid,
   useFormat,
   usePageTitle,
+  toast,
   offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
 import { Check } from 'lucide-react'
-import type { Instance } from '@/api/types/events'
+import { eventsApi } from '@/api/events'
+import type { Component, Instance } from '@/api/types/events'
 import {
   creationDay,
+  copyDraft,
   defaultCalendar,
   defaultStart,
   instanceDraft,
@@ -31,9 +35,11 @@ import {
   type Scope,
 } from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
+import { useCalendarShortcuts } from '@/hooks/use-calendar-shortcuts'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
 import { Agenda } from '@/features/calendar/components/agenda'
+import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { EventPopover } from '@/features/calendar/components/event-popover'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
@@ -66,6 +72,11 @@ export function CalendarPage() {
   const [moving, setMoving] = useState<{
     run: (scope: Scope) => void
     copy: boolean
+  } | null>(null)
+  const [deleting, setDeleting] = useState<Instance | null>(null)
+  const [copying, setCopying] = useState<{
+    instance: Instance
+    components: Component[]
   } | null>(null)
 
   const mover = useEventMove(reveal)
@@ -192,14 +203,45 @@ export function CalendarPage() {
   // takes the remembered all-day switch like the button does.
   const createOnDay = (day: string) => createAt(day)
 
-  // A click opens the editor; a read-only occurrence (a subscription's or a
-  // birthday) has nothing to edit, so it opens the summary popover instead.
+  // A click opens the quick view. Own events offer edit, delete and copy;
+  // subscriptions and birthdays offer only a copy into a writable calendar.
   const open = (instance: Instance, anchor: HTMLElement) => {
-    if (instance.readonly || instance.event.startsWith('birthday-')) {
-      setSelected({ instance, anchor: anchor.getBoundingClientRect() })
-    } else {
-      setEditing({ mode: 'edit', event: instance.event, start: instance.start })
+    setSelected({ instance, anchor: anchor.getBoundingClientRect() })
+  }
+
+  const copyOwn = async (instance: Instance) => {
+    setSelected(null)
+    try {
+      const { event } = await eventsApi.get(instance.event)
+      if (instance.recurring) {
+        setCopying({ instance, components: event.components })
+      } else {
+        const draft = copyDraft(
+          event.components,
+          instance.start,
+          instance.calendar,
+          format.timezone,
+          'one'
+        )
+        if (draft) setEditing({ mode: 'create', draft, copy: true })
+      }
+    } catch (error) {
+      toast.error(getErrorMessage(error, t`Failed to copy the event`))
     }
+  }
+
+  const finishCopy = (scope: 'one' | 'all') => {
+    if (!copying) return
+    const { instance, components } = copying
+    const draft = copyDraft(
+      components,
+      instance.start,
+      instance.calendar,
+      format.timezone,
+      scope
+    )
+    setCopying(null)
+    if (draft) setEditing({ mode: 'create', draft, copy: true })
   }
 
   // The occurrence whose summary or editor is open, which the views tint.
@@ -256,6 +298,15 @@ export function CalendarPage() {
   }
 
   const page = (direction: number) => setDate(stepDate(view, date, direction))
+
+  useCalendarShortcuts({
+    blocked: Boolean(editing || selected || moving || deleting || copying),
+    today: () => setDate(today),
+    page,
+    create: createNow,
+    view: setView,
+    search: () => document.getElementById('calendar-search')?.focus(),
+  })
 
   const grid =
     view === 'list' ? (
@@ -339,22 +390,70 @@ export function CalendarPage() {
         anchor={selected?.anchor ?? null}
         zones={preferences.zones}
         onClose={() => setSelected(null)}
-        onCopy={(instance) => {
-          // A read-only occurrence has no event the editor could read, so
-          // the copy is what the listing says of it, in the user's calendar.
-          setSelected(null)
-          const calendar = calendarFor()
-          setEditing({
-            mode: 'create',
-            draft: instanceDraft(
-              instance,
-              calendar,
-              preferences.reminder,
-              format.timezone
-            ),
-            copy: true,
-          })
+        onEdit={
+          selected && !selected.instance.readonly
+            ? (instance) => {
+                setSelected(null)
+                setEditing({
+                  mode: 'edit',
+                  event: instance.event,
+                  start: instance.start,
+                })
+              }
+            : undefined
+        }
+        onDelete={
+          selected && !selected.instance.readonly
+            ? (instance) => {
+                setSelected(null)
+                setDeleting(instance)
+              }
+            : undefined
+        }
+        onCopyOwn={
+          selected && !selected.instance.readonly
+            ? (instance) => void copyOwn(instance)
+            : undefined
+        }
+        onCopy={
+          selected?.instance.readonly
+            ? (instance) => {
+                // A read-only occurrence has no event the editor could read, so
+                // the copy is what the listing says of it, in the user's calendar.
+                setSelected(null)
+                const calendar = calendarFor()
+                setEditing({
+                  mode: 'create',
+                  draft: instanceDraft(
+                    instance,
+                    calendar,
+                    preferences.reminder,
+                    format.timezone
+                  ),
+                  copy: true,
+                })
+              }
+            : undefined
+        }
+      />
+
+      <DeleteEventDialog
+        event={deleting?.event ?? null}
+        start={deleting?.start ?? 0}
+        recurring={deleting?.recurring}
+        onClose={() => setDeleting(null)}
+        onDeleted={() => setDeleting(null)}
+      />
+
+      <ScopeDialog
+        open={copying !== null}
+        title={t`Copy this event`}
+        recurring={Boolean(copying?.instance.recurring)}
+        following={false}
+        onOpenChange={(next) => {
+          if (!next) setCopying(null)
         }}
+        onChoose={(scope) => finishCopy(scope === 'all' ? 'all' : 'one')}
       />
 
       <ScopeDialog
