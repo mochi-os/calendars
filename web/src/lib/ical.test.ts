@@ -1476,35 +1476,69 @@ describe('the draft a copy opens on', () => {
     expect(copied.location).toBe('Room 9')
   })
 
-  it('moves the edited form onto the occurrence for "This event"', () => {
-    // The form of an occurrence with no override reads the master, so it
-    // carries the series' first day until the copy moves it.
-    const form = draft({ repeat: daily, title: 'Edited', location: 'Room 4' })
-    const copied = formCopy(form, [series], third, ZONE, 'one', true)
+  // The form as the editor opens the third occurrence, then edited.
+  const opened = (components: Component[], title: string) => ({
+    ...openedDraft(components, third, 'cal1', ZONE, true)!,
+    title,
+  })
+
+  it('copies the edited form on its own day for "This event"', () => {
+    const copied = formCopy(
+      opened([series], 'Edited'),
+      [series],
+      third,
+      ZONE,
+      'one',
+      true
+    )
     expect(copied.title).toBe('Edited')
     expect(copied.start).toBe('2026-09-18')
+    expect(copied.startTime).toBe(9 * 60)
     expect(copied.repeat.frequency).toBe('never')
   })
 
-  it('copies the edited form as the series for "All events"', () => {
-    const form = draft({ repeat: daily, title: 'Edited' })
-    const copied = formCopy(form, [series], third, ZONE, 'all', true)
+  it('moves the edited form back to the series start for "All events"', () => {
+    const copied = formCopy(
+      opened([series], 'Edited'),
+      [series],
+      third,
+      ZONE,
+      'all',
+      true
+    )
     expect(copied.title).toBe('Edited')
     expect(copied.start).toBe('2026-09-16')
+    expect(copied.startTime).toBe(9 * 60)
     expect(copied.repeat.frequency).toBe('daily')
   })
 
-  it('copies the stored series for "All events" from an edited override', () => {
+  it('copies the edited form for "All events" from an override too', () => {
     const edited = editedComponents(
       [series],
-      draft({ title: 'Just once', start: '2026-09-18', finish: '2026-09-18' }),
+      draft({
+        title: 'Just once',
+        start: '2026-09-18',
+        startTime: 11 * 60,
+        finish: '2026-09-18',
+        finishTime: 12 * 60,
+      }),
       'one',
       third,
       ZONE
     )
-    const form = draft({ title: 'Changed again', start: '2026-09-18' })
-    const copied = formCopy(form, edited, third, ZONE, 'all', true)
-    expect(copied.title).toBe('Standup')
+    const copied = formCopy(
+      opened(edited, 'Changed again'),
+      edited,
+      third,
+      ZONE,
+      'all',
+      true
+    )
+    // Moved as a save of "All events" would move it: to the series' first
+    // day, at the time the form shows.
+    expect(copied.title).toBe('Changed again')
+    expect(copied.start).toBe('2026-09-16')
+    expect(copied.startTime).toBe(11 * 60)
     expect(copied.repeat.frequency).toBe('daily')
   })
 

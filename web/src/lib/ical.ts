@@ -1116,11 +1116,10 @@ export function copyDraft(
 /**
  * The draft a copy opens on when the editor holds changes not yet saved: the
  * form as it stands, so nothing typed is lost, while the stored event is left
- * as it is. A one-off event copies as the form reads. For "This event" the
- * form moves onto the occurrence, with no repeat. For "All events" the form
- * is the series when it was read from the master; one read from an
- * occurrence's own override edits that occurrence, not the series, so the
- * stored series is copied instead.
+ * as it is. A one-off event copies as the form reads. The form of a series
+ * holds the opened occurrence's dates (openedDraft), so "This event" copies it
+ * where it is, with no repeat, and "All events" moves it back to the series'
+ * start as saving does (savedComponents), override or not.
  */
 export function formCopy(
   draft: EventDraft,
@@ -1132,16 +1131,9 @@ export function formCopy(
 ): EventDraft {
   const master = masterComponent(components)
   if (!recurring || !master) return draft
-  const fromMaster = !overrideComponent(components, start, timezone)
-  if (scope === 'all') {
-    return fromMaster
-      ? draft
-      : (copyDraft(components, start, draft.calendar, timezone, 'all') ?? draft)
-  }
-  return {
-    ...anchoredDraft(draft, master, start, timezone, fromMaster),
-    repeat: emptyRepeat(),
-  }
+  if (scope === 'one') return { ...draft, repeat: emptyRepeat() }
+  const first = masterStart(master, timezone)
+  return first === null ? draft : movedDraft(draft, first - start)
 }
 
 /**
