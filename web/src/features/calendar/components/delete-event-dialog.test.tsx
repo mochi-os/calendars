@@ -8,27 +8,41 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DeleteEventDialog } from './delete-event-dialog'
 
-const { stored, create, remove, update, success, pending, loaded } = vi.hoisted(
-  () => ({
-    stored: {
-      id: 'e1',
-      calendar: 'c1',
-      etag: 'v1',
-      recurring: false,
-      components: [{ name: 'VEVENT', properties: [], components: [] }],
-    },
-    create: vi.fn(),
-    remove: vi.fn(),
-    update: vi.fn(),
-    success: vi.fn(),
-    pending: { value: false },
-    loaded: { value: true },
-  })
-)
+const {
+  stored,
+  create,
+  remove,
+  update,
+  success,
+  pending,
+  loaded,
+  failure,
+  failed,
+  fetching,
+} = vi.hoisted(() => ({
+  stored: {
+    id: 'e1',
+    calendar: 'c1',
+    etag: 'v1',
+    recurring: false,
+    components: [{ name: 'VEVENT', properties: [], components: [] }],
+  },
+  create: vi.fn(),
+  remove: vi.fn(),
+  update: vi.fn(),
+  success: vi.fn(),
+  pending: { value: false },
+  loaded: { value: true },
+  failure: { value: null as Error | null },
+  failed: vi.fn(),
+  fetching: { value: false },
+}))
 
 vi.mock('@/hooks/use-events', () => ({
   useEventQuery: () => ({
     data: loaded.value ? { event: stored } : undefined,
+    error: failure.value,
+    isFetching: fetching.value,
     refetch: vi.fn(),
   }),
   useCreateEventMutation: () => ({ mutateAsync: create, isPending: false }),
@@ -43,7 +57,7 @@ vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
   return {
     ...original,
-    toast: { ...original.toast, success, error: vi.fn() },
+    toast: { ...original.toast, success, error: failed },
   }
 })
 
@@ -62,6 +76,36 @@ describe('DeleteEventDialog', () => {
     success.mockReset()
     pending.value = false
     loaded.value = true
+    failure.value = null
+    fetching.value = false
+    failed.mockReset()
+  })
+
+  it('says why and closes when the event cannot be loaded', () => {
+    loaded.value = false
+    failure.value = new Error('Event not found')
+    const onClose = vi.fn()
+    render(
+      <I18nProvider i18n={i18n}>
+        <DeleteEventDialog event='e1' start={0} onClose={onClose} />
+      </I18nProvider>
+    )
+    expect(failed).toHaveBeenCalledWith('Event not found')
+    expect(onClose).toHaveBeenCalled()
+  })
+
+  it('waits while an earlier failure is being fetched again', () => {
+    loaded.value = false
+    failure.value = new Error('Event not found')
+    fetching.value = true
+    const onClose = vi.fn()
+    render(
+      <I18nProvider i18n={i18n}>
+        <DeleteEventDialog event='e1' start={0} onClose={onClose} />
+      </I18nProvider>
+    )
+    expect(failed).not.toHaveBeenCalled()
+    expect(onClose).not.toHaveBeenCalled()
   })
 
   it('waits for the stored event, showing the scope the listing gave', () => {

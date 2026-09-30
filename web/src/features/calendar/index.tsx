@@ -203,16 +203,33 @@ export function CalendarPage() {
   // takes the remembered all-day switch like the button does.
   const createOnDay = (day: string) => createAt(day)
 
+  // A Copy waits on its event. Anything opened meanwhile (another quick view,
+  // an editor, a new event) or leaving the page counts it out, so a late answer
+  // never replaces what the user moved on to.
+  const copyRequest = useRef(0)
+  useEffect(() => {
+    if (editing) copyRequest.current++
+  }, [editing])
+  useEffect(
+    () => () => {
+      copyRequest.current++
+    },
+    []
+  )
+
   // A click opens the quick view. Own events offer edit, delete and copy;
   // subscriptions and birthdays offer only a copy into a writable calendar.
   const open = (instance: Instance, anchor: HTMLElement) => {
+    copyRequest.current++
     setSelected({ instance, anchor: anchor.getBoundingClientRect() })
   }
 
   const copyOwn = async (instance: Instance) => {
     setSelected(null)
+    const request = ++copyRequest.current
     try {
       const { event } = await eventsApi.get(instance.event)
+      if (request !== copyRequest.current) return
       if (instance.recurring) {
         setCopying({ instance, components: event.components })
       } else {
@@ -226,6 +243,7 @@ export function CalendarPage() {
         if (draft) setEditing({ mode: 'create', draft, copy: true })
       }
     } catch (error) {
+      if (request !== copyRequest.current) return
       toast.error(getErrorMessage(error, t`Failed to copy the event`))
     }
   }

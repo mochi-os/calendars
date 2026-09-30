@@ -213,6 +213,53 @@ describe('the quick view', () => {
     expect(next.draft.repeat.frequency).toBe('daily')
   })
 
+  it('drops a late Copy once another event was opened', async () => {
+    let answer: (value: unknown) => void = () => {}
+    get.mockReturnValue(new Promise((resolve) => (answer = resolve)))
+    listed.instance = occurrence()
+    show()
+    fireEvent.click(screen.getByRole('button', { name: 'onCopyOwn' }))
+
+    // Event B, opened and edited while A's copy is still loading.
+    listed.instance = occurrence({ event: 'e2' })
+    fireEvent.click(screen.getByRole('button', { name: 'occurrence' }))
+    fireEvent.click(screen.getByRole('button', { name: 'onEdit' }))
+    answer({ event: { components: series } })
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    expect(setEditing).toHaveBeenCalledTimes(1)
+    expect(setEditing).toHaveBeenLastCalledWith({
+      mode: 'edit',
+      event: 'e2',
+      start,
+    })
+  })
+
+  it('drops a late Copy once an editor opened some other way', async () => {
+    let answer: (value: unknown) => void = () => {}
+    get.mockReturnValue(new Promise((resolve) => (answer = resolve)))
+    listed.instance = occurrence()
+    const { rerender } = render(
+      <I18nProvider i18n={i18n}>
+        <CalendarPage />
+      </I18nProvider>
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'occurrence' }))
+    fireEvent.click(screen.getByRole('button', { name: 'onCopyOwn' }))
+
+    // N, or the New button, opens an editor while the copy loads.
+    context.editing = { mode: 'create' } as never
+    rerender(
+      <I18nProvider i18n={i18n}>
+        <CalendarPage />
+      </I18nProvider>
+    )
+    answer({ event: { components: series } })
+    await new Promise((resolve) => setTimeout(resolve, 0))
+    context.editing = null
+    expect(setEditing).not.toHaveBeenCalled()
+  })
+
   it('copies a one-off event straight into the editor', async () => {
     listed.instance = occurrence()
     get.mockResolvedValue({

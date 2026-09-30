@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { useEffect } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import { getErrorMessage, toast, useFormat } from '@mochi/web'
 import { Trash2 } from 'lucide-react'
@@ -42,8 +43,17 @@ export function DeleteEventDialog({
 }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { data, refetch } = useEventQuery(event)
+  const { data, error, isFetching, refetch } = useEventQuery(event)
   const stored = data?.event
+
+  // A load that failed leaves nothing to delete, and the buttons wait on it,
+  // so say why and close rather than sit there. A cached failure being
+  // fetched again is not one yet.
+  useEffect(() => {
+    if (!event || !error || isFetching || stored) return
+    toast.error(getErrorMessage(error, t`Failed to load`))
+    onClose()
+  }, [event, error, isFetching, stored, onClose, t])
   const createMutation = useCreateEventMutation()
   const deleteMutation = useDeleteEventMutation()
   const updateMutation = useUpdateEventMutation()
