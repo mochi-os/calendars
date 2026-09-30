@@ -29,7 +29,11 @@ import {
   type Remembered,
 } from '@/lib/ical'
 import { useCalendarsQuery, useCalendarsRefresh } from '@/hooks/use-calendars'
-import { DEFAULTS, usePreferencesQuery } from '@/hooks/use-preferences'
+import {
+  DEFAULTS,
+  usePreferencesQuery,
+  useSetPreferencesMutation,
+} from '@/hooks/use-preferences'
 import { useShownCalendars } from '@/hooks/use-shown'
 
 const VIEWS: CalendarView[] = ['day', 'week', 'multiweek', 'month', 'list']
@@ -50,6 +54,10 @@ interface CalendarContextValue {
   ordered: Calendar[]
   visible: Calendar[]
   isLoading: boolean
+  /** The calendar list could not be read. */
+  failed: boolean
+  /** Asks for the calendar list again. */
+  reload: () => void
   shown: (calendar: string) => boolean
   toggle: (calendar: string) => void
   /** Shows a calendar an event was just saved into, if it was hidden. */
@@ -88,7 +96,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     date?: string
   }
 
-  const { data, isLoading } = useCalendarsQuery()
+  const { data, isLoading, isError, refetch } = useCalendarsQuery()
   useCalendarsRefresh()
   const calendars = useMemo(() => data?.calendars ?? [], [data?.calendars])
   const { shown, toggle, reveal, only, visible } =
@@ -97,10 +105,13 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const { data: preferenceData } = usePreferencesQuery()
   const preferences = preferenceData?.preferences ?? DEFAULTS
 
-  const [lastView, setLastView] = useShellStorage<CalendarView>(
+  // The view this browser last showed; one that has shown none opens on the
+  // view last chosen anywhere, which the preferences keep.
+  const [lastView, setLastView] = useShellStorage<CalendarView | null>(
     'calendars:view',
-    preferences.view
+    null
   )
+  const { mutate: savePreferences } = useSetPreferencesMutation()
   const [workweek, setWorkweek] = useState(false)
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Editing | null>(null)
@@ -121,7 +132,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   // Below tablet width there is no room for a grid, so a grid view falls back
   // to the list. The URL keeps what the user asked for, so widening the window
   // puts it back.
-  const requested = urlView ?? lastView
+  const requested = urlView ?? lastView ?? preferences.view
   const view =
     isDesktop || requested === 'day' || requested === 'list'
       ? requested
@@ -138,6 +149,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const setView = useCallback(
     (next: CalendarView) => {
       setLastView(next)
+      if (next !== preferences.view) savePreferences({ view: next })
       void navigate({
         to: '.',
         search: (previous: Record<string, unknown>) => ({
@@ -146,7 +158,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
         }),
       })
     },
-    [navigate, setLastView]
+    [navigate, setLastView, preferences.view, savePreferences]
   )
 
   const setDate = useCallback(
@@ -193,6 +205,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       ordered,
       visible,
       isLoading,
+      failed: isError,
+      reload: () => void refetch(),
       shown,
       toggle,
       reveal,
@@ -218,6 +232,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       ordered,
       visible,
       isLoading,
+      isError,
+      refetch,
       shown,
       toggle,
       reveal,

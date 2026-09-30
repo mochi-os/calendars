@@ -70,6 +70,7 @@ import {
   useSplitEventMutation,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
+import { leavesSeries, useOccurrenceMove } from '@/hooks/use-event-move'
 import { reminderChoices } from '@/hooks/use-options'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
@@ -99,6 +100,7 @@ export function EventEditor() {
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
   const splitMutation = useSplitEventMutation()
+  const moveOccurrence = useOccurrenceMove()
 
   const writable = useMemo(
     () =>
@@ -194,6 +196,21 @@ export function EventEditor() {
             return
           }
           scope = 'all'
+        }
+        // One occurrence taken to another calendar leaves the series behind
+        // and becomes an event of its own there.
+        if (leavesSeries(recurring, scope, event.calendar, draft.calendar)) {
+          await moveOccurrence(
+            event,
+            editing.start,
+            draft,
+            draft.calendar,
+            format.timezone
+          )
+          reveal(draft.calendar)
+          toast.success(t`Event saved`)
+          close()
+          return
         }
         const components: Component[] = recurring
           ? savedComponents(

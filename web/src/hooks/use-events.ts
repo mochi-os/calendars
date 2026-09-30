@@ -70,14 +70,32 @@ export const useInstancePages = (
       queryFn: () => eventsApi.list(page.start, page.finish, key, timezone),
       enabled: page.finish > page.start && key.length > 0,
     })),
-    combine: (results) => ({
-      instances: results
+    combine: (results) => {
+      // An occurrence that crosses from one page into the next comes back
+      // with both, and is listed once.
+      const seen = new Set<string>()
+      const instances = results
         .flatMap((result) => result.data?.instances ?? [])
-        .sort((a: Instance, b: Instance) => a.start - b.start),
-      pending: results.some(
-        (result) => result.isPending && result.fetchStatus !== 'idle'
-      ),
-    }),
+        .filter((instance) => {
+          const key = `${instance.event}:${instance.start}`
+          if (seen.has(key)) return false
+          seen.add(key)
+          return true
+        })
+        .sort((a: Instance, b: Instance) => a.start - b.start)
+      return {
+        instances,
+        pending: results.some(
+          (result) => result.isPending && result.fetchStatus !== 'idle'
+        ),
+        failed: results.some((result) => result.isError),
+        retry: () => {
+          for (const result of results) {
+            if (result.isError) void result.refetch()
+          }
+        },
+      }
+    },
   })
 }
 

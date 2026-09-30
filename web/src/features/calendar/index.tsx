@@ -10,6 +10,7 @@ import {
   dayList,
   dayOfWeek,
   eventStatus,
+  GeneralError,
   MonthGrid,
   monthOf,
   stepDate,
@@ -58,6 +59,8 @@ export function CalendarPage() {
     setEditing,
     remembered,
     reveal,
+    failed,
+    reload,
   } = useCalendarContext()
 
   const [selected, setSelected] = useState<{
@@ -69,7 +72,7 @@ export function CalendarPage() {
     copy: boolean
   } | null>(null)
 
-  const mover = useEventMove(reveal)
+  const mover = useEventMove({ reveal, zones: preferences.zones })
 
   // With events shown in their own zones, a day's occurrences can begin or
   // end up to a day away by the user's clock, so the window grows a day each
@@ -82,7 +85,8 @@ export function CalendarPage() {
     () => (view === 'list' ? [] : visible.map((c) => c.id)),
     [view, visible]
   )
-  const { data, isSuccess, isPlaceholderData } = useInstancesQuery(
+  const { data, isSuccess, isPlaceholderData, isError, error, refetch } =
+    useInstancesQuery(
     start,
     finish,
     shown,
@@ -266,8 +270,16 @@ export function CalendarPage() {
 
   const page = (direction: number) => setDate(stepDate(view, date, direction))
 
-  const grid =
-    view === 'list' ? (
+  const grid = failed ? (
+    <GeneralError mode='inline' className='my-6' reset={reload} />
+  ) : view !== 'list' && isError ? (
+    <GeneralError
+      mode='inline'
+      className='my-6'
+      error={error}
+      reset={() => void refetch()}
+    />
+  ) : view === 'list' ? (
       <Agenda selected={current} onSelect={open} />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
@@ -336,7 +348,7 @@ export function CalendarPage() {
   return (
     <div className='flex h-full min-h-0 flex-col'>
       <Toolbar onCreate={createNow} />
-      {data?.truncated && (
+      {shown.length > 0 && data?.truncated && (
         <p className='bg-muted text-muted-foreground px-3 py-1 text-sm'>
           {t`Too many events to show them all. Choose a shorter range.`}
         </p>

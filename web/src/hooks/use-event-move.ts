@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { useRef } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
@@ -14,7 +15,7 @@ import {
   zonedMinutes,
 } from '@mochi/web'
 import { eventsApi } from '@/api/events'
-import type { Component, Instance } from '@/api/types/events'
+import type { Component, Event, Instance } from '@/api/types/events'
 import {
   componentDraft,
   deletedOccurrence,
@@ -55,19 +56,84 @@ function single(draft: EventDraft, previous?: Component): Component {
   }
 }
 
+/** Whether a write takes one occurrence of a series into another calendar. */
+export function leavesSeries(
+  recurring: boolean,
+  scope: Scope,
+  from: string,
+  to?: string
+): boolean {
+  return scope === 'one' && recurring && Boolean(to) && to !== from
+}
+
+/**
+ * One occurrence of a series moved to another calendar: it becomes an event
+ * of its own there, and the series keeps an exception for it. The exception
+ * is built before anything is written, and the copy is taken back if the
+ * series then fails to save, so the occurrence is never left in both
+ * calendars. Answers the copy and the series as written.
+ */
+export function useOccurrenceMove() {
+  const createMutation = useCreateEventMutation()
+  const updateMutation = useUpdateEventMutation()
+  const deleteMutation = useDeleteEventMutation()
+  return async (
+    event: Pick<Event, 'id' | 'etag' | 'components'>,
+    start: number,
+    draft: EventDraft,
+    target: string,
+    zone: string
+  ) => {
+    const master = masterComponent(event.components)
+    const components = deletedOccurrence(event.components, start, zone)
+    if (!master || !components) throw new Error()
+    const own = overrideComponent(event.components, start, zone) ?? master
+    const { event: created } = await createMutation.mutateAsync({
+      calendar: target,
+      components: [single(draft, own)],
+    })
+    try {
+      const { event: written } = await updateMutation.mutateAsync({
+        event: event.id,
+        etag: event.etag,
+        components,
+      })
+      return { created, written }
+    } catch (error) {
+      await deleteMutation
+        .mutateAsync({ event: created.id, etag: created.etag })
+        .catch(() => undefined)
+      throw error
+    }
+  }
+}
+
 /**
  * Dragging an occurrence to a new time, day or calendar, or copying it
  * there. The stored event is read first: a move rewrites the same component
  * the editor would, so a series keeps its rule and an override keeps being
  * an override. Every write says what it did, with a way back.
  */
-export function useEventMove(reveal?: (calendar: string) => void) {
+export function useEventMove({
+  reveal,
+  zones = false,
+}: {
+  reveal?: (calendar: string) => void
+  // Whether the grids draw each event in its own zone, as the preference says.
+  zones?: boolean
+} = {}) {
   const { t } = useLingui()
   const format = useFormat()
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
   const deleteMutation = useDeleteEventMutation()
   const splitMutation = useSplitEventMutation()
+  const moveOccurrence = useOccurrenceMove()
+
+  // The day an occurrence is drawn on: in its own zone when events show in
+  // their own zones, else in the user's, as the grids place it.
+  const drawn = (date: Date, own?: string) =>
+    zonedDay(date, zones && own ? own : format.timezone)
 
   const done = (message: string, undo: () => Promise<unknown>) => {
     toast.success(message, {
@@ -82,11 +148,27 @@ export function useEventMove(reveal?: (calendar: string) => void) {
     })
   }
 
-  const apply = async (
+  // One move at a time: a drag made while another is saving waits for it, so
+  // it reads the event as that one left it rather than a copy gone stale.
+  const queue = useRef<Promise<void>>(Promise.resolve())
+  const apply = (
     instance: Instance,
     scope: Scope,
     change: (draft: EventDraft) => EventDraft,
     options: MoveOptions = {}
+  ) => {
+    const next = queue.current.then(() =>
+      perform(instance, scope, change, options)
+    )
+    queue.current = next
+    return next
+  }
+
+  const perform = async (
+    instance: Instance,
+    scope: Scope,
+    change: (draft: EventDraft) => EventDraft,
+    options: MoveOptions
   ) => {
     try {
       const { event } = await eventsApi.get(instance.event)
@@ -176,27 +258,14 @@ export function useEventMove(reveal?: (calendar: string) => void) {
 
       // One occurrence of a series moved to another calendar leaves the
       // series behind as an exception and becomes an event of its own there.
-      if (
-        scope === 'one' &&
-        event.recurring &&
-        options.calendar &&
-        options.calendar !== event.calendar
-      ) {
-        const { event: created } = await createMutation.mutateAsync({
-          calendar: target,
-          components: [single(draft, own)],
-        })
-        const components = deletedOccurrence(
-          event.components,
+      if (leavesSeries(event.recurring, scope, event.calendar, options.calendar)) {
+        const { created, written } = await moveOccurrence(
+          event,
           instance.start,
+          draft,
+          target,
           zone
         )
-        if (!components) return
-        const { event: written } = await updateMutation.mutateAsync({
-          event: event.id,
-          etag: event.etag,
-          components,
-        })
         saved(t`Event moved`, async () => {
           await remove(created)
           await restore(written.etag)
@@ -270,9 +339,7 @@ export function useEventMove(reveal?: (calendar: string) => void) {
         instance,
         scope,
         (draft) => {
-          const from = coveredDays(instance, (date, own) =>
-            zonedDay(date, own || draft.zone.start)
-          ).start
+          const from = coveredDays(instance, drawn).start
           const shift = daysBetween(from, day)
           if (shift === 0) return draft
           return {
@@ -295,9 +362,7 @@ export function useEventMove(reveal?: (calendar: string) => void) {
         instance,
         scope,
         (draft) => {
-          const covered = coveredDays(instance, (date, own) =>
-            zonedDay(date, own || draft.zone.start)
-          )
+          const covered = coveredDays(instance, drawn)
           const length = Math.max(0, daysBetween(covered.start, covered.finish))
           const first = addDays(draft.start, daysBetween(covered.start, day))
           return {
@@ -316,14 +381,5 @@ export function useEventMove(reveal?: (calendar: string) => void) {
     (scope: Scope) =>
       apply(instance, scope, (draft) => draft, { ...options, calendar })
 
-  return {
-    toTime,
-    toDay,
-    toAllday,
-    toCalendar,
-    isPending:
-      updateMutation.isPending ||
-      createMutation.isPending ||
-      splitMutation.isPending,
-  }
+  return { toTime, toDay, toAllday, toCalendar }
 }
