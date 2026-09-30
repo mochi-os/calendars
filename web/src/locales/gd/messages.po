@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mion} other {#mion}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sea} other {#sea}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {air latha {days}} one {air làithean {days}} two {air làithean {days}} few {air làithean {days}} other {air làithean {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# latha roimhe} two {# latha roimhe} few {# làithea
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Ainm {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# uair roimhe} two {# uair roimhe} few {# uairean r
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# uair} two {# uair} few {# uairean} other {# uair}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Gach latha} one {Gach # latha} two {Gach # latha} few {Gach # làithean} other {Gach # latha}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Gach mìos} one {Gach # mìos} two {Gach # mhìos} few {Gach # mìosan} other {Gach # mìos}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Gach seachdain} one {Gach # seachdain} two {Gach # sheachdain} few {Gach # seachdainean} other {Gach # seachdain}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Gach bliadhna} one {Gach # bliadhna} two {Gach # bhliadhna} few {Gach # bliadhnaichean} other {Gach # bliadhna}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# mhionaid roimhe} two {# mhionaid roimhe} few {# mionaidean roimhe} other {# mionaid roimhe}}"
@@ -120,6 +144,10 @@ msgstr "Thairg {opponentName} co-ionann"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} à {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {aon turas} one {# turas} two {# thuras} few {# tursan} other {# turas}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Cruthaich nì ùr"
 msgid "Created"
 msgstr "Cruthaichte"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Cruthaichte {0}"
@@ -1596,6 +1624,10 @@ msgstr "Sealladair dhealbhan: {0}"
 msgid "Imperial"
 msgstr "Ìmpireach"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "mìosan: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "A' gabhail a-steach cleachdaichean gun ainm"
@@ -1654,7 +1686,7 @@ msgstr "Aig an deireadh"
 msgid "Last day"
 msgstr "An latha mu dheireadh"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Cleachdadh mu dheireadh {0}"
@@ -1865,10 +1897,19 @@ msgstr "Mearachd lìonraidh"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Chaoidh"
+msgstr "chan ann fhathast"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Gun ath-aithris"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Gun chrìoch"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "Tursan"
 msgid "On"
 msgstr "Air"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "air {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Air ceann-là"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "air a' chòigeamh {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "air a' chiad {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "air a' cheathramh {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "air an {day} mu dheireadh"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "air an latha mu dheireadh den mhìos"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "air an dàrna {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "air an treas {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Neo-aithnichte"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Dì-fho-sgrìobh"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "gu ruige {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

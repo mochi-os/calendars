@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mzu} other {#mzu}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ngosuku lwe-{days}} other {ngezinsuku: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {usuku olungu-# ngaphambili} other {izinsuku ezingu-#
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Igama le-{entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {ihora elingu-# ngaphambili} other {amahora angu-# n
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {ihora elingu-#} other {amahora angu-#}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Njalo ngosuku} other {Njalo emva kwezinsuku ezingu-#}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Njalo ngenyanga} other {Njalo emva kwezinyanga ezingu-#}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Njalo ngeviki} other {Njalo emva kwamaviki angu-#}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Njalo ngonyaka} other {Njalo emva kweminyaka engu-#}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {umzuzu ongu-# ngaphambili} other {imizuzu engu-# ngaphambili}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} unikeze idrowu"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} kokungu-{totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {kanye} other {izikhathi ezingu-#}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Dala into entsha"
 msgid "Created"
 msgstr "Kudaliwe"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Kudaliwe {0}"
@@ -1596,6 +1624,10 @@ msgstr "Isibonisi sesithombe: {0}"
 msgid "Imperial"
 msgstr "Yobukhosi"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ngo-{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Kufaka phakathi abasebenzisi abangaziwa"
@@ -1654,7 +1686,7 @@ msgstr "Ekugcineni"
 msgid "Last day"
 msgstr "Usuku lokugcina"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Kusetshenziswe okokugcina {0}"
@@ -1865,10 +1897,19 @@ msgstr "Iphutha lenethiwekhi"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Akekho"
+msgstr "akukho"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Akuphindwa"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Akupheli"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "Izikhathi zokuphindwa"
 msgid "On"
 msgstr "Kuvuliwe"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ngezinsuku: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Ngosuku oluthile"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "evikini lesihlanu: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "evikini lokuqala: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "evikini lesine: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "evikini lokugcina: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ngosuku lokugcina lwenyanga"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "evikini lesibili: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "evikini lesithathu: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Akwaziwa"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Susa ukubhalisa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "kuze kube ngu-{date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

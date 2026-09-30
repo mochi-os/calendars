@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#分鐘} other {#分鐘}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週} other {#週}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {{days} 日}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# 天前}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}名稱"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}，{second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# 小時前}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# 小時}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {每天} other {每 # 天}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {每月} other {每 # 個月}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {每週} other {每 # 週}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {每年} other {每 # 年}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# 分鐘前}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} 提議和棋"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {一次} other {# 次}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "建立新項目"
 msgid "Created"
 msgstr "已建立"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "建立於 {0}"
@@ -1596,6 +1624,10 @@ msgstr "圖片檢視器：{0}"
 msgid "Imperial"
 msgstr "英制"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "包括匿名使用者"
@@ -1654,7 +1686,7 @@ msgstr "在後"
 msgid "Last day"
 msgstr "最後一天"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "上次使用 {0}"
@@ -1865,8 +1897,17 @@ msgstr "網路錯誤"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "從未"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "不重複"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "永不"
 
@@ -2055,9 +2096,41 @@ msgstr "次數"
 msgid "On"
 msgstr "開啟"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "在特定日期"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "第五個{day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "第一個{day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "第四個{day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "最後一個{day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "當月最後一天"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "第二個{day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "第三個{day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "未知"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "取消訂閱"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "直到 {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#дақ} other {#дақ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ҳаф} other {#ҳаф}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {дар рӯзи {days}} other {дар рӯзҳои {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# рӯз пештар} other {# рӯз пештар}
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Номи {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# соат пештар} other {# соат пешт
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# соат} other {# соат}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Ҳар рӯз} other {Ҳар # рӯз}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Ҳар моҳ} other {Ҳар # моҳ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Ҳар ҳафта} other {Ҳар # ҳафта}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Ҳар сол} other {Ҳар # сол}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# дақиқа пештар} other {# дақиқа пештар}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} баробариро пешниҳод кард"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} аз {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {як бор} other {# бор}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Эҷоди нуктаи нав"
 msgid "Created"
 msgstr "Эҷодшуда"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Эҷод шуд {0}"
@@ -1596,6 +1624,10 @@ msgstr "Тамошои тасвир: {0}"
 msgid "Imperial"
 msgstr "Империалӣ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "дар моҳи {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Аз ҷумла корбарони номаълум"
@@ -1654,7 +1686,7 @@ msgstr "Дар охир"
 msgid "Last day"
 msgstr "Рӯзи охирин"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Бори охирин истифода шуд {0}"
@@ -1865,8 +1897,17 @@ msgstr "Хатогии шабака"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ҳеҷ гоҳ"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Такрор намешавад"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Ҳеҷ гоҳ"
 
@@ -2055,9 +2096,41 @@ msgstr "Шумораи такрорҳо"
 msgid "On"
 msgstr "Фаъол"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "рӯзҳои {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Дар санаи муайян"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "дар панҷумин {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "дар якумин {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "дар чорумин {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "дар охирин {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "дар рӯзи охирини моҳ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "дар дуюмин {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "дар сеюмин {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Номаълум"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Аз обуна баромадан"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "то {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

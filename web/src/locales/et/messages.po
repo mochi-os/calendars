@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#näd} other {#näd}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {kuupäeval {days}} other {kuupäevadel {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# päev varem} other {# päeva varem}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} nimi"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# tund varem} other {# tundi varem}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# tund} other {# tundi}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Iga päev} other {Iga # päeva tagant}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Iga kuu} other {Iga # kuu tagant}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Iga nädal} other {Iga # nädala tagant}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Iga aasta} other {Iga # aasta tagant}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minut varem} other {# minutit varem}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} pakkus viiki"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {üks kord} other {# korda}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Loo uus kirje"
 msgid "Created"
 msgstr "Loodud"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Loodud {0}"
@@ -1596,6 +1624,10 @@ msgstr "Pildivaatur: {0}"
 msgid "Imperial"
 msgstr "Imperiaal"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "kuudel: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Kaasa arvatud anonüümsed kasutajad"
@@ -1654,7 +1686,7 @@ msgstr "Lõpus"
 msgid "Last day"
 msgstr "Viimane päev"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Viimati kasutatud {0}"
@@ -1865,8 +1897,17 @@ msgstr "Võrguviga"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "mitte kunagi"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Ei kordu"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Mitte kunagi"
 
@@ -2055,9 +2096,41 @@ msgstr "Kordused"
 msgid "On"
 msgstr "Sees"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "päevadel: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Kindlal kuupäeval"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "viies {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "esimene {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "neljas {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "viimane {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "kuu viimasel päeval"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "teine {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "kolmas {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Tundmatu"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Tühista tellimus"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "kuni {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

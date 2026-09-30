@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mín} other {#mín}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#v} other {#v}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {á degi {days}} one {á dögum {days}} other {á dögum {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# degi áður} other {# dögum áður}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Nafn {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# klukkustund áður} other {# klukkustundum áður
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# klukkustund} other {# klukkustundir}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Á hverjum degi} one {Á # dags fresti} other {Á # daga fresti}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Í hverjum mánuði} one {Á # mánaðar fresti} other {Á # mánaða fresti}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Í hverri viku} one {Á # viku fresti} other {Á # vikna fresti}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Á hverju ári} one {Á # árs fresti} other {Á # ára fresti}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# mínútu áður} other {# mínútum áður}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} bauð jafntefli"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} af {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {einu sinni} one {# sinni} other {# sinnum}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Búa til nýtt atriði"
 msgid "Created"
 msgstr "Búið til"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Búið til {0}"
@@ -1596,6 +1624,10 @@ msgstr "Myndaskoðari: {0}"
 msgid "Imperial"
 msgstr "Bresk mælieining"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "í {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Þar á meðal nafnlausir notendur"
@@ -1654,7 +1686,7 @@ msgstr "Síðast"
 msgid "Last day"
 msgstr "Síðasti dagur"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Síðast notað {0}"
@@ -1865,8 +1897,17 @@ msgstr "Netvilla"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "aldrei"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Endurtekst ekki"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Aldrei"
 
@@ -2055,9 +2096,41 @@ msgstr "Skipti"
 msgid "On"
 msgstr "Kveikt"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dagar: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Á dagsetningu"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "fimmti {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "fyrsti {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "fjórði {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "síðasti {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "á síðasta degi mánaðarins"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "annar {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "þriðji {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Óþekkt"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Afskrá áskrift"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "til {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

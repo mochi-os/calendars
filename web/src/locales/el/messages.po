@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#λ} other {#λ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#εβδ} other {#εβδ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {την ημέρα {days}} other {τις ημέρες {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ημέρα πριν} other {# ημέρες πρι�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Όνομα {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ώρα πριν} other {# ώρες πριν}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ώρα} other {# ώρες}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Κάθε ημέρα} other {Κάθε # ημέρες}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Κάθε μήνα} other {Κάθε # μήνες}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Κάθε εβδομάδα} other {Κάθε # εβδομάδες}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Κάθε χρόνο} other {Κάθε # χρόνια}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# λεπτό πριν} other {# λεπτά πριν}}"
@@ -120,6 +144,10 @@ msgstr "Ο/Η {opponentName} πρότεινε ισοπαλία"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} από {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {μία φορά} other {# φορές}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Δημιουργία νέου στοιχείου"
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Δημιουργήθηκε {0}"
@@ -1596,6 +1624,10 @@ msgstr "Προβολή εικόνας: {0}"
 msgid "Imperial"
 msgstr "Αυτοκρατορικό"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "εντός {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Συμπεριλαμβανομένων ανώνυμων χρηστών"
@@ -1654,7 +1686,7 @@ msgstr "Στο τέλος"
 msgid "Last day"
 msgstr "Τελευταία ημέρα"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Τελευταία χρήση {0}"
@@ -1865,8 +1897,17 @@ msgstr "Σφάλμα δικτύου"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ποτέ"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Χωρίς επανάληψη"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Ποτέ"
 
@@ -2055,9 +2096,41 @@ msgstr "Επαναλήψεις"
 msgid "On"
 msgstr "Ενεργό"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "κάθε {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Σε μια ημερομηνία"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} της πέμπτης εβδομάδας"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} της πρώτης εβδομάδας"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} της τέταρτης εβδομάδας"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} της τελευταίας εβδομάδας"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "την τελευταία ημέρα του μήνα"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} της δεύτερης εβδομάδας"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} της τρίτης εβδομάδας"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Άγνωστο"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Διαγραφή εγγραφής"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "έως {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

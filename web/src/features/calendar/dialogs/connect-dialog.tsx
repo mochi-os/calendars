@@ -198,11 +198,19 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
                         <p className='truncate font-medium'>{item.name}</p>
                         <p className='text-muted-foreground text-xs'>
                           <Trans>
-                            Created {formatTimestamp(item.created, t`Never`)}
+                            Created{' '}
+                            {formatTimestamp(
+                              item.created,
+                              t({ message: 'Never', context: 'last used' })
+                            )}
                           </Trans>
                           {' · '}
                           <Trans>
-                            Last used {formatTimestamp(item.used, t`Never`)}
+                            Last used{' '}
+                            {formatTimestamp(
+                              item.used,
+                              t({ message: 'Never', context: 'last used' })
+                            )}
                           </Trans>
                         </p>
                       </div>

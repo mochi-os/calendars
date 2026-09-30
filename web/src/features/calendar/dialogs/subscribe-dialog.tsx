@@ -157,6 +157,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   // Apple and CalDAV: the account is made and tried here, then opened.
   const connect = async () => {
     if (kind !== 'apple' && kind !== 'caldav') return
+    if (!credentialReady || accountMutation.isPending) return
     try {
       const { account: made } = await accountMutation.mutateAsync({
         type: kind,
@@ -178,7 +179,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   }
 
   const link = async () => {
-    if (!chosen || collection === '') return
+    if (!chosen || collection === '' || linkMutation.isPending) return
     try {
       await linkMutation.mutateAsync({
         account: chosen,
@@ -229,7 +230,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
 
   const submitAddress = async () => {
     const trimmed = address.trim()
-    if (!trimmed) return
+    if (!trimmed || subscribeMutation.isPending || asking !== null) return
     const target = /^https?:\/\//i.test(trimmed)
       ? trimmed
       : `https://${trimmed}`
@@ -568,7 +569,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === 'Enter' && credentialReady) void connect()
+              if (event.key === 'Enter') void connect()
             }}
           />
         </div>

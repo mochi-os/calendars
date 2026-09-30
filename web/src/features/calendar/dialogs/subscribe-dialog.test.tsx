@@ -5,7 +5,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { SubscribeDialog } from './subscribe-dialog'
 
@@ -29,6 +29,9 @@ const { connect } = vi.hoisted(() => ({
 }))
 let providers: string[] = ['google']
 let administrator = false
+// Whether a link or a subscription is already under way.
+let linking = false
+let subscribing = false
 
 const everyone = [
   {
@@ -91,10 +94,10 @@ vi.mock('@/hooks/use-calendars', async (importOriginal) => ({
     isLoading: false,
     error: null,
   }),
-  useLinkCalendarMutation: () => ({ mutateAsync: link, isPending: false }),
+  useLinkCalendarMutation: () => ({ mutateAsync: link, isPending: linking }),
   useSubscribeCalendarMutation: () => ({
     mutateAsync: subscribe,
-    isPending: false,
+    isPending: subscribing,
   }),
   useGrantCalendarMutation: () => ({ mutateAsync: grant }),
 }))
@@ -161,6 +164,8 @@ describe('SubscribeDialog', () => {
     providers = ['google']
     administrator = false
     accounts = everyone
+    linking = false
+    subscribing = false
   })
 
   it('asks for the kind first, sorted by name, and offers no action until one is picked', () => {
@@ -366,6 +371,68 @@ describe('SubscribeDialog', () => {
         colour: '#2dd4bf',
       })
     )
+  })
+
+  it('connects once for Enter pressed again while the account is being tried', async () => {
+    let finish: () => void = () => {}
+    connect.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          finish = () =>
+            resolve({
+              account: {
+                id: 'a3',
+                type: 'caldav',
+                label: '',
+                identifier: 'https://home.test/dav/',
+                granted: ['calendar'],
+              },
+            })
+        })
+    )
+    show()
+    fireEvent.click(screen.getByText('Another Mochi or CalDAV server'))
+    const password = screen.getByLabelText('Password')
+    fireEvent.change(screen.getByLabelText('Server address'), {
+      target: { value: 'https://home.test/dav/' },
+    })
+    fireEvent.change(screen.getByLabelText('Username'), {
+      target: { value: 'me' },
+    })
+    fireEvent.change(password, { target: { value: 'secret' } })
+    fireEvent.keyDown(password, { key: 'Enter' })
+    // A second press comes a moment later, once the request says it is
+    // pending, as a hand's would.
+    await act(() => new Promise((resolve) => setTimeout(resolve, 20)))
+    fireEvent.keyDown(password, { key: 'Enter' })
+    await act(async () => finish())
+    expect(connect).toHaveBeenCalledTimes(1)
+  })
+
+  it('connects nothing for Enter before the account is filled in', async () => {
+    show()
+    fireEvent.click(screen.getByText('Another Mochi or CalDAV server'))
+    fireEvent.keyDown(screen.getByLabelText('Password'), { key: 'Enter' })
+    await act(() => new Promise((resolve) => setTimeout(resolve, 20)))
+    expect(connect).not.toHaveBeenCalled()
+  })
+
+  it('links nothing for Enter while a link is under way', () => {
+    linking = true
+    show('a2')
+    fireEvent.click(screen.getByText('Team'))
+    fireEvent.keyDown(screen.getByLabelText('Name'), { key: 'Enter' })
+    expect(link).not.toHaveBeenCalled()
+  })
+
+  it('subscribes nothing for Enter while a subscription is under way', () => {
+    subscribing = true
+    show()
+    fireEvent.click(screen.getByText('Published calendar address (read-only)'))
+    const address = screen.getByLabelText('Address')
+    fireEvent.change(address, { target: { value: 'example.test/cal.ics' } })
+    fireEvent.keyDown(address, { key: 'Enter' })
+    expect(subscribe).not.toHaveBeenCalled()
   })
 
   it('starts at the calendars when opened with a granted account, and Back returns to its kind', () => {

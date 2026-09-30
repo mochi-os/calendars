@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#മി} other {#മി}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ആ} other {#ആ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} തീയതി} other {{days} തീയതികളിൽ}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ദിവസം മുമ്പ്} other {# ദ�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} പേര്"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# മണിക്കൂർ മുമ്പ്} othe
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# മണിക്കൂർ} other {# മണിക്കൂറുകൾ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {എല്ലാ ദിവസവും} other {ഓരോ # ദിവസം കൂടുമ്പോഴും}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {എല്ലാ മാസവും} other {ഓരോ # മാസം കൂടുമ്പോഴും}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {എല്ലാ ആഴ്ചയും} other {ഓരോ # ആഴ്ച കൂടുമ്പോഴും}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {എല്ലാ വർഷവും} other {ഓരോ # വർഷം കൂടുമ്പോഴും}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# മിനിറ്റ് മുമ്പ്} other {# മിനിറ്റ് മുമ്പ്}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} സമനില വാഗ്ദാനം ചെയ്ത�
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}-ൽ {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {ഒരു തവണ} other {# തവണ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "പുതിയ ഇനം സൃഷ്ടിക്കുക"
 msgid "Created"
 msgstr "സൃഷ്ടിച്ചു"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "സൃഷ്ടിച്ചത് {0}"
@@ -1596,6 +1624,10 @@ msgstr "ചിത്ര വ്യൂവർ: {0}"
 msgid "Imperial"
 msgstr "ഇംപീരിയൽ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} മാസത്തിൽ"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "അജ്ഞാത ഉപയോക്താക്കൾ ഉൾപ്പെടെ"
@@ -1654,7 +1686,7 @@ msgstr "അവസാനം"
 msgid "Last day"
 msgstr "അവസാന ദിവസം"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "അവസാന ഉപയോഗം {0}"
@@ -1865,8 +1897,17 @@ msgstr "നെറ്റ്‌വർക്ക് പിശക്"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ഇതുവരെ ഇല്ല"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ആവർത്തിക്കില്ല"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "ഒരിക്കലുമില്ല"
 
@@ -2055,9 +2096,41 @@ msgstr "ആവർത്തനങ്ങൾ"
 msgid "On"
 msgstr "ഓൺ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} ദിവസങ്ങളിൽ"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ഒരു തീയതിയിൽ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "അഞ്ചാമത്തെ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ആദ്യത്തെ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "നാലാമത്തെ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "അവസാനത്തെ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "മാസത്തിലെ അവസാന ദിവസം"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "രണ്ടാമത്തെ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "മൂന്നാമത്തെ {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "അജ്ഞാതം"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുക"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} വരെ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

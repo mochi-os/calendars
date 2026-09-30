@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ր} other {#ր}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#շաբ} other {#շաբ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ամսվա օրը՝ {days}} other {ամսվա օրերը՝ {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# օր առաջ} other {# օր առաջ}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-ի անունը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ժամ առաջ} other {# ժամ առաջ}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ժամ} other {# ժամ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Ամեն օր} other {# օրը մեկ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Ամեն ամիս} other {# ամիսը մեկ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Շաբաթը մեկ} other {# շաբաթը մեկ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Ամեն տարի} other {# տարին մեկ}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# րոպե առաջ} other {# րոպե առաջ}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName}-ը առաջարկեց ոչ-ոքի"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel}՝ {totalLabel}-ից"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {մեկ անգամ} other {# անգամ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Ստեղծել նոր տարր"
 msgid "Created"
 msgstr "Ստեղծված"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Ստեղծվել է {0}"
@@ -1596,6 +1624,10 @@ msgstr "Պատկերի դիտիչ՝ {0}"
 msgid "Imperial"
 msgstr "Իմպերիալ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} ամսին"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Ներառյալ անանուն օգտատերերը"
@@ -1654,7 +1686,7 @@ msgstr "Վերջում"
 msgid "Last day"
 msgstr "Վերջին օրը"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Վերջին օգտագործումը՝ {0}"
@@ -1865,8 +1897,17 @@ msgstr "Ցանցի սխալ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "դեռ չի օգտագործվել"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Չի կրկնվում"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Երբեք"
 
@@ -2055,9 +2096,41 @@ msgstr "Կրկնությունների քանակը"
 msgid "On"
 msgstr "Միացված"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} օրերին"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Որոշակի ամսաթվին"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "հինգերորդ {day} օրը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "առաջին {day} օրը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "չորրորդ {day} օրը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "վերջին {day} օրը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ամսվա վերջին օրը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "երկրորդ {day} օրը"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "երրորդ {day} օրը"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Անհայտ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Բաժանորդագրությունից հրաժարվել"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "մինչև {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

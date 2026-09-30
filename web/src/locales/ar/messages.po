@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#د} other {#د}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#أ} other {#أ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, zero {في الأيام {days}} one {في اليوم {days}} two {في اليومين {days}} few {في الأيام {days}} many {في الأيام {days}} other {في الأيام {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, zero {قبل # أيام} one {قبل يوم واحد} two
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "اسم {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}، {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, zero {قبل # ساعات} one {قبل ساعة واحد
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, zero {# ساعات} one {ساعة واحدة} two {ساعتان} few {# ساعات} many {# ساعة} other {# ساعة}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, zero {كل # يوم} one {كل يوم} two {كل يومين} few {كل # أيام} many {كل # يومًا} other {كل # يوم}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, zero {كل # شهر} one {كل شهر} two {كل شهرين} few {كل # أشهر} many {كل # شهرًا} other {كل # شهر}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, zero {كل # أسبوع} one {كل أسبوع} two {كل أسبوعين} few {كل # أسابيع} many {كل # أسبوعًا} other {كل # أسبوع}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, zero {كل # سنة} one {كل سنة} two {كل سنتين} few {كل # سنوات} many {كل # سنةً} other {كل # سنة}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, zero {قبل # دقائق} one {قبل دقيقة واحدة} two {قبل دقيقتين} few {قبل # دقائق} many {قبل # دقيقة} other {قبل # دقيقة}}"
@@ -120,6 +144,10 @@ msgstr "عرض {opponentName} التعادل"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} من {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, zero {# مرة} one {مرة واحدة} two {مرتين} few {# مرات} many {# مرةً} other {# مرة}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "إنشاء عنصر جديد"
 msgid "Created"
 msgstr "تم الإنشاء"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "تم الإنشاء {0}"
@@ -1596,6 +1624,10 @@ msgstr "عارض الصور: {0}"
 msgid "Imperial"
 msgstr "إمبراطوري"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "في {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "بما في ذلك المستخدمون المجهولون"
@@ -1654,7 +1686,7 @@ msgstr "في النهاية"
 msgid "Last day"
 msgstr "اليوم الأخير"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "آخر استخدام {0}"
@@ -1865,8 +1897,17 @@ msgstr "خطأ في الشبكة"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "أبداً"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "لا يتكرر"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "أبداً"
 
@@ -2055,9 +2096,41 @@ msgstr "التكرارات"
 msgid "On"
 msgstr "مفعّل"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "أيام {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "في تاريخ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "في {day} الخامس"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "في {day} الأول"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "في {day} الرابع"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "في {day} الأخير"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "في اليوم الأخير من الشهر"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "في {day} الثاني"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "في {day} الثالث"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "غير معروف"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "إلغاء الاشتراك"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "حتى {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

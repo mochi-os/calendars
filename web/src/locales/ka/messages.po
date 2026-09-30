@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#წთ} other {#წთ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#კვ} other {#კვ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {თვის {days} რიცხვში} other {თვის {days} რიცხვებში}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# დღით ადრე} other {# დღით �
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-ის სახელი"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# საათით ადრე} other {# სა�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# საათი} other {# საათი}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {ყოველდღე} other {ყოველ # დღეში}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {ყოველთვე} other {ყოველ # თვეში}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {ყოველკვირეულად} other {ყოველ # კვირაში}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {ყოველ წელს} other {ყოველ # წელიწადში}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# წუთით ადრე} other {# წუთით ადრე}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName}-მა ფრე შემოგთავაზათ"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {ერთხელ} other {# ჯერ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "ახალი ერთეულის შექმნა"
 msgid "Created"
 msgstr "შექმნილია"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "შექმნილია {0}"
@@ -1596,6 +1624,10 @@ msgstr "სურათის მნახველი: {0}"
 msgid "Imperial"
 msgstr "იმპერიული"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "თვეები: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "ანონიმური მომხმარებლების ჩათვლით"
@@ -1654,7 +1686,7 @@ msgstr "ბოლოს"
 msgid "Last day"
 msgstr "ბოლო დღე"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "ბოლოს გამოყენებული {0}"
@@ -1865,8 +1897,17 @@ msgstr "ქსელის შეცდომა"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "არასოდეს"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "არ მეორდება"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "არასოდეს"
 
@@ -2055,9 +2096,41 @@ msgstr "გამეორებების რაოდენობა"
 msgid "On"
 msgstr "ჩართული"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "კვირის დღეები: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "თარიღზე"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "მეხუთე {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "პირველი {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "მეოთხე {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ბოლო {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "თვის ბოლო დღეს"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "მეორე {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "მესამე {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "უცნობი"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "გამოწერის გაუქმება"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date}-მდე"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

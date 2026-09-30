@@ -1249,18 +1249,24 @@ export function newDraft(
     calendar: string
     reminder: number
     zone: { start: string; finish: string }
+    /** The user's own zone, which the day clicked on was in. */
+    user: string
   }
 ): EventDraft {
   const { zone } = options
   const begins = new Date(from * 1000)
   const ends = new Date(to * 1000)
+  // An all-day event goes on the day that was clicked, which is the user's;
+  // read in a remembered zone ahead of or behind it, it would land a day out.
+  const day = (date: Date, own: string) =>
+    zonedDay(date, options.allday ? options.user : own)
   return {
     title: '',
     calendar: options.calendar,
     allday: options.allday,
-    start: zonedDay(begins, zone.start),
+    start: day(begins, zone.start),
     startTime: zonedMinutes(begins, zone.start),
-    finish: zonedDay(ends, zone.finish),
+    finish: day(ends, zone.finish),
     finishTime: zonedMinutes(ends, zone.finish),
     zone: { ...zone },
     location: '',
@@ -1268,6 +1274,27 @@ export function newDraft(
     original: '',
     repeat: emptyRepeat(),
     reminders: defaultReminders(options.reminder),
+  }
+}
+
+/**
+ * The draft with its start moved to `day` at `minutes`, and its end moved by
+ * as much, so the event keeps its length: an end pushed past midnight lands
+ * on the next day rather than stopping at the end of this one.
+ */
+export function shiftedStart(
+  draft: EventDraft,
+  day: string,
+  minutes: number
+): EventDraft {
+  const end = draft.finishTime + (minutes - draft.startTime)
+  const carry = Math.floor(end / 1440)
+  return {
+    ...draft,
+    start: day,
+    startTime: minutes,
+    finish: addDays(draft.finish, daysBetween(draft.start, day) + carry),
+    finishTime: end - carry * 1440,
   }
 }
 

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, zero {ar ddyddiau {days}} one {ar ddiwrnod {days}} two {ar ddyddiau {days}} few {ar ddyddiau {days}} many {ar ddyddiau {days}} other {ar ddyddiau {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, zero {# diwrnod ynghynt} one {# diwrnod ynghynt} two {# d
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Enw {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, zero {# awr ynghynt} one {# awr ynghynt} two {# awr yngh
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, zero {# awr} one {# awr} two {# awr} few {# awr} many {# awr} other {# awr}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, zero {Bob # diwrnod} one {Bob dydd} two {Bob # ddiwrnod} few {Bob # diwrnod} many {Bob # diwrnod} other {Bob # diwrnod}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, zero {Bob # mis} one {Bob mis} two {Bob # fis} few {Bob # mis} many {Bob # mis} other {Bob # mis}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, zero {Bob # wythnos} one {Bob wythnos} two {Bob # wythnos} few {Bob # wythnos} many {Bob # wythnos} other {Bob # wythnos}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, zero {Bob # blynedd} one {Bob blwyddyn} two {Bob # flynedd} few {Bob # blynedd} many {Bob # blynedd} other {Bob # blynedd}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, zero {# munud ynghynt} one {# munud ynghynt} two {# funud ynghynt} few {# munud ynghynt} many {# munud ynghynt} other {# munud ynghynt}}"
@@ -120,6 +144,10 @@ msgstr "Cynigiodd {opponentName} gêm gyfartal"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} o {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, zero {# gwaith} one {unwaith} two {dwywaith} few {# gwaith} many {# gwaith} other {# gwaith}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Creu eitem newydd"
 msgid "Created"
 msgstr "Wedi'i greu"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Wedi'i greu {0}"
@@ -1596,6 +1624,10 @@ msgstr "Gwyliwr delweddau: {0}"
 msgid "Imperial"
 msgstr "Imperialaidd"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ym mis {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Gan gynnwys defnyddwyr dienw"
@@ -1654,7 +1686,7 @@ msgstr "Yn olaf"
 msgid "Last day"
 msgstr "Diwrnod olaf"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Defnyddiwyd ddiwethaf {0}"
@@ -1865,8 +1897,17 @@ msgstr "Gwall rhwydwaith"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "erioed"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Dim ailadrodd"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Byth"
 
@@ -2055,9 +2096,41 @@ msgstr "Achlysuron"
 msgid "On"
 msgstr "Ymlaen"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "bob {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Ar ddyddiad"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ar y pumed {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ar y {day} cyntaf"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ar y pedwerydd {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ar y {day} olaf"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ar ddiwrnod olaf y mis"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "yn yr ail wythnos: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ar y trydydd {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Anhysbys"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Dad-danysgrifio"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "tan {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

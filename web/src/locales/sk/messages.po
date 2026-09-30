@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#týž} other {#týž}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {deň v mesiaci: {days}} few {dni v mesiaci: {days}} many {dni v mesiaci: {days}} other {dni v mesiaci: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# deň vopred} few {# dni vopred} many {# dní vopre
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Názov {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# hodinu vopred} few {# hodiny vopred} many {# hod�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# hodina} few {# hodiny} many {# hodín} other {# hodín}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Každý deň} few {Každé # dni} many {Každých # dňa} other {Každých # dní}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Každý mesiac} few {Každé # mesiace} many {Každých # mesiaca} other {Každých # mesiacov}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Každý týždeň} few {Každé # týždne} many {Každých # týždňa} other {Každých # týždňov}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Každý rok} few {Každé # roky} many {Každých # roka} other {Každých # rokov}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minútu vopred} few {# minúty vopred} many {# minút vopred} other {# minút vopred}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ponúkol remízu"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} z {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {raz} few {#-krát} many {#-krát} other {#-krát}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Vytvoriť novú položku"
 msgid "Created"
 msgstr "Vytvorené"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Vytvorené {0}"
@@ -1596,6 +1624,10 @@ msgstr "Prehliadač obrázkov: {0}"
 msgid "Imperial"
 msgstr "Imperiálne"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "v mesiacoch: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Vrátane anonymných používateľov"
@@ -1654,7 +1686,7 @@ msgstr "Na konci"
 msgid "Last day"
 msgstr "Posledný deň"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Naposledy použité {0}"
@@ -1865,8 +1897,17 @@ msgstr "Chyba siete"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "nikdy"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Neopakuje sa"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Nikdy"
 
@@ -2055,9 +2096,41 @@ msgstr "Počet opakovaní"
 msgid "On"
 msgstr "Zapnuté"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dni v týždni: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "V dátume"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "v piatom týždni mesiaca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "v prvom týždni mesiaca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "vo štvrtom týždni mesiaca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "v poslednom týždni mesiaca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "v posledný deň mesiaca"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "v druhom týždni mesiaca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "v treťom týždni mesiaca: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Neznáme"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Odhlásiť odber"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "do {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

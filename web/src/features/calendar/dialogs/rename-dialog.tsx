@@ -37,7 +37,7 @@ export function RenameDialog({ calendar, onClose }: Props) {
   }, [calendar])
 
   const submit = async () => {
-    if (!calendar) return
+    if (!calendar || name.trim() === '' || renameMutation.isPending) return
     try {
       await toastAction(
         renameMutation.mutateAsync({

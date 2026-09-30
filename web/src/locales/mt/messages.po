@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ġim} other {#ġim}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {fil-jum {days}} two {fil-jiem {days}} few {fil-jiem {days}} many {fil-jiem {days}} other {fil-jiem {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# jum qabel} two {jumejn qabel} few {# ijiem qabel} 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Isem ta' {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# siegħa qabel} two {sagħtejn qabel} few {# sigħ
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# siegħa} two {sagħtejn} few {# sigħat} many {# siegħa} other {# siegħa}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Kuljum} two {Kull jumejn} few {Kull # ijiem} many {Kull # jum} other {Kull # jum}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Kull xahar} two {Kull xahrejn} few {Kull # xhur} many {Kull # xahar} other {Kull # xahar}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Kull ġimgħa} two {Kull ġimagħtejn} few {Kull # ġimgħat} many {Kull # ġimgħa} other {Kull # ġimgħa}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Kull sena} two {Kull sentejn} few {Kull # snin} many {Kull # sena} other {Kull # sena}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minuta qabel} two {# minuti qabel} few {# minuti qabel} many {# minuta qabel} other {# minuta qabel}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} offra draw"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} minn {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {darba waħda} two {darbtejn} few {# darbiet} many {# darba} other {# darba}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Oħloq item ġdid"
 msgid "Created"
 msgstr "Maħluq"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Maħluq {0}"
@@ -1596,6 +1624,10 @@ msgstr "Viewer tal-istampi: {0}"
 msgid "Imperial"
 msgstr "Imperjali"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "f'{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Inklużi utenti anonimi"
@@ -1654,7 +1686,7 @@ msgstr "Fl-aħħar"
 msgid "Last day"
 msgstr "L-aħħar jum"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Użat l-aħħar {0}"
@@ -1865,8 +1897,17 @@ msgstr "Żball tan-network"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "qatt"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Ma jirrepetix"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Qatt"
 
@@ -2055,9 +2096,41 @@ msgstr "Okkorrenzi"
 msgid "On"
 msgstr "Mixgħul"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "nhar {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "F'data"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} tal-ħames ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} tal-ewwel ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} tar-raba' ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} tal-aħħar ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "fl-aħħar jum tax-xahar"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} tat-tieni ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} tat-tielet ġimgħa"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Mhux magħruf"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Iddiżabbona"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "sa {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

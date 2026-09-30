@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#මි} other {#මි}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#සති} other {#සති}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} වන දින} other {{days} යන දිනවල}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {දින #කට පෙර} other {දින #ක�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} නම"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {පැය #කට පෙර} other {පැය #ක�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {පැය #ක්} other {පැය #ක්}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {සෑම දිනකම} other {සෑම දින #කට වරක්}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {සෑම මාසයකම} other {සෑම මාස #කට වරක්}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {සෑම සතියකම} other {සෑම සති #කට වරක්}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {සෑම වසරකම} other {සෑම වසර #කට වරක්}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {මිනිත්තු #කට පෙර} other {මිනිත්තු #කට පෙර}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ජය පරාජය ඉදිරිපත් කළා
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}න් {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {එක් වරක්} other {# වරක්}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "නව අයිතමයක් නිර්මාණය කරන්න
 msgid "Created"
 msgstr "නිර්මාණය කරන ලදී"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "සාදන ලදී {0}"
@@ -1596,6 +1624,10 @@ msgstr "රූප දර්ශකය: {0}"
 msgid "Imperial"
 msgstr "ඉම්පීරියල්"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} මාසයේ"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "නිර්නාමික පරිශීලකයන් ඇතුළුව"
@@ -1654,7 +1686,7 @@ msgstr "අවසානයේ"
 msgid "Last day"
 msgstr "අවසන් දිනය"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "අවසන් භාවිතය {0}"
@@ -1865,10 +1897,19 @@ msgstr "ජාල දෝෂය"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "කවදාවත්"
+msgstr "තවම නැත"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "පුනරාවර්තනය නොවේ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "අවසන් නොවේ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "පුනරාවර්තන"
 msgid "On"
 msgstr "සක්‍රීයයි"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} දිනවල"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "දිනයක දී"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "පස්වන {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "පළමු {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "සිව්වන {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "අවසන් {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "මාසයේ අවසන් දිනයේ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "දෙවන {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "තෙවන {day} දින"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "නොදන්නා"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "දායකත්වය ඉවත් කරන්න"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} දක්වා"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

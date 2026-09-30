@@ -163,6 +163,7 @@ export function CalendarPage() {
         allday,
         calendar,
         reminder: preferences.reminder,
+        user: format.timezone,
         zone: remembered.zone ?? {
           start: format.timezone,
           finish: format.timezone,

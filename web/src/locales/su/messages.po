@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mnt} other {#mnt}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#mgg} other {#mgg}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {dina tanggal {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# poé saméméhna}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Ngaran {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# jam saméméhna}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# jam}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Unggal poé} other {Unggal # poé}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Unggal bulan} other {Unggal # bulan}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Unggal minggu} other {Unggal # minggu}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Unggal taun} other {Unggal # taun}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# menit saméméhna}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} nawarkeun séri"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} tina {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {sakali} other {# kali}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Jieun item anyar"
 msgid "Created"
 msgstr "Dijieun"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Dijieun {0}"
@@ -1596,6 +1624,10 @@ msgstr "Panempo gambar: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "dina bulan {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Kaasup pamaké anonim"
@@ -1654,7 +1686,7 @@ msgstr "Di tungtung"
 msgid "Last day"
 msgstr "Poé panungtung"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Dipake panungtung {0}"
@@ -1865,10 +1897,19 @@ msgstr "Kasalahan jaringan"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Tara"
+msgstr "Can kungsi"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Henteu diulang"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Moal réngsé"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "Jumlah kajadian"
 msgid "On"
 msgstr "Hurung"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dina {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Dina tanggal"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "dina {day} kalima"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "dina {day} kahiji"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "dina {day} kaopat"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "dina {day} panungtung"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "dina poé panungtung bulan"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "dina {day} kadua"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "dina {day} katilu"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Teu dipikanyaho"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Hentikeun langganan"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "nepi ka {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

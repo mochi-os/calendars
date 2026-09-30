@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#dk} other {#dk}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wk} other {#wk}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {tarehe {days}} other {tarehe {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {siku # kabla} other {siku # kabla}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Jina la {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {saa # kabla} other {saa # kabla}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {saa #} other {saa #}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Kila siku} other {Kila baada ya siku #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Kila mwezi} other {Kila baada ya miezi #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Kila wiki} other {Kila baada ya wiki #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Kila mwaka} other {Kila baada ya miaka #}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {dakika # kabla} other {dakika # kabla}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ametoa sare"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} kati ya {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {mara moja} other {mara #}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Unda kipengee kipya"
 msgid "Created"
 msgstr "Imeundwa"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Imeundwa {0}"
@@ -1596,6 +1624,10 @@ msgstr "Kitazamaji picha: {0}"
 msgid "Imperial"
 msgstr "Kiimperia"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "katika {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Ikijumuisha watumiaji wasiojulikana"
@@ -1654,7 +1686,7 @@ msgstr "Mwishoni"
 msgid "Last day"
 msgstr "Siku ya mwisho"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Matumizi ya mwisho {0}"
@@ -1865,8 +1897,17 @@ msgstr "Hitilafu ya mtandao"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "hakuna"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Hairudiwi"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Kamwe"
 
@@ -2055,9 +2096,41 @@ msgstr "Idadi ya marudio"
 msgid "On"
 msgstr "Imewashwa"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "siku ya {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Katika tarehe"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} ya tano"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} ya kwanza"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} ya nne"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} ya mwisho"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "siku ya mwisho ya mwezi"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} ya pili"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} ya tatu"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Haijulikani"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Jiondoe"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "hadi {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#م} other {#م}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} تاريخ تي} other {{days} تاريخ تي}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ڏينهن اڳ} other {# ڏينهن اڳ}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} جو نالو"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}، {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ڪلاڪ اڳ} other {# ڪلاڪ اڳ}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ڪلاڪ} other {# ڪلاڪ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {هر ڏينهن} other {هر # ڏينهن}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {هر مهيني} other {هر # مهينن}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {هر هفتي} other {هر # هفتن}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {هر سال} other {هر # سالن}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# منٽ اڳ} other {# منٽ اڳ}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ڊرا جي پيشڪش ڪئي"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} مان {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {هڪ ڀيرو} other {# ڀيرا}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "نئين شيءِ ٺاهيو"
 msgid "Created"
 msgstr "ٺاهيو ويو"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "ٺاهيو ويو {0}"
@@ -1596,6 +1624,10 @@ msgstr "تصوير ڏسڻ وارو: {0}"
 msgid "Imperial"
 msgstr "امپيريل"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} ۾"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "گمنام صارفن سميت"
@@ -1654,7 +1686,7 @@ msgstr "آخر ۾"
 msgid "Last day"
 msgstr "آخري ڏينهن"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "{0} آخري ڀيرو استعمال ٿيو"
@@ -1865,8 +1897,17 @@ msgstr "نيٽ ورڪ جي خرابي"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ڪڏهن به نه"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ورجاءُ ناهي"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "ڪڏهن به نه"
 
@@ -2055,9 +2096,41 @@ msgstr "واقعن جو تعداد"
 msgid "On"
 msgstr "آن"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ڏينهن: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ڪنهن تاريخ تي"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "مهيني جي پنجين هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "مهيني جي پهرين هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "مهيني جي چوٿين هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "مهيني جي آخري هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "مهيني جي آخري ڏينهن تي"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "مهيني جي ٻئي هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "مهيني جي ٽئين هفتي ۾: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "اڻڄاتل"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ان سبسڪرائب ڪريو"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} تائين"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

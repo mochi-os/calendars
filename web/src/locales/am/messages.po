@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ደ} other {#ደ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ሳ} other {#ሳ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ቀን {days}} other {ቀናት {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ቀን በፊት} other {# ቀናት በፊት}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "የ{entityLabel} ስም"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}፣ {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ሰዓት በፊት} other {# ሰዓታት በፊ
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ሰዓት} other {# ሰዓታት}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {በየቀኑ} other {በየ# ቀኑ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {በየወሩ} other {በየ# ወሩ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {በየሳምንቱ} other {በየ# ሳምንቱ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {በየዓመቱ} other {በየ# ዓመቱ}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# ደቂቃ በፊት} other {# ደቂቃዎች በፊት}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} አቻ አቅርቧል"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} ከ {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {አንድ ጊዜ} other {# ጊዜ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "አዲስ ንጥል ፍጠር"
 msgid "Created"
 msgstr "ተፈጥሯል"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "የተፈጠረ {0}"
@@ -1596,6 +1624,10 @@ msgstr "የምስል መመልከቻ፦ {0}"
 msgid "Imperial"
 msgstr "ኢምፔሪያል"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "በ{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "ማንነታቸው ያልታወቁ ተጠቃሚዎችን ጨምሮ"
@@ -1654,7 +1686,7 @@ msgstr "መጨረሻ ላይ"
 msgid "Last day"
 msgstr "የመጨረሻው ቀን"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "የመጨረሻ ጥቅም {0}"
@@ -1865,10 +1897,19 @@ msgstr "የአውታረ መረብ ስህተት"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "በፍፁም"
+msgstr "የለም"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "አይደገምም"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "አያበቃም"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "ድግግሞሾች"
 msgid "On"
 msgstr "በርቷል"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "በ{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "በተወሰነ ቀን"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "በአምስተኛው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "በመጀመሪያው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "በአራተኛው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "በመጨረሻው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "በወሩ የመጨረሻ ቀን"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "በሁለተኛው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "በሦስተኛው {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "ያልታወቀ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ምዝገባ ያቋርጡ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "እስከ {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

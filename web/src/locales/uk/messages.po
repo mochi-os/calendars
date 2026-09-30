@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#хв} other {#хв}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#тиж} other {#тиж}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} числа} few {{days} числа} many {{days} числа} other {{days} числа}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {за # день} few {за # дні} many {за # д
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Назва {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {за # годину} few {за # години} many
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# година} few {# години} many {# годин} other {# години}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Щодня} one {Кожен # день} few {Кожні # дні} many {Кожні # днів} other {Кожні # дня}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Щомісяця} one {Кожен # місяць} few {Кожні # місяці} many {Кожні # місяців} other {Кожні # місяця}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Щотижня} one {Кожен # тиждень} few {Кожні # тижні} many {Кожні # тижнів} other {Кожні # тижня}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Щороку} one {Кожен # рік} few {Кожні # роки} many {Кожні # років} other {Кожні # року}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {за # хвилину} few {за # хвилини} many {за # хвилин} other {за # хвилини}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} запропонував нічию"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} з {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {один раз} one {# раз} few {# рази} many {# разів} other {# рази}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Створити новий елемент"
 msgid "Created"
 msgstr "Створено"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Створено {0}"
@@ -1596,6 +1624,10 @@ msgstr "Перегляд зображень: {0}"
 msgid "Imperial"
 msgstr "Імперські"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "місяці: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Включно з анонімними користувачами"
@@ -1654,7 +1686,7 @@ msgstr "У кінці"
 msgid "Last day"
 msgstr "Останній день"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Востаннє використано {0}"
@@ -1865,8 +1897,17 @@ msgstr "Помилка мережі"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ніколи"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Не повторюється"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Ніколи"
 
@@ -2055,9 +2096,41 @@ msgstr "Кількість повторень"
 msgid "On"
 msgstr "Увімк."
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "у дні: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "У певну дату"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "у пʼятий тиждень: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "у перший тиждень: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "у четвертий тиждень: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "в останній тиждень: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "в останній день місяця"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "у другий тиждень: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "у третій тиждень: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Невідомо"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Відписатися"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "до {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

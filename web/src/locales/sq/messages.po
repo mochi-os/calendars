@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#javë} other {#javë}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {në ditën {days}} other {në ditët {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ditë më parë} other {# ditë më parë}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Emri i {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# orë më parë} other {# orë më parë}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# orë} other {# orë}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Çdo ditë} other {Çdo # ditë}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Çdo muaj} other {Çdo # muaj}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Çdo javë} other {Çdo # javë}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Çdo vit} other {Çdo # vjet}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minutë më parë} other {# minuta më parë}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ofroi një barazim"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} nga {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {një herë} other {# herë}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Krijo element të ri"
 msgid "Created"
 msgstr "U krijua"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "U krijua {0}"
@@ -1596,6 +1624,10 @@ msgstr "Shikuesi i figurave: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "në {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Përfshirë përdoruesit anonimë"
@@ -1654,7 +1686,7 @@ msgstr "Në fund"
 msgid "Last day"
 msgstr "Dita e fundit"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Përdorur së fundmi {0}"
@@ -1865,8 +1897,17 @@ msgstr "Gabim rrjeti"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "asnjëherë"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Nuk përsëritet"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Asnjëherë"
 
@@ -2055,9 +2096,41 @@ msgstr "Përsëritje"
 msgid "On"
 msgstr "Aktiv"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ditët: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Në një datë"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} e pestë"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} e parë"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} e katërt"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} e fundit"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "në ditën e fundit të muajit"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} e dytë"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} e tretë"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "I panjohur"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Çabonohu"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "deri më {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

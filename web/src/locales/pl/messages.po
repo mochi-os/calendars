@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tyg} other {#tyg}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {dzień miesiąca: {days}} few {dni miesiąca: {days}} many {dni miesiąca: {days}} other {dni miesiąca: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# dzień wcześniej} few {# dni wcześniej} many {# 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Nazwa {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# godzinę wcześniej} few {# godziny wcześniej} m
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# godzina} few {# godziny} many {# godzin} other {# godzin}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Codziennie} few {Co # dni} many {Co # dni} other {Co # dnia}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Co miesiąc} few {Co # miesiące} many {Co # miesięcy} other {Co # miesiąca}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Co tydzień} few {Co # tygodnie} many {Co # tygodni} other {Co # tygodnia}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Co roku} few {Co # lata} many {Co # lat} other {Co # roku}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minutę wcześniej} few {# minuty wcześniej} many {# minut wcześniej} other {# minut wcześniej}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} zaproponował remis"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} z {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {jeden raz} few {# razy} many {# razy} other {# razy}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Utwórz nowy element"
 msgid "Created"
 msgstr "Utworzone"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Utworzono {0}"
@@ -1596,6 +1624,10 @@ msgstr "Przeglądarka obrazów: {0}"
 msgid "Imperial"
 msgstr "Imperialny"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "w miesiącach: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Łącznie z anonimowymi użytkownikami"
@@ -1654,7 +1686,7 @@ msgstr "Na końcu"
 msgid "Last day"
 msgstr "Ostatni dzień"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Ostatnio użyto {0}"
@@ -1865,8 +1897,17 @@ msgstr "Błąd sieci"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "nigdy"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Nie powtarza się"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Nigdy"
 
@@ -2055,9 +2096,41 @@ msgstr "Wystąpienia"
 msgid "On"
 msgstr "Wł."
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dni tygodnia: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "W dniu"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "w piątym tygodniu miesiąca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "w pierwszym tygodniu miesiąca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "w czwartym tygodniu miesiąca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "w ostatnim tygodniu miesiąca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "w ostatni dzień miesiąca"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "w drugim tygodniu miesiąca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "w trzecim tygodniu miesiąca: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Nieznany"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Anuluj subskrypcję"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "do {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

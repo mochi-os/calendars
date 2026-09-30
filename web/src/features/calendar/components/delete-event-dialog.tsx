@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { useRef } from 'react'
 import { useLingui } from '@lingui/react/macro'
-import { getErrorMessage, toast, useFormat } from '@mochi/web'
+import { GeneralError, getErrorMessage, toast, useFormat } from '@mochi/web'
 import { Trash2 } from 'lucide-react'
 import { deletedOccurrence, truncatedSeries, type Scope } from '@/lib/ical'
 import {
@@ -30,13 +31,18 @@ interface Props {
 export function DeleteEventDialog({ event, start, onClose, onDeleted }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { data, refetch } = useEventQuery(event)
+  const { data, isError, error, refetch } = useEventQuery(event)
   const stored = data?.event
   const deleteMutation = useDeleteEventMutation()
   const updateMutation = useUpdateEventMutation()
+  // A second click lands before the mutation says it is pending, so the
+  // dialog keeps its own note of a delete under way.
+  const running = useRef(false)
+  const pending = deleteMutation.isPending || updateMutation.isPending
 
   const remove = async (scope: Scope) => {
-    if (!stored) return
+    if (!stored || running.current) return
+    running.current = true
     try {
       // The series ending before this occurrence, or nothing at all when
       // this is its first, which makes the deletion one of the whole series.
@@ -75,6 +81,8 @@ export function DeleteEventDialog({ event, start, onClose, onDeleted }: Props) {
         return
       }
       toast.error(getErrorMessage(failure, t`Failed to delete the event`))
+    } finally {
+      running.current = false
     }
   }
 
@@ -85,10 +93,20 @@ export function DeleteEventDialog({ event, start, onClose, onDeleted }: Props) {
       recurring={Boolean(stored?.recurring)}
       destructive
       icon={<Trash2 className='size-4' />}
+      disabled={!stored}
+      pending={pending}
       onOpenChange={(open) => {
         if (!open) onClose()
       }}
       onChoose={(scope) => void remove(scope)}
-    />
+    >
+      {isError && !stored && (
+        <GeneralError
+          mode='inline'
+          error={error}
+          reset={() => void refetch()}
+        />
+      )}
+    </ScopeDialog>
   )
 }

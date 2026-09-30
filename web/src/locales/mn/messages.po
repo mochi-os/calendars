@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#дол} other {#дол}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {сарын өдөр: {days}} other {сарын өдрүүд: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# өдрийн өмнө} other {# өдрийн өм�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} нэр"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# цагийн өмнө} other {# цагийн өм
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# цаг} other {# цаг}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Өдөр бүр} other {# өдөр тутам}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Сар бүр} other {# сар тутам}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Долоо хоног бүр} other {# долоо хоног тутам}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Жил бүр} other {# жил тутам}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# минутын өмнө} other {# минутын өмнө}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} тэнцлэлд санал болгосон"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}-с {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {нэг удаа} other {# удаа}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Шинэ зүйл үүсгэх"
 msgid "Created"
 msgstr "Үүсгэгдсэн"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "{0} үүссэн"
@@ -1596,6 +1624,10 @@ msgstr "Зураг үзэгч: {0}"
 msgid "Imperial"
 msgstr "Империал"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "саруудад: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Нэргүй хэрэглэгчид оролцуулан"
@@ -1654,7 +1686,7 @@ msgstr "Төгсгөлд"
 msgid "Last day"
 msgstr "Сүүлийн өдөр"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Сүүлд ашигласан {0}"
@@ -1865,10 +1897,19 @@ msgstr "Сүлжээний алдаа"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Хэзээ ч"
+msgstr "хараахан үгүй"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Давтахгүй"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Хэзээ ч үгүй"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "Давталтын тоо"
 msgid "On"
 msgstr "Асаалттай"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} гарагт"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Тодорхой огноонд"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "тав дахь {day} гарагт"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "эхний {day} гарагт"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "дөрөв дэх {day} гарагт"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "сүүлийн {day} гарагт"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "сарын сүүлийн өдөр"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "хоёр дахь {day} гарагт"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "гурав дахь {day} гарагт"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Үл мэдэгдэх"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Захиалгаас гарах"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} хүртэл"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

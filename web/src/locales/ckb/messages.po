@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#خ} other {#خ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {لە ڕۆژی {days}} other {لە ڕۆژانی {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ڕۆژ پێشتر} other {# ڕۆژ پێشتر}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ناوی {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}، {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# کاتژمێر پێشتر} other {# کاتژمێ�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# کاتژمێر} other {# کاتژمێر}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {هەموو ڕۆژێک} other {هەر # ڕۆژ جارێک}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {هەموو مانگێک} other {هەر # مانگ جارێک}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {هەموو هەفتەیەک} other {هەر # هەفتە جارێک}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {هەموو ساڵێک} other {هەر # ساڵ جارێک}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# خولەک پێشتر} other {# خولەک پێشتر}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} پێشنیاری یەکسانی کرد"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} لە {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {یەک جار} other {# جار}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "دروستکردنی بڕگەی نوێ"
 msgid "Created"
 msgstr "دروستکرا"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "دروستکرا {0}"
@@ -1596,6 +1624,10 @@ msgstr "بینەری وێنە: {0}"
 msgid "Imperial"
 msgstr "ئیمپێریاڵ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "لە مانگی {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "لەگەڵ بەکارهێنەرە نەناسراوەکان"
@@ -1654,7 +1686,7 @@ msgstr "لە کۆتاییدا"
 msgid "Last day"
 msgstr "دوا ڕۆژ"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "دواین جار بەکار هاتووە {0}"
@@ -1865,8 +1897,17 @@ msgstr "هەڵەی تۆڕ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "هەرگیز"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "دووبارە نابێتەوە"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "هەرگیز"
 
@@ -2055,9 +2096,41 @@ msgstr "ژمارەی دووبارەبوونەوە"
 msgid "On"
 msgstr "کارا"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "لە ڕۆژانی {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "لە بەروارێکدا"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "لە پێنجەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "لە یەکەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "لە چوارەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "لە دوا {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "لە دوا ڕۆژی مانگدا"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "لە دووەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "لە سێیەم {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "نەناسراو"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "بەشداری هەڵبوەشێنەوە"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "تا {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

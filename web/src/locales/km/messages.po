@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#នាទី} other {#នាទី}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#សប្ដាហ៍} other {#សប្ដាហ៍}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {នៅថ្ងៃទី {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# ថ្ងៃមុន}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ឈ្មោះ {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# ម៉ោងមុន}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# ម៉ោង}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {រៀងរាល់ថ្ងៃ} other {រៀងរាល់ # ថ្ងៃម្តង}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {រៀងរាល់ខែ} other {រៀងរាល់ # ខែម្តង}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {រៀងរាល់សប្តាហ៍} other {រៀងរាល់ # សប្តាហ៍ម្តង}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {រៀងរាល់ឆ្នាំ} other {រៀងរាល់ # ឆ្នាំម្តង}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# នាទីមុន}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} បានស្នើស្មើ"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} នៃ {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {ម្តង} other {# ដង}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "បង្កើតធាតុថ្មី"
 msgid "Created"
 msgstr "បានបង្កើត"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "បានបង្កើត {0}"
@@ -1596,6 +1624,10 @@ msgstr "កម្មវិធីមើលរូបភាព៖ {0}"
 msgid "Imperial"
 msgstr "អ៊ីមភេរៀល"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "នៅខែ{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "រួមទាំងអ្នកប្រើអនាមិក"
@@ -1654,7 +1686,7 @@ msgstr "នៅខាងចុង"
 msgid "Last day"
 msgstr "ថ្ងៃចុងក្រោយ"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "បានប្រើចុងក្រោយ {0}"
@@ -1865,10 +1897,19 @@ msgstr "កំហុសបណ្តាញ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "មិនដែល"
+msgstr "មិនទាន់"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "មិនធ្វើម្តងទៀត"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "មិនបញ្ចប់"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "ចំនួនដង"
 msgid "On"
 msgstr "បើក"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "នៅថ្ងៃ{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "នៅកាលបរិច្ឆេទ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "នៅថ្ងៃ{day}ទីប្រាំ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "នៅថ្ងៃ{day}ទីមួយ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "នៅថ្ងៃ{day}ទីបួន"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "នៅថ្ងៃ{day}ចុងក្រោយ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "នៅថ្ងៃចុងក្រោយនៃខែ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "នៅថ្ងៃ{day}ទីពីរ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "នៅថ្ងៃ{day}ទីបី"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "មិនស្គាល់"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ឈប់ជាវ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "រហូតដល់ {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

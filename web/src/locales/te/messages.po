@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ని} other {#ని}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#వా} other {#వా}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days}వ తేదీన} other {{days} తేదీల్లో}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# రోజు ముందు} other {# రోజ�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} పేరు"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# గంట ముందు} other {# గంటల 
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# గంట} other {# గంటలు}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {ప్రతి రోజు} other {ప్రతి # రోజులకు}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {ప్రతి నెల} other {ప్రతి # నెలలకు}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {ప్రతి వారం} other {ప్రతి # వారాలకు}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {ప్రతి సంవత్సరం} other {ప్రతి # సంవత్సరాలకు}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# నిమిషం ముందు} other {# నిమిషాల ముందు}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} డ్రా అందించారు"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}లో {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {ఒకసారి} other {# సార్లు}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "కొత్త ఐటెమ్‌ను సృష్టించండ�
 msgid "Created"
 msgstr "సృష్టించబడింది"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "సృష్టించబడింది {0}"
@@ -1596,6 +1624,10 @@ msgstr "చిత్ర వీక్షకం: {0}"
 msgid "Imperial"
 msgstr "ఇంపీరియల్"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} నెలలో"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "అనామక వినియోగదారులతో సహా"
@@ -1654,7 +1686,7 @@ msgstr "చివరలో"
 msgid "Last day"
 msgstr "చివరి రోజు"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "చివరి వాడకం {0}"
@@ -1865,10 +1897,19 @@ msgstr "నెట్‌వర్క్ లోపం"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "ఎప్పుడూ లేదు"
+msgstr "ఇంకా లేదు"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "పునరావృతం కాదు"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "ముగియదు"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "పునరావృత్తులు"
 msgid "On"
 msgstr "ఆన్"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} రోజుల్లో"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ఒక తేదీన"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ఐదవ {day} నాడు"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "మొదటి {day} నాడు"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "నాల్గవ {day} నాడు"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "చివరి {day} నాడు"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "నెల చివరి రోజున"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "రెండవ {day} నాడు"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "మూడవ {day} నాడు"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "తెలియదు"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "చందా మానివేయండి"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} వరకు"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

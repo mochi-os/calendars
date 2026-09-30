@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#मि} other {#मि}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#सप्ता} other {#सप्ता}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {महीना के {days} तारीख के} other {महीना के {days} तारीख के}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# दिन पहिले} other {# दिन प�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} के नाम"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# घंटा पहिले} other {# घंट�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# घंटा} other {# घंटा}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {हर दिन} other {हर # दिन पर}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {हर महीना} other {हर # महीना पर}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {हर हफ्ता} other {हर # हफ्ता पर}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {हर साल} other {हर # साल पर}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# मिनट पहिले} other {# मिनट पहिले}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ड्रॉ के प्रस्ताव दिहल
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} में से {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {एक बेर} other {# बेर}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "नया आइटम बनाईं"
 msgid "Created"
 msgstr "बनावल गइल"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "{0} बनावल गइल"
@@ -1596,6 +1624,10 @@ msgstr "चित्र दर्शक: {0}"
 msgid "Imperial"
 msgstr "इम्पीरियल"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} में"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "गुमनाम प्रयोगकर्ता समेत"
@@ -1654,7 +1686,7 @@ msgstr "आखिर में"
 msgid "Last day"
 msgstr "आखिरी दिन"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "आखिरी बेर इस्तेमाल {0}"
@@ -1865,8 +1897,17 @@ msgstr "नेटवर्क त्रुटि"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "कबो ना"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "दोहराव ना"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "कबो ना"
 
@@ -2055,9 +2096,41 @@ msgstr "दोहराव के संख्या"
 msgid "On"
 msgstr "चालू"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} के"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "कौनो तारीख पर"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "पाँचवाँ {day} के"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "पहिला {day} के"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "चउथा {day} के"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "आखिरी {day} के"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "महीना के आखिरी दिन"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "दूसरा {day} के"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "तीसरा {day} के"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "अनजान"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "सदस्यता रद्द करीं"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} ले"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

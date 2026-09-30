@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ned} other {#ned}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {mēneša dienā: {days}} zero {mēneša dienās: {days}} one {mēneša dienās: {days}} other {mēneša dienās: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, zero {# dienu iepriekš} one {# dienu iepriekš} other {#
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} nosaukums"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, zero {# stundu iepriekš} one {# stundu iepriekš} other
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, zero {# stundu} one {# stunda} other {# stundas}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Katru dienu} zero {Ik pēc # dienām} one {Ik pēc # dienas} other {Ik pēc # dienām}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Katru mēnesi} zero {Ik pēc # mēnešiem} one {Ik pēc # mēneša} other {Ik pēc # mēnešiem}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Katru nedēļu} zero {Ik pēc # nedēļām} one {Ik pēc # nedēļas} other {Ik pēc # nedēļām}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Katru gadu} zero {Ik pēc # gadiem} one {Ik pēc # gada} other {Ik pēc # gadiem}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, zero {# minūšu iepriekš} one {# minūti iepriekš} other {# minūtes iepriekš}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} piedāvāja neizšķirtu"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} no {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {vienreiz} zero {# reizes} one {# reizi} other {# reizes}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Izveidot jaunu vienumu"
 msgid "Created"
 msgstr "Izveidots"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Izveidots {0}"
@@ -1596,6 +1624,10 @@ msgstr "Attēlu skatītājs: {0}"
 msgid "Imperial"
 msgstr "Imperiāls"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "mēnešos: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Ieskaitot anonīmos lietotājus"
@@ -1654,7 +1686,7 @@ msgstr "Beigās"
 msgid "Last day"
 msgstr "Pēdējā diena"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Pēdējo reizi izmantots {0}"
@@ -1865,8 +1897,17 @@ msgstr "Tīkla kļūda"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "nekad"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Neatkārtojas"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Nekad"
 
@@ -2055,9 +2096,41 @@ msgstr "Atkārtojumi"
 msgid "On"
 msgstr "Ieslēgts"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dienās: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Noteiktā datumā"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "piektā {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "pirmā {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ceturtā {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "pēdējā {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "mēneša pēdējā dienā"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "otrā {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "trešā {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Nezināms"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Atrakstīties"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "līdz {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

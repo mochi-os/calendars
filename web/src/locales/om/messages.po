@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#daq} other {#daq}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tor} other {#tor}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {guyyaa {days}} other {guyyoota {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {guyyaa # dura} other {guyyoota # dura}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Maqaa {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {sa'aatii # dura} other {sa'aatii # dura}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {sa'aatii #} other {sa'aatii #}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Guyyaa hunda} other {Guyyaa # keessatti al tokko}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Ji'a hunda} other {Ji'a # keessatti al tokko}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Torbee hunda} other {Torbee # keessatti al tokko}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Waggaa hunda} other {Waggaa # keessatti al tokko}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {daqiiqaa # dura} other {daqiiqaa # dura}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} qixxee dhiyeesse"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {al tokko} other {al #}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Wanta haaraa uumi"
 msgid "Created"
 msgstr "Uumame"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "{0} uumame"
@@ -1596,6 +1624,10 @@ msgstr "Ilaaltuu fakkii: {0}"
 msgid "Imperial"
 msgstr "Imperiyaal"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} keessa"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Fayyadamtoota maqaa hin qabne dabalatee"
@@ -1654,7 +1686,7 @@ msgstr "Dhuma irratti"
 msgid "Last day"
 msgstr "Guyyaa dhumaa"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Yeroo dhumaa kan fayyadame {0}"
@@ -1865,8 +1897,17 @@ msgstr "Dogoggora networkii"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "Gonkumaa"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Irra hin deebi'u"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Gonkumaa"
 
@@ -2055,9 +2096,41 @@ msgstr "Baay'ina irra deebi'uu"
 msgid "On"
 msgstr "Banaa"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "guyyoota: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Guyyaa tokko irratti"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} shanaffaa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} jalqabaa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} afraffaa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} dhumaa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "guyyaa dhumaa ji'aa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} lammaffaa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} sadaffaa"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Hin beekamu"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Galaa'uu kaasi"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "hanga {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

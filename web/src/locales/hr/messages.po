@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tj} other {#tj}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {dan u mjesecu: {days}} one {dani u mjesecu: {days}} few {dani u mjesecu: {days}} other {dani u mjesecu: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# dan prije} few {# dana prije} other {# dana prije}
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Naziv {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# sat prije} few {# sata prije} other {# sati prije
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# sat} few {# sata} other {# sati}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Svaki dan} one {Svaki # dan} few {Svaka # dana} other {Svakih # dana}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Svaki mjesec} one {Svaki # mjesec} few {Svaka # mjeseca} other {Svakih # mjeseci}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Svaki tjedan} one {Svaki # tjedan} few {Svaka # tjedna} other {Svakih # tjedana}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Svake godine} one {Svake # godine} few {Svake # godine} other {Svakih # godina}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minuta prije} few {# minute prije} other {# minuta prije}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} je ponudio neriješeno"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} od {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {jednom} one {# put} few {# puta} other {# puta}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Stvori novu stavku"
 msgid "Created"
 msgstr "Stvoreno"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Stvoreno {0}"
@@ -1596,6 +1624,10 @@ msgstr "Preglednik slika: {0}"
 msgid "Imperial"
 msgstr "Imperijalni"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "u mjesecima: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Uključujući anonimne korisnike"
@@ -1654,7 +1686,7 @@ msgstr "Na kraju"
 msgid "Last day"
 msgstr "Zadnji dan"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Zadnje korišteno {0}"
@@ -1865,8 +1897,17 @@ msgstr "Pogreška mreže"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "nikad"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Ne ponavlja se"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Nikad"
 
@@ -2055,9 +2096,41 @@ msgstr "Pojavljivanja"
 msgid "On"
 msgstr "Uključeno"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dani u tjednu: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Na datum"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "u petom tjednu mjeseca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "u prvom tjednu mjeseca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "u četvrtom tjednu mjeseca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "u zadnjem tjednu mjeseca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "zadnjeg dana u mjesecu"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "u drugom tjednu mjeseca: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "u trećem tjednu mjeseca: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Nepoznato"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Otkaži pretplatu"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "do {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

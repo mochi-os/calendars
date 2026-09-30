@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#မိ} other {#မိ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ပတ်} other {#ပတ်}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {{days} ရက်နေ့တွင်}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# ရက် အလို}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} အမည်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}၊ {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# နာရီ အလို}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# နာရီ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {နေ့တိုင်း} other {# ရက်တစ်ကြိမ်}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {လတိုင်း} other {# လတစ်ကြိမ်}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {အပတ်တိုင်း} other {# ပတ်တစ်ကြိမ်}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {နှစ်တိုင်း} other {# နှစ်တစ်ကြိမ်}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# မိနစ် အလို}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} က သရေ ပေးခဲ့သည်"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} အနက် {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {တစ်ကြိမ်} other {# ကြိမ်}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "အရာအသစ် ဖန်တီးမည်"
 msgid "Created"
 msgstr "ဖန်တီးပြီး"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "{0} ဖန်တီးပြီး"
@@ -1596,6 +1624,10 @@ msgstr "ပုံကြည့်ရှုစနစ်- {0}"
 msgid "Imperial"
 msgstr "အင်ပီးရီးယယ်"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} လတွင်"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "အမည်မသိအသုံးပြုသူများအပါအဝင်"
@@ -1654,7 +1686,7 @@ msgstr "အဆုံးတွင်"
 msgid "Last day"
 msgstr "နောက်ဆုံးရက်"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "နောက်ဆုံး အသုံးပြုခဲ့သည် {0}"
@@ -1865,10 +1897,19 @@ msgstr "ကွန်ရက် အမှား"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "ဘယ်တော့မှ မဟုတ်"
+msgstr "မရှိသေးပါ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ထပ်မလုပ်ပါ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "မပြီးဆုံးပါ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "အကြိမ်အရေအတွက်"
 msgid "On"
 msgstr "ဖွင့်"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} နေ့တွင်"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ရက်စွဲတစ်ခုတွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ပဉ္စမ {day} နေ့တွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ပထမ {day} နေ့တွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "စတုတ္ထ {day} နေ့တွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "နောက်ဆုံး {day} နေ့တွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "လ၏ နောက်ဆုံးရက်တွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "ဒုတိယ {day} နေ့တွင်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "တတိယ {day} နေ့တွင်"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "မသိရသော"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Subscribe ဖြုတ်မည်"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} အထိ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ນທ} other {#ນທ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ອທ} other {#ອທ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {ວັນທີ {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# ມື້ກ່ອນ}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ຊື່ {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# ຊົ່ວໂມງກ່ອນ}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# ຊົ່ວໂມງ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {ທຸກມື້} other {ທຸກ # ມື້}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {ທຸກເດືອນ} other {ທຸກ # ເດືອນ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {ທຸກອາທິດ} other {ທຸກ # ອາທິດ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {ທຸກປີ} other {ທຸກ # ປີ}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# ນາທີກ່ອນ}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ສະເໜີສະເໝີ"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} ຈາກ {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {ຄັ້ງດຽວ} other {# ຄັ້ງ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "ສ້າງລາຍການໃໝ່"
 msgid "Created"
 msgstr "ສ້າງແລ້ວ"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "ສ້າງ {0} ແລ້ວ"
@@ -1596,6 +1624,10 @@ msgstr "ຕົວເບິ່ງຮູບພາບ: {0}"
 msgid "Imperial"
 msgstr "ອິມພີຣຽລ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ໃນເດືອນ {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "ລວມທັງຜູ້ໃຊ້ນິລະນາມ"
@@ -1654,7 +1686,7 @@ msgstr "ຢູ່ທ້າຍ"
 msgid "Last day"
 msgstr "ມື້ສຸດທ້າຍ"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "ໃຊ້ຄັ້ງສຸດທ້າຍ {0}"
@@ -1865,10 +1897,19 @@ msgstr "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
 msgstr "ບໍ່ເຄີຍ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ບໍ່ເຮັດຊ້ຳ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "ບໍ່ສິ້ນສຸດ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "ຈຳນວນຄັ້ງ"
 msgid "On"
 msgstr "ເປີດ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ໃນ{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ໃນວັນທີ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day}ທີ 5 ຂອງເດືອນ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day}ທີ 1 ຂອງເດືອນ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day}ທີ 4 ຂອງເດືອນ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day}ສຸດທ້າຍຂອງເດືອນ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ມື້ສຸດທ້າຍຂອງເດືອນ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day}ທີ 2 ຂອງເດືອນ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day}ທີ 3 ຂອງເດືອນ"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "ບໍ່ຮູ້ຈັກ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ຍົກເລີກການສະໝັກສະມາຊິກ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "ຈົນເຖິງ {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

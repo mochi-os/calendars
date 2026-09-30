@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#דק} other {#דק}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#שב} other {#שב}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ב-{days} בחודש} two {ב-{days} בחודש} many {ב-{days} בחודש} other {ב-{days} בחודש}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# יום לפני} two {# ימים לפני} many {#
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "שם {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# שעה לפני} two {# שעות לפני} many {
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# שעה} two {# שעות} many {# שעות} other {# שעות}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {כל יום} two {כל יומיים} many {כל # ימים} other {כל # ימים}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {כל חודש} two {כל חודשיים} many {כל # חודשים} other {כל # חודשים}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {כל שבוע} two {כל שבועיים} many {כל # שבועות} other {כל # שבועות}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {כל שנה} two {כל שנתיים} many {כל # שנים} other {כל # שנים}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# דקה לפני} two {# דקות לפני} many {# דקות לפני} other {# דקות לפני}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} הציע תיקו"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} מתוך {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {פעם אחת} two {פעמיים} many {# פעמים} other {# פעמים}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "צור פריט חדש"
 msgid "Created"
 msgstr "נוצר"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "נוצר {0}"
@@ -1596,6 +1624,10 @@ msgstr "מציג תמונות: {0}"
 msgid "Imperial"
 msgstr "אימפריאלי"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ב{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "כולל משתמשים אנונימיים"
@@ -1654,7 +1686,7 @@ msgstr "בסוף"
 msgid "Last day"
 msgstr "היום האחרון"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "שימוש אחרון {0}"
@@ -1865,8 +1897,17 @@ msgstr "שגיאת רשת"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "אף פעם"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ללא חזרה"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "אף פעם"
 
@@ -2055,9 +2096,41 @@ msgstr "מופעים"
 msgid "On"
 msgstr "פעיל"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ב{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "בתאריך"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ב{day} החמישי"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ב{day} הראשון"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ב{day} הרביעי"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ב{day} האחרון"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ביום האחרון בחודש"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "ב{day} השני"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ב{day} השלישי"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "לא ידוע"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "בטל הרשמה"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "עד {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

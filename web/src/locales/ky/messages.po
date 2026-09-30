@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#мүн} other {#мүн}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#жума} other {#жума}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {айдын {days} күнү} other {айдын {days} күндөрү}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# күн мурун} other {# күн мурун}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} аты"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# саат мурун} other {# саат мурун
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# саат} other {# саат}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Күн сайын} other {Ар # күндө}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Ай сайын} other {Ар # айда}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Апта сайын} other {Ар # аптада}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Жыл сайын} other {Ар # жылда}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# мүнөт мурун} other {# мүнөт мурун}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} теңме-тең сунуш кылды"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} ичинен {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {бир жолу} other {# жолу}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "Жаңы нерсе түзүү"
 msgid "Created"
 msgstr "Түзүлдү"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Түзүлдү {0}"
@@ -1596,6 +1624,10 @@ msgstr "Сүрөт көрсөткүч: {0}"
 msgid "Imperial"
 msgstr "Империалдык"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} айында"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Анонимдүү колдонуучуларды кошо"
@@ -1654,7 +1686,7 @@ msgstr "Аягында"
 msgid "Last day"
 msgstr "Акыркы күн"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Акыркы колдонулду {0}"
@@ -1865,8 +1897,17 @@ msgstr "Тармак катасы"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "эч качан"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Кайталанбайт"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Эч качан"
 
@@ -2055,9 +2096,41 @@ msgstr "Кайталануулардын саны"
 msgid "On"
 msgstr "Күйүк"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} күндөрү"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Белгилүү күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "бешинчи {day} күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "биринчи {day} күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "төртүнчү {day} күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "акыркы {day} күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "айдын акыркы күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "экинчи {day} күнү"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "үчүнчү {day} күнү"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "Белгисиз"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Жазылуудан баш тартуу"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} чейин"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

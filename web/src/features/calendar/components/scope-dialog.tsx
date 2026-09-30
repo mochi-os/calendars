@@ -25,6 +25,12 @@ interface Props {
   following?: boolean
   destructive?: boolean
   icon?: React.ReactNode
+  /** The choices are held back: what they act on has not loaded. */
+  disabled?: boolean
+  /** The chosen action is running; nothing more can be chosen. */
+  pending?: boolean
+  /** Shown above the choices, such as why they cannot be made. */
+  children?: React.ReactNode
   onOpenChange: (open: boolean) => void
   onChoose: (scope: Scope) => void
 }
@@ -41,33 +47,48 @@ export function ScopeDialog({
   following = true,
   destructive,
   icon,
+  disabled = false,
+  pending = false,
+  children,
   onOpenChange,
   onChoose,
 }: Props) {
+  const held = disabled || pending
   return (
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       <ResponsiveDialogContent className='sm:max-w-[520px]'>
         <ResponsiveDialogHeader>
           <ResponsiveDialogTitle>{title}</ResponsiveDialogTitle>
         </ResponsiveDialogHeader>
+        {children}
         <ResponsiveDialogFooter className='gap-2'>
           <Button variant='outline' onClick={() => onOpenChange(false)}>
             <Trans>Cancel</Trans>
           </Button>
           {recurring ? (
             <>
-              <Button variant='outline' onClick={() => onChoose('one')}>
+              <Button
+                variant='outline'
+                disabled={held}
+                onClick={() => onChoose('one')}
+              >
                 {icon}
                 <Trans>This event</Trans>
               </Button>
               {following && (
-                <Button variant='outline' onClick={() => onChoose('following')}>
+                <Button
+                  variant='outline'
+                  disabled={held}
+                  onClick={() => onChoose('following')}
+                >
                   {icon}
                   <Trans>This and following</Trans>
                 </Button>
               )}
               <Button
                 variant={destructive ? 'destructive' : 'default'}
+                disabled={held}
+                loading={pending}
                 onClick={() => onChoose('all')}
                 icon={icon}
               >
@@ -77,6 +98,8 @@ export function ScopeDialog({
           ) : (
             <Button
               variant={destructive ? 'destructive' : 'default'}
+              disabled={held}
+              loading={pending}
               onClick={() => onChoose('all')}
               icon={icon}
             >

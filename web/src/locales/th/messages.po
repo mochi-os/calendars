@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#น} other {#น}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {ในวันที่ {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# วันก่อน}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ชื่อ {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# ชั่วโมงก่อน}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# ชั่วโมง}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {ทุกวัน} other {ทุก # วัน}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {ทุกเดือน} other {ทุก # เดือน}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {ทุกสัปดาห์} other {ทุก # สัปดาห์}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {ทุกปี} other {ทุก # ปี}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# นาทีก่อน}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} เสนอเสมอ"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} จาก {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {ครั้งเดียว} other {# ครั้ง}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -889,7 +917,7 @@ msgstr "สร้างรายการใหม่"
 msgid "Created"
 msgstr "สร้างแล้ว"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "สร้าง {0}"
@@ -1596,6 +1624,10 @@ msgstr "โปรแกรมดูรูปภาพ: {0}"
 msgid "Imperial"
 msgstr "อิมพีเรียล"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ในเดือน{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "รวมถึงผู้ใช้ที่ไม่ระบุตัวตน"
@@ -1654,7 +1686,7 @@ msgstr "ไว้ด้านล่าง"
 msgid "Last day"
 msgstr "วันสุดท้าย"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "ใช้ครั้งล่าสุด {0}"
@@ -1865,10 +1897,19 @@ msgstr "ข้อผิดพลาดของเครือข่าย"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "ไม่เลย"
+msgstr "ยังไม่เคย"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ไม่ทำซ้ำ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "ไม่สิ้นสุด"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -2055,9 +2096,41 @@ msgstr "จำนวนครั้ง"
 msgid "On"
 msgstr "เปิด"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ใน{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ในวันที่"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ใน{day}ที่ 5 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ใน{day}ที่ 1 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ใน{day}ที่ 4 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ใน{day}สุดท้ายของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ในวันสุดท้ายของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "ใน{day}ที่ 2 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ใน{day}ที่ 3 ของเดือน"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -3082,6 +3155,10 @@ msgstr "ไม่ทราบ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ยกเลิกการติดตาม"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "จนถึง {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts
