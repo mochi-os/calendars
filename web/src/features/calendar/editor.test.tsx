@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { EventEditor } from './editor'
 
@@ -111,6 +111,23 @@ describe('EventEditor closing', () => {
     fireEvent.keyDown(title, { key: 'Escape' })
     expect(setEditing).not.toHaveBeenCalled()
     expect(screen.getByText('Discard draft?')).toBeInTheDocument()
+  })
+
+  it('does nothing on a click outside, even with a change', async () => {
+    show()
+    fireEvent.change(screen.getByLabelText('Title'), {
+      target: { value: 'Dentist' },
+    })
+    // The dialog listens for a press outside only once it has opened.
+    await act(() => new Promise((resolve) => setTimeout(resolve, 0)))
+    fireEvent.pointerDown(document.body)
+    fireEvent.mouseDown(document.body)
+    fireEvent.pointerUp(document.body)
+    fireEvent.mouseUp(document.body)
+    fireEvent.click(document.body)
+    expect(setEditing).not.toHaveBeenCalled()
+    expect(screen.queryByText('Discard draft?')).toBeNull()
+    expect(screen.getByLabelText('Title')).toHaveValue('Dentist')
   })
 })
 

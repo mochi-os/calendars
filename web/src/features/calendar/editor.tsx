@@ -305,8 +305,9 @@ export function EventEditor() {
     updateMutation.isPending ||
     splitMutation.isPending
 
-  // Escape, a click outside, the X and Cancel all come through here: a form
-  // with changes asks first, and nothing closes while a save is in flight.
+  // Escape, the X and Cancel all come through here: a form with changes asks
+  // first, and nothing closes while a save is in flight. A click outside does
+  // nothing at all, as in every other dialog that holds typed input.
   const { requestClose, discardDialog } = useDiscardGuard({
     hasText: changed,
     hasFiles: false,
@@ -418,7 +419,10 @@ export function EventEditor() {
             if (!next) requestClose()
           }}
         >
-          <DialogContent className='sm:max-w-[720px]'>
+          <DialogContent
+            className='sm:max-w-[720px]'
+            onInteractOutside={(outside) => outside.preventDefault()}
+          >
             <DialogHeader>
               <DialogTitle>{title}</DialogTitle>
             </DialogHeader>
