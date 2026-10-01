@@ -122,12 +122,8 @@ export function useIcsCopy() {
         }}
         title={t`Revoke the calendar address?`}
         desc={t`Calendars subscribed to this address will stop updating.`}
-        confirmText={
-          <>
-            <Link2 className='size-4' />
-            <Trans>Revoke</Trans>
-          </>
-        }
+        confirmText={<Trans>Revoke</Trans>}
+        icon={<Link2 className='size-4' />}
         destructive
         isLoading={pending}
         handleConfirm={() => void revoke()}
