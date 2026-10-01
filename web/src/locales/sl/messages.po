@@ -160,7 +160,7 @@ msgstr "{totalCount, plural, one {# element} two {# elementa} few {# elementi} o
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
-msgstr "{totalDescendants, plural, one {# odgovor} two {+# več odgovorov} few {+# več odgovorov} other {+# več odgovorov}}"
+msgstr "{totalDescendants, plural, one {# odgovor} two {še +# odgovora} few {še +# odgovori} other {še +# odgovorov}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -347,7 +347,7 @@ msgstr "Kdor koli, ki je prijavljen"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
-msgstr "Vse, kar je naročeno na ta vir, ga ne bo več prejemalo. Nato lahko kopirate nov URL."
+msgstr "Vse, kar je naročeno na ta kanal, ga ne bo več prejemalo. Nato lahko kopirate nov URL."
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "App-specific password"
@@ -520,7 +520,7 @@ msgstr "Naslov koledarja kopiran v odložišče"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
-msgstr "Naslov koledarja preklican"
+msgstr "Naslov koledarja odvzet"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 msgid "Calendar colour"
@@ -1487,11 +1487,11 @@ msgstr "Neuspešna ponastavitev poziva"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "Preklic dostopa RSS ni uspel"
+msgstr "Odvzem dostopa RSS ni uspel"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
-msgstr "Neuspešen preklic naslova koledarja"
+msgstr "Neuspešen odvzem naslova koledarja"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2565,11 +2565,11 @@ msgstr "Vrstice združi po"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS access revoked"
-msgstr "Dostop RSS preklican"
+msgstr "Dostop RSS odvzet"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
-msgstr "RSS vir"
+msgstr "RSS kanal"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS URL copied to clipboard"
@@ -3031,7 +3031,7 @@ msgstr "Ta naslov koledarja je bil že izdan in ga ni mogoče znova prikazati."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar has no address to revoke"
-msgstr "Ta koledar nima naslova za preklic"
+msgstr "Ta koledar nima naslova za odvzem"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
