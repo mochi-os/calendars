@@ -17,6 +17,9 @@ const state = vi.hoisted(() => ({
   visible: [] as unknown[],
   failed: false,
   reload: vi.fn(),
+  setEditing: vi.fn(),
+  /** What the page last gave the month grid. */
+  month: {} as Record<string, unknown>,
   query: {
     data: undefined as unknown,
     isSuccess: true,
@@ -31,6 +34,8 @@ beforeEach(() => {
   state.visible = [calendar]
   state.failed = false
   state.reload.mockReset()
+  state.setEditing.mockReset()
+  state.month = {}
   state.query = {
     data: { instances: [] },
     isSuccess: true,
@@ -54,7 +59,7 @@ vi.mock('@/context/calendar-context', () => ({
     calendars: state.visible,
     workweek: false,
     editing: null,
-    setEditing: vi.fn(),
+    setEditing: state.setEditing,
     remembered: {},
     reveal: vi.fn(),
     failed: state.failed,
@@ -82,7 +87,10 @@ vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
   return {
     ...original,
-    MonthGrid: () => <div>month grid</div>,
+    MonthGrid: (props: Record<string, unknown>) => {
+      state.month = props
+      return <div>month grid</div>
+    },
     TimeGrid: () => <div>time grid</div>,
     usePageTitle: () => undefined,
   }
@@ -137,5 +145,20 @@ describe('CalendarPage', () => {
     }
     show()
     expect(screen.queryByText(TRUNCATED)).toBeNull()
+  })
+
+  it('opens a new all-day event over the days a drag across the month picked', () => {
+    show()
+    const pick = state.month.onCreateRange as (first: string, last: string) => void
+    pick('2026-09-22', '2026-09-25')
+    expect(state.setEditing).toHaveBeenCalledWith({
+      mode: 'create',
+      draft: expect.objectContaining({
+        allday: true,
+        calendar: 'c1',
+        start: '2026-09-22',
+        finish: '2026-09-25',
+      }),
+    })
   })
 })

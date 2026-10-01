@@ -204,6 +204,19 @@ export function CalendarPage() {
   // takes the remembered all-day switch like the button does.
   const createOnDay = (day: string) => createAt(day)
 
+  // A drag across day cells says which days, and a run of days is an
+  // all-day event. The times underneath start at the working hours, for a
+  // user who turns all-day off.
+  const createOnDays = (first: string, last: string) => {
+    const minutes = preferences.hours.start * 60
+    const from = format.timestampAt(first, minutes)
+    const to = format.timestampAt(
+      last,
+      Math.min(minutes + preferences.duration, 24 * 60 - 1)
+    )
+    setEditing({ mode: 'create', draft: compose(from, to, true) })
+  }
+
   // A click opens the editor; a read-only occurrence (a subscription's or a
   // birthday) has nothing to edit, so it opens the summary popover instead.
   const open = (instance: Instance, anchor: HTMLElement) => {
@@ -340,6 +353,7 @@ export function CalendarPage() {
         selected={current}
         onSelect={select}
         onCreate={createOnDay}
+        onCreateRange={createOnDays}
         onMove={({ key, day, copy, calendar }) => {
           const instance = byKey.get(key)
           if (!instance || instance.readonly) return
