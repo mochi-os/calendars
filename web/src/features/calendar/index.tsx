@@ -197,10 +197,13 @@ export function CalendarPage() {
   }
 
   // "New event" lands on today when today is on screen, and otherwise on
-  // the day the view is on.
+  // the day the view is on. A phone's month has a chosen day, whose events
+  // are listed under it, and lands there.
   const createNow = () =>
     createAt(
-      creationDay(format.zonedDay(new Date()), date, range.from, range.days)
+      view === 'month' && isMobile
+        ? date
+        : creationDay(format.zonedDay(new Date()), date, range.from, range.days)
     )
 
   // A day cell in the month views says which day, not which kind, so it

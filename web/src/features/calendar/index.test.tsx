@@ -18,8 +18,13 @@ const state = vi.hoisted(() => ({
   failed: false,
   reload: vi.fn(),
   setEditing: vi.fn(),
-  /** What the page last gave the month grid. */
+  /** What the page last gave the month grid, the time grid and the toolbar. */
   month: {} as Record<string, unknown>,
+  time: {} as Record<string, unknown>,
+  toolbar: {} as Record<string, unknown>,
+  view: 'month',
+  date: '2026-09-15',
+  phone: false,
   query: {
     data: undefined as unknown,
     isSuccess: true,
@@ -36,6 +41,11 @@ beforeEach(() => {
   state.reload.mockReset()
   state.setEditing.mockReset()
   state.month = {}
+  state.time = {}
+  state.toolbar = {}
+  state.view = 'month'
+  state.date = '2026-09-15'
+  state.phone = false
   state.query = {
     data: { instances: [] },
     isSuccess: true,
@@ -48,9 +58,12 @@ beforeEach(() => {
 
 vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => ({
-    view: 'month',
-    range: { from: '2026-08-31', days: 42, date: '2026-09-15' },
-    date: '2026-09-15',
+    view: state.view,
+    range:
+      state.view === 'week'
+        ? { from: '2026-09-14', days: 7, date: state.date }
+        : { from: '2026-08-31', days: 42, date: state.date },
+    date: state.date,
     setDate: vi.fn(),
     setView: vi.fn(),
     today: '2026-09-15',
@@ -71,7 +84,12 @@ vi.mock('@/hooks/use-events', () => ({
 }))
 vi.mock('@/hooks/use-event-move', () => ({ useEventMove: () => ({}) }))
 vi.mock('@/hooks/use-reminder', () => ({ useReminder: () => undefined }))
-vi.mock('@/features/calendar/components/toolbar', () => ({ Toolbar: () => null }))
+vi.mock('@/features/calendar/components/toolbar', () => ({
+  Toolbar: (props: Record<string, unknown>) => {
+    state.toolbar = props
+    return null
+  },
+}))
 vi.mock('@/features/calendar/components/agenda', () => ({ Agenda: () => null }))
 vi.mock('@/features/calendar/components/event-popover', () => ({
   EventPopover: () => null,
@@ -91,7 +109,14 @@ vi.mock('@mochi/web', async (importOriginal) => {
       state.month = props
       return <div>month grid</div>
     },
-    TimeGrid: () => <div>time grid</div>,
+    TimeGrid: (props: Record<string, unknown>) => {
+      state.time = props
+      return <div>time grid</div>
+    },
+    useScreenSize: () =>
+      state.phone
+        ? { isDesktop: false, isMobile: true, isTablet: false }
+        : { isDesktop: true, isMobile: false, isTablet: false },
     usePageTitle: () => undefined,
   }
 })
@@ -160,5 +185,38 @@ describe('CalendarPage', () => {
         finish: '2026-09-25',
       }),
     })
+  })
+
+  it("puts a new event on a phone month's chosen day, not today", () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T10:00:00Z'))
+    try {
+      state.phone = true
+      state.date = '2026-09-20'
+      show()
+      ;(state.toolbar.onCreate as () => void)()
+      expect(state.setEditing).toHaveBeenCalledWith({
+        mode: 'create',
+        draft: expect.objectContaining({ start: '2026-09-20' }),
+      })
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('puts a new event on today when today is in a wide month', () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T10:00:00Z'))
+    try {
+      state.date = '2026-09-20'
+      show()
+      ;(state.toolbar.onCreate as () => void)()
+      expect(state.setEditing).toHaveBeenCalledWith({
+        mode: 'create',
+        draft: expect.objectContaining({ start: '2026-09-15' }),
+      })
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })
