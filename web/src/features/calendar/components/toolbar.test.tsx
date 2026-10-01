@@ -76,6 +76,28 @@ describe('Toolbar views', () => {
 })
 
 describe('Toolbar search', () => {
+  it('fits a phone in two rows: the arrows and title, then search, view and new', () => {
+    size.isDesktop = false
+    size.isMobile = true
+    const onCreate = vi.fn()
+    context.view = 'list'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Toolbar onCreate={onCreate} />
+      </I18nProvider>
+    )
+    const previous = screen.getByRole('button', { name: 'Previous' })
+    const title = screen.getByRole('button', { name: /2026/ })
+    const create = screen.getByRole('button', { name: 'New event' })
+    const search = screen.getByRole('searchbox', { name: 'Search' })
+    const first = previous.parentElement!.parentElement!
+    expect(first.contains(title)).toBe(true)
+    expect(first.contains(search)).toBe(false)
+    expect(create.parentElement!.contains(search)).toBe(true)
+    fireEvent.click(create)
+    expect(onCreate).toHaveBeenCalledTimes(1)
+  })
+
   it('sets the term and opens the list view when typed from another view', () => {
     fireEvent.change(show('month'), { target: { value: 'flight' } })
     expect(context.setSearch).toHaveBeenCalledWith('flight')
