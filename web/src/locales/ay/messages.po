@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# alja} other {# aljas}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# tila qhipart'i} other {# tila qhipart'i}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# juk'ampi} other {+# juk'ampi}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# manqhankiri} other {+# manqhankiri}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {phaxsin urupa: {days}} other {phaxsin urunakapa: {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#min} other {#min}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sem} other {#sem}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {phaxsin urupa: {days}} other {phaxsin urunakapa: {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# hora} other {# hora}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Sapa uru} other {Sapa # uru}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Sapa uru} other {Sapa # uru}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Sapa phaxsi} other {Sapa # phaxsi}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Sapa phaxsi} other {Sapa # phaxsi}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Sapa semana} other {Sapa # semana}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Sapa semana} other {Sapa # semana}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Sapa mara} other {Sapa # mara}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Sapa mara} other {Sapa # mara}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {mä kuti} other {# kuti}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {mä kuti} other {# kuti}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -155,16 +160,11 @@ msgstr "{totalCount, plural, one {# yänaka} other {# yänaka}}"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
-msgstr "{totalDescendants, plural, one {1 kutsuwi} other {# mayamp kutsuwinaka}}"
+msgstr "{totalDescendants, plural, one {# kutsuwi} other {# mayamp kutsuwinaka}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Menu jist'araña (# jan ullt'ata yatiyawi)} other {Menu jist'araña (# jan ullt'ata yatiyawinaka)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Kutta"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Calendarionakar kutta"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Colora imatawa"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Colora chimpu"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Janiraw item tipo lurañ atititi. Nayraqat parent itemanak munaski lurma
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Janiw kikipax utjkiti"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2223,15 +2223,15 @@ msgstr "Mantañ llawi"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "Passkey yatiyañax jan walikiti. Mira wasitat yant'asma."
+msgstr "Mantañ llawi uñakipañax janiw walikiti. Wasitat yant'asma."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
-msgstr "Passkeyanaka"
+msgstr "Mantañ llawinaka"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeyanakax janiw aka navegadorana utjkiti"
+msgstr "Mantañ llawinakax janiw aka navegadoran utjkiti"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2333,7 +2333,7 @@ msgstr "Aka servdorankiw cuentasnaka nayraqatapachani uñakipaña"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "Aka servidoran passkeysniykita wasitata qillqantañani"
+msgstr "Mantañ llawinakama aka servidoran wasitat qillqantma"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2500,7 +2500,7 @@ msgstr "Lantiri"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "¿Calendario dirección lantintañati?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Thaqhama"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Lurawinak thaqhama"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3007,7 +3007,7 @@ msgstr "Micrófono mayiwix janiw jaysatäkiti"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Passkey mayiwix janiw jaysatäkiti"
+msgstr "Mantañ llawi mayiwix janiw jaysatäkiti"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3023,7 +3023,7 @@ msgstr "Akata ukat jutirinaka"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Aka aplicacionax janiw passkeymamp apnaqañ yatiykiti. Ajustes ukan, Permisos ukan iyawsam."
+msgstr "Aka aplicacionax janiw mantañ llawima apnaqañatak iyawsatäkiti. Ajustes ukan, Permisos ukan iyawsam."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
@@ -3186,7 +3186,7 @@ msgstr "Jan uñt'ata"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Suscripción jaytaña"
+msgstr "Suscripción apaqaña"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3222,7 +3222,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "Passkey ukma apnaqama"
+msgstr "Mantañ llawima apnaqam"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -3369,7 +3369,7 @@ msgstr "Apkatata archivonakamax chhaqhaniwa."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Mayjt'ayatanakamax chhaqtarakini."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

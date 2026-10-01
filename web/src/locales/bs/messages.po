@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# rezultat} few {# rezultata} other {# rezultata}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# odabrano} few {# odabrana} other {# odabranih}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# više} few {+# više} other {+# više}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# ugniježđen} few {+# ugniježđena} other {+# ugniježđenih}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {dana {days}} few {dana {days}} other {dana {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#min} other {#min}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sedm} other {#sedm}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {dana {days}} few {dana {days}} other {dana {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# sat} few {# sata} other {# sati}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {Svaki dan} one {Svakih # dana} few {Svaka # dana} other {Svakih # dana}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {Svaki mjesec} one {Svakih # mjeseci} few {Svaka # mjeseca} other {Svakih # mjeseci}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {Svake sedmice} one {Svakih # sedmica} few {Svake # sedmice} other {Svakih # sedmica}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {Svake godine} one {Svakih # godina} few {Svake # godine} other {Svakih # godina}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} od {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {jednom} one {# put} few {# puta} other {# puta}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# odgovor} few {+# više odgovora} other
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Otvori meni (# nepročitana obavijest)} few {Otvori meni (# nepročitane obavijesti)} other {Otvori meni (# nepročitanih obavijesti)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Nazad"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Nazad na kalendare"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Boja sačuvana"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Vrijednost boje"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Nijedan tip stavke se još ne može kreirati. Prvo kreirajte potrebne na
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Nema podudaranja"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2231,7 +2231,7 @@ msgstr "Pristupni ključevi"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys nisu dostupni u ovom pregledniku"
+msgstr "Pristupni ključevi nisu dostupni u ovom pregledniku"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2500,7 +2500,7 @@ msgstr "Zamijeni"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Zamijeniti adresu kalendara?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Pretraži"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Pretraži događaje"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3007,7 +3007,7 @@ msgstr "Na zahtjev za mikrofon nije odgovoreno"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Na zahtjev za passkey nije odgovoreno"
+msgstr "Na zahtjev za pristupni ključ nije odgovoreno"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3023,7 +3023,7 @@ msgstr "Ovaj i sljedeći"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Ova aplikacija nema dozvolu da koristi vaš passkey. Dozvolite joj to u Postavkama, pod Dozvole."
+msgstr "Ova aplikacija nema dozvolu da koristi vaš pristupni ključ. Dozvolite joj to u Postavkama, pod Dozvole."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
@@ -3186,7 +3186,7 @@ msgstr "Nepoznato"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Otkaži pretplatu"
+msgstr "Prekini pretplatu"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,7 +3369,7 @@ msgstr "Vaši prilozi će biti izgubljeni."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Vaše izmjene će biti izgubljene."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

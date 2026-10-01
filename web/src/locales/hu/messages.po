@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# találat} other {# találat}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# kiválasztva} other {# kiválasztva}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# további} other {+# további}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# beágyazott} other {+# beágyazott}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {a hónap {days}. napján} other {a hónap napjain: {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#p} other {#p}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hét} other {#hét}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {a hónap {days}. napján} other {a hónap napjain: {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# óra} other {# óra}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Minden nap} other {# naponta}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Minden nap} other {# naponta}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Minden hónapban} other {# havonta}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Minden hónapban} other {# havonta}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Minden héten} other {# hetente}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Minden héten} other {# hetente}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Minden évben} other {# évente}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Minden évben} other {# évente}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {egyszer} other {# alkalommal}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {egyszer} other {# alkalommal}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# válasz} other {+# további válasz}}"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Menü megnyitása (# olvasatlan értesítés)} other {Menü megnyitása (# olvasatlan értesítés)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Vissza"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Vissza a naptárakhoz"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Szín mentve"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Színérték"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Egyetlen elemtípus sem hozható még létre. Először hozza létre a s
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Nincs egyezés"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2218,7 +2218,7 @@ msgstr "Szülő"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Passkey"
-msgstr "Azonosítókulcs"
+msgstr "Hozzáférési kulcs"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
@@ -2227,11 +2227,11 @@ msgstr "A hozzáférési kulcs ellenőrzése sikertelen. Próbálja újra."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
-msgstr "Passkey-ek"
+msgstr "Hozzáférési kulcsok"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "A passkey-ek nem érhetők el ebben a böngészőben"
+msgstr "A hozzáférési kulcsok nem érhetők el ebben a böngészőben"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2500,7 +2500,7 @@ msgstr "Csere"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Lecseréli a naptár címét?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Keresés"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Események keresése"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3007,7 +3007,7 @@ msgstr "A mikrofonkérésre nem érkezett válasz"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "A passkey-kérésre nem érkezett válasz"
+msgstr "A hozzáférési kulcsra vonatkozó kérésre nem érkezett válasz"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3023,7 +3023,7 @@ msgstr "Ez és a következők"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Ez az alkalmazás nem használhatja az Ön passkey-ét. Engedélyezze a Beállításokban, az Engedélyek alatt."
+msgstr "Ez az alkalmazás nem használhatja az Ön hozzáférési kulcsát. Engedélyezze a Beállításokban, az Engedélyek alatt."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
@@ -3369,7 +3369,7 @@ msgstr "A mellékletei elvesznek."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "A módosításaid elvesznek."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

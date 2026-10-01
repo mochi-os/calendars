@@ -53,10 +53,19 @@ msgstr "{0, plural, other {# პოსტი}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, other {# გაყიდვა}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# სხვა} other {+# სხვა}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# ჩადგმული} other {+# ჩადგმული}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {თვის {days} რიცხვში} other {თვის {days} რიცხვებში}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#წთ} other {#წთ}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#კვ} other {#კვ}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {თვის {days} რიცხვში} other {თვის {days} რიცხვებში}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# საათი} other {# საათი}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {ყოველდღე} other {ყოველ # დღეში}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {ყოველდღე} other {ყოველ # დღეში}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {ყოველთვე} other {ყოველ # თვეში}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {ყოველთვე} other {ყოველ # თვეში}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {ყოველკვირეულად} other {ყოველ # კვირაში}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {ყოველკვირეულად} other {ყოველ # კვირაში}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {ყოველ წელს} other {ყოველ # წელიწადში}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {ყოველ წელს} other {ყოველ # წელიწადში}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {ერთხელ} other {# ჯერ}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {ერთხელ} other {# ჯერ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, other {# პასუხი}}"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, other {მენიუს გახსნა (# წაუკითხავი შეტყობინება)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "უკან"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "კალენდრებზე დაბრუნება"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "ფერი შეინახა"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "ფერის მნიშვნელობა"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1143,11 +1143,11 @@ msgstr "კატალოგი"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard"
-msgstr "გაუქმება"
+msgstr "გადაგდება"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
-msgstr "გავაუქმოთ მონახაზი?"
+msgstr "გადავაგდოთ მონახაზი?"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 #: ../../../lib/web/src/lib/chat-ui.ts
@@ -2006,7 +2006,7 @@ msgstr "ნივთის ტიპების შექმნა ჯერ �
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "დამთხვევები არ არის"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2227,11 +2227,11 @@ msgstr "წვდომის გასაღების გადამოწ�
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
-msgstr "Passkey-ები"
+msgstr "წვდომის გასაღებები"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkey-ები ამ ბრაუზერში მიუწვდომელია"
+msgstr "წვდომის გასაღებები ამ ბრაუზერში მიუწვდომელია"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2500,7 +2500,7 @@ msgstr "ჩანაცვლება"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "ჩავანაცვლოთ კალენდრის მისამართი?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2540,19 +2540,19 @@ msgstr "ხელახლა ცდა"
 #: src/features/calendar/settings.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
-msgstr "გაუქმება"
+msgstr "გაწვევა"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "წვდომის გაუქმება"
+msgstr "წვდომის გაწვევა"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
-msgstr "გაუქმდეს RSS წვდომა?"
+msgstr "RSS წვდომის გაწვევა?"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke the calendar address?"
-msgstr "გაუქმდეს კალენდრის მისამართი?"
+msgstr "კალენდრის მისამართის გაწვევა?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2623,7 +2623,7 @@ msgstr "ძიება"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "ღონისძიებების ძიება"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3186,7 +3186,7 @@ msgstr "უცნობი"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "გამოწერის გაუქმება"
+msgstr "გამოწერის შეწყვეტა"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,7 +3369,7 @@ msgstr "თქვენი დანართები დაიკარგე�
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "შენი ცვლილებები დაიკარგება."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

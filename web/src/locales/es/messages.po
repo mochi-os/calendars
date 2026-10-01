@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# resultado} other {# resultados}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# seleccionado} other {# seleccionados}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# más} other {+# más}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# anidado} other {+# anidados}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {el día {days}} many {los días {days}} other {los días {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#min} other {#min}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sem} other {#sem}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {el día {days}} many {los días {days}} other {los días {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# hora} other {# horas}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Todos los días} many {Cada # días} other {Cada # días}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Todos los días} many {Cada # días} other {Cada # días}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Todos los meses} many {Cada # meses} other {Cada # meses}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Todos los meses} many {Cada # meses} other {Cada # meses}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Todas las semanas} many {Cada # semanas} other {Cada # semanas}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Todas las semanas} many {Cada # semanas} other {Cada # semanas}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Todos los años} many {Cada # años} other {Cada # años}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Todos los años} many {Cada # años} other {Cada # años}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} de {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {una vez} many {# veces} other {# veces}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {una vez} many {# veces} other {# veces}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# respuesta} other {+# respuestas más}}
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Abrir menú (# notificación sin leer)} other {Abrir menú (# notificaciones sin leer)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Atrás"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Volver a los calendarios"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Color guardado"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Valor del color"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Aún no se pueden crear tipos de elementos. Crea primero los elementos p
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Sin coincidencias"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2333,7 +2333,7 @@ msgstr "Vuelve a vincular tus cuentas en este servidor"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "Vuelve a registrar tus llaves de acceso en este servidor"
+msgstr "Vuelve a registrar tus claves de acceso en este servidor"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2500,7 +2500,7 @@ msgstr "Reemplazar"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "¿Reemplazar la dirección del calendario?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Buscar"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Buscar eventos"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3186,7 +3186,7 @@ msgstr "Desconocido"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Cancelar suscripción"
+msgstr "Anular suscripción"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,7 +3369,7 @@ msgstr "Se perderán los archivos adjuntos."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Se perderán los cambios."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

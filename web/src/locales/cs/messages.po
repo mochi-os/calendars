@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# výsledek} few {# výsledků} other {# výsledků}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# vybráno} few {# vybráno} other {# vybráno}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# další} few {+# další} many {+# dalších} other {+# dalších}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# vnořená} few {+# vnořené} many {+# vnořené} other {+# vnořených}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {den v měsíci: {days}} few {dny v měsíci: {days}} many {dny v měsíci: {days}} other {dny v měsíci: {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#min} other {#min}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#týd} other {#týd}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {den v měsíci: {days}} few {dny v měsíci: {days}} many {dny v měsíci: {days}} other {dny v měsíci: {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# hodina} few {# hodiny} other {# hodin}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Každý den} few {Každé # dny} many {Každých # dne} other {Každých # dní}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Každý den} few {Každé # dny} many {Každých # dne} other {Každých # dní}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Každý měsíc} few {Každé # měsíce} many {Každých # měsíce} other {Každých # měsíců}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Každý měsíc} few {Každé # měsíce} many {Každých # měsíce} other {Každých # měsíců}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Každý týden} few {Každé # týdny} many {Každých # týdne} other {Každých # týdnů}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Každý týden} few {Každé # týdny} many {Každých # týdne} other {Každých # týdnů}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Každý rok} few {Každé # roky} many {Každých # roku} other {Každých # let}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Každý rok} few {Každé # roky} many {Každých # roku} other {Každých # let}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} z {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {jednou} few {#krát} many {#krát} other {#krát}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {jednou} few {#krát} many {#krát} other {#krát}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# odpověď} few {+# dalších odpověd�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Otevřít nabídku (# nepřečtené oznámení)} few {Otevřít nabídku (# nepřečtená oznámení)} other {Otevřít nabídku (# nepřečtených oznámení)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Zpět"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Zpět na kalendáře"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Barva uložena"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Hodnota barvy"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Zatím nelze vytvořit žádné typy položek. Nejprve vytvořte potřeb
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Žádné shody"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2231,7 +2231,7 @@ msgstr "Přístupové klíče"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys nejsou v tomto prohlížeči k dispozici"
+msgstr "Přístupové klíče nejsou v tomto prohlížeči k dispozici"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2500,7 +2500,7 @@ msgstr "Nahradit"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Nahradit adresu kalendáře?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2544,7 +2544,7 @@ msgstr "Odvolat"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "Zrušit přístup"
+msgstr "Odvolat přístup"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
@@ -2623,7 +2623,7 @@ msgstr "Hledat"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Hledat události"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3007,7 +3007,7 @@ msgstr "Požadavek na mikrofon zůstal bez odpovědi"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Požadavek na passkey zůstal bez odpovědi"
+msgstr "Požadavek na přístupový klíč zůstal bez odpovědi"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3023,7 +3023,7 @@ msgstr "Tato a následující"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Tato aplikace nemá povolení používat váš passkey. Povolte ji v Nastavení v části Oprávnění."
+msgstr "Tato aplikace nemá povolení používat váš přístupový klíč. Povolte ji v Nastavení v části Oprávnění."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
@@ -3186,7 +3186,7 @@ msgstr "Neznámý"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Zrušit odběr"
+msgstr "Odhlásit odběr"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,7 +3369,7 @@ msgstr "Vaše přílohy budou ztraceny."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Vaše změny budou ztraceny."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

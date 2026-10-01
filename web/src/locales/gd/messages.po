@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# toradh} two {# thoradh} few {# toraidhean} other {# t
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# air a thaghadh} two {# air an taghadh} few {# air an taghadh} other {# air an taghadh}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# a bharrachd} two {+# a bharrachd} few {+# a bharrachd} other {+# a bharrachd}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# neadaichte} two {+# neadaichte} few {+# neadaichte} other {+# neadaichte}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {air latha {days}} one {air làithean {days}} two {air làithean {days}} few {air làithean {days}} other {air làithean {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#mion} other {#mion}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sea} other {#sea}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, =1 {air latha {days}} one {air làithean {days}} two {air làithean {days}} few {air làithean {days}} other {air làithean {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# uair} two {# uair} few {# uairean} other {# uair}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {Gach latha} one {Gach # latha} two {Gach # latha} few {Gach # làithean} other {Gach # latha}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {Gach mìos} one {Gach # mìos} two {Gach # mhìos} few {Gach # mìosan} other {Gach # mìos}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {Gach seachdain} one {Gach # seachdain} two {Gach # sheachdain} few {Gach # seachdainean} other {Gach # seachdain}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {Gach bliadhna} one {Gach # bliadhna} two {Gach # bhliadhna} few {Gach # bliadhnaichean} other {Gach # bliadhna}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} à {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {aon turas} one {# turas} two {# thuras} few {# tursan} other {# turas}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# fhreagairt} two {+# barrachd freagairt
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Fosgail an clàr-taice (# bhrath gun leughadh)} two {Fosgail an clàr-taice (# bhrath gun leughadh)} few {Fosgail an clàr-taice (# brathan gun leughadh)} other {Fosgail an clàr-taice (# brath gun leughadh)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Air ais"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Air ais gu na mìosachain"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Chaidh an dath a shàbhaladh"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Luach an dath"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Chan urrainnear seòrsa nì sam bith a chruthachadh fhathast. Cruthaich 
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Gun mhaidseadh"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2223,7 +2223,7 @@ msgstr "Pasgair"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "Dh'fhàillig dearbhadh na h-iuchrach-inntrigidh. Feuch ris a-rithist."
+msgstr "Dh'fhàillig dearbhadh a' phasgair. Feuch ris a-rithist."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -2333,7 +2333,7 @@ msgstr "Ath-cheangail do chunntasan air an fhrithealaiche seo"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "Ath-chlàraich na h-iuchraichean inntrigidh agad air an fhrithealaiche seo"
+msgstr "Ath-chlàraich na pasgairean agad air an fhrithealaiche seo"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2500,7 +2500,7 @@ msgstr "Cuir 'na àite"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "A bheil thu airson seòladh a' mhìosachain a chur 'na àite?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Lorg"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Lorg tachartasan"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3222,7 +3222,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "Cleachd an iuchair-inntrigidh agad"
+msgstr "Cleachd am pasgair agad"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -3369,7 +3369,7 @@ msgstr "Thèid na ceanglachain agad air chall."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Thèid na h-atharraichean agad air chall."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

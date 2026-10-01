@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# результат} few {# результатов} ma
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# выбран} few {# выбрано} many {# выбрано} other {# выбрано}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {ещё +#} few {ещё +#} many {ещё +#} other {ещё +#}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# вложенный} few {+# вложенных} many {+# вложенных} other {+# вложенных}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {{days} числа} few {{days} числа} many {{days} числа} other {{days} числа}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#нед} other {#нед}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {{days} числа} few {{days} числа} many {{days} числа} other {{days} числа}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# час} few {# часа} many {# часов} other {# часа}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {Каждый день} one {Каждый # день} few {Каждые # дня} many {Каждые # дней} other {Каждые # дня}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {Каждый месяц} one {Каждый # месяц} few {Каждые # месяца} many {Каждые # месяцев} other {Каждые # месяца}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {Каждую неделю} one {Каждую # неделю} few {Каждые # недели} many {Каждые # недель} other {Каждые # недели}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {Каждый год} one {Каждый # год} few {Каждые # года} many {Каждые # лет} other {Каждые # года}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} из {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {один раз} one {# раз} few {# раза} many {# раз} other {# раза}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# ответ} few {ещё +# ответ�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Открыть меню (# непрочитанное уведомление)} few {Открыть меню (# непрочитанных уведомления)} many {Открыть меню (# непрочитанных уведомлений)} other {Открыть меню (# непрочитанного уведомления)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Назад"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Назад к календарям"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Цвет сохранён"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Значение цвета"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Пока нельзя создать типы элементов. Сна
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Совпадений нет"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2500,7 +2500,7 @@ msgstr "Заменить"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Заменить адрес календаря?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Поиск"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Поиск событий"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3369,7 +3369,7 @@ msgstr "Ваши вложения будут потеряны."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Ваши изменения будут потеряны."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

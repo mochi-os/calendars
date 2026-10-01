@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# резултат} other {# резултати}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# избрано} other {# избрани}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# повеќе} other {+# повеќе}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# вгнездено} other {+# вгнездени}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {на {days} во месецот} other {на {days} во месецот}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#нед} other {#нед}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {на {days} во месецот} other {на {days} во месецот}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# час} other {# часа}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {Секој ден} one {На секои # ден} other {На секои # дена}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {Секој месец} one {На секои # месец} other {На секои # месеци}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {Секоја недела} one {На секои # недела} other {На секои # недели}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {Секоја година} one {На секои # година} other {На секои # години}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} од {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {еднаш} one {# пат} other {# пати}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# одговор} other {+# повеќе
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Отвори мени (# непрочитано известување)} other {Отвори мени (# непрочитани известувања)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Назад"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Назад на календарите"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Бојата е зачувана"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Вредност на бојата"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Сè уште не може да се креираат типови ст
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Нема совпаѓања"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2227,11 +2227,11 @@ msgstr "Потврдата на клучот за пристап не успеа
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
-msgstr "Passkey-и"
+msgstr "Клучеви за пристап"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkey-ите не се достапни во овој прелистувач"
+msgstr "Клучевите за пристап не се достапни во овој прелистувач"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2500,7 +2500,7 @@ msgstr "Замени"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Да се замени адресата на календарот?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2526,11 +2526,11 @@ msgstr "Испрати ја е-поштата повторно"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Resign"
-msgstr "Откажи се"
+msgstr "Предај се"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Resign game?"
-msgstr "Да се откажете од играта?"
+msgstr "Да ја предадете играта?"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Retry"
@@ -2623,7 +2623,7 @@ msgstr "Барај"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Пребарај настани"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3186,7 +3186,7 @@ msgstr "Непознато"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Откажи претплата"
+msgstr "Отпиши се"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,7 +3369,7 @@ msgstr "Вашите прилози ќе бидат изгубени."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Твоите промени ќе бидат изгубени."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

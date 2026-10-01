@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# ผลลัพธ์} other {# ผลลัพธ์
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {เลือกแล้ว #} other {เลือกแล้ว #}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, other {+# เพิ่มเติม}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, other {+# ที่ซ้อนอยู่}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {ในวันที่ {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#น} other {#น}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, other {ในวันที่ {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# ชั่วโมง}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {ทุกวัน} other {ทุก # วัน}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {ทุกเดือน} other {ทุก # เดือน}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {ทุกสัปดาห์} other {ทุก # สัปดาห์}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {ทุกปี} other {ทุก # ปี}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} จาก {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {ครั้งเดียว} other {# ครั้ง}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# การตอบกลับ} other 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {เปิดเมนู (การแจ้งเตือนที่ยังไม่ได้อ่าน # รายการ)} other {เปิดเมนู (การแจ้งเตือนที่ยังไม่ได้อ่าน # รายการ)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "ย้อนกลับ"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "กลับไปที่ปฏิทิน"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "บันทึกสีแล้ว"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "ค่าสี"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1143,11 +1143,11 @@ msgstr "ไดเรกทอรี"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard"
-msgstr "ยกเลิก"
+msgstr "ละทิ้ง"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
-msgstr "ยกเลิกฉบับร่างใช่ไหม?"
+msgstr "ละทิ้งฉบับร่างใช่ไหม?"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 #: ../../../lib/web/src/lib/chat-ui.ts
@@ -2006,7 +2006,7 @@ msgstr "ยังไม่สามารถสร้างประเภทร
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "ไม่มีรายการที่ตรงกัน"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2500,7 +2500,7 @@ msgstr "แทนที่"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "แทนที่ที่อยู่ปฏิทินหรือไม่"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "ค้นหา"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "ค้นหากิจกรรม"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3035,7 +3035,7 @@ msgstr "ปฏิทินนี้ไม่มีที่อยู่ให้
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
-msgstr "กิจกรรมนี้"
+msgstr "เฉพาะกิจกรรมนี้"
 
 #: src/features/calendar/components/delete-event-dialog.tsx
 #: src/features/calendar/editor.tsx
@@ -3186,7 +3186,7 @@ msgstr "ไม่ทราบ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "ยกเลิกการติดตาม"
+msgstr "เลิกติดตาม"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,7 +3369,7 @@ msgstr "ไฟล์แนบของคุณจะหายไป"
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "การเปลี่ยนแปลงของคุณจะหายไป"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

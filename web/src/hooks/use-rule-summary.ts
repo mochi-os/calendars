@@ -56,22 +56,18 @@ function summary(rule: string, format: Format): string | null {
   const parts: string[] = []
   switch (fields.get('FREQ')) {
     case 'DAILY':
-      parts.push(plural(interval, { one: 'Every day', other: 'Every # days' }))
+      parts.push(plural(interval, { 1: 'Every day', other: 'Every # days' }))
       break
     case 'WEEKLY':
-      parts.push(
-        plural(interval, { one: 'Every week', other: 'Every # weeks' })
-      )
+      parts.push(plural(interval, { 1: 'Every week', other: 'Every # weeks' }))
       break
     case 'MONTHLY':
       parts.push(
-        plural(interval, { one: 'Every month', other: 'Every # months' })
+        plural(interval, { 1: 'Every month', other: 'Every # months' })
       )
       break
     case 'YEARLY':
-      parts.push(
-        plural(interval, { one: 'Every year', other: 'Every # years' })
-      )
+      parts.push(plural(interval, { 1: 'Every year', other: 'Every # years' }))
       break
     default:
       return null
@@ -99,7 +95,9 @@ function summary(rule: string, format: Format): string | null {
       if (!Number.isInteger(month) || month < 1 || month > 12) return null
       // The middle of the month at noon is the same month in every zone.
       names.push(
-        format.formatMonthName(new Date(Date.UTC(2024, month - 1, 15, 12)))
+        format.formatMonthName(new Date(Date.UTC(2024, month - 1, 15, 12)), {
+          inline: true,
+        })
       )
     }
     const months = format.formatList(names)
@@ -110,7 +108,7 @@ function summary(rule: string, format: Format): string | null {
   if (count !== undefined) {
     const times = Number(count)
     if (!Number.isInteger(times) || times < 1) return null
-    parts.push(plural(times, { one: 'once', other: '# times' }))
+    parts.push(plural(times, { 1: 'once', other: '# times' }))
   }
 
   const until = fields.get('UNTIL')
@@ -182,5 +180,5 @@ function monthdays(value: string, format: Format): string | null {
     return null
   const days = format.formatList(tokens.map((day) => format.formatNumber(day)))
   const count = tokens.length
-  return plural(count, { one: `on day ${days}`, other: `on days ${days}` })
+  return plural(count, { 1: `on day ${days}`, other: `on days ${days}` })
 }

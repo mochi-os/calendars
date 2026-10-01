@@ -18,6 +18,19 @@ function say(rule: string) {
 }
 
 describe('useRuleSummary', () => {
+  it('names a month in the form a sentence takes', () => {
+    const before = i18n.locale
+    i18n.load('vi', {})
+    i18n.activate('vi')
+    try {
+      const said = say('FREQ=YEARLY;BYMONTH=3')
+      expect(said).toContain('tháng 3')
+      expect(said).not.toContain('Tháng 3')
+    } finally {
+      i18n.activate(before)
+    }
+  })
+
   it('says a monthly rule on an ordinal weekday in words', () => {
     expect(say('FREQ=MONTHLY;BYDAY=2TU')).toBe(
       'Every month, on the second Tuesday'

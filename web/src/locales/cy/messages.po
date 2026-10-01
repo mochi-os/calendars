@@ -53,10 +53,19 @@ msgstr "{0, plural, zero {# canlyniad} one {# canlyniad} two {# ganlyniad} few {
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, zero {# wedi'i ddewis} one {# wedi'i ddewis} two {# wedi'u dewis} few {# wedi'u dewis} many {# wedi'u dewis} other {# wedi'u dewis}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, zero {+# arall} one {+# arall} two {+# arall} few {+# arall} many {+# arall} other {+# arall}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, zero {+# nythog} one {+# nythog} two {+# nythog} few {+# nythog} many {+# nythog} other {+# nythog}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {ar ddiwrnod {days}} zero {ar ddyddiau {days}} two {ar ddyddiau {days}} few {ar ddyddiau {days}} many {ar ddyddiau {days}} other {ar ddyddiau {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, zero {ar ddyddiau {days}} one {ar ddiwrnod {days}} two {ar ddyddiau {days}} few {ar ddyddiau {days}} many {ar ddyddiau {days}} other {ar ddyddiau {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, zero {# awr} one {# awr} two {# awr} few {# awr} many {# awr} other {# awr}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, zero {Bob # diwrnod} one {Bob dydd} two {Bob # ddiwrnod} few {Bob # diwrnod} many {Bob # diwrnod} other {Bob # diwrnod}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Bob dydd} zero {Bob # diwrnod} two {Bob # ddiwrnod} few {Bob # diwrnod} many {Bob # diwrnod} other {Bob # diwrnod}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, zero {Bob # mis} one {Bob mis} two {Bob # fis} few {Bob # mis} many {Bob # mis} other {Bob # mis}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Bob mis} zero {Bob # mis} two {Bob # fis} few {Bob # mis} many {Bob # mis} other {Bob # mis}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, zero {Bob # wythnos} one {Bob wythnos} two {Bob # wythnos} few {Bob # wythnos} many {Bob # wythnos} other {Bob # wythnos}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Bob wythnos} zero {Bob # wythnos} two {Bob # wythnos} few {Bob # wythnos} many {Bob # wythnos} other {Bob # wythnos}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, zero {Bob # blynedd} one {Bob blwyddyn} two {Bob # flynedd} few {Bob # blynedd} many {Bob # blynedd} other {Bob # blynedd}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Bob blwyddyn} zero {Bob # blynedd} two {Bob # flynedd} few {Bob # blynedd} many {Bob # blynedd} other {Bob # blynedd}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} o {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, zero {# gwaith} one {unwaith} two {dwywaith} few {# gwaith} many {# gwaith} other {# gwaith}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {unwaith} zero {# gwaith} two {dwywaith} few {# gwaith} many {# gwaith} other {# gwaith}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, zero {# ateb} one {# ateb} two {+# ateb arall
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, zero {Agor y ddewislen (# hysbysiad heb ei ddarllen)} one {Agor y ddewislen (# hysbysiad heb ei ddarllen)} two {Agor y ddewislen (# hysbysiad heb eu darllen)} few {Agor y ddewislen (# hysbysiad heb eu darllen)} many {Agor y ddewislen (# hysbysiad heb eu darllen)} other {Agor y ddewislen (# hysbysiad heb eu darllen)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Yn ôl"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Yn ôl i'r calendrau"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Lliw wedi'i gadw"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Gwerth y lliw"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -2006,7 +2006,7 @@ msgstr "Ni ellir creu unrhyw fathau o eitemau eto. Crëwch yr eitemau rhiant gof
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Dim cyfatebiaeth"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2223,7 +2223,7 @@ msgstr "Pasallwedd"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "Methodd dilysu'r allwedd mynediad. Rhowch gynnig arall arni."
+msgstr "Methodd dilysu'r basallwedd. Rhowch gynnig arall arni."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -2333,7 +2333,7 @@ msgstr "Ail-gysylltwch eich cyfrifon ar y gweinydd hwn"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "Ailgofrestrwch eich allweddi mynediad ar y gweinydd hwn"
+msgstr "Ailgofrestrwch eich pasallweddi ar y gweinydd hwn"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2500,7 +2500,7 @@ msgstr "Newid"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Newid cyfeiriad y calendr?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2623,7 +2623,7 @@ msgstr "Chwilio"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Chwilio digwyddiadau"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3222,7 +3222,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "Defnyddiwch eich allwedd mynediad"
+msgstr "Defnyddiwch eich pasallwedd"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -3369,7 +3369,7 @@ msgstr "Bydd eich atodiadau'n cael eu colli."
 
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Bydd eich newidiadau'n cael eu colli."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."
