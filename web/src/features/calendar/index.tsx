@@ -17,6 +17,7 @@ import {
   TimeGrid,
   useFormat,
   usePageTitle,
+  useScreenSize,
   offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
@@ -38,11 +39,13 @@ import { useInstancesQuery } from '@/hooks/use-events'
 import { useReminder } from '@/hooks/use-reminder'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { EventPopover } from '@/features/calendar/components/event-popover'
+import { PhoneMonth } from '@/features/calendar/components/phone-month'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
 
 export function CalendarPage() {
   const { t } = useLingui()
+  const { isMobile } = useScreenSize()
   const format = useFormat()
   usePageTitle(t`Calendars`)
   const {
@@ -341,6 +344,17 @@ export function CalendarPage() {
           setView('day')
         }}
         onStep={page}
+      />
+    ) : view === 'month' && isMobile ? (
+      <PhoneMonth
+        days={days}
+        month={monthOf(range.date)}
+        events={events}
+        today={today}
+        date={date}
+        onDate={setDate}
+        selected={current}
+        onSelect={select}
       />
     ) : (
       <MonthGrid

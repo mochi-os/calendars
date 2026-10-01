@@ -67,11 +67,11 @@ describe('Toolbar views', () => {
     expect(views()).toEqual(['Day', 'Week', 'Multiweek', 'Month', 'List'])
   })
 
-  it('offers only the day and the list on a phone', () => {
+  it('offers the day, the month and the list on a phone', () => {
     size.isDesktop = false
     size.isMobile = true
     show('day')
-    expect(views()).toEqual(['Day', 'List'])
+    expect(views()).toEqual(['Day', 'Month', 'List'])
   })
 })
 

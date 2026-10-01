@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { act, render } from '@testing-library/react'
+import { act, cleanup, render } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DEFAULTS } from '@/hooks/use-preferences'
 import { CalendarProvider, useCalendarContext } from './calendar-context'
@@ -12,6 +12,7 @@ import { CalendarProvider, useCalendarContext } from './calendar-context'
 const state = vi.hoisted(() => ({
   stored: null as string | null,
   view: 'month',
+  phone: false,
   failed: false,
   refetch: vi.fn(),
   save: vi.fn(),
@@ -20,6 +21,7 @@ const state = vi.hoisted(() => ({
 beforeEach(() => {
   state.stored = null
   state.view = 'month'
+  state.phone = false
   state.failed = false
   state.refetch.mockReset()
   state.save.mockReset()
@@ -61,7 +63,10 @@ vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
   return {
     ...original,
-    useScreenSize: () => ({ isDesktop: true }),
+    useScreenSize: () =>
+      state.phone
+        ? { isDesktop: false, isMobile: true }
+        : { isDesktop: true, isMobile: false },
     // The view is the one key read from storage here; the rest start empty.
     useShellStorage: <T,>(key: string, fallback: T) =>
       key === 'calendars:view'
@@ -90,6 +95,21 @@ describe('CalendarProvider', () => {
   it('opens a browser that has shown no view on the view last chosen anywhere', () => {
     state.view = 'week'
     expect(provide().current?.view).toBe('week')
+  })
+
+  it('keeps the month on a phone, where it shows as dots', () => {
+    state.phone = true
+    state.view = 'month'
+    expect(provide().current?.view).toBe('month')
+  })
+
+  it('shows the list on a phone in place of the week and the multiweek', () => {
+    state.phone = true
+    state.view = 'week'
+    expect(provide().current?.view).toBe('list')
+    cleanup()
+    state.view = 'multiweek'
+    expect(provide().current?.view).toBe('list')
   })
 
   it("opens a browser on its own last view over the shared one", () => {
