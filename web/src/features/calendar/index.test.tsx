@@ -219,4 +219,19 @@ describe('CalendarPage', () => {
       vi.useRealTimers()
     }
   })
+
+  it("opens a new all-day event over the days picked in the week's all-day band", () => {
+    state.view = 'week'
+    show()
+    const pick = state.time.onCreateRange as (first: string, last: string) => void
+    pick('2026-09-16', '2026-09-18')
+    expect(state.setEditing).toHaveBeenCalledWith({
+      mode: 'create',
+      draft: expect.objectContaining({
+        allday: true,
+        start: '2026-09-16',
+        finish: '2026-09-18',
+      }),
+    })
+  })
 })

@@ -210,9 +210,9 @@ export function CalendarPage() {
   // takes the remembered all-day switch like the button does.
   const createOnDay = (day: string) => createAt(day)
 
-  // A drag across day cells says which days, and a run of days is an
-  // all-day event. The times underneath start at the working hours, for a
-  // user who turns all-day off.
+  // A drag across day cells or the all-day band says which days, and a run
+  // of days is an all-day event. The times underneath start at the working
+  // hours, for a user who turns all-day off.
   const createOnDays = (first: string, last: string) => {
     const minutes = preferences.hours.start * 60
     const from = format.timestampAt(first, minutes)
@@ -327,6 +327,7 @@ export function CalendarPage() {
         onCreate={(from, to) =>
           setEditing({ mode: 'create', draft: compose(from, to) })
         }
+        onCreateRange={createOnDays}
         onMove={({ key, start: from, finish: to, allday, copy, calendar }) => {
           const instance = byKey.get(key)
           if (!instance || instance.readonly) return
