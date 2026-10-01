@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#מינ} other {#מינ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#וואָך} other {#וואָך}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {אום טאָג {days}} other {אום די טעג {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# טאָג פֿריִער} other {# טעג פֿרי�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} נאָמען"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# שעה פֿריִער} other {# שעה פֿריִ
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# שעה} other {# שעה}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {יעדן טאָג} other {יעדע # טעג}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {יעדן חודש} other {יעדע # חדשים}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {יעדע וואָך} other {יעדע # וואָכן}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {יעדעס יאָר} other {יעדע # יאָר}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# מינוט פֿריִער} other {# מינוט פֿריִער}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} האָט פֿאָרגעלייגט אַ תּיקו"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} פֿון {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {איין מאָל} other {# מאָל}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "אַן אַנדער Mochi אָדער CalDAV סערווער"
 msgid "Anyone"
 msgstr "ווער עס איז"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "װער עס איז אײַנגעלאָגט"
@@ -483,13 +507,18 @@ msgstr "קאַלענדאַר"
 msgid "Calendar access was not granted"
 msgstr "קאַלענדאַר־צוטריט איז ניט געגעבן געוואָרן"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "קאַלענדאַר־אַדרעס"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "קאַלענדאַר־אַדרעס קאָפּירט צו קליפּברעט"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "קאַלענדאַר־אַדרעס אָפּגערופֿן"
 
@@ -536,6 +565,11 @@ msgstr "קאַלענדאַר איז אַקטועל"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "קאַלענדאַרן"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "קאַלענדאַרן וואָס זענען אַבאָנירט אויף דעם אַדרעס וועלן מער ניט ווערן דערהיינטיקט."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "רייניקן זוכן"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "פֿאַרמאַכן"
 
@@ -898,7 +933,7 @@ msgstr "באַשאַפֿן נײַעם פּונקט"
 msgid "Created"
 msgstr "באַשאַפֿן"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "באַשאַפֿן {0}"
@@ -1134,7 +1169,6 @@ msgstr "פּאַסט נישט צום פֿאָדערטן מוסטער"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "געטאָן"
@@ -1276,6 +1310,7 @@ msgstr "געשעעניש פֿאַררוקט"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "געשעעניש אויפֿגעהיט"
 
@@ -1376,7 +1411,7 @@ msgstr "ניט געלונגען צו מעקן די געשעעניש"
 msgid "Failed to get RSS token"
 msgstr "ניט געלונגען צו באַקומען RSS־טאָקען"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ניט געלונגען צו באַקומען דעם קאַלענדאַר־אַדרעס"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "ניט געלונגען צו פֿאַרבינדן דעם קאַלענדאַר"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "ניט געלונגען צו לאָדן"
 
@@ -1455,7 +1489,7 @@ msgstr "ניט געלונגען צו אָפּשטעלן פּראָמפּט"
 msgid "Failed to revoke RSS access"
 msgstr "דורכפֿאַל צו רופֿן צוריק RSS צוטריט"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ניט געלונגען אָפּצורופֿן דעם קאַלענדאַר־אַדרעס"
 
@@ -1607,6 +1641,10 @@ msgstr "בילד־ווײַזער: {0}"
 msgid "Imperial"
 msgstr "אימפּעריאַל"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "אין {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "אַרײַנגערעכנט אַנאָנימע באַניצער"
@@ -1665,7 +1703,7 @@ msgstr "אין סוף"
 msgid "Last day"
 msgstr "לעצטער טאָג"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "לעצט באַניצט {0}"
@@ -1876,8 +1914,17 @@ msgstr "נעץ פֿעלער"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "נאָך נישט"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "חזרט זיך נישט"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "קיינמאָל"
 
@@ -1889,6 +1936,10 @@ msgstr "נײַ"
 msgctxt "sort order"
 msgid "New"
 msgstr "נײַסטע"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "נײַער קאַלענדאַר־אַדרעס קאָפּירט צו קליפּברעט"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "פֿאָרקומענישן"
 msgid "On"
 msgstr "אָן"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "אום {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "אויף אַ דאַטע"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "אום דעם פֿינפֿטן {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "אום דעם ערשטן {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "אום דעם פֿערטן {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "אום דעם לעצטן {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "אום דעם לעצטן טאָג פֿון חודש"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "אום דעם צווייטן {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "אום דעם דריטן {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "איבערחזרונג"
 msgid "Repeats"
 msgstr "חזרט זיך"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "פארטוישן"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "פּרוּווט נאָך אַ מאָל"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "אָפּזאָגן"
 
@@ -2463,13 +2546,13 @@ msgstr "אָפּזאָגן"
 msgid "Revoke access"
 msgstr "רופֿט צוריק צוטריט"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "אַנולירן RSS צוטריט?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "אָפּרופֿן דעם קאַלענדאַר־אַדרעס?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "שבת"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "היט אויף"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "די קאַמערע־בקשה איז נישט געענטפֿערט געוואָרן"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "דער אַפּאַראַט וועט מער ניט קענען סינכראָניזירן קאַלענדאַרן."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "דער מיטל וועט מער ניט קענען סינכראָניזירן קאָנטאַקטן אָדער קאַלענדאַרן."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "די און די קומענדיקע"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "די אַפּ איז נישט דערלויבט צו נוצן דײַן פּאַסקיי. דערלויבט עס אין אײַנשטעלונגען, אונטער דערלויבענישן."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "דער קאַלענדאַר־אַדרעס איז שוין אַרויסגעגעבן געוואָרן און קען ניט ווידער געוויזן ווערן."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "דער קאַלענדאַר האָט ניט קיין אַדרעס אָפּצורופֿן"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "אומבאַקאַנט"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "אַבאַבאָנירן"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "ביז {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

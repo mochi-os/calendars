@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#nóim} other {#nóim}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sea} other {#sea}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {lá den mhí: {days}} two {laethanta den mhí: {days}} few {laethanta den mhí: {days}} many {laethanta den mhí: {days}} other {laethanta den mhí: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# lá roimhe} two {# lá roimhe} few {# lá roimhe} 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Ainm {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# uair roimhe} two {# uair roimhe} few {# huaire ro
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# uair} two {# uair} few {# huaire} many {# n-uaire} other {# uair}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Gach lá} two {Gach # lá} few {Gach # lá} many {Gach # lá} other {Gach # lá}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Gach mí} two {Gach # mhí} few {Gach # mhí} many {Gach # mí} other {Gach # mí}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Gach seachtain} two {Gach # sheachtain} few {Gach # seachtaine} many {Gach # seachtaine} other {Gach # seachtain}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Gach bliain} two {Gach # bhliain} few {Gach # bliana} many {Gach # mbliana} other {Gach # bliain}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# nóiméad roimhe} two {# nóiméad roimhe} few {# nóiméad roimhe} many {# nóiméad roimhe} other {# nóiméad roimhe}}"
@@ -120,6 +144,10 @@ msgstr "Mhol {opponentName} comhscór"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} as {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {uair amháin} two {# uair} few {# huaire} many {# n-uaire} other {# uair}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Freastalaí Mochi nó CalDAV eile"
 msgid "Anyone"
 msgstr "Aon duine"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Aon duine atá logáilte isteach"
@@ -483,13 +507,18 @@ msgstr "Féilire"
 msgid "Calendar access was not granted"
 msgstr "Níor tugadh rochtain ar an bhféilire"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Seoladh an fhéilire"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Seoladh an fhéilire cóipeáilte chuig an ngearrthaisce"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Seoladh an fhéilire cúlghairthe"
 
@@ -536,6 +565,11 @@ msgstr "Tá an féilire cothrom le dáta"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Féilirí"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Ní nuashonrófar a thuilleadh na féilirí atá liostáilte leis an seoladh seo."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Glan cuardach"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Dún"
 
@@ -898,7 +933,7 @@ msgstr "Cruthaigh mír nua"
 msgid "Created"
 msgstr "Cruthaithe"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Cruthaithe {0}"
@@ -1134,7 +1169,6 @@ msgstr "Ní mheaitseálann sé an patrún riachtanach"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Críochnaithe"
@@ -1276,6 +1310,7 @@ msgstr "Imeacht bogtha"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Imeacht sábháilte"
 
@@ -1376,7 +1411,7 @@ msgstr "Theip ar an imeacht a scriosadh"
 msgid "Failed to get RSS token"
 msgstr "Theip ar chomhartha RSS a fháil"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Theip ar sheoladh an fhéilire a fháil"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Theip ar an bhféilire a nascadh"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Theip ar luchtú"
 
@@ -1455,7 +1489,7 @@ msgstr "Theip ar leid a athshocrú"
 msgid "Failed to revoke RSS access"
 msgstr "Theip ar rochtain RSS a chúlghairm"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Theip ar sheoladh an fhéilire a chúlghairm"
 
@@ -1607,6 +1641,10 @@ msgstr "Amharcán íomhánna: {0}"
 msgid "Imperial"
 msgstr "Impiriúil"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "sa mhí: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Úsáideoirí gan ainm san áireamh"
@@ -1665,7 +1703,7 @@ msgstr "Ar deireadh"
 msgid "Last day"
 msgstr "An lá deireanach"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Úsáidte go deireanach {0}"
@@ -1876,10 +1914,19 @@ msgstr "Earráid líonra"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
 msgstr "Riamh"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Gan athdhéanamh"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Choíche"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "Nua"
 msgctxt "sort order"
 msgid "New"
 msgstr "Is nuaí"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Seoladh nua an fhéilire cóipeáilte chuig an ngearrthaisce"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Tarluithe"
 msgid "On"
 msgstr "Ann"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Ar dháta"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "sa chúigiú seachtain den mhí: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "sa chéad seachtain den mhí: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "sa cheathrú seachtain den mhí: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "sa tseachtain dheireanach den mhí: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ar an lá deireanach den mhí"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "sa dara seachtain den mhí: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "sa tríú seachtain den mhí: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Athdhéanamh"
 msgid "Repeats"
 msgstr "Athdhéantar é"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Athchuir"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Bain triail eile as"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Cúlghair"
 
@@ -2463,13 +2546,13 @@ msgstr "Cúlghair"
 msgid "Revoke access"
 msgstr "Cúlghair rochtain"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Cúlghair rochtain RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Seoladh an fhéilire a chúlghairm?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Dé Sathairn"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Sábháil"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Níor freagraíodh an t-iarratas ceamara"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Ní bheidh an gléas in ann féilirí a shioncronú a thuilleadh."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Ní bheidh an gléas in ann teagmhálaithe ná féilirí a shioncrónú a thuilleadh."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "An ceann seo agus na cinn ina dhiaidh"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Níl cead ag an aip seo do phasluí a úsáid. Ceadaigh é i Socruithe, faoi Ceadanna."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Eisíodh seoladh an fhéilire seo cheana féin agus ní féidir é a thaispeáint arís."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Níl aon seoladh ag an bhféilire seo le cúlghairm"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Anaithnid"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Díliostáil"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "go dtí {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

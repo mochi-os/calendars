@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#דק} other {#דק}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#שב} other {#שב}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ב-{days} בחודש} two {ב-{days} בחודש} many {ב-{days} בחודש} other {ב-{days} בחודש}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# יום לפני} two {# ימים לפני} many {#
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "שם {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# שעה לפני} two {# שעות לפני} many {
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# שעה} two {# שעות} many {# שעות} other {# שעות}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {כל יום} two {כל יומיים} many {כל # ימים} other {כל # ימים}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {כל חודש} two {כל חודשיים} many {כל # חודשים} other {כל # חודשים}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {כל שבוע} two {כל שבועיים} many {כל # שבועות} other {כל # שבועות}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {כל שנה} two {כל שנתיים} many {כל # שנים} other {כל # שנים}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# דקה לפני} two {# דקות לפני} many {# דקות לפני} other {# דקות לפני}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} הציע תיקו"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} מתוך {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {פעם אחת} two {פעמיים} many {# פעמים} other {# פעמים}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "שרת Mochi או CalDAV אחר"
 msgid "Anyone"
 msgstr "כל אחד"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "כל מי שמחובר"
@@ -483,13 +507,18 @@ msgstr "יומן"
 msgid "Calendar access was not granted"
 msgstr "הגישה ליומן לא ניתנה"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "כתובת היומן"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "כתובת היומן הועתקה ללוח"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "כתובת היומן בוטלה"
 
@@ -536,6 +565,11 @@ msgstr "היומן מעודכן"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "לוחות שנה"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "לוחות שנה שנרשמו לכתובת זו יפסיקו להתעדכן."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "נקה חיפוש"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "סגור"
 
@@ -898,7 +933,7 @@ msgstr "צור פריט חדש"
 msgid "Created"
 msgstr "נוצר"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "נוצר {0}"
@@ -1134,7 +1169,6 @@ msgstr "לא תואם לתבנית הנדרשת"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "בוצע"
@@ -1276,6 +1310,7 @@ msgstr "האירוע הועבר"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "האירוע נשמר"
 
@@ -1376,7 +1411,7 @@ msgstr "מחיקת האירוע נכשלה"
 msgid "Failed to get RSS token"
 msgstr "קבלת טוקן RSS נכשלה"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "קבלת כתובת היומן נכשלה"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "קישור היומן נכשל"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "הטעינה נכשלה"
 
@@ -1455,7 +1489,7 @@ msgstr "איפוס הפרומפט נכשל"
 msgid "Failed to revoke RSS access"
 msgstr "ביטול גישת RSS נכשל"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ביטול כתובת היומן נכשל"
 
@@ -1607,6 +1641,10 @@ msgstr "מציג תמונות: {0}"
 msgid "Imperial"
 msgstr "אימפריאלי"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ב{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "כולל משתמשים אנונימיים"
@@ -1665,7 +1703,7 @@ msgstr "בסוף"
 msgid "Last day"
 msgstr "היום האחרון"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "שימוש אחרון {0}"
@@ -1876,8 +1914,17 @@ msgstr "שגיאת רשת"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "אף פעם"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ללא חזרה"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "אף פעם"
 
@@ -1889,6 +1936,10 @@ msgstr "חדש"
 msgctxt "sort order"
 msgid "New"
 msgstr "חדשים"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "כתובת היומן החדשה הועתקה ללוח"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "מופעים"
 msgid "On"
 msgstr "פעיל"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ב{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "בתאריך"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ב{day} החמישי"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ב{day} הראשון"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ב{day} הרביעי"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ב{day} האחרון"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ביום האחרון בחודש"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "ב{day} השני"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ב{day} השלישי"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "חזרה"
 msgid "Repeats"
 msgstr "חוזר"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "החלף"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "נסה שוב"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "בטל"
 
@@ -2463,13 +2546,13 @@ msgstr "בטל"
 msgid "Revoke access"
 msgstr "בטל גישה"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "לבטל את הגישה ל-RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "לבטל את כתובת היומן?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "שבת"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "שמור"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "בקשת המצלמה לא נענתה"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "המכשיר לא יוכל עוד לסנכרן יומנים."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "המכשיר לא יוכל עוד לסנכרן אנשי קשר או יומנים."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "זה והבאים אחריו"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "לאפליקציה זו אין הרשאה להשתמש במפתח הגישה שלך. אפשר זאת בהגדרות, תחת הרשאות."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "כתובת יומן זו כבר הונפקה ולא ניתן להציג אותה שוב."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ליומן זה אין כתובת לביטול"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "לא ידוע"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "בטל הרשמה"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "עד {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   DatePicker,
@@ -27,8 +27,8 @@ import {
   TimezoneSelect,
   addDays,
   cn,
+  GeneralError,
   getErrorMessage,
-  naturalCompare,
   toast,
   useDiscardGuard,
   useFormat,
@@ -57,7 +57,6 @@ import {
   foreignZones,
   emptyRepeat,
   masterComponent,
-  movedStart,
   nextReminder,
   openedDraft,
   savedComponents,
@@ -65,6 +64,7 @@ import {
   type EventDraft,
   type Frequency,
   type Scope,
+  shiftedStart,
 } from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
 import {
@@ -73,7 +73,10 @@ import {
   useSplitEventMutation,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
+import { leavesSeries, useOccurrenceMove } from '@/hooks/use-event-move'
 import { reminderChoices } from '@/hooks/use-options'
+import { useRuleSummary } from '@/hooks/use-rule-summary'
+import { CountInput } from '@/features/calendar/components/count-input'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
@@ -83,11 +86,17 @@ export function EventEditor() {
   const { t } = useLingui()
   const format = useFormat()
   const { isMobile } = useScreenSize()
-  const { editing, setEditing, calendars, remember, reveal } =
-    useCalendarContext()
+  const {
+    editing,
+    setEditing,
+    ordered: listed,
+    remember,
+    reveal,
+  } = useCalendarContext()
 
   const editingEvent = editing?.mode === 'edit' ? editing.event : null
-  const { data, isLoading, refetch } = useEventQuery(editingEvent)
+  const { data, isLoading, isError, error, refetch } =
+    useEventQuery(editingEvent)
   const event = data?.event
 
   const [draft, setDraft] = useState<EventDraft | null>(null)
@@ -105,31 +114,36 @@ export function EventEditor() {
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
   const splitMutation = useSplitEventMutation()
+  const moveOccurrence = useOccurrenceMove()
 
   const writable = useMemo(
-    () =>
-      [...calendars]
-        .filter((calendar) => !calendar.readonly)
-        .sort((a, b) => {
-          if (a.default !== b.default) return a.default ? -1 : 1
-          return naturalCompare(a.name, b.name)
-        }),
-    [calendars]
+    () => listed.filter((calendar) => !calendar.readonly),
+    [listed]
   )
+
+  // Which opening the form was last read for. A refetch while the editor is
+  // open, the event having changed elsewhere, leaves the user's edits alone:
+  // saving over it is refused and says so, and Reload reads it again.
+  const seeded = useRef<typeof editing>(null)
 
   // A create opens on the draft it was given; an edit waits for the stored
   // event, then reads the occurrence's own component where it has one.
   useEffect(() => {
-    setRevealed(false)
-    setUntitled(false)
     if (!editing) {
+      seeded.current = null
+      setRevealed(false)
+      setUntitled(false)
       setDraft(null)
       setInitial(null)
       setAsking(null)
       setConfirming(false)
       return
     }
+    if (seeded.current === editing) return
+    setRevealed(false)
+    setUntitled(false)
     if (editing.mode === 'create') {
+      seeded.current = editing
       setDraft(editing.draft)
       setInitial(editing.initial ?? editing.draft)
       setCustom(false)
@@ -144,6 +158,7 @@ export function EventEditor() {
       event.recurring
     )
     if (!read) return
+    seeded.current = editing
     setDraft(read)
     setInitial(read)
     setCustom(
@@ -211,6 +226,21 @@ export function EventEditor() {
           }
           scope = 'all'
         }
+        // One occurrence taken to another calendar leaves the series behind
+        // and becomes an event of its own there.
+        if (leavesSeries(recurring, scope, event.calendar, draft.calendar)) {
+          await moveOccurrence(
+            event,
+            editing.start,
+            draft,
+            draft.calendar,
+            format.timezone
+          )
+          reveal(draft.calendar)
+          toast.success(t`Event saved`)
+          close()
+          return
+        }
         const components: Component[] = recurring
           ? savedComponents(
               event.components,
@@ -235,7 +265,10 @@ export function EventEditor() {
         toast.error(t`This event changed somewhere else.`, {
           action: {
             label: t`Reload`,
-            onClick: () => void refetch(),
+            onClick: () => {
+              seeded.current = null
+              void refetch()
+            },
           },
         })
         return
@@ -318,7 +351,14 @@ export function EventEditor() {
 
   const open = editing !== null
   const body =
-    isLoading && editing?.mode === 'edit' && !draft ? (
+    isError && editing?.mode === 'edit' && !draft ? (
+      <GeneralError
+        mode='inline'
+        className='my-4'
+        error={error}
+        reset={() => void refetch()}
+      />
+    ) : isLoading && editing?.mode === 'edit' && !draft ? (
       <div className='space-y-3 p-4'>
         <Skeleton className='h-10 w-full' />
         <Skeleton className='h-10 w-full' />
@@ -506,14 +546,19 @@ function EditorFields({
   // A rule read from the event that the repeat settings cannot express is
   // shown as custom and written back as it was.
   const kept = !expressible(draft.repeat.rule)
+  const summarise = useRuleSummary()
+  const summary = kept ? summarise(draft.repeat.rule) : null
 
   // The fields only render with a draft in hand, so an update never has to
   // answer for the null the editor starts in.
   const edit = (update: (current: EventDraft) => EventDraft) =>
     setDraft((current) => (current ? update(current) : current))
 
-  const moveStart = (day: string, minutes: number) =>
-    edit((current) => movedStart(current, day, minutes))
+  // Moving the start carries the end with it, which is what every calendar
+  // does: the length the user set is the thing worth keeping.
+  const moveStart = (day: string, minutes: number) => {
+    edit((current) => shiftedStart(current, day, minutes))
+  }
 
   const weekdays = useMemo(() => {
     const out: { day: number; label: string }[] = []
@@ -784,7 +829,9 @@ function EditorFields({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value='never'>{t`Never`}</SelectItem>
+            <SelectItem value='never'>
+              {t({ message: 'Never', context: 'repeat' })}
+            </SelectItem>
             <SelectItem value='daily'>{t`Daily`}</SelectItem>
             <SelectItem value='weekly'>{t`Weekly`}</SelectItem>
             <SelectItem value='monthly'>{t`Monthly`}</SelectItem>
@@ -794,9 +841,9 @@ function EditorFields({
         </Select>
         {/* A rule the settings cannot express is kept as written; choosing
             a repeat replaces it. */}
-        {kept && (
+        {summary && (
           <p className='text-muted-foreground text-xs' data-testid='kept-rule'>
-            {draft.repeat.rule}
+            {summary}
           </p>
         )}
       </div>
@@ -836,20 +883,14 @@ function EditorFields({
               <Label htmlFor='repeat-interval'>
                 <Trans>Every</Trans>
               </Label>
-              <Input
+              <CountInput
                 id='repeat-interval'
-                type='number'
-                min={1}
-                max={366}
+                maximum={366}
                 value={draft.repeat.interval}
-                onChange={(input) =>
+                onChange={(interval) =>
                   edit((current) => ({
                     ...current,
-                    repeat: {
-                      ...current.repeat,
-                      rule: '',
-                      interval: Math.max(1, Number(input.target.value) || 1),
-                    },
+                    repeat: { ...current.repeat, rule: '', interval },
                   }))
                 }
               />
@@ -919,7 +960,9 @@ function EditorFields({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value='never'>{t`Never`}</SelectItem>
+                  <SelectItem value='never'>
+                    {t({ message: 'Never', context: 'repeat end' })}
+                  </SelectItem>
                   <SelectItem value='until'>{t`On a date`}</SelectItem>
                   <SelectItem value='count'>{t`After a number`}</SelectItem>
                 </SelectContent>
@@ -933,16 +976,15 @@ function EditorFields({
                 <DatePicker
                   id='repeat-until'
                   value={draft.repeat.until}
-                  onChange={(day) =>
+                  onChange={(day) => {
+                    // A cleared field would save a series that never ends
+                    // while the form still says it ends on a date.
+                    if (!day) return
                     edit((current) => ({
                       ...current,
-                      repeat: {
-                        ...current.repeat,
-                        rule: '',
-                        until: day,
-                      },
+                      repeat: { ...current.repeat, rule: '', until: day },
                     }))
-                  }
+                  }}
                 />
               </div>
             )}
@@ -951,20 +993,14 @@ function EditorFields({
                 <Label htmlFor='repeat-count'>
                   <Trans>Occurrences</Trans>
                 </Label>
-                <Input
+                <CountInput
                   id='repeat-count'
-                  type='number'
-                  min={1}
-                  max={999}
+                  maximum={999}
                   value={draft.repeat.count}
-                  onChange={(input) =>
+                  onChange={(count) =>
                     edit((current) => ({
                       ...current,
-                      repeat: {
-                        ...current.repeat,
-                        rule: '',
-                        count: Math.max(1, Number(input.target.value) || 1),
-                      },
+                      repeat: { ...current.repeat, rule: '', count },
                     }))
                   }
                 />

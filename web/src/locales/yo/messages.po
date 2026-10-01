@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ìṣ} other {#ìṣ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ọs} other {#ọs}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {ní ọjọ́ {days}} other {ní àwọn ọjọ́ {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {ọjọ́ # ṣáájú}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Orúkọ {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {wákàtí # ṣáájú}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {wákàtí #}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Lójoojúmọ́} other {Lẹ́ẹ̀kan ní ọjọ́ #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Lóṣooṣù} other {Lẹ́ẹ̀kan ní oṣù #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Lọ́sọ̀ọ̀sẹ̀} other {Lẹ́ẹ̀kan ní ọ̀sẹ̀ #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Lọ́dọọdún} other {Lẹ́ẹ̀kan ní ọdún #}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {ìṣẹ́jú # ṣáájú}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} fún ní ìdábọ̀"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} nínú {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {lẹ́ẹ̀kan} other {ìgbà #}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Sáfà Mochi tàbí CalDAV mìíràn"
 msgid "Anyone"
 msgstr "Ẹnikẹ́ni"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Ẹnikẹ́ni tó ti wọlé"
@@ -483,13 +507,18 @@ msgstr "Kàlẹ́ńdà"
 msgid "Calendar access was not granted"
 msgstr "A kò fún ni ìwọlé kàlẹ́ńdà"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Àdírẹ́sì kàlẹ́ńdà"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "A ti ṣe àdàkọ àdírẹ́sì kàlẹ́ńdà sí clipboard"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "A ti fagilé àdírẹ́sì kàlẹ́ńdà"
 
@@ -536,6 +565,11 @@ msgstr "Kàlẹ́ńdà ti wà ní tuntun"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Àwọn kàlẹ́ńdà"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Àwọn kàlẹ́ńdà tí wọ́n forúkọ sílẹ̀ fún àdírẹ́sì yìí kò ní ṣe ìmúdójúìwọ̀n mọ́."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Pa àwárí rẹ́"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Tì"
 
@@ -898,7 +933,7 @@ msgstr "Dá ohun tuntun"
 msgid "Created"
 msgstr "Tí a dá"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Ṣẹdá {0}"
@@ -1134,7 +1169,6 @@ msgstr "Kò bá àpẹẹrẹ tí a béèrè mu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Ti parí"
@@ -1276,6 +1310,7 @@ msgstr "A ti kó ìṣẹ̀lẹ̀ náà"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "A ti fi ìṣẹ̀lẹ̀ pamọ́"
 
@@ -1376,7 +1411,7 @@ msgstr "Kò lè pa ìṣẹ̀lẹ̀ náà rẹ́"
 msgid "Failed to get RSS token"
 msgstr "Kò lè rí token RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kò lè rí àdírẹ́sì kàlẹ́ńdà"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Kò lè so kàlẹ́ńdà pọ̀"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Kò lè ṣílọ̀"
 
@@ -1455,7 +1489,7 @@ msgstr "Kò lè tún prompt ṣe"
 msgid "Failed to revoke RSS access"
 msgstr "Ìkùnà láti fagilé ìwọlé RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kò lè fagilé àdírẹ́sì kàlẹ́ńdà"
 
@@ -1607,6 +1641,10 @@ msgstr "Ẹ̀rọ ìwo àwòrán: {0}"
 msgid "Imperial"
 msgstr "Òṣùwọ̀n Gẹ̀ẹ́sì"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ní {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Pẹ̀lú àwọn olùmúlò aláìlórúkọ"
@@ -1665,7 +1703,7 @@ msgstr "Ní ìparí"
 msgid "Last day"
 msgstr "Ọjọ́ ìkẹyìn"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Lò ní ìgbẹ̀yìn {0}"
@@ -1876,10 +1914,19 @@ msgstr "Àṣìṣe nẹ́tíwọ́kì"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Láéláé"
+msgstr "kò tíì sí"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Kò sí ìtúnwáyé"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Kò ní parí"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "Tuntun"
 msgctxt "sort order"
 msgid "New"
 msgstr "Tuntun jùlọ"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "A ti ṣe àdàkọ àdírẹ́sì kàlẹ́ńdà tuntun sí clipboard"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Iye ìgbà"
 msgid "On"
 msgstr "Ṣíṣí"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ní {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Ní ọjọ́ kan"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ní {day} karùn-ún"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ní {day} àkọ́kọ́"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ní {day} kẹrin"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ní {day} ìkẹyìn"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ní ọjọ́ ìkẹyìn oṣù"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "ní {day} kejì"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ní {day} kẹta"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Ìtúnwáyé"
 msgid "Repeats"
 msgstr "Ó máa ń tún wáyé"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Rọ́pò"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Gbìyànjú lẹ́ẹ̀kan sí i"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Fagi lé"
 
@@ -2463,13 +2546,13 @@ msgstr "Fagi lé"
 msgid "Revoke access"
 msgstr "Fagilé ìwọlé"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Fagilé àǹfààní RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Ṣé kí a fagilé àdírẹ́sì kàlẹ́ńdà?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Ọjọ́ Àbámẹ́ta"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Fi pamọ́"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "A kò dáhùn ìbéèrè kámẹ́rà náà"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Ẹ̀rọ náà kò ní lè ṣe àmúṣiṣẹ́pọ̀ àwọn kàlẹ́ńdà mọ́."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Ẹ̀rọ náà kò ní lè ṣe àmúṣiṣẹ́pọ̀ àwọn olùbásọ̀rọ̀ tàbí àwọn kàlẹ́ńdà mọ́."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Èyí àti àwọn tó tẹ̀lé e"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ìṣàmúlò yìí kò ní àṣẹ láti lo passkey rẹ. Fàyè gbà á ní Ètò, lábẹ́ Àwọn Àṣẹ."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "A ti fún ni àdírẹ́sì kàlẹ́ńdà yìí tẹ́lẹ̀, a kò sì lè fi hàn mọ́."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kàlẹ́ńdà yìí kò ní àdírẹ́sì kankan láti fagilé"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Aláìmọ̀"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Yọ ìforúkọsílẹ̀ kúrò"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "títí di {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

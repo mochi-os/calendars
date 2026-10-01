@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#dk} other {#dk}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wk} other {#wk}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {tarehe {days}} other {tarehe {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {siku # kabla} other {siku # kabla}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Jina la {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {saa # kabla} other {saa # kabla}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {saa #} other {saa #}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Kila siku} other {Kila baada ya siku #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Kila mwezi} other {Kila baada ya miezi #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Kila wiki} other {Kila baada ya wiki #}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Kila mwaka} other {Kila baada ya miaka #}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {dakika # kabla} other {dakika # kabla}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ametoa sare"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} kati ya {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {mara moja} other {mara #}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Seva nyingine ya Mochi au CalDAV"
 msgid "Anyone"
 msgstr "Mtu yeyote"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Yeyote aliyeingia"
@@ -483,13 +507,18 @@ msgstr "Kalenda"
 msgid "Calendar access was not granted"
 msgstr "Ufikiaji wa kalenda haukutolewa"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Anwani ya kalenda"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Anwani ya kalenda imenakiliwa kwenye ubao wa kunakili"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Anwani ya kalenda imebatilishwa"
 
@@ -536,6 +565,11 @@ msgstr "Kalenda imesasishwa"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalenda"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalenda zilizojisajili kwenye anwani hii zitaacha kusasishwa."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Futa utafutaji"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Funga"
 
@@ -898,7 +933,7 @@ msgstr "Unda kipengee kipya"
 msgid "Created"
 msgstr "Imeundwa"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Imeundwa {0}"
@@ -1134,7 +1169,6 @@ msgstr "Hailingani na muundo unaohitajika"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Imekamilika"
@@ -1276,6 +1310,7 @@ msgstr "Tukio limehamishwa"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Tukio limehifadhiwa"
 
@@ -1376,7 +1411,7 @@ msgstr "Imeshindwa kufuta tukio"
 msgid "Failed to get RSS token"
 msgstr "Imeshindwa kupata tokeni ya RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Imeshindwa kupata anwani ya kalenda"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Imeshindwa kuunganisha kalenda"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Imeshindwa kupakia"
 
@@ -1455,7 +1489,7 @@ msgstr "Imeshindwa kuweka upya kichocheo"
 msgid "Failed to revoke RSS access"
 msgstr "Imeshindwa kubatilisha ufikiaji wa RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Imeshindwa kubatilisha anwani ya kalenda"
 
@@ -1607,6 +1641,10 @@ msgstr "Kitazamaji picha: {0}"
 msgid "Imperial"
 msgstr "Kiimperia"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "katika {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Ikijumuisha watumiaji wasiojulikana"
@@ -1665,7 +1703,7 @@ msgstr "Mwishoni"
 msgid "Last day"
 msgstr "Siku ya mwisho"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Matumizi ya mwisho {0}"
@@ -1876,8 +1914,17 @@ msgstr "Hitilafu ya mtandao"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "hakuna"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Hairudiwi"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Kamwe"
 
@@ -1889,6 +1936,10 @@ msgstr "Mpya"
 msgctxt "sort order"
 msgid "New"
 msgstr "Mpya zaidi"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Anwani mpya ya kalenda imenakiliwa kwenye ubao wa kunakili"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Idadi ya marudio"
 msgid "On"
 msgstr "Imewashwa"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "siku ya {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Katika tarehe"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} ya tano"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} ya kwanza"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} ya nne"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} ya mwisho"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "siku ya mwisho ya mwezi"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} ya pili"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} ya tatu"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Kurudia"
 msgid "Repeats"
 msgstr "Hurudiwa"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Badilisha"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Jaribu tena"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Batilisha"
 
@@ -2463,13 +2546,13 @@ msgstr "Batilisha"
 msgid "Revoke access"
 msgstr "Batilisha ufikiaji"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Ubatilishe ufikiaji wa RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Je, ubatilishe anwani ya kalenda?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Jumamosi"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Hifadhi"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Ombi la kamera halikujibiwa"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Kifaa hakitaweza tena kusawazisha kalenda."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Kifaa hakitaweza tena kusawazisha anwani wala kalenda."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Hili na yanayofuata"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Programu hii hairuhusiwi kutumia passkey yako. Iruhusu katika Mipangilio, chini ya Ruhusa."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Anwani hii ya kalenda tayari imetolewa na haiwezi kuonyeshwa tena."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kalenda hii haina anwani ya kubatilisha"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Haijulikani"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Jiondoe"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "hadi {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

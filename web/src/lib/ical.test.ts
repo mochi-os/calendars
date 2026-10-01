@@ -18,7 +18,6 @@ import {
   draftInstants,
   editedComponents,
   endAfterStart,
-  movedStart,
   expressible,
   foreignZones,
   emptyRepeat,
@@ -26,6 +25,7 @@ import {
   masterComponent,
   movedDraft,
   newDraft,
+  shiftedStart,
   occurrenceDraft,
   openedDraft,
   property,
@@ -82,44 +82,6 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     ...overrides,
   }
 }
-
-describe('movedStart', () => {
-  it('carries the end past midnight instead of stopping at 23:59', () => {
-    const moved = movedStart(
-      draft({ startTime: 22 * 60, finishTime: 23 * 60 + 30 }),
-      '2026-09-16',
-      23 * 60
-    )
-    expect(moved.finish).toBe('2026-09-17')
-    expect(moved.finishTime).toBe(30)
-  })
-
-  it('pulls the end back before midnight with the start', () => {
-    const moved = movedStart(
-      draft({ startTime: 60, finish: '2026-09-16', finishTime: 90 }),
-      '2026-09-15',
-      23 * 60
-    )
-    expect(moved.start).toBe('2026-09-15')
-    expect(moved.finish).toBe('2026-09-15')
-    expect(moved.finishTime).toBe(23 * 60 + 30)
-  })
-
-  it('keeps the length when the day changes', () => {
-    const moved = movedStart(draft(), '2026-09-20', 9 * 60)
-    expect(moved.finish).toBe('2026-09-20')
-    expect(moved.finishTime).toBe(10 * 60)
-  })
-
-  it('moves an all-day event by whole days', () => {
-    const moved = movedStart(
-      draft({ allday: true, finish: '2026-09-18' }),
-      '2026-09-20',
-      9 * 60
-    )
-    expect(moved.finish).toBe('2026-09-22')
-  })
-})
 
 describe('property values', () => {
   it('reads and writes an event colour and URL without duplicating properties', () => {
@@ -1622,6 +1584,7 @@ describe('what a new event starts from', () => {
       calendar: 'cal1',
       reminder: 15,
       zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
+      user: 'UTC',
     })
     // 09:00 UTC is 18:00 in Tokyo, the same instant.
     expect(draft.start).toBe('2026-09-25')
@@ -1641,9 +1604,37 @@ describe('what a new event starts from', () => {
       calendar: 'cal1',
       reminder: -1,
       zone: { start: 'UTC', finish: 'UTC' },
+      user: 'UTC',
     })
     expect(draft.allday).toBe(true)
     expect(draft.start).toBe('2026-09-25')
+  })
+
+  it("puts an all-day event on the day clicked in the user's zone, whatever zone was remembered", () => {
+    // 08:00 on the 25th in Los Angeles is already the 26th in Tokyo.
+    const eight = Date.UTC(2026, 8, 25, 15) / 1000
+    const draft = newDraft(eight, eight + 3600, {
+      allday: true,
+      calendar: 'cal1',
+      reminder: -1,
+      zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
+      user: 'America/Los_Angeles',
+    })
+    expect(draft.start).toBe('2026-09-25')
+    expect(draft.finish).toBe('2026-09-25')
+  })
+
+  it('keeps a timed event in the remembered zone, at the same instant', () => {
+    const eight = Date.UTC(2026, 8, 25, 15) / 1000
+    const draft = newDraft(eight, eight + 3600, {
+      allday: false,
+      calendar: 'cal1',
+      reminder: -1,
+      zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
+      user: 'America/Los_Angeles',
+    })
+    expect(draft.start).toBe('2026-09-26')
+    expect(draft.startTime).toBe(0)
   })
 
   it('leaves the all-day switch and both zones of a saved event for the next', () => {
@@ -1789,5 +1780,52 @@ describe('the calendar a new event goes in', () => {
         ''
       )
     ).toBe('')
+  })
+})
+
+describe('moving the start in the editor', () => {
+  it('keeps the length when the end is pushed past midnight', () => {
+    const moved = shiftedStart(
+      draft({
+        start: '2026-09-16',
+        startTime: 22 * 60,
+        finish: '2026-09-16',
+        finishTime: 23 * 60,
+      }),
+      '2026-09-16',
+      23 * 60 + 30
+    )
+    expect(moved.finish).toBe('2026-09-17')
+    expect(moved.finishTime).toBe(30)
+  })
+
+  it('brings an end past midnight back a day when the start moves earlier', () => {
+    const moved = shiftedStart(
+      draft({
+        start: '2026-09-16',
+        startTime: 23 * 60,
+        finish: '2026-09-17',
+        finishTime: 30,
+      }),
+      '2026-09-16',
+      22 * 60
+    )
+    expect(moved.finish).toBe('2026-09-16')
+    expect(moved.finishTime).toBe(23 * 60 + 30)
+  })
+
+  it('moves the end by as many days as the start', () => {
+    const moved = shiftedStart(
+      draft({
+        start: '2026-09-16',
+        startTime: 9 * 60,
+        finish: '2026-09-16',
+        finishTime: 10 * 60,
+      }),
+      '2026-09-18',
+      9 * 60
+    )
+    expect(moved.finish).toBe('2026-09-18')
+    expect(moved.finishTime).toBe(10 * 60)
   })
 })

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#م} other {#م}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} تاريخ تي} other {{days} تاريخ تي}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ڏينهن اڳ} other {# ڏينهن اڳ}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} جو نالو"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}، {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ڪلاڪ اڳ} other {# ڪلاڪ اڳ}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ڪلاڪ} other {# ڪلاڪ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {هر ڏينهن} other {هر # ڏينهن}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {هر مهيني} other {هر # مهينن}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {هر هفتي} other {هر # هفتن}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {هر سال} other {هر # سالن}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# منٽ اڳ} other {# منٽ اڳ}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ڊرا جي پيشڪش ڪئي"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} مان {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {هڪ ڀيرو} other {# ڀيرا}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "ٻيو Mochi يا CalDAV سرور"
 msgid "Anyone"
 msgstr "ڪوبه"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "ڪو به جيڪو لاگ ان آهي"
@@ -483,13 +507,18 @@ msgstr "ڪئلينڊر"
 msgid "Calendar access was not granted"
 msgstr "ڪئلينڊر رسائي نه ڏني وئي"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ڪئلينڊر جو پتو"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "ڪئلينڊر جو پتو ڪلپ بورڊ تي ڪاپي ٿيو"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "ڪئلينڊر جو پتو منسوخ ٿيو"
 
@@ -536,6 +565,11 @@ msgstr "ڪئلينڊر تازو آهي"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ڪئلينڊر"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "هن پتي جي رڪنيت وارا ڪئلينڊر تازه ٿيڻ بند ٿي ويندا."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "ڳولا صاف ڪريو"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "بند ڪريو"
 
@@ -898,7 +933,7 @@ msgstr "نئين شيءِ ٺاهيو"
 msgid "Created"
 msgstr "ٺاهيو ويو"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "ٺاهيو ويو {0}"
@@ -1134,7 +1169,6 @@ msgstr "گهربل نموني سان ميل نٿو کائي"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "مڪمل"
@@ -1276,6 +1310,7 @@ msgstr "واقعو منتقل ٿيو"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "واقعو محفوظ ٿيو"
 
@@ -1376,7 +1411,7 @@ msgstr "واقعو ختم ڪرڻ ۾ ناڪام"
 msgid "Failed to get RSS token"
 msgstr "RSS ٽوڪن حاصل ڪرڻ ۾ ناڪام"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ڪئلينڊر جو پتو حاصل ڪرڻ ۾ ناڪام"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "ڪئلينڊر ڳنڍڻ ۾ ناڪام"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "لوڊ ڪرڻ ۾ ناڪام"
 
@@ -1455,7 +1489,7 @@ msgstr "پرامپٽ ري سيٽ ڪرڻ ۾ ناڪام"
 msgid "Failed to revoke RSS access"
 msgstr "RSS رسائي واپس وٺڻ ۾ ناڪام"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ڪئلينڊر جو پتو منسوخ ڪرڻ ۾ ناڪام"
 
@@ -1607,6 +1641,10 @@ msgstr "تصوير ڏسڻ وارو: {0}"
 msgid "Imperial"
 msgstr "امپيريل"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} ۾"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "گمنام صارفن سميت"
@@ -1665,7 +1703,7 @@ msgstr "آخر ۾"
 msgid "Last day"
 msgstr "آخري ڏينهن"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "{0} آخري ڀيرو استعمال ٿيو"
@@ -1876,8 +1914,17 @@ msgstr "نيٽ ورڪ جي خرابي"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ڪڏهن به نه"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ورجاءُ ناهي"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "ڪڏهن به نه"
 
@@ -1889,6 +1936,10 @@ msgstr "نئون"
 msgctxt "sort order"
 msgid "New"
 msgstr "سڀ کان نوان"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "ڪئلينڊر جو نئون پتو ڪلپ بورڊ تي ڪاپي ٿيو"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "واقعن جو تعداد"
 msgid "On"
 msgstr "آن"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ڏينهن: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ڪنهن تاريخ تي"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "مهيني جي پنجين هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "مهيني جي پهرين هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "مهيني جي چوٿين هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "مهيني جي آخري هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "مهيني جي آخري ڏينهن تي"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "مهيني جي ٻئي هفتي ۾: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "مهيني جي ٽئين هفتي ۾: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "ورجاءُ"
 msgid "Repeats"
 msgstr "ورجائي ٿو"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "بدلايو"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "ٻيهر ڪوشش ڪريو"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "رد ڪريو"
 
@@ -2463,13 +2546,13 @@ msgstr "رد ڪريو"
 msgid "Revoke access"
 msgstr "رسائي واپس وٺو"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS رسائي منسوخ ڪجي؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "ڪئلينڊر جو پتو منسوخ ڪجي؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "ڇنڇر"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "محفوظ ڪريو"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "ڪئميرا درخواست جو جواب نه مليو"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "ڊوائيس هاڻي ڪئلينڊر سنڪ نه ڪري سگهندو."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "ڊوائيس هاڻي رابطن يا ڪئلينڊرن کي سنڪ نه ڪري سگهندي."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "هي ۽ ايندڙ"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "هن ايپ کي توهان جي پاس ڪي استعمال ڪرڻ جي اجازت ناهي. سيٽنگن ۾، اجازتن هيٺ ان کي اجازت ڏيو."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "هي ڪئلينڊر جو پتو اڳ ۾ ئي جاري ٿي چڪو آهي ۽ ٻيهر نه ڏيکاري سگهجي ٿو."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "هن ڪئلينڊر وٽ منسوخ ڪرڻ لاءِ ڪو پتو ناهي"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "اڻڄاتل"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ان سبسڪرائب ڪريو"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} تائين"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearch } from '@tanstack/react-router'
 import { useLingui } from '@lingui/react/macro'
 import {
@@ -10,6 +10,7 @@ import {
   dayList,
   dayOfWeek,
   eventStatus,
+  GeneralError,
   MonthGrid,
   monthOf,
   stepDate,
@@ -34,6 +35,7 @@ import { useCalendarContext } from '@/context/calendar-context'
 import { useCalendarShortcuts } from '@/hooks/use-calendar-shortcuts'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
+import { useReminder } from '@/hooks/use-reminder'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { EventPopover } from '@/features/calendar/components/event-popover'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
@@ -58,6 +60,8 @@ export function CalendarPage() {
     setEditing,
     remembered,
     reveal,
+    failed,
+    reload,
   } = useCalendarContext()
 
   const [selected, setSelected] = useState<{
@@ -69,7 +73,7 @@ export function CalendarPage() {
     copy: boolean
   } | null>(null)
 
-  const mover = useEventMove(reveal)
+  const mover = useEventMove({ reveal, zones: preferences.zones })
 
   // With events shown in their own zones, a day's occurrences can begin or
   // end up to a day away by the user's clock, so the window grows a day each
@@ -82,7 +86,13 @@ export function CalendarPage() {
     () => (view === 'list' ? [] : visible.map((c) => c.id)),
     [view, visible]
   )
-  const { data } = useInstancesQuery(start, finish, shown, format.timezone)
+  const { data, isSuccess, isPlaceholderData, isError, error, refetch } =
+    useInstancesQuery(
+    start,
+    finish,
+    shown,
+    format.timezone
+  )
   // Each occurrence arrives in its event's own colour, else its calendar's;
   // recolouring a calendar fetches the range again.
   const instances = useMemo(
@@ -154,6 +164,7 @@ export function CalendarPage() {
         allday,
         calendar,
         reminder: preferences.reminder,
+        user: format.timezone,
         zone: remembered.zone ?? {
           start: format.timezone,
           finish: format.timezone,
@@ -210,36 +221,39 @@ export function CalendarPage() {
       ? `${editing.event}:${editing.start}`
       : undefined
 
-  // A reminder opens the calendar at the event it is for: once the day's
-  // occurrences arrive it opens as a click on it would, and leaves the URL so
-  // going back does not open it again.
+  // A reminder's link opens the calendar at the event it is for.
   const search = useSearch({ strict: false }) as {
     event?: string
     occurrence?: number
   }
   const navigate = useNavigate()
-  useEffect(() => {
-    if (!search.event) return
-    const key = `${search.event}:${search.occurrence ?? 0}`
-    const instance = instances.find(
-      (item) => `${item.event}:${item.start}` === key
-    )
-    if (!instance) return
-    const anchor =
-      document.querySelector<HTMLElement>(`[data-key="${CSS.escape(key)}"]`) ??
-      document.body
-    open(instance, anchor)
-    void navigate({
-      to: '.',
-      search: (previous: Record<string, unknown>) => ({
-        ...previous,
-        event: undefined,
-        occurrence: undefined,
+  useReminder({
+    event: search.event,
+    occurrence: search.occurrence,
+    instances,
+    // Until the shown calendars' own occurrences arrive, one missing from
+    // them proves nothing: the previous range's stand in while they load.
+    loading: shown.length > 0 && (!isSuccess || isPlaceholderData),
+    visible,
+    reveal,
+    open: (instance, key) =>
+      open(
+        instance,
+        document.querySelector<HTMLElement>(
+          `[data-key="${CSS.escape(key)}"]`
+        ) ?? document.body
+      ),
+    clear: () =>
+      void navigate({
+        to: '.',
+        search: (previous: Record<string, unknown>) => ({
+          ...previous,
+          event: undefined,
+          occurrence: undefined,
+        }),
+        replace: true,
       }),
-      replace: true,
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- open reads state only
-  }, [search.event, search.occurrence, instances])
+  })
 
   const select = (key: string, anchor: HTMLElement) => {
     const instance = byKey.get(key)
@@ -267,8 +281,16 @@ export function CalendarPage() {
     search: () => document.getElementById('calendar-search')?.focus(),
   })
 
-  const grid =
-    view === 'list' ? (
+  const grid = failed ? (
+    <GeneralError mode='inline' className='my-6' reset={reload} />
+  ) : view !== 'list' && isError ? (
+    <GeneralError
+      mode='inline'
+      className='my-6'
+      error={error}
+      reset={() => void refetch()}
+    />
+  ) : view === 'list' ? (
       <Agenda selected={current} onSelect={open} />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
@@ -337,7 +359,7 @@ export function CalendarPage() {
   return (
     <div className='flex h-full min-h-0 flex-col'>
       <Toolbar onCreate={createNow} />
-      {data?.truncated && (
+      {shown.length > 0 && data?.truncated && (
         <p className='bg-muted text-muted-foreground px-3 py-1 text-sm'>
           {t`Too many events to show them all. Choose a shorter range.`}
         </p>

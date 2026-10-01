@@ -4,146 +4,93 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DeleteEventDialog } from './delete-event-dialog'
 
-const {
-  stored,
-  create,
-  remove,
-  update,
-  success,
-  pending,
-  loaded,
-  failure,
-  failed,
-  fetching,
-} = vi.hoisted(() => ({
-  stored: {
-    id: 'e1',
-    calendar: 'c1',
-    etag: 'v1',
-    recurring: false,
-    components: [{ name: 'VEVENT', properties: [], components: [] }],
-  },
-  create: vi.fn(),
+const event = {
+  id: 'e1',
+  calendar: 'c1',
+  etag: 'x1',
+  recurring: false,
+  components: [],
+}
+
+// The event as the query answers it, and the delete it goes through.
+const state = vi.hoisted(() => ({
+  query: {} as Record<string, unknown>,
   remove: vi.fn(),
-  update: vi.fn(),
-  success: vi.fn(),
-  pending: { value: false },
-  loaded: { value: true },
-  failure: { value: null as Error | null },
-  failed: vi.fn(),
-  fetching: { value: false },
+  pending: false,
 }))
 
-vi.mock('@/hooks/use-events', () => ({
-  useEventQuery: () => ({
-    data: loaded.value ? { event: stored } : undefined,
-    error: failure.value,
-    isFetching: fetching.value,
+beforeEach(() => {
+  state.query = {
+    data: { event },
+    isError: false,
+    error: null,
     refetch: vi.fn(),
-  }),
-  useCreateEventMutation: () => ({ mutateAsync: create, isPending: false }),
-  useDeleteEventMutation: () => ({
-    mutateAsync: remove,
-    isPending: pending.value,
-  }),
-  useUpdateEventMutation: () => ({ mutateAsync: update, isPending: false }),
-}))
-
-vi.mock('@mochi/web', async (importOriginal) => {
-  const original = await importOriginal<typeof import('@mochi/web')>()
-  return {
-    ...original,
-    toast: { ...original.toast, success, error: failed },
   }
+  state.remove = vi.fn().mockResolvedValue({})
+  state.pending = false
 })
 
+vi.mock('@/hooks/use-events', () => ({
+  useEventQuery: () => state.query,
+  useDeleteEventMutation: () => ({
+    mutateAsync: state.remove,
+    isPending: state.pending,
+  }),
+  useUpdateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useCreateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+}))
+
 function show() {
+  const onClose = vi.fn()
   render(
     <I18nProvider i18n={i18n}>
-      <DeleteEventDialog event='e1' start={0} onClose={vi.fn()} />
+      <DeleteEventDialog event='e1' start={0} onClose={onClose} />
     </I18nProvider>
   )
+  return onClose
 }
 
 describe('DeleteEventDialog', () => {
-  beforeEach(() => {
-    create.mockReset().mockResolvedValue({})
-    remove.mockReset().mockResolvedValue({})
-    success.mockReset()
-    pending.value = false
-    loaded.value = true
-    failure.value = null
-    fetching.value = false
-    failed.mockReset()
-  })
-
-  it('says why and closes when the event cannot be loaded', () => {
-    loaded.value = false
-    failure.value = new Error('Event not found')
-    const onClose = vi.fn()
-    render(
-      <I18nProvider i18n={i18n}>
-        <DeleteEventDialog event='e1' start={0} onClose={onClose} />
-      </I18nProvider>
-    )
-    expect(failed).toHaveBeenCalledWith('Event not found')
-    expect(onClose).toHaveBeenCalled()
-  })
-
-  it('waits while an earlier failure is being fetched again', () => {
-    loaded.value = false
-    failure.value = new Error('Event not found')
-    fetching.value = true
-    const onClose = vi.fn()
-    render(
-      <I18nProvider i18n={i18n}>
-        <DeleteEventDialog event='e1' start={0} onClose={onClose} />
-      </I18nProvider>
-    )
-    expect(failed).not.toHaveBeenCalled()
-    expect(onClose).not.toHaveBeenCalled()
-  })
-
-  it('waits for the stored event, showing the scope the listing gave', () => {
-    loaded.value = false
-    render(
-      <I18nProvider i18n={i18n}>
-        <DeleteEventDialog event='e1' start={0} recurring onClose={vi.fn()} />
-      </I18nProvider>
-    )
-    const all = screen.getByRole('button', { name: 'All events' })
-    expect(all).toBeDisabled()
-    fireEvent.click(all)
-    expect(remove).not.toHaveBeenCalled()
-  })
-
-  it('offers Undo, which puts the deleted event back', async () => {
+  it('holds Delete back until the event has loaded', () => {
+    state.query = { ...state.query, data: undefined }
     show()
-    fireEvent.click(screen.getByRole('button', { name: 'Delete' }))
-    await waitFor(() => expect(success).toHaveBeenCalled())
-    expect(remove).toHaveBeenCalledWith({ event: 'e1', etag: 'v1' })
+    expect(screen.getByRole('button', { name: 'Delete' })).toBeDisabled()
+  })
 
-    const { action } = success.mock.calls[0][1] as {
-      action: { label: string; onClick: () => void }
+  it('says the event could not be read, with a way to try again', () => {
+    state.query = {
+      data: undefined,
+      isError: true,
+      error: new Error('offline'),
+      refetch: vi.fn(),
     }
-    expect(action.label).toBe('Undo')
-    act(action.onClick)
-    expect(create).toHaveBeenCalledWith({
-      calendar: 'c1',
-      components: stored.components,
-    })
+    show()
+    expect(screen.getByRole('button', { name: 'Delete' })).toBeDisabled()
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
+    expect(state.query.refetch).toHaveBeenCalledTimes(1)
   })
 
-  it('cannot be chosen again while the delete runs', () => {
-    pending.value = true
-    show()
+  it('deletes once for a double click', async () => {
+    let finish: () => void = () => {}
+    state.remove = vi.fn(
+      () => new Promise<void>((resolve) => (finish = resolve))
+    )
+    const onClose = show()
     const button = screen.getByRole('button', { name: 'Delete' })
-    expect(button).toBeDisabled()
     fireEvent.click(button)
-    expect(remove).not.toHaveBeenCalled()
+    fireEvent.click(button)
+    await act(async () => finish())
+    expect(state.remove).toHaveBeenCalledTimes(1)
+    expect(onClose).toHaveBeenCalledTimes(1)
+  })
+
+  it('holds its choices while the delete runs', () => {
+    state.pending = true
+    show()
+    expect(screen.getByRole('button', { name: 'Delete' })).toBeDisabled()
   })
 })

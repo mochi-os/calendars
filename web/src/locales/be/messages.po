@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#хв} other {#хв}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#тыд} other {#тыд}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} чысла} few {{days} чысла} many {{days} чысла} other {{days} чысла}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {за # дзень} few {за # дні} many {за # 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Назва {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {за # гадзіну} few {за # гадзіны} 
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# гадзіна} few {# гадзіны} many {# гадзін} other {# гадзіны}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Кожны дзень} one {Кожны # дзень} few {Кожныя # дні} many {Кожныя # дзён} other {Кожныя # дня}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Кожны месяц} one {Кожны # месяц} few {Кожныя # месяцы} many {Кожныя # месяцаў} other {Кожныя # месяца}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Кожны тыдзень} one {Кожны # тыдзень} few {Кожныя # тыдні} many {Кожныя # тыдняў} other {Кожныя # тыдня}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Кожны год} one {Кожны # год} few {Кожныя # гады} many {Кожныя # гадоў} other {Кожныя # года}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {за # хвіліну} few {за # хвіліны} many {за # хвілін} other {за # хвіліны}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} прапанаваў нічыю"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} з {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {адзін раз} one {# раз} few {# разы} many {# разоў} other {# разу}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Іншы сервер Mochi або CalDAV"
 msgid "Anyone"
 msgstr "Хто заўгодна"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Кожны, хто ўвайшоў"
@@ -483,13 +507,18 @@ msgstr "Каляндар"
 msgid "Calendar access was not granted"
 msgstr "Доступ да календара не быў нададзены"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Адрас календара"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Адрас календара скапіраваны ў буфер абмену"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Адрас календара адкліканы"
 
@@ -536,6 +565,11 @@ msgstr "Каляндар актуальны"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Календары"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Календары, падпісаныя на гэты адрас, перастануць абнаўляцца."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Ачысціць пошук"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Закрыць"
 
@@ -898,7 +933,7 @@ msgstr "Стварыць новы элемент"
 msgid "Created"
 msgstr "Створана"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Створана {0}"
@@ -1134,7 +1169,6 @@ msgstr "Не адпавядае патрэбнаму шаблону"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Гатова"
@@ -1276,6 +1310,7 @@ msgstr "Падзея перамешчана"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Падзея захавана"
 
@@ -1376,7 +1411,7 @@ msgstr "Не ўдалося выдаліць падзею"
 msgid "Failed to get RSS token"
 msgstr "Не ўдалося атрымаць RSS токен"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Не ўдалося атрымаць адрас календара"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Не ўдалося звязаць каляндар"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Не ўдалося загрузіць"
 
@@ -1455,7 +1489,7 @@ msgstr "Не ўдалося скінуць запыт"
 msgid "Failed to revoke RSS access"
 msgstr "Не ўдалося адклікаць доступ RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Не ўдалося адклікаць адрас календара"
 
@@ -1607,6 +1641,10 @@ msgstr "Прагляд відарысаў: {0}"
 msgid "Imperial"
 msgstr "Імперская"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "па месяцах: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Уключна з ананімнымі карыстальнікамі"
@@ -1665,7 +1703,7 @@ msgstr "У канцы"
 msgid "Last day"
 msgstr "Апошні дзень"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Апошняе выкарыстанне {0}"
@@ -1876,8 +1914,17 @@ msgstr "Памылка сеткі"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "ніколі"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Не паўтараць"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Ніколі"
 
@@ -1889,6 +1936,10 @@ msgstr "Новы"
 msgctxt "sort order"
 msgid "New"
 msgstr "Новае"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Новы адрас календара скапіраваны ў буфер абмену"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Паўторы"
 msgid "On"
 msgstr "Укл."
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "па днях тыдня: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "У дату"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "на пятым тыдні месяца: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "на першым тыдні месяца: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "на чацвёртым тыдні месяца: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "на апошнім тыдні месяца: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "у апошні дзень месяца"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "на другім тыдні месяца: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "на трэцім тыдні месяца: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Паўтор"
 msgid "Repeats"
 msgstr "Паўтараецца"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Замяніць"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Паўтарыць"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Адклікаць"
 
@@ -2463,13 +2546,13 @@ msgstr "Адклікаць"
 msgid "Revoke access"
 msgstr "Адклікаць доступ"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Адклікаць доступ RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Адклікаць адрас календара?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Субота"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Захаваць"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Запыт камеры застаўся без адказу"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Прылада больш не зможа сінхранізаваць календары."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Прылада больш не зможа сінхранізаваць кантакты або календары."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Гэтая і наступныя"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Гэтай праграме не дазволена выкарыстоўваць ваш ключ доступу. Дазвольце гэта ў Наладах, у раздзеле Дазволы."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Гэты адрас календара ўжо выдадзены і не можа быць паказаны зноў."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "У гэтага календара няма адраса для адклікання"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Невядома"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Адпісацца"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "да {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

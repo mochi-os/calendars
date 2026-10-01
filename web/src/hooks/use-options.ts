@@ -6,7 +6,7 @@ import { plural, t } from '@lingui/core/macro'
 import { useFormat } from '@mochi/web'
 import { NO_REMINDER, REMINDER_LEADS } from '@/lib/ical'
 
-export interface Option {
+interface Option {
   value: number
   label: string
 }

@@ -27,7 +27,6 @@ import {
   useRenameCalendarMutation,
 } from '@/hooks/use-calendars'
 import { useIcsCopy } from '@/hooks/use-ics-copy'
-import { AddressDialogs } from '@/features/calendar/dialogs/address-dialogs'
 
 /**
  * A calendar's own page at /calendars/<fingerprint>: what it is called, what
@@ -161,6 +160,7 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
             <Input
               id='settings-name'
               value={name}
+              maxLength={100}
               disabled={calendar.readonly && calendar.kind === 'birthdays'}
               onChange={(input) => setName(input.target.value)}
             />
@@ -212,7 +212,7 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
           </div>
         </div>
       </div>
-      <AddressDialogs state={dialogs} />
+      {dialogs}
     </Main>
   )
 }

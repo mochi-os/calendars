@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mzu} other {#mzu}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ngosuku lwe-{days}} other {ngezinsuku: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {usuku olungu-# ngaphambili} other {izinsuku ezingu-#
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Igama le-{entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {ihora elingu-# ngaphambili} other {amahora angu-# n
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {ihora elingu-#} other {amahora angu-#}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Njalo ngosuku} other {Njalo emva kwezinsuku ezingu-#}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Njalo ngenyanga} other {Njalo emva kwezinyanga ezingu-#}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Njalo ngeviki} other {Njalo emva kwamaviki angu-#}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Njalo ngonyaka} other {Njalo emva kweminyaka engu-#}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {umzuzu ongu-# ngaphambili} other {imizuzu engu-# ngaphambili}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} unikeze idrowu"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} kokungu-{totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {kanye} other {izikhathi ezingu-#}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Enye iseva ye-Mochi noma ye-CalDAV"
 msgid "Anyone"
 msgstr "Noma ubani"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Noma ubani ongenile"
@@ -483,13 +507,18 @@ msgstr "Ikhalenda"
 msgid "Calendar access was not granted"
 msgstr "Ukufinyelela kwekhalenda akunikeziwe"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Ikheli lekhalenda"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Ikheli lekhalenda likopishelwe kwi-clipboard"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Ikheli lekhalenda libuyiselwe"
 
@@ -536,6 +565,11 @@ msgstr "Ikhalenda ibuyekeziwe"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Amakhalenda"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Amakhalenda abhalisele leli kheli azoyeka ukubuyekezwa."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Sula usesho"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Vala"
 
@@ -856,7 +891,7 @@ msgstr "Akukwazanga ukulayisha le dokhumenti. Sicela uzame futhi kamuva."
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
-msgstr "Yehlulekile ukulayisha izaziso"
+msgstr "Kuhlulekile ukulayisha izaziso"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Couldn't send the code. Please try again."
@@ -898,7 +933,7 @@ msgstr "Dala into entsha"
 msgid "Created"
 msgstr "Kudaliwe"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Kudaliwe {0}"
@@ -1134,7 +1169,6 @@ msgstr "Ayihambisani nephethini edingekayo"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Kwenziwe"
@@ -1276,6 +1310,7 @@ msgstr "Umcimbi uhanjisiwe"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Umcimbi ulondoloziwe"
 
@@ -1376,7 +1411,7 @@ msgstr "Kuhlulekile ukususa umcimbi"
 msgid "Failed to get RSS token"
 msgstr "Kuhlulekile ukuthola ithokeni ye-RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kuhlulekile ukuthola ikheli lekhalenda"
 
@@ -1385,13 +1420,12 @@ msgid "Failed to link the calendar"
 msgstr "Kuhlulekile ukuxhuma ikhalenda"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Kuhlulekile ukulayisha"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to load banner"
-msgstr "Yehlulekile ukulayisha ibhena"
+msgstr "Kuhlulekile ukulayisha ibhena"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "Failed to load history"
@@ -1399,7 +1433,7 @@ msgstr "Kuhlulekile ukulayisha umlando"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Failed to load image"
-msgstr "Yehlulekile ukulayisha isithombe"
+msgstr "Kuhlulekile ukulayisha isithombe"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -1412,7 +1446,7 @@ msgstr "Kuhlulekile ukulayisha imiyalo"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Failed to load video"
-msgstr "Yehlulekile ukulayisha ividiyo"
+msgstr "Kuhlulekile ukulayisha ividiyo"
 
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 msgid "Failed to load your preferences"
@@ -1420,7 +1454,7 @@ msgstr "Kuhlulekile ukulayisha okuthandayo"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
-msgstr "Yehlulekile ukuhambisa"
+msgstr "Kuhlulekile ukuhambisa"
 
 #: src/hooks/use-event-move.ts
 msgid "Failed to move the event"
@@ -1453,9 +1487,9 @@ msgstr "Kuhlulekile ukusetha kabusha umyalo"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "Yehlulekile ukubuyisela ukufinyelela kwe-RSS"
+msgstr "Kuhlulekile ukubuyisela ukufinyelela kwe-RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Kuhlulekile ukubuyisela ikheli lekhalenda"
 
@@ -1500,7 +1534,7 @@ msgstr "Kuhlulekile ukubuyekeza ukuphawula"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to update watching"
-msgstr "Yehlulekile ukubuyekeza ukubuka"
+msgstr "Kuhlulekile ukubuyekeza ukubuka"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
@@ -1607,6 +1641,10 @@ msgstr "Isibonisi sesithombe: {0}"
 msgid "Imperial"
 msgstr "Yobukhosi"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ngo-{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Kufaka phakathi abasebenzisi abangaziwa"
@@ -1665,7 +1703,7 @@ msgstr "Ekugcineni"
 msgid "Last day"
 msgstr "Usuku lokugcina"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Kusetshenziswe okokugcina {0}"
@@ -1876,10 +1914,19 @@ msgstr "Iphutha lenethiwekhi"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Akekho"
+msgstr "akukho"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Akuphindwa"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Akupheli"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "Okusha"
 msgctxt "sort order"
 msgid "New"
 msgstr "Okusha kakhulu"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Ikheli elisha lekhalenda likopishelwe kwi-clipboard"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Izikhathi zokuphindwa"
 msgid "On"
 msgstr "Kuvuliwe"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ngezinsuku: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Ngosuku oluthile"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "evikini lesihlanu: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "evikini lokuqala: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "evikini lesine: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "evikini lokugcina: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ngosuku lokugcina lwenyanga"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "evikini lesibili: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "evikini lesithathu: {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2187,7 +2270,7 @@ msgstr "Okuthunyelwe"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
-msgstr "Okwabiwayo namazwana"
+msgstr "Okuthunyelwe namazwana"
 
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2410,13 +2493,13 @@ msgstr "Ukuphinda"
 msgid "Repeats"
 msgstr "Iyaphindwa"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Buyisela"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Zama futhi"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Hoxisa"
 
@@ -2463,13 +2546,13 @@ msgstr "Hoxisa"
 msgid "Revoke access"
 msgstr "Buyisela ukufinyelela"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Hoxisa ukufinyelela kwe-RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Buyisela ikheli lekhalenda?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "UMgqibelo"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Londoloza"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Isicelo sekhamera asiphendulwanga"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Idivayisi ngeke isakwazi ukuvumelanisa amakhalenda."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Idivayisi ngeke isakwazi ukuvumelanisa oxhumana nabo noma amakhalenda."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Lo nalandelayo"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Le app ayivunyelwe ukusebenzisa i-passkey yakho. Yivumele kuzilungiselelo, ngaphansi kwezimvume."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Leli kheli lekhalenda selikhishiwe futhi alikwazi ukuboniswa futhi."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Leli khalenda alinalo ikheli lokubuyisela"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Akwaziwa"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Susa ukubhalisa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "kuze kube ngu-{date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#خ} other {#خ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {لە ڕۆژی {days}} other {لە ڕۆژانی {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ڕۆژ پێشتر} other {# ڕۆژ پێشتر}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ناوی {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}، {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# کاتژمێر پێشتر} other {# کاتژمێ�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# کاتژمێر} other {# کاتژمێر}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {هەموو ڕۆژێک} other {هەر # ڕۆژ جارێک}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {هەموو مانگێک} other {هەر # مانگ جارێک}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {هەموو هەفتەیەک} other {هەر # هەفتە جارێک}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {هەموو ساڵێک} other {هەر # ساڵ جارێک}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# خولەک پێشتر} other {# خولەک پێشتر}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} پێشنیاری یەکسانی کرد"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} لە {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {یەک جار} other {# جار}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "ڕاژەکارێکی تری Mochi یان CalDAV"
 msgid "Anyone"
 msgstr "هەر کەسێک"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "هەر کەسێک کە چووبێتە ژوورەوە"
@@ -483,13 +507,18 @@ msgstr "ڕۆژژمێر"
 msgid "Calendar access was not granted"
 msgstr "دەستڕاگەیشتنی ڕۆژژمێر نەدرا"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ناونیشانی ڕۆژژمێر"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "ناونیشانی ڕۆژژمێر کۆپی کرا بۆ کلیپبۆرد"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "ناونیشانی ڕۆژژمێر ڕەتکرایەوە"
 
@@ -536,6 +565,11 @@ msgstr "ڕۆژژمێر نوێیە"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ڕۆژژمێرەکان"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ئەو ڕۆژژمێرانەی بەشداری ئەم ناونیشانەیان کردووە، چیتر نوێ ناکرێنەوە."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "پاککردنەوەی گەڕان"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "داخستن"
 
@@ -898,7 +933,7 @@ msgstr "دروستکردنی بڕگەی نوێ"
 msgid "Created"
 msgstr "دروستکرا"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "دروستکرا {0}"
@@ -1134,7 +1169,6 @@ msgstr "لەگەڵ ئەو نەخشەیەی داواکراوە ناگونجێت"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "تەواوبوو"
@@ -1276,6 +1310,7 @@ msgstr "ڕووداو گوازرایەوە"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "ڕووداو پاشەکەوتکرا"
 
@@ -1376,7 +1411,7 @@ msgstr "سڕینەوەی ڕووداوەکە سەرکەوتوو نەبوو"
 msgid "Failed to get RSS token"
 msgstr "وەرگرتنی تۆکنی RSS سەرکەوتوو نەبوو"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "وەرگرتنی ناونیشانی ڕۆژژمێر سەرکەوتوو نەبوو"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "بەستنەوەی ڕۆژژمێر سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "بارکردن سەرکەوتوو نەبوو"
 
@@ -1455,7 +1489,7 @@ msgstr "ڕێکخستنەوەی پرۆمپت سەرکەوتوو نەبوو"
 msgid "Failed to revoke RSS access"
 msgstr "ڕەتکردنەوەی دەستپێگەیشتنی RSS سەرکەوتوو نەبوو"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ڕەتکردنەوەی ناونیشانی ڕۆژژمێر سەرکەوتوو نەبوو"
 
@@ -1607,6 +1641,10 @@ msgstr "بینەری وێنە: {0}"
 msgid "Imperial"
 msgstr "ئیمپێریاڵ"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "لە مانگی {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "لەگەڵ بەکارهێنەرە نەناسراوەکان"
@@ -1665,7 +1703,7 @@ msgstr "لە کۆتاییدا"
 msgid "Last day"
 msgstr "دوا ڕۆژ"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "دواین جار بەکار هاتووە {0}"
@@ -1876,8 +1914,17 @@ msgstr "هەڵەی تۆڕ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "هەرگیز"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "دووبارە نابێتەوە"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "هەرگیز"
 
@@ -1889,6 +1936,10 @@ msgstr "نوێ"
 msgctxt "sort order"
 msgid "New"
 msgstr "نوێترین"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "ناونیشانی نوێی ڕۆژژمێر کۆپی کرا بۆ کلیپبۆرد"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "ژمارەی دووبارەبوونەوە"
 msgid "On"
 msgstr "کارا"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "لە ڕۆژانی {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "لە بەروارێکدا"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "لە پێنجەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "لە یەکەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "لە چوارەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "لە دوا {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "لە دوا ڕۆژی مانگدا"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "لە دووەم {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "لە سێیەم {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "دووبارەکردنەوە"
 msgid "Repeats"
 msgstr "دووبارە دەبێتەوە"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "بیگۆڕە"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "دووبارە هەوڵبدەرەوە"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "ڕاگرتن"
 
@@ -2463,13 +2546,13 @@ msgstr "ڕاگرتن"
 msgid "Revoke access"
 msgstr "ڕەتکردنەوەی دەستپێگەیشتن"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "دەستڕاگەیشتنی RSS هەڵبوەشێنرێتەوە؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "ناونیشانی ڕۆژژمێر ڕەتبکرێتەوە؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "شەممە"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "پاشەکەوتکردن"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "داواکاری کامێرا وەڵام نەدرایەوە"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "ئامێرەکە چیتر ناتوانێت ڕۆژژمێرەکان هاوکات بکات."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "ئامێرەکە چیتر ناتوانێت پەیوەندییەکان یان ڕۆژژمێرەکان هاوکات بکات."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "ئەمە و داهاتووەکان"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ئەم بەرنامەیە ڕێگەپێدراو نییە پاسکییەکەت بەکاربهێنێت. لە ڕێکخستنەکان، لەژێر ڕێگەپێدانەکان ڕێگەی پێبدە."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "ئەم ناونیشانەی ڕۆژژمێر پێشتر دەرکراوە و ناتوانرێت دووبارە پیشان بدرێت."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ئەم ڕۆژژمێرە هیچ ناونیشانێکی نییە بۆ ڕەتکردنەوە"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "نەناسراو"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "بەشداری هەڵبوەشێنەوە"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "تا {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

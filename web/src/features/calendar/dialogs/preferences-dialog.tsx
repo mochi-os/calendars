@@ -52,9 +52,11 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
   const setPreferences = useSetPreferencesMutation()
   const [values, setValues] = useState<Preferences>(DEFAULTS)
 
+  // Each opening starts from what is saved, so edits a Cancel discarded do
+  // not come back.
   useEffect(() => {
-    if (data?.preferences) setValues(data.preferences)
-  }, [data?.preferences])
+    if (open && data?.preferences) setValues(data.preferences)
+  }, [open, data?.preferences])
 
   const stored = data?.preferences
   const changed = useMemo(
@@ -87,7 +89,10 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
 
   const save = async () => {
     try {
-      await toastAction(setPreferences.mutateAsync(values), {
+      // A chosen calendar since deleted or made read-only is sent as the one
+      // the picker shows in its place, which the server accepts.
+      const calendar = defaultCalendar(writable, values.calendar)
+      await toastAction(setPreferences.mutateAsync({ ...values, calendar }), {
         loading: t`Saving...`,
         success: t`Preferences saved`,
         error: (failure) => getErrorMessage(failure, t`Failed to save`),

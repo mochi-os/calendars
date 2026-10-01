@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#د} other {#د}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#أ} other {#أ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, zero {في الأيام {days}} one {في اليوم {days}} two {في اليومين {days}} few {في الأيام {days}} many {في الأيام {days}} other {في الأيام {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, zero {قبل # أيام} one {قبل يوم واحد} two
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "اسم {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}، {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, zero {قبل # ساعات} one {قبل ساعة واحد
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, zero {# ساعات} one {ساعة واحدة} two {ساعتان} few {# ساعات} many {# ساعة} other {# ساعة}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, zero {كل # يوم} one {كل يوم} two {كل يومين} few {كل # أيام} many {كل # يومًا} other {كل # يوم}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, zero {كل # شهر} one {كل شهر} two {كل شهرين} few {كل # أشهر} many {كل # شهرًا} other {كل # شهر}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, zero {كل # أسبوع} one {كل أسبوع} two {كل أسبوعين} few {كل # أسابيع} many {كل # أسبوعًا} other {كل # أسبوع}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, zero {كل # سنة} one {كل سنة} two {كل سنتين} few {كل # سنوات} many {كل # سنةً} other {كل # سنة}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, zero {قبل # دقائق} one {قبل دقيقة واحدة} two {قبل دقيقتين} few {قبل # دقائق} many {قبل # دقيقة} other {قبل # دقيقة}}"
@@ -120,6 +144,10 @@ msgstr "عرض {opponentName} التعادل"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} من {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, zero {# مرة} one {مرة واحدة} two {مرتين} few {# مرات} many {# مرةً} other {# مرة}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "خادم Mochi أو CalDAV آخر"
 msgid "Anyone"
 msgstr "أي شخص"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "أي شخص مسجّل الدخول"
@@ -483,13 +507,18 @@ msgstr "التقويم"
 msgid "Calendar access was not granted"
 msgstr "لم يُمنح الوصول إلى التقويم"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "عنوان التقويم"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "تم نسخ عنوان التقويم إلى الحافظة"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "تم إلغاء عنوان التقويم"
 
@@ -536,6 +565,11 @@ msgstr "التقويم محدَّث"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "التقويمات"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ستتوقف التقويمات المشتركة في هذا العنوان عن التحديث."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "مسح البحث"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "إغلاق"
 
@@ -898,7 +933,7 @@ msgstr "إنشاء عنصر جديد"
 msgid "Created"
 msgstr "تم الإنشاء"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "تم الإنشاء {0}"
@@ -1134,7 +1169,6 @@ msgstr "لا يطابق النمط المطلوب"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "منتهٍ"
@@ -1276,6 +1310,7 @@ msgstr "تم نقل الحدث"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "تم حفظ الحدث"
 
@@ -1376,7 +1411,7 @@ msgstr "فشل حذف الحدث"
 msgid "Failed to get RSS token"
 msgstr "فشل الحصول على رمز RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "فشل الحصول على عنوان التقويم"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "تعذّر ربط التقويم"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "فشل التحميل"
 
@@ -1455,7 +1489,7 @@ msgstr "فشل إعادة تعيين المطالبة"
 msgid "Failed to revoke RSS access"
 msgstr "فشل إلغاء وصول RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "فشل إلغاء عنوان التقويم"
 
@@ -1607,6 +1641,10 @@ msgstr "عارض الصور: {0}"
 msgid "Imperial"
 msgstr "إمبراطوري"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "في {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "بما في ذلك المستخدمون المجهولون"
@@ -1665,7 +1703,7 @@ msgstr "في النهاية"
 msgid "Last day"
 msgstr "اليوم الأخير"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "آخر استخدام {0}"
@@ -1876,8 +1914,17 @@ msgstr "خطأ في الشبكة"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "أبداً"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "لا يتكرر"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "أبداً"
 
@@ -1889,6 +1936,10 @@ msgstr "جديد"
 msgctxt "sort order"
 msgid "New"
 msgstr "الأحدث"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "تم نسخ عنوان التقويم الجديد إلى الحافظة"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "التكرارات"
 msgid "On"
 msgstr "مفعّل"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "أيام {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "في تاريخ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "في {day} الخامس"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "في {day} الأول"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "في {day} الرابع"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "في {day} الأخير"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "في اليوم الأخير من الشهر"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "في {day} الثاني"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "في {day} الثالث"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "التكرار"
 msgid "Repeats"
 msgstr "يتكرر"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "استبدال"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "إعادة المحاولة"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "إلغاء"
 
@@ -2463,13 +2546,13 @@ msgstr "إلغاء"
 msgid "Revoke access"
 msgstr "إلغاء الوصول"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "إلغاء وصول RSS؟"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "إلغاء عنوان التقويم؟"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "السبت"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "حفظ"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "لم تتم الإجابة على طلب الكاميرا"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "لن يتمكن الجهاز من مزامنة التقويمات بعد الآن."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "لن يتمكن الجهاز من مزامنة جهات الاتصال أو التقويمات بعد الآن."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "هذا والأحداث التالية"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "لا يُسمح لهذا التطبيق باستخدام مفتاح المرور الخاص بك. اسمح له في الإعدادات، ضمن الأذونات."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "تم إصدار عنوان التقويم هذا مسبقاً ولا يمكن عرضه مرة أخرى."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "لا يوجد لهذا التقويم عنوان لإلغائه"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "غير معروف"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "إلغاء الاشتراك"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "حتى {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

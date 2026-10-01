@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#মি} other {#মি}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#সপ্তা} other {#সপ্তা}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {মাসের {days} তারিখে} other {মাসের {days} তারিখে}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# দিন আগে} other {# দিন আগে}
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} নাম"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ঘণ্টা আগে} other {# ঘণ্ট�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ঘণ্টা} other {# ঘণ্টা}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {প্রতিদিন} other {প্রতি # দিন অন্তর}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {প্রতি মাসে} other {প্রতি # মাস অন্তর}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {প্রতি সপ্তাহে} other {প্রতি # সপ্তাহ অন্তর}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {প্রতি বছর} other {প্রতি # বছর অন্তর}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# মিনিট আগে} other {# মিনিট আগে}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ড্র প্রস্তাব করেছে"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}-এর মধ্যে {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {একবার} other {# বার}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "অন্য Mochi বা CalDAV সার্ভার"
 msgid "Anyone"
 msgstr "যে কেউ"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "যে কেউ লগ ইন করেছেন"
@@ -483,13 +507,18 @@ msgstr "ক্যালেন্ডার"
 msgid "Calendar access was not granted"
 msgstr "ক্যালেন্ডার অ্যাক্সেস দেওয়া হয়নি"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ক্যালেন্ডারের ঠিকানা"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "ক্যালেন্ডারের ঠিকানা ক্লিপবোর্ডে কপি করা হয়েছে"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "ক্যালেন্ডারের ঠিকানা প্রত্যাহার করা হয়েছে"
 
@@ -536,6 +565,11 @@ msgstr "ক্যালেন্ডার হালনাগাদ আছে"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ক্যালেন্ডার"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "এই ঠিকানায় সদস্যতা নেওয়া ক্যালেন্ডারগুলো আর হালনাগাদ হবে না।"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "অনুসন্ধান পরিষ্কার করুন"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "বন্ধ করুন"
 
@@ -898,7 +933,7 @@ msgstr "নতুন আইটেম তৈরি করুন"
 msgid "Created"
 msgstr "তৈরি হয়েছে"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "তৈরি {0}"
@@ -1134,7 +1169,6 @@ msgstr "প্রয়োজনীয় প্যাটার্নের স�
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "সম্পন্ন"
@@ -1276,6 +1310,7 @@ msgstr "ইভেন্ট সরানো হয়েছে"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "ইভেন্ট সংরক্ষণ করা হয়েছে"
 
@@ -1376,7 +1411,7 @@ msgstr "ইভেন্ট মুছে ফেলা যায়নি"
 msgid "Failed to get RSS token"
 msgstr "RSS টোকেন পেতে ব্যর্থ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ক্যালেন্ডারের ঠিকানা পাওয়া যায়নি"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "ক্যালেন্ডার লিঙ্ক করা যায়নি"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "লোড করতে ব্যর্থ"
 
@@ -1455,7 +1489,7 @@ msgstr "প্রম্পট রিসেট করতে ব্যর্থ"
 msgid "Failed to revoke RSS access"
 msgstr "RSS অ্যাক্সেস প্রত্যাহার করা ব্যর্থ হয়েছে"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ক্যালেন্ডারের ঠিকানা প্রত্যাহার করা যায়নি"
 
@@ -1607,6 +1641,10 @@ msgstr "ছবি দর্শক: {0}"
 msgid "Imperial"
 msgstr "ইম্পেরিয়াল"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} মাসে"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "বেনামী ব্যবহারকারী সহ"
@@ -1665,7 +1703,7 @@ msgstr "শেষে"
 msgid "Last day"
 msgstr "শেষ দিন"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "সর্বশেষ ব্যবহার {0}"
@@ -1876,8 +1914,17 @@ msgstr "নেটওয়ার্ক ত্রুটি"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "এখনও হয়নি"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "পুনরাবৃত্তি হয় না"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "কখনই না"
 
@@ -1889,6 +1936,10 @@ msgstr "নতুন"
 msgctxt "sort order"
 msgid "New"
 msgstr "নতুনতম"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "নতুন ক্যালেন্ডারের ঠিকানা ক্লিপবোর্ডে কপি করা হয়েছে"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "পুনরাবৃত্তির সংখ্যা"
 msgid "On"
 msgstr "চালু"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "সপ্তাহের দিন: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "একটি তারিখে"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "পঞ্চম {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "প্রথম {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "চতুর্থ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "শেষ {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "মাসের শেষ দিনে"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "দ্বিতীয় {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "তৃতীয় {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "পুনরাবৃত্তি"
 msgid "Repeats"
 msgstr "পুনরাবৃত্ত হয়"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "প্রতিস্থাপন করুন"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "আবার চেষ্টা করুন"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "প্রত্যাহার করুন"
 
@@ -2463,13 +2546,13 @@ msgstr "প্রত্যাহার করুন"
 msgid "Revoke access"
 msgstr "অ্যাক্সেস প্রত্যাহার করুন"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS অ্যাক্সেস প্রত্যাহার করবেন?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "ক্যালেন্ডারের ঠিকানা প্রত্যাহার করবেন?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "শনিবার"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "সংরক্ষণ করুন"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "ক্যামেরা অনুরোধের উত্তর দেওয়া হয়নি"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "ডিভাইসটি আর ক্যালেন্ডার সিঙ্ক করতে পারবে না।"
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "ডিভাইসটি আর পরিচিতি বা ক্যালেন্ডার সিঙ্ক করতে পারবে না।"
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "এটি এবং পরবর্তীগুলি"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "এই অ্যাপটিকে আপনার পাসকি ব্যবহারের অনুমতি নেই। সেটিংসে, অনুমতির অধীনে এটির অনুমতি দিন।"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "এই ক্যালেন্ডারের ঠিকানা আগেই ইস্যু করা হয়েছে এবং আবার দেখানো যাবে না।"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "এই ক্যালেন্ডারের প্রত্যাহার করার মতো কোনো ঠিকানা নেই"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "অজানা"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "আনসাবস্ক্রাইব করুন"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} পর্যন্ত"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

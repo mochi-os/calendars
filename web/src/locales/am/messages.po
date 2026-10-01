@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ደ} other {#ደ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ሳ} other {#ሳ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {ቀን {days}} other {ቀናት {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# ቀን በፊት} other {# ቀናት በፊት}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "የ{entityLabel} ስም"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}፣ {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# ሰዓት በፊት} other {# ሰዓታት በፊ
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ሰዓት} other {# ሰዓታት}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {በየቀኑ} other {በየ# ቀኑ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {በየወሩ} other {በየ# ወሩ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {በየሳምንቱ} other {በየ# ሳምንቱ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {በየዓመቱ} other {በየ# ዓመቱ}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# ደቂቃ በፊት} other {# ደቂቃዎች በፊት}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} አቻ አቅርቧል"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} ከ {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {አንድ ጊዜ} other {# ጊዜ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "ሌላ Mochi ወይም CalDAV ሰርቨር"
 msgid "Anyone"
 msgstr "ማንኛውም ሰው"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "የገባ ማንኛውም ሰው"
@@ -483,13 +507,18 @@ msgstr "የቀን መቁጠሪያ"
 msgid "Calendar access was not granted"
 msgstr "የቀን መቁጠሪያ መዳረሻ አልተፈቀደም"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "የቀን መቁጠሪያ አድራሻ"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "የቀን መቁጠሪያ አድራሻ ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "የቀን መቁጠሪያ አድራሻ ተሽሯል"
 
@@ -536,6 +565,11 @@ msgstr "የቀን መቁጠሪያው ወቅታዊ ነው"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "የቀን መቁጠሪያዎች"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "በዚህ አድራሻ የተመዘገቡ የቀን መቁጠሪያዎች መዘመን ያቆማሉ።"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "ፍለጋ አጽዳ"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "ዝጋ"
 
@@ -898,7 +933,7 @@ msgstr "አዲስ ንጥል ፍጠር"
 msgid "Created"
 msgstr "ተፈጥሯል"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "የተፈጠረ {0}"
@@ -1134,7 +1169,6 @@ msgstr "ከሚያስፈልገው ስርዓተ ጥለት ጋር አይዛመድ�
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "ተጠናቅቋል"
@@ -1276,6 +1310,7 @@ msgstr "ክስተት ተንቀሳቅሷል"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "ክስተት ተቀምጧል"
 
@@ -1376,7 +1411,7 @@ msgstr "ክስተቱን መሰረዝ አልተሳካም"
 msgid "Failed to get RSS token"
 msgstr "የRSS ቶከን ማግኘት አልተሳካም"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "የቀን መቁጠሪያ አድራሻን ማግኘት አልተሳካም"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "የቀን መቁጠሪያውን ማገናኘት አልተሳካም"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "መጫን አልተሳካም"
 
@@ -1455,7 +1489,7 @@ msgstr "ጥያቄን እንደገና ማስጀመር አልተሳካም"
 msgid "Failed to revoke RSS access"
 msgstr "የRSS መዳረሻን መሻር አልተቻለም"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "የቀን መቁጠሪያ አድራሻን መሻር አልተሳካም"
 
@@ -1607,6 +1641,10 @@ msgstr "የምስል መመልከቻ፦ {0}"
 msgid "Imperial"
 msgstr "ኢምፔሪያል"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "በ{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "ማንነታቸው ያልታወቁ ተጠቃሚዎችን ጨምሮ"
@@ -1665,7 +1703,7 @@ msgstr "መጨረሻ ላይ"
 msgid "Last day"
 msgstr "የመጨረሻው ቀን"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "የመጨረሻ ጥቅም {0}"
@@ -1876,10 +1914,19 @@ msgstr "የአውታረ መረብ ስህተት"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "በፍፁም"
+msgstr "የለም"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "አይደገምም"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "አያበቃም"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "አዲስ"
 msgctxt "sort order"
 msgid "New"
 msgstr "አዳዲስ"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "አዲስ የቀን መቁጠሪያ አድራሻ ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "ድግግሞሾች"
 msgid "On"
 msgstr "በርቷል"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "በ{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "በተወሰነ ቀን"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "በአምስተኛው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "በመጀመሪያው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "በአራተኛው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "በመጨረሻው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "በወሩ የመጨረሻ ቀን"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "በሁለተኛው {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "በሦስተኛው {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "ድግግሞሽ"
 msgid "Repeats"
 msgstr "ይደገማል"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "ተካ"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "እንደገና ሞክር"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "ይሻሩ"
 
@@ -2463,13 +2546,13 @@ msgstr "ይሻሩ"
 msgid "Revoke access"
 msgstr "መዳረሻን ሻር"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "የRSS መዳረሻ ይሻር?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "የቀን መቁጠሪያ አድራሻው ይሻር?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "ቅዳሜ"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "ያስቀምጡ"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "የካሜራ ጥያቄው መልስ አላገኘም"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "መሳሪያው ከእንግዲህ የቀን መቁጠሪያዎችን ማመሳሰል አይችልም።"
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "መሳሪያው ከእንግዲህ እውቂያዎችን ወይም የቀን መቁጠሪያዎችን ማመሳሰል አይችልም።"
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "ይህ እና ቀጣዮቹ"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ይህ መተግበሪያ የእርስዎን ፓስኪ እንዲጠቀም አልተፈቀደለትም። በቅንብሮች ውስጥ፣ በፈቃዶች ስር ይፍቀዱለት።"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "ይህ የቀን መቁጠሪያ አድራሻ ቀደም ብሎ ተሰጥቷል እና እንደገና ሊታይ አይችልም።"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ይህ የቀን መቁጠሪያ የሚሻር አድራሻ የለውም"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "ያልታወቀ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ምዝገባ ያቋርጡ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "እስከ {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mnt} other {#mnt}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#mgg} other {#mgg}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {dina tanggal {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# poé saméméhna}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Ngaran {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# jam saméméhna}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# jam}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Unggal poé} other {Unggal # poé}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Unggal bulan} other {Unggal # bulan}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Unggal minggu} other {Unggal # minggu}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Unggal taun} other {Unggal # taun}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# menit saméméhna}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} nawarkeun séri"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} tina {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {sakali} other {# kali}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Server Mochi atawa CalDAV séjén"
 msgid "Anyone"
 msgstr "Saha waé"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Saha waé anu asup"
@@ -483,13 +507,18 @@ msgstr "Kalénder"
 msgid "Calendar access was not granted"
 msgstr "Aksés kalénder henteu dipasihkeun"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Alamat kalénder"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Alamat kalénder disalin ka clipboard"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Alamat kalénder dicabut"
 
@@ -536,6 +565,11 @@ msgstr "Kalénder geus panganyarna"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalénder"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalénder anu ngalanggan alamat ieu moal dianyarkeun deui."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Bersihkeun panéangan"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Tutup"
 
@@ -898,7 +933,7 @@ msgstr "Jieun item anyar"
 msgid "Created"
 msgstr "Dijieun"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Dijieun {0}"
@@ -1134,7 +1169,6 @@ msgstr "Teu cocog jeung pola nu diperlukeun"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Beres"
@@ -1276,6 +1310,7 @@ msgstr "Acara dipindahkeun"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Acara disimpen"
 
@@ -1376,7 +1411,7 @@ msgstr "Gagal mupus acara"
 msgid "Failed to get RSS token"
 msgstr "Gagal meunangkeun token RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Gagal meunangkeun alamat kalénder"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Gagal ngahubungkeun kalénder"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Gagal mungkahan"
 
@@ -1455,7 +1489,7 @@ msgstr "Gagal ngareset prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Gagal nyabut aksés RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Gagal nyabut alamat kalénder"
 
@@ -1607,6 +1641,10 @@ msgstr "Panempo gambar: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "dina bulan {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Kaasup pamaké anonim"
@@ -1665,7 +1703,7 @@ msgstr "Di tungtung"
 msgid "Last day"
 msgstr "Poé panungtung"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Dipake panungtung {0}"
@@ -1876,10 +1914,19 @@ msgstr "Kasalahan jaringan"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "Tara"
+msgstr "Can kungsi"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Henteu diulang"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "Moal réngsé"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "Anyar"
 msgctxt "sort order"
 msgid "New"
 msgstr "Panganyarna"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Alamat kalénder anyar disalin ka clipboard"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Jumlah kajadian"
 msgid "On"
 msgstr "Hurung"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dina {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Dina tanggal"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "dina {day} kalima"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "dina {day} kahiji"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "dina {day} kaopat"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "dina {day} panungtung"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "dina poé panungtung bulan"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "dina {day} kadua"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "dina {day} katilu"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Pangulangan"
 msgid "Repeats"
 msgstr "Diulang"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Ganti"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Cobian deui"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Cabut"
 
@@ -2463,13 +2546,13 @@ msgstr "Cabut"
 msgid "Revoke access"
 msgstr "Cabut aksés"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Batalkeun aksés RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Cabut alamat kalénder?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Saptu"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Simpen"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Paménta kaméra teu diwaler"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Alat moal bisa deui nyingkronkeun kalénder."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Pakakas moal bisa nyingkronkeun kontak atawa kalénder deui."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Ieu jeung saterusna"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Aplikasi ieu teu diidinan ngagunakeun passkey anjeun. Idinan dina Setélan, dina bagian Idin."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Alamat kalénder ieu geus dikaluarkeun sarta teu bisa ditémbongkeun deui."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Kalénder ieu teu boga alamat pikeun dicabut"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Teu dipikanyaho"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Hentikeun langganan"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "nepi ka {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

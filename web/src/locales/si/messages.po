@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#මි} other {#මි}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#සති} other {#සති}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} වන දින} other {{days} යන දිනවල}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {දින #කට පෙර} other {දින #ක�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} නම"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {පැය #කට පෙර} other {පැය #ක�
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {පැය #ක්} other {පැය #ක්}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {සෑම දිනකම} other {සෑම දින #කට වරක්}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {සෑම මාසයකම} other {සෑම මාස #කට වරක්}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {සෑම සතියකම} other {සෑම සති #කට වරක්}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {සෑම වසරකම} other {සෑම වසර #කට වරක්}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {මිනිත්තු #කට පෙර} other {මිනිත්තු #කට පෙර}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} ජය පරාජය ඉදිරිපත් කළා
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}න් {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {එක් වරක්} other {# වරක්}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "වෙනත් Mochi හෝ CalDAV සේවාදායකයක්"
 msgid "Anyone"
 msgstr "ඕනෑම කෙනෙක්"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "පිවිසී සිටින ඕනෑම කෙනෙක්"
@@ -483,13 +507,18 @@ msgstr "දින දර්ශනය"
 msgid "Calendar access was not granted"
 msgstr "දින දර්ශන ප්‍රවේශය ලබා දී නැත"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "දින දර්ශනයේ ලිපිනය ක්ලිප්බෝඩ් වෙත පිටපත් කරන ලදී"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "දින දර්ශනයේ ලිපිනය අවලංගු කරන ලදී"
 
@@ -536,6 +565,11 @@ msgstr "දින දර්ශනය යාවත්කාලීනයි"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "දින දර්ශන"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "මෙම ලිපිනයට දායක වූ දින දර්ශන යාවත්කාලීන වීම නවතිනු ඇත."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "සෙවුම හිස් කරන්න"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "වසන්න"
 
@@ -898,7 +933,7 @@ msgstr "නව අයිතමයක් නිර්මාණය කරන්න
 msgid "Created"
 msgstr "නිර්මාණය කරන ලදී"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "සාදන ලදී {0}"
@@ -1134,7 +1169,6 @@ msgstr "අවශ්‍ය රටාවට නොගැළපේ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "නිමයි"
@@ -1276,6 +1310,7 @@ msgstr "සිදුවීම ගෙන යන ලදී"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "සිදුවීම සුරකින ලදී"
 
@@ -1376,7 +1411,7 @@ msgstr "සිදුවීම මැකීමට අසමත් විය"
 msgid "Failed to get RSS token"
 msgstr "RSS ටෝකනය ලබා ගැනීමට අසමත් විය"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය ලබා ගැනීමට අසමත් විය"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "දින දර්ශනය සම්බන්ධ කිරීමට අසමත් විය"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "පූරණය කිරීමට අසමත් විය"
 
@@ -1455,7 +1489,7 @@ msgstr "විමසුම යළි පිහිටුවීමට අසමත
 msgid "Failed to revoke RSS access"
 msgstr "RSS ප්‍රවේශය අවලංගු කිරීමට අසමත් විය"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය අවලංගු කිරීමට අසමත් විය"
 
@@ -1607,6 +1641,10 @@ msgstr "රූප දර්ශකය: {0}"
 msgid "Imperial"
 msgstr "ඉම්පීරියල්"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} මාසයේ"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "නිර්නාමික පරිශීලකයන් ඇතුළුව"
@@ -1665,7 +1703,7 @@ msgstr "අවසානයේ"
 msgid "Last day"
 msgstr "අවසන් දිනය"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "අවසන් භාවිතය {0}"
@@ -1876,10 +1914,19 @@ msgstr "ජාල දෝෂය"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "කවදාවත්"
+msgstr "තවම නැත"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "පුනරාවර්තනය නොවේ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "අවසන් නොවේ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "අලුත්"
 msgctxt "sort order"
 msgid "New"
 msgstr "නවතම"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "නව දින දර්ශන ලිපිනය ක්ලිප්බෝඩ් වෙත පිටපත් කරන ලදී"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "පුනරාවර්තන"
 msgid "On"
 msgstr "සක්‍රීයයි"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} දිනවල"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "දිනයක දී"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "පස්වන {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "පළමු {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "සිව්වන {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "අවසන් {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "මාසයේ අවසන් දිනයේ"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "දෙවන {day} දින"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "තෙවන {day} දින"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "පුනරාවර්තනය"
 msgid "Repeats"
 msgstr "පුනරාවර්තනය වේ"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "ප්‍රතිස්ථාපනය"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "නැවත උත්සාහ කරන්න"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "අවලංගු කරන්න"
 
@@ -2463,13 +2546,13 @@ msgstr "අවලංගු කරන්න"
 msgid "Revoke access"
 msgstr "ප්‍රවේශය අවලංගු කරන්න"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS ප්‍රවේශය අවලංගු කරන්නද?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "දින දර්ශනයේ ලිපිනය අවලංගු කරන්නද?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "සෙනසුරාදා"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "සුරකින්න"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "කැමරා ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "උපාංගයට තවදුරටත් දින දර්ශන සමමුහුර්ත කළ නොහැක."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "උපාංගයට තවදුරටත් සම්බන්ධතා හෝ දින දර්ශන සමමුහුර්ත කළ නොහැක."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "මෙය සහ ඉදිරි ඒවා"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "මෙම යෙදුමට ඔබගේ මුරයතුර භාවිතා කිරීමට අවසර නැත. සැකසුම් තුළ, අවසර යටතේ එයට ඉඩ දෙන්න."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "මෙම දින දර්ශන ලිපිනය දැනටමත් නිකුත් කර ඇති අතර එය නැවත පෙන්විය නොහැක."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "මෙම දින දර්ශනයට අවලංගු කිරීමට ලිපිනයක් නැත"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "නොදන්නා"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "දායකත්වය ඉවත් කරන්න"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} දක්වා"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

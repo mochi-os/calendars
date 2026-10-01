@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import { body, form, quiet } from '@/api/request'
 import type {
   BoundsResponse,
   Component,
@@ -11,15 +12,6 @@ import type {
   EventResponse,
   InstancesResponse,
 } from '@/api/types/events'
-
-const quiet = { mochi: { showGlobalErrorToast: false } } as const
-
-const form = {
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-} as const
-
-const body = (fields: Record<string, string>) =>
-  new URLSearchParams(fields).toString()
 
 export interface CreateEvent {
   calendar?: string
@@ -52,7 +44,7 @@ export interface SplitEvent {
   copy?: boolean
 }
 
-export interface SplitResponse {
+interface SplitResponse {
   event: Event
   following: Event
 }

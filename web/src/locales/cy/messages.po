@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, zero {ar ddyddiau {days}} one {ar ddiwrnod {days}} two {ar ddyddiau {days}} few {ar ddyddiau {days}} many {ar ddyddiau {days}} other {ar ddyddiau {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, zero {# diwrnod ynghynt} one {# diwrnod ynghynt} two {# d
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Enw {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, zero {# awr ynghynt} one {# awr ynghynt} two {# awr yngh
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, zero {# awr} one {# awr} two {# awr} few {# awr} many {# awr} other {# awr}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, zero {Bob # diwrnod} one {Bob dydd} two {Bob # ddiwrnod} few {Bob # diwrnod} many {Bob # diwrnod} other {Bob # diwrnod}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, zero {Bob # mis} one {Bob mis} two {Bob # fis} few {Bob # mis} many {Bob # mis} other {Bob # mis}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, zero {Bob # wythnos} one {Bob wythnos} two {Bob # wythnos} few {Bob # wythnos} many {Bob # wythnos} other {Bob # wythnos}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, zero {Bob # blynedd} one {Bob blwyddyn} two {Bob # flynedd} few {Bob # blynedd} many {Bob # blynedd} other {Bob # blynedd}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, zero {# munud ynghynt} one {# munud ynghynt} two {# funud ynghynt} few {# munud ynghynt} many {# munud ynghynt} other {# munud ynghynt}}"
@@ -120,6 +144,10 @@ msgstr "Cynigiodd {opponentName} gêm gyfartal"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} o {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, zero {# gwaith} one {unwaith} two {dwywaith} few {# gwaith} many {# gwaith} other {# gwaith}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Gweinydd Mochi neu CalDAV arall"
 msgid "Anyone"
 msgstr "Unrhyw un"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Unrhyw un sydd wedi mewngofnodi"
@@ -483,13 +507,18 @@ msgstr "Calendr"
 msgid "Calendar access was not granted"
 msgstr "Ni roddwyd mynediad i'r calendr"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Cyfeiriad y calendr"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Cyfeiriad y calendr wedi'i gopïo i'r clipfwrdd"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Cyfeiriad y calendr wedi'i ddirymu"
 
@@ -536,6 +565,11 @@ msgstr "Mae'r calendr yn gyfredol"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Calendrau"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Bydd calendrau sydd wedi tanysgrifio i'r cyfeiriad hwn yn peidio â chael eu diweddaru."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Clirio chwiliad"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Cau"
 
@@ -898,7 +933,7 @@ msgstr "Creu eitem newydd"
 msgid "Created"
 msgstr "Wedi'i greu"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Wedi'i greu {0}"
@@ -1134,7 +1169,6 @@ msgstr "Nid yw'n cyfateb i'r patrwm gofynnol"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Wedi gorffen"
@@ -1276,6 +1310,7 @@ msgstr "Digwyddiad wedi'i symud"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Digwyddiad wedi'i gadw"
 
@@ -1376,7 +1411,7 @@ msgstr "Methwyd dileu'r digwyddiad"
 msgid "Failed to get RSS token"
 msgstr "Methwyd cael tocyn RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Methwyd cael cyfeiriad y calendr"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Methwyd cysylltu'r calendr"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Methwyd llwytho"
 
@@ -1455,7 +1489,7 @@ msgstr "Methwyd ailosod yr anogiad"
 msgid "Failed to revoke RSS access"
 msgstr "Methwyd â dirymu mynediad RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Methwyd dirymu cyfeiriad y calendr"
 
@@ -1607,6 +1641,10 @@ msgstr "Gwyliwr delweddau: {0}"
 msgid "Imperial"
 msgstr "Imperialaidd"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ym mis {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Gan gynnwys defnyddwyr dienw"
@@ -1665,7 +1703,7 @@ msgstr "Yn olaf"
 msgid "Last day"
 msgstr "Diwrnod olaf"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Defnyddiwyd ddiwethaf {0}"
@@ -1876,8 +1914,17 @@ msgstr "Gwall rhwydwaith"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "erioed"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Dim ailadrodd"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Byth"
 
@@ -1889,6 +1936,10 @@ msgstr "Newydd"
 msgctxt "sort order"
 msgid "New"
 msgstr "Diweddaraf"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Cyfeiriad calendr newydd wedi'i gopïo i'r clipfwrdd"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Achlysuron"
 msgid "On"
 msgstr "Ymlaen"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "bob {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Ar ddyddiad"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ar y pumed {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ar y {day} cyntaf"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ar y pedwerydd {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ar y {day} olaf"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ar ddiwrnod olaf y mis"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "yn yr ail wythnos: {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ar y trydydd {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Ailadrodd"
 msgid "Repeats"
 msgstr "Yn ailadrodd"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Newid"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Ail-geisio"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Dirymu"
 
@@ -2463,13 +2546,13 @@ msgstr "Dirymu"
 msgid "Revoke access"
 msgstr "Dirymu mynediad"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Dirymu mynediad RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Dirymu cyfeiriad y calendr?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Dydd Sadwrn"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Cadw"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Ni chafodd y cais camera ei ateb"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Ni fydd y ddyfais yn gallu cysoni calendrau mwyach."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Ni fydd y ddyfais yn gallu cysoni cysylltiadau na chalendrau mwyach."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Hwn a'r rhai canlynol"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Nid yw'r ap hwn yn cael defnyddio eich pasallwedd. Caniatewch hynny yn Gosodiadau, o dan Caniatadau."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Cafodd cyfeiriad y calendr hwn ei gyhoeddi eisoes ac ni ellir ei ddangos eto."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Nid oes gan y calendr hwn gyfeiriad i'w ddirymu"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Anhysbys"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Dad-danysgrifio"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "tan {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

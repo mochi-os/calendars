@@ -43,7 +43,6 @@ import {
   usePollCalendarMutation,
 } from '@/hooks/use-calendars'
 import { useIcsCopy } from '@/hooks/use-ics-copy'
-import { AddressDialogs } from '@/features/calendar/dialogs/address-dialogs'
 import { ColourDialog } from '@/features/calendar/dialogs/colour-dialog'
 import { ConnectDialog } from '@/features/calendar/dialogs/connect-dialog'
 import { PreferencesDialog } from '@/features/calendar/dialogs/preferences-dialog'
@@ -334,6 +333,7 @@ export function CalendarsLayout() {
         icon={CalendarDays}
         title={t`Create calendar`}
         entityLabel={t`calendar`}
+        maximum={100}
         showDescription={false}
         showColour
         onSubmit={create}
@@ -360,9 +360,10 @@ export function CalendarsLayout() {
 
       <ConnectDialog open={connectOpen} onOpenChange={setConnectOpen} />
 
-      <AddressDialogs state={dialogs} />
 
       <EventEditor />
+
+      {dialogs}
 
       <ConfirmDialog
         open={deleting !== null}

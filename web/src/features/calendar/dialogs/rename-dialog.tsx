@@ -37,7 +37,7 @@ export function RenameDialog({ calendar, onClose }: Props) {
   }, [calendar])
 
   const submit = async () => {
-    if (!calendar) return
+    if (!calendar || name.trim() === '' || renameMutation.isPending) return
     try {
       await toastAction(
         renameMutation.mutateAsync({
@@ -78,6 +78,7 @@ export function RenameDialog({ calendar, onClose }: Props) {
           <Input
             id='calendar-name'
             value={name}
+            maxLength={100}
             onChange={(event) => setName(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'Enter') void submit()

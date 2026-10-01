@@ -4,19 +4,37 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { render, screen } from '@testing-library/react'
-import { afterEach, describe, it, expect, vi } from 'vitest'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { beforeEach, describe, it, expect, vi } from 'vitest'
 import type { Instance } from '@/api/types/events'
 import { Agenda } from './agenda'
 
 const calendar = { id: 'c1', name: 'Test calendar', colour: '#60a5fa' }
-const { typed } = vi.hoisted(() => ({ typed: { search: '' } }))
+
+// What the list is given and what it asked for, per test.
+const state = vi.hoisted(() => ({
+  search: '',
+  date: '2026-09-22',
+  first: 0,
+  failed: false,
+  retry: vi.fn(),
+  pages: [] as { start: number; finish: number }[],
+}))
+
+beforeEach(() => {
+  state.search = ''
+  state.date = '2026-09-22'
+  state.first = 0
+  state.failed = false
+  state.retry.mockReset()
+  state.pages = []
+})
 
 vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => ({
     preferences: { zones: false },
-    search: typed.search,
-    date: '2026-09-22',
+    search: state.search,
+    date: state.date,
     today: '2026-09-22',
     calendars: [calendar],
     visible: [calendar],
@@ -45,8 +63,12 @@ const instance = (day: number, summary: string): Instance => ({
 })
 
 vi.mock('@/hooks/use-events', () => ({
-  useBoundsQuery: () => ({ data: { first: 0, last: 0, endless: false } }),
-  useInstancePages: () => ({
+  useBoundsQuery: () => ({
+    data: { first: state.first, last: 0, endless: false },
+  }),
+  useInstancePages: (pages: { start: number; finish: number }[]) => {
+    state.pages = pages
+    return {
     instances: [
       instance(22, 'Design review'),
       { ...instance(23, 'Wax boots'), recurring: true, alarm: true },
@@ -63,7 +85,10 @@ vi.mock('@/hooks/use-events', () => ({
       },
     ],
     pending: false,
-  }),
+    failed: state.failed,
+    retry: state.retry,
+    }
+  },
 }))
 
 function show(selected?: string) {
@@ -81,12 +106,8 @@ function show(selected?: string) {
 }
 
 describe('Agenda search', () => {
-  afterEach(() => {
-    typed.search = ''
-  })
-
   it('says a search matched nothing, rather than that there are no events', () => {
-    typed.search = 'dentist'
+    state.search = 'dentist'
     render(
       <I18nProvider i18n={i18n}>
         <Agenda onSelect={vi.fn()} />
@@ -97,7 +118,7 @@ describe('Agenda search', () => {
   })
 
   it('lists what a search matched', () => {
-    typed.search = 'boots'
+    state.search = 'boots'
     render(
       <I18nProvider i18n={i18n}>
         <Agenda onSelect={vi.fn()} />
@@ -220,5 +241,43 @@ describe('Agenda event states', () => {
     show(`e22:${noon(2026, 9, 22)}`)
     expect(row('Design review').classList.contains('bg-primary/10')).toBe(true)
     expect(row('Wax boots').classList.contains('bg-primary/10')).toBe(false)
+  })
+})
+
+describe('Agenda states', () => {
+  it('offers earlier events when the first is before 1970, such as a birthday', () => {
+    state.first = -1_000_000_000
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(screen.getByText('Earlier events')).toBeInTheDocument()
+  })
+
+  it('stops the earlier pages at 1970, which is as far back as the server lists', () => {
+    state.first = -1_000_000_000
+    state.date = '1970-02-01'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    fireEvent.click(screen.getByText('Earlier events'))
+    expect(state.pages[0].start).toBe(0)
+    expect(screen.queryByText('Earlier events')).toBeNull()
+  })
+
+  it('says a failed page failed, with a way to try again, rather than reading as empty', () => {
+    state.failed = true
+    state.search = 'nothing like this'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(screen.queryByText('No events')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
+    expect(state.retry).toHaveBeenCalledTimes(1)
   })
 })

@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useEffect } from 'react'
+import { useRef } from 'react'
 import { useLingui } from '@lingui/react/macro'
-import { getErrorMessage, toast, useFormat } from '@mochi/web'
+import { GeneralError, getErrorMessage, toast, useFormat } from '@mochi/web'
 import { Trash2 } from 'lucide-react'
 import { deletedOccurrence, truncatedSeries, type Scope } from '@/lib/ical'
 import {
@@ -43,20 +43,14 @@ export function DeleteEventDialog({
 }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { data, error, isFetching, refetch } = useEventQuery(event)
+  const { data, isError, error, refetch } = useEventQuery(event)
   const stored = data?.event
-
-  // A load that failed leaves nothing to delete, and the buttons wait on it,
-  // so say why and close rather than sit there. A cached failure being
-  // fetched again is not one yet.
-  useEffect(() => {
-    if (!event || !error || isFetching || stored) return
-    toast.error(getErrorMessage(error, t`Failed to load`))
-    onClose()
-  }, [event, error, isFetching, stored, onClose, t])
   const createMutation = useCreateEventMutation()
   const deleteMutation = useDeleteEventMutation()
   const updateMutation = useUpdateEventMutation()
+  // A second click lands before the mutation says it is pending, so the
+  // dialog keeps its own note of a delete under way.
+  const running = useRef(false)
   const pending = deleteMutation.isPending || updateMutation.isPending
 
   // What Undo puts back, as a move's does. A whole event comes back as a new
@@ -76,8 +70,8 @@ export function DeleteEventDialog({
     })
 
   const remove = async (scope: Scope) => {
-    // A second click while the first is in flight would delete twice.
-    if (!stored || pending) return
+    if (!stored || running.current) return
+    running.current = true
     try {
       // The series ending before this occurrence, or nothing at all when
       // this is its first, which makes the deletion one of the whole series.
@@ -128,6 +122,8 @@ export function DeleteEventDialog({
         return
       }
       toast.error(getErrorMessage(failure, t`Failed to delete the event`))
+    } finally {
+      running.current = false
     }
   }
 
@@ -136,15 +132,22 @@ export function DeleteEventDialog({
       open={event !== null}
       title={t`Delete this event`}
       recurring={stored ? stored.recurring : recurring}
-      // Nothing can be deleted before the stored event loads, so the buttons
-      // wait for it rather than take a click that does nothing.
-      pending={pending || !stored}
       destructive
       icon={<Trash2 className='size-4' />}
+      disabled={!stored}
+      pending={pending}
       onOpenChange={(open) => {
         if (!open) onClose()
       }}
       onChoose={(scope) => void remove(scope)}
-    />
+    >
+      {isError && !stored && (
+        <GeneralError
+          mode='inline'
+          error={error}
+          reset={() => void refetch()}
+        />
+      )}
+    </ScopeDialog>
   )
 }

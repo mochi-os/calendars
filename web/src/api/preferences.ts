@@ -4,9 +4,8 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import { quiet } from '@/api/request'
 import type { Preferences, PreferencesResponse } from '@/api/types/preferences'
-
-const quiet = { mochi: { showGlobalErrorToast: false } } as const
 
 export const preferencesApi = {
   get: (): Promise<PreferencesResponse> =>

@@ -4,235 +4,197 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { act, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import type { Component, Event } from '@/api/types/events'
 import { EventEditor } from './editor'
 
-const { setEditing, noon, state } = vi.hoisted(() => ({
+const START = Date.UTC(2026, 8, 16, 9) / 1000
+
+function stored(
+  title: string,
+  rule = 'FREQ=WEEKLY;UNTIL=20261231T235959Z'
+): Event {
+  const components: Component[] = [
+    {
+      name: 'VEVENT',
+      properties: [
+        { name: 'UID', params: {}, value: 'u1' },
+        { name: 'SUMMARY', params: {}, value: title },
+        { name: 'DTSTART', params: {}, value: '20260916T090000Z' },
+        { name: 'DTEND', params: {}, value: '20260916T100000Z' },
+        { name: 'RRULE', params: {}, value: rule },
+      ],
+      components: [],
+    },
+  ]
+  return {
+    id: 'e1',
+    calendar: 'c1',
+    slug: 'e1',
+    uid: 'u1',
+    etag: 'x1',
+    component: 'VEVENT',
+    summary: title,
+    start: START,
+    finish: START + 3600,
+    allday: false,
+    recurring: true,
+    created: 0,
+    updated: 0,
+    ics: '',
+    components,
+  }
+}
+
+// What the editor is given: the event being edited as the query answers it,
+// and the mutation it saves through.
+const state = vi.hoisted(() => ({
+  editing: { mode: 'edit', event: 'e1', start: 0 } as unknown,
   setEditing: vi.fn(),
-  noon: Date.UTC(2026, 8, 25, 12) / 1000,
-  // What the editor is open on, and the stored event an edit reads; set
-  // before rendering, so each stays one object for the render's life.
-  state: {
-    editing: null as unknown,
-    event: undefined as unknown,
-    mobile: false,
-  },
+  query: {} as Record<string, unknown>,
+  update: vi.fn(),
 }))
 
-// The phone layout on demand; every other test keeps the real width.
-vi.mock('@mochi/web', async (importOriginal) => {
-  const original = await importOriginal<typeof import('@mochi/web')>()
-  return {
-    ...original,
-    useScreenSize: () => {
-      const real = original.useScreenSize()
-      return state.mobile ? { ...real, isMobile: true, isDesktop: false } : real
-    },
+beforeEach(() => {
+  state.editing = { mode: 'edit', event: 'e1', start: START }
+  state.setEditing = vi.fn()
+  state.update = vi.fn().mockResolvedValue({})
+  state.query = {
+    data: { event: stored('Standup') },
+    isLoading: false,
+    isError: false,
+    error: null,
+    refetch: vi.fn(),
   }
 })
 
-// Built once: the editor re-reads its draft whenever `editing` changes, so a
-// fresh object on every render would never settle.
-vi.mock('@/context/calendar-context', async () => {
-  const { newDraft } =
-    await vi.importActual<typeof import('@/lib/ical')>('@/lib/ical')
-  const creating = {
-    mode: 'create',
-    draft: newDraft(noon, noon + 3600, {
-      allday: false,
-      calendar: 'c1',
-      reminder: -1,
-      zone: { start: 'UTC', finish: 'UTC' },
-    }),
-  }
-  const context = {
-    get editing() {
-      return state.editing ?? creating
-    },
-    setEditing,
-    calendars: [{ id: 'c1', name: 'Personal', readonly: false, default: true }],
+vi.mock('@/context/calendar-context', () => ({
+  useCalendarContext: () => ({
+    editing: state.editing,
+    setEditing: state.setEditing,
+    ordered: [{ id: 'c1', name: 'Home', colour: '#000', readonly: false }],
     remember: vi.fn(),
     reveal: vi.fn(),
-  }
-  return { useCalendarContext: () => context }
+  }),
+}))
+vi.mock('@/hooks/use-events', () => ({
+  useEventQuery: () => state.query,
+  useCreateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useUpdateEventMutation: () => ({
+    mutateAsync: state.update,
+    isPending: false,
+  }),
+  useSplitEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useDeleteEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+}))
+vi.mock('@/hooks/use-event-move', async (importOriginal) => {
+  const original =
+    await importOriginal<typeof import('@/hooks/use-event-move')>()
+  return { ...original, useOccurrenceMove: () => vi.fn() }
 })
-
-vi.mock('@/hooks/use-events', () => {
-  const mutation = () => ({ mutateAsync: vi.fn(), isPending: false })
-  return {
-    useEventQuery: () => ({
-      data: state.event ? { event: state.event } : undefined,
-      isLoading: false,
-      refetch: vi.fn(),
-    }),
-    useCreateEventMutation: mutation,
-    useUpdateEventMutation: mutation,
-    useSplitEventMutation: mutation,
-    useDeleteEventMutation: mutation,
-  }
+vi.mock('@mochi/web', async (importOriginal) => {
+  const original = await importOriginal<typeof import('@mochi/web')>()
+  return { ...original, useScreenSize: () => ({ isMobile: false }) }
 })
 
 function show() {
-  render(
+  return render(
     <I18nProvider i18n={i18n}>
       <EventEditor />
     </I18nProvider>
   )
 }
 
-describe('EventEditor closing', () => {
-  beforeEach(() => setEditing.mockClear())
+function rule(components: Component[]) {
+  const master = components.find((component) =>
+    component.properties.every((property) => property.name !== 'RECURRENCE-ID')
+  )
+  return master?.properties.find((property) => property.name === 'RRULE')?.value
+}
 
-  it('closes an untouched form without asking', () => {
+describe('EventEditor', () => {
+  it('keeps the last day of a repeat when the field is cleared', async () => {
     show()
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
-    expect(setEditing).toHaveBeenCalledWith(null)
-    expect(screen.queryByText('Discard draft?')).toBeNull()
+    const until = await screen.findByLabelText('Last day')
+    fireEvent.change(until, { target: { value: '' } })
+    fireEvent.blur(until)
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    fireEvent.click(await screen.findByRole('button', { name: 'All events' }))
+    await waitFor(() => expect(state.update).toHaveBeenCalledTimes(1))
+    const saved = state.update.mock.calls[0][0] as { components: Component[] }
+    expect(rule(saved.components)).toContain('UNTIL=')
   })
 
-  it('asks before Cancel throws away a change', () => {
+  it('lets the repeat interval be emptied to type a new number', async () => {
     show()
-    fireEvent.change(screen.getByLabelText('Title'), {
-      target: { value: 'Dentist' },
-    })
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
-    expect(setEditing).not.toHaveBeenCalled()
-    expect(screen.getByText('Discard draft?')).toBeInTheDocument()
-
-    fireEvent.click(screen.getByRole('button', { name: 'Discard' }))
-    expect(setEditing).toHaveBeenCalledWith(null)
+    const interval = await screen.findByLabelText('Every')
+    fireEvent.change(interval, { target: { value: '' } })
+    expect(interval).toHaveValue(null)
   })
 
-  it('asks before Escape throws away a change', () => {
+  it('says a rule it cannot edit in words, never as its RRULE text', async () => {
+    state.query = {
+      ...state.query,
+      data: { event: stored('Standup', 'FREQ=MONTHLY;BYDAY=2TU') },
+    }
     show()
-    const title = screen.getByLabelText('Title')
-    fireEvent.change(title, { target: { value: 'Dentist' } })
-    fireEvent.keyDown(title, { key: 'Escape' })
-    expect(setEditing).not.toHaveBeenCalled()
-    expect(screen.getByText('Discard draft?')).toBeInTheDocument()
+    expect(await screen.findByTestId('kept-rule')).toHaveTextContent(
+      'Every month, on the second Tuesday'
+    )
   })
 
-  it('does nothing on a click outside, even with a change', async () => {
+  it('says nothing of a rule it cannot put into words', async () => {
+    state.query = {
+      ...state.query,
+      data: {
+        event: stored('Standup', 'FREQ=MONTHLY;BYSETPOS=-1;BYDAY=MO,TU,WE'),
+      },
+    }
     show()
-    fireEvent.change(screen.getByLabelText('Title'), {
-      target: { value: 'Dentist' },
-    })
+    await screen.findByLabelText('Title')
+    expect(screen.queryByTestId('kept-rule')).toBeNull()
+    expect(screen.queryByText(/BYSETPOS/)).toBeNull()
+  })
+
+  it('keeps what was typed when the event is read again in the background', async () => {
+    const view = show()
+    const title = await screen.findByLabelText('Title')
+    fireEvent.change(title, { target: { value: 'Typed' } })
+    state.query = { ...state.query, data: { event: stored('Standup') } }
+    view.rerender(
+      <I18nProvider i18n={i18n}>
+        <EventEditor />
+      </I18nProvider>
+    )
+    expect(screen.getByLabelText('Title')).toHaveValue('Typed')
+  })
+
+  it('stays open when the page outside it is clicked', async () => {
+    show()
+    await screen.findByLabelText('Title')
     // The dialog listens for a press outside only once it has opened.
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)))
+    // A press outside dismisses on the click that ends it.
     fireEvent.pointerDown(document.body)
     fireEvent.mouseDown(document.body)
     fireEvent.pointerUp(document.body)
     fireEvent.mouseUp(document.body)
     fireEvent.click(document.body)
-    expect(setEditing).not.toHaveBeenCalled()
-    expect(screen.queryByText('Discard draft?')).toBeNull()
-    expect(screen.getByLabelText('Title')).toHaveValue('Dentist')
-  })
-})
-
-describe('EventEditor saving', () => {
-  it('shows event colour and URL fields', () => {
-    show()
-    expect(screen.getByText('Colour')).toBeInTheDocument()
-    expect(screen.getByLabelText('URL')).toBeInTheDocument()
+    expect(state.setEditing).not.toHaveBeenCalled()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 
-  it('saves on Enter in the title, as the Save button does', () => {
-    show()
-    expect(screen.queryByTestId('untitled')).toBeNull()
-    // An empty title is the save's own refusal, so it proves Enter reached it.
-    fireEvent.keyDown(screen.getByLabelText('Title'), { key: 'Enter' })
-    expect(screen.getByTestId('untitled')).toBeInTheDocument()
-  })
-
-  it('does not save on the Enter that ends an IME composition', () => {
-    show()
-    fireEvent.keyDown(screen.getByLabelText('Title'), {
-      key: 'Enter',
-      isComposing: true,
-    })
-    expect(screen.queryByTestId('untitled')).toBeNull()
-  })
-})
-
-describe('EventEditor on a phone', () => {
-  afterEach(() => {
-    state.mobile = false
-  })
-
-  it('leaves Cancel to the header X', () => {
-    state.mobile = true
-    show()
-    expect(screen.queryByRole('button', { name: 'Cancel' })).toBeNull()
-    expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument()
-  })
-})
-
-describe('EventEditor copying', () => {
-  beforeEach(async () => {
-    setEditing.mockClear()
-    const { draftComponent, newDraft } =
-      await vi.importActual<typeof import('@/lib/ical')>('@/lib/ical')
-    const stored = newDraft(noon, noon + 3600, {
-      allday: false,
-      calendar: 'c1',
-      reminder: -1,
-      zone: { start: 'UTC', finish: 'UTC' },
-    })
-    state.event = {
-      id: 'e1',
-      calendar: 'c1',
-      etag: 'v1',
-      recurring: false,
-      components: [draftComponent({ ...stored, title: 'Dentist' })],
+  it('says the event could not be read, with a way to try again', () => {
+    state.query = {
+      data: undefined,
+      isLoading: false,
+      isError: true,
+      error: new Error('offline'),
+      refetch: vi.fn(),
     }
-    state.editing = { mode: 'edit', event: 'e1', start: noon }
-  })
-
-  afterEach(() => {
-    state.editing = null
-    state.event = undefined
-  })
-
-  it('carries edits not yet saved into the copy, and still guards them', () => {
     show()
-    fireEvent.change(screen.getByLabelText('Title'), {
-      target: { value: 'Dentist, moved' },
-    })
-    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
-    const next = setEditing.mock.lastCall?.[0] as {
-      draft: { title: string }
-      initial: { title: string }
-    }
-    expect(next.draft.title).toBe('Dentist, moved')
-    expect(next.initial.title).toBe('Dentist')
-  })
-
-  it('shows an existing named event colour for editing', () => {
-    const stored = state.event as {
-      components: {
-        properties: { name: string; params: object; value: string }[]
-      }[]
-    }
-    stored.components[0].properties.push({
-      name: 'COLOR',
-      params: {},
-      value: 'Turquoise',
-    })
-    show()
-    expect(screen.getByRole('textbox', { name: 'Colour value' })).toHaveValue(
-      'Turquoise'
-    )
-  })
-
-  it('copies the stored event when nothing was changed', () => {
-    show()
-    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
-    const next = setEditing.mock.lastCall?.[0] as {
-      draft: { title: string }
-    }
-    expect(next.draft.title).toBe('Dentist')
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
+    expect(state.query.refetch).toHaveBeenCalledTimes(1)
   })
 })

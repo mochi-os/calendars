@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sav} other {#sav}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {dieną: {days}} one {dienomis: {days}} few {dienomis: {days}} many {dienomis: {days}} other {dienomis: {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {prieš # dieną} few {prieš # dienas} many {prieš 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} pavadinimas"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {prieš # valandą} few {prieš # valandas} many {pr
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# valanda} few {# valandos} many {# valandos} other {# valandų}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Kasdien} one {Kas # dieną} few {Kas # dienas} many {Kas # dienos} other {Kas # dienų}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Kas mėnesį} one {Kas # mėnesį} few {Kas # mėnesius} many {Kas # mėnesio} other {Kas # mėnesių}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Kas savaitę} one {Kas # savaitę} few {Kas # savaites} many {Kas # savaitės} other {Kas # savaičių}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Kasmet} one {Kas # metus} few {Kas # metus} many {Kas # metų} other {Kas # metų}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {prieš # minutę} few {prieš # minutes} many {prieš # minutės} other {prieš # minučių}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} pasiūlė lygiąsias"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} iš {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {vieną kartą} one {# kartą} few {# kartus} many {# karto} other {# kartų}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Kitas Mochi arba CalDAV serveris"
 msgid "Anyone"
 msgstr "Bet kas"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Bet kas, kas prisijungęs"
@@ -483,13 +507,18 @@ msgstr "Kalendorius"
 msgid "Calendar access was not granted"
 msgstr "Prieiga prie kalendoriaus nesuteikta"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Kalendoriaus adresas"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Kalendoriaus adresas nukopijuotas į iškarpinę"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Kalendoriaus adresas atšauktas"
 
@@ -536,6 +565,11 @@ msgstr "Kalendorius atnaujintas"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendoriai"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Kalendoriai, užsiprenumeravę šį adresą, nebebus atnaujinami."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Išvalyti paiešką"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Uždaryti"
 
@@ -898,7 +933,7 @@ msgstr "Sukurti naują elementą"
 msgid "Created"
 msgstr "Sukurta"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Sukurta {0}"
@@ -1134,7 +1169,6 @@ msgstr "Neatitinka reikalaujamo šablono"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Atlikta"
@@ -1276,6 +1310,7 @@ msgstr "Įvykis perkeltas"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Įvykis išsaugotas"
 
@@ -1376,7 +1411,7 @@ msgstr "Nepavyko ištrinti įvykio"
 msgid "Failed to get RSS token"
 msgstr "Nepavyko gauti RSS raktelio"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Nepavyko gauti kalendoriaus adreso"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Nepavyko susieti kalendoriaus"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Nepavyko įkelti"
 
@@ -1455,7 +1489,7 @@ msgstr "Nepavyko atstatyti raginimo"
 msgid "Failed to revoke RSS access"
 msgstr "Nepavyko atšaukti RSS prieigos"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Nepavyko atšaukti kalendoriaus adreso"
 
@@ -1607,6 +1641,10 @@ msgstr "Paveikslėlių peržiūra: {0}"
 msgid "Imperial"
 msgstr "Imperinė"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "mėnesiais: {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Įskaitant anoniminius naudotojus"
@@ -1665,7 +1703,7 @@ msgstr "Pabaigoje"
 msgid "Last day"
 msgstr "Paskutinė diena"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Paskutinį kartą naudotas {0}"
@@ -1876,8 +1914,17 @@ msgstr "Tinklo klaida"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "niekada"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Nesikartoja"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Niekada"
 
@@ -1889,6 +1936,10 @@ msgstr "Naujas"
 msgctxt "sort order"
 msgid "New"
 msgstr "Naujausi"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Naujas kalendoriaus adresas nukopijuotas į iškarpinę"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Pasikartojimai"
 msgid "On"
 msgstr "Įjungta"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "dienomis: {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Nurodytą dieną"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "penktasis {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "pirmasis {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ketvirtasis {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "paskutinis {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "paskutinę mėnesio dieną"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "antrasis {day}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "trečiasis {day}"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Kartojimas"
 msgid "Repeats"
 msgstr "Kartojasi"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Pakeisti"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Bandyti dar kartą"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Atšaukti"
 
@@ -2463,13 +2546,13 @@ msgstr "Atšaukti"
 msgid "Revoke access"
 msgstr "Atšaukti prieigą"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Atšaukti RSS prieigą?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Atšaukti kalendoriaus adresą?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Šeštadienis"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Išsaugoti"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Į kameros užklausą neatsakyta"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Įrenginys nebegalės sinchronizuoti kalendorių."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Įrenginys nebegalės sinchronizuoti kontaktų ar kalendorių."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Šis ir vėlesni"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Šiai programai neleidžiama naudoti jūsų slaptarakčio. Leiskite tai Nustatymuose, skiltyje Leidimai."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Šis kalendoriaus adresas jau buvo išduotas ir jo nebus galima parodyti dar kartą."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Šis kalendorius neturi adreso, kurį būtų galima atšaukti"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Nežinoma"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Atšaukti prenumeratą"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "iki {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

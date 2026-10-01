@@ -21,6 +21,9 @@ export const useCreateTokenMutation = () => {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: (name: string) => tokensApi.create(name),
+    // The result is the device's password: once the dialog lets go of it, the
+    // cache drops it too rather than holding it for the default five minutes.
+    gcTime: 0,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: tokenKeys.all() })
     },

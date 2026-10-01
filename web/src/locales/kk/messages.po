@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#апта} other {#апта}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {айдың {days} күні} other {айдың {days} күндері}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# күн бұрын} other {# күн бұрын}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} атауы"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# сағат бұрын} other {# сағат бұр
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# сағат} other {# сағат}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Күн сайын} other {Әр # күн сайын}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Ай сайын} other {Әр # ай сайын}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Апта сайын} other {Әр # апта сайын}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Жыл сайын} other {Әр # жыл сайын}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# минут бұрын} other {# минут бұрын}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} тең ойын ұсынды"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} ішінен {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {бір рет} other {# рет}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Басқа Mochi немесе CalDAV сервері"
 msgid "Anyone"
 msgstr "Кез келген адам"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Кірген кез келген адам"
@@ -483,13 +507,18 @@ msgstr "Күнтізбе"
 msgid "Calendar access was not granted"
 msgstr "Күнтізбеге қол жеткізу берілмеді"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Күнтізбе мекенжайы"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Күнтізбе мекенжайы алмасу буферіне көшірілді"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Күнтізбе мекенжайы қайтарып алынды"
 
@@ -536,6 +565,11 @@ msgstr "Күнтізбе жаңартылған"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Күнтізбелер"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Осы мекенжайға жазылған күнтізбелер бұдан былай жаңартылмайды."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Іздеуді тазалау"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Жабу"
 
@@ -898,7 +933,7 @@ msgstr "Жаңа тармақ құру"
 msgid "Created"
 msgstr "Құрылды"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "{0} құрылды"
@@ -1134,7 +1169,6 @@ msgstr "Қажетті үлгіге сәйкес келмейді"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Дайын"
@@ -1276,6 +1310,7 @@ msgstr "Іс-шара жылжытылды"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Іс-шара сақталды"
 
@@ -1376,7 +1411,7 @@ msgstr "Іс-шараны жою сәтсіз аяқталды"
 msgid "Failed to get RSS token"
 msgstr "RSS токенін алу сәтсіз аяқталды"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Күнтізбе мекенжайын алу сәтсіз аяқталды"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Күнтізбені байланыстыру сәтсіз аяқталды"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Жүктеу сәтсіз аяқталды"
 
@@ -1455,7 +1489,7 @@ msgstr "Жолдамасын қалпына келтіру сәтсіз аяқт
 msgid "Failed to revoke RSS access"
 msgstr "RSS кіру құқығын қайтарып алу сәтсіз аяқталды"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Күнтізбе мекенжайын қайтарып алу сәтсіз аяқталды"
 
@@ -1607,6 +1641,10 @@ msgstr "Сурет көрушісі: {0}"
 msgid "Imperial"
 msgstr "Империялық"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} айында"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Анонимді пайдаланушыларды қоса"
@@ -1665,7 +1703,7 @@ msgstr "Соңында"
 msgid "Last day"
 msgstr "Соңғы күн"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Соңғы пайдаланылды {0}"
@@ -1876,8 +1914,17 @@ msgstr "Желі қатесі"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "Ешқашан"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Қайталанбайды"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Ешқашан"
 
@@ -1889,6 +1936,10 @@ msgstr "Жаңа"
 msgctxt "sort order"
 msgid "New"
 msgstr "Ең жаңа"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Жаңа күнтізбе мекенжайы алмасу буферіне көшірілді"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Қайталану саны"
 msgid "On"
 msgstr "Қосулы"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} күндері"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Белгілі күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "бесінші {day} күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "бірінші {day} күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "төртінші {day} күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "соңғы {day} күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "айдың соңғы күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "екінші {day} күні"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "үшінші {day} күні"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Қайталау"
 msgid "Repeats"
 msgstr "Қайталанады"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Алмастыру"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Қайталап көру"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Қайтарып алу"
 
@@ -2463,13 +2546,13 @@ msgstr "Қайтарып алу"
 msgid "Revoke access"
 msgstr "Кіруді қайтарып алу"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS қатынасы қайтарылсын ба?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Күнтізбе мекенжайын қайтарып аласыз ба?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Сенбі"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Сақтау"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Камера сұрауына жауап берілмеді"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Құрылғы енді күнтізбелерді синхрондай алмайды."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Құрылғы енді контактілерді немесе күнтізбелерді синхрондай алмайды."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Бұл және келесілері"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Бұл қолданбаға сіздің кіру кілтіңізді пайдалануға рұқсат жоқ. Параметрлердегі Рұқсаттар бөлімінде рұқсат беріңіз."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Бұл күнтізбе мекенжайы бұрын берілген және қайта көрсетілмейді."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Бұл күнтізбеде қайтарып алатын мекенжай жоқ"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Белгісіз"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Жазылудан бас тарту"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} дейін"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

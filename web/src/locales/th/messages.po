@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#น} other {#น}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, other {ในวันที่ {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# วันก่อน}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ชื่อ {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# ชั่วโมงก่อน}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# ชั่วโมง}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {ทุกวัน} other {ทุก # วัน}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {ทุกเดือน} other {ทุก # เดือน}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {ทุกสัปดาห์} other {ทุก # สัปดาห์}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {ทุกปี} other {ทุก # ปี}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# นาทีก่อน}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} เสนอเสมอ"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} จาก {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {ครั้งเดียว} other {# ครั้ง}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "เซิร์ฟเวอร์ Mochi หรือ CalDAV อื่น
 msgid "Anyone"
 msgstr "ใครก็ได้"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "ใครก็ตามที่เข้าสู่ระบบ"
@@ -483,13 +507,18 @@ msgstr "ปฏิทิน"
 msgid "Calendar access was not granted"
 msgstr "ไม่ได้รับอนุญาตให้เข้าถึงปฏิทิน"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "ที่อยู่ปฏิทิน"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "คัดลอกที่อยู่ปฏิทินไปยังคลิปบอร์ดแล้ว"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "เพิกถอนที่อยู่ปฏิทินแล้ว"
 
@@ -536,6 +565,11 @@ msgstr "ปฏิทินเป็นข้อมูลล่าสุดแล
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "ปฏิทิน"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "ปฏิทินที่สมัครรับที่อยู่นี้จะไม่ได้รับการปรับปรุงอีก"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "ล้างการค้นหา"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "ปิด"
 
@@ -898,7 +933,7 @@ msgstr "สร้างรายการใหม่"
 msgid "Created"
 msgstr "สร้างแล้ว"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "สร้าง {0}"
@@ -1134,7 +1169,6 @@ msgstr "ไม่ตรงกับรูปแบบที่กำหนด"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "เสร็จสิ้น"
@@ -1276,6 +1310,7 @@ msgstr "ย้ายกิจกรรมแล้ว"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "บันทึกกิจกรรมแล้ว"
 
@@ -1376,7 +1411,7 @@ msgstr "ไม่สามารถลบกิจกรรมได้"
 msgid "Failed to get RSS token"
 msgstr "ไม่สามารถรับโทเคน RSS ได้"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ไม่สามารถรับที่อยู่ปฏิทินได้"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "ไม่สามารถเชื่อมโยงปฏิทินได้"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "ไม่สามารถโหลดได้"
 
@@ -1455,7 +1489,7 @@ msgstr "ไม่สามารถรีเซ็ตพรอมต์ได้
 msgid "Failed to revoke RSS access"
 msgstr "ไม่สามารถเพิกถอนการเข้าถึง RSS ได้"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "ไม่สามารถเพิกถอนที่อยู่ปฏิทินได้"
 
@@ -1607,6 +1641,10 @@ msgstr "โปรแกรมดูรูปภาพ: {0}"
 msgid "Imperial"
 msgstr "อิมพีเรียล"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "ในเดือน{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "รวมถึงผู้ใช้ที่ไม่ระบุตัวตน"
@@ -1665,7 +1703,7 @@ msgstr "ไว้ด้านล่าง"
 msgid "Last day"
 msgstr "วันสุดท้าย"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "ใช้ครั้งล่าสุด {0}"
@@ -1876,10 +1914,19 @@ msgstr "ข้อผิดพลาดของเครือข่าย"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
+msgctxt "last used"
 msgid "Never"
-msgstr "ไม่เลย"
+msgstr "ยังไม่เคย"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "ไม่ทำซ้ำ"
+
+#: src/features/calendar/editor.tsx
+msgctxt "repeat end"
+msgid "Never"
+msgstr "ไม่สิ้นสุด"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "New"
@@ -1889,6 +1936,10 @@ msgstr "ใหม่"
 msgctxt "sort order"
 msgid "New"
 msgstr "ใหม่ล่าสุด"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "คัดลอกที่อยู่ปฏิทินใหม่ไปยังคลิปบอร์ดแล้ว"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "จำนวนครั้ง"
 msgid "On"
 msgstr "เปิด"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "ใน{days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ในวันที่"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ใน{day}ที่ 5 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "ใน{day}ที่ 1 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "ใน{day}ที่ 4 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "ใน{day}สุดท้ายของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "ในวันสุดท้ายของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "ใน{day}ที่ 2 ของเดือน"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "ใน{day}ที่ 3 ของเดือน"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "ทำซ้ำ"
 msgid "Repeats"
 msgstr "ทำซ้ำ"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "แทนที่"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "ลองอีกครั้ง"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "เพิกถอน"
 
@@ -2463,13 +2546,13 @@ msgstr "เพิกถอน"
 msgid "Revoke access"
 msgstr "เพิกถอนการเข้าถึง"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "เพิกถอนการเข้าถึง RSS หรือไม่"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "เพิกถอนที่อยู่ปฏิทินหรือไม่"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "วันเสาร์"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "บันทึก"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "คำขอกล้องไม่ได้รับการตอบกลับ"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "อุปกรณ์จะไม่สามารถซิงค์ปฏิทินได้อีกต่อไป"
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "อุปกรณ์จะไม่สามารถซิงค์รายชื่อผู้ติดต่อหรือปฏิทินได้อีกต่อไป"
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "กิจกรรมนี้และกิจกรรมถัดไ
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "แอปนี้ไม่ได้รับอนุญาตให้ใช้พาสคีย์ของคุณ อนุญาตได้ในการตั้งค่า ภายใต้สิทธิ์"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "ที่อยู่ปฏิทินนี้ออกให้ไปแล้วและไม่สามารถแสดงซ้ำได้"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "ปฏิทินนี้ไม่มีที่อยู่ให้เพิกถอน"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "ไม่ทราบ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "ยกเลิกการติดตาม"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "จนถึง {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

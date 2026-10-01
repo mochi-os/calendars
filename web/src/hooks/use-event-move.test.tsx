@@ -5,7 +5,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Component, Instance } from '@/api/types/events'
 import {
@@ -17,7 +17,7 @@ import {
   propertyValue,
   type EventDraft,
 } from '@/lib/ical'
-import { useEventMove } from './use-event-move'
+import { leavesSeries, useEventMove } from './use-event-move'
 
 const ZONE = 'UTC'
 
@@ -33,10 +33,20 @@ const toasts = vi.hoisted(() => ({
   error: vi.fn(),
 }))
 
+// The user's own zone, when a test needs one other than the browser's.
+const user = vi.hoisted(() => ({ zone: '' }))
+
 vi.mock('@/api/events', () => ({ eventsApi: api }))
 vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
-  return { ...original, toast: toasts }
+  return {
+    ...original,
+    toast: toasts,
+    useFormat: () => {
+      const format = original.useFormat()
+      return user.zone ? { ...format, timezone: user.zone } : format
+    },
+  }
 })
 
 function draft(overrides: Partial<EventDraft> = {}): EventDraft {
@@ -104,9 +114,9 @@ const undo = () => {
   options.action.onClick()
 }
 
-function mover(reveal?: (calendar: string) => void) {
+function mover(reveal?: (calendar: string) => void, zones = false) {
   const client = new QueryClient()
-  return renderHook(() => useEventMove(reveal), {
+  return renderHook(() => useEventMove({ reveal, zones }), {
     wrapper: ({ children }) => (
       <I18nProvider i18n={i18n}>
         <QueryClientProvider client={client}>{children}</QueryClientProvider>
@@ -119,6 +129,7 @@ beforeEach(() => {
   for (const mock of [...Object.values(api), ...Object.values(toasts)]) {
     mock.mockReset()
   }
+  user.zone = ''
   api.update.mockImplementation((body: { event: string }) =>
     Promise.resolve({ event: { id: body.event, etag: 'v2', calendar: 'cal1' } })
   )
@@ -364,6 +375,114 @@ describe('useEventMove', () => {
     const written = api.update.mock.calls[0][0]
     expect(written.components).toEqual(
       deletedOccurrence([series], at('20260917T090000'), ZONE)
+    )
+  })
+
+  it('takes the copy back when the series cannot be written, so the occurrence is not in both calendars', async () => {
+    const series = draftComponent(draft({ repeat: daily }))
+    api.get.mockResolvedValue(stored([series], true))
+    api.update.mockRejectedValue({ status: 412 })
+    const { current } = mover()
+    await act(() =>
+      current.toCalendar(occurrence(at('20260917T090000'), true), 'cal2')('one')
+    )
+    expect(api.create).toHaveBeenCalledTimes(1)
+    expect(api.delete).toHaveBeenCalledWith('e2', 'n1')
+    expect(toasts.error).toHaveBeenCalledWith(
+      'This event changed somewhere else.'
+    )
+    expect(toasts.success).not.toHaveBeenCalled()
+  })
+
+  it('leaves a series only for one occurrence written into another calendar', () => {
+    expect(leavesSeries(true, 'one', 'cal1', 'cal2')).toBe(true)
+    expect(leavesSeries(true, 'one', 'cal1', 'cal1')).toBe(false)
+    expect(leavesSeries(true, 'one', 'cal1')).toBe(false)
+    expect(leavesSeries(true, 'all', 'cal1', 'cal2')).toBe(false)
+    expect(leavesSeries(false, 'one', 'cal1', 'cal2')).toBe(false)
+  })
+
+  it('waits for a move being saved before the next, so the next reads it as saved', async () => {
+    let version = 'v1'
+    api.get.mockImplementation(() =>
+      Promise.resolve({
+        event: { ...stored([draftComponent(draft())], false).event, etag: version },
+      })
+    )
+    let release = () => {}
+    api.update.mockImplementationOnce(
+      (body: { event: string }) =>
+        new Promise((resolve) => {
+          release = () => {
+            version = 'v2'
+            resolve({ event: { id: body.event, etag: 'v2', calendar: 'cal1' } })
+          }
+        })
+    )
+    const { current } = mover()
+    const moved = occurrence(at('20260916T090000'), false)
+    let first: Promise<void> = Promise.resolve()
+    let second: Promise<void> = Promise.resolve()
+    act(() => {
+      first = current.toTime(moved, at('20260916T100000'), at('20260916T110000'))('all')
+      second = current.toTime(moved, at('20260916T120000'), at('20260916T130000'))('all')
+    })
+    await waitFor(() => expect(api.update).toHaveBeenCalled())
+    await act(async () => {
+      release()
+      await Promise.all([first, second])
+    })
+    expect(api.update).toHaveBeenCalledTimes(2)
+    expect(api.update.mock.calls[1][0].etag).toBe('v2')
+  })
+
+  it('moves an event by the days between where it is drawn and where it landed, in the user zone', async () => {
+    user.zone = 'Europe/Berlin'
+    const NY = 'America/New_York'
+    // 20:00 on Monday in New York is 02:00 on Tuesday in Berlin, where the
+    // month grid draws it while events show in the user's zone.
+    const evening = draftComponent(
+      draft({
+        start: '2026-09-14',
+        startTime: 20 * 60,
+        finish: '2026-09-14',
+        finishTime: 21 * 60,
+        zone: { start: NY, finish: NY },
+      })
+    )
+    api.get.mockResolvedValue(stored([evening], false))
+    const drawn = {
+      ...occurrence(Date.UTC(2026, 8, 15, 0) / 1000, false),
+      zone: { start: NY, finish: NY },
+    }
+    const { current } = mover()
+    await act(() => current.toDay(drawn, '2026-09-16')('all'))
+    expect(propertyValue(api.update.mock.calls[0][0].components[0], 'DTSTART')).toBe(
+      '20260915T200000'
+    )
+  })
+
+  it('moves an event by the days from its own date when events show in their own zones', async () => {
+    user.zone = 'Europe/Berlin'
+    const NY = 'America/New_York'
+    const evening = draftComponent(
+      draft({
+        start: '2026-09-14',
+        startTime: 20 * 60,
+        finish: '2026-09-14',
+        finishTime: 21 * 60,
+        zone: { start: NY, finish: NY },
+      })
+    )
+    api.get.mockResolvedValue(stored([evening], false))
+    const drawn = {
+      ...occurrence(Date.UTC(2026, 8, 15, 0) / 1000, false),
+      zone: { start: NY, finish: NY },
+    }
+    const { current } = mover(undefined, true)
+    await act(() => current.toDay(drawn, '2026-09-16')('all'))
+    expect(propertyValue(api.update.mock.calls[0][0].components[0], 'DTSTART')).toBe(
+      '20260916T200000'
     )
   })
 

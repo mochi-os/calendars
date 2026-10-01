@@ -85,7 +85,7 @@ export const NO_REMINDER = -1
 export const REMINDER_LEADS = [0, 5, 15, 30, 60, 1440]
 
 /** The reminders a new event opens with, from the default reminder preference. */
-export function defaultReminders(preference: number): number[] {
+function defaultReminders(preference: number): number[] {
   return preference === NO_REMINDER ? [] : [preference]
 }
 
@@ -135,6 +135,10 @@ export function property(
 ): Property | undefined {
   return component.properties.find((item) => item.name === name)
 }
+
+// propertyValue, utcValue, propertyInstant, repeatRule, ruleRepeat,
+// reminderTrigger, triggerMinutes, alarmMinutes and movedDraft are exported for
+// ical.test.ts as well as used here: pure helpers, tested directly.
 
 export function propertyValue(component: Component, name: string): string {
   return property(component, name)?.value ?? ''
@@ -1283,18 +1287,24 @@ export function newDraft(
     calendar: string
     reminder: number
     zone: { start: string; finish: string }
+    /** The user's own zone, which the day clicked on was in. */
+    user: string
   }
 ): EventDraft {
   const { zone } = options
   const begins = new Date(from * 1000)
   const ends = new Date(to * 1000)
+  // An all-day event goes on the day that was clicked, which is the user's;
+  // read in a remembered zone ahead of or behind it, it would land a day out.
+  const day = (date: Date, own: string) =>
+    zonedDay(date, options.allday ? options.user : own)
   return {
     title: '',
     calendar: options.calendar,
     allday: options.allday,
-    start: zonedDay(begins, zone.start),
+    start: day(begins, zone.start),
     startTime: zonedMinutes(begins, zone.start),
-    finish: zonedDay(ends, zone.finish),
+    finish: day(ends, zone.finish),
     finishTime: zonedMinutes(ends, zone.finish),
     zone: { ...zone },
     location: '',
@@ -1308,6 +1318,27 @@ export function newDraft(
 }
 
 /**
+ * The draft with its start moved to `day` at `minutes`, and its end moved by
+ * as much, so the event keeps its length: an end pushed past midnight lands
+ * on the next day rather than stopping at the end of this one.
+ */
+export function shiftedStart(
+  draft: EventDraft,
+  day: string,
+  minutes: number
+): EventDraft {
+  const end = draft.finishTime + (minutes - draft.startTime)
+  const carry = Math.floor(end / 1440)
+  return {
+    ...draft,
+    start: day,
+    startTime: minutes,
+    finish: addDays(draft.finish, daysBetween(draft.start, day) + carry),
+    finishTime: end - carry * 1440,
+  }
+}
+
+/**
  * The zones once the start's is set to `zone`: the end follows the start
  * while the two agree, under whichever of their names each was written.
  */
@@ -1317,32 +1348,6 @@ export function startZone(
 ): { start: string; finish: string } {
   const together = currentZone(zones.finish) === currentZone(zones.start)
   return { start: zone, finish: together ? zone : zones.finish }
-}
-
-/**
- * The draft with its start moved to a day and a clock, and its end moved by
- * the same amount, which is what every calendar does: the length the user set
- * is the thing worth keeping. An end pushed past midnight lands on the next
- * day rather than stopping at 23:59, and one pulled before midnight on the
- * day before.
- */
-export function movedStart(
-  draft: EventDraft,
-  day: string,
-  minutes: number
-): EventDraft {
-  // Minutes from midnight of the old start day, where both ends are measured.
-  const shift = daysBetween(draft.start, day) * 1440 + minutes - draft.startTime
-  const finish =
-    daysBetween(draft.start, draft.finish) * 1440 + draft.finishTime + shift
-  const days = Math.floor(finish / 1440)
-  return {
-    ...draft,
-    start: day,
-    startTime: minutes,
-    finish: addDays(draft.start, days),
-    finishTime: finish - days * 1440,
-  }
 }
 
 /**

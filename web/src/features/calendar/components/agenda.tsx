@@ -21,6 +21,7 @@ import {
   EventTitle,
   eventStatus,
   finished,
+  GeneralError,
   useFormat,
 } from '@mochi/web'
 import {
@@ -74,21 +75,31 @@ export function Agenda({ selected, onSelect }: Props) {
     const out: { start: number; finish: number }[] = []
     for (let page = -span.before; page < span.after; page++) {
       const from = addDays(span.anchor, page * PAGE)
+      // The server lists nothing before 1970, so a page stops there.
       out.push({
-        start: format.timestampAt(from, 0),
-        finish: format.timestampAt(addDays(from, PAGE), 0),
+        start: Math.max(0, format.timestampAt(from, 0)),
+        finish: Math.max(0, format.timestampAt(addDays(from, PAGE), 0)),
       })
     }
     return out
   }, [span, format])
 
   const bounds = useBoundsQuery(shown)
-  const { instances, pending } = useInstancePages(pages, shown, format.timezone)
+  const { instances, pending, failed, retry } = useInstancePages(
+    pages,
+    shown,
+    format.timezone
+  )
 
   const loadedFrom = pages[0].start
   const loadedTo = pages[pages.length - 1].finish
+  // A first event before 1970, such as a contact's birthday, is below zero;
+  // zero alone means there is none.
   const earlier = Boolean(
-    bounds.data && bounds.data.first > 0 && bounds.data.first < loadedFrom
+    bounds.data &&
+    bounds.data.first !== 0 &&
+    bounds.data.first < loadedFrom &&
+    loadedFrom > 0
   )
   const later = Boolean(
     bounds.data &&
@@ -146,21 +157,21 @@ export function Agenda({ selected, onSelect }: Props) {
 
   const more = useCallback(() => {
     const box = scroller.current
-    if (!box || pending || !later || !bottom.current) return
+    if (!box || pending || failed || !later || !bottom.current) return
     const frame = box.getBoundingClientRect()
     const rect = bottom.current.getBoundingClientRect()
     if (rect.top <= frame.bottom + 200) {
       setSpan((current) => ({ ...current, after: current.after + 1 }))
     }
-  }, [pending, later])
+  }, [pending, failed, later])
 
   const loadEarlier = useCallback(() => {
     const box = scroller.current
-    if (!box || pending || !earlier) return
+    if (!box || pending || failed || !earlier) return
     held.current = box.scrollHeight
     seeking.current = instances.length
     setSpan((current) => ({ ...current, before: current.before + 1 }))
-  }, [pending, earlier, instances.length])
+  }, [pending, failed, earlier, instances.length])
 
   useEffect(() => {
     if (pending || seeking.current === null) return
@@ -196,11 +207,16 @@ export function Agenda({ selected, onSelect }: Props) {
     }
   }, [instances])
 
-  const empty = !pending && instances.length === 0 && !earlier && !later
+  const empty =
+    !pending && !failed && instances.length === 0 && !earlier && !later
   // A search that matched nothing in everything there is to load, which is
   // not the same as a calendar with nothing on it.
   const unmatched =
-    search.trim() !== '' && !pending && matches.length === 0 && !later
+    search.trim() !== '' &&
+    !pending &&
+    !failed &&
+    matches.length === 0 &&
+    !later
 
   return (
     <div className='flex h-full min-h-0 flex-col'>
@@ -318,6 +334,9 @@ export function Agenda({ selected, onSelect }: Props) {
               </ul>
             </div>
           ))
+        )}
+        {failed && (
+          <GeneralError mode='inline' className='my-4' reset={retry} />
         )}
         {pending && (
           <p className='text-muted-foreground px-3 py-3 text-sm'>

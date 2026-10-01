@@ -37,7 +37,7 @@ export interface CalendarResponse {
 }
 
 export interface PollResponse {
-  changed: number
+  changed: boolean
   calendar: Calendar
 }
 

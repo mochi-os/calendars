@@ -6,110 +6,87 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Instance } from '@/api/types/events'
+import { DEFAULTS } from '@/hooks/use-preferences'
 import { CalendarPage } from './index'
 
-const { setEditing, listed, context } = vi.hoisted(() => {
-  const setEditing = vi.fn()
-  return {
-    setEditing,
-    // What the list offers to click, set by each test.
-    listed: { instance: null as unknown },
-    context: {
-      view: 'list',
-      range: { from: '2026-09-28', days: 7 },
-      date: '2026-09-30',
-      setDate: vi.fn(),
-      setView: vi.fn(),
-      today: '2026-09-30',
-      preferences: {
-        zones: false,
-        days: [1, 2, 3, 4, 5],
-        calendar: '',
-        reminder: -1,
-        hours: { start: 9, finish: 17 },
-        duration: 60,
-      },
-      visible: [],
-      calendars: [{ id: 'c1', name: 'Personal', readonly: false }],
-      workweek: false,
-      editing: null,
-      setEditing,
-      remembered: { allday: false },
-      reveal: vi.fn(),
-    },
+const calendar = { id: 'c1', name: 'Home', colour: '#000', readonly: false }
+
+// What the page is given: the calendars and their state, and the range's
+// occurrences as the query answers them.
+const state = vi.hoisted(() => ({
+  visible: [] as unknown[],
+  failed: false,
+  reload: vi.fn(),
+  query: {
+    data: undefined as unknown,
+    isSuccess: true,
+    isPlaceholderData: false,
+    isError: false,
+    error: null as unknown,
+    refetch: vi.fn(),
+  },
+}))
+
+beforeEach(() => {
+  state.visible = [calendar]
+  state.failed = false
+  state.reload.mockReset()
+  state.query = {
+    data: { instances: [] },
+    isSuccess: true,
+    isPlaceholderData: false,
+    isError: false,
+    error: null,
+    refetch: vi.fn(),
   }
 })
 
 vi.mock('@/context/calendar-context', () => ({
-  useCalendarContext: () => context,
+  useCalendarContext: () => ({
+    view: 'month',
+    range: { from: '2026-08-31', days: 42, date: '2026-09-15' },
+    date: '2026-09-15',
+    setDate: vi.fn(),
+    setView: vi.fn(),
+    today: '2026-09-15',
+    preferences: DEFAULTS,
+    visible: state.visible,
+    calendars: state.visible,
+    workweek: false,
+    editing: null,
+    setEditing: vi.fn(),
+    remembered: {},
+    reveal: vi.fn(),
+    failed: state.failed,
+    reload: state.reload,
+  }),
 }))
 vi.mock('@/hooks/use-events', () => ({
-  useInstancesQuery: () => ({ data: undefined }),
+  useInstancesQuery: () => state.query,
 }))
-vi.mock('@/hooks/use-event-move', () => ({
-  useEventMove: () => ({}),
+vi.mock('@/hooks/use-event-move', () => ({ useEventMove: () => ({}) }))
+vi.mock('@/hooks/use-reminder', () => ({ useReminder: () => undefined }))
+vi.mock('@/features/calendar/components/toolbar', () => ({ Toolbar: () => null }))
+vi.mock('@/features/calendar/components/agenda', () => ({ Agenda: () => null }))
+vi.mock('@/features/calendar/components/event-popover', () => ({
+  EventPopover: () => null,
+}))
+vi.mock('@/features/calendar/components/scope-dialog', () => ({
+  ScopeDialog: () => null,
 }))
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => vi.fn(),
   useSearch: () => ({}),
 }))
-vi.mock('@/features/calendar/components/toolbar', () => ({
-  Toolbar: () => null,
-}))
-// The list is only a way to click an occurrence here.
-vi.mock('@/features/calendar/components/agenda', () => ({
-  Agenda: ({
-    onSelect,
-  }: {
-    onSelect: (instance: Instance, anchor: HTMLElement) => void
-  }) => (
-    <button
-      type='button'
-      onClick={(click) =>
-        onSelect(listed.instance as Instance, click.currentTarget)
-      }
-    >
-      occurrence
-    </button>
-  ),
-}))
-// The summary popover as the actions it was handed.
-vi.mock('@/features/calendar/components/event-popover', () => ({
-  EventPopover: (props: {
-    instance: Instance | null
-    onCopy?: (instance: Instance) => void
-  }) =>
-    props.instance ? (
-      <div data-testid='summary'>
-        {props.onCopy && (
-          <button type='button' onClick={() => props.onCopy!(props.instance!)}>
-            onCopy
-          </button>
-        )}
-      </div>
-    ) : null,
-}))
-
-const start = Date.UTC(2026, 8, 30, 9) / 1000
-
-function occurrence(overrides: Partial<Instance> = {}): Instance {
+vi.mock('@mochi/web', async (importOriginal) => {
+  const original = await importOriginal<typeof import('@mochi/web')>()
   return {
-    event: 'e1',
-    calendar: 'c1',
-    summary: 'Standup',
-    location: '',
-    description: '',
-    colour: '',
-    start,
-    finish: start + 3600,
-    allday: false,
-    readonly: false,
-    recurring: false,
-    exception: false,
-    ...overrides,
-  } as Instance
-}
+    ...original,
+    MonthGrid: () => <div>month grid</div>,
+    TimeGrid: () => <div>time grid</div>,
+    usePageTitle: () => undefined,
+  }
+})
 
 function show() {
   render(
@@ -117,41 +94,48 @@ function show() {
       <CalendarPage />
     </I18nProvider>
   )
-  fireEvent.click(screen.getByRole('button', { name: 'occurrence' }))
 }
 
-describe('a click on an occurrence', () => {
-  beforeEach(() => {
-    setEditing.mockClear()
+const TRUNCATED = 'Too many events to show them all. Choose a shorter range.'
+
+describe('CalendarPage', () => {
+  it('draws the grid when everything has loaded', () => {
+    show()
+    expect(screen.getByText('month grid')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Try again' })).toBeNull()
   })
 
-  it('opens an own event straight in the editor', () => {
-    listed.instance = occurrence()
+  it('says the calendars could not be read, with a way to try again', () => {
+    state.failed = true
+    state.visible = []
     show()
-    expect(setEditing).toHaveBeenCalledWith({
-      mode: 'edit',
-      event: 'e1',
-      start,
-    })
-    expect(screen.queryByTestId('summary')).toBeNull()
+    expect(screen.queryByText('month grid')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
+    expect(state.reload).toHaveBeenCalledTimes(1)
   })
 
-  it('opens a read-only occurrence in the summary, offering only a copy', () => {
-    listed.instance = occurrence({ readonly: true })
+  it("says the range's events could not be read rather than drawing an empty grid", () => {
+    state.query = { ...state.query, data: undefined, isSuccess: false, isError: true }
     show()
-    expect(screen.getByTestId('summary')).toBeInTheDocument()
-    expect(setEditing).not.toHaveBeenCalled()
-
-    fireEvent.click(screen.getByRole('button', { name: 'onCopy' }))
-    expect(setEditing).toHaveBeenCalledWith(
-      expect.objectContaining({ mode: 'create', copy: true })
-    )
+    expect(screen.queryByText('month grid')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
+    expect(state.query.refetch).toHaveBeenCalledTimes(1)
   })
 
-  it('opens a birthday in the summary', () => {
-    listed.instance = occurrence({ event: 'birthday-c1-2026' })
+  it('shows the too-many banner over the calendars it is about', () => {
+    state.query = { ...state.query, data: { instances: [], truncated: true } }
     show()
-    expect(screen.getByTestId('summary')).toBeInTheDocument()
-    expect(setEditing).not.toHaveBeenCalled()
+    expect(screen.getByText(TRUNCATED)).toBeInTheDocument()
+  })
+
+  it('leaves the banner a previous range left behind out once every calendar is hidden', () => {
+    state.visible = []
+    state.query = {
+      ...state.query,
+      data: { instances: [], truncated: true },
+      isPlaceholderData: true,
+    }
+    show()
+    expect(screen.queryByText(TRUNCATED)).toBeNull()
   })
 })

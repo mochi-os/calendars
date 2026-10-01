@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#நி} other {#நி}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#வா} other {#வா}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {{days} ஆம் தேதி} other {{days} ஆம் தேதிகளில்}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# நாள் முன்} other {# நாட்�
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} பெயர்"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# மணி நேரம் முன்} other {# 
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# மணி நேரம்} other {# மணி நேரம்}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {ஒவ்வொரு நாளும்} other {ஒவ்வொரு # நாட்களுக்கும்}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {ஒவ்வொரு மாதமும்} other {ஒவ்வொரு # மாதங்களுக்கும்}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {ஒவ்வொரு வாரமும்} other {ஒவ்வொரு # வாரங்களுக்கும்}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {ஒவ்வொரு ஆண்டும்} other {ஒவ்வொரு # ஆண்டுகளுக்கும்}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# நிமிடம் முன்} other {# நிமிடங்கள் முன்}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} சமநிலை வழங்கினார்"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}இல் {sentLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {ஒருமுறை} other {# முறை}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "வேறு Mochi அல்லது CalDAV சர்வர்"
 msgid "Anyone"
 msgstr "எவரும்"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "உள்நுழைந்த யாரும்"
@@ -483,13 +507,18 @@ msgstr "நாட்காட்டி"
 msgid "Calendar access was not granted"
 msgstr "நாட்காட்டி அணுகல் வழங்கப்படவில்லை"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "நாட்காட்டி முகவரி"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "நாட்காட்டி முகவரி கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "நாட்காட்டி முகவரி ரத்து செய்யப்பட்டது"
 
@@ -536,6 +565,11 @@ msgstr "நாட்காட்டி புதுப்பித்த நி�
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "நாள்காட்டிகள்"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "இந்த முகவரிக்குக் குழுசேர்ந்த நாள்காட்டிகள் இனி புதுப்பிக்கப்படாது."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "தேடலை அழி"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "மூடு"
 
@@ -898,7 +933,7 @@ msgstr "புதிய உருப்படி உருவாக்கு"
 msgid "Created"
 msgstr "உருவாக்கப்பட்டது"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "உருவாக்கப்பட்டது {0}"
@@ -1134,7 +1169,6 @@ msgstr "தேவையான வடிவத்துடன் பொருந�
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "முடிந்தது"
@@ -1276,6 +1310,7 @@ msgstr "நிகழ்வு நகர்த்தப்பட்டது"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "நிகழ்வு சேமிக்கப்பட்டது"
 
@@ -1376,7 +1411,7 @@ msgstr "நிகழ்வை நீக்க முடியவில்லை"
 msgid "Failed to get RSS token"
 msgstr "RSS டோக்கனைப் பெற முடியவில்லை"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "நாட்காட்டி முகவரியைப் பெற முடியவில்லை"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "நாட்காட்டியை இணைக்க முடியவில்லை"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "ஏற்ற முடியவில்லை"
 
@@ -1455,7 +1489,7 @@ msgstr "ப்ராம்ப்டை மீட்டமைக்க முட�
 msgid "Failed to revoke RSS access"
 msgstr "RSS அணுகலை நீக்க முடியவில்லை"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "நாட்காட்டி முகவரியை ரத்து செய்ய முடியவில்லை"
 
@@ -1607,6 +1641,10 @@ msgstr "பட காட்சி: {0}"
 msgid "Imperial"
 msgstr "இம்பீரியல்"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "{months} மாதத்தில்"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "அநாமதேய பயனர்கள் உட்பட"
@@ -1665,7 +1703,7 @@ msgstr "இறுதியில்"
 msgid "Last day"
 msgstr "கடைசி நாள்"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "கடைசி பயன்பாடு {0}"
@@ -1876,8 +1914,17 @@ msgstr "பிணையப் பிழை"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "இதுவரை இல்லை"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "மீண்டும் நிகழாது"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "ஒருபோதும் இல்லை"
 
@@ -1889,6 +1936,10 @@ msgstr "புதியது"
 msgctxt "sort order"
 msgid "New"
 msgstr "சமீபத்தியவை"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "புதிய நாட்காட்டி முகவரி கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "நிகழ்வுகளின் எண்ணிக்கை"
 msgid "On"
 msgstr "இயக்கத்தில்"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "{days} அன்று"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "ஒரு தேதியில்"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "ஐந்தாவது {day} அன்று"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "முதல் {day} அன்று"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "நான்காவது {day} அன்று"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "கடைசி {day} அன்று"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "மாதத்தின் கடைசி நாளில்"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "இரண்டாவது {day} அன்று"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "மூன்றாவது {day} அன்று"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "மீண்டும் நிகழ்தல்"
 msgid "Repeats"
 msgstr "மீண்டும் நிகழ்கிறது"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "மாற்று"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "மீண்டும் முயற்சிக்கவும்"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "திரும்பப் பெறு"
 
@@ -2463,13 +2546,13 @@ msgstr "திரும்பப் பெறு"
 msgid "Revoke access"
 msgstr "அணுகலை நீக்கு"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "RSS அணுகலை ரத்துசெய்யவா?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "நாட்காட்டி முகவரியை ரத்து செய்யவா?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "சனிக்கிழமை"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "சேமி"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "கேமரா கோரிக்கைக்கு பதில் இல்லை"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "சாதனம் இனி நாட்காட்டிகளை ஒத்திசைக்க முடியாது."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "இந்தச் சாதனத்தால் இனி தொடர்புகளையோ நாட்காட்டிகளையோ ஒத்திசைக்க முடியாது."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "இதுவும் இதற்குப் பின்வருப�
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "இந்த ஆப்ஸுக்கு உங்கள் கடவுக்குறியைப் பயன்படுத்த அனுமதி இல்லை. அமைப்புகளில், அனுமதிகள் பிரிவில் அதை அனுமதிக்கவும்."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "இந்த நாட்காட்டி முகவரி ஏற்கனவே வழங்கப்பட்டது, மீண்டும் காட்ட முடியாது."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "இந்த நாட்காட்டியில் ரத்து செய்ய முகவரி இல்லை"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "தெரியாதது"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "சந்தா நீக்கு"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "{date} வரை"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

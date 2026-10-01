@@ -45,7 +45,7 @@ import {
 } from '@/hooks/use-calendars'
 
 /** What the wizard adds: three two-way kinds through an account, and a published address. */
-export type SubscribeKind = 'google' | 'apple' | 'caldav' | 'address'
+type SubscribeKind = 'google' | 'apple' | 'caldav' | 'address'
 
 // The colour a linked calendar takes when the other server names none, and
 // the one a subscription starts on.
@@ -108,6 +108,17 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
     }
   }, [open, account])
 
+  // The password is a credential for another server: closing the wizard
+  // drops it from the form and from the request that sent it, since the
+  // wizard stays mounted.
+  const resetAccount = accountMutation.reset
+  useEffect(() => {
+    if (!open) {
+      setPassword('')
+      resetAccount()
+    }
+  }, [open, resetAccount])
+
   const accountsError = accountsQuery.error
   useEffect(() => {
     if (accountsError) {
@@ -146,6 +157,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   // Apple and CalDAV: the account is made and tried here, then opened.
   const connect = async () => {
     if (kind !== 'apple' && kind !== 'caldav') return
+    if (!credentialReady || accountMutation.isPending) return
     try {
       const { account: made } = await accountMutation.mutateAsync({
         type: kind,
@@ -167,7 +179,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
   }
 
   const link = async () => {
-    if (!chosen || collection === '') return
+    if (!chosen || collection === '' || linkMutation.isPending) return
     try {
       await linkMutation.mutateAsync({
         account: chosen,
@@ -218,7 +230,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
 
   const submitAddress = async () => {
     const trimmed = address.trim()
-    if (!trimmed) return
+    if (!trimmed || subscribeMutation.isPending || asking !== null) return
     const target = /^https?:\/\//i.test(trimmed)
       ? trimmed
       : `https://${trimmed}`
@@ -368,6 +380,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
             <Input
               id='subscribe-name'
               value={name}
+              maxLength={100}
               onChange={(event) => setName(event.target.value)}
             />
           </div>
@@ -439,6 +452,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
                 <Input
                   id='link-name'
                   value={name}
+                  maxLength={100}
                   onChange={(event) => setName(event.target.value)}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') void link()
@@ -521,7 +535,6 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
               type='url'
               value={server}
               onChange={(event) => setServer(event.target.value)}
-              placeholder='https://example.com/calendars/caldav/'
             />
           </div>
         )}
@@ -556,7 +569,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === 'Enter' && credentialReady) void connect()
+              if (event.key === 'Enter') void connect()
             }}
           />
         </div>
@@ -567,6 +580,7 @@ export function SubscribeDialog({ open, onOpenChange, account }: Props) {
           <Input
             id='subscribe-label'
             value={label}
+            maxLength={100}
             onChange={(event) => setLabel(event.target.value)}
           />
         </div>

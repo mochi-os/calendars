@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#ph} other {#ph}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tu} other {#tu}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {vào ngày {days}} other {vào các ngày {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, other {# ngày trước}}"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Tên {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, other {# giờ trước}}"
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, other {# giờ}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Mỗi ngày} other {Mỗi # ngày}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Mỗi tháng} other {Mỗi # tháng}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Mỗi tuần} other {Mỗi # tuần}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Mỗi năm} other {Mỗi # năm}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, other {# phút trước}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} đã đề nghị hòa"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} trên {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, =1 {một lần} other {# lần}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Máy chủ Mochi hoặc CalDAV khác"
 msgid "Anyone"
 msgstr "Bất kỳ ai"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Bất kỳ ai đã đăng nhập"
@@ -483,13 +507,18 @@ msgstr "Lịch"
 msgid "Calendar access was not granted"
 msgstr "Quyền truy cập lịch chưa được cấp"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Địa chỉ lịch"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "Đã sao chép địa chỉ lịch vào bộ nhớ tạm"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "Đã thu hồi địa chỉ lịch"
 
@@ -536,6 +565,11 @@ msgstr "Lịch đã được cập nhật"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Lịch"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Các lịch đã đăng ký địa chỉ này sẽ ngừng cập nhật."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Xóa tìm kiếm"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Đóng"
 
@@ -898,7 +933,7 @@ msgstr "Tạo mục mới"
 msgid "Created"
 msgstr "Đã tạo"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Đã tạo {0}"
@@ -1134,7 +1169,6 @@ msgstr "Không khớp với mẫu bắt buộc"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Xong"
@@ -1276,6 +1310,7 @@ msgstr "Đã di chuyển sự kiện"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "Đã lưu sự kiện"
 
@@ -1376,7 +1411,7 @@ msgstr "Không xóa được sự kiện"
 msgid "Failed to get RSS token"
 msgstr "Không lấy token RSS được"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Không lấy được địa chỉ lịch"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Không liên kết được lịch"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Không tải được"
 
@@ -1455,7 +1489,7 @@ msgstr "Không đặt lại lời nhắc được"
 msgid "Failed to revoke RSS access"
 msgstr "Không thể thu hồi quyền truy cập RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Không thu hồi được địa chỉ lịch"
 
@@ -1607,6 +1641,10 @@ msgstr "Trình xem ảnh: {0}"
 msgid "Imperial"
 msgstr "Hệ Anh"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "trong {months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Bao gồm người dùng ẩn danh"
@@ -1665,7 +1703,7 @@ msgstr "Ở cuối"
 msgid "Last day"
 msgstr "Ngày cuối"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Sử dụng cuối {0}"
@@ -1876,8 +1914,17 @@ msgstr "Lỗi mạng"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "chưa có"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Không lặp lại"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Không bao giờ"
 
@@ -1889,6 +1936,10 @@ msgstr "Mới"
 msgctxt "sort order"
 msgid "New"
 msgstr "Mới nhất"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "Đã sao chép địa chỉ lịch mới vào bộ nhớ tạm"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Số lần lặp"
 msgid "On"
 msgstr "Bật"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "vào {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "Vào một ngày"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "vào {day} thứ 5"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "vào {day} đầu tiên"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "vào {day} thứ 4"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "vào {day} cuối cùng"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "vào ngày cuối cùng của tháng"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "vào {day} thứ 2"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "vào {day} thứ 3"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Lặp lại"
 msgid "Repeats"
 msgstr "Được lặp lại"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Thay thế"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Thử lại"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Thu hồi"
 
@@ -2463,13 +2546,13 @@ msgstr "Thu hồi"
 msgid "Revoke access"
 msgstr "Thu hồi quyền truy cập"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Thu hồi quyền truy cập RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Thu hồi địa chỉ lịch?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Thứ bảy"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Lưu"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "Yêu cầu máy ảnh không được trả lời"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "Thiết bị sẽ không thể đồng bộ lịch nữa."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "Thiết bị sẽ không thể đồng bộ danh bạ hoặc lịch nữa."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Sự kiện này và các sự kiện sau"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ứng dụng này không được phép sử dụng passkey của bạn. Hãy cho phép trong Cài đặt, mục Quyền."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Địa chỉ lịch này đã được cấp và không thể hiển thị lại."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Lịch này không có địa chỉ nào để thu hồi"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Không rõ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Hủy đăng ký"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "đến {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts

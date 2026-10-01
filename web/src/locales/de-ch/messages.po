@@ -74,6 +74,10 @@ msgstr ""
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr ""
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr ""
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -86,6 +90,10 @@ msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
 msgstr ""
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr ""
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr ""
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr ""
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr ""
@@ -119,6 +143,10 @@ msgstr ""
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -313,10 +341,6 @@ msgstr ""
 msgid "Anyone"
 msgstr "Jeder"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr ""
@@ -483,13 +507,18 @@ msgstr ""
 msgid "Calendar access was not granted"
 msgstr ""
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr ""
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr ""
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr ""
 
@@ -535,6 +564,11 @@ msgstr ""
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
+msgstr ""
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
 msgstr ""
 
 #: ../../../lib/web/src/lib/shell-errors.ts
@@ -670,6 +704,7 @@ msgstr ""
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Schliessen"
 
@@ -898,7 +933,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr ""
@@ -1134,7 +1169,6 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr ""
@@ -1276,6 +1310,7 @@ msgstr ""
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr ""
 
@@ -1376,7 +1411,7 @@ msgstr ""
 msgid "Failed to get RSS token"
 msgstr ""
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr ""
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr ""
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr ""
 
@@ -1455,7 +1489,7 @@ msgstr ""
 msgid "Failed to revoke RSS access"
 msgstr ""
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr ""
 
@@ -1607,6 +1641,10 @@ msgstr ""
 msgid "Imperial"
 msgstr ""
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr ""
@@ -1665,7 +1703,7 @@ msgstr ""
 msgid "Last day"
 msgstr ""
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr ""
@@ -1876,8 +1914,17 @@ msgstr ""
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr ""
 
@@ -1888,6 +1935,10 @@ msgstr ""
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgctxt "sort order"
 msgid "New"
+msgstr ""
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
 msgstr ""
 
 #: src/features/calendar/components/toolbar.tsx
@@ -2066,8 +2117,40 @@ msgstr ""
 msgid "On"
 msgstr ""
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
 msgstr ""
 
 #: src/components/layout/calendars-layout.tsx
@@ -2410,13 +2493,13 @@ msgstr ""
 msgid "Repeats"
 msgstr ""
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr ""
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr ""
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr ""
 
@@ -2463,12 +2546,12 @@ msgstr ""
 msgid "Revoke access"
 msgstr ""
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
+msgstr ""
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2511,10 +2594,6 @@ msgstr ""
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
-msgstr ""
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
 msgstr ""
 
 #: src/features/calendar/editor.tsx
@@ -2914,7 +2993,7 @@ msgid "The camera request was not answered"
 msgstr ""
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
+msgid "The device will no longer be able to sync contacts or calendars."
 msgstr ""
 
 #. placeholder {0}: failureReason(calendar.failure)
@@ -2946,8 +3025,12 @@ msgstr ""
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr ""
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
+msgstr ""
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
 msgstr ""
 
 #: src/features/calendar/components/scope-dialog.tsx
@@ -3103,6 +3186,10 @@ msgstr "Unbekannt"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
+msgstr ""
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx

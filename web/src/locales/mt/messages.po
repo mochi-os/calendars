@@ -74,6 +74,10 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ġim} other {#ġim}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, one {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, one {fil-jum {days}} two {fil-jiem {days}} few {fil-jiem {days}} many {fil-jiem {days}} other {fil-jiem {days}}}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-popover.tsx
@@ -87,6 +91,10 @@ msgstr "{days, plural, one {# jum qabel} two {jumejn qabel} few {# ijiem qabel} 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Isem ta' {entityLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{first}, {second}"
+msgstr "{first}, {second}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -104,6 +112,22 @@ msgstr "{hours, plural, one {# siegħa qabel} two {sagħtejn qabel} few {# sigħ
 msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# siegħa} two {sagħtejn} few {# sigħat} many {# siegħa} other {# siegħa}}"
 
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgstr "{interval, plural, one {Kuljum} two {Kull jumejn} few {Kull # ijiem} many {Kull # jum} other {Kull # jum}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgstr "{interval, plural, one {Kull xahar} two {Kull xahrejn} few {Kull # xhur} many {Kull # xahar} other {Kull # xahar}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, one {Kull ġimgħa} two {Kull ġimagħtejn} few {Kull # ġimgħat} many {Kull # ġimgħa} other {Kull # ġimgħa}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgstr "{interval, plural, one {Kull sena} two {Kull sentejn} few {Kull # snin} many {Kull # sena} other {Kull # sena}}"
+
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
 msgstr "{minutes, plural, one {# minuta qabel} two {# minuti qabel} few {# minuti qabel} many {# minuta qabel} other {# minuta qabel}}"
@@ -120,6 +144,10 @@ msgstr "{opponentName} offra draw"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} minn {totalLabel}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{times, plural, one {once} other {# times}}"
+msgstr "{times, plural, one {darba waħda} two {darbtejn} few {# darbiet} many {# darba} other {# darba}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -313,10 +341,6 @@ msgstr "Server Mochi jew CalDAV ieħor"
 msgid "Anyone"
 msgstr "Kulħadd"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Anyone subscribed to the current address stops getting updates."
-msgstr ""
-
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
 msgstr "Kull min hu llogjat"
@@ -483,13 +507,18 @@ msgstr "Kalendarju"
 msgid "Calendar access was not granted"
 msgstr "L-aċċess għall-kalendarju ma ngħatax"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address"
 msgstr "Indirizz tal-kalendarju"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendar address copied to clipboard"
+msgstr "L-indirizz tal-kalendarju ġie kkupjat fil-clipboard"
+
+#: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
 msgstr "L-indirizz tal-kalendarju ġie rrevokat"
 
@@ -536,6 +565,11 @@ msgstr "Il-kalendarju huwa aġġornat"
 #: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Kalendarji"
+
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
+msgid "Calendars subscribed to this address will stop updating."
+msgstr "Il-kalendarji abbonati għal dan l-indirizz ma jibqgħux jiġu aġġornati."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -670,6 +704,7 @@ msgstr "Naddaf it-tiftix"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Agħlaq"
 
@@ -898,7 +933,7 @@ msgstr "Oħloq item ġdid"
 msgid "Created"
 msgstr "Maħluq"
 
-#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#. placeholder {0}: formatTimestamp( item.created, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Created {0}"
 msgstr "Maħluq {0}"
@@ -1134,7 +1169,6 @@ msgstr "Ma jaqbilx mal-mudell meħtieġ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Done"
 msgstr "Lest"
@@ -1276,6 +1310,7 @@ msgstr "L-avveniment ġie mċaqlaq"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Event saved"
 msgstr "L-avveniment ġie ssejvjat"
 
@@ -1376,7 +1411,7 @@ msgstr "Ma rnexxiex jitħassar l-avveniment"
 msgid "Failed to get RSS token"
 msgstr "Ma rnexxiex jinkiseb it-token tar-RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Ma rnexxiex jinkiseb l-indirizz tal-kalendarju"
 
@@ -1385,7 +1420,6 @@ msgid "Failed to link the calendar"
 msgstr "Ma rnexxiex jiġi llinkjat il-kalendarju"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
-#: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Failed to load"
 msgstr "Ma rnexxiex jitgħabba"
 
@@ -1455,7 +1489,7 @@ msgstr "Ma rnexxiex jiġi reset il-prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Ma rnexxiex jiġi rrevokat l-aċċess RSS"
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
 msgstr "Ma rnexxiex jiġi rrevokat l-indirizz tal-kalendarju"
 
@@ -1607,6 +1641,10 @@ msgstr "Viewer tal-istampi: {0}"
 msgid "Imperial"
 msgstr "Imperjali"
 
+#: src/hooks/use-rule-summary.ts
+msgid "in {months}"
+msgstr "f'{months}"
+
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
 msgstr "Inklużi utenti anonimi"
@@ -1665,7 +1703,7 @@ msgstr "Fl-aħħar"
 msgid "Last day"
 msgstr "L-aħħar jum"
 
-#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#. placeholder {0}: formatTimestamp( item.used, t({ message: 'Never', context: 'last used' }) )
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Last used {0}"
 msgstr "Użat l-aħħar {0}"
@@ -1876,8 +1914,17 @@ msgstr "Żball tan-network"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+msgctxt "last used"
+msgid "Never"
+msgstr "qatt"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat"
+msgid "Never"
+msgstr "Ma jirrepetix"
+
 #: src/features/calendar/editor.tsx
+msgctxt "repeat end"
 msgid "Never"
 msgstr "Qatt"
 
@@ -1889,6 +1936,10 @@ msgstr "Ġdid"
 msgctxt "sort order"
 msgid "New"
 msgstr "L-aktar ġodda"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "New calendar address copied to clipboard"
+msgstr "L-indirizz ġdid tal-kalendarju ġie kkupjat fil-clipboard"
 
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
@@ -2066,9 +2117,41 @@ msgstr "Okkorrenzi"
 msgid "On"
 msgstr "Mixgħul"
 
+#: src/hooks/use-rule-summary.ts
+msgid "on {days}"
+msgstr "nhar {days}"
+
 #: src/features/calendar/editor.tsx
 msgid "On a date"
 msgstr "F'data"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fifth {day}"
+msgstr "{day} tal-ħames ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the first {day}"
+msgstr "{day} tal-ewwel ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the fourth {day}"
+msgstr "{day} tar-raba' ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last {day}"
+msgstr "{day} tal-aħħar ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the last day of the month"
+msgstr "fl-aħħar jum tax-xahar"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the second {day}"
+msgstr "{day} tat-tieni ġimgħa"
+
+#: src/hooks/use-rule-summary.ts
+msgid "on the third {day}"
+msgstr "{day} tat-tielet ġimgħa"
 
 #: src/components/layout/calendars-layout.tsx
 msgid "Only this"
@@ -2410,13 +2493,13 @@ msgstr "Repetizzjoni"
 msgid "Repeats"
 msgstr "Jirrepeti"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Ibdel"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Replace calendar address?"
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2454,8 +2537,8 @@ msgid "Retry"
 msgstr "Erġa' pprova"
 
 #: ../../../lib/web/src/components/options-menu.tsx
-#: src/features/calendar/dialogs/address-dialogs.tsx
 #: src/features/calendar/settings.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
 msgstr "Irrevoka"
 
@@ -2463,13 +2546,13 @@ msgstr "Irrevoka"
 msgid "Revoke access"
 msgstr "Irrevoka l-aċċess"
 
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Revoke calendar address?"
-msgstr ""
-
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
 msgstr "Tirrevoka l-aċċess RSS?"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Revoke the calendar address?"
+msgstr "Tirrevoka l-indirizz tal-kalendarju?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2512,10 +2595,6 @@ msgstr "Is-Sibt"
 #: src/features/calendar/settings.tsx
 msgid "Save"
 msgstr "Issejvja"
-
-#: src/features/calendar/dialogs/address-dialogs.tsx
-msgid "Save this address now. It cannot be shown again."
-msgstr ""
 
 #: src/features/calendar/editor.tsx
 msgid "Save this event"
@@ -2914,8 +2993,8 @@ msgid "The camera request was not answered"
 msgstr "It-talba għall-kamera ma twiġbitx"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
-msgid "The device will no longer be able to sync calendars."
-msgstr "L-apparat ma jkunx jista' jissinkronizza l-kalendarji aktar."
+msgid "The device will no longer be able to sync contacts or calendars."
+msgstr "L-apparat ma jkunx jista' jissinkronizza l-kuntatti jew il-kalendarji aktar."
 
 #. placeholder {0}: failureReason(calendar.failure)
 #: src/features/calendar/settings.tsx
@@ -2946,9 +3025,13 @@ msgstr "Dan u dawk ta’ wara"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Din l-app mhijiex permessa tuża l-passkey tiegħek. Ippermettiha fl-Issettjar, taħt Permessi."
 
-#: src/hooks/use-ics-copy.ts
+#: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
 msgstr "Dan l-indirizz tal-kalendarju diġà nħareġ u ma jistax jintwera mill-ġdid."
+
+#: src/hooks/use-ics-copy.tsx
+msgid "This calendar has no address to revoke"
+msgstr "Dan il-kalendarju m'għandu l-ebda indirizz biex jiġi rrevokat"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3104,6 +3187,10 @@ msgstr "Mhux magħruf"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
 msgstr "Iddiżabbona"
+
+#: src/hooks/use-rule-summary.ts
+msgid "until {date}"
+msgstr "sa {date}"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/lib/entity-title.ts
