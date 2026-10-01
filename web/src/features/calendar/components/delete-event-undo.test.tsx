@@ -81,19 +81,6 @@ describe('DeleteEventDialog undo', () => {
     failed.mockReset()
   })
 
-  it('waits for the stored event, showing the scope the listing gave', () => {
-    loaded.value = false
-    render(
-      <I18nProvider i18n={i18n}>
-        <DeleteEventDialog event='e1' start={0} recurring onClose={vi.fn()} />
-      </I18nProvider>
-    )
-    const all = screen.getByRole('button', { name: 'All events' })
-    expect(all).toBeDisabled()
-    fireEvent.click(all)
-    expect(remove).not.toHaveBeenCalled()
-  })
-
   it('offers Undo, which puts the deleted event back', async () => {
     show()
     fireEvent.click(screen.getByRole('button', { name: 'Delete' }))

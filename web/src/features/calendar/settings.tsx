@@ -139,10 +139,7 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
 
   return (
     <Main>
-      <PageHeader
-        title={calendar.name}
-        back={back}
-      />
+      <PageHeader title={calendar.name} back={back} />
       <div className='max-w-lg space-y-6'>
         {(calendar.kind === 'subscription' || calendar.kind === 'linked') &&
           calendar.failure !== '' && (

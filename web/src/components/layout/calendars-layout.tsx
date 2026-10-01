@@ -360,7 +360,6 @@ export function CalendarsLayout() {
 
       <ConnectDialog open={connectOpen} onOpenChange={setConnectOpen} />
 
-
       <EventEditor />
 
       {dialogs}
