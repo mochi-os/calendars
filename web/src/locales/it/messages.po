@@ -161,6 +161,11 @@ msgstr "{totalDescendants, plural, one {# risposta} other {+# altre risposte}}"
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Apri il menu (# notifica non letta)} other {Apri il menu (# notifiche non lette)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 ore"
@@ -432,6 +437,10 @@ msgstr "Avatar di {name}"
 msgid "Back"
 msgstr "Indietro"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -553,9 +562,11 @@ msgstr "Calendario aggiornato"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Calendari"
 
+#: src/hooks/use-ics-copy.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendars subscribed to this address will stop updating."
 msgstr "I calendari abbonati a questo indirizzo non verranno più aggiornati."
@@ -583,7 +594,6 @@ msgstr "Fotocamera non disponibile"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -692,6 +702,7 @@ msgstr "Cancella ricerca"
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -732,6 +743,7 @@ msgstr "Comprimi barra laterale"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Colore"
@@ -740,6 +752,10 @@ msgstr "Colore"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "Colore salvato"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1503,6 +1519,7 @@ msgstr "Impossibile iscriversi"
 msgid "Failed to sync the calendar"
 msgstr "Impossibile sincronizzare il calendario"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Impossibile annullare"
@@ -1986,6 +2003,10 @@ msgstr "Nessun gruppo disponibile"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Nessun tipo di elemento può essere creato per ora. Crea prima gli elementi padre richiesti."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2473,8 +2494,13 @@ msgid "Repeats"
 msgstr "Si ripete"
 
 #: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Sostituisci"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2594,6 +2620,10 @@ msgstr "Salvataggio in corso..."
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Cerca"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2744,6 +2774,7 @@ msgstr "Imposta origine e destinazione"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Impostazioni"
 
@@ -3130,6 +3161,7 @@ msgstr "Non assegnato"
 msgid "Unavailable"
 msgstr "Non disponibile"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Annulla"
@@ -3183,6 +3215,10 @@ msgstr "Carica"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "Avanzamento del caricamento"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -3330,6 +3366,10 @@ msgstr "Il tuo account è stato spostato qui da {source}. Finché non lo elimini
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "I tuoi allegati andranno persi."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

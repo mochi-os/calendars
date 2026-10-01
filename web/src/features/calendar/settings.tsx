@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useNavigate } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
@@ -74,6 +75,7 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
   const renameMutation = useRenameCalendarMutation()
   const colourMutation = useColourCalendarMutation()
   const { copy, revoke, dialogs } = useIcsCopy()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (calendar) {
@@ -82,9 +84,26 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
     }
   }, [calendar])
 
-  if (isLoading) return <DetailSkeleton />
-  if (isError || !calendar) {
-    return <GeneralError minimal reset={() => void refetch()} />
+  // The way back shows in every state: a calendar deleted or unlinked
+  // elsewhere leaves only the error, and the sidebar has no link home.
+  const back = {
+    label: t`Back to calendars`,
+    onFallback: () => void navigate({ to: '/' }),
+  }
+
+  if (isLoading || isError || !calendar) {
+    return (
+      <Main>
+        {/* No name to show yet, or none to find: the heading says what the
+            tab title does, rather than standing empty. */}
+        <PageHeader title={t`Calendars`} back={back} />
+        {isLoading ? (
+          <DetailSkeleton />
+        ) : (
+          <GeneralError minimal reset={() => void refetch()} />
+        )}
+      </Main>
+    )
   }
 
   const saveName = async () => {
@@ -120,7 +139,10 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
 
   return (
     <Main>
-      <PageHeader title={calendar.name} />
+      <PageHeader
+        title={calendar.name}
+        back={back}
+      />
       <div className='max-w-lg space-y-6'>
         {(calendar.kind === 'subscription' || calendar.kind === 'linked') &&
           calendar.failure !== '' && (

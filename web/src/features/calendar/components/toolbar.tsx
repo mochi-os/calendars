@@ -43,7 +43,7 @@ import { useCalendarContext } from '@/context/calendar-context'
 export function Toolbar({ onCreate }: { onCreate: () => void }) {
   const { t } = useLingui()
   const format = useFormat()
-  const { isDesktop } = useScreenSize()
+  const { isDesktop, isMobile } = useScreenSize()
   const {
     view,
     setView,
@@ -68,9 +68,9 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
     { value: 'month', label: t`Month`, icon: Grid3x3 },
     { value: 'list', label: t`List`, icon: List },
   ]
-  // Below tablet width there is no room for a grid, so only the two views that
-  // read well in a column are offered.
-  const offered = isDesktop
+  // Below tablet width (768px) there is no room for a grid, so only the two
+  // views that read well in a column are offered.
+  const offered = !isMobile
     ? options
     : options.filter(
         (option) => option.value === 'day' || option.value === 'list'
@@ -146,8 +146,10 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
           aria-hidden
         />
         <Input
+          id='calendar-search'
           type='search'
           aria-label={t`Search`}
+          placeholder={t`Search events`}
           className='h-9 w-36 ps-8 sm:w-52'
           value={search}
           onChange={(input) => {

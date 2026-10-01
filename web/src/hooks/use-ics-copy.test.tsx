@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useIcsCopy } from './use-ics-copy'
 
@@ -75,6 +75,42 @@ describe('useIcsCopy', () => {
     fireEvent.click(screen.getByText('copy'))
     await waitFor(() => expect(shell.success).toHaveBeenCalledTimes(1))
     expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('asks before replacing an address already issued, then replaces it', async () => {
+    api.address.mockResolvedValueOnce({ exists: true })
+    shell.clipboard.mockResolvedValue(true)
+    show()
+    fireEvent.click(screen.getByText('copy'))
+    await waitFor(() => expect(shell.info).toHaveBeenCalledTimes(1))
+    const action = shell.info.mock.calls[0][1].action
+    act(() => action.onClick())
+    expect(
+      await screen.findByText('Replace the calendar address?')
+    ).toBeInTheDocument()
+    expect(api.address).toHaveBeenCalledTimes(1)
+
+    fireEvent.click(screen.getByRole('button', { name: 'Replace' }))
+    await waitFor(() => expect(api.address).toHaveBeenLastCalledWith('c1', true))
+    await waitFor(() =>
+      expect(screen.queryByText('Replace the calendar address?')).toBeNull()
+    )
+    expect(shell.success).toHaveBeenCalledWith(
+      'New calendar address copied to clipboard'
+    )
+  })
+
+  it('keeps the replace question open when the replace fails', async () => {
+    api.address
+      .mockResolvedValueOnce({ exists: true })
+      .mockRejectedValueOnce(new Error('offline'))
+    show()
+    fireEvent.click(screen.getByText('copy'))
+    await waitFor(() => expect(shell.info).toHaveBeenCalledTimes(1))
+    act(() => shell.info.mock.calls[0][1].action.onClick())
+    fireEvent.click(await screen.findByRole('button', { name: 'Replace' }))
+    await waitFor(() => expect(shell.error).toHaveBeenCalledTimes(1))
+    expect(screen.getByText('Replace the calendar address?')).toBeInTheDocument()
   })
 
   it('asks before revoking, then revokes', async () => {

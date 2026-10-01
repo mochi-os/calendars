@@ -45,6 +45,11 @@ type Editing =
       draft: EventDraft
       /** The draft was copied from another event, so the editor says so. */
       copy?: boolean
+      /**
+       * What closing measures the draft against, when not the draft itself:
+       * a copy carrying edits never saved asks before they are dropped.
+       */
+      initial?: EventDraft
     }
   | { mode: 'edit'; event: string; start: number }
 
@@ -89,7 +94,7 @@ const CalendarContext = createContext<CalendarContextValue | null>(null)
 
 export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const format = useFormat()
-  const { isDesktop } = useScreenSize()
+  const { isMobile } = useScreenSize()
   const navigate = useNavigate()
   const search = useSearch({ strict: false }) as {
     view?: string
@@ -112,7 +117,11 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     null
   )
   const { mutate: savePreferences } = useSetPreferencesMutation()
-  const [workweek, setWorkweek] = useState(false)
+  // Kept per device like the last view, so a reload does not lose it.
+  const [workweek, setWorkweek] = useShellStorage<boolean>(
+    'calendars:workweek',
+    false
+  )
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Editing | null>(null)
   const [kept, setKept] = useShellStorage<Remembered>(
@@ -129,12 +138,12 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const urlView = VIEWS.includes(search.view as CalendarView)
     ? (search.view as CalendarView)
     : null
-  // Below tablet width there is no room for a grid, so a grid view falls back
-  // to the list. The URL keeps what the user asked for, so widening the window
-  // puts it back.
+  // Below tablet width (768px) there is no room for a grid, so a grid view
+  // falls back to the list; a tablet has the grids. The URL keeps what the
+  // user asked for, so widening the window puts it back.
   const requested = urlView ?? lastView ?? preferences.view
   const view =
-    isDesktop || requested === 'day' || requested === 'list'
+    !isMobile || requested === 'day' || requested === 'list'
       ? requested
       : 'list'
   const date = /^\d{4}-\d{2}-\d{2}$/.test(search.date ?? '')
@@ -149,9 +158,12 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const setView = useCallback(
     (next: CalendarView) => {
       setLastView(next)
+      // Only the list filters by the search, so a grid would keep a box that
+      // looks like a filter and filters nothing.
+      if (next !== 'list') setQuery('')
       if (next !== preferences.view) savePreferences({ view: next })
       void navigate({
-        to: '.',
+        to: '/',
         search: (previous: Record<string, unknown>) => ({
           ...previous,
           view: next,
@@ -163,8 +175,10 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
 
   const setDate = useCallback(
     (next: string) => {
+      // To the calendar, not '.': the sidebar's month picker is also on a
+      // calendar's settings page, where a date on its own URL shows nothing.
       void navigate({
-        to: '.',
+        to: '/',
         search: (previous: Record<string, unknown>) => ({
           ...previous,
           date: next,
@@ -246,6 +260,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       today,
       range,
       workweek,
+      setWorkweek,
       query,
       editing,
       kept,

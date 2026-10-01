@@ -24,18 +24,23 @@ import { calendarsApi } from '@/api/calendars'
  * Copies a calendar's ICS address. Only the token's hash is stored, so the
  * address can be shown once; replacing it is the user's call, since it breaks
  * anything already subscribed to it. `dialogs` renders the address when the
- * clipboard refuses it, and the question before a revoke.
+ * clipboard refuses it, and the questions before a replace and a revoke.
  */
 export function useIcsCopy() {
   const { t } = useLingui()
   // An address the clipboard would not take, shown to copy by hand: once this
   // closes it cannot be shown again.
   const [shown, setShown] = useState<string | null>(null)
-  // The calendar whose address the revoke question is about.
+  // The calendars whose address the replace and revoke questions are about.
+  const [replacing, setReplacing] = useState<string | null>(null)
   const [revoking, setRevoking] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
 
-  const copy = async (calendar: string, regenerate = false) => {
+  // False only when the request failed, which has already said so.
+  const copy = async (
+    calendar: string,
+    regenerate = false
+  ): Promise<boolean> => {
     try {
       const { token, path, exists } = await calendarsApi.address(
         calendar,
@@ -47,11 +52,11 @@ export function useIcsCopy() {
           {
             action: {
               label: t`Replace`,
-              onClick: () => void copy(calendar, true),
+              onClick: () => setReplacing(calendar),
             },
           }
         )
-        return
+        return true
       }
       const address = `${window.location.origin}${path}?token=${token}`
       if (await shellClipboardWrite(address)) {
@@ -63,9 +68,20 @@ export function useIcsCopy() {
       } else {
         setShown(address)
       }
+      return true
     } catch (error) {
       toast.error(getErrorMessage(error, t`Failed to get the calendar address`))
+      return false
     }
+  }
+
+  const replace = async () => {
+    if (replacing === null || pending) return
+    setPending(true)
+    const done = await copy(replacing, true)
+    setPending(false)
+    // A failure keeps the question open to try again.
+    if (done) setReplacing(null)
   }
 
   const revoke = async () => {
@@ -116,6 +132,18 @@ export function useIcsCopy() {
         </ResponsiveDialogContent>
       </ResponsiveDialog>
       <ConfirmDialog
+        open={replacing !== null}
+        onOpenChange={(open) => {
+          if (!open) setReplacing(null)
+        }}
+        title={t`Replace the calendar address?`}
+        desc={t`Calendars subscribed to this address will stop updating.`}
+        confirmText={t`Replace`}
+        destructive
+        isLoading={pending}
+        handleConfirm={() => void replace()}
+      />
+      <ConfirmDialog
         open={revoking !== null}
         onOpenChange={(open) => {
           if (!open) setRevoking(null)
@@ -131,5 +159,9 @@ export function useIcsCopy() {
     </>
   )
 
-  return { copy, revoke: setRevoking, dialogs }
+  return {
+    copy: (calendar: string) => void copy(calendar),
+    revoke: setRevoking,
+    dialogs,
+  }
 }

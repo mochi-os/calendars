@@ -161,6 +161,11 @@ msgstr "{totalDescendants, plural, one {# جواب} other {+# مزید جواب�
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {مینو کھولیں (# غیر پڑھی اطلاع)} other {مینو کھولیں (# غیر پڑھی اطلاعات)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 گھنٹے"
@@ -432,6 +437,10 @@ msgstr "{name} کے لیے اوتار"
 msgid "Back"
 msgstr "واپس"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -553,9 +562,11 @@ msgstr "کیلنڈر تازہ ترین ہے"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "کیلنڈرز"
 
+#: src/hooks/use-ics-copy.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendars subscribed to this address will stop updating."
 msgstr "جن کیلنڈرز نے اس پتے کی رکنیت لی ہے وہ اب تازہ نہیں ہوں گے۔"
@@ -583,7 +594,6 @@ msgstr "کیمرہ دستیاب نہیں"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -692,6 +702,7 @@ msgstr "تلاش صاف کریں"
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -732,6 +743,7 @@ msgstr "سائڈ بار سکیڑیں"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "رنگ"
@@ -740,6 +752,10 @@ msgstr "رنگ"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "رنگ محفوظ ہو گیا"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1503,6 +1519,7 @@ msgstr "سبسکرائب کرنے میں ناکامی"
 msgid "Failed to sync the calendar"
 msgstr "کیلنڈر سنک کرنے میں ناکامی"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "واپس نہیں ہو سکا"
@@ -1986,6 +2003,10 @@ msgstr "کوئی گروپ دستیاب نہیں"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ابھی کوئی آئٹم اقسام نہیں بنائی جا سکتیں۔ پہلے درکار پیرنٹ آئٹمز بنائیں۔"
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2473,8 +2494,13 @@ msgid "Repeats"
 msgstr "دہرایا جاتا ہے"
 
 #: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "بدلیں"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2594,6 +2620,10 @@ msgstr "محفوظ کیا جا رہا ہے..."
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "تلاش کریں"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2744,6 +2774,7 @@ msgstr "ابتدائی مقام اور منزل مقرر کریں"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "سیٹنگز"
 
@@ -3130,6 +3161,7 @@ msgstr "غیر تفویض شدہ"
 msgid "Unavailable"
 msgstr "ناقابل رسائی"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "واپس کریں"
@@ -3183,6 +3215,10 @@ msgstr "اپ لوڈ کریں"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "اپ لوڈ کی پیش رفت"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -3330,6 +3366,10 @@ msgstr "آپ کا اکاؤنٹ {source} سے یہاں منتقل کر دیا گ�
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "آپ کے منسلکات ضائع ہو جائیں گے۔"
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

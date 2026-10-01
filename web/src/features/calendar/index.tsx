@@ -32,6 +32,7 @@ import {
   type Scope,
 } from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
+import { useCalendarShortcuts } from '@/hooks/use-calendar-shortcuts'
 import { useEventMove } from '@/hooks/use-event-move'
 import { useInstancesQuery } from '@/hooks/use-events'
 import { useReminder } from '@/hooks/use-reminder'
@@ -270,6 +271,15 @@ export function CalendarPage() {
   }
 
   const page = (direction: number) => setDate(stepDate(view, date, direction))
+
+  useCalendarShortcuts({
+    blocked: Boolean(editing || selected || moving),
+    today: () => setDate(today),
+    page,
+    create: createNow,
+    view: setView,
+    search: () => document.getElementById('calendar-search')?.focus(),
+  })
 
   const grid = failed ? (
     <GeneralError mode='inline' className='my-6' reset={reload} />

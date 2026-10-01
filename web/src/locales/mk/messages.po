@@ -161,6 +161,11 @@ msgstr "{totalDescendants, plural, one {# одговор} other {+# повеќе
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Отвори мени (# непрочитано известување)} other {Отвори мени (# непрочитани известувања)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 часа"
@@ -432,6 +437,10 @@ msgstr "Аватар за {name}"
 msgid "Back"
 msgstr "Назад"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -553,9 +562,11 @@ msgstr "Календарот е ажуриран"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Календари"
 
+#: src/hooks/use-ics-copy.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendars subscribed to this address will stop updating."
 msgstr "Календарите претплатени на оваа адреса ќе престанат да се ажурираат."
@@ -583,7 +594,6 @@ msgstr "Камерата не е достапна"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -692,6 +702,7 @@ msgstr "Исчисти пребарување"
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -732,6 +743,7 @@ msgstr "Собери странична лента"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Боја"
@@ -740,6 +752,10 @@ msgstr "Боја"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "Бојата е зачувана"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1503,6 +1519,7 @@ msgstr "Неуспешна претплата"
 msgid "Failed to sync the calendar"
 msgstr "Неуспешна синхронизација на календарот"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Неуспешно поништување"
@@ -1986,6 +2003,10 @@ msgstr "Нема достапни групи"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Сè уште не може да се креираат типови ставки. Прво креирајте ги потребните родителски ставки."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2473,8 +2494,13 @@ msgid "Repeats"
 msgstr "Се повторува"
 
 #: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Замени"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2594,6 +2620,10 @@ msgstr "Зачувување..."
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Барај"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2744,6 +2774,7 @@ msgstr "Постави потекло и одредиште"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Поставки"
 
@@ -3130,6 +3161,7 @@ msgstr "Недоделено"
 msgid "Unavailable"
 msgstr "Недостапно"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Поништи"
@@ -3183,6 +3215,10 @@ msgstr "Прикачи"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "Напредок на прикачувањето"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -3330,6 +3366,10 @@ msgstr "Вашиот профил беше преместен овде од {sou
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "Вашите прилози ќе бидат изгубени."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

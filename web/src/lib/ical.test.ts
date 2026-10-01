@@ -12,6 +12,7 @@ import {
   nextReminder,
   componentDraft,
   copyDraft,
+  formCopy,
   deletedOccurrence,
   draftComponent,
   draftInstants,
@@ -72,6 +73,8 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     finishTime: 10 * 60,
     zone: { start: ZONE, finish: ZONE },
     location: '',
+    colour: '',
+    url: '',
     description: '',
     original: '',
     repeat: emptyRepeat(),
@@ -81,6 +84,27 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
 }
 
 describe('property values', () => {
+  it('reads and writes an event colour and URL without duplicating properties', () => {
+    const original = draftComponent(draft())
+    original.properties.push(
+      { name: 'COLOR', params: {}, value: '#ff8800' },
+      { name: 'URL', params: {}, value: 'https://example.com/meeting' }
+    )
+    const read = componentDraft(original, 'cal1', ZONE)
+    expect(read.colour).toBe('#ff8800')
+    expect(read.url).toBe('https://example.com/meeting')
+    const saved = draftComponent(
+      { ...read, colour: '#00aaff', url: 'https://example.com/new' },
+      original
+    )
+    expect(saved.properties.filter((item) => item.name === 'COLOR')).toEqual([
+      { name: 'COLOR', params: {}, value: '#00aaff' },
+    ])
+    expect(saved.properties.filter((item) => item.name === 'URL')).toEqual([
+      { name: 'URL', params: {}, value: 'https://example.com/new' },
+    ])
+  })
+
   it('reads a whole-day value as the start of that day in the zone', () => {
     const instant = propertyInstant(
       { name: 'DTSTART', params: { VALUE: ['DATE'] }, value: '20260916' },
@@ -1427,6 +1451,80 @@ describe('the draft a copy opens on', () => {
 
   it('answers nothing without a master', () => {
     expect(copyDraft([], third, 'cal1', ZONE, 'one')).toBeNull()
+  })
+
+  it('copies a one-off event as the form reads, edits and all', () => {
+    const single = draftComponent(draft())
+    const form = draft({ title: 'Edited', location: 'Room 9' })
+    const copied = formCopy(form, [single], 0, ZONE, 'one', false)
+    expect(copied.title).toBe('Edited')
+    expect(copied.location).toBe('Room 9')
+  })
+
+  // The form as the editor opens the third occurrence, then edited.
+  const opened = (components: Component[], title: string) => ({
+    ...openedDraft(components, third, 'cal1', ZONE, true)!,
+    title,
+  })
+
+  it('copies the edited form on its own day for "This event"', () => {
+    const copied = formCopy(
+      opened([series], 'Edited'),
+      [series],
+      third,
+      ZONE,
+      'one',
+      true
+    )
+    expect(copied.title).toBe('Edited')
+    expect(copied.start).toBe('2026-09-18')
+    expect(copied.startTime).toBe(9 * 60)
+    expect(copied.repeat.frequency).toBe('never')
+  })
+
+  it('moves the edited form back to the series start for "All events"', () => {
+    const copied = formCopy(
+      opened([series], 'Edited'),
+      [series],
+      third,
+      ZONE,
+      'all',
+      true
+    )
+    expect(copied.title).toBe('Edited')
+    expect(copied.start).toBe('2026-09-16')
+    expect(copied.startTime).toBe(9 * 60)
+    expect(copied.repeat.frequency).toBe('daily')
+  })
+
+  it('copies the edited form for "All events" from an override too', () => {
+    const edited = editedComponents(
+      [series],
+      draft({
+        title: 'Just once',
+        start: '2026-09-18',
+        startTime: 11 * 60,
+        finish: '2026-09-18',
+        finishTime: 12 * 60,
+      }),
+      'one',
+      third,
+      ZONE
+    )
+    const copied = formCopy(
+      opened(edited, 'Changed again'),
+      edited,
+      third,
+      ZONE,
+      'all',
+      true
+    )
+    // Moved as a save of "All events" would move it: to the series' first
+    // day, at the time the form shows.
+    expect(copied.title).toBe('Changed again')
+    expect(copied.start).toBe('2026-09-16')
+    expect(copied.startTime).toBe(11 * 60)
+    expect(copied.repeat.frequency).toBe('daily')
   })
 
   it('reads a listed occurrence into a single event in the user zone', () => {

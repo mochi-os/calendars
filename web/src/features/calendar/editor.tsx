@@ -7,6 +7,7 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import {
   DatePicker,
   Button,
+  ColourPicker,
   Dialog,
   DialogContent,
   DialogFooter,
@@ -29,6 +30,7 @@ import {
   GeneralError,
   getErrorMessage,
   toast,
+  useDiscardGuard,
   useFormat,
   useScreenSize,
 } from '@mochi/web'
@@ -46,6 +48,7 @@ import {
 import type { Component } from '@/api/types/events'
 import {
   copyDraft,
+  formCopy,
   draftComponent,
   draftInstants,
   endAfterStart,
@@ -97,6 +100,9 @@ export function EventEditor() {
   const event = data?.event
 
   const [draft, setDraft] = useState<EventDraft | null>(null)
+  // The draft as the editor opened on it, so closing can tell whether
+  // anything typed would be lost.
+  const [initial, setInitial] = useState<EventDraft | null>(null)
   // The zone controls, revealed by the globe for the rest of one edit.
   const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
@@ -128,6 +134,7 @@ export function EventEditor() {
       setRevealed(false)
       setUntitled(false)
       setDraft(null)
+      setInitial(null)
       setAsking(null)
       setConfirming(false)
       return
@@ -138,6 +145,7 @@ export function EventEditor() {
     if (editing.mode === 'create') {
       seeded.current = editing
       setDraft(editing.draft)
+      setInitial(editing.initial ?? editing.draft)
       setCustom(false)
       return
     }
@@ -152,6 +160,7 @@ export function EventEditor() {
     if (!read) return
     seeded.current = editing
     setDraft(read)
+    setInitial(read)
     setCustom(
       read.repeat.interval > 1 ||
         read.repeat.weekdays.length > 0 ||
@@ -162,6 +171,13 @@ export function EventEditor() {
   const close = () => setEditing(null)
 
   const recurring = Boolean(event?.recurring) && editing?.mode === 'edit'
+  // Whether the form holds anything not yet saved: closing asks first, and a
+  // copy carries it over.
+  const changed =
+    draft !== null &&
+    initial !== null &&
+    JSON.stringify(draft) !== JSON.stringify(initial)
+
   // The end may read earlier than the start by the clock, across zones, but
   // never as an instant.
   const ordered = draft
@@ -279,14 +295,37 @@ export function EventEditor() {
   // the calendar the form shows; a series asks which of it to copy.
   const duplicate = (scope: 'one' | 'all') => {
     if (!draft || !event || editing?.mode !== 'edit') return
-    const copied = copyDraft(
+    const stored = copyDraft(
       event.components,
       editing.start,
       draft.calendar,
       format.timezone,
       scope
     )
-    if (copied) setEditing({ mode: 'create', draft: copied, copy: true })
+    if (!stored) return
+    // Edits not yet saved go into the copy rather than being dropped; the
+    // stored copy is what closing measures against, so it still asks.
+    const copied = changed
+      ? formCopy(
+          draft,
+          event.components,
+          editing.start,
+          format.timezone,
+          scope,
+          recurring
+        )
+      : stored
+    setEditing({ mode: 'create', draft: copied, copy: true, initial: stored })
+    // The form swaps in place, and its heading turning to "Copy event" is
+    // what says so; the cursor goes to the title, since the button that was
+    // clicked has gone with the Delete beside it.
+    requestAnimationFrame(() => {
+      const title = document.getElementById('event-title')
+      if (title instanceof HTMLInputElement) {
+        title.focus()
+        title.select()
+      }
+    })
   }
 
   const copy = () => {
@@ -298,6 +337,17 @@ export function EventEditor() {
     createMutation.isPending ||
     updateMutation.isPending ||
     splitMutation.isPending
+
+  // Escape, the X and Cancel all come through here: a form with changes asks
+  // first, and nothing closes while a save is in flight. A click outside does
+  // nothing at all, as in every other dialog that holds typed input.
+  const { requestClose, discardDialog } = useDiscardGuard({
+    hasText: changed,
+    hasFiles: false,
+    onDiscard: close,
+    locked: pending,
+    desc: t`Your changes will be lost.`,
+  })
 
   const open = editing !== null
   const body =
@@ -321,6 +371,9 @@ export function EventEditor() {
         ordered={ordered}
         untitled={untitled && draft.title.trim() === ''}
         onReveal={() => setRevealed(true)}
+        onSave={() => {
+          if (!pending) save()
+        }}
         setDraft={setDraft}
         custom={custom}
         setCustom={setCustom}
@@ -352,9 +405,13 @@ export function EventEditor() {
           </Button>
         </>
       )}
-      <Button variant='outline' onClick={close} disabled={pending}>
-        <Trans>Cancel</Trans>
-      </Button>
+      {/* A phone's header X already closes, and four buttons do not fit
+          across one. */}
+      {!isMobile && (
+        <Button variant='outline' onClick={requestClose} disabled={pending}>
+          <Trans>Cancel</Trans>
+        </Button>
+      )}
       <Button
         onClick={save}
         loading={pending}
@@ -382,7 +439,7 @@ export function EventEditor() {
               <Button
                 variant='ghost'
                 size='icon'
-                onClick={close}
+                onClick={requestClose}
                 aria-label={t`Close`}
               >
                 <X className='size-4' />
@@ -399,7 +456,7 @@ export function EventEditor() {
         <Dialog
           open={open}
           onOpenChange={(next) => {
-            if (!next) close()
+            if (!next) requestClose()
           }}
         >
           <DialogContent
@@ -444,6 +501,8 @@ export function EventEditor() {
         }}
       />
 
+      {discardDialog}
+
       <DeleteEventDialog
         event={confirming && editing?.mode === 'edit' ? editing.event : null}
         start={editing?.mode === 'edit' ? editing.start : 0}
@@ -464,6 +523,7 @@ function EditorFields({
   ordered,
   untitled,
   onReveal,
+  onSave,
 }: {
   draft: EventDraft
   setDraft: React.Dispatch<React.SetStateAction<EventDraft | null>>
@@ -477,6 +537,8 @@ function EditorFields({
   /** A save was tried without a title, which the title row says. */
   untitled: boolean
   onReveal: () => void
+  /** Enter in the title: the Save button's own path, asks and all. */
+  onSave: () => void
 }) {
   const { t } = useLingui()
   const format = useFormat()
@@ -522,6 +584,14 @@ function EditorFields({
           onChange={(input) =>
             edit((current) => ({ ...current, title: input.target.value }))
           }
+          // Only the title: the pickers and selects below take Enter for
+          // themselves. A key that ends an IME composition is not a save.
+          onKeyDown={(key) => {
+            if (key.key === 'Enter' && !key.nativeEvent.isComposing) {
+              key.preventDefault()
+              onSave()
+            }
+          }}
         />
         {untitled && (
           <p className='text-destructive text-xs' data-testid='untitled'>
@@ -567,7 +637,9 @@ function EditorFields({
         />
       </div>
 
-      <div className='grid grid-cols-2 gap-3'>
+      {/* One above the other on a phone: side by side, the 128px time
+          pickers leave the dates no room. */}
+      <div className='grid gap-3 sm:grid-cols-2'>
         <div className='space-y-2'>
           <Label htmlFor='event-start'>
             <Trans>Start</Trans>
@@ -682,6 +754,43 @@ function EditorFields({
               ...current,
               location: input.target.value,
             }))
+          }
+        />
+      </div>
+
+      <div className='space-y-2'>
+        <Label>
+          <Trans>Colour</Trans>
+        </Label>
+        {draft.colour && !/^#[0-9a-fA-F]{6}$/.test(draft.colour) && (
+          <Input
+            aria-label={t`Colour value`}
+            value={draft.colour}
+            onChange={(input) =>
+              edit((current) => ({ ...current, colour: input.target.value }))
+            }
+          />
+        )}
+        <ColourPicker
+          collapsible
+          value={
+            /^#[0-9a-fA-F]{6}$/.test(draft.colour ?? '') ? draft.colour! : ''
+          }
+          onChange={(colour) => edit((current) => ({ ...current, colour }))}
+          onClear={() => edit((current) => ({ ...current, colour: '' }))}
+        />
+      </div>
+
+      <div className='space-y-2'>
+        <Label htmlFor='event-url'>
+          <Trans>URL</Trans>
+        </Label>
+        <Input
+          id='event-url'
+          type='url'
+          value={draft.url ?? ''}
+          onChange={(input) =>
+            edit((current) => ({ ...current, url: input.target.value }))
           }
         />
       </div>

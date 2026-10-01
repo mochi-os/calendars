@@ -58,6 +58,10 @@ export interface EventDraft {
    */
   zone: { start: string; finish: string }
   location: string
+  /** Optional event-specific colour; blank uses the calendar colour. */
+  colour?: string
+  /** A web address attached to the event. */
+  url?: string
   /** The description as text, which is what the editor shows and edits. */
   description: string
   /**
@@ -113,6 +117,8 @@ const MANAGED = new Set([
   'DTEND',
   'DURATION',
   'LOCATION',
+  'COLOR',
+  'URL',
   'DESCRIPTION',
   'RRULE',
   'UID',
@@ -474,6 +480,11 @@ export function draftComponent(
   if (draft.location) {
     properties.push({ name: 'LOCATION', params: {}, value: draft.location })
   }
+  const colour =
+    draft.colour ?? (previous ? propertyValue(previous, 'COLOR') : '')
+  const url = draft.url ?? (previous ? propertyValue(previous, 'URL') : '')
+  if (colour) properties.push({ name: 'COLOR', params: {}, value: colour })
+  if (url) properties.push({ name: 'URL', params: {}, value: url })
   const description =
     draft.description === descriptionText(draft.original)
       ? draft.original
@@ -575,6 +586,8 @@ export function componentDraft(
     finishTime: zonedMinutes(new Date(finishSeconds * 1000), finishZone),
     zone: { start: zone, finish: finishZone },
     location: propertyValue(component, 'LOCATION'),
+    colour: propertyValue(component, 'COLOR'),
+    url: propertyValue(component, 'URL'),
     description: descriptionText(description),
     original: description,
     repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
@@ -1118,6 +1131,29 @@ export function copyDraft(
 }
 
 /**
+ * The draft a copy opens on when the editor holds changes not yet saved: the
+ * form as it stands, so nothing typed is lost, while the stored event is left
+ * as it is. A one-off event copies as the form reads. The form of a series
+ * holds the opened occurrence's dates (openedDraft), so "This event" copies it
+ * where it is, with no repeat, and "All events" moves it back to the series'
+ * start as saving does (savedComponents), override or not.
+ */
+export function formCopy(
+  draft: EventDraft,
+  components: Component[],
+  start: number,
+  timezone: string,
+  scope: 'one' | 'all',
+  recurring: boolean
+): EventDraft {
+  const master = masterComponent(components)
+  if (!recurring || !master) return draft
+  if (scope === 'one') return { ...draft, repeat: emptyRepeat() }
+  const first = masterStart(master, timezone)
+  return first === null ? draft : movedDraft(draft, first - start)
+}
+
+/**
  * The draft a copy of an occurrence with no stored event to read opens on,
  * such as a subscribed calendar's or a derived birthday: what the listing
  * itself says about it, as one event in the user's zone.
@@ -1157,6 +1193,8 @@ export function instanceDraft(
     finishTime: instance.allday ? 0 : zonedMinutes(ends, timezone),
     zone: { start: timezone, finish: timezone },
     location: instance.location,
+    colour: '',
+    url: '',
     description: descriptionText(instance.description),
     original: instance.description,
     repeat: emptyRepeat(),
@@ -1270,6 +1308,8 @@ export function newDraft(
     finishTime: zonedMinutes(ends, zone.finish),
     zone: { ...zone },
     location: '',
+    colour: '',
+    url: '',
     description: '',
     original: '',
     repeat: emptyRepeat(),

@@ -161,6 +161,11 @@ msgstr "{totalDescendants, plural, one {# ҷавоб} other {+# ҷавоби б�
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Менюро кушоед (# огоҳиномаи хонданашуда)} other {Менюро кушоед (# огоҳиномаи хонданашуда)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 соат"
@@ -432,6 +437,10 @@ msgstr "Аватар барои {name}"
 msgid "Back"
 msgstr "Бозгашт"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -553,9 +562,11 @@ msgstr "Тақвим навтарин аст"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "Тақвимҳо"
 
+#: src/hooks/use-ics-copy.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendars subscribed to this address will stop updating."
 msgstr "Тақвимҳое, ки ба ин суроға обуна шудаанд, дигар навсозӣ намешаванд."
@@ -583,7 +594,6 @@ msgstr "Камера дастрас нест"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -692,6 +702,7 @@ msgstr "Тоза кардани ҷустуҷӯ"
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -732,6 +743,7 @@ msgstr "Ҷамъ кардани панели канорӣ"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "Ранг"
@@ -740,6 +752,10 @@ msgstr "Ранг"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "Ранг захира шуд"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1503,6 +1519,7 @@ msgstr "Обуна ба анҷом нарасид"
 msgid "Failed to sync the calendar"
 msgstr "Ҳамоҳангсозии тақвим ба анҷом нарасид"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "Бекор кардан ба анҷом нарасид"
@@ -1986,6 +2003,10 @@ msgstr "Ягон гурӯҳ дастрас нест"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ҳеҷ як намуди ашё ҳоло сохта намешавад. Аввал ашёҳои волидайни заруриро эҷод кунед."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2473,8 +2494,13 @@ msgid "Repeats"
 msgstr "Такрор мешавад"
 
 #: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "Иваз кардан"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2594,6 +2620,10 @@ msgstr "Захира кардан..."
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Ҷустуҷӯ"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2744,6 +2774,7 @@ msgstr "Сарчашма ва таъиноти манзилро таъин ку�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "Танзимот"
 
@@ -3130,6 +3161,7 @@ msgstr "Таъин нашудааст"
 msgid "Unavailable"
 msgstr "Дастрас нест"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "Бекор кардан"
@@ -3183,6 +3215,10 @@ msgstr "Бор кардан"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "Рафти боркунӣ"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -3330,6 +3366,10 @@ msgstr "Ҳисоби шумо аз {source} ба ин ҷо интиқол дод
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "Замимаҳои шумо гум мешаванд."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

@@ -161,6 +161,11 @@ msgstr "{totalDescendants, plural, one {# பதில்} other {+# கூட�
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {மெனுவைத் திற (# படிக்காத அறிவிப்பு)} other {மெனுவைத் திற (# படிக்காத அறிவிப்புகள்)}}"
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr "12 மணிநேரம்"
@@ -432,6 +437,10 @@ msgstr "{name} இன் அவதாரம்"
 msgid "Back"
 msgstr "பின்"
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -553,9 +562,11 @@ msgstr "நாட்காட்டி புதுப்பித்த நி�
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr "நாள்காட்டிகள்"
 
+#: src/hooks/use-ics-copy.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendars subscribed to this address will stop updating."
 msgstr "இந்த முகவரிக்குக் குழுசேர்ந்த நாள்காட்டிகள் இனி புதுப்பிக்கப்படாது."
@@ -583,7 +594,6 @@ msgstr "கேமரா கிடைக்கவில்லை"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -692,6 +702,7 @@ msgstr "தேடலை அழி"
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -732,6 +743,7 @@ msgstr "பக்கப்பட்டியைச் சுருக்கு"
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr "நிறம்"
@@ -740,6 +752,10 @@ msgstr "நிறம்"
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
 msgstr "நிறம் சேமிக்கப்பட்டது"
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1503,6 +1519,7 @@ msgstr "சந்தா செய்ய முடியவில்லை"
 msgid "Failed to sync the calendar"
 msgstr "நாட்காட்டியை ஒத்திசைக்க முடியவில்லை"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr "செயல்தவிர்க்க முடியவில்லை"
@@ -1986,6 +2003,10 @@ msgstr "குழுக்கள் கிடைக்கவில்லை"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "உருப்படி வகைகள் எதையும் இன்னும் உருவாக்க முடியாது. முதலில் தேவையான பெற்றோர் உருப்படிகளை உருவாக்கவும்."
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2473,8 +2494,13 @@ msgid "Repeats"
 msgstr "மீண்டும் நிகழ்கிறது"
 
 #: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
 msgstr "மாற்று"
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2594,6 +2620,10 @@ msgstr "சேமிக்கிறது..."
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "தேடு"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2744,6 +2774,7 @@ msgstr "துவக்கம் மற்றும் சேருமிடத�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "அமைப்புகள்"
 
@@ -3130,6 +3161,7 @@ msgstr "ஒதுக்கப்படாதது"
 msgid "Unavailable"
 msgstr "கிடைக்கவில்லை"
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr "செயல்தவிர்"
@@ -3183,6 +3215,10 @@ msgstr "பதிவேற்று"
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
 msgstr "பதிவேற்ற முன்னேற்றம்"
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -3330,6 +3366,10 @@ msgstr "உங்கள் கணக்கு {source} இலிருந்த�
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
 msgstr "உங்கள் இணைப்புகள் இழக்கப்படும்."
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

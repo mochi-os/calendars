@@ -41,6 +41,7 @@ vi.mock('@/hooks/use-events', () => ({
     isPending: state.pending,
   }),
   useUpdateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useCreateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
 }))
 
 function show() {

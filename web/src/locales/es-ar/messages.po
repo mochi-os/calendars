@@ -161,6 +161,11 @@ msgstr ""
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr ""
 
+#. placeholder {0}: overflow.get(day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "+{0} more"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
 msgstr ""
@@ -432,6 +437,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
+#: src/features/calendar/settings.tsx
+msgid "Back to calendars"
+msgstr ""
+
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Back to home"
@@ -553,9 +562,11 @@ msgstr ""
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/index.tsx
 #: src/features/calendar/settings.tsx
+#: src/features/calendar/settings.tsx
 msgid "Calendars"
 msgstr ""
 
+#: src/hooks/use-ics-copy.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendars subscribed to this address will stop updating."
 msgstr ""
@@ -583,7 +594,6 @@ msgstr "Cámara no disponible"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
-#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -692,6 +702,7 @@ msgstr ""
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
+#: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -732,6 +743,7 @@ msgstr ""
 #: src/components/layout/calendars-layout.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
+#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour"
 msgstr ""
@@ -739,6 +751,10 @@ msgstr ""
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/settings.tsx
 msgid "Colour saved"
+msgstr ""
+
+#: src/features/calendar/editor.tsx
+msgid "Colour value"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -1503,6 +1519,7 @@ msgstr ""
 msgid "Failed to sync the calendar"
 msgstr ""
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Failed to undo"
 msgstr ""
@@ -1985,6 +2002,10 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No item types can be created yet. Create the required parent items first."
+msgstr ""
+
+#: src/features/calendar/components/agenda.tsx
+msgid "No matches"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2473,7 +2494,12 @@ msgid "Repeats"
 msgstr ""
 
 #: src/hooks/use-ics-copy.tsx
+#: src/hooks/use-ics-copy.tsx
 msgid "Replace"
+msgstr ""
+
+#: src/hooks/use-ics-copy.tsx
+msgid "Replace the calendar address?"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2594,6 +2620,10 @@ msgstr ""
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Buscá"
+
+#: src/features/calendar/components/toolbar.tsx
+msgid "Search events"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2744,6 +2774,7 @@ msgstr "Configurá origen y destino"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr ""
 
@@ -3130,6 +3161,7 @@ msgstr ""
 msgid "Unavailable"
 msgstr ""
 
+#: src/features/calendar/components/delete-event-dialog.tsx
 #: src/hooks/use-event-move.ts
 msgid "Undo"
 msgstr ""
@@ -3182,6 +3214,10 @@ msgstr "Subí"
 
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Upload progress"
+msgstr ""
+
+#: src/features/calendar/editor.tsx
+msgid "URL"
 msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
@@ -3329,6 +3365,10 @@ msgstr "Tu cuenta fue movida aquí desde {source}. Hasta que la elimines allá, 
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."
+msgstr ""
+
+#: src/features/calendar/editor.tsx
+msgid "Your changes will be lost."
 msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx

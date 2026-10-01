@@ -105,6 +105,30 @@ function show(selected?: string) {
   return { today: of(22), other: of(23) }
 }
 
+describe('Agenda search', () => {
+  it('says a search matched nothing, rather than that there are no events', () => {
+    state.search = 'dentist'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(screen.getByText('No matches')).toBeInTheDocument()
+    expect(screen.queryByText('No events')).toBeNull()
+  })
+
+  it('lists what a search matched', () => {
+    state.search = 'boots'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(screen.getByText('Wax boots')).toBeInTheDocument()
+    expect(screen.queryByText('No matches')).toBeNull()
+  })
+})
+
 describe('Agenda', () => {
   it("fills today's heading in the primary colour with contrasting text", () => {
     const { today } = show()
@@ -221,16 +245,6 @@ describe('Agenda event states', () => {
 })
 
 describe('Agenda states', () => {
-  it('says there are no events when a search matches none', () => {
-    state.search = 'nothing like this'
-    render(
-      <I18nProvider i18n={i18n}>
-        <Agenda onSelect={vi.fn()} />
-      </I18nProvider>
-    )
-    expect(screen.getByText('No events')).toBeInTheDocument()
-  })
-
   it('offers earlier events when the first is before 1970, such as a birthday', () => {
     state.first = -1_000_000_000
     render(
