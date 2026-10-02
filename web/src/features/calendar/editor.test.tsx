@@ -259,6 +259,33 @@ describe('EventEditor', () => {
     expect(screen.queryByRole('combobox', { name: /time zone/ })).toBeNull()
   })
 
+  it('keeps the dates their width when all day is on, the time and zone leaving their room', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    const time = document.querySelector('[aria-label="Start time"]')!
+    const timed = time.closest('.w-32')!.className
+    const zoned = screen.getByRole('combobox', {
+      name: 'Start time zone',
+    }).className
+    fireEvent.click(screen.getByLabelText('All day'))
+    const times = screen.getAllByTestId('time-room')
+    const zones = screen.getAllByTestId('zone-room')
+    // One of each in the start row and the end row, beside the date.
+    expect(times).toHaveLength(2)
+    expect(zones).toHaveLength(2)
+    for (const id of ['event-start', 'event-finish']) {
+      const row = document.getElementById(id)!.closest('.flex-wrap')!
+      expect(times.some((room) => row.contains(room))).toBe(true)
+      expect(zones.some((room) => row.contains(room))).toBe(true)
+    }
+    // As wide as what they stand in for.
+    for (const room of times) expect(timed).toContain(room.className)
+    for (const room of zones) {
+      expect(room.className).toContain('w-32')
+      expect(zoned).toContain('w-32')
+    }
+  })
+
   it('keeps what was typed when the event is read again in the background', async () => {
     const view = show()
     const title = await screen.findByLabelText('Title')

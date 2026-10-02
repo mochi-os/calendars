@@ -713,7 +713,7 @@ function EditorFields({
         icon={<CalendarClock className='size-4' />}
         label={<Trans>Start</Trans>}
       >
-        <div className='flex flex-wrap gap-2'>
+        <div className='@container flex flex-wrap gap-2'>
           <DatePicker
             id='event-start'
             className='min-w-36 flex-1'
@@ -722,7 +722,7 @@ function EditorFields({
           />
           {!draft.allday && (
             <TimePicker
-              className='w-32 shrink-0'
+              className={TIMED}
               aria-label={t`Start time`}
               value={draft.startTime}
               onChange={(minutes) => moveStart(draft.start, minutes)}
@@ -731,7 +731,9 @@ function EditorFields({
           {/* Each end's zone sits beside its time, the same width in both
               rows so the two line up. An all-day event has no time, and
               its days are the user's own. */}
-          {!draft.allday && (
+          {draft.allday ? (
+            <Timeless />
+          ) : (
             <TimezoneSelect
               compact
               auto={false}
@@ -756,7 +758,7 @@ function EditorFields({
         icon={<CalendarClock className='size-4' />}
         label={<Trans>End</Trans>}
       >
-        <div className='flex flex-wrap gap-2'>
+        <div className='@container flex flex-wrap gap-2'>
           <DatePicker
             id='event-finish'
             className='min-w-36 flex-1'
@@ -770,7 +772,7 @@ function EditorFields({
           />
           {!draft.allday && (
             <TimePicker
-              className='w-32 shrink-0'
+              className={TIMED}
               aria-label={t`End time`}
               value={draft.finishTime}
               onChange={(minutes) =>
@@ -778,7 +780,9 @@ function EditorFields({
               }
             />
           )}
-          {!draft.allday && (
+          {draft.allday ? (
+            <Timeless />
+          ) : (
             <TimezoneSelect
               compact
               auto={false}
@@ -1111,8 +1115,31 @@ function EditorFields({
   )
 }
 
+/** An end's time beside its date. */
+const TIMED = 'w-32 shrink-0'
+
 /** An end's zone beside its time: the time's width, so long city names cut short. */
-const ZONED = 'h-[var(--control-height-md)] w-32 shrink-0 justify-start'
+const ZONED = 'w-32 shrink-0'
+
+/**
+ * An all-day event's room where a timed one has its time and zone, so turning
+ * All day on hides them without moving the dates. Where the row is narrower
+ * than its date's least width, the time and the zone (9 + 8 + 8 rem and two
+ * gaps, 26 rem), the zone wraps under the time, and its room goes rather than
+ * leave an empty line.
+ */
+function Timeless() {
+  return (
+    <>
+      <span aria-hidden className={TIMED} data-testid='time-room' />
+      <span
+        aria-hidden
+        className={cn(ZONED, '@max-[26rem]:hidden')}
+        data-testid='zone-room'
+      />
+    </>
+  )
+}
 
 /**
  * One field of the editor. From small screens up its label sits in the
