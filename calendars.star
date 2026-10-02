@@ -478,10 +478,18 @@ def event_public(row):
 		"updated": row["updated"],
 	}
 
+# event_full(row): the event with its components, each zone in them one a
+# client can load: a Windows zone name Outlook writes, unknown to browsers and
+# phones, is handed over as its IANA zone, so the editors and the phone read
+# the times as meant and a save writes the IANA name. A core that predates
+# mochi.ical.resolve hands over the names as written.
 def event_full(row):
 	out = event_public(row)
 	out["ics"] = row["ics"]
-	tree = mochi.ical.parse(row["ics"])
+	text = row["ics"]
+	if hasattr(mochi.ical, "resolve"):
+		text = mochi.ical.resolve(text) or text
+	tree = mochi.ical.parse(text)
 	out["components"] = [c for c in tree.get("components", []) if type(c) == "dict" and c.get("name") != "VTIMEZONE"] if tree else []
 	return out
 
