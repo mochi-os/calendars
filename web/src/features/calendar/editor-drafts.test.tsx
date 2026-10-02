@@ -20,6 +20,34 @@ const { setEditing, noon, state } = vi.hoisted(() => ({
   },
 }))
 
+type Block = (locations: {
+  current: { pathname: string }
+  next: { pathname: string }
+}) => boolean
+
+const away = {
+  current: { pathname: '/' },
+  next: { pathname: '/c1' },
+}
+
+// The router's blocker as the editor registers it.
+const router = vi.hoisted(() => ({
+  block: null as Block | null,
+  blocked: false,
+  proceed: vi.fn(),
+  reset: vi.fn(),
+}))
+
+vi.mock('@tanstack/react-router', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@tanstack/react-router')>()),
+  useBlocker: (options: { shouldBlockFn: Block }) => {
+    router.block = options.shouldBlockFn
+    return router.blocked
+      ? { status: 'blocked', proceed: router.proceed, reset: router.reset }
+      : { status: 'idle' }
+  },
+}))
+
 // The phone layout on demand; every other test keeps the real width.
 vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
@@ -134,6 +162,60 @@ describe('EventEditor closing', () => {
     expect(setEditing).not.toHaveBeenCalled()
     expect(screen.queryByText('Discard draft?')).toBeNull()
     expect(screen.getByLabelText('Title')).toHaveValue('Dentist')
+  })
+})
+
+describe('EventEditor leaving', () => {
+  beforeEach(() => {
+    setEditing.mockClear()
+    router.block = null
+    router.proceed.mockReset()
+    router.reset.mockReset()
+  })
+
+  afterEach(() => {
+    router.blocked = false
+  })
+
+  // A change, then a navigation the blocker holds: the question opens over the
+  // editor, as it does when a link is followed with the editor open.
+  function hold() {
+    show()
+    const title = screen.getByLabelText('Title')
+    fireEvent.change(title, { target: { value: 'Dentist' } })
+    router.blocked = true
+    fireEvent.change(title, { target: { value: 'Dentist at noon' } })
+  }
+
+  it('lets a link away through while the form is untouched', () => {
+    show()
+    expect(router.block!(away)).toBe(false)
+  })
+
+  it('holds a link away while the form holds a change', () => {
+    show()
+    const title = screen.getByLabelText('Title')
+    fireEvent.change(title, { target: { value: 'Dentist' } })
+    expect(router.block!(away)).toBe(true)
+    fireEvent.change(title, { target: { value: '' } })
+    expect(router.block!(away)).toBe(false)
+  })
+
+  it('asks the question closing asks, and discards and leaves on Discard', () => {
+    hold()
+    expect(screen.getByText('Discard draft?')).toBeInTheDocument()
+    expect(screen.getByText('Your changes will be lost.')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Discard' }))
+    expect(router.proceed).toHaveBeenCalledTimes(1)
+    expect(setEditing).toHaveBeenCalledWith(null)
+  })
+
+  it('stays, with the form open, when the question is dismissed', () => {
+    hold()
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+    expect(router.reset).toHaveBeenCalledTimes(1)
+    expect(router.proceed).not.toHaveBeenCalled()
+    expect(setEditing).not.toHaveBeenCalled()
   })
 })
 
