@@ -207,9 +207,8 @@ export function Agenda({ selected, onSelect }: Props) {
     }
   }, [instances])
 
-  // Nothing from here on, which says so even when there are earlier events
-  // to load above it.
-  const empty = !pending && !failed && instances.length === 0 && !later
+  const empty =
+    !pending && !failed && instances.length === 0 && !earlier && !later
   // A search that matched nothing in everything there is to load, which is
   // not the same as a calendar with nothing on it.
   const unmatched =

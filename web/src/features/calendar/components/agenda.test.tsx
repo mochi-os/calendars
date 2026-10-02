@@ -17,7 +17,6 @@ const state = vi.hoisted(() => ({
   date: '2026-09-22',
   first: 0,
   failed: false,
-  none: false,
   retry: vi.fn(),
   pages: [] as { start: number; finish: number }[],
 }))
@@ -27,7 +26,6 @@ beforeEach(() => {
   state.date = '2026-09-22'
   state.first = 0
   state.failed = false
-  state.none = false
   state.retry.mockReset()
   state.pages = []
 })
@@ -71,7 +69,7 @@ vi.mock('@/hooks/use-events', () => ({
   useInstancePages: (pages: { start: number; finish: number }[]) => {
     state.pages = pages
     return {
-    instances: state.none ? [] : [
+    instances: [
       instance(22, 'Design review'),
       { ...instance(23, 'Wax boots'), recurring: true, alarm: true },
       { ...instance(24, 'Called off'), status: 'CANCELLED' },
@@ -255,18 +253,6 @@ describe('Agenda states', () => {
       </I18nProvider>
     )
     expect(screen.getByText('Earlier events')).toBeInTheDocument()
-  })
-
-  it('says there are no events from here on, under the way to earlier ones', () => {
-    state.first = noon(2026, 1, 1)
-    state.none = true
-    render(
-      <I18nProvider i18n={i18n}>
-        <Agenda onSelect={vi.fn()} />
-      </I18nProvider>
-    )
-    expect(screen.getByText('Earlier events')).toBeInTheDocument()
-    expect(screen.getByText('No events')).toBeInTheDocument()
   })
 
   it('stops the earlier pages at 1970, which is as far back as the server lists', () => {
