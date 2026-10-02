@@ -17,7 +17,6 @@ import {
   TimeGrid,
   useFormat,
   usePageTitle,
-  useScreenSize,
   offsetLabel,
   type CalendarEvent,
 } from '@mochi/web'
@@ -39,13 +38,11 @@ import { useInstancesQuery } from '@/hooks/use-events'
 import { useReminder } from '@/hooks/use-reminder'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { EventPopover } from '@/features/calendar/components/event-popover'
-import { PhoneMonth } from '@/features/calendar/components/phone-month'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
 
 export function CalendarPage() {
   const { t } = useLingui()
-  const { isMobile } = useScreenSize()
   const format = useFormat()
   usePageTitle(t`Calendars`)
   const {
@@ -197,13 +194,10 @@ export function CalendarPage() {
   }
 
   // "New event" lands on today when today is on screen, and otherwise on
-  // the day the view is on. A phone's month has a chosen day, whose events
-  // are listed under it, and lands there.
+  // the day the view is on.
   const createNow = () =>
     createAt(
-      view === 'month' && isMobile
-        ? date
-        : creationDay(format.zonedDay(new Date()), date, range.from, range.days)
+      creationDay(format.zonedDay(new Date()), date, range.from, range.days)
     )
 
   // A day cell in the month views says which day, not which kind, so it
@@ -348,17 +342,6 @@ export function CalendarPage() {
           setView('day')
         }}
         onStep={page}
-      />
-    ) : view === 'month' && isMobile ? (
-      <PhoneMonth
-        days={days}
-        month={monthOf(range.date)}
-        events={events}
-        today={today}
-        date={date}
-        onDate={setDate}
-        selected={current}
-        onSelect={select}
       />
     ) : (
       <MonthGrid

@@ -69,15 +69,12 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
     { value: 'month', label: t`Month`, icon: Grid3x3 },
     { value: 'list', label: t`List`, icon: List },
   ]
-  // Below tablet width (768px) there is no room for a grid with titles, so
-  // the views that read well in a column are offered, and the month as dots.
+  // Below tablet width (768px) there is no room for a grid, so only the two
+  // views that read well in a column are offered.
   const offered = !isMobile
     ? options
     : options.filter(
-        (option) =>
-          option.value === 'day' ||
-          option.value === 'month' ||
-          option.value === 'list'
+        (option) => option.value === 'day' || option.value === 'list'
       )
 
   const step = (direction: number) => setDate(stepDate(view, date, direction))

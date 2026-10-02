@@ -138,17 +138,12 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const urlView = VIEWS.includes(search.view as CalendarView)
     ? (search.view as CalendarView)
     : null
-  // Below tablet width (768px) there is no room for a grid with titles, so
-  // the week and multiweek views fall back to the list; the month shows as
-  // dots with the chosen day listed under it, and a tablet has the grids.
-  // The URL keeps what the user asked for, so widening the window puts it
-  // back.
+  // Below tablet width (768px) there is no room for a grid, so a grid view
+  // falls back to the list; a tablet has the grids. The URL keeps what the
+  // user asked for, so widening the window puts it back.
   const requested = urlView ?? lastView ?? preferences.view
   const view =
-    !isMobile ||
-    requested === 'day' ||
-    requested === 'month' ||
-    requested === 'list'
+    !isMobile || requested === 'day' || requested === 'list'
       ? requested
       : 'list'
   const date = /^\d{4}-\d{2}-\d{2}$/.test(search.date ?? '')

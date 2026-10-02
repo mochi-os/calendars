@@ -24,7 +24,6 @@ const state = vi.hoisted(() => ({
   toolbar: {} as Record<string, unknown>,
   view: 'month',
   date: '2026-09-15',
-  phone: false,
   query: {
     data: undefined as unknown,
     isSuccess: true,
@@ -45,7 +44,6 @@ beforeEach(() => {
   state.toolbar = {}
   state.view = 'month'
   state.date = '2026-09-15'
-  state.phone = false
   state.query = {
     data: { instances: [] },
     isSuccess: true,
@@ -113,10 +111,6 @@ vi.mock('@mochi/web', async (importOriginal) => {
       state.time = props
       return <div>time grid</div>
     },
-    useScreenSize: () =>
-      state.phone
-        ? { isDesktop: false, isMobile: true, isTablet: false }
-        : { isDesktop: true, isMobile: false, isTablet: false },
     usePageTitle: () => undefined,
   }
 })
@@ -185,23 +179,6 @@ describe('CalendarPage', () => {
         finish: '2026-09-25',
       }),
     })
-  })
-
-  it("puts a new event on a phone month's chosen day, not today", () => {
-    vi.useFakeTimers({ toFake: ['Date'] })
-    vi.setSystemTime(new Date('2026-09-15T10:00:00Z'))
-    try {
-      state.phone = true
-      state.date = '2026-09-20'
-      show()
-      ;(state.toolbar.onCreate as () => void)()
-      expect(state.setEditing).toHaveBeenCalledWith({
-        mode: 'create',
-        draft: expect.objectContaining({ start: '2026-09-20' }),
-      })
-    } finally {
-      vi.useRealTimers()
-    }
   })
 
   it('puts a new event on today when today is in a wide month', () => {
