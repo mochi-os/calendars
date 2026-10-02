@@ -39,6 +39,26 @@ msgstr "(तुम्ही)"
 msgid "[not set]"
 msgstr "[सेट नाही]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{total} पैकी {done} कार्यक्रम} other {{total} पैकी {done} कार्यक्रम}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} कार्यक्रम आयात करता आला नाही} other {{failed} कार्यक्रम आयात करता आले नाहीत}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} कार्यक्रम आयात केला} other {{imported} कार्यक्रम आयात केले}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} कार्यक्रम आधीच कॅलेंडरमध्ये आहे} other {{skipped} कार्यक्रम आधीच कॅलेंडरमध्ये आहेत}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "कॅलेंडर तयार केले"
 msgid "Calendar deleted"
 msgstr "कॅलेंडर हटवले"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "कॅलेंडर निर्यात केले"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "कॅलेंडर जोडले"
@@ -594,6 +618,7 @@ msgstr "कॅमेरा उपलब्ध नाही"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "शोध साफ करा"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "विस्तृत करा"
 msgid "Expand sidebar"
 msgstr "साइडबार विस्तृत करा"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "निर्यात"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "कॅलेंडर निर्यात करत आहे..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "बाह्य URL"
@@ -1409,6 +1443,11 @@ msgstr "लिंक हटवण्यात अयशस्वी"
 msgid "Failed to delete the event"
 msgstr "कार्यक्रम हटवण्यात अयशस्वी"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "कॅलेंडर निर्यात करण्यात अयशस्वी"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS टोकन मिळवण्यात अयशस्वी"
@@ -1416,6 +1455,10 @@ msgstr "RSS टोकन मिळवण्यात अयशस्वी"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "कॅलेंडरचा पत्ता मिळवण्यात अयशस्वी"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "कार्यक्रम आयात करण्यात अयशस्वी"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "मुख्यपृष्ठ"
 msgid "Hot"
 msgstr "हॉट"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar फाइल"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "आयडी"
@@ -1642,6 +1689,15 @@ msgstr "प्रतिमा दर्शक: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "इम्पीरियल"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "आयात"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "कार्यक्रम आयात करा"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

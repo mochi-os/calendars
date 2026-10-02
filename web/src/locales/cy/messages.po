@@ -39,6 +39,26 @@ msgstr "(chi)"
 msgid "[not set]"
 msgstr "[heb ei osod]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, zero {{done} o {total} digwyddiad} one {{done} o {total} digwyddiad} two {{done} o {total} digwyddiad} few {{done} o {total} digwyddiad} many {{done} o {total} digwyddiad} other {{done} o {total} digwyddiad}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, zero {Methwyd mewnforio {failed} digwyddiad} one {Methwyd mewnforio {failed} digwyddiad} two {Methwyd mewnforio {failed} digwyddiad} few {Methwyd mewnforio {failed} digwyddiad} many {Methwyd mewnforio {failed} digwyddiad} other {Methwyd mewnforio {failed} digwyddiad}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, zero {Mewnforiwyd {imported} digwyddiad} one {Mewnforiwyd {imported} digwyddiad} two {Mewnforiwyd {imported} digwyddiad} few {Mewnforiwyd {imported} digwyddiad} many {Mewnforiwyd {imported} digwyddiad} other {Mewnforiwyd {imported} digwyddiad}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, zero {{skipped} digwyddiad yn y calendr eisoes} one {{skipped} digwyddiad yn y calendr eisoes} two {{skipped} digwyddiad yn y calendr eisoes} few {{skipped} digwyddiad yn y calendr eisoes} many {{skipped} digwyddiad yn y calendr eisoes} other {{skipped} digwyddiad yn y calendr eisoes}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Calendr wedi'i greu"
 msgid "Calendar deleted"
 msgstr "Calendr wedi'i ddileu"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Calendr wedi'i allforio"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Cysylltwyd y calendr"
@@ -594,6 +618,7 @@ msgstr "Camera ddim ar gael"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Clirio chwiliad"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Ehangu"
 msgid "Expand sidebar"
 msgstr "Ehangu'r bar ochr"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Allforio"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Yn allforio'r calendr..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "URL allanol"
@@ -1409,6 +1443,11 @@ msgstr "Methwyd dileu'r ddolen"
 msgid "Failed to delete the event"
 msgstr "Methwyd dileu'r digwyddiad"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Methwyd allforio'r calendr"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Methwyd cael tocyn RSS"
@@ -1416,6 +1455,10 @@ msgstr "Methwyd cael tocyn RSS"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Methwyd cael cyfeiriad y calendr"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Methwyd mewnforio'r digwyddiadau"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Cartref"
 msgid "Hot"
 msgstr "Poeth"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Ffeil iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "Gwyliwr delweddau: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperialaidd"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Mewnforio"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Mewnforio digwyddiadau"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

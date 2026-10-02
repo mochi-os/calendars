@@ -39,6 +39,26 @@ msgstr "(നിങ്ങൾ)"
 msgid "[not set]"
 msgstr "[സജ്ജമാക്കിയിട്ടില്ല]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{total}-ൽ {done} ഇവന്റ്} other {{total}-ൽ {done} ഇവന്റുകൾ}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} ഇവന്റ് ഇറക്കുമതി ചെയ്യാനായില്ല} other {{failed} ഇവന്റുകൾ ഇറക്കുമതി ചെയ്യാനായില്ല}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} ഇവന്റ് ഇറക്കുമതി ചെയ്തു} other {{imported} ഇവന്റുകൾ ഇറക്കുമതി ചെയ്തു}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} ഇവന്റ് ഇതിനകം കലണ്ടറിലുണ്ട്} other {{skipped} ഇവന്റുകൾ ഇതിനകം കലണ്ടറിലുണ്ട്}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "കലണ്ടർ സൃഷ്ടിച്ചു"
 msgid "Calendar deleted"
 msgstr "കലണ്ടർ ഇല്ലാതാക്കി"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "കലണ്ടർ കയറ്റുമതി ചെയ്തു"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "കലണ്ടർ ലിങ്ക് ചെയ്തു"
@@ -594,6 +618,7 @@ msgstr "ക്യാമറ ലഭ്യമല്ല"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "തിരയൽ മായ്ക്കുക"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "വികസിപ്പിക്കുക"
 msgid "Expand sidebar"
 msgstr "സൈഡ്‌ബാർ വികസിപ്പിക്കുക"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "കയറ്റുമതി"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "കലണ്ടർ കയറ്റുമതി ചെയ്യുന്നു..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "ബാഹ്യ URL"
@@ -1409,6 +1443,11 @@ msgstr "ലിങ്ക് ഇല്ലാതാക്കുന്നതിൽ �
 msgid "Failed to delete the event"
 msgstr "ഇവന്റ് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "കലണ്ടർ കയറ്റുമതി ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS ടോക്കൺ നേടുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1416,6 +1455,10 @@ msgstr "RSS ടോക്കൺ നേടുന്നതിൽ പരാജയപ
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "കലണ്ടറിന്റെ വിലാസം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ഇവന്റുകൾ ഇറക്കുമതി ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "ഹോം"
 msgid "Hot"
 msgstr "ഹോട്ട്"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar ഫയൽ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ഐഡി"
@@ -1642,6 +1689,15 @@ msgstr "ചിത്ര വ്യൂവർ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ഇംപീരിയൽ"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "ഇറക്കുമതി"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "ഇവന്റുകൾ ഇറക്കുമതി ചെയ്യുക"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

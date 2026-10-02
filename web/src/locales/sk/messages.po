@@ -39,6 +39,26 @@ msgstr "(vy)"
 msgid "[not set]"
 msgstr "[nenastavené]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} z {total} udalosti} few {{done} z {total} udalostí} many {{done} z {total} udalosti} other {{done} z {total} udalostí}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} udalosť sa nepodarilo importovať} few {{failed} udalosti sa nepodarilo importovať} many {{failed} udalosti sa nepodarilo importovať} other {{failed} udalostí sa nepodarilo importovať}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {Importovaná {imported} udalosť} few {Importované {imported} udalosti} many {Importovaných {imported} udalosti} other {Importovaných {imported} udalostí}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} udalosť už je v kalendári} few {{skipped} udalosti už sú v kalendári} many {{skipped} udalosti už je v kalendári} other {{skipped} udalostí už je v kalendári}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Kalendár bol vytvorený"
 msgid "Calendar deleted"
 msgstr "Kalendár bol odstránený"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Kalendár bol exportovaný"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Kalendár prepojený"
@@ -594,6 +618,7 @@ msgstr "Kamera nie je k dispozícii"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Vymazať vyhľadávanie"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Rozbaliť"
 msgid "Expand sidebar"
 msgstr "Rozbaliť bočný panel"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Exportovať"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Exportuje sa kalendár..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "Externá URL"
@@ -1409,6 +1443,11 @@ msgstr "Nepodarilo sa zmazať odkaz"
 msgid "Failed to delete the event"
 msgstr "Nepodarilo sa odstrániť udalosť"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Nepodarilo sa exportovať kalendár"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Nepodarilo sa získať RSS token"
@@ -1416,6 +1455,10 @@ msgstr "Nepodarilo sa získať RSS token"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Nepodarilo sa získať adresu kalendára"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Nepodarilo sa importovať udalosti"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Domov"
 msgid "Hot"
 msgstr "Populárne"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Súbor iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "Prehliadač obrázkov: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperiálne"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Importovať"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Importovať udalosti"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

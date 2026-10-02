@@ -39,6 +39,26 @@ msgstr "(εσείς)"
 msgid "[not set]"
 msgstr "[χωρίς ορισμό]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} από {total} συμβάν} other {{done} από {total} συμβάντα}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {Δεν ήταν δυνατή η εισαγωγή {failed} συμβάντος} other {Δεν ήταν δυνατή η εισαγωγή {failed} συμβάντων}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {Εισήχθη {imported} συμβάν} other {Εισήχθησαν {imported} συμβάντα}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} συμβάν υπάρχει ήδη στο ημερολόγιο} other {{skipped} συμβάντα υπάρχουν ήδη στο ημερολόγιο}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Το ημερολόγιο δημιουργήθηκε"
 msgid "Calendar deleted"
 msgstr "Το ημερολόγιο διαγράφηκε"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Το ημερολόγιο εξήχθη"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Το ημερολόγιο συνδέθηκε"
@@ -594,6 +618,7 @@ msgstr "Η κάμερα δεν είναι διαθέσιμη"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Εκκαθάριση αναζήτησης"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Ανάπτυξη"
 msgid "Expand sidebar"
 msgstr "Επέκταση πλευρικής μπάρας"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Εξαγωγή ημερολογίου..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "Εξωτερικό URL"
@@ -1409,6 +1443,11 @@ msgstr "Αποτυχία διαγραφής συνδέσμου"
 msgid "Failed to delete the event"
 msgstr "Αποτυχία διαγραφής του συμβάντος"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Αποτυχία εξαγωγής ημερολογίου"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Αποτυχία λήψης διακριτικού RSS"
@@ -1416,6 +1455,10 @@ msgstr "Αποτυχία λήψης διακριτικού RSS"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Αποτυχία λήψης της διεύθυνσης του ημερολογίου"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Αποτυχία εισαγωγής συμβάντων"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Αρχική"
 msgid "Hot"
 msgstr "Δημοφιλή"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Αρχείο iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "Αναγνωριστικό"
@@ -1642,6 +1689,15 @@ msgstr "Προβολή εικόνας: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Αυτοκρατορικό"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Εισαγωγή συμβάντων"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

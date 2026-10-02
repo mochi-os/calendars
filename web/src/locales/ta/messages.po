@@ -39,6 +39,26 @@ msgstr "(நீங்கள்)"
 msgid "[not set]"
 msgstr "[அமைக்கப்படவில்லை]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{total} இல் {done} நிகழ்வு} other {{total} இல் {done} நிகழ்வுகள்}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} நிகழ்வை இறக்குமதி செய்ய முடியவில்லை} other {{failed} நிகழ்வுகளை இறக்குமதி செய்ய முடியவில்லை}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} நிகழ்வு இறக்குமதி செய்யப்பட்டது} other {{imported} நிகழ்வுகள் இறக்குமதி செய்யப்பட்டன}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} நிகழ்வு ஏற்கனவே நாட்காட்டியில் உள்ளது} other {{skipped} நிகழ்வுகள் ஏற்கனவே நாட்காட்டியில் உள்ளன}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "நாட்காட்டி உருவாக்கப்பட்�
 msgid "Calendar deleted"
 msgstr "நாட்காட்டி நீக்கப்பட்டது"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "நாட்காட்டி ஏற்றுமதி செய்யப்பட்டது"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "நாட்காட்டி இணைக்கப்பட்டது"
@@ -594,6 +618,7 @@ msgstr "கேமரா கிடைக்கவில்லை"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "தேடலை அழி"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "விரிவாக்கு"
 msgid "Expand sidebar"
 msgstr "பக்கப்பட்டியை விரிவாக்கு"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "ஏற்றுமதி"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "நாட்காட்டி ஏற்றுமதி செய்யப்படுகிறது..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "வெளிப்புற URL"
@@ -1409,6 +1443,11 @@ msgstr "இணைப்பை நீக்க முடியவில்லை"
 msgid "Failed to delete the event"
 msgstr "நிகழ்வை நீக்க முடியவில்லை"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "நாட்காட்டியை ஏற்றுமதி செய்ய முடியவில்லை"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS டோக்கனைப் பெற முடியவில்லை"
@@ -1416,6 +1455,10 @@ msgstr "RSS டோக்கனைப் பெற முடியவில்ல
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "நாட்காட்டி முகவரியைப் பெற முடியவில்லை"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "நிகழ்வுகளை இறக்குமதி செய்ய முடியவில்லை"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "முகப்பு"
 msgid "Hot"
 msgstr "பிரபலமான"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar கோப்பு"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ஐடி"
@@ -1642,6 +1689,15 @@ msgstr "பட காட்சி: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "இம்பீரியல்"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "இறக்குமதி"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "நிகழ்வுகளை இறக்குமதி செய்"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

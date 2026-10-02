@@ -39,6 +39,26 @@ msgstr "(wena)"
 msgid "[not set]"
 msgstr "[akusethiwe]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} kumcimbi ongu-{total}} other {{done} kwimicimbi engu-{total}}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {Umcimbi ongu-{failed} awukwazanga ukungeniswa} other {Imicimbi engu-{failed} ayikwazanga ukungeniswa}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {Umcimbi ongu-{imported} ungenisiwe} other {Imicimbi engu-{imported} ingenisiwe}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {Umcimbi ongu-{skipped} usuvele usekhalendeni} other {Imicimbi engu-{skipped} isivele isekhalendeni}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Ikhalenda idaliwe"
 msgid "Calendar deleted"
 msgstr "Ikhalenda isusiwe"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Ikhalenda ithunyelwe ngaphandle"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Ikhalenda ixhunyiwe"
@@ -594,6 +618,7 @@ msgstr "Ikhamera ayitholakali"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Sula usesho"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Nweba"
 msgid "Expand sidebar"
 msgstr "Nweba ibha eseceleni"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Thumela ngaphandle"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Ithumela ikhalenda ngaphandle..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "I-URL yangaphandle"
@@ -1409,6 +1443,11 @@ msgstr "Kuhlulekile ukususa isixhumanisi"
 msgid "Failed to delete the event"
 msgstr "Kuhlulekile ukususa umcimbi"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Kuhlulekile ukuthumela ikhalenda ngaphandle"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Kuhlulekile ukuthola ithokeni ye-RSS"
@@ -1416,6 +1455,10 @@ msgstr "Kuhlulekile ukuthola ithokeni ye-RSS"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Kuhlulekile ukuthola ikheli lekhalenda"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Kuhlulekile ukungenisa imicimbi"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Ikhaya"
 msgid "Hot"
 msgstr "Okushisayo"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Ifayela le-iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "I-ID"
@@ -1642,6 +1689,15 @@ msgstr "Isibonisi sesithombe: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Yobukhosi"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Ngenisa"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Ngenisa imicimbi"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

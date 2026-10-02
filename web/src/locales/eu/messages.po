@@ -39,6 +39,26 @@ msgstr "(zu)"
 msgid "[not set]"
 msgstr "[ezarri gabe]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{total} gertaeratik {done}} other {{total} gertaeratik {done}}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {Ezin izan da {failed} gertaera inportatu} other {Ezin izan da {failed} gertaera inportatu}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} gertaera inportatu da} other {{imported} gertaera inportatu dira}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} gertaera dagoeneko egutegian dago} other {{skipped} gertaera dagoeneko egutegian daude}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Egutegia sortu da"
 msgid "Calendar deleted"
 msgstr "Egutegia ezabatu da"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Egutegia esportatu da"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Egutegia estekatuta"
@@ -594,6 +618,7 @@ msgstr "Kamera ez dago erabilgarri"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Garbitu bilaketa"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Zabaldu"
 msgid "Expand sidebar"
 msgstr "Zabaldu alboko barra"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Esportatu"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Egutegia esportatzen..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "Kanpoko URLa"
@@ -1409,6 +1443,11 @@ msgstr "Ezin izan da esteka ezabatu"
 msgid "Failed to delete the event"
 msgstr "Ezin izan da gertaera ezabatu"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Ezin izan da egutegia esportatu"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Ezin izan da RSS tokena lortu"
@@ -1416,6 +1455,10 @@ msgstr "Ezin izan da RSS tokena lortu"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Ezin izan da egutegiaren helbidea lortu"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Ezin izan dira gertaerak inportatu"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Hasiera"
 msgid "Hot"
 msgstr "Beroa"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar fitxategia"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "IDa"
@@ -1642,6 +1689,15 @@ msgstr "Irudi-ikustailea: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Inperiala"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Inportatu"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Inportatu gertaerak"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

@@ -39,6 +39,26 @@ msgstr "(သင်)"
 msgid "[not set]"
 msgstr "[မသတ်မှတ်ရသေး]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, other {အစီအစဉ် {total} ခုအနက် {done} ခု}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, other {အစီအစဉ် {failed} ခု တင်သွင်း၍ မရပါ}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, other {အစီအစဉ် {imported} ခု တင်သွင်းပြီးပါပြီ}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, other {အစီအစဉ် {skipped} ခု ပြက္ခဒိန်တွင် ရှိပြီးသားဖြစ်သည်}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "ပြက္ခဒိန် ဖန်တီးပြီးပါပြ�
 msgid "Calendar deleted"
 msgstr "ပြက္ခဒိန် ဖျက်ပြီးပါပြီ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "ပြက္ခဒိန် တင်ပို့ပြီးပါပြီ"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "ပြက္ခဒိန် ချိတ်ဆက်ပြီးပါပြီ"
@@ -594,6 +618,7 @@ msgstr "ကင်မရာ မရနိုင်ပါ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "ရှာဖွေမှု ရှင်းမည်"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "ချဲ့ရန်"
 msgid "Expand sidebar"
 msgstr "ဘေးဘားကို ချဲ့ပါ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "တင်ပို့"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "ပြက္ခဒိန် တင်ပို့နေသည်..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "ပြင်ပ URL"
@@ -1409,6 +1443,11 @@ msgstr "လင့် ဖျက်၍ မရပါ"
 msgid "Failed to delete the event"
 msgstr "အစီအစဉ် ဖျက်၍ မရပါ"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "ပြက္ခဒိန် တင်ပို့၍ မရပါ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS တိုကင် ရယူ၍ မရပါ"
@@ -1416,6 +1455,10 @@ msgstr "RSS တိုကင် ရယူ၍ မရပါ"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ပြက္ခဒိန် လိပ်စာ ရယူ၍ မရပါ"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "အစီအစဉ်များ တင်သွင်း၍ မရပါ"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "ပင်မ"
 msgid "Hot"
 msgstr "လူကြိုက်များ"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar ဖိုင်"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "ပုံကြည့်ရှုစနစ်- {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "အင်ပီးရီးယယ်"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "တင်သွင်း"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "အစီအစဉ်များ တင်သွင်းရန်"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

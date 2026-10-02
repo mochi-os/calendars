@@ -39,6 +39,26 @@ msgstr "(คุณ)"
 msgid "[not set]"
 msgstr "[ไม่ได้ตั้ง]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, other {{done} จาก {total} กิจกรรม}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, other {ไม่สามารถนำเข้า {failed} กิจกรรมได้}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, other {นำเข้า {imported} กิจกรรมแล้ว}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, other {{skipped} กิจกรรมมีอยู่ในปฏิทินแล้ว}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "สร้างปฏิทินแล้ว"
 msgid "Calendar deleted"
 msgstr "ลบปฏิทินแล้ว"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "ส่งออกปฏิทินแล้ว"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "เชื่อมโยงปฏิทินแล้ว"
@@ -594,6 +618,7 @@ msgstr "กล้องไม่พร้อมใช้งาน"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "ล้างการค้นหา"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "ขยาย"
 msgid "Expand sidebar"
 msgstr "ขยายแถบด้านข้าง"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "ส่งออก"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "กำลังส่งออกปฏิทิน..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "URL ภายนอก"
@@ -1409,6 +1443,11 @@ msgstr "ไม่สามารถลบลิงก์ได้"
 msgid "Failed to delete the event"
 msgstr "ไม่สามารถลบกิจกรรมได้"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "ไม่สามารถส่งออกปฏิทินได้"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "ไม่สามารถรับโทเคน RSS ได้"
@@ -1416,6 +1455,10 @@ msgstr "ไม่สามารถรับโทเคน RSS ได้"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ไม่สามารถรับที่อยู่ปฏิทินได้"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ไม่สามารถนำเข้ากิจกรรมได้"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "หน้าหลัก"
 msgid "Hot"
 msgstr "ยอดนิยม"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "ไฟล์ iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "รหัส"
@@ -1642,6 +1689,15 @@ msgstr "โปรแกรมดูรูปภาพ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "อิมพีเรียล"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "นำเข้า"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "นำเข้ากิจกรรม"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

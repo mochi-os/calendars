@@ -39,6 +39,26 @@ msgstr "(ви)"
 msgid "[not set]"
 msgstr "[не задано]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} з {total} події} few {{done} з {total} подій} many {{done} з {total} подій} other {{done} з {total} події}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {Не вдалося імпортувати {failed} подію} few {Не вдалося імпортувати {failed} події} many {Не вдалося імпортувати {failed} подій} other {Не вдалося імпортувати {failed} події}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {Імпортовано {imported} подію} few {Імпортовано {imported} події} many {Імпортовано {imported} подій} other {Імпортовано {imported} події}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} подія вже є в календарі} few {{skipped} події вже є в календарі} many {{skipped} подій уже є в календарі} other {{skipped} події вже є в календарі}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Календар створено"
 msgid "Calendar deleted"
 msgstr "Календар видалено"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Календар експортовано"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Календар пов'язано"
@@ -594,6 +618,7 @@ msgstr "Камера недоступна"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Очистити пошук"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Розгорнути"
 msgid "Expand sidebar"
 msgstr "Розгорнути бічну панель"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Експорт"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Експорт календаря..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "Зовнішній URL"
@@ -1409,6 +1443,11 @@ msgstr "Не вдалося видалити посилання"
 msgid "Failed to delete the event"
 msgstr "Не вдалося видалити подію"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Не вдалося експортувати календар"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Не вдалося отримати RSS-токен"
@@ -1416,6 +1455,10 @@ msgstr "Не вдалося отримати RSS-токен"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Не вдалося отримати адресу календаря"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Не вдалося імпортувати події"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Головна"
 msgid "Hot"
 msgstr "Популярне"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Файл iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "Ідентифікатор"
@@ -1642,6 +1689,15 @@ msgstr "Перегляд зображень: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Імперські"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Імпорт"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Імпорт подій"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

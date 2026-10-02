@@ -39,6 +39,26 @@ msgstr "(דו)"
 msgid "[not set]"
 msgstr "[נישט געשטעלט]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} פֿון {total} געשעעניש} other {{done} פֿון {total} געשעענישן}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} געשעעניש האָט ניט געקענט ווערן אימפּאָרטירט} other {{failed} געשעענישן האָבן ניט געקענט ווערן אימפּאָרטירט}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} געשעעניש אימפּאָרטירט} other {{imported} געשעענישן אימפּאָרטירט}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} געשעעניש איז שוין אין קאַלענדאַר} other {{skipped} געשעענישן זײַנען שוין אין קאַלענדאַר}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "קאַלענדאַר באַשאַפֿן"
 msgid "Calendar deleted"
 msgstr "קאַלענדאַר אויסגעמעקט"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "קאַלענדאַר עקספּאָרטירט"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "קאַלענדאַר פֿאַרבונדן"
@@ -594,6 +618,7 @@ msgstr "די קאַמערע איז נישט פֿאַראַן"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "רייניקן זוכן"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "אויסשפּרייטן"
 msgid "Expand sidebar"
 msgstr "פֿאַרברייטערן זײַטלאַסט"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "עקספּאָרט"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "עקספּאָרטירט קאַלענדאַר..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "אינדרויסנדיקער URL"
@@ -1409,6 +1443,11 @@ msgstr "ניט געלונגען צו מעקן לינק"
 msgid "Failed to delete the event"
 msgstr "ניט געלונגען צו מעקן די געשעעניש"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "ניט געלונגען צו עקספּאָרטירן קאַלענדאַר"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "ניט געלונגען צו באַקומען RSS־טאָקען"
@@ -1416,6 +1455,10 @@ msgstr "ניט געלונגען צו באַקומען RSS־טאָקען"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ניט געלונגען צו באַקומען דעם קאַלענדאַר־אַדרעס"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ניט געלונגען צו אימפּאָרטירן געשעענישן"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "היים"
 msgid "Hot"
 msgstr "הייס"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar טעקע"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "בילד־ווײַזער: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "אימפּעריאַל"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "אימפּאָרט"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "אימפּאָרטירן געשעענישן"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

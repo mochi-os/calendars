@@ -39,6 +39,26 @@ msgstr "(ທ່ານ)"
 msgid "[not set]"
 msgstr "[ບໍ່ໄດ້ຕັ້ງຄ່າ]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, other {{done} ຈາກ {total} ເຫດການ}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, other {ບໍ່ສາມາດນຳເຂົ້າ {failed} ເຫດການໄດ້}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, other {ນຳເຂົ້າ {imported} ເຫດການແລ້ວ}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, other {{skipped} ເຫດການມີຢູ່ໃນປະຕິທິນແລ້ວ}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "ສ້າງປະຕິທິນແລ້ວ"
 msgid "Calendar deleted"
 msgstr "ລຶບປະຕິທິນແລ້ວ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "ສົ່ງອອກປະຕິທິນແລ້ວ"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "ເຊື່ອມຕໍ່ປະຕິທິນແລ້ວ"
@@ -594,6 +618,7 @@ msgstr "ບໍ່ມີກ້ອງຖ່າຍຮູບ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "ລ້າງການຄົ້ນຫາ"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "ຂະຫຍາຍ"
 msgid "Expand sidebar"
 msgstr "ຂະຫຍາຍແຖບຂ້າງ"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "ສົ່ງອອກ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "ກຳລັງສົ່ງອອກປະຕິທິນ..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "URL ພາຍນອກ"
@@ -1409,6 +1443,11 @@ msgstr "ລຶບລິ້ງລົ້ມເຫຼວ"
 msgid "Failed to delete the event"
 msgstr "ລຶບເຫດການລົ້ມເຫຼວ"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "ສົ່ງອອກປະຕິທິນລົ້ມເຫຼວ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "ໄດ້ຮັບໂທເຄັນ RSS ລົ້ມເຫຼວ"
@@ -1416,6 +1455,10 @@ msgstr "ໄດ້ຮັບໂທເຄັນ RSS ລົ້ມເຫຼວ"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "ຮັບທີ່ຢູ່ປະຕິທິນລົ້ມເຫຼວ"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ນຳເຂົ້າເຫດການລົ້ມເຫຼວ"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "ໜ້າຫຼັກ"
 msgid "Hot"
 msgstr "ມາແຮງ"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "ໄຟລ໌ iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "ຕົວເບິ່ງຮູບພາບ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ອິມພີຣຽລ"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "ນຳເຂົ້າ"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "ນຳເຂົ້າເຫດການ"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

@@ -8,6 +8,7 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query'
+import { calendarsApi } from '@/api/calendars'
 import {
   eventsApi,
   type CreateEvent,
@@ -157,3 +158,52 @@ export const useDeleteEventMutation = () =>
       eventsApi.delete(event, etag),
     ({ event }) => event
   )
+
+/** What a whole import wrote, summed over its rounds. */
+export interface ImportTotals {
+  imported: number
+  skipped: number
+  failed: number
+}
+
+/**
+ * Imports an iCalendar file into a calendar. Each request writes only part of
+ * a long file, so the rounds repeat with the staged file and the offset the
+ * last one reached until the server says it is finished; `progress` hears how
+ * far each round got. The events are refreshed however it ends, a failure
+ * part-way included, since the rounds before it wrote theirs.
+ */
+export const useImportEventsMutation = () => {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: async ({
+      calendar,
+      file,
+      progress,
+    }: {
+      calendar: string
+      file: File
+      progress: (done: number, total: number) => void
+    }): Promise<ImportTotals> => {
+      const totals = { imported: 0, skipped: 0, failed: 0 }
+      let round = await calendarsApi.import({ calendar, offset: 0, file })
+      for (;;) {
+        totals.imported += round.imported
+        totals.skipped += round.skipped
+        totals.failed += round.failed
+        progress(round.offset, round.total)
+        if (round.finished) return totals
+        round = await calendarsApi.import({
+          calendar,
+          offset: round.offset,
+          staged: round.import,
+        })
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['instances'] })
+      queryClient.invalidateQueries({ queryKey: ['event'] })
+      queryClient.invalidateQueries({ queryKey: ['bounds'] })
+    },
+  })
+}

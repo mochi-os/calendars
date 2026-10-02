@@ -39,6 +39,26 @@ msgstr "(تۆ)"
 msgid "[not set]"
 msgstr "[دانەنراوە]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} لە {total} ڕووداو} other {{done} لە {total} ڕووداو}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {نەتوانرا {failed} ڕووداو هاوردە بکرێت} other {نەتوانرا {failed} ڕووداو هاوردە بکرێت}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} ڕووداو هاوردە کرا} other {{imported} ڕووداو هاوردە کرا}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} ڕووداو پێشتر لە ڕۆژژمێرەکەدا هەیە} other {{skipped} ڕووداو پێشتر لە ڕۆژژمێرەکەدا هەیە}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "ڕۆژژمێر دروستکرا"
 msgid "Calendar deleted"
 msgstr "ڕۆژژمێر سڕایەوە"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "ڕۆژژمێر هەناردە کرا"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "ڕۆژژمێر بەستراوە"
@@ -594,6 +618,7 @@ msgstr "کامێرا بەردەست نییە"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "پاککردنەوەی گەڕان"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "فراوانکردن"
 msgid "Expand sidebar"
 msgstr "فراوانکردنی لاتەنیشت"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "هەناردەکردن"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "هەناردەکردنی ڕۆژژمێر..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "URLی دەرەکی"
@@ -1409,6 +1443,11 @@ msgstr "سڕینەوەی بەستەر سەرکەوتوو نەبوو"
 msgid "Failed to delete the event"
 msgstr "سڕینەوەی ڕووداوەکە سەرکەوتوو نەبوو"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "هەناردەکردنی ڕۆژژمێر سەرکەوتوو نەبوو"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "وەرگرتنی تۆکنی RSS سەرکەوتوو نەبوو"
@@ -1416,6 +1455,10 @@ msgstr "وەرگرتنی تۆکنی RSS سەرکەوتوو نەبوو"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "وەرگرتنی ناونیشانی ڕۆژژمێر سەرکەوتوو نەبوو"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "هاوردەکردنی ڕووداوەکان سەرکەوتوو نەبوو"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "ماڵەوە"
 msgid "Hot"
 msgstr "گەرم"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "فایلی iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ناسنامە"
@@ -1642,6 +1689,15 @@ msgstr "بینەری وێنە: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ئیمپێریاڵ"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "هاوردەکردن"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "هاوردەکردنی ڕووداوەکان"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

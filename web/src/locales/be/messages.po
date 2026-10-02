@@ -39,6 +39,26 @@ msgstr "(вы)"
 msgid "[not set]"
 msgstr "[не зададзена]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} з {total} падзеі} few {{done} з {total} падзей} many {{done} з {total} падзей} other {{done} з {total} падзеі}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {Не ўдалося імпартаваць {failed} падзею} few {Не ўдалося імпартаваць {failed} падзеі} many {Не ўдалося імпартаваць {failed} падзей} other {Не ўдалося імпартаваць {failed} падзеі}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {Імпартавана {imported} падзея} few {Імпартавана {imported} падзеі} many {Імпартавана {imported} падзей} other {Імпартавана {imported} падзеі}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} падзея ўжо ёсць у календары} few {{skipped} падзеі ўжо ёсць у календары} many {{skipped} падзей ужо ёсць у календары} other {{skipped} падзеі ўжо ёсць у календары}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Каляндар створаны"
 msgid "Calendar deleted"
 msgstr "Каляндар выдалены"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Каляндар экспартаваны"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Каляндар звязаны"
@@ -594,6 +618,7 @@ msgstr "Камера недаступная"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Ачысціць пошук"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Разгарнуць"
 msgid "Expand sidebar"
 msgstr "Разгарнуць бакавую панэль"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Экспарт"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Экспарт календара..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "Знешні URL"
@@ -1409,6 +1443,11 @@ msgstr "Не ўдалося выдаліць спасылку"
 msgid "Failed to delete the event"
 msgstr "Не ўдалося выдаліць падзею"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Не ўдалося экспартаваць каляндар"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Не ўдалося атрымаць RSS токен"
@@ -1416,6 +1455,10 @@ msgstr "Не ўдалося атрымаць RSS токен"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Не ўдалося атрымаць адрас календара"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Не ўдалося імпартаваць падзеі"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Галоўная"
 msgid "Hot"
 msgstr "Папулярнае"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Файл iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "Прагляд відарысаў: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Імперская"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Імпарт"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Імпарт падзей"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

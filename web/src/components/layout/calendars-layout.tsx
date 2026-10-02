@@ -12,6 +12,7 @@ import {
   MiniMonth,
   colourCheckbox,
   getErrorMessage,
+  shellSaveBlob,
   toast,
   toastAction,
   useScreenSize,
@@ -24,6 +25,7 @@ import {
   CalendarDays,
   CircleAlert,
   Copy,
+  Download,
   Eye,
   Palette,
   Pencil,
@@ -34,7 +36,9 @@ import {
   Settings2,
   Smartphone,
   Trash2,
+  Upload,
 } from 'lucide-react'
+import { calendarsApi } from '@/api/calendars'
 import type { Calendar } from '@/api/types/calendars'
 import { useCalendarContext } from '@/context/calendar-context'
 import {
@@ -45,6 +49,7 @@ import {
 import { useIcsCopy } from '@/hooks/use-ics-copy'
 import { ColourDialog } from '@/features/calendar/dialogs/colour-dialog'
 import { ConnectDialog } from '@/features/calendar/dialogs/connect-dialog'
+import { ImportDialog } from '@/features/calendar/dialogs/import-dialog'
 import { PreferencesDialog } from '@/features/calendar/dialogs/preferences-dialog'
 import { RenameDialog } from '@/features/calendar/dialogs/rename-dialog'
 import { SubscribeDialog } from '@/features/calendar/dialogs/subscribe-dialog'
@@ -59,6 +64,19 @@ const grantShown = new Set<string>()
 // here unlinks it and leaves the original and its events alone.
 function detached(calendar: Calendar) {
   return calendar.kind === 'linked' || calendar.kind === 'subscription'
+}
+
+// The calendar's name as a file name: the characters file systems refuse go,
+// and a name with nothing left is saved under a generic one.
+function filename(name: string) {
+  const safe = name
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\\/:*?"<>|\u0000-\u001f\u007f]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/^\.+|\.+$/g, '')
+    .trim()
+  return `${safe || 'calendar'}.ics`
 }
 
 export function CalendarsLayout() {
@@ -76,6 +94,7 @@ export function CalendarsLayout() {
   const [renaming, setRenaming] = useState<Calendar | null>(null)
   const [recolouring, setRecolouring] = useState<Calendar | null>(null)
   const [deleting, setDeleting] = useState<Calendar | null>(null)
+  const [importing, setImporting] = useState<Calendar | null>(null)
 
   const createMutation = useCreateCalendarMutation()
   const deleteMutation = useDeleteCalendarMutation()
@@ -156,6 +175,27 @@ export function CalendarsLayout() {
     }
   }
 
+  // Saved through the shell: inside its sandboxed iframe a download started
+  // from the page itself is dropped without a word.
+  const download = async (calendar: Calendar) => {
+    const save = async () => {
+      const text = await calendarsApi.export(calendar.id)
+      const blob = new Blob([text], { type: 'text/calendar' })
+      if (!(await shellSaveBlob(blob, filename(calendar.name)))) {
+        throw new Error(t`Failed to export calendar`)
+      }
+    }
+    try {
+      await toastAction(save(), {
+        loading: t`Exporting calendar...`,
+        success: t`Calendar exported`,
+        error: (error) => getErrorMessage(error, t`Failed to export calendar`),
+      })
+    } catch {
+      // toastAction already showed error
+    }
+  }
+
   // The provider's consent returns the browser here with the account it
   // granted, which opens the dialog at that account's calendars. The query is
   // dropped either way so a reload does not repeat it.
@@ -193,12 +233,29 @@ export function CalendarsLayout() {
     const rows: NavItem[] = ordered.map((calendar) => {
       const checked = shown(calendar.id)
       const menu: NavMenuItem[] = []
-      if (calendar.kind === 'birthdays') {
-        menu.push({
-          title: t`Colour`,
-          icon: Palette,
-          onClick: () => setRecolouring(calendar),
+      // Any calendar can be exported; only one the user writes to imported.
+      const transfer: NavMenuItem[] = []
+      if (!calendar.readonly) {
+        transfer.push({
+          title: t`Import`,
+          icon: Upload,
+          onClick: () => setImporting(calendar),
         })
+      }
+      transfer.push({
+        title: t`Export`,
+        icon: Download,
+        onClick: () => void download(calendar),
+      })
+      if (calendar.kind === 'birthdays') {
+        menu.push(
+          {
+            title: t`Colour`,
+            icon: Palette,
+            onClick: () => setRecolouring(calendar),
+          },
+          ...transfer
+        )
       } else {
         menu.push(
           { title: t`Only this`, icon: Eye, onClick: () => only(calendar.id) },
@@ -232,6 +289,7 @@ export function CalendarsLayout() {
             icon: Copy,
             onClick: () => void copy(calendar.id),
           },
+          ...transfer,
           {
             title: t`Settings`,
             icon: Settings2,
@@ -307,7 +365,7 @@ export function CalendarsLayout() {
         },
       ],
     }
-    // `poll`, `sync` and `copy` are recreated every render; the menu entries
+    // `poll`, `sync`, `copy` and `download` are recreated every render; the menu entries
     // only call them, so they are deliberately not dependencies.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ordered, shown, toggle, only, t])
@@ -352,6 +410,8 @@ export function CalendarsLayout() {
         calendar={recolouring}
         onClose={() => setRecolouring(null)}
       />
+
+      <ImportDialog calendar={importing} onClose={() => setImporting(null)} />
 
       <PreferencesDialog
         open={preferencesOpen}

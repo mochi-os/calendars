@@ -41,6 +41,25 @@ export interface PollResponse {
   calendar: Calendar
 }
 
+/**
+ * One round of `-/calendars/import`: how far into the file it reached and
+ * what it wrote. A round writes only part of a long file, so the client
+ * repeats with the staged id and the offset until it is finished.
+ */
+export interface ImportResponse {
+  /** The staged file, named on every round after the first. */
+  import: string
+  /** The objects of the file handled so far, where the next round starts. */
+  offset: number
+  /** The objects in the whole file. */
+  total: number
+  imported: number
+  /** Already in the calendar under the same UID. */
+  skipped: number
+  failed: number
+  finished: boolean
+}
+
 /** `-/calendars/refresh`: whether syncing the stale linked calendars changed anything. */
 export interface RefreshResponse {
   changed: boolean

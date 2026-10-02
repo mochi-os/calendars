@@ -39,6 +39,26 @@ msgstr "(თქვენ)"
 msgid "[not set]"
 msgstr "[არ არის მითითებული]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{total} ღონისძიებიდან {done}} other {{total} ღონისძიებიდან {done}}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} ღონისძიების იმპორტი ვერ მოხერხდა} other {{failed} ღონისძიების იმპორტი ვერ მოხერხდა}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {იმპორტირებულია {imported} ღონისძიება} other {იმპორტირებულია {imported} ღონისძიება}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} ღონისძიება უკვე კალენდარშია} other {{skipped} ღონისძიება უკვე კალენდარშია}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "კალენდარი შეიქმნა"
 msgid "Calendar deleted"
 msgstr "კალენდარი წაიშალა"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "კალენდარი ექსპორტირებულია"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "კალენდარი დაკავშირდა"
@@ -594,6 +618,7 @@ msgstr "კამერა მიუწვდომელია"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "ძიების გასუფთავება"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "გაშლა"
 msgid "Expand sidebar"
 msgstr "გვერდითი პანელის გაშლა"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "ექსპორტი"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "მიმდინარეობს კალენდრის ექსპორტი..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "გარე URL"
@@ -1409,6 +1443,11 @@ msgstr "ბმულის წაშლა ვერ მოხერხდა"
 msgid "Failed to delete the event"
 msgstr "ღონისძიების წაშლა ვერ მოხერხდა"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "კალენდრის ექსპორტი ვერ მოხერხდა"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS ტოკენის მიღება ვერ მოხერხდა"
@@ -1416,6 +1455,10 @@ msgstr "RSS ტოკენის მიღება ვერ მოხერ�
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "კალენდრის მისამართის მიღება ვერ მოხერხდა"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ღონისძიებების იმპორტი ვერ მოხერხდა"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "მთავარი"
 msgid "Hot"
 msgstr "ცხელი"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar ფაილი"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "ID"
@@ -1642,6 +1689,15 @@ msgstr "სურათის მნახველი: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "იმპერიული"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "იმპორტი"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "ღონისძიებების იმპორტი"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

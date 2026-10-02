@@ -39,6 +39,26 @@ msgstr "(أنت)"
 msgid "[not set]"
 msgstr "[غير محدد]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, zero {{done} من {total} حدث} one {{done} من {total} حدث} two {{done} من {total} حدثين} few {{done} من {total} أحداث} many {{done} من {total} حدثًا} other {{done} من {total} حدث}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, zero {تعذّر استيراد {failed} حدث} one {تعذّر استيراد {failed} حدث} two {تعذّر استيراد {failed} حدثين} few {تعذّر استيراد {failed} أحداث} many {تعذّر استيراد {failed} حدثًا} other {تعذّر استيراد {failed} حدث}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, zero {تم استيراد {imported} حدث} one {تم استيراد {imported} حدث} two {تم استيراد {imported} حدثين} few {تم استيراد {imported} أحداث} many {تم استيراد {imported} حدثًا} other {تم استيراد {imported} حدث}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, zero {{skipped} حدث موجود مسبقًا في التقويم} one {{skipped} حدث موجود مسبقًا في التقويم} two {{skipped} حدثان موجودان مسبقًا في التقويم} few {{skipped} أحداث موجودة مسبقًا في التقويم} many {{skipped} حدثًا موجودًا مسبقًا في التقويم} other {{skipped} حدث موجود مسبقًا في التقويم}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "تم إنشاء التقويم"
 msgid "Calendar deleted"
 msgstr "تم حذف التقويم"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "تم تصدير التقويم"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "تم ربط التقويم"
@@ -594,6 +618,7 @@ msgstr "الكاميرا غير متاحة"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "مسح البحث"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "توسيع"
 msgid "Expand sidebar"
 msgstr "توسيع الشريط الجانبي"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "تصدير"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "جارٍ تصدير التقويم..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "رابط خارجي"
@@ -1409,6 +1443,11 @@ msgstr "فشل حذف الرابط"
 msgid "Failed to delete the event"
 msgstr "فشل حذف الحدث"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "فشل تصدير التقويم"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "فشل الحصول على رمز RSS"
@@ -1416,6 +1455,10 @@ msgstr "فشل الحصول على رمز RSS"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "فشل الحصول على عنوان التقويم"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "فشل استيراد الأحداث"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "الرئيسية"
 msgid "Hot"
 msgstr "رائج"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "ملف iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "المعرّف"
@@ -1642,6 +1689,15 @@ msgstr "عارض الصور: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "إمبراطوري"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "استيراد"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "استيراد الأحداث"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

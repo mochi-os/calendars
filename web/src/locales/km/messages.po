@@ -39,6 +39,26 @@ msgstr "(អ្នក)"
 msgid "[not set]"
 msgstr "[មិនបានកំណត់]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, other {{done} ក្នុងចំណោម {total} ព្រឹត្តិការណ៍}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, other {មិនអាចនាំចូលព្រឹត្តិការណ៍ {failed} បានទេ}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, other {បាននាំចូលព្រឹត្តិការណ៍ {imported}}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, other {ព្រឹត្តិការណ៍ {skipped} មាននៅក្នុងប្រតិទិនរួចហើយ}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "បានបង្កើតប្រតិទិន"
 msgid "Calendar deleted"
 msgstr "បានលុបប្រតិទិន"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "បាននាំចេញប្រតិទិន"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "បានភ្ជាប់ប្រតិទិន"
@@ -594,6 +618,7 @@ msgstr "កាមេរ៉ាមិនអាចប្រើបាន"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "សម្អាតការស្វែងរក"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "ពង្រីក"
 msgid "Expand sidebar"
 msgstr "ពង្រីករបារចំហៀង"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "នាំចេញ"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "កំពុងនាំចេញប្រតិទិន..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "URL ខាងក្រៅ"
@@ -1409,6 +1443,11 @@ msgstr "បរាជ័យក្នុងការលុបតំណ"
 msgid "Failed to delete the event"
 msgstr "បរាជ័យក្នុងការលុបព្រឹត្តិការណ៍"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "បរាជ័យក្នុងការនាំចេញប្រតិទិន"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "បរាជ័យក្នុងការទទួលយកថូខឹន RSS"
@@ -1416,6 +1455,10 @@ msgstr "បរាជ័យក្នុងការទទួលយកថូខឹ
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "បរាជ័យក្នុងការទទួលបានអាសយដ្ឋានប្រតិទិន"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "បរាជ័យក្នុងការនាំចូលព្រឹត្តិការណ៍"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "ទំព័រដើម"
 msgid "Hot"
 msgstr "ក្ដៅ"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "ឯកសារ iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "លេខសម្គាល់"
@@ -1642,6 +1689,15 @@ msgstr "កម្មវិធីមើលរូបភាព៖ {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "អ៊ីមភេរៀល"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "នាំចូល"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "នាំចូលព្រឹត្តិការណ៍"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

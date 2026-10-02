@@ -39,6 +39,26 @@ msgstr "(אתה)"
 msgid "[not set]"
 msgstr "[לא מוגדר]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} מתוך {total} אירוע} two {{done} מתוך {total} אירועים} many {{done} מתוך {total} אירועים} other {{done} מתוך {total} אירועים}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {לא ניתן היה לייבא {failed} אירוע} two {לא ניתן היה לייבא {failed} אירועים} many {לא ניתן היה לייבא {failed} אירועים} other {לא ניתן היה לייבא {failed} אירועים}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} אירוע יובא} two {{imported} אירועים יובאו} many {{imported} אירועים יובאו} other {{imported} אירועים יובאו}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} אירוע כבר קיים ביומן} two {{skipped} אירועים כבר קיימים ביומן} many {{skipped} אירועים כבר קיימים ביומן} other {{skipped} אירועים כבר קיימים ביומן}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "היומן נוצר"
 msgid "Calendar deleted"
 msgstr "היומן נמחק"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "היומן יוצא"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "היומן קושר"
@@ -594,6 +618,7 @@ msgstr "המצלמה אינה זמינה"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "נקה חיפוש"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "הרחבה"
 msgid "Expand sidebar"
 msgstr "הרחב סרגל צד"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "ייצוא"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "מייצא את היומן..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "כתובת URL חיצונית"
@@ -1409,6 +1443,11 @@ msgstr "מחיקת הקישור נכשלה"
 msgid "Failed to delete the event"
 msgstr "מחיקת האירוע נכשלה"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "ייצוא היומן נכשל"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "קבלת טוקן RSS נכשלה"
@@ -1416,6 +1455,10 @@ msgstr "קבלת טוקן RSS נכשלה"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "קבלת כתובת היומן נכשלה"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ייבוא האירועים נכשל"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "בית"
 msgid "Hot"
 msgstr "חם"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "קובץ iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "מזהה"
@@ -1642,6 +1689,15 @@ msgstr "מציג תמונות: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "אימפריאלי"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "ייבוא"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "ייבוא אירועים"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

@@ -28,6 +28,8 @@ const endpoints = {
     grant: `${prefix}/calendars/grant`,
     remote: `${prefix}/calendars/remote`,
     link: `${prefix}/calendars/link`,
+    import: `${prefix}/calendars/import`,
+    export: `${prefix}/calendars/export`,
   },
   events: {
     list: `${prefix}/events`,

@@ -39,6 +39,26 @@ msgstr "(tu)"
 msgid "[not set]"
 msgstr "[neyî sazkirin]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{done} ji {total} bûyerê} other {{done} ji {total} bûyeran}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} bûyer nehate hawirdekirin} other {{failed} bûyer nehatin hawirdekirin}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} bûyer hate hawirdekirin} other {{imported} bûyer hatin hawirdekirin}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} bûyer jixwe di salnameyê de ye} other {{skipped} bûyer jixwe di salnameyê de ne}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "Salname hate çêkirin"
 msgid "Calendar deleted"
 msgstr "Salname hate jêbirin"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "Salname hate hinardekirin"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "Salname hat girêdan"
@@ -594,6 +618,7 @@ msgstr "Kamera tune ye"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "Lêgerînê paqij bike"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "Fireh bike"
 msgid "Expand sidebar"
 msgstr "Bargeyê fireh bike"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "Hinardekirin"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "Salname tê hinardekirin..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "URL ya derveyî"
@@ -1409,6 +1443,11 @@ msgstr "Jêbirina lînkê neserkeftî bû"
 msgid "Failed to delete the event"
 msgstr "Jêbirina bûyerê neserkeftî bû"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "Hinardekirina salnameyê neserkeftî bû"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "Wergirtina tokena RSS neserkeftî bû"
@@ -1416,6 +1455,10 @@ msgstr "Wergirtina tokena RSS neserkeftî bû"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "Wergirtina navnîşana salnameyê neserkeftî bû"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "Hawirdekirina bûyeran neserkeftî bû"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "Mal"
 msgid "Hot"
 msgstr "Germ"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "Pela iCalendar"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "Nasname"
@@ -1642,6 +1689,15 @@ msgstr "Nêrîna wêneyan: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Împeryal"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "Hawirdekirin"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "Bûyeran hawirde bike"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

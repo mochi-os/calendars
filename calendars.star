@@ -950,16 +950,14 @@ def birthday_object(contact):
 
 # === Subscriptions ===
 
-# subscription_ingest(row, text) -> int or string: replace a subscription's
-# events with those in the fetched text. Events are grouped by uid so a
-# recurring event and its overrides stay one object. Returns the count, or an
-# error code.
-def subscription_ingest(row, text):
-	if type(text) != "string" or len(text) > _SUBSCRIPTION_BYTES_MAXIMUM:
-		return "too_large"
-	tree = mochi.ical.parse(text)
-	if not tree:
-		return "invalid"
+# ics_groups(tree) -> (list, dict): the objects of a parsed iCalendar text as
+# (uid, components) pairs in the order they first appear, grouped by uid so a
+# recurring event and its changed occurrences stay one object, and the text's
+# VTIMEZONEs by TZID. A component with no uid is keyed by a hash of itself and
+# given that hash as its uid: an object cannot be written without one, and the
+# same text read again gives the same hash, so it is found again rather than
+# written twice.
+def ics_groups(tree):
 	timezones = {}
 	for c in tree.get("components", []):
 		if type(c) == "dict" and c.get("name") == "VTIMEZONE":
@@ -969,18 +967,36 @@ def subscription_ingest(row, text):
 	for c in tree.get("components", []):
 		if type(c) != "dict" or c.get("name") not in ("VEVENT", "VTODO", "VJOURNAL"):
 			continue
-		uid = property_value(c, "UID") or mochi.crypto.hash.sha256(json.encode(c))[:32]
+		uid = property_value(c, "UID")
+		if not uid:
+			uid = mochi.crypto.hash.sha256(json.encode(c))[:32]
+			property_set(c, "UID", uid)
 		if uid not in groups:
 			groups[uid] = []
 			order.append(uid)
 		groups[uid].append(c)
+	return [(uid, groups[uid]) for uid in order], timezones
+
+# group_text(components, timezones) -> string: one object's text. It carries
+# the zones it names, the source's own where it has them: a source's full set
+# in every object multiplies its storage.
+def group_text(components, timezones):
+	named = [timezones[name] for name in zones(components) if name in timezones]
+	return mochi.ical.format(calendar_wrap(components, named + timezones_named(components, named)))
+
+# subscription_ingest(row, text) -> int or string: replace a subscription's
+# events with those in the fetched text. Returns the count, or an error code.
+def subscription_ingest(row, text):
+	if type(text) != "string" or len(text) > _SUBSCRIPTION_BYTES_MAXIMUM:
+		return "too_large"
+	tree = mochi.ical.parse(text)
+	if not tree:
+		return "invalid"
+	groups, timezones = ics_groups(tree)
 	identity = row["identity"]
 	seen = {}
-	for uid in order:
-		# Each event carries the zones it names, the feed's own where it has
-		# them: a feed's full set in every event multiplies its storage.
-		named = [timezones[name] for name in zones(groups[uid]) if name in timezones]
-		ics = mochi.ical.format(calendar_wrap(groups[uid], named + timezones_named(groups[uid], named)))
+	for uid, components in groups:
+		ics = group_text(components, timezones)
 		if not ics or len(ics) > _ICS_MAXIMUM:
 			continue
 		slug = mochi.crypto.hash.sha256(uid)[:32]
@@ -2093,6 +2109,106 @@ def action_ics(a):
 		return
 	a.header("Content-Type", "text/calendar; charset=utf-8")
 	a.header("Cache-Control", "private, max-age=300")
+	a.print(calendar_text(row))
+
+# === Actions: import and export ===
+# An import uploads an iCalendar file once and writes its objects into one
+# calendar in rounds the client repeats, each stopping after _IMPORT_BATCH
+# objects or _IMPORT_ROUND seconds, so a years-long export never meets the
+# Starlark time limit and the client can show progress. The file
+# waits between rounds under imports/ in the app's storage and is removed after
+# the last round; one an abandoned import left is removed by a later import.
+
+_IMPORT_BATCH = 200
+_IMPORT_ROUND = 20
+_IMPORT_STALE = 86400
+
+def import_sweep():
+	if not mochi.file.exists("imports"):
+		return
+	for entry in mochi.file.list("imports") or []:
+		name = entry.get("name", "") if type(entry) == "dict" else entry
+		if not name:
+			continue
+		age = mochi.file.age("imports/" + name)
+		if age != None and age > _IMPORT_STALE:
+			mochi.file.delete("imports/" + name)
+
+# Each round answers what it wrote: an object whose uid the calendar already
+# holds is skipped, so importing a file twice adds nothing the second time, an
+# object with no uid included (see ics_groups).
+def action_calendar_import(a):
+	identity = a.user.identity.id
+	row = calendar_get(identity, a.input("calendar", ""))
+	if not row:
+		a.error.label(404, "errors.calendar_not_found")
+		return
+	if calendar_readonly(row):
+		a.error.label(400, "errors.calendar_readonly")
+		return
+	offset = a.input("offset", "0")
+	if not decimal(offset) or len(offset) > 9:
+		a.error.label(400, "errors.invalid_request")
+		return
+	offset = int(offset)
+	staged = a.input("import", "")
+	if staged:
+		if not slug_valid(staged) or not mochi.file.exists("imports/" + staged):
+			a.error.label(404, "errors.import_not_found")
+			return
+	else:
+		if not a.files("file"):
+			a.error.label(400, "errors.import_file_required")
+			return
+		import_sweep()
+		staged = mochi.uid()
+		a.upload("file", "imports/" + staged)
+	path = "imports/" + staged
+	text = str(mochi.file.read(path) or "")
+	if len(text) > _SUBSCRIPTION_BYTES_MAXIMUM:
+		mochi.file.delete(path)
+		a.error.label(400, "errors.import_too_large")
+		return
+	tree = mochi.ical.parse(text) if text else None
+	if not tree:
+		mochi.file.delete(path)
+		a.error.label(400, "errors.import_invalid")
+		return
+	groups, timezones = ics_groups(tree)
+	if offset > len(groups):
+		a.error.label(400, "errors.invalid_request")
+		return
+	started = mochi.time.now()
+	counts = {"imported": 0, "skipped": 0, "failed": 0}
+	reached = offset
+	for index in range(offset, len(groups)):
+		if index - offset >= _IMPORT_BATCH or (index > offset and mochi.time.now() - started >= _IMPORT_ROUND):
+			break
+		uid, components = groups[index]
+		ics = group_text(components, timezones)
+		written = event_write(identity, row["id"], "", ics) if ics else "invalid"
+		if type(written) == "dict":
+			counts["imported"] += 1
+		elif written == "duplicate":
+			counts["skipped"] += 1
+		else:
+			counts["failed"] += 1
+		reached = index + 1
+	finished = reached >= len(groups)
+	if finished:
+		mochi.file.delete(path)
+	return {"data": {"import": staged, "offset": reached, "total": len(groups), "imported": counts["imported"], "skipped": counts["skipped"], "failed": counts["failed"], "finished": finished}}
+
+# The whole calendar as one iCalendar file, any calendar the user has: their
+# own, a linked or subscribed one, or the birthdays calendar.
+def action_calendar_export(a):
+	identity = a.user.identity.id
+	row = calendar_get(identity, a.input("calendar", ""))
+	if not row:
+		a.error.label(404, "errors.calendar_not_found")
+		return
+	a.header("Content-Type", "text/calendar; charset=utf-8")
+	a.header("Content-Disposition", "attachment; filename=\"calendar.ics\"")
 	a.print(calendar_text(row))
 
 # === Actions: preferences ===

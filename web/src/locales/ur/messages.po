@@ -39,6 +39,26 @@ msgstr "(آپ)"
 msgid "[not set]"
 msgstr "[سیٹ نہیں]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {{total} میں سے {done} ایونٹ} other {{total} میں سے {done} ایونٹس}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {{failed} ایونٹ درآمد نہیں ہو سکا} other {{failed} ایونٹس درآمد نہیں ہو سکے}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {{imported} ایونٹ درآمد ہو گیا} other {{imported} ایونٹس درآمد ہو گئے}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {{skipped} ایونٹ پہلے سے کیلنڈر میں ہے} other {{skipped} ایونٹس پہلے سے کیلنڈر میں ہیں}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "کیلنڈر بن گیا"
 msgid "Calendar deleted"
 msgstr "کیلنڈر حذف ہو گیا"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "کیلنڈر برآمد ہو گیا"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "کیلنڈر منسلک ہو گیا"
@@ -594,6 +618,7 @@ msgstr "کیمرہ دستیاب نہیں"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "تلاش صاف کریں"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "پھیلائیں"
 msgid "Expand sidebar"
 msgstr "سائڈبار پھیلائیں"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "برآمد"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "کیلنڈر برآمد کیا جا رہا ہے..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "بیرونی URL"
@@ -1409,6 +1443,11 @@ msgstr "لنک حذف کرنے میں ناکامی"
 msgid "Failed to delete the event"
 msgstr "ایونٹ حذف نہیں ہو سکا"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "کیلنڈر برآمد نہیں ہو سکا"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS ٹوکن حاصل کرنے میں ناکامی"
@@ -1416,6 +1455,10 @@ msgstr "RSS ٹوکن حاصل کرنے میں ناکامی"
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "کیلنڈر کا پتہ حاصل نہیں ہو سکا"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "ایونٹس درآمد نہیں ہو سکے"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "ہوم"
 msgid "Hot"
 msgstr "ہاٹ"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar فائل"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "آئی ڈی"
@@ -1642,6 +1689,15 @@ msgstr "تصویر ناظر: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "امپیریل"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "درآمد"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "ایونٹس درآمد کریں"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"

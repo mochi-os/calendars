@@ -11,6 +11,7 @@ import type {
   CalendarResponse,
   CalendarsResponse,
   GrantResponse,
+  ImportResponse,
   LinkResponse,
   PollResponse,
   RefreshResponse,
@@ -141,6 +142,35 @@ export const calendarsApi = {
       body(fields),
       { ...form, ...quiet }
     ),
+
+  // One round of an iCalendar import: the file on the first, then the staged
+  // id and the offset the last round reached.
+  import: (fields: {
+    calendar: string
+    offset: number
+    staged?: string
+    file?: File
+  }): Promise<ImportResponse> => {
+    const data = new FormData()
+    data.append('calendar', fields.calendar)
+    data.append('offset', String(fields.offset))
+    if (fields.staged) data.append('import', fields.staged)
+    if (fields.file) data.append('file', fields.file)
+    return requestHelpers.post<ImportResponse>(
+      endpoints.calendars.import,
+      data,
+      quiet
+    )
+  },
+
+  // The whole calendar as iCalendar text rather than a data envelope. No
+  // response type is set, so a refusal's JSON body is still parsed for its
+  // message.
+  export: (calendar: string): Promise<string> =>
+    requestHelpers.getRaw<string>(endpoints.calendars.export, {
+      params: { calendar },
+      ...quiet,
+    }),
 
   // The address others subscribe to, issued once. Not the linked-calendar
   // link above.

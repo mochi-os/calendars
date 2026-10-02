@@ -39,6 +39,26 @@ msgstr "(ඔබ)"
 msgid "[not set]"
 msgstr "[සකසා නැත]"
 
+#. placeholder {0}: progress.total
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{done} of {total} event} other {{done} of {total} events}}"
+msgstr "{0, plural, one {සිදුවීම් {total}න් {done}} other {සිදුවීම් {total}න් {done}}}"
+
+#. placeholder {0}: result.failed
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{failed} event could not be imported} other {{failed} events could not be imported}}"
+msgstr "{0, plural, one {සිදුවීම් {failed}ක් ආනයනය කළ නොහැකි විය} other {සිදුවීම් {failed}ක් ආනයනය කළ නොහැකි විය}}"
+
+#. placeholder {0}: result.imported
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{imported} event imported} other {{imported} events imported}}"
+msgstr "{0, plural, one {සිදුවීම් {imported}ක් ආනයනය කරන ලදී} other {සිදුවීම් {imported}ක් ආනයනය කරන ලදී}}"
+
+#. placeholder {0}: result.skipped
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
+msgstr "{0, plural, one {සිදුවීම් {skipped}ක් දැනටමත් දින දර්ශනයේ ඇත} other {සිදුවීම් {skipped}ක් දැනටමත් දින දර්ශනයේ ඇත}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -534,6 +554,10 @@ msgstr "දින දර්ශනය සාදන ලදී"
 msgid "Calendar deleted"
 msgstr "දින දර්ශනය මකා දමන ලදී"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Calendar exported"
+msgstr "දින දර්ශනය අපනයනය කරන ලදී"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Calendar linked"
 msgstr "දින දර්ශනය සම්බන්ධ කළා"
@@ -594,6 +618,7 @@ msgstr "කැමරාව නොමැත"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/calendar/components/scope-dialog.tsx
 #: src/features/calendar/dialogs/colour-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -703,6 +728,7 @@ msgstr "සෙවුම හිස් කරන්න"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
 #: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
@@ -1335,6 +1361,14 @@ msgstr "විහිදන්න"
 msgid "Expand sidebar"
 msgstr "පැති තීරුව ප්‍රසාරණය කරන්න"
 
+#: src/components/layout/calendars-layout.tsx
+msgid "Export"
+msgstr "අපනයනය"
+
+#: src/components/layout/calendars-layout.tsx
+msgid "Exporting calendar..."
+msgstr "දින දර්ශනය අපනයනය කරමින්..."
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
 msgstr "බාහිර URL"
@@ -1409,6 +1443,11 @@ msgstr "සබැඳිය මැකීමට අසමත් විය"
 msgid "Failed to delete the event"
 msgstr "සිදුවීම මැකීමට අසමත් විය"
 
+#: src/components/layout/calendars-layout.tsx
+#: src/components/layout/calendars-layout.tsx
+msgid "Failed to export calendar"
+msgstr "දින දර්ශනය අපනයනය කිරීමට අසමත් විය"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
 msgstr "RSS ටෝකනය ලබා ගැනීමට අසමත් විය"
@@ -1416,6 +1455,10 @@ msgstr "RSS ටෝකනය ලබා ගැනීමට අසමත් වි�
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to get the calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය ලබා ගැනීමට අසමත් විය"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Failed to import events"
+msgstr "සිදුවීම් ආනයනය කිරීමට අසමත් විය"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Failed to link the calendar"
@@ -1630,6 +1673,10 @@ msgstr "මුල් පිටුව"
 msgid "Hot"
 msgstr "උණුසුම්"
 
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "iCalendar file"
+msgstr "iCalendar ගොනුව"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
 msgstr "හැඳුනුම"
@@ -1642,6 +1689,15 @@ msgstr "රූප දර්ශකය: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ඉම්පීරියල්"
+
+#: src/components/layout/calendars-layout.tsx
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import"
+msgstr "ආනයනය"
+
+#: src/features/calendar/dialogs/import-dialog.tsx
+msgid "Import events"
+msgstr "සිදුවීම් ආනයනය කරන්න"
 
 #: src/hooks/use-rule-summary.ts
 msgid "in {months}"
