@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   DatePicker,
@@ -38,11 +38,15 @@ import {
 } from '@mochi/web'
 import {
   Bell,
+  CalendarClock,
+  CalendarDays,
   Check,
   Clock,
   Copy as CopyIcon,
   Globe,
+  Link as LinkIcon,
   MapPin,
+  Palette,
   Plus,
   Repeat as RepeatIcon,
   Trash2,
@@ -70,13 +74,13 @@ import {
   shiftedStart,
 } from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
+import { leavesSeries, useOccurrenceMove } from '@/hooks/use-event-move'
 import {
   useCreateEventMutation,
   useEventQuery,
   useSplitEventMutation,
   useUpdateEventMutation,
 } from '@/hooks/use-events'
-import { leavesSeries, useOccurrenceMove } from '@/hooks/use-event-move'
 import { reminderChoices } from '@/hooks/use-options'
 import { useRuleSummary } from '@/hooks/use-rule-summary'
 import { CountInput } from '@/features/calendar/components/count-input'
@@ -596,14 +600,44 @@ function EditorFields({
     return out
   }, [format])
 
+  // The title and description carry their label inside them, as their name
+  // and the text shown while they are empty.
+  const titled = t`Title`
+  const described = t`Description`
+
   return (
-    <div className='space-y-4 px-1'>
-      <div className='space-y-2'>
-        <Label htmlFor='event-title'>
-          <Trans>Title</Trans>
-        </Label>
+    // From small screens up, each label sits in a column beside its field;
+    // the title and description run the full width with their label inside.
+    <div className='space-y-4 px-1 sm:grid sm:grid-cols-[max-content_minmax(0,1fr)] sm:items-start sm:space-y-0 sm:gap-x-4 sm:gap-y-3'>
+      <Row
+        htmlFor='event-calendar'
+        icon={<CalendarDays className='size-4' />}
+        label={<Trans>Calendar</Trans>}
+      >
+        <Select
+          value={draft.calendar}
+          onValueChange={(value) =>
+            edit((current) => ({ ...current, calendar: value }))
+          }
+        >
+          <SelectTrigger id='event-calendar' className='w-full'>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {calendars.map((calendar) => (
+              <SelectItem key={calendar.id} value={calendar.id}>
+                {calendar.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Row>
+
+      <div className='space-y-2 sm:col-span-2'>
         <Input
           id='event-title'
+          aria-label={titled}
+          placeholder={titled}
           value={draft.title}
           autoFocus
           aria-invalid={untitled || undefined}
@@ -626,152 +660,29 @@ function EditorFields({
         )}
       </div>
 
-      <div className='space-y-2'>
-        <Label htmlFor='event-calendar'>
-          <Trans>Calendar</Trans>
-        </Label>
-        <Select
-          value={draft.calendar}
-          onValueChange={(value) =>
-            edit((current) => ({ ...current, calendar: value }))
-          }
-        >
-          <SelectTrigger id='event-calendar' className='w-full'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {calendars.map((calendar) => (
-              <SelectItem key={calendar.id} value={calendar.id}>
-                {calendar.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className='flex items-center justify-between rounded-lg border px-4 py-3'>
-        <Label htmlFor='event-allday' className='flex items-center gap-2'>
-          <Clock className='size-4' />
-          <Trans>All day</Trans>
-        </Label>
-        <Switch
-          id='event-allday'
-          checked={draft.allday}
-          onCheckedChange={(value) =>
-            edit((current) => ({ ...current, allday: value }))
+      <div className='sm:col-span-2'>
+        {/* Two lines to start, growing with what is typed. */}
+        <Textarea
+          id='event-description'
+          aria-label={described}
+          placeholder={described}
+          rows={2}
+          className='min-h-0'
+          value={draft.description}
+          onChange={(input) =>
+            edit((current) => ({
+              ...current,
+              description: input.target.value,
+            }))
           }
         />
       </div>
 
-      {/* One above the other on a phone: side by side, the 128px time
-          pickers leave the dates no room. */}
-      <div className='grid gap-3 sm:grid-cols-2'>
-        <div className='space-y-2'>
-          <Label htmlFor='event-start'>
-            <Trans>Start</Trans>
-          </Label>
-          <div className='flex gap-2'>
-            <DatePicker
-              id='event-start'
-              className='min-w-0 flex-1'
-              value={draft.start}
-              onChange={(day) => moveStart(day || draft.start, draft.startTime)}
-            />
-            {!draft.allday && (
-              <TimePicker
-                className='w-32 shrink-0'
-                aria-label={t`Start time`}
-                value={draft.startTime}
-                onChange={(minutes) => moveStart(draft.start, minutes)}
-              />
-            )}
-          </div>
-          {zones && (
-            <TimezoneSelect
-              compact
-              auto={false}
-              label={t`Start time zone`}
-              value={draft.zone.start}
-              onChange={(zone) =>
-                edit((current) =>
-                  endAfterStart({
-                    ...current,
-                    zone: startZone(current.zone, zone),
-                  })
-                )
-              }
-            />
-          )}
-        </div>
-        <div className='space-y-2'>
-          <Label htmlFor='event-finish'>
-            <Trans>End</Trans>
-          </Label>
-          <div className='flex gap-2'>
-            <DatePicker
-              id='event-finish'
-              className='min-w-0 flex-1'
-              value={draft.finish}
-              onChange={(day) =>
-                edit((current) => ({
-                  ...current,
-                  finish: day || current.finish,
-                }))
-              }
-            />
-            {!draft.allday && (
-              <TimePicker
-                className='w-32 shrink-0'
-                aria-label={t`End time`}
-                value={draft.finishTime}
-                onChange={(minutes) =>
-                  edit((current) => ({ ...current, finishTime: minutes }))
-                }
-              />
-            )}
-            {!draft.allday && !zones && (
-              <Button
-                type='button'
-                variant='ghost'
-                size='icon'
-                className='text-muted-foreground shrink-0'
-                aria-label={t`Time zone`}
-                onClick={onReveal}
-              >
-                <Globe className='size-4' />
-              </Button>
-            )}
-          </div>
-          {zones && (
-            <TimezoneSelect
-              compact
-              auto={false}
-              label={t`End time zone`}
-              value={draft.zone.finish}
-              onChange={(zone) =>
-                edit((current) =>
-                  endAfterStart({
-                    ...current,
-                    zone: { ...current.zone, finish: zone },
-                  })
-                )
-              }
-            />
-          )}
-          {/* Save waits for an end that follows the start; the row says why. */}
-          {!ordered && (
-            <p className='text-destructive text-xs' data-testid='backwards'>
-              {t`Ends before it starts`}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className='space-y-2'>
-        <Label htmlFor='event-location' className='flex items-center gap-2'>
-          <MapPin className='size-4' />
-          <Trans>Location</Trans>
-        </Label>
+      <Row
+        htmlFor='event-location'
+        icon={<MapPin className='size-4' />}
+        label={<Trans>Location</Trans>}
+      >
         <Input
           id='event-location'
           value={draft.location}
@@ -782,35 +693,13 @@ function EditorFields({
             }))
           }
         />
-      </div>
+      </Row>
 
-      <div className='space-y-2'>
-        <Label>
-          <Trans>Colour</Trans>
-        </Label>
-        {draft.colour && !/^#[0-9a-fA-F]{6}$/.test(draft.colour) && (
-          <Input
-            aria-label={t`Colour value`}
-            value={draft.colour}
-            onChange={(input) =>
-              edit((current) => ({ ...current, colour: input.target.value }))
-            }
-          />
-        )}
-        <ColourPicker
-          collapsible
-          value={
-            /^#[0-9a-fA-F]{6}$/.test(draft.colour ?? '') ? draft.colour! : ''
-          }
-          onChange={(colour) => edit((current) => ({ ...current, colour }))}
-          onClear={() => edit((current) => ({ ...current, colour: '' }))}
-        />
-      </div>
-
-      <div className='space-y-2'>
-        <Label htmlFor='event-url'>
-          <Trans>URL</Trans>
-        </Label>
+      <Row
+        htmlFor='event-url'
+        icon={<LinkIcon className='size-4' />}
+        label={<Trans>URL</Trans>}
+      >
         <Input
           id='event-url'
           type='url'
@@ -819,13 +708,139 @@ function EditorFields({
             edit((current) => ({ ...current, url: input.target.value }))
           }
         />
-      </div>
+      </Row>
 
-      <div className='space-y-2'>
-        <Label htmlFor='event-repeat' className='flex items-center gap-2'>
-          <RepeatIcon className='size-4' />
-          <Trans>Repeat</Trans>
-        </Label>
+      <Row
+        inline
+        htmlFor='event-allday'
+        icon={<Clock className='size-4' />}
+        label={<Trans>All day</Trans>}
+      >
+        <Switch
+          id='event-allday'
+          checked={draft.allday}
+          onCheckedChange={(value) =>
+            edit((current) => ({ ...current, allday: value }))
+          }
+        />
+      </Row>
+
+      <Row
+        htmlFor='event-start'
+        icon={<CalendarClock className='size-4' />}
+        label={<Trans>Start</Trans>}
+      >
+        <div className='flex gap-2'>
+          <DatePicker
+            id='event-start'
+            className='min-w-0 flex-1'
+            value={draft.start}
+            onChange={(day) => moveStart(day || draft.start, draft.startTime)}
+          />
+          {!draft.allday && (
+            <TimePicker
+              className='w-32 shrink-0'
+              aria-label={t`Start time`}
+              value={draft.startTime}
+              onChange={(minutes) => moveStart(draft.start, minutes)}
+            />
+          )}
+          {/* The end's globe has its room here too, so the two rows line up. */}
+          {!draft.allday && !zones && (
+            <span
+              aria-hidden
+              className='size-[var(--control-height-md)] shrink-0'
+              data-testid='globe-room'
+            />
+          )}
+        </div>
+        {zones && (
+          <TimezoneSelect
+            compact
+            auto={false}
+            label={t`Start time zone`}
+            value={draft.zone.start}
+            onChange={(zone) =>
+              edit((current) =>
+                endAfterStart({
+                  ...current,
+                  zone: startZone(current.zone, zone),
+                })
+              )
+            }
+          />
+        )}
+      </Row>
+
+      <Row
+        htmlFor='event-finish'
+        icon={<CalendarClock className='size-4' />}
+        label={<Trans>End</Trans>}
+      >
+        <div className='flex gap-2'>
+          <DatePicker
+            id='event-finish'
+            className='min-w-0 flex-1'
+            value={draft.finish}
+            onChange={(day) =>
+              edit((current) => ({
+                ...current,
+                finish: day || current.finish,
+              }))
+            }
+          />
+          {!draft.allday && (
+            <TimePicker
+              className='w-32 shrink-0'
+              aria-label={t`End time`}
+              value={draft.finishTime}
+              onChange={(minutes) =>
+                edit((current) => ({ ...current, finishTime: minutes }))
+              }
+            />
+          )}
+          {!draft.allday && !zones && (
+            <Button
+              type='button'
+              variant='ghost'
+              size='icon'
+              className='text-muted-foreground shrink-0'
+              aria-label={t`Time zone`}
+              onClick={onReveal}
+            >
+              <Globe className='size-4' />
+            </Button>
+          )}
+        </div>
+        {zones && (
+          <TimezoneSelect
+            compact
+            auto={false}
+            label={t`End time zone`}
+            value={draft.zone.finish}
+            onChange={(zone) =>
+              edit((current) =>
+                endAfterStart({
+                  ...current,
+                  zone: { ...current.zone, finish: zone },
+                })
+              )
+            }
+          />
+        )}
+        {/* Save waits for an end that follows the start; the row says why. */}
+        {!ordered && (
+          <p className='text-destructive text-xs' data-testid='backwards'>
+            {t`Ends before it starts`}
+          </p>
+        )}
+      </Row>
+
+      <Row
+        htmlFor='event-repeat'
+        icon={<RepeatIcon className='size-4' />}
+        label={<Trans>Repeat</Trans>}
+      >
         <Select
           value={custom || kept ? 'custom' : draft.repeat.frequency}
           onValueChange={(value) => {
@@ -872,10 +887,10 @@ function EditorFields({
             {summary}
           </p>
         )}
-      </div>
+      </Row>
 
       {custom && !kept && (
-        <div className='space-y-3 rounded-lg border p-3'>
+        <div className='space-y-3 rounded-lg border p-3 sm:col-start-2'>
           <div className='grid grid-cols-2 gap-3'>
             <div className='space-y-2'>
               <Label htmlFor='repeat-frequency'>
@@ -1036,11 +1051,11 @@ function EditorFields({
         </div>
       )}
 
-      <div className='space-y-2'>
-        <Label htmlFor='event-reminder' className='flex items-center gap-2'>
-          <Bell className='size-4' />
-          <Trans>Reminder</Trans>
-        </Label>
+      <Row
+        htmlFor='event-reminder'
+        icon={<Bell className='size-4' />}
+        label={<Trans>Reminder</Trans>}
+      >
         {draft.reminders.map((minutes, index) => (
           <div key={index} className='flex items-center gap-1'>
             <Select
@@ -1103,23 +1118,68 @@ function EditorFields({
           <Plus className='size-4' />
           <Trans>Add reminder</Trans>
         </Button>
-      </div>
+      </Row>
 
-      <div className='space-y-2'>
-        <Label htmlFor='event-description'>
-          <Trans>Description</Trans>
-        </Label>
-        <Textarea
-          id='event-description'
-          rows={3}
-          value={draft.description}
-          onChange={(input) =>
-            edit((current) => ({
-              ...current,
-              description: input.target.value,
-            }))
+      <Row icon={<Palette className='size-4' />} label={<Trans>Colour</Trans>}>
+        {draft.colour && !/^#[0-9a-fA-F]{6}$/.test(draft.colour) && (
+          <Input
+            aria-label={t`Colour value`}
+            value={draft.colour}
+            onChange={(input) =>
+              edit((current) => ({ ...current, colour: input.target.value }))
+            }
+          />
+        )}
+        <ColourPicker
+          collapsible
+          value={
+            /^#[0-9a-fA-F]{6}$/.test(draft.colour ?? '') ? draft.colour! : ''
           }
+          onChange={(colour) => edit((current) => ({ ...current, colour }))}
+          onClear={() => edit((current) => ({ ...current, colour: '' }))}
         />
+      </Row>
+    </div>
+  )
+}
+
+/**
+ * One field of the editor. From small screens up its label sits in the
+ * grid's first column beside the control, level with the control's first
+ * line; on a phone the label sits above, or beside an [inline] control
+ * such as a switch.
+ */
+function Row({
+  htmlFor,
+  icon,
+  label,
+  inline,
+  children,
+}: {
+  htmlFor?: string
+  icon: ReactNode
+  label: ReactNode
+  inline?: boolean
+  children: ReactNode
+}) {
+  return (
+    <div
+      className={cn(
+        'sm:contents',
+        inline ? 'flex items-center justify-between' : 'space-y-2 sm:space-y-0'
+      )}
+    >
+      <Label htmlFor={htmlFor} className='flex items-center gap-2 sm:h-9'>
+        {icon}
+        {label}
+      </Label>
+      <div
+        className={cn(
+          'min-w-0',
+          inline ? 'flex items-center sm:h-9' : 'space-y-2'
+        )}
+      >
+        {children}
       </div>
     </div>
   )

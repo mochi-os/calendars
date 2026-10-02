@@ -162,6 +162,76 @@ describe('EventEditor', () => {
     expect(screen.queryByText(/BYSETPOS/)).toBeNull()
   })
 
+  it('puts the description straight below the title, two lines high', async () => {
+    show()
+    const title = await screen.findByLabelText('Title')
+    const description = screen.getByLabelText('Description')
+    const fields = [...document.querySelectorAll('input, textarea, button')]
+    expect(fields.indexOf(description)).toBe(fields.indexOf(title) + 1)
+    expect(description).toHaveAttribute('rows', '2')
+    // The shared box's minimum height would hold it above two lines.
+    expect(description.className).toContain('min-h-0')
+  })
+
+  it('orders the fields: calendar, title, description, location, URL, then the rest, colour last', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    const order = [
+      'event-calendar',
+      'event-title',
+      'event-description',
+      'event-location',
+      'event-url',
+      'event-allday',
+      'event-repeat',
+      'event-reminder',
+    ].map((id) => document.getElementById(id)!)
+    const fields = [...order, screen.getByText('Colour')]
+    for (let index = 1; index < fields.length; index++) {
+      expect(
+        fields[index - 1].compareDocumentPosition(fields[index]) &
+          Node.DOCUMENT_POSITION_FOLLOWING
+      ).toBeTruthy()
+    }
+  })
+
+  it('gives every field label an icon, and the title and description their label inside', async () => {
+    show()
+    const title = await screen.findByLabelText('Title')
+    expect(title).toHaveAttribute('placeholder', 'Title')
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
+      'placeholder',
+      'Description'
+    )
+    // The editor's own rows; a custom repeat's panel has sub-fields of its own.
+    const labels = [
+      'event-calendar',
+      'event-location',
+      'event-url',
+      'event-allday',
+      'event-start',
+      'event-finish',
+      'event-repeat',
+      'event-reminder',
+    ].map((id) => document.querySelector(`label[for="${id}"]`))
+    labels.push(screen.getByText('Colour').closest('label'))
+    for (const label of labels) {
+      expect(label?.querySelector('svg')).toBeTruthy()
+    }
+  })
+
+  it("keeps the end's globe room in the start row, so the two rows line up", async () => {
+    show()
+    await screen.findByLabelText('Title')
+    const globe = screen.getByRole('button', { name: 'Time zone' })
+    const room = screen.getByTestId('globe-room')
+    const start = room.parentElement!
+    expect(start.querySelector('[aria-label="Start time"]')).toBeTruthy()
+    expect(start.children.length).toBe(globe.parentElement!.children.length)
+    expect(room.className).toContain('size-[var(--control-height-md)]')
+    expect(globe.className).toContain('size-[var(--control-height-md)]')
+  })
+
   it('keeps what was typed when the event is read again in the background', async () => {
     const view = show()
     const title = await screen.findByLabelText('Title')
