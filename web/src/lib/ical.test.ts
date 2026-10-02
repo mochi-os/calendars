@@ -19,7 +19,6 @@ import {
   editedComponents,
   endAfterStart,
   expressible,
-  foreignZones,
   emptyRepeat,
   instanceDraft,
   masterComponent,
@@ -254,10 +253,20 @@ describe('reminders', () => {
 })
 
 describe('adding a reminder', () => {
-  it('adds the first offered reminder the event lacks', () => {
-    expect(nextReminder([])).toBe(15)
+  it('starts at the time of the event and each further one is longer', () => {
+    const added: number[] = []
+    for (let step = 0; step < 6; step++) added.push(nextReminder(added))
+    expect(added).toEqual([0, 5, 15, 30, 60, 1440])
+  })
+
+  it('takes the shortest the event lacks beside a default reminder', () => {
     expect(nextReminder([15])).toBe(0)
+    expect(nextReminder([15, 0])).toBe(5)
     expect(nextReminder([15, 0, 5])).toBe(30)
+  })
+
+  it('offers the longest again once every one is taken', () => {
+    expect(nextReminder([0, 5, 15, 30, 60, 1440])).toBe(1440)
   })
 })
 
@@ -768,88 +777,9 @@ describe('a zone per end', () => {
   })
 })
 
-describe('foreignZones', () => {
-  const user = 'Europe/London'
-  it('says nothing when both ends are in the user zone, which a zone-less event also is', () => {
-    expect(
-      foreignZones(
-        draft({ allday: false, zone: { start: user, finish: user } }),
-        user
-      )
-    ).toBe(false)
-    const none = componentDraft(
-      {
-        name: 'VEVENT',
-        properties: [
-          { name: 'DTSTART', params: {}, value: '20260925T090000Z' },
-          { name: 'DTEND', params: {}, value: '20260925T100000Z' },
-        ],
-        components: [],
-      },
-      'cal',
-      user
-    )
-    expect(foreignZones(none, user)).toBe(false)
-  })
-
-  it('shows the zones when either end is elsewhere, never on an all-day event', () => {
-    expect(
-      foreignZones(
-        draft({
-          allday: false,
-          zone: { start: user, finish: 'America/New_York' },
-        }),
-        user
-      )
-    ).toBe(true)
-    expect(
-      foreignZones(
-        draft({
-          allday: false,
-          zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
-        }),
-        user
-      )
-    ).toBe(true)
-    expect(
-      foreignZones(
-        draft({
-          allday: true,
-          zone: { start: 'Asia/Tokyo', finish: 'Asia/Tokyo' },
-        }),
-        user
-      )
-    ).toBe(false)
-  })
-})
-
 // The tests run on Node, whose zone data names zones as Chrome does:
 // Asia/Calcutta for Asia/Kolkata.
 describe('one zone under two names', () => {
-  it('is the user zone whichever name either side uses', () => {
-    for (const [written, user] of [
-      ['Asia/Calcutta', 'Asia/Kolkata'],
-      ['Asia/Kolkata', 'Asia/Calcutta'],
-      ['Europe/Kiev', 'Europe/Kyiv'],
-    ]) {
-      expect(
-        foreignZones(
-          draft({ allday: false, zone: { start: written, finish: written } }),
-          user
-        )
-      ).toBe(false)
-    }
-    expect(
-      foreignZones(
-        draft({
-          allday: false,
-          zone: { start: 'Asia/Calcutta', finish: 'Europe/Kyiv' },
-        }),
-        'Asia/Kolkata'
-      )
-    ).toBe(true)
-  })
-
   it('keeps the end following the start while the two agree under any names', () => {
     expect(
       startZone(

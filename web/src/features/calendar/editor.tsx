@@ -43,9 +43,6 @@ import {
   Check,
   Clock,
   Copy as CopyIcon,
-  Globe,
-  Link as LinkIcon,
-  MapPin,
   Palette,
   Plus,
   Repeat as RepeatIcon,
@@ -61,7 +58,6 @@ import {
   endAfterStart,
   startZone,
   expressible,
-  foreignZones,
   emptyRepeat,
   masterComponent,
   nextReminder,
@@ -110,8 +106,6 @@ export function EventEditor() {
   // The draft as the editor opened on it, so closing can tell whether
   // anything typed would be lost.
   const [initial, setInitial] = useState<EventDraft | null>(null)
-  // The zone controls, revealed by the globe for the rest of one edit.
-  const [revealed, setRevealed] = useState(false)
   const [custom, setCustom] = useState(false)
   const [asking, setAsking] = useState<'save' | 'copy' | null>(null)
   // A save tried without a title; the title row says so until one is typed.
@@ -138,7 +132,6 @@ export function EventEditor() {
   useEffect(() => {
     if (!editing) {
       seeded.current = null
-      setRevealed(false)
       setUntitled(false)
       setDraft(null)
       setInitial(null)
@@ -147,7 +140,6 @@ export function EventEditor() {
       return
     }
     if (seeded.current === editing) return
-    setRevealed(false)
     setUntitled(false)
     if (editing.mode === 'create') {
       seeded.current = editing
@@ -190,8 +182,6 @@ export function EventEditor() {
   const ordered = draft
     ? draftInstants(draft).finish >= draftInstants(draft).start
     : true
-  // The zones show only when an end is not in the user's zone, or on request.
-  const zones = draft ? foreignZones(draft, format.timezone) || revealed : false
 
   const write = async (scope: Scope) => {
     if (!draft || !editing) return
@@ -381,10 +371,8 @@ export function EventEditor() {
     ) : draft ? (
       <EditorFields
         draft={draft}
-        zones={zones}
         ordered={ordered}
         untitled={untitled && draft.title.trim() === ''}
-        onReveal={() => setRevealed(true)}
         onSave={() => {
           if (!pending) save()
         }}
@@ -549,10 +537,8 @@ function EditorFields({
   custom,
   setCustom,
   calendars,
-  zones,
   ordered,
   untitled,
-  onReveal,
   onSave,
 }: {
   draft: EventDraft
@@ -560,13 +546,10 @@ function EditorFields({
   custom: boolean
   setCustom: (value: boolean) => void
   calendars: { id: string; name: string }[]
-  /** Whether the zone controls show; a globe reveals them otherwise. */
-  zones: boolean
   /** Whether the end follows the start as instants; Save waits for that. */
   ordered: boolean
   /** A save was tried without a title, which the title row says. */
   untitled: boolean
-  onReveal: () => void
   /** Enter in the title: the Save button's own path, asks and all. */
   onSave: () => void
 }) {
@@ -600,38 +583,42 @@ function EditorFields({
     return out
   }, [format])
 
-  // The title and description carry their label inside them, as their name
-  // and the text shown while they are empty.
+  // The calendar and the fields running the full width carry their label
+  // inside them, as their name and the text shown while they are empty.
   const titled = t`Title`
   const described = t`Description`
+  const located = t`Location`
+  const linked = t`URL`
 
   return (
     // From small screens up, each label sits in a column beside its field;
-    // the title and description run the full width with their label inside.
+    // the calendar, title, description, location and URL run the full width
+    // with their label inside.
     <div className='space-y-4 px-1 sm:grid sm:grid-cols-[max-content_minmax(0,1fr)] sm:items-start sm:space-y-0 sm:gap-x-4 sm:gap-y-3'>
-      <Row
-        htmlFor='event-calendar'
-        icon={<CalendarDays className='size-4' />}
-        label={<Trans>Calendar</Trans>}
-      >
+      <div className='sm:col-span-2'>
         <Select
           value={draft.calendar}
           onValueChange={(value) =>
             edit((current) => ({ ...current, calendar: value }))
           }
         >
-          <SelectTrigger id='event-calendar' className='w-full'>
+          <SelectTrigger
+            id='event-calendar'
+            aria-label={t`Calendar`}
+            className='w-full'
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             {calendars.map((calendar) => (
               <SelectItem key={calendar.id} value={calendar.id}>
+                <CalendarDays className='size-4' />
                 {calendar.name}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
-      </Row>
+      </div>
 
       <div className='space-y-2 sm:col-span-2'>
         <Input
@@ -678,13 +665,11 @@ function EditorFields({
         />
       </div>
 
-      <Row
-        htmlFor='event-location'
-        icon={<MapPin className='size-4' />}
-        label={<Trans>Location</Trans>}
-      >
+      <div className='sm:col-span-2'>
         <Input
           id='event-location'
+          aria-label={located}
+          placeholder={located}
           value={draft.location}
           onChange={(input) =>
             edit((current) => ({
@@ -693,22 +678,20 @@ function EditorFields({
             }))
           }
         />
-      </Row>
+      </div>
 
-      <Row
-        htmlFor='event-url'
-        icon={<LinkIcon className='size-4' />}
-        label={<Trans>URL</Trans>}
-      >
+      <div className='sm:col-span-2'>
         <Input
           id='event-url'
           type='url'
+          aria-label={linked}
+          placeholder={linked}
           value={draft.url ?? ''}
           onChange={(input) =>
             edit((current) => ({ ...current, url: input.target.value }))
           }
         />
-      </Row>
+      </div>
 
       <Row
         inline
@@ -730,10 +713,10 @@ function EditorFields({
         icon={<CalendarClock className='size-4' />}
         label={<Trans>Start</Trans>}
       >
-        <div className='flex gap-2'>
+        <div className='flex flex-wrap gap-2'>
           <DatePicker
             id='event-start'
-            className='min-w-0 flex-1'
+            className='min-w-36 flex-1'
             value={draft.start}
             onChange={(day) => moveStart(day || draft.start, draft.startTime)}
           />
@@ -745,31 +728,27 @@ function EditorFields({
               onChange={(minutes) => moveStart(draft.start, minutes)}
             />
           )}
-          {/* The end's globe has its room here too, so the two rows line up. */}
-          {!draft.allday && !zones && (
-            <span
-              aria-hidden
-              className='size-[var(--control-height-md)] shrink-0'
-              data-testid='globe-room'
+          {/* Each end's zone sits beside its time, the same width in both
+              rows so the two line up. An all-day event has no time, and
+              its days are the user's own. */}
+          {!draft.allday && (
+            <TimezoneSelect
+              compact
+              auto={false}
+              className={ZONED}
+              label={t`Start time zone`}
+              value={draft.zone.start}
+              onChange={(zone) =>
+                edit((current) =>
+                  endAfterStart({
+                    ...current,
+                    zone: startZone(current.zone, zone),
+                  })
+                )
+              }
             />
           )}
         </div>
-        {zones && (
-          <TimezoneSelect
-            compact
-            auto={false}
-            label={t`Start time zone`}
-            value={draft.zone.start}
-            onChange={(zone) =>
-              edit((current) =>
-                endAfterStart({
-                  ...current,
-                  zone: startZone(current.zone, zone),
-                })
-              )
-            }
-          />
-        )}
       </Row>
 
       <Row
@@ -777,10 +756,10 @@ function EditorFields({
         icon={<CalendarClock className='size-4' />}
         label={<Trans>End</Trans>}
       >
-        <div className='flex gap-2'>
+        <div className='flex flex-wrap gap-2'>
           <DatePicker
             id='event-finish'
-            className='min-w-0 flex-1'
+            className='min-w-36 flex-1'
             value={draft.finish}
             onChange={(day) =>
               edit((current) => ({
@@ -799,35 +778,24 @@ function EditorFields({
               }
             />
           )}
-          {!draft.allday && !zones && (
-            <Button
-              type='button'
-              variant='ghost'
-              size='icon'
-              className='text-muted-foreground shrink-0'
-              aria-label={t`Time zone`}
-              onClick={onReveal}
-            >
-              <Globe className='size-4' />
-            </Button>
+          {!draft.allday && (
+            <TimezoneSelect
+              compact
+              auto={false}
+              className={ZONED}
+              label={t`End time zone`}
+              value={draft.zone.finish}
+              onChange={(zone) =>
+                edit((current) =>
+                  endAfterStart({
+                    ...current,
+                    zone: { ...current.zone, finish: zone },
+                  })
+                )
+              }
+            />
           )}
         </div>
-        {zones && (
-          <TimezoneSelect
-            compact
-            auto={false}
-            label={t`End time zone`}
-            value={draft.zone.finish}
-            onChange={(zone) =>
-              edit((current) =>
-                endAfterStart({
-                  ...current,
-                  zone: { ...current.zone, finish: zone },
-                })
-              )
-            }
-          />
-        )}
         {/* Save waits for an end that follows the start; the row says why. */}
         {!ordered && (
           <p className='text-destructive text-xs' data-testid='backwards'>
@@ -1142,6 +1110,9 @@ function EditorFields({
     </div>
   )
 }
+
+/** An end's zone beside its time: the time's width, so long city names cut short. */
+const ZONED = 'h-[var(--control-height-md)] w-32 shrink-0 justify-start'
 
 /**
  * One field of the editor. From small screens up its label sits in the

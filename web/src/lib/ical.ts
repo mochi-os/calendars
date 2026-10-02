@@ -89,11 +89,15 @@ function defaultReminders(preference: number): number[] {
   return preference === NO_REMINDER ? [] : [preference]
 }
 
-/** The reminder "Add reminder" adds: the first offered the event lacks. */
+/**
+ * The reminder "Add reminder" adds: at the time of the event first, then each
+ * one longer, the shortest offered the event lacks. With every one taken, the
+ * longest again.
+ */
 export function nextReminder(reminders: number[]): number {
   return (
-    [15, ...REMINDER_LEADS].find((minutes) => !reminders.includes(minutes)) ??
-    15
+    REMINDER_LEADS.find((minutes) => !reminders.includes(minutes)) ??
+    REMINDER_LEADS[REMINDER_LEADS.length - 1]
   )
 }
 
@@ -393,21 +397,6 @@ function alarm(minutes: number, summary: string): Component {
     ],
     components: [],
   }
-}
-
-/**
- * Whether a draft's zones are worth showing: a timed event with an end that is
- * not in the user's zone. Both ends in the user's zone, or an event that had
- * no zone at all and so reads in the user's, say nothing the user needs to see.
- * A zone is the user's under any of its names, Asia/Calcutta as Asia/Kolkata.
- */
-export function foreignZones(draft: EventDraft, timezone: string): boolean {
-  const own = currentZone(timezone)
-  return (
-    !draft.allday &&
-    (currentZone(draft.zone.start) !== own ||
-      currentZone(draft.zone.finish) !== own)
-  )
 }
 
 /** The instants a timed draft's two ends name, each read in its own zone. */

@@ -195,19 +195,23 @@ describe('EventEditor', () => {
     }
   })
 
-  it('gives every field label an icon, and the title and description their label inside', async () => {
+  it('gives every field label an icon, and the full-width fields their label inside', async () => {
     show()
-    const title = await screen.findByLabelText('Title')
-    expect(title).toHaveAttribute('placeholder', 'Title')
-    expect(screen.getByLabelText('Description')).toHaveAttribute(
-      'placeholder',
-      'Description'
-    )
+    await screen.findByLabelText('Title')
+    for (const [id, name] of [
+      ['event-title', 'Title'],
+      ['event-description', 'Description'],
+      ['event-location', 'Location'],
+      ['event-url', 'URL'],
+    ]) {
+      const field = document.getElementById(id)!
+      expect(field).toHaveAttribute('aria-label', name)
+      expect(field).toHaveAttribute('placeholder', name)
+      // Nothing beside it names it: it runs the full width.
+      expect(document.querySelector(`label[for="${id}"]`)).toBeNull()
+    }
     // The editor's own rows; a custom repeat's panel has sub-fields of its own.
     const labels = [
-      'event-calendar',
-      'event-location',
-      'event-url',
       'event-allday',
       'event-start',
       'event-finish',
@@ -220,16 +224,39 @@ describe('EventEditor', () => {
     }
   })
 
-  it("keeps the end's globe room in the start row, so the two rows line up", async () => {
+  it('names the calendar inside its select, with the calendar icon beside the calendar', async () => {
     show()
     await screen.findByLabelText('Title')
-    const globe = screen.getByRole('button', { name: 'Time zone' })
-    const room = screen.getByTestId('globe-room')
-    const start = room.parentElement!
-    expect(start.querySelector('[aria-label="Start time"]')).toBeTruthy()
-    expect(start.children.length).toBe(globe.parentElement!.children.length)
-    expect(room.className).toContain('size-[var(--control-height-md)]')
-    expect(globe.className).toContain('size-[var(--control-height-md)]')
+    const calendar = document.getElementById('event-calendar')!
+    expect(calendar).toHaveAttribute('aria-label', 'Calendar')
+    expect(document.querySelector('label[for="event-calendar"]')).toBeNull()
+    expect(screen.queryByText('Calendar')).toBeNull()
+    // The trigger shows the chosen calendar as its entry in the list reads:
+    // the calendar icon, then the name.
+    expect(calendar).toHaveTextContent('Home')
+    expect(calendar.querySelectorAll('svg').length).toBeGreaterThan(1)
+  })
+
+  it("shows each end's zone beside its time, with no time zone button", async () => {
+    show()
+    await screen.findByLabelText('Title')
+    for (const end of ['Start', 'End']) {
+      const time = document.querySelector(`[aria-label="${end} time"]`)!
+      const zone = screen.getByRole('combobox', { name: `${end} time zone` })
+      // The zone sits in the time's own row.
+      expect(zone.parentElement!.contains(time)).toBe(true)
+      expect(
+        time.compareDocumentPosition(zone) & Node.DOCUMENT_POSITION_FOLLOWING
+      ).toBeTruthy()
+    }
+    expect(screen.queryByRole('button', { name: 'Time zone' })).toBeNull()
+  })
+
+  it('shows no zones for an all-day event, which has no times', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    fireEvent.click(screen.getByLabelText('All day'))
+    expect(screen.queryByRole('combobox', { name: /time zone/ })).toBeNull()
   })
 
   it('keeps what was typed when the event is read again in the background', async () => {
