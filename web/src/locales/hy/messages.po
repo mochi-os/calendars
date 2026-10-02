@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# արդյունք} other {# արդյունք}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# ընտրված} other {# ընտրված}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# ևս} other {+# ևս}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# ներդրված} other {+# ներդրված}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {ամսվա օրը՝ {days}} other {ամսվա օրերը՝ {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#ր} other {#ր}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#շաբ} other {#շաբ}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {ամսվա օրը՝ {days}} other {ամսվա օրերը՝ {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# ժամ} other {# ժամ}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Ամեն օր} other {# օրը մեկ}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Ամեն օր} other {# օրը մեկ}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Ամեն ամիս} other {# ամիսը մեկ}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Ամեն ամիս} other {# ամիսը մեկ}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Շաբաթը մեկ} other {# շաբաթը մեկ}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Շաբաթը մեկ} other {# շաբաթը մեկ}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Ամեն տարի} other {# տարին մեկ}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Ամեն տարի} other {# տարին մեկ}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel}՝ {totalLabel}-ից"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {մեկ անգամ} other {# անգամ}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {մեկ անգամ} other {# անգամ}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# պատասխան} other {+# ևս պա�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Բացել ընտրացանկը (# չկարդացված ծանուցում)} other {Բացել ընտրացանկը (# չկարդացված ծանուցում)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Հետ"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Վերադառնալ օրացույցներին"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -520,7 +520,7 @@ msgstr "Օրացույցի հասցեն պատճենվեց սեղմատախտա�
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
-msgstr "Օրացույցի հասցեն չեղարկվել է"
+msgstr "Օրացույցի հասցեն հետ է վերցվել"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 msgid "Calendar colour"
@@ -755,7 +755,7 @@ msgstr "Գույնը պահպանվեց"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Գույնի արժեք"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,10 +1142,12 @@ msgid "Directory"
 msgstr "Տեղեկագիրք"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
 msgstr "Հրաժարվել"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
 msgstr "Հրաժարվե՞լ սևագրից։"
 
@@ -1487,11 +1489,11 @@ msgstr "Չհաջողվեց զրոյացնել հուշումը"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "RSS մուտքի չեղարկումը ձախողվեց"
+msgstr "Չհաջողվեց հետ վերցնել RSS մուտքը"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
-msgstr "Չհաջողվեց չեղարկել օրացույցի հասցեն"
+msgstr "Չհաջողվեց հետ վերցնել օրացույցի հասցեն"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2007,7 +2009,7 @@ msgstr "Տարրերի տեսակներ դեռ հնարավոր չէ ստեղծ�
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Համընկնումներ չկան"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2334,7 +2336,7 @@ msgstr "Նորից կապեք ձեր հաշիվները այս սերվերու�
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "Կրկին գրանցեք ձեր անցաբառերը այս սերվերում"
+msgstr "Կրկին գրանցեք ձեր անցաբանալիները այս սերվերում"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2501,7 +2503,7 @@ msgstr "Փոխարինել"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Փոխարինե՞լ օրացույցի հասցեն"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2545,15 +2547,15 @@ msgstr "Հետ վերցնել"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "Չեղարկել մուտքը"
+msgstr "Հետ վերցնել մուտքը"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
-msgstr "Չեղարկե՞լ RSS մուտքը"
+msgstr "Հետ վերցնե՞լ RSS մուտքը"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke the calendar address?"
-msgstr "Չեղարկե՞լ օրացույցի հասցեն"
+msgstr "Հետ վերցնե՞լ օրացույցի հասցեն"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2566,7 +2568,7 @@ msgstr "Տողերը խմբավորվում են ըստ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS access revoked"
-msgstr "RSS մուտքը չեղարկվել է"
+msgstr "RSS մուտքը հետ է վերցվել"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
@@ -2624,7 +2626,7 @@ msgstr "Որոնել"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Որոնել միջոցառումներ"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3032,7 +3034,7 @@ msgstr "Օրացույցի այս հասցեն արդեն տրվել է և չի 
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar has no address to revoke"
-msgstr "Այս օրացույցը չեղարկելու հասցե չունի"
+msgstr "Այս օրացույցը հետ վերցնելու հասցե չունի"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "Ձեր կցորդները կկորչեն։"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Քո փոփոխությունները կկորչեն։"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

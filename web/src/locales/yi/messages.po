@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# רעזולטאַט} other {# רעזולטאַטן}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# אויסגעקליבן} other {# אויסגעקליבן}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# מער} other {+# מער}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# אײַנגענעסטיקט} other {+# אײַנגענעסטיקטע}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {אום טאָג {days}} other {אום די טעג {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#מינ} other {#מינ}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#וואָך} other {#וואָך}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {אום טאָג {days}} other {אום די טעג {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# שעה} other {# שעה}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {יעדן טאָג} other {יעדע # טעג}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {יעדן טאָג} other {יעדע # טעג}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {יעדן חודש} other {יעדע # חדשים}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {יעדן חודש} other {יעדע # חדשים}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {יעדע וואָך} other {יעדע # וואָכן}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {יעדע וואָך} other {יעדע # וואָכן}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {יעדעס יאָר} other {יעדע # יאָר}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {יעדעס יאָר} other {יעדע # יאָר}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} פֿון {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {איין מאָל} other {# מאָל}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {איין מאָל} other {# מאָל}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# ענטפֿער} other {+# מער ענ�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {עפֿנט מעניו (# אומגעלײענטע מעלדונג)} other {עפֿנט מעניו (# אומגעלײענטע מעלדונגען)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "צוריק"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "צוריק צו קאַלענדאַרן"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -520,7 +520,7 @@ msgstr "קאַלענדאַר־אַדרעס קאָפּירט צו קליפּבר�
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
-msgstr "קאַלענדאַר־אַדרעס אָפּגערופֿן"
+msgstr "קאַלענדאַר־אַדרעס צוריקגענומען"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 msgid "Calendar colour"
@@ -755,7 +755,7 @@ msgstr "פֿאַרב אויפֿגעהיט"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "פֿאַרב־ווערט"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,10 +1142,12 @@ msgid "Directory"
 msgstr "פֿאַרצײכעניש"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
 msgstr "אַװעקװאַרפֿן"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
 msgstr "אַװעקװאַרפֿן דעם פּראָיעקט?"
 
@@ -1487,11 +1489,11 @@ msgstr "ניט געלונגען צו אָפּשטעלן פּראָמפּט"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "דורכפֿאַל צו רופֿן צוריק RSS צוטריט"
+msgstr "ניט געלונגען צוריקצונעמען RSS צוטריט"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
-msgstr "ניט געלונגען אָפּצורופֿן דעם קאַלענדאַר־אַדרעס"
+msgstr "ניט געלונגען צוריקצונעמען דעם קאַלענדאַר־אַדרעס"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2007,7 +2009,7 @@ msgstr "קיין עלעמענט טיפּן קענען נאָך ניט זײַן �
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "קיין צופּאַסונגען"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2334,7 +2336,7 @@ msgstr "פארבינד ווידער דיינע קאנטעס אויף דעם סע
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "רעגיסטרירט איבער אייערע צוטריט שליסלען אויף דעם סערווער"
+msgstr "רעגיסטרירט איבער אײַערע פּאַסקייס אויף דעם סערווער"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2501,7 +2503,7 @@ msgstr "פארטוישן"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "פארטוישן דעם קאַלענדאַר־אַדרעס?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2541,19 +2543,19 @@ msgstr "פּרוּווט נאָך אַ מאָל"
 #: src/features/calendar/settings.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
-msgstr "אָפּזאָגן"
+msgstr "צוריקנעמען"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "רופֿט צוריק צוטריט"
+msgstr "צוריקנעמען צוטריט"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
-msgstr "אַנולירן RSS צוטריט?"
+msgstr "צוריקנעמען RSS צוטריט?"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke the calendar address?"
-msgstr "אָפּרופֿן דעם קאַלענדאַר־אַדרעס?"
+msgstr "צוריקנעמען דעם קאַלענדאַר־אַדרעס?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2566,7 +2568,7 @@ msgstr "רייען גרופּירן לויט"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS access revoked"
-msgstr "RSS צוטריט צוריקגערופֿן"
+msgstr "RSS צוטריט צוריקגענומען"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
@@ -2624,7 +2626,7 @@ msgstr "זוך"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "זוך געשעענישן"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3032,7 +3034,7 @@ msgstr "דער קאַלענדאַר־אַדרעס איז שוין אַרויסג
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar has no address to revoke"
-msgstr "דער קאַלענדאַר האָט ניט קיין אַדרעס אָפּצורופֿן"
+msgstr "דער קאַלענדאַר האָט ניט קיין אַדרעס צוריקצונעמען"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "דײַנע צוגעלייגטע טעקעס וועלן פֿאַרלוירן גיין."
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "אײַערע ענדערונגען װעלן פֿאַרלוירן װערן."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

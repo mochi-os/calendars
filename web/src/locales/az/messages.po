@@ -42,7 +42,7 @@ msgstr "[təyin edilməyib]"
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
-msgstr "{0, plural, one {# seçildi} other {# seçildi}}"
+msgstr "{0, plural, one {# nəticə} other {# nəticə}}"
 
 #. placeholder {0}: displayInfo.count
 #. placeholder {0}: selectedIds.length
@@ -51,12 +51,21 @@ msgstr "{0, plural, one {# seçildi} other {# seçildi}}"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "{0, plural, one {# selected} other {# selected}}"
-msgstr "{0, plural, one {# istifadəçi banlandı} other {# istifadəçi banlandı}}"
+msgstr "{0, plural, one {# seçildi} other {# seçildi}}"
+
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# daha} other {+# daha}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# daxili} other {+# daxili}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {ayın günü: {days}} other {ayın günləri: {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#dəq} other {#dəq}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#h} other {#h}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {ayın günü: {days}} other {ayın günləri: {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# saat} other {# saat}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Hər gün} other {Hər # gündə bir}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Hər gün} other {Hər # gündə bir}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Hər ay} other {Hər # ayda bir}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Hər ay} other {Hər # ayda bir}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Hər həftə} other {Hər # həftədə bir}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Hər həftə} other {Hər # həftədə bir}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Hər il} other {Hər # ildə bir}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Hər il} other {Hər # ildə bir}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -138,7 +143,7 @@ msgstr "{minutes, plural, one {# dəqiqə} other {# dəqiqə}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
-msgstr "{opponentName} qazandı"
+msgstr "{opponentName} heç-heçə təklif etdi"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {bir dəfə} other {# dəfə}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {bir dəfə} other {# dəfə}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# cavab} other {+# daha çox cavab}}"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Menyunu aç (# oxunmamış bildiriş)} other {Menyunu aç (# oxunmamış bildiriş)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Geri"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Təqvimlərə qayıt"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -520,7 +520,7 @@ msgstr "Təqvim ünvanı mübadilə yaddaşına kopyalandı"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
-msgstr "Təqvim ünvanı ləğv edildi"
+msgstr "Təqvim ünvanı geri çağırıldı"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 msgid "Calendar colour"
@@ -755,7 +755,7 @@ msgstr "Rəng saxlanıldı"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Rəng dəyəri"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,12 +1142,14 @@ msgid "Directory"
 msgstr "Kataloq"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
-msgstr "Ləğv et"
+msgstr "At"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
-msgstr "Qaralama ləğv edilsin?"
+msgstr "Qaralama atılsın?"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 #: ../../../lib/web/src/lib/chat-ui.ts
@@ -1487,11 +1489,11 @@ msgstr "Promptu sıfırlamaq alınmadı"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "RSS girişini ləğv etmək alınmadı"
+msgstr "RSS girişini geri çağırmaq alınmadı"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
-msgstr "Təqvim ünvanını ləğv etmək alınmadı"
+msgstr "Təqvim ünvanını geri çağırmaq alınmadı"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2007,7 +2009,7 @@ msgstr "Hələ heç bir element növü yaradıla bilməz. Əvvəlcə tələb olu
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Uyğunluq yoxdur"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2228,11 +2230,11 @@ msgstr "Giriş açarının doğrulanması alınmadı. Zəhmət olmasa yenidən c
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
-msgstr "Passkey-lər"
+msgstr "Giriş açarları"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkey-lər bu brauzerdə mövcud deyil"
+msgstr "Giriş açarları bu brauzerdə mövcud deyil"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2501,7 +2503,7 @@ msgstr "Əvəz et"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Təqvim ünvanı əvəz edilsin?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2545,15 +2547,15 @@ msgstr "Geri çağır"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "Girişi ləğv et"
+msgstr "Girişi geri çağır"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
-msgstr "RSS girişi ləğv edilsin?"
+msgstr "RSS girişi geri çağırılsın?"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke the calendar address?"
-msgstr "Təqvim ünvanı ləğv edilsin?"
+msgstr "Təqvim ünvanı geri çağırılsın?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2566,7 +2568,7 @@ msgstr "Sətirlər qruplaşdır"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS access revoked"
-msgstr "RSS girişi ləğv edildi"
+msgstr "RSS girişi geri çağırıldı"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
@@ -2624,7 +2626,7 @@ msgstr "Axtar"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Tədbir axtar"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3008,7 +3010,7 @@ msgstr "Mikrofon sorğusu cavablandırılmadı"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Passkey sorğusu cavablandırılmadı"
+msgstr "Giriş açarı sorğusu cavablandırılmadı"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3024,7 +3026,7 @@ msgstr "Bu və sonrakılar"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Bu tətbiqin passkey-inizi istifadə etməsinə icazə verilmir. Ayarlarda, İcazələr bölməsində icazə verin."
+msgstr "Bu tətbiqin giriş açarınızdan istifadə etməsinə icazə verilmir. Ayarlarda, İcazələr bölməsində icazə verin."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
@@ -3032,7 +3034,7 @@ msgstr "Bu təqvim ünvanı artıq verilib və bir daha göstərilə bilməz."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar has no address to revoke"
-msgstr "Bu təqvimin ləğv ediləcək ünvanı yoxdur"
+msgstr "Bu təqvimin geri çağırılacaq ünvanı yoxdur"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3088,12 +3090,12 @@ msgstr "Yan paneli aç/bağla"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Toggle view options"
-msgstr "Token mübadilə yaddaşına kopyalandı"
+msgstr "Görünüş seçimlərini aç/bağla"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Toggle watched filter"
-msgstr "Token yaradıldı"
+msgstr "İzlənilənlər filtrini aç/bağla"
 
 #: src/features/calendar/index.tsx
 msgid "Too many events to show them all. Choose a shorter range."
@@ -3113,7 +3115,7 @@ msgstr "Səyahət"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Try adjusting your search terms"
-msgstr "Fərqli axtarış termini sınayın."
+msgstr "Axtarış sözlərini dəyişməyə cəhd edin"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -3131,15 +3133,15 @@ msgstr "Növ"
 
 #: ../../../lib/web/src/components/command-menu.tsx
 msgid "Type a command or search..."
-msgstr "Mesaj yazın…"
+msgstr "Əmr yazın və ya axtarın..."
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Type a message…"
-msgstr "İstifadəçiləri axtarmaq üçün yazın"
+msgstr "Mesaj yazın…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Type to search users"
-msgstr "Mesajınızı yazın…"
+msgstr "İstifadəçiləri axtarmaq üçün yazın"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Type to search..."
@@ -3255,7 +3257,7 @@ msgstr "E-poçt ünvanını doğrulayın"
 
 #: ../../../lib/web/src/components/attachment-gallery.tsx
 msgid "Video thumbnail"
-msgstr "Hamısına bax"
+msgstr "Video miniatürü"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -3269,11 +3271,11 @@ msgstr "Görünüş"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "View all notifications"
-msgstr "Element təfərrüatlarına baxın və redaktə edin"
+msgstr "Bütün bildirişlərə bax"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "View and edit item details"
-msgstr "Görünüş idarəetmələri"
+msgstr "Element təfərrüatlarına baxın və redaktə edin"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "Qoşmalarınız itiriləcək."
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Dəyişiklikləriniz itəcək."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# પરિણામ} other {# પરિણામ}}"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# પસંદ કરેલ} other {# પસંદ કરેલ}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# વધુ} other {+# વધુ}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# નેસ્ટેડ} other {+# નેસ્ટેડ}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {મહિનાની {days} તારીખે} other {મહિનાની {days} તારીખે}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#મિ} other {#મિ}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#અઠ} other {#અઠ}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {મહિનાની {days} તારીખે} other {મહિનાની {days} તારીખે}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# કલાક} other {# કલાક}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {દરરોજ} other {દર # દિવસે}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {દરરોજ} other {દર # દિવસે}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {દર મહિને} other {દર # મહિને}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {દર મહિને} other {દર # મહિને}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {દર અઠવાડિયે} other {દર # અઠવાડિયે}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {દર અઠવાડિયે} other {દર # અઠવાડિયે}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {દર વર્ષે} other {દર # વર્ષે}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {દર વર્ષે} other {દર # વર્ષે}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,8 +151,8 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}માંથી {sentLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {એક વાર} other {# વાર}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {એક વાર} other {# વાર}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
@@ -160,11 +165,6 @@ msgstr "{totalDescendants, plural, one {# જવાબ} other {+# વધુ જ�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {મેનૂ ખોલો (# વણવાંચેલ સૂચના)} other {મેનૂ ખોલો (# વણવાંચેલ સૂચનાઓ)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "પાછળ"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "કૅલેન્ડર પર પાછા"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -520,7 +520,7 @@ msgstr "કૅલેન્ડરનું સરનામું ક્લિપ�
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
-msgstr "કૅલેન્ડરનું સરનામું રદ કર્યું"
+msgstr "કૅલેન્ડરનું સરનામું પાછું ખેંચ્યું"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 msgid "Calendar colour"
@@ -755,7 +755,7 @@ msgstr "રંગ સાચવ્યો"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "રંગનું મૂલ્ય"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,12 +1142,14 @@ msgid "Directory"
 msgstr "નિર્દેશિકા"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
-msgstr "રદ કરો"
+msgstr "છોડી દો"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
-msgstr "ડ્રાફ્ટ રદ કરવો?"
+msgstr "ડ્રાફ્ટ છોડી દેવો?"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 #: ../../../lib/web/src/lib/chat-ui.ts
@@ -1487,11 +1489,11 @@ msgstr "પ્રોમ્પ્ટ રીસેટ કરવામાં નિ
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "RSS ઍક્સેસ રદ કરવામાં નિષ્ફળ"
+msgstr "RSS ઍક્સેસ પાછું ખેંચવામાં નિષ્ફળ"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
-msgstr "કૅલેન્ડરનું સરનામું રદ કરવામાં નિષ્ફળ"
+msgstr "કૅલેન્ડરનું સરનામું પાછું ખેંચવામાં નિષ્ફળ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2007,7 +2009,7 @@ msgstr "હજુ સુધી કોઈ આઇટમ પ્રકારો બ�
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "કોઈ મેળ નથી"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2501,7 +2503,7 @@ msgstr "બદલો"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "કૅલેન્ડરનું સરનામું બદલવું છે?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2541,19 +2543,19 @@ msgstr "ફરી પ્રયાસ કરો"
 #: src/features/calendar/settings.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
-msgstr "રદ કરો"
+msgstr "પાછું ખેંચો"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "ઍક્સેસ રદ કરો"
+msgstr "ઍક્સેસ પાછું ખેંચો"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
-msgstr "RSS ઍક્સેસ રદ કરવો છે?"
+msgstr "RSS ઍક્સેસ પાછું ખેંચવું છે?"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke the calendar address?"
-msgstr "કૅલેન્ડરનું સરનામું રદ કરવું છે?"
+msgstr "કૅલેન્ડરનું સરનામું પાછું ખેંચવું છે?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2566,7 +2568,7 @@ msgstr "પંક્તિઓ આ રીતે જૂથબદ્ધ કરો"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS access revoked"
-msgstr "RSS ઍક્સેસ રદ કરી"
+msgstr "RSS ઍક્સેસ પાછું ખેંચ્યું"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
@@ -2624,7 +2626,7 @@ msgstr "શોધો"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "ઇવેન્ટ્સ શોધો"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3032,7 +3034,7 @@ msgstr "આ કૅલેન્ડર સરનામું પહેલેથી
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar has no address to revoke"
-msgstr "આ કૅલેન્ડર પાસે રદ કરવા માટે કોઈ સરનામું નથી"
+msgstr "આ કૅલેન્ડર પાસે પાછું ખેંચવા માટે કોઈ સરનામું નથી"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "તમારા જોડાણો ખોવાઈ જશે."
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "તમારા ફેરફારો ખોવાઈ જશે."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

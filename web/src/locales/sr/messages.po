@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# резултат} few {# резултата} other {#
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# изабрано} few {# изабрана} other {# изабраних}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {још +#} few {још +#} many {још +#} other {још +#}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# угнежден} few {+# угнеждена} many {+# угнеждених} other {+# угнеждених}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {дан у месецу: {days}} one {дани у месецу: {days}} few {дани у месецу: {days}} other {дани у месецу: {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#нед} other {#нед}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, =1 {дан у месецу: {days}} one {дани у месецу: {days}} few {дани у месецу: {days}} other {дани у месецу: {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# сат} few {# сата} other {# сати}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {Сваки дан} one {Сваки # дан} few {Свака # дана} other {Сваких # дана}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {Сваки месец} one {Сваки # месец} few {Свака # месеца} other {Сваких # месеци}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {Сваке седмице} one {Сваке # седмице} few {Сваке # седмице} other {Сваких # седмица}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {Сваке године} one {Сваке # године} few {Сваке # године} other {Сваких # година}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} од {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {једном} one {# пут} few {# пута} other {# пута}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -155,16 +160,11 @@ msgstr "{totalCount, plural, one {# ставка} few {# ставке} other {# 
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
-msgstr "{totalDescendants, plural, one {# одговор} few {+# додатних одговора} other {+# додатних одговора}}"
+msgstr "{totalDescendants, plural, one {# одговор} few {+# додатна одговора} other {+# додатних одговора}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Отвори мени (# непрочитано обавештење)} few {Отвори мени (# непрочитана обавештења)} other {Отвори мени (# непрочитаних обавештења)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -347,7 +347,7 @@ msgstr "Свако ко је пријављен"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
-msgstr "Све што је претплаћено на овај извор престаће да га прима. Затим можете копирати нови URL."
+msgstr "Све што је претплаћено на овај фид престаће да га прима. Затим можете копирати нови URL."
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "App-specific password"
@@ -439,7 +439,7 @@ msgstr "Назад"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Назад на календаре"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Боја је сачувана"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Вредност боје"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,10 +1142,12 @@ msgid "Directory"
 msgstr "Именик"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
 msgstr "Одбаци"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
 msgstr "Одбацити нацрт?"
 
@@ -2007,7 +2009,7 @@ msgstr "Још се не могу креирати типови ставки. П
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Нема подударања"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2228,11 +2230,11 @@ msgstr "Провера приступног кључа није успела. П
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
-msgstr "Passkey-еви"
+msgstr "Приступни кључеви"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkey-еви нису доступни у овом прегледачу"
+msgstr "Приступни кључеви нису доступни у овом прегледачу"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2501,7 +2503,7 @@ msgstr "Замени"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Заменити адресу календара?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2570,7 +2572,7 @@ msgstr "RSS приступ опозван"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
-msgstr "RSS извор"
+msgstr "RSS фид"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS URL copied to clipboard"
@@ -2624,7 +2626,7 @@ msgstr "Претражи"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Претражи догађаје"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3187,7 +3189,7 @@ msgstr "Непознато"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Откажи претплату"
+msgstr "Прекини претплату"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "Ваши прилози ће бити изгубљени."
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Ваше измене ће бити изгубљене."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

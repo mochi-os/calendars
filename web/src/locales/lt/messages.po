@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# rezultatas} few {# rezultatai} many {# rezultatų} ot
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# pasirinktas} few {# pasirinkti} many {# pasirinktų} other {# pasirinktų}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {dar +#} few {dar +#} many {dar +#} other {dar +#}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# įdėtas} few {+# įdėti} many {+# įdėto} other {+# įdėtų}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {dieną: {days}} one {dienomis: {days}} few {dienomis: {days}} many {dienomis: {days}} other {dienomis: {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#min} other {#min}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sav} other {#sav}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, =1 {dieną: {days}} one {dienomis: {days}} few {dienomis: {days}} many {dienomis: {days}} other {dienomis: {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,19 +118,19 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# valanda} few {# valandos} many {# valandos} other {# valandų}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
 msgstr "{interval, plural, =1 {Kasdien} one {Kas # dieną} few {Kas # dienas} many {Kas # dienos} other {Kas # dienų}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
 msgstr "{interval, plural, =1 {Kas mėnesį} one {Kas # mėnesį} few {Kas # mėnesius} many {Kas # mėnesio} other {Kas # mėnesių}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
 msgstr "{interval, plural, =1 {Kas savaitę} one {Kas # savaitę} few {Kas # savaites} many {Kas # savaitės} other {Kas # savaičių}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
 msgstr "{interval, plural, =1 {Kasmet} one {Kas # metus} few {Kas # metus} many {Kas # metų} other {Kas # metų}}"
 
 #: src/hooks/use-options.ts
@@ -146,7 +151,7 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} iš {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
+msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {vieną kartą} one {# kartą} few {# kartus} many {# karto} other {# kartų}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -155,16 +160,11 @@ msgstr "{totalCount, plural, one {# elementas} few {# elementai} many {# element
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
-msgstr "{totalDescendants, plural, one {# atsakymas} few {+# daugiau atsakymų} many {+# daugiau atsakymų} other {+# daugiau atsakymų}}"
+msgstr "{totalDescendants, plural, one {# atsakymas} few {dar +# atsakymai} many {dar +# atsakymo} other {dar +# atsakymų}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Atidaryti meniu (# neperskaitytas pranešimas)} few {Atidaryti meniu (# neperskaityti pranešimai)} many {Atidaryti meniu (# neperskaityto pranešimo)} other {Atidaryti meniu (# neperskaitytų pranešimų)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Atgal"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Atgal į kalendorius"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -520,7 +520,7 @@ msgstr "Kalendoriaus adresas nukopijuotas į iškarpinę"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Calendar address revoked"
-msgstr "Kalendoriaus adresas atšauktas"
+msgstr "Kalendoriaus adresas panaikintas"
 
 #: src/features/calendar/dialogs/colour-dialog.tsx
 msgid "Calendar colour"
@@ -755,7 +755,7 @@ msgstr "Spalva išsaugota"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Spalvos reikšmė"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,10 +1142,12 @@ msgid "Directory"
 msgstr "Katalogas"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
 msgstr "Atmesti"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
 msgstr "Atmesti juodraštį?"
 
@@ -1487,11 +1489,11 @@ msgstr "Nepavyko atstatyti raginimo"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
-msgstr "Nepavyko atšaukti RSS prieigos"
+msgstr "Nepavyko panaikinti RSS prieigos"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Failed to revoke the calendar address"
-msgstr "Nepavyko atšaukti kalendoriaus adreso"
+msgstr "Nepavyko panaikinti kalendoriaus adreso"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
@@ -2007,7 +2009,7 @@ msgstr "Kol kas negalima sukurti jokių elementų tipų. Pirma sukurkite reikali
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "Atitikmenų nėra"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2232,7 +2234,7 @@ msgstr "Slaptarakčiai"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Slaptaraktai šioje naršyklėje nepasiekiami"
+msgstr "Slaptarakčiai šioje naršyklėje nepasiekiami"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2334,7 +2336,7 @@ msgstr "Iš naujo susiekite paskyras šiame serveryje"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
-msgstr "Iš naujo užregistruokite prieigos raktus šiame serveryje"
+msgstr "Iš naujo užregistruokite slaptarakčius šiame serveryje"
 
 #: ../../../lib/web/src/components/search-entity-page.tsx
 msgid "Recommended"
@@ -2501,7 +2503,7 @@ msgstr "Pakeisti"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Pakeisti kalendoriaus adresą?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2541,19 +2543,19 @@ msgstr "Bandyti dar kartą"
 #: src/features/calendar/settings.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke"
-msgstr "Atšaukti"
+msgstr "Panaikinti"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke access"
-msgstr "Atšaukti prieigą"
+msgstr "Panaikinti prieigą"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke RSS access?"
-msgstr "Atšaukti RSS prieigą?"
+msgstr "Panaikinti RSS prieigą?"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Revoke the calendar address?"
-msgstr "Atšaukti kalendoriaus adresą?"
+msgstr "Panaikinti kalendoriaus adresą?"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -2566,7 +2568,7 @@ msgstr "Grupuoti eilutes pagal"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS access revoked"
-msgstr "RSS prieiga atšaukta"
+msgstr "RSS prieiga panaikinta"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS feed"
@@ -2624,7 +2626,7 @@ msgstr "Ieškoti"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Ieškoti įvykių"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3032,7 +3034,7 @@ msgstr "Šis kalendoriaus adresas jau buvo išduotas ir jo nebus galima parodyti
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar has no address to revoke"
-msgstr "Šis kalendorius neturi adreso, kurį būtų galima atšaukti"
+msgstr "Šis kalendorius neturi adreso, kurį būtų galima panaikinti"
 
 #: src/features/calendar/components/scope-dialog.tsx
 msgid "This event"
@@ -3187,7 +3189,7 @@ msgstr "Nežinoma"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"
-msgstr "Atšaukti prenumeratą"
+msgstr "Atsisakyti prenumeratos"
 
 #: src/hooks/use-rule-summary.ts
 msgid "until {date}"
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "Jūsų priedai bus prarasti."
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "Tavo pakeitimai bus prarasti."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

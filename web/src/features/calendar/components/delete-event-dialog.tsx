@@ -20,11 +20,6 @@ interface Props {
   event: string | null
   /** The occurrence that was clicked, in unix seconds. */
   start: number
-  /**
-   * Whether the event repeats, as the listing says, for the moment before the
-   * stored event loads: the buttons then do not change under the pointer.
-   */
-  recurring?: boolean
   onClose: () => void
   onDeleted?: () => void
 }
@@ -34,13 +29,7 @@ interface Props {
  * meant. Removing one occurrence is an edit of the series: the master gains an
  * exception for it.
  */
-export function DeleteEventDialog({
-  event,
-  start,
-  recurring = false,
-  onClose,
-  onDeleted,
-}: Props) {
+export function DeleteEventDialog({ event, start, onClose, onDeleted }: Props) {
   const { t } = useLingui()
   const format = useFormat()
   const { data, isError, error, refetch } = useEventQuery(event)
@@ -131,7 +120,7 @@ export function DeleteEventDialog({
     <ScopeDialog
       open={event !== null}
       title={t`Delete this event`}
-      recurring={stored ? stored.recurring : recurring}
+      recurring={Boolean(stored?.recurring)}
       destructive
       icon={<Trash2 className='size-4' />}
       disabled={!stored}

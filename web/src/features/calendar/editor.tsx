@@ -8,6 +8,7 @@ import {
   DatePicker,
   Button,
   ColourPicker,
+  ConfirmDialog,
   Dialog,
   DialogContent,
   DialogFooter,
@@ -32,6 +33,7 @@ import {
   toast,
   useDiscardGuard,
   useFormat,
+  useLeaveGuard,
   useScreenSize,
 } from '@mochi/web'
 import {
@@ -43,6 +45,7 @@ import {
   MapPin,
   Plus,
   Repeat as RepeatIcon,
+  Trash2,
   X,
 } from 'lucide-react'
 import type { Component } from '@/api/types/events'
@@ -350,6 +353,13 @@ export function EventEditor() {
   })
 
   const open = editing !== null
+
+  // The shell's back, forward and cross-app links take the page, and the
+  // editor with it, without the dialog closing first, so while the form holds
+  // a change they ask the question closing does. Discarding closes the editor
+  // too: it sits in the layout, which a move within the app keeps.
+  const leaving = useLeaveGuard(open && changed)
+
   const body =
     isError && editing?.mode === 'edit' && !draft ? (
       <GeneralError
@@ -502,6 +512,22 @@ export function EventEditor() {
       />
 
       {discardDialog}
+
+      <ConfirmDialog
+        open={leaving.asking}
+        onOpenChange={(next) => {
+          if (!next) leaving.stay()
+        }}
+        title={t`Discard draft?`}
+        desc={t`Your changes will be lost.`}
+        confirmText={t`Discard`}
+        icon={<Trash2 className='size-4' />}
+        destructive
+        handleConfirm={() => {
+          leaving.proceed()
+          close()
+        }}
+      />
 
       <DeleteEventDialog
         event={confirming && editing?.mode === 'edit' ? editing.event : null}

@@ -288,12 +288,8 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         }}
         title={t`Delete device?`}
         desc={t`The device will no longer be able to sync contacts or calendars.`}
-        confirmText={
-          <>
-            <Trash2 className='size-4' />
-            <Trans>Delete</Trans>
-          </>
-        }
+        confirmText={<Trans>Delete</Trans>}
+        icon={<Trash2 className='size-4' />}
         destructive
         isLoading={deleteMutation.isPending}
         handleConfirm={() => void remove()}

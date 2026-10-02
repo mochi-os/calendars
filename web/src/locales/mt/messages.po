@@ -42,7 +42,7 @@ msgstr "[mhux issettjat]"
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
-msgstr "{0, plural, one {# riżultat} few {# riżultati} many {# riżultati} other {# riżultati}}"
+msgstr "{0, plural, one {# riżultat} two {# riżultati} few {# riżultati} many {# riżultat} other {# riżultat}}"
 
 #. placeholder {0}: displayInfo.count
 #. placeholder {0}: selectedIds.length
@@ -53,10 +53,19 @@ msgstr "{0, plural, one {# riżultat} few {# riżultati} many {# riżultati} oth
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# magħżul} few {# magħżula} many {# magħżula} other {# magħżula}}"
 
+#. placeholder {0}: overflow.get(day) ?? 0
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{0, plural, one {+# more} other {+# more}}"
+msgstr "{0, plural, one {+# oħra} few {+# oħra} many {+# oħra} other {+# oħra}}"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# innestjat} few {+# innestjati} many {+# innestjati} other {+# innestjati}}"
+
+#: src/hooks/use-rule-summary.ts
+msgid "{count, plural, =1 {on day {days}} other {on days {days}}}"
+msgstr "{count, plural, =1 {fil-jum {days}} two {fil-jiem {days}} few {fil-jiem {days}} many {fil-jiem {days}} other {fil-jiem {days}}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#d} other {#d}}"
@@ -73,10 +82,6 @@ msgstr "{count, plural, one {#min} other {#min}}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ġim} other {#ġim}}"
-
-#: src/hooks/use-rule-summary.ts
-msgid "{count, plural, one {on day {days}} other {on days {days}}}"
-msgstr "{count, plural, one {fil-jum {days}} two {fil-jiem {days}} few {fil-jiem {days}} many {fil-jiem {days}} other {fil-jiem {days}}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -113,20 +118,20 @@ msgid "{hours, plural, one {# hour} other {# hours}}"
 msgstr "{hours, plural, one {# siegħa} two {sagħtejn} few {# sigħat} many {# siegħa} other {# siegħa}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every day} other {Every # days}}"
-msgstr "{interval, plural, one {Kuljum} two {Kull jumejn} few {Kull # ijiem} many {Kull # jum} other {Kull # jum}}"
+msgid "{interval, plural, =1 {Every day} other {Every # days}}"
+msgstr "{interval, plural, =1 {Kuljum} two {Kull jumejn} few {Kull # ijiem} many {Kull # jum} other {Kull # jum}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every month} other {Every # months}}"
-msgstr "{interval, plural, one {Kull xahar} two {Kull xahrejn} few {Kull # xhur} many {Kull # xahar} other {Kull # xahar}}"
+msgid "{interval, plural, =1 {Every month} other {Every # months}}"
+msgstr "{interval, plural, =1 {Kull xahar} two {Kull xahrejn} few {Kull # xhur} many {Kull # xahar} other {Kull # xahar}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every week} other {Every # weeks}}"
-msgstr "{interval, plural, one {Kull ġimgħa} two {Kull ġimagħtejn} few {Kull # ġimgħat} many {Kull # ġimgħa} other {Kull # ġimgħa}}"
+msgid "{interval, plural, =1 {Every week} other {Every # weeks}}"
+msgstr "{interval, plural, =1 {Kull ġimgħa} two {Kull ġimagħtejn} few {Kull # ġimgħat} many {Kull # ġimgħa} other {Kull # ġimgħa}}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{interval, plural, one {Every year} other {Every # years}}"
-msgstr "{interval, plural, one {Kull sena} two {Kull sentejn} few {Kull # snin} many {Kull # sena} other {Kull # sena}}"
+msgid "{interval, plural, =1 {Every year} other {Every # years}}"
+msgstr "{interval, plural, =1 {Kull sena} two {Kull sentejn} few {Kull # snin} many {Kull # sena} other {Kull # sena}}"
 
 #: src/hooks/use-options.ts
 msgid "{minutes, plural, one {# minute before} other {# minutes before}}"
@@ -146,25 +151,20 @@ msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} minn {totalLabel}"
 
 #: src/hooks/use-rule-summary.ts
-msgid "{times, plural, one {once} other {# times}}"
-msgstr "{times, plural, one {darba waħda} two {darbtejn} few {# darbiet} many {# darba} other {# darba}}"
+msgid "{times, plural, =1 {once} other {# times}}"
+msgstr "{times, plural, =1 {darba waħda} two {darbtejn} few {# darbiet} many {# darba} other {# darba}}"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
-msgstr "{totalCount, plural, one {# oġġett} few {# oġġetti} many {# oġġetti} other {# oġġetti}}"
+msgstr "{totalCount, plural, one {# oġġett} two {# oġġetti} few {# oġġetti} many {# oġġett} other {# oġġett}}"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
-msgstr "{totalDescendants, plural, one {# tweġiba} few {+# tweġibiet aktar} many {+# tweġibiet aktar} other {+# tweġibiet aktar}}"
+msgstr "{totalDescendants, plural, one {# tweġiba} two {+# tweġibiet aktar} few {+# tweġibiet aktar} many {+# tweġiba aktar} other {+# tweġiba aktar}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
-msgstr "{unreadCount, plural, one {Iftaħ il-menu (# notifika mhux moqrija)} few {Iftaħ il-menu (# notifiki mhux moqrija)} many {Iftaħ il-menu (# notifiki mhux moqrija)} other {Iftaħ il-menu (# notifiki mhux moqrija)}}"
-
-#. placeholder {0}: overflow.get(day)
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "+{0} more"
-msgstr ""
+msgstr "{unreadCount, plural, one {Iftaħ il-menu (# notifika mhux moqrija)} two {Iftaħ il-menu (# notifiki mhux moqrija)} few {Iftaħ il-menu (# notifiki mhux moqrija)} many {Iftaħ il-menu (# notifika mhux moqrija)} other {Iftaħ il-menu (# notifika mhux moqrija)}}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -439,7 +439,7 @@ msgstr "Lura"
 
 #: src/features/calendar/settings.tsx
 msgid "Back to calendars"
-msgstr ""
+msgstr "Lura għall-kalendarji"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -755,7 +755,7 @@ msgstr "Il-kulur ġie ssejvjat"
 
 #: src/features/calendar/editor.tsx
 msgid "Colour value"
-msgstr ""
+msgstr "Valur tal-kulur"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Column actions"
@@ -1142,10 +1142,12 @@ msgid "Directory"
 msgstr "Direttorju"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard"
 msgstr "Armi"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
+#: src/features/calendar/editor.tsx
 msgid "Discard draft?"
 msgstr "Tarmi l-abbozz?"
 
@@ -2007,7 +2009,7 @@ msgstr "L-ebda tipi ta' oġġetti jistgħu jinħolqu għadhom. Oħloq l-oġġett
 
 #: src/features/calendar/components/agenda.tsx
 msgid "No matches"
-msgstr ""
+msgstr "L-ebda tqabbil"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "No matching objects"
@@ -2224,7 +2226,7 @@ msgstr "Ċavetta tal-aċċess"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "Il-verifika tal-passkey falliet. Jekk jogħġbok erġa' pprova."
+msgstr "Il-verifika taċ-ċavetta tal-aċċess falliet. Jekk jogħġbok erġa' pprova."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -2232,7 +2234,7 @@ msgstr "Ċwievet tal-aċċess"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Il-passkeys mhumiex disponibbli f'dan il-browser"
+msgstr "Iċ-ċwievet tal-aċċess mhumiex disponibbli f'dan il-browser"
 
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
@@ -2501,7 +2503,7 @@ msgstr "Ibdel"
 
 #: src/hooks/use-ics-copy.tsx
 msgid "Replace the calendar address?"
-msgstr ""
+msgstr "Tibdel l-indirizz tal-kalendarju?"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2624,7 +2626,7 @@ msgstr "Fittex"
 
 #: src/features/calendar/components/toolbar.tsx
 msgid "Search events"
-msgstr ""
+msgstr "Fittex avvenimenti"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -3008,7 +3010,7 @@ msgstr "It-talba għall-mikrofonu ma twiġbitx"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "It-talba għall-passkey ma twiġbitx"
+msgstr "It-talba għaċ-ċavetta tal-aċċess ma twiġbitx"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3024,7 +3026,7 @@ msgstr "Dan u dawk ta’ wara"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Din l-app mhijiex permessa tuża l-passkey tiegħek. Ippermettiha fl-Issettjar, taħt Permessi."
+msgstr "Din l-app mhijiex permessa tuża ċ-ċavetta tal-aċċess tiegħek. Ippermettiha fl-Issettjar, taħt Permessi."
 
 #: src/hooks/use-ics-copy.tsx
 msgid "This calendar address was already issued and cannot be shown again."
@@ -3223,7 +3225,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "Uża l-passkey tiegħek"
+msgstr "Uża ċ-ċavetta tal-aċċess tiegħek"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -3369,8 +3371,9 @@ msgid "Your attachments will be lost."
 msgstr "L-annessi tiegħek se jintilfu."
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
-msgstr ""
+msgstr "It-tibdiliet tiegħek se jintilfu."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your text and attachments will be lost."

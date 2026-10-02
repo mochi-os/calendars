@@ -97,6 +97,11 @@ vi.mock('@mochi/web', async (importOriginal) => {
   const original = await importOriginal<typeof import('@mochi/web')>()
   return { ...original, useScreenSize: () => ({ isMobile: false }) }
 })
+// No router here: the leave guard's blocker is all the editor asks of one.
+vi.mock('@tanstack/react-router', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@tanstack/react-router')>()),
+  useBlocker: () => ({ status: 'idle' }),
+}))
 
 function show() {
   return render(

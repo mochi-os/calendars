@@ -17,7 +17,7 @@ import {
   shellClipboardWrite,
   toast,
 } from '@mochi/web'
-import { Link2 } from 'lucide-react'
+import { Link2, RefreshCw } from 'lucide-react'
 import { calendarsApi } from '@/api/calendars'
 
 /**
@@ -139,6 +139,7 @@ export function useIcsCopy() {
         title={t`Replace the calendar address?`}
         desc={t`Calendars subscribed to this address will stop updating.`}
         confirmText={t`Replace`}
+        icon={<RefreshCw className='size-4' />}
         destructive
         isLoading={pending}
         handleConfirm={() => void replace()}
@@ -150,12 +151,8 @@ export function useIcsCopy() {
         }}
         title={t`Revoke the calendar address?`}
         desc={t`Calendars subscribed to this address will stop updating.`}
-        confirmText={
-          <>
-            <Link2 className='size-4' />
-            <Trans>Revoke</Trans>
-          </>
-        }
+        confirmText={<Trans>Revoke</Trans>}
+        icon={<Link2 className='size-4' />}
         destructive
         isLoading={pending}
         handleConfirm={() => void revoke()}

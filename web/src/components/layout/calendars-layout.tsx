@@ -360,7 +360,6 @@ export function CalendarsLayout() {
 
       <ConnectDialog open={connectOpen} onOpenChange={setConnectOpen} />
 
-
       <EventEditor />
 
       {dialogs}
@@ -398,15 +397,13 @@ export function CalendarsLayout() {
           )
         }
         confirmText={
-          <>
-            <Trash2 className='size-4' />
-            {deleting && detached(deleting) ? (
-              <Trans>Remove</Trans>
-            ) : (
-              <Trans>Delete</Trans>
-            )}
-          </>
+          deleting && detached(deleting) ? (
+            <Trans>Remove</Trans>
+          ) : (
+            <Trans>Delete</Trans>
+          )
         }
+        icon={<Trash2 className='size-4' />}
         destructive
         handleConfirm={confirmDelete}
         isLoading={deleteMutation.isPending}
