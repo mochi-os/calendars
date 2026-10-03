@@ -5,6 +5,7 @@
 import { useLingui } from '@lingui/react/macro'
 import {
   Button,
+  cn,
   DropdownMenu,
   Input,
   DropdownMenuCheckboxItem,
@@ -93,91 +94,131 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
     },
   })
 
+  const nav = (
+    <div className='flex shrink-0 items-center'>
+      <Button
+        variant='ghost'
+        size='icon'
+        aria-label={t`Previous`}
+        onClick={() => step(-1)}
+      >
+        <ChevronLeft className='size-4 rtl:rotate-180' />
+      </Button>
+      <Button variant='outline' size='sm' onClick={() => setDate(today)}>
+        <CalendarCheck className='size-4' />
+        {t`Today`}
+      </Button>
+      <Button
+        variant='ghost'
+        size='icon'
+        aria-label={t`Next`}
+        onClick={() => step(1)}
+      >
+        <ChevronRight className='size-4 rtl:rotate-180' />
+      </Button>
+    </div>
+  )
+
+  const heading = isDesktop ? (
+    <h1 className='min-w-0 flex-1 basis-full truncate text-base font-semibold lg:basis-auto'>
+      {title}
+    </h1>
+  ) : (
+    <Popover>
+      <PopoverTrigger asChild>
+        {/* On a tablet the title takes a row of its own; on a phone it
+            shares the first row with the arrows. */}
+        <Button
+          variant='ghost'
+          className={cn(
+            'min-w-0 flex-1 justify-start text-base font-semibold',
+            !isMobile && 'basis-full'
+          )}
+        >
+          <span className='truncate'>{title}</span>
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent align='start' className='w-72'>
+        <MiniMonth selected={date} today={today} onSelect={setDate} />
+      </PopoverContent>
+    </Popover>
+  )
+
+  // The search box: the list view filters by it, and typing from any other
+  // view opens the list, which is where the matches show.
+  const searchBox = (
+    <div className={cn('relative', isMobile ? 'min-w-0 flex-1' : 'ms-auto')}>
+      <Search
+        className='text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 size-4 -translate-y-1/2'
+        aria-hidden
+      />
+      <Input
+        id='calendar-search'
+        type='search'
+        aria-label={t`Search`}
+        placeholder={t`Search events`}
+        className={cn('h-9 ps-8', isMobile ? 'w-full' : 'w-36 sm:w-52')}
+        value={search}
+        onChange={(input) => {
+          const value = input.target.value
+          setSearch(value)
+          if (value.trim() && view !== 'list') setView('list')
+        }}
+      />
+    </div>
+  )
+
+  const picker = (
+    <Select
+      value={view}
+      onValueChange={(value) => setView(value as CalendarView)}
+    >
+      <SelectTrigger className='w-auto shrink-0' aria-label={t`View`}>
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent align='end'>
+        {offered.map((option) => (
+          <SelectItem key={option.value} value={option.value}>
+            <span className='flex items-center gap-2'>
+              <option.icon className='size-4' />
+              {option.label}
+            </span>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  )
+
+  // A phone keeps the toolbar to two rows: where you are, then what to do.
+  if (isMobile) {
+    return (
+      <div className='flex flex-col gap-2 border-b px-3 py-2'>
+        <div className='flex min-w-0 items-center gap-1'>
+          {nav}
+          {heading}
+        </div>
+        <div className='flex items-center gap-2'>
+          {searchBox}
+          {picker}
+          <Button
+            size='icon'
+            className='shrink-0'
+            aria-label={t`New event`}
+            onClick={onCreate}
+          >
+            <Plus className='size-4' />
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-wrap items-center gap-2 border-b px-3 py-2'>
-      <div className='flex items-center'>
-        <Button
-          variant='ghost'
-          size='icon'
-          aria-label={t`Previous`}
-          onClick={() => step(-1)}
-        >
-          <ChevronLeft className='size-4 rtl:rotate-180' />
-        </Button>
-        <Button variant='outline' size='sm' onClick={() => setDate(today)}>
-          <CalendarCheck className='size-4' />
-          {t`Today`}
-        </Button>
-        <Button
-          variant='ghost'
-          size='icon'
-          aria-label={t`Next`}
-          onClick={() => step(1)}
-        >
-          <ChevronRight className='size-4 rtl:rotate-180' />
-        </Button>
-      </div>
-
-      {isDesktop ? (
-        <h1 className='min-w-0 flex-1 basis-full truncate text-base font-semibold lg:basis-auto'>
-          {title}
-        </h1>
-      ) : (
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              variant='ghost'
-              className='min-w-0 flex-1 basis-full justify-start truncate text-base font-semibold'
-            >
-              {title}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent align='start' className='w-72'>
-            <MiniMonth selected={date} today={today} onSelect={setDate} />
-          </PopoverContent>
-        </Popover>
-      )}
-
-      {/* The search box: the list view filters by it, and typing from any
-          other view opens the list, which is where the matches show. */}
-      <div className='relative ms-auto'>
-        <Search
-          className='text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 size-4 -translate-y-1/2'
-          aria-hidden
-        />
-        <Input
-          id='calendar-search'
-          type='search'
-          aria-label={t`Search`}
-          placeholder={t`Search events`}
-          className='h-9 w-36 ps-8 sm:w-52'
-          value={search}
-          onChange={(input) => {
-            const value = input.target.value
-            setSearch(value)
-            if (value.trim() && view !== 'list') setView('list')
-          }}
-        />
-      </div>
-
-      <Select
-        value={view}
-        onValueChange={(value) => setView(value as CalendarView)}
-      >
-        <SelectTrigger className='w-auto' aria-label={t`View`}>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent align='end'>
-          {offered.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              <span className='flex items-center gap-2'>
-                <option.icon className='size-4' />
-                {option.label}
-              </span>
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      {nav}
+      {heading}
+      {searchBox}
+      {picker}
 
       {view === 'week' && (
         <DropdownMenu>
