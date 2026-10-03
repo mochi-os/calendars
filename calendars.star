@@ -2098,7 +2098,13 @@ def calendar_text(row):
 	if not components:
 		# An empty VCALENDAR is not valid; a placeholder keeps the link usable.
 		return "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:" + _PRODID + "\r\nX-WR-CALNAME:" + text_escape(name) + "\r\nEND:VCALENDAR\r\n"
-	return mochi.ical.format(calendar)
+	text = mochi.ical.format(calendar)
+	# A description stored as HTML, as a Google calendar writes it, goes out
+	# as its text with the HTML beside it, since other clients read
+	# DESCRIPTION as plain text. A core without the call serves it as stored.
+	if hasattr(mochi.ical, "plain"):
+		text = mochi.ical.plain(text)
+	return text
 
 # Public, token-gated. An anonymous request runs as the calendar's owner, so
 # the token is the only gate and nothing falls through to ownership.
