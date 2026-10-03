@@ -1247,6 +1247,43 @@ describe('a rule the editor cannot express', () => {
   })
 })
 
+describe('a rich copy of the description another client keeps', () => {
+  const stored: Component = (() => {
+    const component = draftComponent(draft())
+    return {
+      ...component,
+      properties: [
+        ...component.properties,
+        { name: 'DESCRIPTION', params: {}, value: 'Gate 12' },
+        {
+          name: 'X-ALT-DESC',
+          params: { FMTTYPE: ['text/html'] },
+          value: '<p>Gate <b>12</b></p>',
+        },
+      ],
+    }
+  })()
+
+  it('stays while the description is unchanged', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, title: 'Flight' }, stored)
+    expect(propertyValue(saved, 'X-ALT-DESC')).toBe('<p>Gate <b>12</b></p>')
+  })
+
+  it('goes once the description is edited, so it cannot show the old text', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, description: 'Gate 14' }, stored)
+    expect(propertyValue(saved, 'DESCRIPTION')).toBe('Gate 14')
+    expect(property(saved, 'X-ALT-DESC')).toBeUndefined()
+  })
+
+  it('goes with a cleared description', () => {
+    const read = componentDraft(stored, 'cal1', 'UTC')
+    const saved = draftComponent({ ...read, description: '' }, stored)
+    expect(property(saved, 'X-ALT-DESC')).toBeUndefined()
+  })
+})
+
 describe('a description written as HTML', () => {
   const html = 'PNR: 2YHEIJ<br>Class: <b>Business</b> &amp; lounge'
   const text = 'PNR: 2YHEIJ\nClass: Business & lounge'

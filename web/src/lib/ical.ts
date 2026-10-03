@@ -113,6 +113,10 @@ export function emptyRepeat(): Repeat {
   }
 }
 
+// The property another client keeps a rich copy of the description in, which
+// Thunderbird and Outlook show in preference to DESCRIPTION.
+const ALTERNATIVE = 'X-ALT-DESC'
+
 // Properties the editor owns; anything else on an edited event is carried
 // through untouched, so a property a phone wrote survives a web edit.
 const MANAGED = new Set([
@@ -458,8 +462,13 @@ export function draftComponent(
   draft: EventDraft,
   previous?: Component
 ): Component {
+  // A description edited here leaves behind the rich copy another client
+  // kept beside it, which would go on showing the old text there.
+  const edited = draft.description !== descriptionText(draft.original)
   const kept = (previous?.properties ?? []).filter(
-    (item) => !MANAGED.has(item.name)
+    (item) =>
+      !MANAGED.has(item.name) &&
+      !(edited && item.name.toUpperCase() === ALTERNATIVE)
   )
   const properties: Property[] = [
     { name: 'SUMMARY', params: {}, value: draft.title },
@@ -474,10 +483,7 @@ export function draftComponent(
   const url = draft.url ?? (previous ? propertyValue(previous, 'URL') : '')
   if (colour) properties.push({ name: 'COLOR', params: {}, value: colour })
   if (url) properties.push({ name: 'URL', params: {}, value: url })
-  const description =
-    draft.description === descriptionText(draft.original)
-      ? draft.original
-      : draft.description
+  const description = edited ? draft.description : draft.original
   if (description) {
     properties.push({ name: 'DESCRIPTION', params: {}, value: description })
   }
