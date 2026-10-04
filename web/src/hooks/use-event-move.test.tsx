@@ -505,6 +505,63 @@ describe('useEventMove', () => {
     expect(propertyValue(written.components[0], 'DTEND')).toBe('20260919')
   })
 
+  describe('into the band, written in another zone than the views read in', () => {
+    // 23:30 in London is 00:30 the next day in Berlin, so the grid draws
+    // the block a day after its own date.
+    const LONDON = 'Europe/London'
+    const late = (repeat = emptyRepeat()) =>
+      draftComponent(
+        draft({
+          start: '2026-09-14',
+          startTime: 23 * 60 + 30,
+          finish: '2026-09-15',
+          finishTime: 30,
+          zone: { start: LONDON, finish: LONDON },
+          repeat,
+        })
+      )
+    const block = (start: number, recurring: boolean) => ({
+      ...occurrence(start, recurring),
+      zone: { start: LONDON, finish: LONDON },
+    })
+    const allday = (component: Component) =>
+      component.properties.find((property) => property.name === 'DTSTART')
+        ?.value
+
+    it('lands on the day it was dropped on', async () => {
+      user.zone = 'Europe/Berlin'
+      api.get.mockResolvedValue(stored([late()], false))
+      const { current } = mover()
+      await act(() =>
+        current.toAllday(
+          block(Date.UTC(2026, 8, 14, 22, 30) / 1000, false),
+          '2026-09-16'
+        )('all')
+      )
+      expect(allday(api.update.mock.calls[0][0].components[0])).toBe('20260916')
+    })
+
+    it('moves a whole series from its first day by the same days', async () => {
+      user.zone = 'Europe/Berlin'
+      api.get.mockResolvedValue(stored([late(daily)], true))
+      const { current } = mover()
+      // The third occurrence, drawn on the 17th, dropped on the 18th.
+      await act(() =>
+        current.toAllday(
+          block(Date.UTC(2026, 8, 16, 22, 30) / 1000, true),
+          '2026-09-18'
+        )('all')
+      )
+      const master = api.update.mock.calls[0][0].components.find(
+        (component: Component) =>
+          component.properties.every(
+            (property) => property.name !== 'RECURRENCE-ID'
+          )
+      )
+      expect(allday(master)).toBe('20260916')
+    })
+  })
+
   it('says the event changed elsewhere on a precondition failure', async () => {
     const single = draftComponent(draft())
     api.get.mockResolvedValue(stored([single], false))

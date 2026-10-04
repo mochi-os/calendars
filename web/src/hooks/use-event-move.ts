@@ -364,7 +364,15 @@ export function useEventMove({
         (draft) => {
           const covered = coveredDays(instance, drawn)
           const length = Math.max(0, daysBetween(covered.start, covered.finish))
-          const first = addDays(draft.start, daysBetween(covered.start, day))
+          // The draft's first day as the grid draws it, which the shift is
+          // measured against: its own date can be a day either side when it
+          // was written in another zone, and an all-day day has no clock to
+          // carry it back. For the whole series it is the series' first.
+          const opens = drawn(
+            new Date(draftInstants(draft).start * 1000),
+            draft.zone.start
+          )
+          const first = addDays(opens, daysBetween(covered.start, day))
           return {
             ...draft,
             allday: true,
