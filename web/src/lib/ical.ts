@@ -262,8 +262,12 @@ export function expressible(rule: string): boolean {
  * An RRULE value from the editor's repeat settings: the rule as it was read
  * while the settings are untouched, else one built from them.
  */
-export function repeatRule(repeat: Repeat, timezone: string): string {
-  if (repeat.rule) return repeat.rule
+export function repeatRule(
+  repeat: Repeat,
+  timezone: string,
+  allday = false
+): string {
+  if (repeat.rule) return keptRule(repeat, timezone, allday)
   if (repeat.frequency === 'never') return ''
   const parts = [`FREQ=${repeat.frequency.toUpperCase()}`]
   if (repeat.interval > 1) parts.push(`INTERVAL=${repeat.interval}`)
@@ -274,14 +278,37 @@ export function repeatRule(repeat: Repeat, timezone: string): string {
     parts.push(`BYDAY=${days.join(',')}`)
   }
   if (repeat.ending === 'until' && repeat.until) {
-    // The last moment of the chosen day, so the day itself is included.
-    parts.push(
-      `UNTIL=${utcValue(timestampAt(repeat.until, 1440, timezone) - 1)}`
-    )
+    parts.push(`UNTIL=${untilValue(repeat.until, timezone, allday)}`)
   } else if (repeat.ending === 'count') {
     parts.push(`COUNT=${Math.max(1, repeat.count)}`)
   }
   return parts.join(';')
+}
+
+/**
+ * An end on `day`, which takes in the whole of it, in the form the series'
+ * start takes, as UNTIL must: the date itself for a whole-day series, else
+ * the last second of the day in `timezone`, in UTC.
+ */
+function untilValue(day: string, timezone: string, allday: boolean): string {
+  return allday
+    ? dateValue(day)
+    : utcValue(timestampAt(day, 1440, timezone) - 1)
+}
+
+/**
+ * A rule kept as it was read, with its UNTIL rewritten in the other form when
+ * the series has turned all day or back, so a date never ends a timed series
+ * nor a time a whole-day one.
+ */
+function keptRule(repeat: Repeat, timezone: string, allday: boolean): string {
+  const until = /(^|;)UNTIL=([^;]*)/i.exec(repeat.rule)
+  if (!until || !repeat.until) return repeat.rule
+  if (/^\d{8}$/.test(until[2].trim()) === allday) return repeat.rule
+  return repeat.rule.replace(
+    until[0],
+    `${until[1]}UNTIL=${untilValue(repeat.until, timezone, allday)}`
+  )
 }
 
 /** The editor's repeat settings from an RRULE value. */
@@ -487,7 +514,7 @@ export function draftComponent(
   if (description) {
     properties.push({ name: 'DESCRIPTION', params: {}, value: description })
   }
-  const rule = repeatRule(draft.repeat, draft.zone.start)
+  const rule = repeatRule(draft.repeat, draft.zone.start, draft.allday)
   if (rule) properties.push({ name: 'RRULE', params: {}, value: rule })
 
   const components = (previous?.components ?? []).filter(

@@ -183,6 +183,48 @@ describe('repeat rules', () => {
     expect(rule).toBe('FREQ=DAILY;UNTIL=20260930T225959Z')
   })
 
+  it('ends a whole-day series on a date, as its start is one', () => {
+    const until = { ...emptyRepeat(), frequency: 'daily' as const }
+    expect(
+      repeatRule({ ...until, ending: 'until', until: '2026-09-30' }, ZONE, true)
+    ).toBe('FREQ=DAILY;UNTIL=20260930')
+    const saved = draftComponent(
+      draft({
+        allday: true,
+        start: '2026-09-16',
+        finish: '2026-09-16',
+        repeat: { ...until, ending: 'until', until: '2026-09-30' },
+      })
+    )
+    expect(propertyValue(saved, 'RRULE')).toBe('FREQ=DAILY;UNTIL=20260930')
+  })
+
+  it('gives a kept rule the end form its start takes when it turns all day or back', () => {
+    const timed = ruleRepeat(
+      'FREQ=WEEKLY;BYDAY=MO;UNTIL=20260930T225959Z',
+      ZONE
+    )
+    expect(repeatRule(timed, ZONE, true)).toBe(
+      'FREQ=WEEKLY;BYDAY=MO;UNTIL=20260930'
+    )
+    const whole = ruleRepeat('FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261110', ZONE)
+    expect(repeatRule(whole, ZONE, false)).toBe(
+      'FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261110T235959Z'
+    )
+    // A rule already in the right form goes back as it came.
+    expect(repeatRule(timed, ZONE, false)).toBe(
+      'FREQ=WEEKLY;BYDAY=MO;UNTIL=20260930T225959Z'
+    )
+    expect(repeatRule(whole, ZONE, true)).toBe(
+      'FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261110'
+    )
+    // Turned all day in the editor or dropped in the all-day band.
+    const saved = draftComponent(draft({ allday: true, repeat: timed }))
+    expect(propertyValue(saved, 'RRULE')).toBe(
+      'FREQ=WEEKLY;BYDAY=MO;UNTIL=20260930'
+    )
+  })
+
   it('writes a count', () => {
     expect(
       repeatRule(
