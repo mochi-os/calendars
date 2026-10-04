@@ -225,6 +225,39 @@ describe('repeat rules', () => {
     )
   })
 
+  it('reads a cut series as ending the day before the cut, so touching its repeat brings nothing back', () => {
+    // 09:00 London, an hour ahead of UTC.
+    const start = Date.UTC(2026, 8, 1, 8, 0) / 1000
+    // Cut at the 18th's occurrence: it ends a second before it.
+    const cut = ruleRepeat('FREQ=DAILY;UNTIL=20260918T075959Z', ZONE, start)
+    expect(cut.until).toBe('2026-09-17')
+    expect(repeatRule({ ...cut, rule: '' }, ZONE)).toBe(
+      'FREQ=DAILY;UNTIL=20260917T225959Z'
+    )
+    // The editor's end, the day's last second, and one on the last
+    // occurrence's own start, as Apple writes it, read as their own day.
+    expect(
+      ruleRepeat('FREQ=DAILY;UNTIL=20260917T225959Z', ZONE, start).until
+    ).toBe('2026-09-17')
+    expect(
+      ruleRepeat('FREQ=DAILY;UNTIL=20260917T080000Z', ZONE, start).until
+    ).toBe('2026-09-17')
+    expect(ruleRepeat('FREQ=DAILY;UNTIL=20260917', ZONE, start).until).toBe(
+      '2026-09-17'
+    )
+    // Opened in the editor, the series reads by its own start.
+    const stored = draftComponent(
+      draft({
+        repeat: {
+          ...emptyRepeat(),
+          frequency: 'daily',
+          rule: 'FREQ=DAILY;UNTIL=20260918T075959Z',
+        },
+      })
+    )
+    expect(componentDraft(stored, 'cal1', ZONE).repeat.until).toBe('2026-09-17')
+  })
+
   it('writes a count', () => {
     expect(
       repeatRule(

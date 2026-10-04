@@ -311,8 +311,18 @@ function keptRule(repeat: Repeat, timezone: string, allday: boolean): string {
   )
 }
 
-/** The editor's repeat settings from an RRULE value. */
-export function ruleRepeat(rule: string, timezone: string): Repeat {
+/**
+ * The editor's repeat settings from an RRULE value. `start` is the series'
+ * own start, in unix seconds, for a timed series: an end that falls earlier
+ * in its day than the series starts lets in no occurrence that day, so the
+ * last day is the one before, as a series cut just before an occurrence ends
+ * a second before it.
+ */
+export function ruleRepeat(
+  rule: string,
+  timezone: string,
+  start?: number
+): Repeat {
   const out = emptyRepeat()
   if (!rule.trim()) return out
   out.rule = rule.trim()
@@ -347,7 +357,11 @@ export function ruleRepeat(rule: string, timezone: string): Repeat {
     )
     if (instant) {
       out.ending = 'until'
-      out.until = zonedDay(new Date(instant.seconds * 1000), timezone)
+      out.until = lastDay(
+        instant.seconds,
+        timezone,
+        instant.allday ? undefined : start
+      )
     }
   } else if (fields.get('COUNT')) {
     const count = Number(fields.get('COUNT'))
@@ -357,6 +371,21 @@ export function ruleRepeat(rule: string, timezone: string): Repeat {
     }
   }
   return out
+}
+
+/**
+ * The last day a series' UNTIL lets in, read in `timezone`: the day the end
+ * falls on, or the day before when its clock reads earlier than the series'
+ * `start` does. With no start, the day it falls on.
+ */
+function lastDay(until: number, timezone: string, start?: number): string {
+  const day = zonedDay(new Date(until * 1000), timezone)
+  if (start === undefined) return day
+  // Offsets from UTC are whole minutes, so the seconds need no zone.
+  const clock = (seconds: number) =>
+    zonedMinutes(new Date(seconds * 1000), timezone) * 60 +
+    (((seconds % 60) + 60) % 60)
+  return clock(until) < clock(start) ? addDays(day, -1) : day
 }
 
 // --- Reminders ---
@@ -612,7 +641,11 @@ export function componentDraft(
     url: propertyValue(component, 'URL'),
     description: descriptionText(description),
     original: description,
-    repeat: ruleRepeat(propertyValue(component, 'RRULE'), zone),
+    repeat: ruleRepeat(
+      propertyValue(component, 'RRULE'),
+      zone,
+      allday ? undefined : startSeconds
+    ),
     reminders,
   }
 }
