@@ -1594,6 +1594,61 @@ describe('the draft a copy opens on', () => {
     expect(copied.repeat.frequency).toBe('never')
   })
 
+  describe('a listed occurrence written in zones of its own', () => {
+    // Leaves New York at 18:00 and lands in London at 07:00 the next day.
+    const start = Date.UTC(2026, 8, 25, 22) / 1000
+    const flight = (zone: { start: string; finish: string }) =>
+      instanceDraft(
+        {
+          summary: 'Flight',
+          location: 'JFK',
+          description: '',
+          start,
+          finish: start + 8 * 3600,
+          allday: false,
+          zone,
+        },
+        'cal1',
+        15,
+        'Asia/Tokyo'
+      )
+
+    it('keeps each end in its own zone, not the user zone', () => {
+      const copied = flight({
+        start: 'America/New_York',
+        finish: 'Europe/London',
+      })
+      expect(copied.zone).toEqual({
+        start: 'America/New_York',
+        finish: 'Europe/London',
+      })
+      expect(copied.start).toBe('2026-09-25')
+      expect(copied.startTime).toBe(18 * 60)
+      expect(copied.finish).toBe('2026-09-26')
+      expect(copied.finishTime).toBe(7 * 60)
+    })
+
+    it('ends in the start zone when the end names none', () => {
+      const copied = flight({ start: 'America/New_York', finish: '' })
+      expect(copied.zone).toEqual({
+        start: 'America/New_York',
+        finish: 'America/New_York',
+      })
+      expect(copied.finish).toBe('2026-09-26')
+      expect(copied.finishTime).toBe(2 * 60)
+    })
+
+    it('reads ends written in UTC in the user zone', () => {
+      const copied = flight({ start: '', finish: '' })
+      expect(copied.zone).toEqual({
+        start: 'Asia/Tokyo',
+        finish: 'Asia/Tokyo',
+      })
+      expect(copied.start).toBe('2026-09-26')
+      expect(copied.startTime).toBe(7 * 60)
+    })
+  })
+
   it('reads a listed all-day occurrence with its last day, not the exclusive end', () => {
     const start = Date.UTC(2026, 8, 24) / 1000
     const copied = instanceDraft(

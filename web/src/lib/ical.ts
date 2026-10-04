@@ -1211,7 +1211,10 @@ export function formCopy(
 /**
  * The draft a copy of an occurrence with no stored event to read opens on,
  * such as a subscribed calendar's or a derived birthday: what the listing
- * itself says about it, as one event in the user's zone.
+ * itself says about it, as one event. A timed occurrence keeps each end in
+ * the zone it was written in, as a copy of a stored event does: an end
+ * without one, UTC or floating, is read in the user's zone, and an end
+ * without one of its own follows the start.
  */
 export function instanceDraft(
   instance: {
@@ -1222,6 +1225,7 @@ export function instanceDraft(
     finish: number
     allday: boolean
     date?: string
+    zone?: { start: string; finish: string }
   },
   calendar: string,
   reminder: number,
@@ -1229,6 +1233,8 @@ export function instanceDraft(
 ): EventDraft {
   const begins = new Date(instance.start * 1000)
   const ends = new Date(instance.finish * 1000)
+  const zone = instance.zone?.start || timezone
+  const finishZone = instance.zone?.finish || zone
   // An all-day occurrence is listed by its date and runs to the midnight
   // after its last day, so its last day is one short of its length.
   const date = instance.date ?? zonedDay(begins, timezone)
@@ -1240,13 +1246,13 @@ export function instanceDraft(
     title: instance.summary,
     calendar,
     allday: instance.allday,
-    start: instance.allday ? date : zonedDay(begins, timezone),
-    startTime: instance.allday ? 0 : zonedMinutes(begins, timezone),
+    start: instance.allday ? date : zonedDay(begins, zone),
+    startTime: instance.allday ? 0 : zonedMinutes(begins, zone),
     finish: instance.allday
       ? addDays(date, days - 1)
-      : zonedDay(ends, timezone),
-    finishTime: instance.allday ? 0 : zonedMinutes(ends, timezone),
-    zone: { start: timezone, finish: timezone },
+      : zonedDay(ends, finishZone),
+    finishTime: instance.allday ? 0 : zonedMinutes(ends, finishZone),
+    zone: { start: zone, finish: finishZone },
     location: instance.location,
     colour: '',
     url: '',
