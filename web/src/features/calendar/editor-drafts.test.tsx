@@ -325,3 +325,50 @@ describe('EventEditor copying', () => {
     expect(next.draft.title).toBe('Dentist')
   })
 })
+
+describe('EventEditor opening a copy', () => {
+  async function copying(repeat: object) {
+    const { newDraft } =
+      await vi.importActual<typeof import('@/lib/ical')>('@/lib/ical')
+    const draft = newDraft(noon, noon + 3600, {
+      allday: false,
+      calendar: 'c1',
+      reminder: -1,
+      user: 'UTC',
+      zone: { start: 'UTC', finish: 'UTC' },
+    })
+    state.editing = {
+      mode: 'create',
+      copy: true,
+      draft: { ...draft, repeat: { ...draft.repeat, ...repeat } },
+    }
+  }
+
+  afterEach(() => {
+    state.editing = null
+  })
+
+  it('shows a custom series in the custom panel, as an edit of it does', async () => {
+    await copying({
+      frequency: 'weekly',
+      interval: 2,
+      weekdays: [1, 4],
+      ending: 'count',
+      count: 7,
+    })
+    show()
+    expect(screen.getByLabelText('Every')).toHaveValue(2)
+    expect(screen.getByLabelText('Occurrences')).toHaveValue(7)
+    expect(
+      screen
+        .getAllByRole('button')
+        .filter((button) => button.getAttribute('aria-pressed') === 'true')
+    ).toHaveLength(2)
+  })
+
+  it('keeps a plain series on its plain choice', async () => {
+    await copying({ frequency: 'weekly' })
+    show()
+    expect(screen.queryByLabelText('Every')).toBeNull()
+  })
+})

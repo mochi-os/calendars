@@ -66,6 +66,7 @@ import {
   savedSplit,
   type EventDraft,
   type Frequency,
+  type Repeat,
   type Scope,
   shiftedStart,
 } from '@/lib/ical'
@@ -84,6 +85,19 @@ import { DeleteEventDialog } from '@/features/calendar/components/delete-event-d
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
 const WEEKDAY_ANCHOR = '2024-01-07'
+
+/**
+ * Whether a repeat needs the custom panel to show all of it: an interval,
+ * weekdays or an end, which the plain choices would hide. A copy opens on
+ * the same test as an edit, so its series reads as it will save.
+ */
+function customised(repeat: Repeat): boolean {
+  return (
+    repeat.interval > 1 ||
+    repeat.weekdays.length > 0 ||
+    repeat.ending !== 'never'
+  )
+}
 
 export function EventEditor() {
   const { t } = useLingui()
@@ -145,7 +159,7 @@ export function EventEditor() {
       seeded.current = editing
       setDraft(editing.draft)
       setInitial(editing.initial ?? editing.draft)
-      setCustom(false)
+      setCustom(customised(editing.draft.repeat))
       return
     }
     if (!event) return
@@ -160,11 +174,7 @@ export function EventEditor() {
     seeded.current = editing
     setDraft(read)
     setInitial(read)
-    setCustom(
-      read.repeat.interval > 1 ||
-        read.repeat.weekdays.length > 0 ||
-        read.repeat.ending !== 'never'
-    )
+    setCustom(customised(read.repeat))
   }, [editing, event, format.timezone])
 
   const close = () => setEditing(null)
