@@ -248,11 +248,19 @@ export function CalendarsLayout() {
         onClick: () => void download(calendar),
       })
       if (calendar.kind === 'birthdays') {
+        // Derived from the contacts, so it has no name of its own to change
+        // and cannot be deleted; shown alone and shared like any other.
         menu.push(
+          { title: t`Only this`, icon: Eye, onClick: () => only(calendar.id) },
           {
             title: t`Colour`,
             icon: Palette,
             onClick: () => setRecolouring(calendar),
+          },
+          {
+            title: t`Copy calendar address`,
+            icon: Copy,
+            onClick: () => void copy(calendar.id),
           },
           ...transfer
         )

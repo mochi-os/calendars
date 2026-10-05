@@ -18,6 +18,8 @@ import { CalendarsLayout } from './calendars-layout'
 
 const state = vi.hoisted(() => ({
   calendars: [] as Calendar[],
+  only: vi.fn(),
+  copy: vi.fn(),
   export: vi.fn(),
   save: vi.fn(),
   error: vi.fn(),
@@ -84,7 +86,7 @@ vi.mock('@/context/calendar-context', () => ({
     isLoading: false,
     shown: () => true,
     toggle: vi.fn(),
-    only: vi.fn(),
+    only: state.only,
     date: new Date(2026, 9, 2),
     setDate: vi.fn(),
     today: new Date(2026, 9, 2),
@@ -101,7 +103,7 @@ vi.mock('@/hooks/use-calendars', () => {
 })
 
 vi.mock('@/hooks/use-ics-copy', () => ({
-  useIcsCopy: () => ({ copy: vi.fn(), revoke: vi.fn(), dialogs: null }),
+  useIcsCopy: () => ({ copy: state.copy, revoke: vi.fn(), dialogs: null }),
 }))
 
 vi.mock('@/features/calendar/dialogs/import-dialog', () => ({
@@ -265,5 +267,50 @@ describe('CalendarsLayout import and export', () => {
     await waitFor(() =>
       expect(state.error).toHaveBeenCalledWith('Failed to export calendar')
     )
+  })
+})
+
+describe('CalendarsLayout birthdays menu', () => {
+  beforeEach(() => {
+    state.only.mockReset()
+    state.copy.mockReset()
+    state.calendars = [
+      calendar({ id: 'c1', name: 'Work', default: true }),
+      calendar({
+        id: 'c3',
+        name: 'Birthdays',
+        kind: 'birthdays',
+        readonly: true,
+      }),
+    ]
+  })
+
+  it('offers what Android does: only this, colour, its address and export', () => {
+    show()
+    const entries = menu('Birthdays')
+      .getAllByRole('button')
+      .map((button) => button.textContent)
+    expect(entries).toEqual([
+      'Only this',
+      'Colour',
+      'Copy calendar address',
+      'Export',
+    ])
+  })
+
+  it('shows the birthdays calendar alone', () => {
+    show()
+    fireEvent.click(
+      menu('Birthdays').getByRole('button', { name: 'Only this' })
+    )
+    expect(state.only).toHaveBeenCalledWith('c3')
+  })
+
+  it('copies the birthdays calendar address', () => {
+    show()
+    fireEvent.click(
+      menu('Birthdays').getByRole('button', { name: 'Copy calendar address' })
+    )
+    expect(state.copy).toHaveBeenCalledWith('c3')
   })
 })
