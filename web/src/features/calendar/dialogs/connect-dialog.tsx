@@ -66,7 +66,6 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
     }
   }, [open, resetCreate])
 
-  const server = `${window.location.origin}/`
   const address = `${window.location.origin}${getAppPath()}/caldav/`
 
   const create = async () => {
@@ -106,11 +105,11 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   // A new device's own answer covers a list that has not come back.
   const account = data?.username || username
 
-  // Only the password is secret: the server, the address and the username
-  // are the same for every device, so they stay on show.
+  // Only the password is secret: the address and the username are the same
+  // for every device, so they stay on show. The address serves where a
+  // client asks for a server as well, so no bare server is offered beside it.
   const details = (
     <>
-      <Detail label={t`Server`} value={server} />
       <Detail label={t`Calendar address`} value={address} />
       {account && <Detail label={t`Username`} value={account} />}
     </>
