@@ -142,14 +142,33 @@ describe('Toolbar heading', () => {
     expect(heading()).toBe('2026-09-22')
   })
 
-  it("writes a week or a multiweek span as its first and last dates in the user's date format", () => {
+  it("writes a week or a multiweek span as its first and last dates in the user's date format, joined by an en dash", () => {
     context.range = { from: '2026-09-21', days: 7, date: '2026-09-22' }
     show('week')
-    expect(heading()).toBe('2026-09-21 to 2026-09-27')
+    expect(heading()).toBe('2026-09-21 – 2026-09-27')
     cleanup()
     context.range = { from: '2026-09-21', days: 28, date: '2026-09-22' }
     show('multiweek')
-    expect(heading()).toBe('2026-09-21 to 2026-10-18')
+    expect(heading()).toBe('2026-09-21 – 2026-10-18')
+  })
+
+  // The size and weight classes an element's text is set in.
+  const type = (element: HTMLElement) =>
+    element.className
+      .split(/\s+/)
+      .filter((name) => /^text-(xs|sm|base|lg|xl)$|^font-/.test(name))
+      .sort()
+
+  it("sets the heading in the Today button's size and weight, on wide and narrow screens", () => {
+    show('week')
+    const today = type(screen.getByRole('button', { name: 'Today' }))
+    expect(today).toEqual(['font-medium', 'text-sm'])
+    expect(type(screen.getByRole('heading'))).toEqual(today)
+    cleanup()
+    size.isDesktop = false
+    show('week')
+    const title = screen.getByRole('button', { name: /2026-09-21/ })
+    expect(type(title)).toEqual(today)
   })
 
   it('names the month in the month view', () => {

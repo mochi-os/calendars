@@ -90,7 +90,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
     dayRange: (first, last) => {
       const from = dated(first)
       const to = dated(last)
-      return t`${from} to ${to}`
+      return t`${from} – ${to}`
     },
   })
 
@@ -120,7 +120,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
   )
 
   const heading = isDesktop ? (
-    <h1 className='min-w-0 flex-1 basis-full truncate text-base font-semibold lg:basis-auto'>
+    <h1 className='min-w-0 flex-1 basis-full truncate text-sm font-medium lg:basis-auto'>
       {title}
     </h1>
   ) : (
@@ -131,7 +131,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
         <Button
           variant='ghost'
           className={cn(
-            'min-w-0 flex-1 justify-start text-base font-semibold',
+            'min-w-0 flex-1 justify-start text-sm font-medium',
             !isMobile && 'basis-full'
           )}
         >
