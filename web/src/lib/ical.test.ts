@@ -74,6 +74,7 @@ function draft(overrides: Partial<EventDraft> = {}): EventDraft {
     location: '',
     colour: '',
     url: '',
+    tentative: false,
     description: '',
     original: '',
     repeat: emptyRepeat(),
@@ -446,6 +447,65 @@ describe('draftComponent', () => {
     expect(propertyValue(component, 'TRANSP')).toBe('TRANSPARENT')
     expect(propertyValue(component, 'CLASS')).toBe('PRIVATE')
     expect(component.components.map((item) => item.name)).toEqual(['VOTHER'])
+  })
+})
+
+describe('tentative', () => {
+  function event(status?: string): Component {
+    const component = draftComponent(draft())
+    if (status) {
+      component.properties.push({ name: 'STATUS', params: {}, value: status })
+    }
+    return component
+  }
+
+  function statuses(component: Component): string[] {
+    return component.properties
+      .filter((item) => item.name === 'STATUS')
+      .map((item) => item.value)
+  }
+
+  it('reads an event as tentative only when its status says so', () => {
+    expect(componentDraft(event('TENTATIVE'), 'cal1', ZONE).tentative).toBe(
+      true
+    )
+    expect(componentDraft(event('CONFIRMED'), 'cal1', ZONE).tentative).toBe(
+      false
+    )
+    expect(componentDraft(event(), 'cal1', ZONE).tentative).toBe(false)
+  })
+
+  it('writes the status once when set, in place of any other', () => {
+    const on = draft({ tentative: true })
+    expect(statuses(draftComponent(on))).toEqual(['TENTATIVE'])
+    expect(statuses(draftComponent(on, event('CONFIRMED')))).toEqual([
+      'TENTATIVE',
+    ])
+    expect(statuses(draftComponent(on, event('TENTATIVE')))).toEqual([
+      'TENTATIVE',
+    ])
+  })
+
+  it('clears it when turned off, leaving a confirmed or cancelled status alone', () => {
+    const off = draft({ tentative: false })
+    expect(statuses(draftComponent(off, event('TENTATIVE')))).toEqual([])
+    expect(statuses(draftComponent(off, event('CANCELLED')))).toEqual([
+      'CANCELLED',
+    ])
+    expect(statuses(draftComponent(off, event('CONFIRMED')))).toEqual([
+      'CONFIRMED',
+    ])
+    expect(statuses(draftComponent(off))).toEqual([])
+  })
+
+  it('keeps the status of an event whose draft says nothing of it', () => {
+    const silent = draft({ tentative: undefined })
+    expect(statuses(draftComponent(silent, event('TENTATIVE')))).toEqual([
+      'TENTATIVE',
+    ])
+    expect(statuses(draftComponent(silent, event('CANCELLED')))).toEqual([
+      'CANCELLED',
+    ])
   })
 })
 

@@ -62,6 +62,11 @@ export interface EventDraft {
   colour?: string
   /** A web address attached to the event. */
   url?: string
+  /**
+   * Whether the event is only tentative, its STATUS. Left out, the event
+   * keeps the status it has.
+   */
+  tentative?: boolean
   /** The description as text, which is what the editor shows and edits. */
   description: string
   /**
@@ -521,10 +526,18 @@ export function draftComponent(
   // A description edited here leaves behind the rich copy another client
   // kept beside it, which would go on showing the old text there.
   const edited = draft.description !== descriptionText(draft.original)
+  // Tentative is the one status the editor sets. Turned off, it goes, and a
+  // confirmed or cancelled event keeps its status.
+  const tentative =
+    draft.tentative ?? (previous ? isTentative(previous) : false)
   const kept = (previous?.properties ?? []).filter(
     (item) =>
       !MANAGED.has(item.name) &&
-      !(edited && item.name.toUpperCase() === ALTERNATIVE)
+      !(edited && item.name.toUpperCase() === ALTERNATIVE) &&
+      !(
+        item.name === 'STATUS' &&
+        (tentative || item.value.toUpperCase() === 'TENTATIVE')
+      )
   )
   const properties: Property[] = [
     { name: 'SUMMARY', params: {}, value: draft.title },
@@ -539,6 +552,9 @@ export function draftComponent(
   const url = draft.url ?? (previous ? propertyValue(previous, 'URL') : '')
   if (colour) properties.push({ name: 'COLOR', params: {}, value: colour })
   if (url) properties.push({ name: 'URL', params: {}, value: url })
+  if (tentative) {
+    properties.push({ name: 'STATUS', params: {}, value: 'TENTATIVE' })
+  }
   const description = edited ? draft.description : draft.original
   if (description) {
     properties.push({ name: 'DESCRIPTION', params: {}, value: description })
@@ -639,6 +655,7 @@ export function componentDraft(
     location: propertyValue(component, 'LOCATION'),
     colour: propertyValue(component, 'COLOR'),
     url: propertyValue(component, 'URL'),
+    tentative: isTentative(component),
     description: descriptionText(description),
     original: description,
     repeat: ruleRepeat(
@@ -648,6 +665,11 @@ export function componentDraft(
     ),
     reminders,
   }
+}
+
+/** Whether a VEVENT is only tentative. */
+function isTentative(component: Component): boolean {
+  return propertyValue(component, 'STATUS').toUpperCase() === 'TENTATIVE'
 }
 
 /** The master VEVENT of a stored event: the one with no RECURRENCE-ID. */
@@ -1256,6 +1278,7 @@ export function instanceDraft(
     location: instance.location,
     colour: '',
     url: '',
+    tentative: false,
     description: descriptionText(instance.description),
     original: instance.description,
     repeat: emptyRepeat(),
@@ -1371,6 +1394,7 @@ export function newDraft(
     location: '',
     colour: '',
     url: '',
+    tentative: false,
     description: '',
     original: '',
     repeat: emptyRepeat(),

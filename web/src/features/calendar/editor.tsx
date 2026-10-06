@@ -41,6 +41,7 @@ import {
   CalendarClock,
   CalendarDays,
   Check,
+  CircleDashed,
   Clock,
   Copy as CopyIcon,
   Palette,
@@ -716,6 +717,20 @@ function EditorFields({
             edit((current) => ({ ...current, allday: value }))
           }
         />
+        <Label
+          htmlFor='event-tentative'
+          className='ml-auto flex items-center gap-2 sm:ml-6'
+        >
+          <CircleDashed className='size-4' />
+          <Trans context='event status'>Tentative</Trans>
+        </Label>
+        <Switch
+          id='event-tentative'
+          checked={draft.tentative ?? false}
+          onCheckedChange={(value) =>
+            edit((current) => ({ ...current, tentative: value }))
+          }
+        />
       </Row>
 
       <Row
@@ -1178,7 +1193,7 @@ function Row({
     <div
       className={cn(
         'sm:contents',
-        inline ? 'flex items-center justify-between' : 'space-y-2 sm:space-y-0'
+        inline ? 'flex items-center gap-2' : 'space-y-2 sm:space-y-0'
       )}
     >
       <Label htmlFor={htmlFor} className='flex items-center gap-2 sm:h-9'>
@@ -1188,7 +1203,7 @@ function Row({
       <div
         className={cn(
           'min-w-0',
-          inline ? 'flex items-center sm:h-9' : 'space-y-2'
+          inline ? 'flex flex-1 items-center gap-2 sm:h-9' : 'space-y-2'
         )}
       >
         {children}

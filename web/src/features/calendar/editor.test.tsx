@@ -118,7 +118,59 @@ function rule(components: Component[]) {
   return master?.properties.find((property) => property.name === 'RRULE')?.value
 }
 
+function statuses(components: Component[]) {
+  return components.flatMap((component) =>
+    component.properties
+      .filter((property) => property.name === 'STATUS')
+      .map((property) => property.value)
+  )
+}
+
+/** Saves the form, for the whole series where it asks. */
+async function save() {
+  fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+  fireEvent.click(await screen.findByRole('button', { name: 'All events' }))
+  await waitFor(() => expect(state.update).toHaveBeenCalledTimes(1))
+  return state.update.mock.calls[0][0] as { components: Component[] }
+}
+
 describe('EventEditor', () => {
+  it('marks an event tentative with its switch', async () => {
+    show()
+    const tentative = await screen.findByRole('switch', { name: 'Tentative' })
+    expect(tentative).not.toBeChecked()
+    fireEvent.click(tentative)
+    expect(statuses((await save()).components)).toEqual(['TENTATIVE'])
+  })
+
+  it('puts the tentative switch on the all-day row, after the all-day switch', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    const allday = document.getElementById('event-allday')!
+    const tentative = document.getElementById('event-tentative')!
+    const label = document.querySelector('label[for="event-tentative"]')!
+    expect(tentative.parentElement).toBe(allday.parentElement)
+    expect(label.parentElement).toBe(allday.parentElement)
+    expect(
+      allday.compareDocumentPosition(label) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy()
+  })
+
+  it('opens a tentative event with the switch on, and turning it off saves no status', async () => {
+    const event = stored('Standup')
+    event.components[0].properties.push({
+      name: 'STATUS',
+      params: {},
+      value: 'TENTATIVE',
+    })
+    state.query = { ...state.query, data: { event } }
+    show()
+    const tentative = await screen.findByRole('switch', { name: 'Tentative' })
+    expect(tentative).toBeChecked()
+    fireEvent.click(tentative)
+    expect(statuses((await save()).components)).toEqual([])
+  })
+
   it('keeps the last day of a repeat when the field is cleared', async () => {
     show()
     const until = await screen.findByLabelText('Last day')
@@ -183,6 +235,7 @@ describe('EventEditor', () => {
       'event-location',
       'event-url',
       'event-allday',
+      'event-tentative',
       'event-repeat',
       'event-reminder',
     ].map((id) => document.getElementById(id)!)
@@ -213,6 +266,7 @@ describe('EventEditor', () => {
     // The editor's own rows; a custom repeat's panel has sub-fields of its own.
     const labels = [
       'event-allday',
+      'event-tentative',
       'event-start',
       'event-finish',
       'event-repeat',
