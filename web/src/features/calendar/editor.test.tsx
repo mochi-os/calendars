@@ -281,9 +281,41 @@ describe('EventEditor', () => {
     // As wide as what they stand in for.
     for (const room of times) expect(timed).toContain(room.className)
     for (const room of zones) {
-      expect(room.className).toContain('w-32')
-      expect(zoned).toContain('w-32')
+      expect(room.className).toContain('w-40')
+      expect(zoned).toContain('w-40')
     }
+  })
+
+  it('gives both zones the room their longest city takes, and wraps the zone where date, time and zone no longer fit', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    // An element's Tailwind width in rem, from it or the nearest ancestor
+    // carrying one: w-40 and min-w-36 are a quarter rem a step. A zero, such
+    // as an input's own min-w-0, is no width.
+    const rem = (element: Element, prefix: string) => {
+      const pattern = new RegExp(`^${prefix}-(\\d+)$`)
+      for (let at: Element | null = element; at; at = at.parentElement) {
+        for (const name of at.classList) {
+          const found = Number(pattern.exec(name)?.[1])
+          if (found) return found / 4
+        }
+      }
+      throw new Error(`no ${prefix}-* on or above ${element.outerHTML}`)
+    }
+    const zones = ['Start', 'End'].map((end) =>
+      screen.getByRole('combobox', { name: `${end} time zone` })
+    )
+    // Ten rem: 160 pixels, leaving the city 110 beside the globe, where the
+    // longest, Bahia Banderas, takes 100.
+    for (const zone of zones) expect(rem(zone, 'w')).toBe(10)
+    const date = rem(document.getElementById('event-start')!, 'min-w')
+    const time = rem(document.querySelector('[aria-label="Start time"]')!, 'w')
+    const zone = rem(zones[0], 'w')
+    fireEvent.click(screen.getByLabelText('All day'))
+    const room = screen.getAllByTestId('zone-room')[0].className
+    const wrap = Number(/@max-\[(\d+(?:\.\d+)?)rem\]:hidden/.exec(room)?.[1])
+    // The date's least width, the time and the zone, and the two gaps between.
+    expect(wrap).toBe(date + time + zone + 1)
   })
 
   it('keeps what was typed when the event is read again in the background', async () => {

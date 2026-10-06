@@ -1128,14 +1128,18 @@ function EditorFields({
 /** An end's time beside its date. */
 const TIMED = 'w-32 shrink-0'
 
-/** An end's zone beside its time: the time's width, so long city names cut short. */
-const ZONED = 'w-32 shrink-0'
+/**
+ * An end's zone beside its time: wide enough for every zone's city, the
+ * longest of which, Bahia Banderas, takes 100 of the 110 pixels it leaves the
+ * name beside the globe.
+ */
+const ZONED = 'w-40 shrink-0'
 
 /**
  * An all-day event's room where a timed one has its time and zone, so turning
  * All day on hides them without moving the dates. Where the row is narrower
- * than its date's least width, the time and the zone (9 + 8 + 8 rem and two
- * gaps, 26 rem), the zone wraps under the time, and its room goes rather than
+ * than its date's least width, the time and the zone (9 + 8 + 10 rem and two
+ * gaps, 28 rem), the zone wraps under the time, and its room goes rather than
  * leave an empty line.
  */
 function Timeless() {
@@ -1144,7 +1148,7 @@ function Timeless() {
       <span aria-hidden className={TIMED} data-testid='time-room' />
       <span
         aria-hidden
-        className={cn(ZONED, '@max-[26rem]:hidden')}
+        className={cn(ZONED, '@max-[28rem]:hidden')}
         data-testid='zone-room'
       />
     </>
