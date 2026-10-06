@@ -130,6 +130,12 @@ describe('Agenda search', () => {
 })
 
 describe('Agenda', () => {
+  it("heads each day with its short weekday and its date in the user's date format", () => {
+    const { today, other } = show()
+    expect(today.textContent).toBe('Tue, 2026-09-22')
+    expect(other.textContent).toBe('Wed, 2026-09-23')
+  })
+
   it("fills today's heading in the primary colour with contrasting text", () => {
     const { today } = show()
     expect(today.classList.contains('bg-primary')).toBe(true)

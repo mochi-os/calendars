@@ -60,6 +60,17 @@ export function Agenda({ selected, onSelect }: Props) {
     useCalendarContext()
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
 
+  /**
+   * A day's heading: its short weekday and its date in the user's date
+   * format, in the order the language puts them.
+   */
+  const heading = (day: string) => {
+    const noon = new Date(format.timestampAt(day, 720) * 1000)
+    const weekday = format.formatWeekdayShort(noon)
+    const date = format.formatDate(noon)
+    return t`${weekday}, ${date}`
+  }
+
   /** Over already, or cancelled, and drawn quieter. */
   const over = (instance: Instance) =>
     eventStatus(instance.status) === 'cancelled' ||
@@ -264,9 +275,7 @@ export function Agenda({ selected, onSelect }: Props) {
                     : 'bg-muted/60'
                 )}
               >
-                {format.formatLongDate(
-                  new Date(format.timestampAt(day, 720) * 1000)
-                )}
+                {heading(day)}
               </h2>
               <ul>
                 {list.map((instance) => {
