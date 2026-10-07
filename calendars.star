@@ -941,15 +941,20 @@ def birthday_next(contact, today):
 def birthdays_instances(identity, start, finish, colour, calendar):
 	out = []
 	today = birthday_today()
-	first = int(mochi.time.local(start, "date")[:4]) - 1
-	last = int(mochi.time.local(finish, "date")[:4]) + 1
+	# A birthday is a date, so it is in the range when its date is one of the
+	# days the range covers in the user's zone; the instants would take in a
+	# day either side of it.
+	since = mochi.time.local(start, "date")
+	until = mochi.time.local(finish - 1, "date")
+	first = int(since[:4]) - 1
+	last = int(until[:4]) + 1
 	for contact in birthdays_contacts(identity):
 		for year in range(max(first, contact["year"]), last + 1):
 			day = birthday_date(year, contact["month"], contact["day"])
-			if day == None or day + 86400 <= start or day >= finish:
+			if day == None:
 				continue
 			date = mochi.time.local(day, "date", timezone="UTC")
-			if date < today:
+			if date < since or date > until or date < today:
 				continue
 			out.append({
 				"event": "birthday-" + contact["id"],
