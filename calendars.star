@@ -918,16 +918,38 @@ def birthday_date(year, month, day):
 		return leap if leap else stamp
 	return mochi.time.parse(date_text(year, month, day), "ical")
 
+# birthday_today() -> string: today's date in the user's zone, the first day a
+# birthday is shown on: one already past is not.
+def birthday_today():
+	return mochi.time.local(mochi.time.now(), "date")
+
+# birthday_next(contact, today) -> int | None: the contact's first birthday on
+# or after today and not before the year they were born, as midnight UTC of
+# its date.
+def birthday_next(contact, today):
+	year = max(int(today[:4]), contact["year"])
+	for candidate in range(year, year + 2):
+		day = birthday_date(candidate, contact["month"], contact["day"])
+		if day != None and mochi.time.local(day, "date", timezone="UTC") >= today:
+			return day
+	return None
+
 # birthdays_instances(start, finish, colour, calendar) -> list: one all-day
-# occurrence per contact per year in the range.
+# occurrence per contact per year in the range, from the year the contact was
+# born and from today. A birthday is a date rather than a moment, so its date
+# is read as written, not moved into the user's zone.
 def birthdays_instances(identity, start, finish, colour, calendar):
 	out = []
+	today = birthday_today()
 	first = int(mochi.time.local(start, "date")[:4]) - 1
 	last = int(mochi.time.local(finish, "date")[:4]) + 1
 	for contact in birthdays_contacts(identity):
-		for year in range(first, last + 1):
+		for year in range(max(first, contact["year"]), last + 1):
 			day = birthday_date(year, contact["month"], contact["day"])
 			if day == None or day + 86400 <= start or day >= finish:
+				continue
+			date = mochi.time.local(day, "date", timezone="UTC")
+			if date < today:
 				continue
 			out.append({
 				"event": "birthday-" + contact["id"],
@@ -935,14 +957,25 @@ def birthdays_instances(identity, start, finish, colour, calendar):
 				"uid": "birthday-" + contact["id"],
 				"summary": mochi.app.label("birthday.summary", name=contact["name"]),
 				"location": "", "description": "", "status": "",
-				"start": day, "finish": day + 86400, "allday": True, "date": mochi.time.local(day, "date"),
+				"start": day, "finish": day + 86400, "allday": True, "date": date,
 				"recurring": True, "exception": False, "colour": colour, "readonly": True,
 			})
 	return out
 
+# birthday_object(contact) -> dict: the contact's birthday as a yearly event
+# for CalDAV and the calendar's address, starting at its next occurrence so a
+# client shows none already past. The start therefore moves on the day after
+# each birthday, and the object's etag with it. A 29 February birthday starts
+# on the next 29 February, since a yearly rule from it skips the other years.
 def birthday_object(contact):
-	year = contact["year"] or 1900
+	today = birthday_today().replace("-", "")
+	year = max(int(today[:4]), contact["year"])
 	start = date_text(year, contact["month"], contact["day"])
+	for candidate in range(year, year + 9):
+		text = date_text(candidate, contact["month"], contact["day"])
+		if mochi.time.parse(text, "ical") != None and text >= today:
+			start = text
+			break
 	uid = "birthday-" + contact["id"] + "@mochi"
 	name = mochi.app.label("birthday.summary", name=contact["name"])
 	component = {"name": "VEVENT", "properties": [
@@ -1710,11 +1743,11 @@ def action_events_bounds(a):
 		if wanted and calendar["id"] not in wanted and mochi.entity.fingerprint(calendar["id"]) not in wanted:
 			continue
 		if calendar["kind"] == "birthdays":
+			today = birthday_today()
 			for contact in birthdays_contacts(identity):
-				if contact["year"]:
-					born = birthday_date(contact["year"], contact["month"], contact["day"])
-					if born and (first == 0 or born < first):
-						first = born
+				upcoming = birthday_next(contact, today)
+				if upcoming and (first == 0 or upcoming < first):
+					first = upcoming
 				endless = True
 			continue
 		row = mochi.db.row("select min(case when start>0 then start end) as first, max(ends) as last, min(ends) as least from events where calendar=? and component='VEVENT'", calendar["id"])
