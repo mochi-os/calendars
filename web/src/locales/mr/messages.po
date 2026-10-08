@@ -26,6 +26,11 @@ msgstr "(संपादित)"
 msgid "(expand)"
 msgstr "(विस्तार करा)"
 
+#. placeholder {0}: file.oldPath
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "(from {0})"
+msgstr ""
+
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "(No title)"
@@ -61,6 +66,11 @@ msgstr "{0, plural, one {{imported} कार्यक्रम आयात क
 #: src/features/calendar/dialogs/import-dialog.tsx
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} कार्यक्रम आधीच कॅलेंडरमध्ये आहे} other {{skipped} कार्यक्रम आधीच कॅलेंडरमध्ये आहेत}}"
+
+#. placeholder {0}: files.length
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "{0, plural, one {# file changed} other {# files changed}}"
+msgstr ""
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -182,6 +192,10 @@ msgstr "{totalCount, plural, one {# आयटम} other {# आयटम}}"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
 msgstr "{totalDescendants, plural, one {# प्रतिसाद} other {+# अधिक प्रतिसाद}}"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -483,6 +497,10 @@ msgstr "बॅनर काढले"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "बॅनर अपडेट केले"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Binary file not shown"
+msgstr ""
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -2046,6 +2064,10 @@ msgstr "कोणतेही प्रवेश नियम कॉन्फि
 msgid "No activity yet"
 msgstr "अद्याप कोणतीही अॅक्टिव्हिटी नाही"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "No changes to display"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "अद्याप कमेंट्स नाहीत"
@@ -2140,6 +2162,15 @@ msgstr "काहीही नाही"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Normal"
 msgstr "सामान्य"
+
+#. placeholder {0}: formatFileSize(file.limit)
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Not compared: larger than {0}"
+msgstr ""
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Not compared: over the size limit"
+msgstr ""
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2894,6 +2925,10 @@ msgstr "स्रोत"
 msgid "Spacious"
 msgstr "विस्तृत"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Split"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
 msgid "Start"
 msgstr "सुरू करा"
@@ -3223,6 +3258,10 @@ msgstr "पूर्ववत करा"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "अनपेक्षित API त्रुटी"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Unified"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"

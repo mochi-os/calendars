@@ -26,6 +26,11 @@ msgstr "(redaktuar)"
 msgid "(expand)"
 msgstr "(zgjero)"
 
+#. placeholder {0}: file.oldPath
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "(from {0})"
+msgstr ""
+
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "(No title)"
@@ -61,6 +66,11 @@ msgstr "{0, plural, one {U importua {imported} ngjarje} other {U importuan {impo
 #: src/features/calendar/dialogs/import-dialog.tsx
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} ngjarje është tashmë në kalendar} other {{skipped} ngjarje janë tashmë në kalendar}}"
+
+#. placeholder {0}: files.length
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "{0, plural, one {# file changed} other {# files changed}}"
+msgstr ""
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -182,6 +192,10 @@ msgstr "{totalCount, plural, one {# artikull} other {# artikuj}}"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
 msgstr "{totalDescendants, plural, one {# përgjigje} other {+# përgjigje të tjera}}"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -483,6 +497,10 @@ msgstr "Banner-i u hoq"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner-i u përditësua"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Binary file not shown"
+msgstr ""
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -2046,6 +2064,10 @@ msgstr "Asnjë rregull qasjeje i konfiguruar. Shto rregulla për të kontrolluar
 msgid "No activity yet"
 msgstr "Ende pa aktivitet"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "No changes to display"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "Ende pa komente"
@@ -2140,6 +2162,15 @@ msgstr "Asnjë"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Normal"
 msgstr "Normale"
+
+#. placeholder {0}: formatFileSize(file.limit)
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Not compared: larger than {0}"
+msgstr ""
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Not compared: over the size limit"
+msgstr ""
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2894,6 +2925,10 @@ msgstr "Burimet"
 msgid "Spacious"
 msgstr "I hapësirshëm"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Split"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
 msgid "Start"
 msgstr "Fillo"
@@ -3223,6 +3258,10 @@ msgstr "Zhbëj"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Gabim i papritur i API-t"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Unified"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
