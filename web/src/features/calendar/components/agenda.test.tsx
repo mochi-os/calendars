@@ -2,8 +2,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { LocaleProvider } from '@mochi/web'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, it, expect, vi } from 'vitest'
 import type { Instance } from '@/api/types/events'
@@ -134,12 +138,75 @@ describe('Agenda search', () => {
   })
 })
 
-describe('Agenda', () => {
-  it("heads each day with its short weekday and its date in the user's date format", () => {
+describe('Agenda day headings', () => {
+  it('leads with a year-first date and puts the short weekday after it', () => {
+    // Without a LocaleProvider the date format is the ISO default.
     const { today, other } = show()
-    expect(today.textContent).toBe('Tue, 2026-09-22')
-    expect(other.textContent).toBe('Wed, 2026-09-23')
+    expect(today.textContent).toBe('2026-09-22 Tue')
+    expect(other.textContent).toBe('2026-09-23 Wed')
   })
+
+  it('puts the short weekday first, in the order the language puts them, under any other date format', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => ({
+        ok: true,
+        json: async () => ({
+          locale: {
+            date_format: 'DD/MM/YYYY',
+            time_format: 'auto',
+            timestamp_display: 'auto',
+            week_start: 'auto',
+            number_format: 'auto',
+            units: 'auto',
+            timezone: 'auto',
+          },
+        }),
+      }))
+    )
+    try {
+      render(
+        <I18nProvider i18n={i18n}>
+          <LocaleProvider>
+            <Agenda onSelect={vi.fn()} />
+          </LocaleProvider>
+        </I18nProvider>
+      )
+      expect(
+        await screen.findByRole('heading', { level: 2, name: 'Tue, 22/09/2026' })
+      ).toBeInTheDocument()
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it('keeps the brackets a language puts round the weekday after a year-first date', () => {
+    const catalogue = readFileSync(
+      resolve(__dirname, '../../../locales/ja/messages.po'),
+      'utf8'
+    )
+    const value = catalogue.match(
+      /msgctxt "ISO date"\nmsgid "\{date\} \{weekday\}"\nmsgstr "(.*)"/
+    )?.[1]
+    expect(value).toBe('{date}({weekday})')
+    // The id Lingui gives a message: its source and context, hashed.
+    const id = createHash('sha256')
+      .update('{date} {weekday}\u001fISO date')
+      .digest('base64')
+      .slice(0, 6)
+    const previous = i18n.locale
+    i18n.load('ja', { [id]: value! })
+    i18n.activate('ja')
+    try {
+      const { today } = show()
+      expect(today.textContent).toBe('2026-09-22(火)')
+    } finally {
+      i18n.activate(previous)
+    }
+  })
+})
+
+describe('Agenda', () => {
 
   it("fills today's heading in the primary colour with contrasting text", () => {
     const { today } = show()
@@ -201,8 +268,8 @@ describe('Agenda rows', () => {
     show()
     const lines = (row('Overnight').children[2].textContent ?? '').split('\n')
     expect(lines).toHaveLength(2)
-    expect(lines[0]).toMatch(/^Fri, 2026-09-25 \d{2}:\d{2}\s–$/)
-    expect(lines[1]).toMatch(/^Sat, 2026-09-26 \d{2}:\d{2}$/)
+    expect(lines[0]).toMatch(/^2026-09-25 Fri \d{2}:\d{2}\s–$/)
+    expect(lines[1]).toMatch(/^2026-09-26 Sat \d{2}:\d{2}$/)
   })
 
   it('gives an all-day event no time', () => {

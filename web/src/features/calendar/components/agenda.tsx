@@ -63,13 +63,16 @@ export function Agenda({ selected, onSelect }: Props) {
   /**
    * A day as the list writes one, in its headings and at each end of a span
    * across days: its short weekday and its date in the user's date format,
-   * in the order the language puts them.
+   * in the order the language puts them. A year-first date leads, with the
+   * weekday after it, in brackets in the languages that bracket one.
    */
   const heading = (day: string) => {
     const noon = new Date(format.timestampAt(day, 720) * 1000)
     const weekday = format.formatWeekdayShort(noon)
     const date = format.formatDate(noon)
-    return t`${weekday}, ${date}`
+    return format.dateFormat === 'YYYY-MM-DD'
+      ? t({ message: `${date} ${weekday}`, context: 'ISO date' })
+      : t`${weekday}, ${date}`
   }
 
   /** Over already, or cancelled, and drawn quieter. */

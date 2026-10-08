@@ -101,6 +101,11 @@ msgstr "{count, plural, one {#分钟} other {#分钟}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#周} other {#周}}"
 
+#: src/features/calendar/components/agenda.tsx
+msgctxt "ISO date"
+msgid "{date} {weekday}"
+msgstr "{date}（{weekday}）"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 #: src/features/calendar/components/event-summary.tsx
