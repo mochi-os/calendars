@@ -103,7 +103,7 @@ msgstr "{count, plural, one {#සති} other {#සති}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} සිට {to} දක්වා"
 
@@ -126,7 +126,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} සිට {to} දක්වා"
 
@@ -627,7 +627,6 @@ msgstr "කැමරාව නොමැත"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "අවලංගු කරන්න"
 
@@ -734,7 +733,6 @@ msgstr "සෙවුම හිස් කරන්න"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "වසන්න"
@@ -898,7 +896,8 @@ msgstr "ක්ලිප්බෝඩ් වෙත පිටපත් කරන �
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -908,10 +907,6 @@ msgstr "පිටපත් කරන්න"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "දින දර්ශනයේ ලිපිනය පිටපත් කරන්න"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "සිදුවීම පිටපත් කරන්න"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -944,6 +939,7 @@ msgstr "එම ගිණුම සමඟ සත්‍යාපනය කළ න�
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "නිර්මාණය කරන්න"
 
@@ -1324,6 +1320,7 @@ msgid "Error"
 msgstr "දෝෂයක්"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1342,12 +1339,6 @@ msgstr "සිදුවීම මකා දමන ලදී"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "සිදුවීම ගෙන යන ලදී"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "සිදුවීම සුරකින ලදී"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1560,6 +1551,9 @@ msgid "Failed to save the colour"
 msgstr "වර්ණය සුරැකීමට අසමත් විය"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "සිදුවීම සුරැකීමට අසමත් විය"
 
@@ -2651,7 +2645,6 @@ msgstr "සෙනසුරාදා"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -3420,7 +3413,6 @@ msgstr "ඔබේ ගිණුම {source} සිට මෙහි ගෙන ආ�
 msgid "Your attachments will be lost."
 msgstr "ඔබගේ ඇමුණුම් නැති වනු ඇත."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "ඔබේ වෙනස්කම් නැති වී යයි."

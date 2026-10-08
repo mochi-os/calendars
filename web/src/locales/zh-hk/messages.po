@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr ""
 
@@ -627,7 +627,6 @@ msgstr "相機不可用"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr ""
 
@@ -734,7 +733,6 @@ msgstr ""
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr ""
@@ -898,7 +896,8 @@ msgstr ""
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -907,10 +906,6 @@ msgstr ""
 #: src/components/layout/calendars-layout.tsx
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
-msgstr ""
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
 msgstr ""
 
 #: src/features/calendar/editor.tsx
@@ -944,6 +939,7 @@ msgstr ""
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr ""
 
@@ -1324,6 +1320,7 @@ msgid "Error"
 msgstr ""
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1341,12 +1338,6 @@ msgstr ""
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
-msgstr ""
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
 msgstr ""
 
 #: src/features/calendar/editor.tsx
@@ -1560,6 +1551,9 @@ msgid "Failed to save the colour"
 msgstr ""
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr ""
 
@@ -2651,7 +2645,6 @@ msgstr ""
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -3420,7 +3413,6 @@ msgstr "您的帳戶已從 {source} 移轉至此。在您於那裡刪除它之�
 msgid "Your attachments will be lost."
 msgstr ""
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr ""

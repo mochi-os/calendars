@@ -7,7 +7,7 @@ import { I18nProvider } from '@lingui/react'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { Instance } from '@/api/types/events'
-import { EventPopover } from './event-popover'
+import { EventSummaryPanel } from './event-summary'
 
 // The map service the user chose, as useLinks() would read it from the
 // preference the shell carries.
@@ -55,23 +55,21 @@ function instance(location: string, description = ''): Instance {
 function show(location: string, description = '') {
   render(
     <I18nProvider i18n={i18n}>
-      <EventPopover
+      <EventSummaryPanel
         instance={instance(location, description)}
-        anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
         onClose={vi.fn()}
       />
     </I18nProvider>
   )
 }
 
-describe('EventPopover copy', () => {
+describe('EventSummaryPanel copy', () => {
   it('offers Copy when the page can take one, handing the occurrence back', () => {
     const onCopy = vi.fn()
     render(
       <I18nProvider i18n={i18n}>
-        <EventPopover
+        <EventSummaryPanel
           instance={instance('Room 4')}
-          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
           onClose={vi.fn()}
           onCopy={onCopy}
         />
@@ -87,7 +85,7 @@ describe('EventPopover copy', () => {
   })
 })
 
-describe('EventPopover location', () => {
+describe('EventSummaryPanel location', () => {
   beforeEach(() => {
     service = 'openstreetmap'
     tracker = 'flightradar24'
@@ -139,11 +137,17 @@ describe('EventPopover location', () => {
   })
 })
 
-describe('EventPopover layout', () => {
+describe('EventSummaryPanel layout', () => {
+  it('heads the panel with the colour dot and the title', () => {
+    show('Meeting room')
+    const title = screen.getByRole('heading', { name: 'DUB:2-DEN 15:25-18:15' })
+    const dot = title.previousElementSibling as HTMLElement
+    expect(dot.style.backgroundColor).toBe('rgb(96, 165, 250)')
+  })
+
   it('leads every row with a glyph of one size so the texts align', () => {
     show('Meeting room', 'Bring the slides.')
     const rows = [
-      screen.getByRole('heading', { level: 2 }),
       screen.getByText(/to/, { selector: 'span' }),
       screen.getByRole('link', { name: 'Meeting room' }),
       screen.getByText('Bring the slides.'),
@@ -154,21 +158,27 @@ describe('EventPopover layout', () => {
       expect(glyph.classList.contains('size-4')).toBe(true)
       expect(glyph.classList.contains('shrink-0')).toBe(true)
     }
-    expect(rows[1].firstElementChild?.classList.contains('lucide-clock')).toBe(
+    expect(rows[0].firstElementChild?.classList.contains('lucide-clock')).toBe(
       true
     )
     expect(
-      rows[3].firstElementChild?.classList.contains('lucide-text-align-start')
+      rows[2].firstElementChild?.classList.contains('lucide-text-align-start')
     ).toBe(true)
   })
 })
 
-describe('EventPopover description', () => {
+describe('EventSummaryPanel description', () => {
   it('shows an HTML description as text with its line breaks', () => {
     show('EI59', 'PNR: 2YHEIJ&nbsp;<br>Class: Business<br>Seats: 2K')
     const shown = screen.getByText(/PNR/)
     expect(shown.textContent).toBe('PNR: 2YHEIJ\nClass: Business\nSeats: 2K')
     expect(shown.textContent).not.toContain('<br>')
+  })
+
+  it('shows the whole description, which no editor holds for it', () => {
+    const long = 'word '.repeat(100).trim()
+    show('', long)
+    expect(screen.getByText(/^word word/).textContent).toBe(long)
   })
 
   it('leaves a plain description untouched', () => {
@@ -180,7 +190,7 @@ describe('EventPopover description', () => {
 })
 
 // The user's zone in these tests is the provider default, UTC.
-describe('EventPopover zones', () => {
+describe('EventSummaryPanel zones', () => {
   // 10:00 London (BST) to 13:00 New York (EDT): 09:00Z to 17:00Z.
   const flight: Instance = {
     ...instance('EI59'),
@@ -194,9 +204,8 @@ describe('EventPopover zones', () => {
     cleanup()
     render(
       <I18nProvider i18n={i18n}>
-        <EventPopover
+        <EventSummaryPanel
           instance={shown}
-          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
           zones={zones}
           onClose={vi.fn()}
         />
@@ -247,13 +256,12 @@ describe('EventPopover zones', () => {
   })
 })
 
-describe('EventPopover status and title', () => {
+describe('EventSummaryPanel status and title', () => {
   function open(shown: Partial<Instance>) {
     render(
       <I18nProvider i18n={i18n}>
-        <EventPopover
+        <EventSummaryPanel
           instance={{ ...instance(''), ...shown }}
-          anchor={{ left: 10, top: 10, width: 100, height: 20 } as DOMRect}
           onClose={vi.fn()}
         />
       </I18nProvider>

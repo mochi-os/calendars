@@ -103,7 +103,7 @@ msgstr "{count, plural, one {#வா} other {#வா}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} முதல் {to} வரை"
 
@@ -126,7 +126,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} முதல் {to} வரை"
 
@@ -627,7 +627,6 @@ msgstr "கேமரா கிடைக்கவில்லை"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
@@ -734,7 +733,6 @@ msgstr "தேடலை அழி"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "மூடு"
@@ -898,7 +896,8 @@ msgstr "கிளிப்போர்டுக்கு நகலெடுக�
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -908,10 +907,6 @@ msgstr "நகலெடு"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "நாட்காட்டி முகவரியை நகலெடு"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "நிகழ்வை நகலெடு"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -944,6 +939,7 @@ msgstr "அந்தக் கணக்கைச் சரிபார்க்�
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "உருவாக்கு"
 
@@ -1324,6 +1320,7 @@ msgid "Error"
 msgstr "பிழை"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1342,12 +1339,6 @@ msgstr "நிகழ்வு நீக்கப்பட்டது"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "நிகழ்வு நகர்த்தப்பட்டது"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "நிகழ்வு சேமிக்கப்பட்டது"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1560,6 +1551,9 @@ msgid "Failed to save the colour"
 msgstr "நிறத்தைச் சேமிக்க முடியவில்லை"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "நிகழ்வைச் சேமிக்க முடியவில்லை"
 
@@ -2651,7 +2645,6 @@ msgstr "சனிக்கிழமை"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -3420,7 +3413,6 @@ msgstr "உங்கள் கணக்கு {source} இலிருந்த�
 msgid "Your attachments will be lost."
 msgstr "உங்கள் இணைப்புகள் இழக்கப்படும்."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "உங்கள் மாற்றங்கள் இழக்கப்படும்."

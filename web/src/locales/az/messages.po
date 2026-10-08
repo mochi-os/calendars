@@ -103,7 +103,7 @@ msgstr "{count, plural, one {#h} other {#h}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} ilə {to} arası"
 
@@ -126,7 +126,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} ilə {to} arası"
 
@@ -627,7 +627,6 @@ msgstr "Kamera əlçatan deyil"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "Ləğv et"
 
@@ -734,7 +733,6 @@ msgstr "Axtarışı təmizlə"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Bağla"
@@ -898,7 +896,8 @@ msgstr "Mübadilə yaddaşına kopyalandı"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -908,10 +907,6 @@ msgstr "Kopyala"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Təqvim ünvanını kopyala"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "Tədbiri kopyala"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -944,6 +939,7 @@ msgstr "Bu hesabla doğrulama mümkün olmadı. Zəhmət olmasa, yenidən cəhd 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "Yarat"
 
@@ -1324,6 +1320,7 @@ msgid "Error"
 msgstr "Xəta"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1342,12 +1339,6 @@ msgstr "Tədbir silindi"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "Tədbir köçürüldü"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "Tədbir saxlanıldı"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1560,6 +1551,9 @@ msgid "Failed to save the colour"
 msgstr "Rəngi saxlamaq alınmadı"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "Tədbiri saxlamaq alınmadı"
 
@@ -2651,7 +2645,6 @@ msgstr "Şənbə"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -3420,7 +3413,6 @@ msgstr "Hesabınız {source} saytından buraya köçürüldü. Orada silənə q�
 msgid "Your attachments will be lost."
 msgstr "Qoşmalarınız itiriləcək."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "Dəyişiklikləriniz itəcək."

@@ -79,6 +79,7 @@ vi.mock('@/context/calendar-context', () => ({
 }))
 vi.mock('@/hooks/use-events', () => ({
   useInstancesQuery: () => state.query,
+  useCreateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
 }))
 vi.mock('@/hooks/use-event-move', () => ({ useEventMove: () => ({}) }))
 vi.mock('@/hooks/use-reminder', () => ({ useReminder: () => undefined }))
@@ -89,14 +90,16 @@ vi.mock('@/features/calendar/components/toolbar', () => ({
   },
 }))
 vi.mock('@/features/calendar/components/agenda', () => ({ Agenda: () => null }))
-vi.mock('@/features/calendar/components/event-popover', () => ({
-  EventPopover: () => null,
+vi.mock('@/features/calendar/components/event-summary', () => ({
+  EventSummaryPanel: () => null,
 }))
 vi.mock('@/features/calendar/components/scope-dialog', () => ({
   ScopeDialog: () => null,
 }))
+const router = vi.hoisted(() => ({ history: {} }))
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => vi.fn(),
+  useRouter: () => router,
   useSearch: () => ({}),
 }))
 vi.mock('@mochi/web', async (importOriginal) => {

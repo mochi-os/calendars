@@ -2,18 +2,20 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   DatePicker,
   Button,
   ColourPicker,
   ConfirmDialog,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   Input,
   Label,
   Select,
@@ -21,20 +23,26 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SidePanel,
+  SidePanelBody,
+  SidePanelFooter,
+  SidePanelHeader,
+  SidePanelTitle,
   Skeleton,
   Switch,
   Textarea,
   TimePicker,
   TimezoneSelect,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
   addDays,
   cn,
   GeneralError,
   getErrorMessage,
   toast,
-  useDiscardGuard,
   useFormat,
   useLeaveGuard,
-  useScreenSize,
 } from '@mochi/web'
 import {
   Bell,
@@ -50,7 +58,7 @@ import {
   Trash2,
   X,
 } from 'lucide-react'
-import type { Component } from '@/api/types/events'
+import type { Component, Event } from '@/api/types/events'
 import {
   copyDraft,
   formCopy,
@@ -87,6 +95,9 @@ import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
 const WEEKDAY_ANCHOR = '2024-01-07'
 
+// How long typing in a one-time event rests before it is saved.
+const PAUSE = 1000
+
 /**
  * Whether a repeat needs the custom panel to show all of it: an interval,
  * weekdays or an end, which the plain choices would hide. A copy opens on
@@ -103,7 +114,6 @@ function customised(repeat: Repeat): boolean {
 export function EventEditor() {
   const { t } = useLingui()
   const format = useFormat()
-  const { isMobile } = useScreenSize()
   const {
     editing,
     setEditing,
@@ -118,14 +128,16 @@ export function EventEditor() {
   const event = data?.event
 
   const [draft, setDraft] = useState<EventDraft | null>(null)
-  // The draft as the editor opened on it, so closing can tell whether
-  // anything typed would be lost.
-  const [initial, setInitial] = useState<EventDraft | null>(null)
   const [custom, setCustom] = useState(false)
-  const [asking, setAsking] = useState<'save' | 'copy' | null>(null)
+  // The scope a series' save waits on: for a save, or for the save closing
+  // makes, or for a copy.
+  const [asking, setAsking] = useState<'save' | 'close' | 'copy' | null>(null)
   // A save tried without a title; the title row says so until one is typed.
   const [untitled, setUntitled] = useState(false)
   const [confirming, setConfirming] = useState(false)
+  // Closing with a change that cannot be saved: no title, or an end before
+  // the start.
+  const [discarding, setDiscarding] = useState(false)
 
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
@@ -137,33 +149,68 @@ export function EventEditor() {
     [listed]
   )
 
-  // Which opening the form was last read for. A refetch while the editor is
-  // open, the event having changed elsewhere, leaves the user's edits alone:
-  // saving over it is refused and says so, and Reload reads it again.
+  // The draft as last rendered, which a save started by a timer, a blur or
+  // closing reads.
+  const latest = useRef(draft)
+  latest.current = draft
+  // The event as last written or read, whose etag and components the next
+  // save is made against, and the draft as that event reads, which tells a
+  // change from none. A new event has neither until it is created.
+  const stored = useRef<Event | null>(null)
+  const base = useRef<string | null>(null)
+  // Which opening the form was last read for.
   const seeded = useRef<typeof editing>(null)
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  // The save under way, and whether another was asked for meanwhile: saves go
+  // one at a time, each against the etag the one before it was answered with.
+  const running = useRef<Promise<void> | null>(null)
+  const again = useRef(false)
+  // A save was refused because the event changed elsewhere: nothing more is
+  // written over it until Reload reads it again.
+  const refused = useRef(false)
 
-  // A create opens on the draft it was given; an edit waits for the stored
-  // event, then reads the occurrence's own component where it has one.
+  const dirty = useCallback(
+    () =>
+      latest.current !== null &&
+      base.current !== null &&
+      JSON.stringify(latest.current) !== base.current,
+    []
+  )
+
+  // A create opens on the draft it was given. An edit waits for the stored
+  // event, then reads the occurrence's own component where it has one. The
+  // same event read again, written here or changed elsewhere, replaces the
+  // form only while it holds nothing unsaved.
   useEffect(() => {
     if (!editing) {
       seeded.current = null
+      stored.current = null
+      base.current = null
       setUntitled(false)
       setDraft(null)
-      setInitial(null)
       setAsking(null)
       setConfirming(false)
+      setDiscarding(false)
       return
     }
-    if (seeded.current === editing) return
-    setUntitled(false)
     if (editing.mode === 'create') {
+      if (seeded.current === editing) return
       seeded.current = editing
+      stored.current = null
+      base.current = null
+      setUntitled(false)
       setDraft(editing.draft)
-      setInitial(editing.initial ?? editing.draft)
       setCustom(customised(editing.draft.repeat))
       return
     }
-    if (!event) return
+    if (!event || event.id !== editing.event) return
+    const same =
+      seeded.current?.mode === 'edit' && seeded.current.event === editing.event
+    if (same) {
+      seeded.current = editing
+      if (stored.current?.etag === event.etag) return
+      if (dirty()) return
+    }
     const read = openedDraft(
       event.components,
       editing.start,
@@ -173,20 +220,22 @@ export function EventEditor() {
     )
     if (!read) return
     seeded.current = editing
+    stored.current = event
+    base.current = JSON.stringify(read)
+    latest.current = read
+    setUntitled(false)
     setDraft(read)
-    setInitial(read)
     setCustom(customised(read.repeat))
-  }, [editing, event, format.timezone])
+  }, [editing, event, format.timezone, dirty])
 
   const close = () => setEditing(null)
 
+  // The panel goes on as the event a save made or moved, at the occurrence's
+  // new start. Another event is read afresh; the same one keeps the form.
+  const follow = (id: string, start: number) =>
+    setEditing({ mode: 'edit', event: id, start })
+
   const recurring = Boolean(event?.recurring) && editing?.mode === 'edit'
-  // Whether the form holds anything not yet saved: closing asks first, and a
-  // copy carries it over.
-  const changed =
-    draft !== null &&
-    initial !== null &&
-    JSON.stringify(draft) !== JSON.stringify(initial)
 
   // The end may read earlier than the start by the clock, across zones, but
   // never as an instant.
@@ -194,151 +243,228 @@ export function EventEditor() {
     ? draftInstants(draft).finish >= draftInstants(draft).start
     : true
 
-  const write = async (scope: Scope) => {
-    if (!draft || !editing) return
+  const write = async (scope: Scope): Promise<boolean> => {
+    const current = latest.current
+    const event = stored.current
+    if (!current || !event || editing?.mode !== 'edit') return false
+    const start = editing.start
+    const moved = draftInstants(current).start
     try {
-      if (editing.mode === 'create') {
-        await createMutation.mutateAsync({
-          calendar: draft.calendar,
-          components: [draftComponent(draft)],
-        })
-        remember(draft)
-        reveal(draft.calendar)
-        toast.success(editing.copy ? t`Event copied` : t`Event created`)
-      } else {
-        if (!event) return
-        const master = masterComponent(event.components)
-        // This occurrence and the ones after it become a series of their
-        // own, starting where this one now falls. The first occurrence has
-        // nothing before it, so that is the whole series.
-        if (recurring && scope === 'following' && master) {
-          const split = savedSplit(
-            event.components,
-            draft,
-            editing.start,
-            format.timezone
-          )
-          if (split) {
-            await splitMutation.mutateAsync({
-              event: event.id,
-              etag: event.etag,
-              start: editing.start,
-              components: split.before,
-              following: split.after,
-              calendar: draft.calendar,
-            })
-            reveal(draft.calendar)
-            toast.success(t`Event saved`)
-            close()
-            return
-          }
-          scope = 'all'
+      const master = masterComponent(event.components)
+      // This occurrence and the ones after it become a series of their own,
+      // starting where this one now falls. The first occurrence has nothing
+      // before it, so that is the whole series.
+      if (event.recurring && scope === 'following' && master) {
+        const split = savedSplit(
+          event.components,
+          current,
+          start,
+          format.timezone
+        )
+        if (split) {
+          const result = await splitMutation.mutateAsync({
+            event: event.id,
+            etag: event.etag,
+            start,
+            components: split.before,
+            following: split.after,
+            calendar: current.calendar,
+          })
+          reveal(current.calendar)
+          follow(result.following.id, moved)
+          return true
         }
-        // One occurrence taken to another calendar leaves the series behind
-        // and becomes an event of its own there.
-        if (leavesSeries(recurring, scope, event.calendar, draft.calendar)) {
-          await moveOccurrence(
-            event,
-            editing.start,
-            draft,
-            draft.calendar,
-            format.timezone
-          )
-          reveal(draft.calendar)
-          toast.success(t`Event saved`)
-          close()
-          return
-        }
-        const components: Component[] = recurring
-          ? savedComponents(
-              event.components,
-              draft,
-              scope,
-              editing.start,
-              format.timezone
-            )
-          : [draftComponent(draft, master ?? undefined)]
-        await updateMutation.mutateAsync({
-          event: event.id,
-          etag: event.etag,
-          calendar: draft.calendar,
-          components,
-        })
-        reveal(draft.calendar)
-        toast.success(t`Event saved`)
+        scope = 'all'
       }
-      close()
+      // One occurrence taken to another calendar leaves the series behind
+      // and becomes an event of its own there.
+      if (
+        leavesSeries(event.recurring, scope, event.calendar, current.calendar)
+      ) {
+        const { created } = await moveOccurrence(
+          event,
+          start,
+          current,
+          current.calendar,
+          format.timezone
+        )
+        reveal(current.calendar)
+        follow(created.id, moved)
+        return true
+      }
+      const components: Component[] = event.recurring
+        ? savedComponents(
+            event.components,
+            current,
+            scope,
+            start,
+            format.timezone
+          )
+        : [draftComponent(current, master ?? undefined)]
+      const result = await updateMutation.mutateAsync({
+        event: event.id,
+        etag: event.etag,
+        calendar: current.calendar,
+        components,
+      })
+      stored.current = result.event
+      base.current = JSON.stringify(current)
+      reveal(current.calendar)
+      if (moved !== start) follow(event.id, moved)
+      return true
     } catch (error) {
       if ((error as { status?: number })?.status === 412) {
+        refused.current = true
         toast.error(t`This event changed somewhere else.`, {
           action: {
             label: t`Reload`,
             onClick: () => {
+              refused.current = false
               seeded.current = null
               void refetch()
             },
           },
         })
-        return
+        return false
       }
       toast.error(getErrorMessage(error, t`Failed to save the event`))
+      return false
     }
   }
 
-  // Save is refused only for a reason the form shows: no title, or an end
-  // before the start, which the End row already says.
-  const save = () => {
-    if (!draft) return
-    if (draft.title.trim() === '') {
+  // Save what the form holds now, after any save already under way. A series
+  // asks which of it the change is for; a change that cannot be saved waits,
+  // and closing with one asks before it is dropped.
+  const save = (closing = false): Promise<void> => {
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = null
+    }
+    if (running.current) {
+      again.current = true
+      return running.current.then(() => {
+        if (closing) save(true)
+      })
+    }
+    const current = latest.current
+    if (
+      editing?.mode !== 'edit' ||
+      !stored.current ||
+      !current ||
+      !dirty() ||
+      refused.current
+    ) {
+      if (closing) close()
+      return Promise.resolve()
+    }
+    if (current.title.trim() === '' || !ordered) {
+      if (current.title.trim() === '') setUntitled(true)
+      if (closing) setDiscarding(true)
+      return Promise.resolve()
+    }
+    if (stored.current.recurring) {
+      setAsking(closing ? 'close' : 'save')
+      return Promise.resolve()
+    }
+    const run = write('all')
+      .then((ok) => {
+        if (ok && closing) close()
+      })
+      .finally(() => {
+        running.current = null
+        if (again.current) {
+          again.current = false
+          void save()
+        }
+      })
+    running.current = run
+    return run
+  }
+
+  const saveRef = useRef(save)
+  saveRef.current = save
+
+  // A one-time event saves once typing rests; a series waits for its field
+  // to be left, since each of its saves asks which occurrences it is for.
+  const changeDraft: typeof setDraft = (update) => {
+    setDraft(update)
+    if (editing?.mode !== 'edit' || recurring) return
+    if (timer.current) clearTimeout(timer.current)
+    timer.current = setTimeout(() => void saveRef.current(), PAUSE)
+  }
+
+  // Leaving a field for another in the panel saves it; focus going into a
+  // field's own picker, which opens outside the panel, does not.
+  const left = (focus: React.FocusEvent) => {
+    if (editing?.mode !== 'edit') return
+    const panel = focus.currentTarget.closest('[data-slot="side-panel"]')
+    const next = focus.relatedTarget
+    if (panel && next instanceof Node && panel.contains(next)) void save()
+  }
+
+  const create = async () => {
+    const current = latest.current
+    if (!current || editing?.mode !== 'create') return
+    if (current.title.trim() === '') {
       setUntitled(true)
       document.getElementById('event-title')?.focus()
       return
     }
     if (!ordered) return
-    if (recurring) setAsking('save')
-    else void write('all')
+    try {
+      const result = await createMutation.mutateAsync({
+        calendar: current.calendar,
+        components: [draftComponent(current)],
+      })
+      remember(current)
+      reveal(current.calendar)
+      toast.success(t`Event created`)
+      follow(result.event.id, draftInstants(current).start)
+    } catch (error) {
+      toast.error(getErrorMessage(error, t`Failed to save the event`))
+    }
   }
 
-  // A copy opens the editor again on a new event filled from this one, in
-  // the calendar the form shows; a series asks which of it to copy.
-  const duplicate = (scope: 'one' | 'all') => {
-    if (!draft || !event || editing?.mode !== 'edit') return
-    const stored = copyDraft(
-      event.components,
-      editing.start,
-      draft.calendar,
-      format.timezone,
-      scope
-    )
-    if (!stored) return
-    // Edits not yet saved go into the copy rather than being dropped; the
-    // stored copy is what closing measures against, so it still asks.
-    const copied = changed
+  // A copy is made at once, in the calendar the form shows, and opens in the
+  // panel. A change not yet saved goes into the copy rather than being
+  // dropped; a series asks which of it to copy.
+  const duplicate = async (scope: 'one' | 'all') => {
+    const current = latest.current
+    const event = stored.current
+    if (!current || !event || editing?.mode !== 'edit') return
+    const copied = dirty()
       ? formCopy(
-          draft,
+          current,
           event.components,
           editing.start,
           format.timezone,
           scope,
-          recurring
+          event.recurring
         )
-      : stored
-    setEditing({ mode: 'create', draft: copied, copy: true, initial: stored })
-    // The form swaps in place, and its heading turning to "Copy event" is
-    // what says so; the cursor goes to the title, since the button that was
-    // clicked has gone with the Delete beside it.
-    requestAnimationFrame(() => {
-      const title = document.getElementById('event-title')
-      if (title instanceof HTMLInputElement) {
-        title.focus()
-        title.select()
-      }
-    })
+      : copyDraft(
+          event.components,
+          editing.start,
+          current.calendar,
+          format.timezone,
+          scope
+        )
+    if (!copied) return
+    try {
+      const result = await createMutation.mutateAsync({
+        calendar: copied.calendar,
+        components: [draftComponent(copied)],
+      })
+      reveal(copied.calendar)
+      toast.success(t`Event copied`)
+      follow(result.event.id, draftInstants(copied).start)
+    } catch (error) {
+      toast.error(getErrorMessage(error, t`Failed to save the event`))
+    }
   }
 
   const copy = () => {
     if (recurring) setAsking('copy')
-    else duplicate('one')
+    else void duplicate('one')
   }
 
   const pending =
@@ -346,24 +472,43 @@ export function EventEditor() {
     updateMutation.isPending ||
     splitMutation.isPending
 
-  // Escape, the X and Cancel all come through here: a form with changes asks
-  // first, and nothing closes while a save is in flight. A click outside does
-  // nothing at all, as in every other dialog that holds typed input.
-  const { requestClose, discardDialog } = useDiscardGuard({
-    hasText: changed,
-    hasFiles: false,
-    onDiscard: close,
-    locked: pending,
-    desc: t`Your changes will be lost.`,
-  })
-
   const open = editing !== null
+  // A new event typed into and not created, or a series' change not yet
+  // given its scope, is what closing or leaving could lose.
+  const unsaved =
+    draft !== null &&
+    (editing?.mode === 'create'
+      ? JSON.stringify(draft) !== JSON.stringify(editing.draft)
+      : recurring &&
+        base.current !== null &&
+        JSON.stringify(draft) !== base.current)
+
+  // X, Escape and a click outside come through here. A new event with
+  // something typed asks before it is dropped; an edit saves on the way out.
+  const requestClose = () => {
+    if (pending) return
+    if (editing?.mode === 'create') {
+      if (unsaved) setDiscarding(true)
+      else close()
+      return
+    }
+    void save(true)
+  }
 
   // The shell's back, forward and cross-app links take the page, and the
-  // editor with it, without the dialog closing first, so while the form holds
-  // a change they ask the question closing does. Discarding closes the editor
-  // too: it sits in the layout, which a move within the app keeps.
-  const leaving = useLeaveGuard(open && changed)
+  // panel with it, without closing it first, so while it holds something
+  // only it can save they ask the question closing does.
+  const leaving = useLeaveGuard(open && unsaved)
+
+  // A one-time event's change still waiting for its pause is saved when the
+  // panel goes.
+  useEffect(() => {
+    if (open) return
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = null
+    }
+  }, [open])
 
   const body =
     isError && editing?.mode === 'edit' && !draft ? (
@@ -374,129 +519,129 @@ export function EventEditor() {
         reset={() => void refetch()}
       />
     ) : isLoading && editing?.mode === 'edit' && !draft ? (
-      <div className='space-y-3 p-4'>
+      <div className='space-y-3'>
         <Skeleton className='h-10 w-full' />
         <Skeleton className='h-10 w-full' />
         <Skeleton className='h-24 w-full' />
       </div>
     ) : draft ? (
-      <EditorFields
-        draft={draft}
-        ordered={ordered}
-        untitled={untitled && draft.title.trim() === ''}
-        onSave={() => {
-          if (!pending) save()
-        }}
-        setDraft={setDraft}
-        custom={custom}
-        setCustom={setCustom}
-        calendars={writable.map((calendar) => ({
-          id: calendar.id,
-          name: calendar.name,
-        }))}
-      />
+      <div onBlur={left}>
+        <EditorFields
+          draft={draft}
+          ordered={ordered}
+          untitled={untitled && draft.title.trim() === ''}
+          onSave={() => {
+            if (pending) return
+            if (editing?.mode === 'create') void create()
+            else void save()
+          }}
+          setDraft={changeDraft}
+          custom={custom}
+          setCustom={setCustom}
+          calendars={writable.map((calendar) => ({
+            id: calendar.id,
+            name: calendar.name,
+          }))}
+        />
+      </div>
     ) : null
 
-  const footer = (
-    <>
-      {editing?.mode === 'edit' && (
-        <>
-          <Button
-            variant='outline'
-            onClick={() => setConfirming(true)}
-            disabled={pending}
-          >
-            <Trans>Delete</Trans>
-          </Button>
-          <Button
-            variant='outline'
-            className='me-auto'
-            onClick={copy}
-            disabled={pending || !event}
-          >
-            <Trans>Copy</Trans>
-          </Button>
-        </>
-      )}
-      {/* A phone's header X already closes, and four buttons do not fit
-          across one. */}
-      {!isMobile && (
-        <Button variant='outline' onClick={requestClose} disabled={pending}>
-          <Trans>Cancel</Trans>
+  const action = (
+    label: string,
+    icon: ReactNode,
+    onClick: () => void,
+    disabled: boolean
+  ) => (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          variant='ghost'
+          size='icon'
+          className='size-8'
+          aria-label={label}
+          disabled={disabled}
+          onClick={onClick}
+        >
+          {icon}
         </Button>
-      )}
-      <Button
-        onClick={save}
-        loading={pending}
-        disabled={!draft}
-        icon={<Check className='size-4' />}
-      >
-        <Trans>Save</Trans>
-      </Button>
-    </>
+      </TooltipTrigger>
+      <TooltipContent>{label}</TooltipContent>
+    </Tooltip>
   )
+
+  const actions =
+    editing?.mode === 'edit' ? (
+      <>
+        {action(
+          t`Copy`,
+          <CopyIcon className='size-4' />,
+          copy,
+          pending || !event
+        )}
+        {action(
+          t`Delete`,
+          <Trash2 className='size-4' />,
+          () => setConfirming(true),
+          pending
+        )}
+      </>
+    ) : undefined
 
   const title =
     editing?.mode === 'create'
-      ? editing.copy
-        ? t`Copy event`
-        : t`New event`
-      : t`Edit event`
+      ? t`New event`
+      : event?.summary.trim() || t`Edit event`
 
   return (
     <>
-      {isMobile ? (
-        open && (
-          <div className='bg-background fixed inset-0 z-50 flex flex-col'>
-            <div className='flex items-center gap-2 border-b px-4 py-3'>
+      <SidePanel
+        open={open}
+        onOpenChange={(next) => {
+          if (!next) requestClose()
+        }}
+        size='xl'
+        dismissOnOutsideClick
+        onOpenAutoFocus={(focus) => {
+          // A new event starts at its title; an open one takes no focus, so
+          // a phone's keyboard does not cover it.
+          focus.preventDefault()
+          if (editing?.mode === 'create')
+            document.getElementById('event-title')?.focus()
+        }}
+      >
+        <SidePanelHeader actions={actions}>
+          <SidePanelTitle>{title}</SidePanelTitle>
+        </SidePanelHeader>
+        <SidePanelBody>{body}</SidePanelBody>
+        {editing?.mode === 'create' && (
+          <SidePanelFooter>
+            <div className='flex justify-end'>
               <Button
-                variant='ghost'
-                size='icon'
-                onClick={requestClose}
-                aria-label={t`Close`}
+                onClick={() => void create()}
+                loading={pending}
+                disabled={!draft}
+                icon={<Plus className='size-4' />}
               >
-                <X className='size-4' />
+                <Trans>Create</Trans>
               </Button>
-              <h1 className='text-base font-semibold'>{title}</h1>
             </div>
-            <div className='min-h-0 flex-1 overflow-y-auto p-4'>{body}</div>
-            <div className='flex items-center gap-2 border-t px-4 py-3'>
-              {footer}
-            </div>
-          </div>
-        )
-      ) : (
-        <Dialog
-          open={open}
-          onOpenChange={(next) => {
-            if (!next) requestClose()
-          }}
-        >
-          <DialogContent
-            className='sm:max-w-[720px]'
-            onInteractOutside={(outside) => outside.preventDefault()}
-          >
-            <DialogHeader>
-              <DialogTitle>{title}</DialogTitle>
-            </DialogHeader>
-            {/* Tall enough for the whole form on an ordinary screen; the
-                scroll only appears when the window is shorter than that. */}
-            <div className='max-h-[80vh] overflow-y-auto pe-1'>{body}</div>
-            <DialogFooter className='gap-2'>{footer}</DialogFooter>
-          </DialogContent>
-        </Dialog>
-      )}
+          </SidePanelFooter>
+        )}
+      </SidePanel>
 
       <ScopeDialog
-        open={asking === 'save'}
+        open={asking === 'save' || asking === 'close'}
         title={t`Save this event`}
         icon={<Check className='size-4' />}
         onOpenChange={(next) => {
           if (!next) setAsking(null)
         }}
         onChoose={(scope) => {
+          const closing = asking === 'close'
           setAsking(null)
-          void write(scope)
+          void write(scope).then((ok) => {
+            if (ok && closing) close()
+          })
         }}
       />
 
@@ -510,16 +655,16 @@ export function EventEditor() {
         }}
         onChoose={(scope) => {
           setAsking(null)
-          duplicate(scope === 'all' ? 'all' : 'one')
+          void duplicate(scope === 'all' ? 'all' : 'one')
         }}
       />
 
-      {discardDialog}
-
       <ConfirmDialog
-        open={leaving.asking}
+        open={discarding || leaving.asking}
         onOpenChange={(next) => {
-          if (!next) leaving.stay()
+          if (next) return
+          setDiscarding(false)
+          leaving.stay()
         }}
         title={t`Discard draft?`}
         desc={t`Your changes will be lost.`}
@@ -527,7 +672,8 @@ export function EventEditor() {
         icon={<Trash2 className='size-4' />}
         destructive
         handleConfirm={() => {
-          leaving.proceed()
+          if (leaving.asking) leaving.proceed()
+          setDiscarding(false)
           close()
         }}
       />

@@ -103,7 +103,7 @@ msgstr "{count, plural, one {#týž} other {#týž}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, od {from} do {to}"
 
@@ -126,7 +126,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "od {from} do {to}"
 
@@ -627,7 +627,6 @@ msgstr "Kamera nie je k dispozícii"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "Zrušiť"
 
@@ -734,7 +733,6 @@ msgstr "Vymazať vyhľadávanie"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Zavrieť"
@@ -898,7 +896,8 @@ msgstr "Skopírované do schránky"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -908,10 +907,6 @@ msgstr "Kopírovať"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Kopírovať adresu kalendára"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "Kopírovať udalosť"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -944,6 +939,7 @@ msgstr "S týmto účtom sa nepodarilo overiť. Skúste to znova."
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "Vytvoriť"
 
@@ -1324,6 +1320,7 @@ msgid "Error"
 msgstr "Chyba"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1342,12 +1339,6 @@ msgstr "Udalosť bola odstránená"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "Udalosť bola presunutá"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "Udalosť bola uložená"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1560,6 +1551,9 @@ msgid "Failed to save the colour"
 msgstr "Nepodarilo sa uložiť farbu"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "Nepodarilo sa uložiť udalosť"
 
@@ -2651,7 +2645,6 @@ msgstr "Sobota"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -3420,7 +3413,6 @@ msgstr "Váš účet bol presunutý sem z {source}. Kým ho tam neodstránite, s
 msgid "Your attachments will be lost."
 msgstr "Vaše prílohy sa stratia."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "Vaše zmeny budú stratené."

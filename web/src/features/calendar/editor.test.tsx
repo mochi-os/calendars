@@ -59,7 +59,9 @@ const state = vi.hoisted(() => ({
 beforeEach(() => {
   state.editing = { mode: 'edit', event: 'e1', start: START }
   state.setEditing = vi.fn()
-  state.update = vi.fn().mockResolvedValue({})
+  state.update = vi.fn().mockImplementation(async (written) => ({
+    event: { ...stored('Standup'), ...written, etag: 'x2' },
+  }))
   state.query = {
     data: { event: stored('Standup') },
     isLoading: false,
@@ -126,9 +128,14 @@ function statuses(components: Component[]) {
   )
 }
 
-/** Saves the form, for the whole series where it asks. */
+/**
+ * Saves the form as leaving a field for another place in the panel does, for
+ * the whole series where it asks.
+ */
 async function save() {
-  fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+  fireEvent.focusOut(screen.getByLabelText('Title'), {
+    relatedTarget: screen.getByRole('button', { name: 'Close' }),
+  })
   fireEvent.click(await screen.findByRole('button', { name: 'All events' }))
   await waitFor(() => expect(state.update).toHaveBeenCalledTimes(1))
   return state.update.mock.calls[0][0] as { components: Component[] }
@@ -176,11 +183,11 @@ describe('EventEditor', () => {
     const until = await screen.findByLabelText('Last day')
     fireEvent.change(until, { target: { value: '' } })
     fireEvent.blur(until)
-    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
-    fireEvent.click(await screen.findByRole('button', { name: 'All events' }))
-    await waitFor(() => expect(state.update).toHaveBeenCalledTimes(1))
-    const saved = state.update.mock.calls[0][0] as { components: Component[] }
-    expect(rule(saved.components)).toContain('UNTIL=')
+    // Clearing it changes nothing, so another change carries the save.
+    fireEvent.change(screen.getByLabelText('Title'), {
+      target: { value: 'Retro' },
+    })
+    expect(rule((await save()).components)).toContain('UNTIL=')
   })
 
   it('lets the repeat interval be emptied to type a new number', async () => {
@@ -385,10 +392,10 @@ describe('EventEditor', () => {
     expect(screen.getByLabelText('Title')).toHaveValue('Typed')
   })
 
-  it('stays open when the page outside it is clicked', async () => {
+  it('closes when the page outside it is clicked', async () => {
     show()
     await screen.findByLabelText('Title')
-    // The dialog listens for a press outside only once it has opened.
+    // The panel listens for a press outside only once it has opened.
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)))
     // A press outside dismisses on the click that ends it.
     fireEvent.pointerDown(document.body)
@@ -396,8 +403,7 @@ describe('EventEditor', () => {
     fireEvent.pointerUp(document.body)
     fireEvent.mouseUp(document.body)
     fireEvent.click(document.body)
-    expect(state.setEditing).not.toHaveBeenCalled()
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(state.setEditing).toHaveBeenCalledWith(null)
   })
 
   it('says the event could not be read, with a way to try again', () => {

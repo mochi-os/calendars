@@ -103,7 +103,7 @@ msgstr "{count, plural, one {#أ} other {#أ}}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}، {from} إلى {to}"
 
@@ -126,7 +126,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} إلى {to}"
 
@@ -627,7 +627,6 @@ msgstr "الكاميرا غير متاحة"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -734,7 +733,6 @@ msgstr "مسح البحث"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "إغلاق"
@@ -898,7 +896,8 @@ msgstr "تم النسخ إلى الحافظة"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -908,10 +907,6 @@ msgstr "نسخ"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "نسخ عنوان التقويم"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "نسخ الحدث"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -944,6 +939,7 @@ msgstr "تعذّر التحقق باستخدام هذا الحساب. يرجى �
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "إنشاء"
 
@@ -1324,6 +1320,7 @@ msgid "Error"
 msgstr "خطأ"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1342,12 +1339,6 @@ msgstr "تم حذف الحدث"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "تم نقل الحدث"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "تم حفظ الحدث"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1560,6 +1551,9 @@ msgid "Failed to save the colour"
 msgstr "فشل حفظ اللون"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "فشل حفظ الحدث"
 
@@ -2651,7 +2645,6 @@ msgstr "السبت"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -3420,7 +3413,6 @@ msgstr "تم نقل حسابك إلى هنا من {source}. حتى تحذفه م
 msgid "Your attachments will be lost."
 msgstr "سيتم فقدان مرفقاتك."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "ستُفقد تغييراتك."

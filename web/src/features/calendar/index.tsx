@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useCallback, useMemo, useRef, useState } from 'react'
-import { useNavigate, useSearch } from '@tanstack/react-router'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import { useLingui } from '@lingui/react/macro'
 import {
   addDays,
@@ -11,10 +11,12 @@ import {
   dayOfWeek,
   eventStatus,
   GeneralError,
+  getErrorMessage,
   MonthGrid,
   monthOf,
   stepDate,
   TimeGrid,
+  toast,
   useFormat,
   usePageTitle,
   offsetLabel,
@@ -26,6 +28,8 @@ import {
   creationDay,
   defaultCalendar,
   defaultStart,
+  draftComponent,
+  draftInstants,
   instanceDraft,
   newDraft,
   type EventDraft,
@@ -34,10 +38,13 @@ import {
 import { useCalendarContext } from '@/context/calendar-context'
 import { useCalendarShortcuts } from '@/hooks/use-calendar-shortcuts'
 import { useEventMove } from '@/hooks/use-event-move'
-import { useInstancesQuery } from '@/hooks/use-events'
+import {
+  useCreateEventMutation,
+  useInstancesQuery,
+} from '@/hooks/use-events'
 import { useReminder } from '@/hooks/use-reminder'
 import { Agenda } from '@/features/calendar/components/agenda'
-import { EventPopover } from '@/features/calendar/components/event-popover'
+import { EventSummaryPanel } from '@/features/calendar/components/event-summary'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
 
@@ -64,10 +71,8 @@ export function CalendarPage() {
     reload,
   } = useCalendarContext()
 
-  const [selected, setSelected] = useState<{
-    instance: Instance
-    anchor: DOMRect
-  } | null>(null)
+  // A read-only occurrence, open in its read-only panel.
+  const [selected, setSelected] = useState<Instance | null>(null)
   const [moving, setMoving] = useState<{
     run: (scope: Scope) => void
     copy: boolean
@@ -217,11 +222,12 @@ export function CalendarPage() {
     setEditing({ mode: 'create', draft: compose(from, to, true) })
   }
 
-  // A click opens the editor; a read-only occurrence (a subscription's or a
-  // birthday) has nothing to edit, so it opens the summary popover instead.
-  const open = (instance: Instance, anchor: HTMLElement) => {
+  // A click opens the event in its side panel; a read-only occurrence (a
+  // subscription's or a birthday) has nothing to edit, so its panel only
+  // reads.
+  const open = (instance: Instance) => {
     if (instance.readonly || instance.event.startsWith('birthday-')) {
-      setSelected({ instance, anchor: anchor.getBoundingClientRect() })
+      setSelected(instance)
     } else {
       setEditing({ mode: 'edit', event: instance.event, start: instance.start })
     }
@@ -229,7 +235,7 @@ export function CalendarPage() {
 
   // The occurrence whose summary or editor is open, which the views tint.
   const current = selected
-    ? `${selected.instance.event}:${selected.instance.start}`
+    ? `${selected.event}:${selected.start}`
     : editing?.mode === 'edit'
       ? `${editing.event}:${editing.start}`
       : undefined
@@ -249,15 +255,9 @@ export function CalendarPage() {
     loading: shown.length > 0 && (!isSuccess || isPlaceholderData),
     visible,
     reveal,
-    open: (instance, key) =>
-      open(
-        instance,
-        document.querySelector<HTMLElement>(
-          `[data-key="${CSS.escape(key)}"]`
-        ) ?? document.body
-      ),
+    open: (instance) => open(instance),
     clear: () =>
-      void navigate({
+      navigate({
         to: '.',
         search: (previous: Record<string, unknown>) => ({
           ...previous,
@@ -268,9 +268,82 @@ export function CalendarPage() {
       }),
   })
 
-  const select = (key: string, anchor: HTMLElement) => {
+  // The address names the event in the panel, as a project's does its
+  // object, so the link reopens it. It is written in place with the router's
+  // subscribers held off: the router never holds it, so closing the panel
+  // cannot be undone by the reminder above reading it again. The page's own
+  // first address, a reminder's link, is left for the reminder.
+  const router = useRouter()
+  const named = useRef<string | null | undefined>(undefined)
+  const naming =
+    editing?.mode === 'edit'
+      ? { event: editing.event, occurrence: editing.start }
+      : selected
+        ? { event: selected.event, occurrence: selected.start }
+        : null
+  const nameKey = naming ? `${naming.event}:${naming.occurrence}` : null
+  useEffect(() => {
+    if (named.current === undefined && nameKey === null) {
+      named.current = null
+      return
+    }
+    if (named.current === nameKey) return
+    named.current = nameKey
+    const url = new URL(window.location.href)
+    if (naming) {
+      url.searchParams.set('event', naming.event)
+      url.searchParams.set('occurrence', String(naming.occurrence))
+    } else {
+      url.searchParams.delete('event')
+      url.searchParams.delete('occurrence')
+    }
+    const history = router.history as unknown as {
+      _ignoreSubscribers?: boolean
+    }
+    history._ignoreSubscribers = true
+    try {
+      window.history.replaceState(
+        window.history.state,
+        '',
+        url.pathname + url.search + url.hash
+      )
+    } finally {
+      history._ignoreSubscribers = false
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- naming is nameKey's
+  }, [nameKey, router])
+
+  // A read-only occurrence's copy is the user's own event, made at once from
+  // what the listing says of it, in the user's calendar, and opened there.
+  const createMutation = useCreateEventMutation()
+  const copyOccurrence = async (instance: Instance) => {
+    const draft = instanceDraft(
+      instance,
+      calendarFor(),
+      preferences.reminder,
+      format.timezone
+    )
+    try {
+      const result = await createMutation.mutateAsync({
+        calendar: draft.calendar,
+        components: [draftComponent(draft)],
+      })
+      reveal(draft.calendar)
+      toast.success(t`Event copied`)
+      setSelected(null)
+      setEditing({
+        mode: 'edit',
+        event: result.event.id,
+        start: draftInstants(draft).start,
+      })
+    } catch (error) {
+      toast.error(getErrorMessage(error, t`Failed to save the event`))
+    }
+  }
+
+  const select = (key: string) => {
     const instance = byKey.get(key)
-    if (instance) open(instance, anchor)
+    if (instance) open(instance)
   }
 
   // A drag on a repeating occurrence has to say which occurrences it moved.
@@ -381,27 +454,11 @@ export function CalendarPage() {
       )}
       <div className='min-h-0 flex-1'>{grid}</div>
 
-      <EventPopover
-        instance={selected?.instance ?? null}
-        anchor={selected?.anchor ?? null}
+      <EventSummaryPanel
+        instance={selected}
         zones={preferences.zones}
         onClose={() => setSelected(null)}
-        onCopy={(instance) => {
-          // A read-only occurrence has no event the editor could read, so
-          // the copy is what the listing says of it, in the user's calendar.
-          setSelected(null)
-          const calendar = calendarFor()
-          setEditing({
-            mode: 'create',
-            draft: instanceDraft(
-              instance,
-              calendar,
-              preferences.reminder,
-              format.timezone
-            ),
-            copy: true,
-          })
-        }}
+        onCopy={(instance) => void copyOccurrence(instance)}
       />
 
       <ScopeDialog

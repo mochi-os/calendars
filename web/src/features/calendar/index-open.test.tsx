@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Instance } from '@/api/types/events'
 import { CalendarPage } from './index'
@@ -44,14 +44,19 @@ const { setEditing, listed, context } = vi.hoisted(() => {
 vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => context,
 }))
+// A copy made of a read-only occurrence, as the server answers it.
+const created = vi.hoisted(() => vi.fn())
 vi.mock('@/hooks/use-events', () => ({
   useInstancesQuery: () => ({ data: undefined }),
+  useCreateEventMutation: () => ({ mutateAsync: created, isPending: false }),
 }))
 vi.mock('@/hooks/use-event-move', () => ({
   useEventMove: () => ({}),
 }))
+const router = vi.hoisted(() => ({ history: {} }))
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => vi.fn(),
+  useRouter: () => router,
   useSearch: () => ({}),
 }))
 vi.mock('@/features/calendar/components/toolbar', () => ({
@@ -74,11 +79,12 @@ vi.mock('@/features/calendar/components/agenda', () => ({
     </button>
   ),
 }))
-// The summary popover as the actions it was handed.
-vi.mock('@/features/calendar/components/event-popover', () => ({
-  EventPopover: (props: {
+// The read-only panel as the actions it was handed.
+vi.mock('@/features/calendar/components/event-summary', () => ({
+  EventSummaryPanel: (props: {
     instance: Instance | null
     onCopy?: (instance: Instance) => void
+    onClose: () => void
   }) =>
     props.instance ? (
       <div data-testid='summary'>
@@ -87,6 +93,9 @@ vi.mock('@/features/calendar/components/event-popover', () => ({
             onCopy
           </button>
         )}
+        <button type='button' onClick={props.onClose}>
+          onClose
+        </button>
       </div>
     ) : null,
 }))
@@ -123,6 +132,7 @@ function show() {
 describe('a click on an occurrence', () => {
   beforeEach(() => {
     setEditing.mockClear()
+    created.mockReset().mockResolvedValue({ event: { id: 'e9' } })
   })
 
   it('opens an own event straight in the editor', () => {
@@ -136,19 +146,48 @@ describe('a click on an occurrence', () => {
     expect(screen.queryByTestId('summary')).toBeNull()
   })
 
-  it('opens a read-only occurrence in the summary, offering only a copy', () => {
+  it('opens a read-only occurrence in its read-only panel, offering only a copy', async () => {
     listed.instance = occurrence({ readonly: true })
     show()
     expect(screen.getByTestId('summary')).toBeInTheDocument()
     expect(setEditing).not.toHaveBeenCalled()
 
     fireEvent.click(screen.getByRole('button', { name: 'onCopy' }))
-    expect(setEditing).toHaveBeenCalledWith(
-      expect.objectContaining({ mode: 'create', copy: true })
+    await waitFor(() =>
+      expect(setEditing).toHaveBeenCalledWith({
+        mode: 'edit',
+        event: 'e9',
+        start,
+      })
     )
+    expect(created).toHaveBeenCalledTimes(1)
+    expect(screen.queryByTestId('summary')).toBeNull()
   })
 
-  it('opens a birthday in the summary', () => {
+  it('names the open event in the address, and takes it out on closing', () => {
+    window.history.replaceState(null, '', '/?view=week')
+    listed.instance = occurrence({ readonly: true })
+    show()
+    const params = new URLSearchParams(window.location.search)
+    expect(params.get('event')).toBe('e1')
+    expect(params.get('occurrence')).toBe(String(start))
+    expect(params.get('view')).toBe('week')
+    fireEvent.click(screen.getByRole('button', { name: 'onClose' }))
+    expect(window.location.search).toBe('?view=week')
+  })
+
+  it("leaves the page's first address, a reminder's link, to the reminder", () => {
+    window.history.replaceState(null, '', '/?event=e5&occurrence=100')
+    listed.instance = occurrence({ readonly: true })
+    render(
+      <I18nProvider i18n={i18n}>
+        <CalendarPage />
+      </I18nProvider>
+    )
+    expect(window.location.search).toBe('?event=e5&occurrence=100')
+  })
+
+  it('opens a birthday in its read-only panel', () => {
     listed.instance = occurrence({ event: 'birthday-c1-2026' })
     show()
     expect(screen.getByTestId('summary')).toBeInTheDocument()

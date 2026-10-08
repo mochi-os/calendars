@@ -17,6 +17,7 @@ import {
 } from '@/api/events'
 import type {
   BoundsResponse,
+  Event,
   EventResponse,
   Instance,
   InstancesResponse,
@@ -143,14 +144,48 @@ function useEventMutation<TVariables, TResult>(
   })
 }
 
-export const useCreateEventMutation = () =>
-  useEventMutation((event: CreateEvent) => eventsApi.create(event))
+// The events a write answers with, put in their queries as they arrive, so an
+// editor following one shows it at once rather than the copy from before.
+function useWritten() {
+  const queryClient = useQueryClient()
+  return (...events: Event[]) => {
+    for (const event of events) {
+      queryClient.setQueryData<EventResponse>(eventKeys.event(event.id), {
+        event,
+      })
+    }
+  }
+}
 
-export const useUpdateEventMutation = () =>
-  useEventMutation((event: UpdateEvent) => eventsApi.update(event))
+export const useCreateEventMutation = () => {
+  const written = useWritten()
+  return useEventMutation((event: CreateEvent) =>
+    eventsApi.create(event).then((result) => {
+      written(result.event)
+      return result
+    })
+  )
+}
 
-export const useSplitEventMutation = () =>
-  useEventMutation((event: SplitEvent) => eventsApi.split(event))
+export const useUpdateEventMutation = () => {
+  const written = useWritten()
+  return useEventMutation((event: UpdateEvent) =>
+    eventsApi.update(event).then((result) => {
+      written(result.event)
+      return result
+    })
+  )
+}
+
+export const useSplitEventMutation = () => {
+  const written = useWritten()
+  return useEventMutation((event: SplitEvent) =>
+    eventsApi.split(event).then((result) => {
+      written(result.event, result.following)
+      return result
+    })
+  )
+}
 
 export const useDeleteEventMutation = () =>
   useEventMutation(
