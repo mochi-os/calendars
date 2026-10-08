@@ -41,7 +41,14 @@ import {
 } from 'lucide-react'
 import { useCalendarContext } from '@/context/calendar-context'
 
-export function Toolbar({ onCreate }: { onCreate: () => void }) {
+export function Toolbar({
+  onCreate,
+  top,
+}: {
+  onCreate: () => void
+  /** The day atop the list view as it scrolls. */
+  top?: string
+}) {
   const { t } = useLingui()
   const format = useFormat()
   const { isDesktop, isMobile } = useScreenSize()
@@ -77,13 +84,16 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
         (option) => option.value === 'day' || option.value === 'list'
       )
 
-  const step = (direction: number) => setDate(stepDate(view, date, direction))
+  // The list is named after, and steps on from, the day it has scrolled to.
+  const shown = view === 'list' && top ? top : date
+  const step = (direction: number) =>
+    setDate(stepDate(view, shown, direction))
 
   // A day read at its noon, so the user's zone cannot tip it into the next.
   const dated = (day: string) =>
     format.formatDate(new Date(format.timestampAt(day, 720) * 1000))
   // The dates in the user's date format; a month names only itself.
-  const title = rangeTitle(view, range, {
+  const title = rangeTitle(view, { ...range, date: shown }, {
     longDate: dated,
     monthYear: (day) =>
       format.formatMonthYear(new Date(format.timestampAt(day, 720) * 1000)),
@@ -139,7 +149,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
         </Button>
       </PopoverTrigger>
       <PopoverContent align='start' className='w-72'>
-        <MiniMonth selected={date} today={today} onSelect={setDate} />
+        <MiniMonth selected={shown} today={today} onSelect={setDate} />
       </PopoverContent>
     </Popover>
   )

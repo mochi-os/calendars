@@ -356,7 +356,12 @@ export function CalendarPage() {
     else run('all')
   }
 
-  const page = (direction: number) => setDate(stepDate(view, date, direction))
+  // The day atop the list as it scrolls, for the toolbar and paging. It was
+  // measured under one anchor and lapses with it.
+  const [top, setTop] = useState<{ date: string; day: string } | null>(null)
+  const listed = view === 'list' && top?.date === date ? top.day : undefined
+  const page = (direction: number) =>
+    setDate(stepDate(view, listed ?? date, direction))
 
   useCalendarShortcuts({
     blocked: Boolean(editing || selected || moving),
@@ -377,7 +382,11 @@ export function CalendarPage() {
       reset={() => void refetch()}
     />
   ) : view === 'list' ? (
-      <Agenda selected={current} onSelect={open} />
+      <Agenda
+        selected={current}
+        onSelect={open}
+        onTop={(day) => setTop({ date, day })}
+      />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
         days={days}
@@ -446,7 +455,7 @@ export function CalendarPage() {
 
   return (
     <div className='flex h-full min-h-0 flex-col'>
-      <Toolbar onCreate={createNow} />
+      <Toolbar onCreate={createNow} top={listed} />
       {shown.length > 0 && data?.truncated && (
         <p className='bg-muted text-muted-foreground px-3 py-1 text-sm'>
           {t`Too many events to show them all. Choose a shorter range.`}

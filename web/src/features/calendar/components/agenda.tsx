@@ -46,6 +46,8 @@ interface Props {
   /** The occurrence whose summary or editor is open, drawn tinted. */
   selected?: string
   onSelect: (instance: Instance, anchor: HTMLElement) => void
+  /** Told the day atop the list as it scrolls, for the toolbar. */
+  onTop?: (day: string) => void
 }
 
 /**
@@ -53,7 +55,7 @@ interface Props {
  * and more as the reader scrolls - earlier pages above, later pages below -
  * until the calendars' first and last events are on the page.
  */
-export function Agenda({ selected, onSelect }: Props) {
+export function Agenda({ selected, onSelect, onTop }: Props) {
   const { t } = useLingui()
   const format = useFormat()
   const { date, today, calendars, visible, preferences, search } =
@@ -193,6 +195,26 @@ export function Agenda({ selected, onSelect }: Props) {
   // empty page would leave nothing to see, so the search carries on to the
   // next one until something lands or the first event is reached.
   const seeking = useRef<number | null>(null)
+  // The day last told atop the list, and the anchor it was told under.
+  const atop = useRef<{ date: string; day: string } | null>(null)
+
+  // The first day whose rows still reach below the top of the list, told
+  // when it or the anchor changes.
+  const report = useCallback(() => {
+    const box = scroller.current
+    if (!box || !onTop) return
+    const edge = box.getBoundingClientRect().top
+    for (const section of box.querySelectorAll<HTMLElement>('[data-day]')) {
+      if (section.getBoundingClientRect().bottom > edge + 1) {
+        const day = section.dataset.day ?? ''
+        if (atop.current?.day !== day || atop.current.date !== date) {
+          atop.current = { date, day }
+          onTop(day)
+        }
+        return
+      }
+    }
+  }, [onTop, date])
 
   const more = useCallback(() => {
     const box = scroller.current
@@ -246,6 +268,10 @@ export function Agenda({ selected, onSelect }: Props) {
     }
   }, [instances])
 
+  // Days arriving or going move what is at the top as much as a scroll does,
+  // and a new anchor wants telling afresh.
+  useLayoutEffect(() => report(), [days, report])
+
   const empty =
     !pending && !failed && instances.length === 0 && !earlier && !later
   // A search that matched nothing in everything there is to load, which is
@@ -273,6 +299,7 @@ export function Agenda({ selected, onSelect }: Props) {
           // Reaching the top by touch or scrollbar counts as a scroll up.
           if (box.scrollTop === 0 && lastTop.current > 0) loadEarlier()
           lastTop.current = box.scrollTop
+          report()
         }}
       >
         {earlier && (
@@ -294,7 +321,7 @@ export function Agenda({ selected, onSelect }: Props) {
           <EmptyState icon={Search} title={t`No matches`} />
         ) : (
           days.map(([day, list]) => (
-            <div key={day}>
+            <div key={day} data-day={day}>
               <h2
                 className={cn(
                   'sticky top-0 px-3 py-1.5 text-sm font-semibold',

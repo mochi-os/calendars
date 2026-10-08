@@ -138,6 +138,71 @@ describe('Agenda search', () => {
   })
 })
 
+describe('Agenda top', () => {
+  it('tells the day atop the list as it scrolls, once for each day', () => {
+    const onTop = vi.fn()
+    // Where each day's rows end, below the top of the list.
+    const ends: Record<string, number> = {
+      '2026-09-22': 40,
+      '2026-09-23': 80,
+      '2026-09-24': 120,
+    }
+    const measured = vi
+      .spyOn(Element.prototype, 'getBoundingClientRect')
+      .mockImplementation(function (this: Element) {
+        const day = (this as HTMLElement).dataset?.day
+        const bottom = day ? (ends[day] ?? 0) : 0
+        return { top: 0, bottom, left: 0, right: 0, width: 0, height: bottom, x: 0, y: 0, toJSON: () => ({}) } as DOMRect
+      })
+    try {
+      render(
+        <I18nProvider i18n={i18n}>
+          <Agenda onSelect={vi.fn()} onTop={onTop} />
+        </I18nProvider>
+      )
+      expect(onTop).toHaveBeenLastCalledWith('2026-09-22')
+      // Scrolled past the 22nd and to the foot of the 23rd.
+      Object.assign(ends, { '2026-09-22': -40, '2026-09-23': 0, '2026-09-24': 30 })
+      const list = screen
+        .getAllByRole('heading', { level: 2 })[0]
+        .closest('.overflow-y-auto') as HTMLElement
+      fireEvent.scroll(list)
+      expect(onTop).toHaveBeenLastCalledWith('2026-09-24')
+      const told = onTop.mock.calls.length
+      ends['2026-09-24'] = 20
+      fireEvent.scroll(list)
+      expect(onTop).toHaveBeenCalledTimes(told)
+    } finally {
+      measured.mockRestore()
+    }
+  })
+
+  it('tells the day atop the list afresh under a new anchor, though it is the same day', () => {
+    const onTop = vi.fn()
+    const measured = vi
+      .spyOn(Element.prototype, 'getBoundingClientRect')
+      .mockImplementation(function (this: Element) {
+        const bottom = (this as HTMLElement).dataset?.day === '2026-09-22' ? 40 : 0
+        return { top: 0, bottom, left: 0, right: 0, width: 0, height: bottom, x: 0, y: 0, toJSON: () => ({}) } as DOMRect
+      })
+    try {
+      const view = () => (
+        <I18nProvider i18n={i18n}>
+          <Agenda onSelect={vi.fn()} onTop={onTop} />
+        </I18nProvider>
+      )
+      const { rerender } = render(view())
+      expect(onTop).toHaveBeenCalledTimes(1)
+      state.date = '2026-09-20'
+      rerender(view())
+      expect(onTop).toHaveBeenCalledTimes(2)
+      expect(onTop).toHaveBeenLastCalledWith('2026-09-22')
+    } finally {
+      measured.mockRestore()
+    }
+  })
+})
+
 describe('Agenda day headings', () => {
   it('leads with a year-first date and puts the short weekday after it', () => {
     // Without a LocaleProvider the date format is the ISO default.

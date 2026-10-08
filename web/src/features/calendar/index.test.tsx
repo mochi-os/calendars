@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DEFAULTS } from '@/hooks/use-preferences'
 import { CalendarPage } from './index'
@@ -18,10 +18,12 @@ const state = vi.hoisted(() => ({
   failed: false,
   reload: vi.fn(),
   setEditing: vi.fn(),
+  setDate: vi.fn(),
   /** What the page last gave the month grid, the time grid and the toolbar. */
   month: {} as Record<string, unknown>,
   time: {} as Record<string, unknown>,
   toolbar: {} as Record<string, unknown>,
+  agenda: {} as Record<string, unknown>,
   view: 'month',
   date: '2026-09-15',
   query: {
@@ -39,9 +41,11 @@ beforeEach(() => {
   state.failed = false
   state.reload.mockReset()
   state.setEditing.mockReset()
+  state.setDate.mockReset()
   state.month = {}
   state.time = {}
   state.toolbar = {}
+  state.agenda = {}
   state.view = 'month'
   state.date = '2026-09-15'
   state.query = {
@@ -62,7 +66,7 @@ vi.mock('@/context/calendar-context', () => ({
         ? { from: '2026-09-14', days: 7, date: state.date }
         : { from: '2026-08-31', days: 42, date: state.date },
     date: state.date,
-    setDate: vi.fn(),
+    setDate: state.setDate,
     setView: vi.fn(),
     today: '2026-09-15',
     preferences: DEFAULTS,
@@ -89,7 +93,12 @@ vi.mock('@/features/calendar/components/toolbar', () => ({
     return null
   },
 }))
-vi.mock('@/features/calendar/components/agenda', () => ({ Agenda: () => null }))
+vi.mock('@/features/calendar/components/agenda', () => ({
+  Agenda: (props: Record<string, unknown>) => {
+    state.agenda = props
+    return null
+  },
+}))
 vi.mock('@/features/calendar/components/event-summary', () => ({
   EventSummaryPanel: () => null,
 }))
@@ -127,6 +136,30 @@ function show() {
 }
 
 const TRUNCATED = 'Too many events to show them all. Choose a shorter range.'
+
+describe('CalendarPage list', () => {
+  it('gives the toolbar the day atop the list, until the list is anchored elsewhere', () => {
+    state.view = 'list'
+    const { rerender } = render(
+      <I18nProvider i18n={i18n}>
+        <CalendarPage />
+      </I18nProvider>
+    )
+    expect(state.toolbar.top).toBeUndefined()
+    act(() => (state.agenda.onTop as (day: string) => void)('2026-10-03'))
+    expect(state.toolbar.top).toBe('2026-10-03')
+    // The arrow keys page from it too, as the toolbar's arrows do.
+    fireEvent.keyDown(document.body, { key: 'ArrowRight' })
+    expect(state.setDate).toHaveBeenLastCalledWith('2026-11-01')
+    state.date = '2026-11-01'
+    rerender(
+      <I18nProvider i18n={i18n}>
+        <CalendarPage />
+      </I18nProvider>
+    )
+    expect(state.toolbar.top).toBeUndefined()
+  })
+})
 
 describe('CalendarPage', () => {
   it('draws the grid when everything has loaded', () => {

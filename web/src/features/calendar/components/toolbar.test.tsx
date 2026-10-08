@@ -41,11 +41,11 @@ afterEach(() => {
   size.isMobile = false
 })
 
-function show(view: string) {
+function show(view: string, top?: string) {
   context.view = view
   render(
     <I18nProvider i18n={i18n}>
-      <Toolbar onCreate={vi.fn()} />
+      <Toolbar onCreate={vi.fn()} top={top} />
     </I18nProvider>
   )
   return screen.getByRole('searchbox', { name: 'Search' })
@@ -174,6 +174,30 @@ describe('Toolbar heading', () => {
   it('names the month in the month view', () => {
     context.range = { from: '2026-08-31', days: 42, date: '2026-09-22' }
     show('month')
+    expect(heading()).toMatch(/September 2026/)
+  })
+
+  it('names the month the list has scrolled to, and steps a month from it', () => {
+    context.range = { from: '2026-09-22', days: 1, date: '2026-09-22' }
+    show('list', '2026-10-03')
+    expect(heading()).toMatch(/October 2026/)
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }))
+    expect(context.setDate).toHaveBeenLastCalledWith('2026-11-01')
+    fireEvent.click(screen.getByRole('button', { name: 'Previous' }))
+    expect(context.setDate).toHaveBeenLastCalledWith('2026-09-01')
+  })
+
+  it("names the anchored day's month until the list says what is atop it", () => {
+    context.range = { from: '2026-09-22', days: 1, date: '2026-09-22' }
+    show('list')
+    expect(heading()).toMatch(/September 2026/)
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }))
+    expect(context.setDate).toHaveBeenLastCalledWith('2026-10-01')
+  })
+
+  it('leaves the other views to their anchored day, whatever the list last had atop it', () => {
+    context.range = { from: '2026-08-31', days: 42, date: '2026-09-22' }
+    show('month', '2026-10-03')
     expect(heading()).toMatch(/September 2026/)
   })
 })
