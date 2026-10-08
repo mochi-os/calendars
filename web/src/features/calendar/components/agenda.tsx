@@ -61,8 +61,9 @@ export function Agenda({ selected, onSelect }: Props) {
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
 
   /**
-   * A day's heading: its short weekday and its date in the user's date
-   * format, in the order the language puts them.
+   * A day as the list writes one, in its headings and at each end of a span
+   * across days: its short weekday and its date in the user's date format,
+   * in the order the language puts them.
    */
   const heading = (day: string) => {
     const noon = new Date(format.timestampAt(day, 720) * 1000)
@@ -148,6 +149,30 @@ export function Agenda({ selected, onSelect }: Props) {
     }
     return [...out.entries()]
   }, [matches, format, preferences.zones])
+
+  // When a timed occurrence is: the clock times of a span within a day, or
+  // across days each end's day, written as the headings write one, and time,
+  // on lines of their own. The ends read in their own zones when the views
+  // show events in theirs.
+  const when = (instance: Instance) => {
+    const zones = preferences.zones ? instance.zone : undefined
+    const days = coveredDays(
+      preferences.zones ? instance : { ...instance, zone: undefined },
+      format.zonedDay
+    )
+    const from = new Date(instance.start * 1000)
+    const to = new Date(instance.finish * 1000)
+    if (days.start === days.finish) {
+      return format.formatClockRange(from, to, zones)
+    }
+    const end = (date: Date, zone?: string) =>
+      `${heading(format.zonedDay(date, zone))} ${format.formatClock(date, zone)}`
+    return format.formatRange(
+      end(from, zones?.start),
+      end(to, zones?.finish || zones?.start),
+      true
+    )
+  }
 
   // --- Loading more ---
   //
@@ -292,49 +317,52 @@ export function Agenda({ selected, onSelect }: Props) {
                         onClick={(pointer) =>
                           onSelect(instance, pointer.currentTarget)
                         }
+                        // Columns of a fixed width, the same on every row, so
+                        // each one lines up down the list whatever a row holds:
+                        // the dot, the title, the time (room for a span across
+                        // days on two lines), the location, the calendar and,
+                        // last, the marks. An all-day row keeps its empty time
+                        // cell, and each mark its own place, empty when the
+                        // occurrence has none.
                         className={cn(
-                          'hover:bg-hover flex w-full items-center gap-3 border-b px-3 py-2.5 text-start',
+                          'hover:bg-hover grid w-full grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-3 border-b px-3 py-2.5 text-start md:grid-cols-[auto_minmax(0,2fr)_12rem_minmax(0,1fr)_10rem_auto]',
                           over(instance) && 'opacity-60',
                           key === selected && 'bg-primary/10'
                         )}
                       >
                         <EventDot event={event} className='size-3' />
-                        <EventTitle
-                          event={event}
-                          className='flex-[2] font-medium'
-                        />
-                        {instance.alarm && (
-                          <Bell
-                            className='size-3.5 shrink-0 opacity-70'
-                            aria-label={t`Reminder`}
-                          />
-                        )}
-                        {instance.exception ? (
-                          <Repeat2
-                            className='size-3.5 shrink-0 opacity-70'
-                            aria-label={t`Changed occurrence`}
-                          />
-                        ) : instance.recurring ? (
-                          <Repeat
-                            className='size-3.5 shrink-0 opacity-70'
-                            aria-label={t`Repeats`}
-                          />
-                        ) : null}
-                        {!instance.allday && (
-                          <span className='text-muted-foreground shrink-0 text-sm'>
-                            {format.formatClock(
-                              new Date(instance.start * 1000),
-                              preferences.zones
-                                ? instance.zone?.start
-                                : undefined
-                            )}
-                          </span>
-                        )}
-                        <span className='text-muted-foreground hidden min-w-0 flex-1 truncate text-sm md:block'>
+                        <EventTitle event={event} className='font-medium' />
+                        <span className='text-muted-foreground text-sm whitespace-pre-line'>
+                          {instance.allday ? '' : when(instance)}
+                        </span>
+                        <span className='text-muted-foreground hidden min-w-0 truncate text-sm md:block'>
                           {instance.location}
                         </span>
-                        <span className='text-muted-foreground hidden w-40 shrink-0 truncate text-sm md:block'>
+                        <span className='text-muted-foreground hidden min-w-0 truncate text-sm md:block'>
                           {names.get(instance.calendar) ?? ''}
+                        </span>
+                        <span className='flex items-center gap-3'>
+                          {instance.alarm ? (
+                            <Bell
+                              className='size-3.5 shrink-0 opacity-70'
+                              aria-label={t`Reminder`}
+                            />
+                          ) : (
+                            <span aria-hidden className='size-3.5 shrink-0' />
+                          )}
+                          {instance.exception ? (
+                            <Repeat2
+                              className='size-3.5 shrink-0 opacity-70'
+                              aria-label={t`Changed occurrence`}
+                            />
+                          ) : instance.recurring ? (
+                            <Repeat
+                              className='size-3.5 shrink-0 opacity-70'
+                              aria-label={t`Repeats`}
+                            />
+                          ) : (
+                            <span aria-hidden className='size-3.5 shrink-0' />
+                          )}
                         </span>
                       </button>
                     </li>

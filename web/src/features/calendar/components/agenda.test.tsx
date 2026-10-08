@@ -74,6 +74,11 @@ vi.mock('@/hooks/use-events', () => ({
       { ...instance(23, 'Wax boots'), recurring: true, alarm: true },
       { ...instance(24, 'Called off'), status: 'CANCELLED' },
       { ...instance(24, ''), event: 'e24b', start: noon(2026, 9, 24) + 60 },
+      // From noon one day to noon the next: across days in any zone.
+      {
+        ...instance(25, 'Overnight'),
+        finish: noon(2026, 9, 26),
+      },
       // An all-day occurrence expanded by a server nine hours ahead of this
       // browser's UTC: its instants begin on the 21st, its date is the 22nd.
       {
@@ -181,6 +186,25 @@ describe('Agenda rows', () => {
     )
   })
 
+  it('gives a timed event its start and its end', () => {
+    show()
+    // An hour from noon UTC, in whatever zone the test runs in.
+    const time = (row('Design review').textContent ?? '').match(
+      /(\d{1,2}):(\d{2})\D+(\d{1,2}):(\d{2})/
+    )
+    expect(time).not.toBeNull()
+    const [, h1, m1, h2, m2] = time!.map(Number)
+    expect((h2 * 60 + m2 - (h1 * 60 + m1) + 1440) % 1440).toBe(60)
+  })
+
+  it('writes each end of an event running into the next day as the headings write a day, on lines of their own', () => {
+    show()
+    const lines = (row('Overnight').children[2].textContent ?? '').split('\n')
+    expect(lines).toHaveLength(2)
+    expect(lines[0]).toMatch(/^Fri, 2026-09-25 \d{2}:\d{2}\s–$/)
+    expect(lines[1]).toMatch(/^Sat, 2026-09-26 \d{2}:\d{2}$/)
+  })
+
   it('gives an all-day event no time', () => {
     show()
     const text = row('Laundry').textContent ?? ''
@@ -200,22 +224,38 @@ describe('Agenda rows', () => {
     expect(row('Wax boots').classList.contains('opacity-60')).toBe(false)
   })
 
-  it('puts the reminder and repeat marks just before the time', () => {
+  it('puts the reminder and repeat marks in the rightmost column, each in a place of its own', () => {
     show()
-    const parts = Array.from(row('Wax boots').children) as HTMLElement[]
-    const title = parts.findIndex((part) => part.textContent === 'Wax boots')
-    const bell = parts.findIndex(
-      (part) => part.getAttribute('aria-label') === 'Reminder'
+    const marks = (summary: string) => {
+      const cells = Array.from(row(summary).children) as HTMLElement[]
+      return Array.from(cells[cells.length - 1].children).map(
+        (slot) => slot.getAttribute('aria-label') ?? ''
+      )
+    }
+    expect(marks('Wax boots')).toEqual(['Reminder', 'Repeats'])
+    // No marks keeps both places, so the next row's marks line up.
+    expect(marks('Design review')).toEqual(['', ''])
+    const cells = Array.from(row('Wax boots').children) as HTMLElement[]
+    expect(cells[2].textContent).toMatch(/^\d{1,2}:\d{2}/)
+  })
+
+  it('lays every row out in the same columns, so they line up down the list', () => {
+    show()
+    const rows = ['Design review', 'Wax boots', 'Overnight', 'Laundry'].map(
+      row
     )
-    const repeat = parts.findIndex(
-      (part) => part.getAttribute('aria-label') === 'Repeats'
+    const layout = (button: HTMLElement) =>
+      [...button.classList].filter((name) => name.includes('grid-cols-'))
+    for (const button of rows) {
+      expect(button.classList.contains('grid')).toBe(true)
+      expect(layout(button)).toEqual(layout(rows[0]))
+      // Dot, title, time, location, calendar, marks: an all-day row keeps
+      // its empty time cell, so the cells after it stay in their columns.
+      expect(button.children).toHaveLength(6)
+    }
+    expect(layout(rows[0])).toContain(
+      'md:grid-cols-[auto_minmax(0,2fr)_12rem_minmax(0,1fr)_10rem_auto]'
     )
-    expect(title).toBeLessThan(bell)
-    expect(bell).toBeLessThan(repeat)
-    expect(parts[repeat + 1].textContent).toMatch(/^\d{1,2}:\d{2}/)
-    expect(
-      row('Design review').querySelector('[aria-label="Reminder"]')
-    ).toBeNull()
   })
 })
 
