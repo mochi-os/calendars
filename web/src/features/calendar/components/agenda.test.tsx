@@ -236,6 +236,35 @@ describe('Agenda top', () => {
   })
 })
 
+describe('Agenda opened day', () => {
+  const headings = () =>
+    screen
+      .getAllByRole('heading', { level: 2 })
+      .map((heading) => heading.textContent ?? '')
+
+  it('heads the day it opened on even when nothing is on it, with no rows beneath', () => {
+    state.date = '2026-09-21'
+    show()
+    expect(headings()[0]).toBe('2026-09-21 Mon')
+    const day = screen
+      .getAllByRole('heading', { level: 2 })[0]
+      .closest('[data-day]') as HTMLElement
+    expect(day.querySelectorAll('li')).toHaveLength(0)
+    expect(day.textContent).toBe('2026-09-21 Mon')
+  })
+
+  it('leaves the empty day out of a search, which lists only its matches', () => {
+    state.date = '2026-09-21'
+    state.search = 'boots'
+    render(
+      <I18nProvider i18n={i18n}>
+        <Agenda onSelect={vi.fn()} />
+      </I18nProvider>
+    )
+    expect(headings().some((day) => day.startsWith('2026-09-21'))).toBe(false)
+  })
+})
+
 describe('Agenda order', () => {
   it('lists the days in date order, whatever order their instants arrive in', () => {
     show()

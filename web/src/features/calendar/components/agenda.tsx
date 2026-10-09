@@ -145,9 +145,12 @@ export function Agenda({ selected, onSelect, onTop }: Props) {
   // than the order the instants came in: an all-day occurrence's instants are
   // midnight where the server expanded it, which in a zone behind that falls
   // on the day before. Within a day the all-day ones come first, then by
-  // start, then by title, as the Android list orders them.
+  // start, then by title, as the Android list orders them. The day the list
+  // opened on leads it even when nothing is on it, as its heading alone, so
+  // the reader sees where they are; a search lists only what it matched.
   const days = useMemo(() => {
     const out = new Map<string, Instance[]>()
+    if (!search.trim()) out.set(date, [])
     for (const instance of matches) {
       const day = coveredDays(
         preferences.zones ? instance : { ...instance, zone: undefined },
@@ -171,7 +174,7 @@ export function Agenda({ selected, onSelect, onTop }: Props) {
             ),
           ] as const
       )
-  }, [matches, format, preferences.zones])
+  }, [matches, format, preferences.zones, search, date])
 
   // When a timed occurrence is: the clock times of a span within a day, or
   // across days each end's day, written as the headings write one, and time,
