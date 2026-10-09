@@ -202,9 +202,12 @@ export function CalendarPage() {
 
   // "New event" lands on today when today is on screen, and otherwise on
   // the day the view is on.
+  // In the list a new event goes on the day it has scrolled to, as its title
+  // names; elsewhere on today when it is on screen, else the anchored day.
   const createNow = () =>
     createAt(
-      creationDay(format.zonedDay(new Date()), date, range.from, range.days)
+      listed ??
+        creationDay(format.zonedDay(new Date()), date, range.from, range.days)
     )
 
   // A day cell in the month views says which day, not which kind, so it

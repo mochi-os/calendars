@@ -156,6 +156,23 @@ describe('CalendarPage list', () => {
     fireEvent.keyDown(document.body, { key: 'ArrowRight' })
     expect(state.setDate).toHaveBeenLastCalledWith('2026-11-01')
   })
+
+  it('puts a new event on the day the list has scrolled to, not today', () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T10:00:00Z'))
+    try {
+      state.view = 'list'
+      state.listed = '2026-10-03'
+      show()
+      ;(state.toolbar.onCreate as () => void)()
+      expect(state.setEditing).toHaveBeenCalledWith({
+        mode: 'create',
+        draft: expect.objectContaining({ start: '2026-10-03' }),
+      })
+    } finally {
+      vi.useRealTimers()
+    }
+  })
 })
 
 describe('CalendarPage', () => {
