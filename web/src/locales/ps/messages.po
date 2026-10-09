@@ -26,6 +26,11 @@ msgstr "(سمول شوی)"
 msgid "(expand)"
 msgstr "(پراخول)"
 
+#. placeholder {0}: file.oldPath
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "(from {0})"
+msgstr ""
+
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "(No title)"
@@ -61,6 +66,11 @@ msgstr "{0, plural, one {{imported} پېښه وارده شوه} other {{imported
 #: src/features/calendar/dialogs/import-dialog.tsx
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} پېښه دمخه په کليز کې شته} other {{skipped} پېښې دمخه په کليز کې شته}}"
+
+#. placeholder {0}: files.length
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "{0, plural, one {# file changed} other {# files changed}}"
+msgstr ""
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -187,6 +197,10 @@ msgstr "{totalCount, plural, one {# توکی} other {# توکي}}"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
 msgstr "{totalDescendants, plural, one {# ځواب} other {+# نور ځوابونه}}"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -488,6 +502,10 @@ msgstr "بانر لرې شو"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "بانر نوی شو"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Binary file not shown"
+msgstr ""
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -2045,6 +2063,10 @@ msgstr "د لاسرسي قاعدې نه دي تنظیم شوې. د دې سرچی
 msgid "No activity yet"
 msgstr "تر اوسه هیڅ فعالیت نشته"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "No changes to display"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "تر اوسه هیڅ تبصرې نشته"
@@ -2139,6 +2161,15 @@ msgstr "هیڅوک"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Normal"
 msgstr "عادي"
+
+#. placeholder {0}: formatFileSize(file.limit)
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Not compared: larger than {0}"
+msgstr ""
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Not compared: over the size limit"
+msgstr ""
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2892,6 +2923,10 @@ msgstr "سرچینې"
 msgid "Spacious"
 msgstr "پراخه"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Split"
+msgstr ""
+
 #: src/features/calendar/editor.tsx
 msgid "Start"
 msgstr "پیل"
@@ -3221,6 +3256,10 @@ msgstr "بېرته راګرځول"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "د API ناڅاپي تېروتنه"
+
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Unified"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
