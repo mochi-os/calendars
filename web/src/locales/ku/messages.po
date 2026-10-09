@@ -185,6 +185,10 @@ msgstr "{sentLabel} ji {totalLabel}"
 msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {carekê} other {# caran}}"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "{topicLabel} moved to the {categoryLabel} category"
+msgstr "{topicLabel} bo kategoriya {categoryLabel} hate veguhastin"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# hêman} other {# hêman}}"
@@ -676,6 +680,10 @@ msgstr "Binnivîs"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
 msgstr "Kategoriya van agahdariyan"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Category updated"
+msgstr "Kategorî hat nûkirin"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
@@ -1510,6 +1518,10 @@ msgstr "Wêne nehat barkirin"
 msgid "Failed to load item"
 msgstr "Barkirina xalê neserkeftî bû"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to load notification categories"
+msgstr "Barkirina kategoriyên agahdariyê neserkeftî bû"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
 msgstr "Barkirina promptan neserkeftî bû"
@@ -1597,6 +1609,10 @@ msgstr "Vegerandin neserkeftî bû"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
 msgstr "Rojanekirina pankartê neserkeftî bû"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to update category"
+msgstr "Rojanekirina kategoriyê neserkeftî bû"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"

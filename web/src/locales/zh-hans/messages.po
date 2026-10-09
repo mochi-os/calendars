@@ -185,6 +185,10 @@ msgstr "{sentLabel} / {totalLabel}"
 msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {一次} other {共 # 次}}"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "{topicLabel} moved to the {categoryLabel} category"
+msgstr "{topicLabel}已移至{categoryLabel}分类"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# 项} other {# 项}}"
@@ -676,6 +680,10 @@ msgstr "说明文字"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
 msgstr "这些通知的分类"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Category updated"
+msgstr "分类已更新"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
@@ -1510,6 +1518,10 @@ msgstr "无法加载图片"
 msgid "Failed to load item"
 msgstr "加载条目失败"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to load notification categories"
+msgstr "加载通知类别失败"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
 msgstr "加载提示词失败"
@@ -1597,6 +1609,10 @@ msgstr "撤销失败"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
 msgstr "更新横幅失败"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to update category"
+msgstr "更新分类失败"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"

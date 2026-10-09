@@ -185,6 +185,10 @@ msgstr "{sentLabel} из {totalLabel}"
 msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {один раз} one {# раз} few {# раза} many {# раз} other {# раза}}"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "{topicLabel} moved to the {categoryLabel} category"
+msgstr "{topicLabel} теперь в категории {categoryLabel}"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# элемент} few {# элемента} many {# элементов} other {# элемента}}"
@@ -676,6 +680,10 @@ msgstr "Подпись"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
 msgstr "Категория этих уведомлений"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Category updated"
+msgstr "Категория обновлена"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
@@ -1510,6 +1518,10 @@ msgstr "Не удалось загрузить изображение"
 msgid "Failed to load item"
 msgstr "Не удалось загрузить элемент"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to load notification categories"
+msgstr "Не удалось загрузить категории уведомлений"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
 msgstr "Не удалось загрузить запросы"
@@ -1597,6 +1609,10 @@ msgstr "Не удалось отменить"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
 msgstr "Не удалось обновить баннер"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to update category"
+msgstr "Не удалось обновить категорию"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"

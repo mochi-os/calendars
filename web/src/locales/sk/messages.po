@@ -185,6 +185,10 @@ msgstr "{sentLabel} z {totalLabel}"
 msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {raz} few {#-krát} many {#-krát} other {#-krát}}"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "{topicLabel} moved to the {categoryLabel} category"
+msgstr "{topicLabel} teraz patrí do kategórie {categoryLabel}"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# položka} few {# položky} many {# položky} other {# položiek}}"
@@ -676,6 +680,10 @@ msgstr "Popis"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
 msgstr "Kategória pre tieto notifikácie"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Category updated"
+msgstr "Kategória aktualizovaná"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
@@ -1510,6 +1518,10 @@ msgstr "Obrázok sa nepodarilo načítať"
 msgid "Failed to load item"
 msgstr "Nepodarilo sa načítať položku"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to load notification categories"
+msgstr "Nepodarilo sa načítať kategórie notifikácií"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
 msgstr "Nepodarilo sa načítať výzvy"
@@ -1597,6 +1609,10 @@ msgstr "Nepodarilo sa vrátiť späť"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
 msgstr "Nepodarilo sa aktualizovať banner"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to update category"
+msgstr "Nepodarilo sa aktualizovať kategóriu"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"

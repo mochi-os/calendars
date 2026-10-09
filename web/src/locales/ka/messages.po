@@ -185,6 +185,10 @@ msgstr "{sentLabel} / {totalLabel}"
 msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {ერთხელ} other {# ჯერ}}"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "{topicLabel} moved to the {categoryLabel} category"
+msgstr "{topicLabel} გადატანილია კატეგორიაში {categoryLabel}"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, other {# ერთეული}}"
@@ -676,6 +680,10 @@ msgstr "წარწერა"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
 msgstr "ამ შეტყობინებების კატეგორია"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Category updated"
+msgstr "კატეგორია განახლდა"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
@@ -1510,6 +1518,10 @@ msgstr "სურათის ჩატვირთვა ვერ მოხე
 msgid "Failed to load item"
 msgstr "ელემენტის ჩატვირთვა ვერ მოხერხდა"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to load notification categories"
+msgstr "შეტყობინებების კატეგორიების ჩატვირთვა ვერ მოხერხდა"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
 msgstr "მოთხოვნების ჩატვირთვა ვერ მოხერხდა"
@@ -1597,6 +1609,10 @@ msgstr "დაბრუნება ვერ მოხერხდა"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
 msgstr "ბანერის განახლება ვერ მოხერხდა"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to update category"
+msgstr "კატეგორიის განახლება ვერ მოხერხდა"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"

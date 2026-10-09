@@ -185,6 +185,10 @@ msgstr "{sentLabel} ከ {totalLabel}"
 msgid "{times, plural, =1 {once} other {# times}}"
 msgstr "{times, plural, =1 {አንድ ጊዜ} other {# ጊዜ}}"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "{topicLabel} moved to the {categoryLabel} category"
+msgstr "{topicLabel} ወደ {categoryLabel} ምድብ ተዛውሯል"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# ንጥል} other {# ንጥሎች}}"
@@ -676,6 +680,10 @@ msgstr "መግለጫ ጽሑፍ"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
 msgstr "ለእነዚህ ማሳወቂያዎች ምድብ"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Category updated"
+msgstr "ምድብ ተዘምኗል"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
@@ -1510,6 +1518,10 @@ msgstr "ምስሉን መጫን አልተሳካም"
 msgid "Failed to load item"
 msgstr "ንጥልን መጫን አልተሳካም"
 
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to load notification categories"
+msgstr "የማሳወቂያ ምድቦችን መጫን አልተሳካም"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
 msgstr "ጥያቄዎችን መጫን አልተሳካም"
@@ -1597,6 +1609,10 @@ msgstr "መቀልበስ አልተሳካም"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
 msgstr "ባነርን ማዘመን አልተሳካም"
+
+#: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+msgid "Failed to update category"
+msgstr "ምድብን ማዘመን አልተሳካም"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to update comment"
