@@ -75,6 +75,16 @@ vi.mock('@/hooks/use-events', () => ({
     return {
     instances: [
       instance(22, 'Design review'),
+      // An all-day occurrence whose instants come before the next day's
+      // events, as midnight UTC does in a zone behind UTC: its date is the
+      // 24th, after the 23rd's.
+      {
+        ...instance(24, 'Holiday'),
+        allday: true,
+        date: '2026-09-24',
+        start: Date.UTC(2026, 8, 23, 0) / 1000,
+        finish: Date.UTC(2026, 8, 24, 0) / 1000,
+      },
       { ...instance(23, 'Wax boots'), recurring: true, alarm: true },
       { ...instance(24, 'Called off'), status: 'CANCELLED' },
       { ...instance(24, ''), event: 'e24b', start: noon(2026, 9, 24) + 60 },
@@ -82,6 +92,29 @@ vi.mock('@/hooks/use-events', () => ({
       {
         ...instance(25, 'Overnight'),
         finish: noon(2026, 9, 26),
+      },
+      // An early swim, and an all-day occurrence the same day expanded by a
+      // server ten hours behind UTC, whose instants begin after the swim's.
+      {
+        ...instance(25, 'Early swim'),
+        start: Date.UTC(2026, 8, 25, 6) / 1000,
+        finish: Date.UTC(2026, 8, 25, 7) / 1000,
+      },
+      {
+        ...instance(25, 'Market day'),
+        allday: true,
+        date: '2026-09-25',
+        start: Date.UTC(2026, 8, 25, 10) / 1000,
+        finish: Date.UTC(2026, 8, 26, 10) / 1000,
+      },
+      // Another that day, from the same instant: they go by title.
+      {
+        ...instance(25, 'Bin day'),
+        event: 'e25b',
+        allday: true,
+        date: '2026-09-25',
+        start: Date.UTC(2026, 8, 25, 10) / 1000,
+        finish: Date.UTC(2026, 8, 26, 10) / 1000,
       },
       // An all-day occurrence expanded by a server nine hours ahead of this
       // browser's UTC: its instants begin on the 21st, its date is the 22nd.
@@ -200,6 +233,33 @@ describe('Agenda top', () => {
     } finally {
       measured.mockRestore()
     }
+  })
+})
+
+describe('Agenda order', () => {
+  it('lists the days in date order, whatever order their instants arrive in', () => {
+    show()
+    const days = screen
+      .getAllByRole('heading', { level: 2 })
+      .map((heading) => heading.textContent ?? '')
+    expect(days.some((day) => day.startsWith('2026-09-23'))).toBe(true)
+    expect(days.some((day) => day.startsWith('2026-09-24'))).toBe(true)
+    expect(days).toEqual([...days].sort())
+  })
+
+  it("puts a day's all-day occurrences before its timed ones", () => {
+    show()
+    const row = (summary: string) =>
+      screen.getByText(summary).closest('button') as HTMLElement
+    const before = (first: string, second: string) =>
+      row(first).compareDocumentPosition(row(second)) &
+      Node.DOCUMENT_POSITION_FOLLOWING
+    expect(before('Laundry', 'Design review')).toBeTruthy()
+    expect(before('Holiday', 'Called off')).toBeTruthy()
+    // Even one whose instants begin after a timed one's that day.
+    expect(before('Market day', 'Early swim')).toBeTruthy()
+    // Two from the same instant go by title.
+    expect(before('Bin day', 'Market day')).toBeTruthy()
   })
 })
 

@@ -22,6 +22,7 @@ import {
   eventStatus,
   finished,
   GeneralError,
+  naturalCompare,
   useFormat,
 } from '@mochi/web'
 import {
@@ -140,7 +141,11 @@ export function Agenda({ selected, onSelect, onTop }: Props) {
       : instances
   }, [instances, search])
 
-  // Grouped under the day each occurrence begins on.
+  // Grouped under the day each occurrence begins on, in date order rather
+  // than the order the instants came in: an all-day occurrence's instants are
+  // midnight where the server expanded it, which in a zone behind that falls
+  // on the day before. Within a day the all-day ones come first, then by
+  // start, then by title, as the Android list orders them.
   const days = useMemo(() => {
     const out = new Map<string, Instance[]>()
     for (const instance of matches) {
@@ -153,6 +158,19 @@ export function Agenda({ selected, onSelect, onTop }: Props) {
       else out.set(day, [instance])
     }
     return [...out.entries()]
+      .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
+      .map(
+        ([day, list]) =>
+          [
+            day,
+            list.sort(
+              (a, b) =>
+                Number(b.allday) - Number(a.allday) ||
+                a.start - b.start ||
+                naturalCompare(a.summary, b.summary)
+            ),
+          ] as const
+      )
   }, [matches, format, preferences.zones])
 
   // When a timed occurrence is: the clock times of a span within a day, or
