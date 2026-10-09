@@ -64,6 +64,14 @@ interface CalendarContextValue {
   /** The anchored day, as YYYY-MM-DD in the user's own zone. */
   date: string
   setDate: (date: string) => void
+  /**
+   * The day atop the list view as it scrolls, which the toolbar's title,
+   * the month pickers and paging follow; undefined outside the list, or
+   * until the list says.
+   */
+  listed?: string
+  /** Tells which day is atop the list view, under the current anchor. */
+  setListed: (day: string) => void
   today: string
   range: CalendarRange
   /** Week view: hide the days that are not work days. */
@@ -178,6 +186,11 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     [navigate]
   )
 
+  // Measured under one anchor, the day atop the list lapses with it.
+  const [top, setTop] = useState<{ date: string; day: string } | null>(null)
+  const listed = view === 'list' && top?.date === date ? top.day : undefined
+  const setListed = useCallback((day: string) => setTop({ date, day }), [date])
+
   const range = useMemo(
     () =>
       viewRange(view, date, {
@@ -220,6 +233,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       setView,
       date,
       setDate,
+      listed,
+      setListed,
       today,
       range,
       workweek,
@@ -247,6 +262,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       setView,
       date,
       setDate,
+      listed,
+      setListed,
       today,
       range,
       workweek,

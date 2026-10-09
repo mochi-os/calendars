@@ -6,6 +6,7 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import type { NavMenuItem, SidebarData } from '@mochi/web'
 import {
+  cleanup,
   fireEvent,
   render,
   screen,
@@ -23,6 +24,10 @@ const state = vi.hoisted(() => ({
   export: vi.fn(),
   save: vi.fn(),
   error: vi.fn(),
+  desktop: false,
+  listed: undefined as string | undefined,
+  /** The day the sidebar's month was last given as chosen. */
+  picked: undefined as unknown,
 }))
 
 vi.mock('@mochi/web', async (importOriginal) => {
@@ -30,8 +35,15 @@ vi.mock('@mochi/web', async (importOriginal) => {
   return {
     ...original,
     // Each sidebar row as a region named for it, holding its menu's entries.
-    AuthenticatedLayout: ({ sidebarData }: { sidebarData: SidebarData }) => (
+    AuthenticatedLayout: ({
+      sidebarData,
+      sidebarHeader,
+    }: {
+      sidebarData: SidebarData
+      sidebarHeader?: React.ReactNode
+    }) => (
       <div>
+        {sidebarHeader}
         {sidebarData.navGroups
           .flatMap(
             (group) =>
@@ -54,7 +66,11 @@ vi.mock('@mochi/web', async (importOriginal) => {
     ),
     CreateEntityDialog: () => null,
     ConfirmDialog: () => null,
-    useScreenSize: () => ({ isDesktop: false }),
+    useScreenSize: () => ({ isDesktop: state.desktop }),
+    MiniMonth: ({ selected }: { selected: unknown }) => {
+      state.picked = selected
+      return null
+    },
     shellSaveBlob: state.save,
     // The toast the action would show for a failure, without the toaster.
     toastAction: async (
@@ -87,8 +103,9 @@ vi.mock('@/context/calendar-context', () => ({
     shown: () => true,
     toggle: vi.fn(),
     only: state.only,
-    date: new Date(2026, 9, 2),
+    date: '2026-10-02',
     setDate: vi.fn(),
+    listed: state.listed,
     today: new Date(2026, 9, 2),
   }),
 }))
@@ -312,5 +329,23 @@ describe('CalendarsLayout birthdays menu', () => {
       menu('Birthdays').getByRole('button', { name: 'Copy calendar address' })
     )
     expect(state.copy).toHaveBeenCalledWith('c3')
+  })
+})
+
+describe('CalendarsLayout month', () => {
+  beforeEach(() => {
+    state.calendars = []
+    state.desktop = true
+    state.listed = undefined
+    state.picked = undefined
+  })
+
+  it("chooses the day the list has scrolled to in the sidebar's month, and the anchored day otherwise", () => {
+    show()
+    expect(state.picked).toBe('2026-10-02')
+    cleanup()
+    state.listed = '2026-10-12'
+    show()
+    expect(state.picked).toBe('2026-10-12')
   })
 })

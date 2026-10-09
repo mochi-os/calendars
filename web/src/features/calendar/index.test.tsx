@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DEFAULTS } from '@/hooks/use-preferences'
 import { CalendarPage } from './index'
@@ -19,6 +19,8 @@ const state = vi.hoisted(() => ({
   reload: vi.fn(),
   setEditing: vi.fn(),
   setDate: vi.fn(),
+  setListed: vi.fn(),
+  listed: undefined as string | undefined,
   /** What the page last gave the month grid, the time grid and the toolbar. */
   month: {} as Record<string, unknown>,
   time: {} as Record<string, unknown>,
@@ -42,6 +44,8 @@ beforeEach(() => {
   state.reload.mockReset()
   state.setEditing.mockReset()
   state.setDate.mockReset()
+  state.setListed.mockReset()
+  state.listed = undefined
   state.month = {}
   state.time = {}
   state.toolbar = {}
@@ -67,6 +71,8 @@ vi.mock('@/context/calendar-context', () => ({
         : { from: '2026-08-31', days: 42, date: state.date },
     date: state.date,
     setDate: state.setDate,
+    listed: state.listed,
+    setListed: state.setListed,
     setView: vi.fn(),
     today: '2026-09-15',
     preferences: DEFAULTS,
@@ -138,26 +144,17 @@ function show() {
 const TRUNCATED = 'Too many events to show them all. Choose a shorter range.'
 
 describe('CalendarPage list', () => {
-  it('gives the toolbar the day atop the list, until the list is anchored elsewhere', () => {
+  it('tells the context the day atop the list, and pages on from it with the arrow keys', () => {
     state.view = 'list'
-    const { rerender } = render(
-      <I18nProvider i18n={i18n}>
-        <CalendarPage />
-      </I18nProvider>
-    )
-    expect(state.toolbar.top).toBeUndefined()
-    act(() => (state.agenda.onTop as (day: string) => void)('2026-10-03'))
-    expect(state.toolbar.top).toBe('2026-10-03')
-    // The arrow keys page from it too, as the toolbar's arrows do.
+    show()
+    expect(state.agenda.onTop).toBe(state.setListed)
+    fireEvent.keyDown(document.body, { key: 'ArrowRight' })
+    expect(state.setDate).toHaveBeenLastCalledWith('2026-10-01')
+    cleanup()
+    state.listed = '2026-10-03'
+    show()
     fireEvent.keyDown(document.body, { key: 'ArrowRight' })
     expect(state.setDate).toHaveBeenLastCalledWith('2026-11-01')
-    state.date = '2026-11-01'
-    rerender(
-      <I18nProvider i18n={i18n}>
-        <CalendarPage />
-      </I18nProvider>
-    )
-    expect(state.toolbar.top).toBeUndefined()
   })
 })
 

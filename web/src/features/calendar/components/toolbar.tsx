@@ -41,14 +41,7 @@ import {
 } from 'lucide-react'
 import { useCalendarContext } from '@/context/calendar-context'
 
-export function Toolbar({
-  onCreate,
-  top,
-}: {
-  onCreate: () => void
-  /** The day atop the list view as it scrolls. */
-  top?: string
-}) {
+export function Toolbar({ onCreate }: { onCreate: () => void }) {
   const { t } = useLingui()
   const format = useFormat()
   const { isDesktop, isMobile } = useScreenSize()
@@ -57,6 +50,7 @@ export function Toolbar({
     setView,
     date,
     setDate,
+    listed,
     today,
     range,
     workweek,
@@ -85,7 +79,7 @@ export function Toolbar({
       )
 
   // The list is named after, and steps on from, the day it has scrolled to.
-  const shown = view === 'list' && top ? top : date
+  const shown = listed ?? date
   const step = (direction: number) =>
     setDate(stepDate(view, shown, direction))
 

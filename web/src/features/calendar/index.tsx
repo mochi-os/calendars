@@ -57,6 +57,8 @@ export function CalendarPage() {
     range,
     date,
     setDate,
+    listed,
+    setListed,
     setView,
     today,
     preferences,
@@ -356,10 +358,7 @@ export function CalendarPage() {
     else run('all')
   }
 
-  // The day atop the list as it scrolls, for the toolbar and paging. It was
-  // measured under one anchor and lapses with it.
-  const [top, setTop] = useState<{ date: string; day: string } | null>(null)
-  const listed = view === 'list' && top?.date === date ? top.day : undefined
+  // The list pages on from the day it has scrolled to.
   const page = (direction: number) =>
     setDate(stepDate(view, listed ?? date, direction))
 
@@ -385,7 +384,7 @@ export function CalendarPage() {
       <Agenda
         selected={current}
         onSelect={open}
-        onTop={(day) => setTop({ date, day })}
+        onTop={setListed}
       />
     ) : view === 'day' || view === 'week' ? (
       <TimeGrid
@@ -455,7 +454,7 @@ export function CalendarPage() {
 
   return (
     <div className='flex h-full min-h-0 flex-col'>
-      <Toolbar onCreate={createNow} top={listed} />
+      <Toolbar onCreate={createNow} />
       {shown.length > 0 && data?.truncated && (
         <p className='bg-muted text-muted-foreground px-3 py-1 text-sm'>
           {t`Too many events to show them all. Choose a shorter range.`}
