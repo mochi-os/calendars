@@ -412,14 +412,16 @@ export function EventEditor() {
     }
     if (!ordered) return
     try {
-      const result = await createMutation.mutateAsync({
+      await createMutation.mutateAsync({
         calendar: current.calendar,
         components: [draftComponent(current)],
       })
       remember(current)
       reveal(current.calendar)
       toast.success(t`Event created`)
-      follow(result.event.id, draftInstants(current).start)
+      // Create is the end of making it: the event is on the calendar now,
+      // and opens from there. A copy, made to be changed, opens in the panel.
+      close()
     } catch (error) {
       toast.error(getErrorMessage(error, t`Failed to save the event`))
     }

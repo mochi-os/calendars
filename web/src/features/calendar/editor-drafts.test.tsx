@@ -193,16 +193,13 @@ describe('EventEditor making an event', () => {
     expect(state.update).not.toHaveBeenCalled()
   })
 
-  it('creates the event with Create, then goes on as its editor', async () => {
+  it('creates the event with Create, then closes', async () => {
     show()
     fireEvent.change(title(), { target: { value: 'Dentist' } })
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
-    await waitFor(() =>
-      expect(setEditing).toHaveBeenCalledWith({
-        mode: 'edit',
-        event: 'e9',
-        start: noon,
-      })
+    await waitFor(() => expect(setEditing).toHaveBeenCalledWith(null))
+    expect(setEditing).not.toHaveBeenCalledWith(
+      expect.objectContaining({ mode: 'edit' })
     )
     const request = state.create.mock.calls[0][0] as {
       calendar: string
