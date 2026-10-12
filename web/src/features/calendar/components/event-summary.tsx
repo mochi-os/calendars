@@ -17,7 +17,6 @@ import {
   descriptionText,
   EventTitle,
   eventStatus,
-  flightNumber,
   useEventStatus,
   useFormat,
   useLinks,
@@ -33,6 +32,7 @@ import {
   TextAlignStart,
 } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
+import { locationTarget } from '@/lib/location'
 
 /**
  * What a read-only occurrence says of itself, a subscription's or a
@@ -112,9 +112,7 @@ export function EventSummary({
   // A subscription's description may be HTML, as Google's are; the summary
   // shows its text, whole, since a read-only event has no editor to show it.
   const description = descriptionText(instance.description)
-  // A location that is a flight number opens on the user's flight tracker;
-  // anything else opens as a map search.
-  const flight = flightNumber(instance.location)
+  const { href, flight } = locationTarget(instance.location, links)
 
   return (
     <div className='space-y-2'>
@@ -150,7 +148,7 @@ export function EventSummary({
           {/* In a new tab: the shell's sandbox allows popups, so a plain
             anchor is enough. */}
           <a
-            href={flight ? links.flight(flight) : links.map(instance.location)}
+            href={href}
             target='_blank'
             rel='noopener noreferrer'
             className='text-primary min-w-0 break-words underline-offset-4 hover:underline'

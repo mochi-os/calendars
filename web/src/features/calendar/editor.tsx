@@ -91,6 +91,7 @@ import { reminderChoices } from '@/hooks/use-options'
 import { useRuleSummary } from '@/hooks/use-rule-summary'
 import { CountInput } from '@/features/calendar/components/count-input'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
+import { LocationButton } from '@/features/calendar/components/location-button'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
 const WEEKDAY_ANCHOR = '2024-01-07'
@@ -824,9 +825,10 @@ function EditorFields({
         />
       </div>
 
-      <div className='sm:col-span-2'>
+      <div className='flex items-center gap-1 sm:col-span-2'>
         <Input
           id='event-location'
+          className='flex-1'
           aria-label={located}
           placeholder={located}
           value={draft.location}
@@ -837,6 +839,7 @@ function EditorFields({
             }))
           }
         />
+        <LocationButton location={draft.location} />
       </div>
 
       <div className='sm:col-span-2'>

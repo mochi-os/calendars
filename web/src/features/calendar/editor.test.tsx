@@ -285,6 +285,44 @@ describe('EventEditor', () => {
     }
   })
 
+  it('opens a place on the map service from beside its location, in a new tab', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    expect(screen.queryByRole('link', { name: 'Show on map' })).toBeNull()
+    fireEvent.change(screen.getByLabelText('Location'), {
+      target: { value: 'Meeting room' },
+    })
+    const link = screen.getByRole('link', { name: 'Show on map' })
+    expect(link).toHaveAttribute(
+      'href',
+      'https://www.openstreetmap.org/search?query=Meeting%20room'
+    )
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+  })
+
+  it('opens a flight number on the flight tracker instead', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    fireEvent.change(screen.getByLabelText('Location'), {
+      target: { value: 'Aer Lingus EI 59' },
+    })
+    expect(screen.queryByRole('link', { name: 'Show on map' })).toBeNull()
+    expect(screen.getByRole('link', { name: 'Track flight' })).toHaveAttribute(
+      'href',
+      'https://www.flightradar24.com/data/flights/ei59'
+    )
+  })
+
+  it('offers no location button for a location of only spaces', async () => {
+    show()
+    await screen.findByLabelText('Title')
+    fireEvent.change(screen.getByLabelText('Location'), {
+      target: { value: '   ' },
+    })
+    expect(screen.queryByRole('link')).toBeNull()
+  })
+
   it('names the calendar inside its select, with the calendar icon beside the calendar', async () => {
     show()
     await screen.findByLabelText('Title')
