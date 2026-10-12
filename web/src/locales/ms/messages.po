@@ -29,7 +29,7 @@ msgstr "(kembangkan)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "(daripada {0})"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -70,7 +70,7 @@ msgstr "{0, plural, other {{skipped} acara sudah ada dalam kalendar}}"
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# fail diubah} other {# fail diubah}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -111,9 +111,14 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#mgg} other {#mgg}}"
 
+#: src/features/calendar/components/agenda.tsx
+msgctxt "ISO date"
+msgid "{date} {weekday}"
+msgstr "{date} {weekday}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} hingga {to}"
 
@@ -136,7 +141,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} hingga {to}"
 
@@ -199,7 +204,7 @@ msgstr "{totalDescendants, plural, one {# balasan} other {+# balasan lagi}}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {# lagi fail tidak dipaparkan} other {# lagi fail tidak dipaparkan}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -504,7 +509,7 @@ msgstr "Sepanduk dikemas kini"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "Fail binari tidak ditunjukkan"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -649,7 +654,6 @@ msgstr "Kamera tidak tersedia"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "Batal"
 
@@ -760,7 +764,6 @@ msgstr "Kosongkan carian"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Tutup"
@@ -924,7 +927,8 @@ msgstr "Disalin ke papan keratan"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -934,10 +938,6 @@ msgstr "Salin"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Salin alamat kalendar"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "Salin acara"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -970,6 +970,7 @@ msgstr "Tidak dapat mengesahkan dengan akaun itu. Sila cuba lagi."
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "Cipta"
 
@@ -1350,6 +1351,7 @@ msgid "Error"
 msgstr "Ralat"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1368,12 +1370,6 @@ msgstr "Acara dipadamkan"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "Acara dialihkan"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "Acara disimpan"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1590,6 +1586,9 @@ msgid "Failed to save the colour"
 msgstr "Gagal menyimpan warna"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "Gagal menyimpan acara"
 
@@ -2082,7 +2081,7 @@ msgstr "Tiada aktiviti lagi"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "Tiada perubahan untuk dipaparkan"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
@@ -2182,11 +2181,11 @@ msgstr "Biasa"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "Tidak dibandingkan: lebih besar daripada {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "Tidak dibandingkan: melebihi had saiz"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2698,7 +2697,6 @@ msgstr "Sabtu"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -2943,7 +2941,7 @@ msgstr "Luas"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "Pisah"
 
 #: src/features/calendar/editor.tsx
 msgid "Start"
@@ -3277,7 +3275,7 @@ msgstr "Ralat API tidak dijangka"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "Bersepadu"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3475,7 +3473,6 @@ msgstr "Akaun anda telah dipindahkan ke sini dari {source}. Sehingga anda memada
 msgid "Your attachments will be lost."
 msgstr "Lampiran anda akan hilang."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "Perubahan anda akan hilang."

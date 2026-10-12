@@ -29,7 +29,7 @@ msgstr "(展開)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "（來自 {0}）"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -70,7 +70,7 @@ msgstr "{0, plural, other {{skipped} 個活動已在行事曆中}}"
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# 個檔案已變更} other {# 個檔案已變更}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -111,9 +111,14 @@ msgstr "{count, plural, one {#分鐘} other {#分鐘}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週} other {#週}}"
 
+#: src/features/calendar/components/agenda.tsx
+msgctxt "ISO date"
+msgid "{date} {weekday}"
+msgstr "{date}（{weekday}）"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day} {from} 至 {to}"
 
@@ -136,7 +141,7 @@ msgstr "{from}至{to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} 至 {to}"
 
@@ -199,7 +204,7 @@ msgstr "{totalDescendants, plural, one {# 則回覆} other {+# 則更多回覆}}
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {另有 # 個檔案未顯示} other {另有 # 個檔案未顯示}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -504,7 +509,7 @@ msgstr "已更新橫幅"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "未顯示二進位檔案"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -649,7 +654,6 @@ msgstr "相機不可用"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "取消"
 
@@ -760,7 +764,6 @@ msgstr "清除搜尋"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "關閉"
@@ -924,7 +927,8 @@ msgstr "已複製到剪貼簿"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -934,10 +938,6 @@ msgstr "複製"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "複製行事曆網址"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "複製活動"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -970,6 +970,7 @@ msgstr "無法使用該帳戶進行驗證。請重試。"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "建立"
 
@@ -1350,6 +1351,7 @@ msgid "Error"
 msgstr "錯誤"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1368,12 +1370,6 @@ msgstr "已刪除活動"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "已移動活動"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "已儲存活動"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1590,6 +1586,9 @@ msgid "Failed to save the colour"
 msgstr "儲存顏色失敗"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "儲存活動失敗"
 
@@ -2082,7 +2081,7 @@ msgstr "尚無活動"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "無變更可顯示"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
@@ -2182,11 +2181,11 @@ msgstr "標準"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "未比較：大於 {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "未比較：超過大小限制"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2698,7 +2697,6 @@ msgstr "星期六"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -2943,7 +2941,7 @@ msgstr "寬鬆"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "分割"
 
 #: src/features/calendar/editor.tsx
 msgid "Start"
@@ -3277,7 +3275,7 @@ msgstr "意外的 API 錯誤"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "統一"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3475,7 +3473,6 @@ msgstr "您的帳號已從 {source} 遷移至此。在您於該處刪除帳號�
 msgid "Your attachments will be lost."
 msgstr "您的附件將遺失。"
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "你的變更將會遺失。"

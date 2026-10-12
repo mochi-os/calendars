@@ -22,6 +22,7 @@ import {
   eventStatus,
   finished,
   GeneralError,
+  naturalCompare,
   useFormat,
 } from '@mochi/web'
 import {
@@ -46,6 +47,8 @@ interface Props {
   /** The occurrence whose summary or editor is open, drawn tinted. */
   selected?: string
   onSelect: (instance: Instance, anchor: HTMLElement) => void
+  /** Told the day atop the list as it scrolls, for the toolbar. */
+  onTop?: (day: string) => void
 }
 
 /**
@@ -53,7 +56,7 @@ interface Props {
  * and more as the reader scrolls - earlier pages above, later pages below -
  * until the calendars' first and last events are on the page.
  */
-export function Agenda({ selected, onSelect }: Props) {
+export function Agenda({ selected, onSelect, onTop }: Props) {
   const { t } = useLingui()
   const format = useFormat()
   const { date, today, calendars, visible, preferences, search } =
@@ -61,14 +64,18 @@ export function Agenda({ selected, onSelect }: Props) {
   const shown = useMemo(() => visible.map((c) => c.id), [visible])
 
   /**
-   * A day's heading: its short weekday and its date in the user's date
-   * format, in the order the language puts them.
+   * A day as the list writes one, in its headings and at each end of a span
+   * across days: its short weekday and its date in the user's date format,
+   * in the order the language puts them. A year-first date leads, with the
+   * weekday after it, in brackets in the languages that bracket one.
    */
   const heading = (day: string) => {
     const noon = new Date(format.timestampAt(day, 720) * 1000)
     const weekday = format.formatWeekdayShort(noon)
     const date = format.formatDate(noon)
-    return t`${weekday}, ${date}`
+    return format.dateFormat === 'YYYY-MM-DD'
+      ? t({ message: `${date} ${weekday}`, context: 'ISO date' })
+      : t`${weekday}, ${date}`
   }
 
   /** Over already, or cancelled, and drawn quieter. */
@@ -134,9 +141,16 @@ export function Agenda({ selected, onSelect }: Props) {
       : instances
   }, [instances, search])
 
-  // Grouped under the day each occurrence begins on.
+  // Grouped under the day each occurrence begins on, in date order rather
+  // than the order the instants came in: an all-day occurrence's instants are
+  // midnight where the server expanded it, which in a zone behind that falls
+  // on the day before. Within a day the all-day ones come first, then by
+  // start, then by title, as the Android list orders them. The day the list
+  // opened on leads it even when nothing is on it, as its heading alone, so
+  // the reader sees where they are; a search lists only what it matched.
   const days = useMemo(() => {
     const out = new Map<string, Instance[]>()
+    if (!search.trim()) out.set(date, [])
     for (const instance of matches) {
       const day = coveredDays(
         preferences.zones ? instance : { ...instance, zone: undefined },
@@ -147,7 +161,44 @@ export function Agenda({ selected, onSelect }: Props) {
       else out.set(day, [instance])
     }
     return [...out.entries()]
-  }, [matches, format, preferences.zones])
+      .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
+      .map(
+        ([day, list]) =>
+          [
+            day,
+            list.sort(
+              (a, b) =>
+                Number(b.allday) - Number(a.allday) ||
+                a.start - b.start ||
+                naturalCompare(a.summary, b.summary)
+            ),
+          ] as const
+      )
+  }, [matches, format, preferences.zones, search, date])
+
+  // When a timed occurrence is: the clock times of a span within a day, or
+  // across days each end's day, written as the headings write one, and time,
+  // on lines of their own. The ends read in their own zones when the views
+  // show events in theirs.
+  const when = (instance: Instance) => {
+    const zones = preferences.zones ? instance.zone : undefined
+    const days = coveredDays(
+      preferences.zones ? instance : { ...instance, zone: undefined },
+      format.zonedDay
+    )
+    const from = new Date(instance.start * 1000)
+    const to = new Date(instance.finish * 1000)
+    if (days.start === days.finish) {
+      return format.formatClockRange(from, to, zones)
+    }
+    const end = (date: Date, zone?: string) =>
+      `${heading(format.zonedDay(date, zone))} ${format.formatClock(date, zone)}`
+    return format.formatRange(
+      end(from, zones?.start),
+      end(to, zones?.finish || zones?.start),
+      true
+    )
+  }
 
   // --- Loading more ---
   //
@@ -165,6 +216,26 @@ export function Agenda({ selected, onSelect }: Props) {
   // empty page would leave nothing to see, so the search carries on to the
   // next one until something lands or the first event is reached.
   const seeking = useRef<number | null>(null)
+  // The day last told atop the list, and the anchor it was told under.
+  const atop = useRef<{ date: string; day: string } | null>(null)
+
+  // The first day whose rows still reach below the top of the list, told
+  // when it or the anchor changes.
+  const report = useCallback(() => {
+    const box = scroller.current
+    if (!box || !onTop) return
+    const edge = box.getBoundingClientRect().top
+    for (const section of box.querySelectorAll<HTMLElement>('[data-day]')) {
+      if (section.getBoundingClientRect().bottom > edge + 1) {
+        const day = section.dataset.day ?? ''
+        if (atop.current?.day !== day || atop.current.date !== date) {
+          atop.current = { date, day }
+          onTop(day)
+        }
+        return
+      }
+    }
+  }, [onTop, date])
 
   const more = useCallback(() => {
     const box = scroller.current
@@ -218,6 +289,10 @@ export function Agenda({ selected, onSelect }: Props) {
     }
   }, [instances])
 
+  // Days arriving or going move what is at the top as much as a scroll does,
+  // and a new anchor wants telling afresh.
+  useLayoutEffect(() => report(), [days, report])
+
   const empty =
     !pending && !failed && instances.length === 0 && !earlier && !later
   // A search that matched nothing in everything there is to load, which is
@@ -245,6 +320,7 @@ export function Agenda({ selected, onSelect }: Props) {
           // Reaching the top by touch or scrollbar counts as a scroll up.
           if (box.scrollTop === 0 && lastTop.current > 0) loadEarlier()
           lastTop.current = box.scrollTop
+          report()
         }}
       >
         {earlier && (
@@ -266,7 +342,7 @@ export function Agenda({ selected, onSelect }: Props) {
           <EmptyState icon={Search} title={t`No matches`} />
         ) : (
           days.map(([day, list]) => (
-            <div key={day}>
+            <div key={day} data-day={day}>
               <h2
                 className={cn(
                   'sticky top-0 px-3 py-1.5 text-sm font-semibold',
@@ -292,49 +368,52 @@ export function Agenda({ selected, onSelect }: Props) {
                         onClick={(pointer) =>
                           onSelect(instance, pointer.currentTarget)
                         }
+                        // Columns of a fixed width, the same on every row, so
+                        // each one lines up down the list whatever a row holds:
+                        // the dot, the title, the time (room for a span across
+                        // days on two lines), the location, the calendar and,
+                        // last, the marks. An all-day row keeps its empty time
+                        // cell, and each mark its own place, empty when the
+                        // occurrence has none.
                         className={cn(
-                          'hover:bg-hover flex w-full items-center gap-3 border-b px-3 py-2.5 text-start',
+                          'hover:bg-hover grid w-full grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-3 border-b px-3 py-2.5 text-start md:grid-cols-[auto_minmax(0,2fr)_12rem_minmax(0,1fr)_10rem_auto]',
                           over(instance) && 'opacity-60',
                           key === selected && 'bg-primary/10'
                         )}
                       >
                         <EventDot event={event} className='size-3' />
-                        <EventTitle
-                          event={event}
-                          className='flex-[2] font-medium'
-                        />
-                        {instance.alarm && (
-                          <Bell
-                            className='size-3.5 shrink-0 opacity-70'
-                            aria-label={t`Reminder`}
-                          />
-                        )}
-                        {instance.exception ? (
-                          <Repeat2
-                            className='size-3.5 shrink-0 opacity-70'
-                            aria-label={t`Changed occurrence`}
-                          />
-                        ) : instance.recurring ? (
-                          <Repeat
-                            className='size-3.5 shrink-0 opacity-70'
-                            aria-label={t`Repeats`}
-                          />
-                        ) : null}
-                        {!instance.allday && (
-                          <span className='text-muted-foreground shrink-0 text-sm'>
-                            {format.formatClock(
-                              new Date(instance.start * 1000),
-                              preferences.zones
-                                ? instance.zone?.start
-                                : undefined
-                            )}
-                          </span>
-                        )}
-                        <span className='text-muted-foreground hidden min-w-0 flex-1 truncate text-sm md:block'>
+                        <EventTitle event={event} className='font-medium' />
+                        <span className='text-muted-foreground text-sm whitespace-pre-line'>
+                          {instance.allday ? '' : when(instance)}
+                        </span>
+                        <span className='text-muted-foreground hidden min-w-0 truncate text-sm md:block'>
                           {instance.location}
                         </span>
-                        <span className='text-muted-foreground hidden w-40 shrink-0 truncate text-sm md:block'>
+                        <span className='text-muted-foreground hidden min-w-0 truncate text-sm md:block'>
                           {names.get(instance.calendar) ?? ''}
+                        </span>
+                        <span className='flex items-center gap-3'>
+                          {instance.alarm ? (
+                            <Bell
+                              className='size-3.5 shrink-0 opacity-70'
+                              aria-label={t`Reminder`}
+                            />
+                          ) : (
+                            <span aria-hidden className='size-3.5 shrink-0' />
+                          )}
+                          {instance.exception ? (
+                            <Repeat2
+                              className='size-3.5 shrink-0 opacity-70'
+                              aria-label={t`Changed occurrence`}
+                            />
+                          ) : instance.recurring ? (
+                            <Repeat
+                              className='size-3.5 shrink-0 opacity-70'
+                              aria-label={t`Repeats`}
+                            />
+                          ) : (
+                            <span aria-hidden className='size-3.5 shrink-0' />
+                          )}
                         </span>
                       </button>
                     </li>

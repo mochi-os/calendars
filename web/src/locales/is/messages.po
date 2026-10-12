@@ -29,7 +29,7 @@ msgstr "(útvíkka)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "(frá {0})"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -70,7 +70,7 @@ msgstr "{0, plural, one {{skipped} viðburður er þegar í dagatalinu} other {{
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# skrá breytt} other {# skrám breytt}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -111,9 +111,14 @@ msgstr "{count, plural, one {#mín} other {#mín}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#v} other {#v}}"
 
+#: src/features/calendar/components/agenda.tsx
+msgctxt "ISO date"
+msgid "{date} {weekday}"
+msgstr "{date} {weekday}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} til {to}"
 
@@ -136,7 +141,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from} til {to}"
 
@@ -199,7 +204,7 @@ msgstr "{totalDescendants, plural, one {# svar} other {+# fleiri svör}}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {# skrá til viðbótar ekki sýnd} other {# skrár til viðbótar ekki sýndar}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -504,7 +509,7 @@ msgstr "Borði uppfærður"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "Tvíundarskrá er ekki sýnd"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -649,7 +654,6 @@ msgstr "Myndavél ekki tiltæk"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "Hætta við"
 
@@ -760,7 +764,6 @@ msgstr "Hreinsa leit"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Loka"
@@ -924,7 +927,8 @@ msgstr "Afritað á klippiborðið"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -934,10 +938,6 @@ msgstr "Afrita"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Afrita vistfang dagatals"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "Afrita viðburð"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -970,6 +970,7 @@ msgstr "Ekki tókst að staðfesta með þeim reikningi. Reyndu aftur."
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "Búa til"
 
@@ -1350,6 +1351,7 @@ msgid "Error"
 msgstr "Villa"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1368,12 +1370,6 @@ msgstr "Viðburði eytt"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "Viðburður færður"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "Viðburður vistaður"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1590,6 +1586,9 @@ msgid "Failed to save the colour"
 msgstr "Tókst ekki að vista litinn"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "Tókst ekki að vista viðburðinn"
 
@@ -2082,7 +2081,7 @@ msgstr "Engin virkni ennþá"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "Engar breytingar til að birta"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
@@ -2182,11 +2181,11 @@ msgstr "Venjulegt"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "Ekki borið saman: stærra en {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "Ekki borið saman: yfir stærðarmörkum"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2698,7 +2697,6 @@ msgstr "Laugardagur"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -2943,7 +2941,7 @@ msgstr "Rúmgott"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "Skipta"
 
 #: src/features/calendar/editor.tsx
 msgid "Start"
@@ -3277,7 +3275,7 @@ msgstr "Óvænt API-villa"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "Sameinað"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3475,7 +3473,6 @@ msgstr "Reikningurinn þinn var fluttur hingað frá {source}. Þar til þú ey�
 msgid "Your attachments will be lost."
 msgstr "Viðhengin þín glatast."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "Breytingarnar þínar tapast."

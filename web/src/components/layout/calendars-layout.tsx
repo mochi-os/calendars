@@ -82,8 +82,17 @@ function filename(name: string) {
 export function CalendarsLayout() {
   const { t } = useLingui()
   const { isDesktop } = useScreenSize()
-  const { ordered, isLoading, shown, toggle, only, date, setDate, today } =
-    useCalendarContext()
+  const {
+    ordered,
+    isLoading,
+    shown,
+    toggle,
+    only,
+    date,
+    setDate,
+    listed,
+    today,
+  } = useCalendarContext()
 
   const [createOpen, setCreateOpen] = useState(false)
   const [subscribeOpen, setSubscribeOpen] = useState(false)
@@ -386,7 +395,12 @@ export function CalendarsLayout() {
         sidebarHeader={
           isDesktop ? (
             <div className='pt-3'>
-              <MiniMonth selected={date} today={today} onSelect={setDate} />
+              {/* On the day the list has scrolled to, as its title is. */}
+              <MiniMonth
+                selected={listed ?? date}
+                today={today}
+                onSelect={setDate}
+              />
             </div>
           ) : undefined
         }

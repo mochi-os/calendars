@@ -29,7 +29,7 @@ msgstr "(laajenna)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "({0}-tiedostosta)"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -70,7 +70,7 @@ msgstr "{0, plural, one {{skipped} tapahtuma on jo kalenterissa} other {{skipped
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# tiedosto muutettu} other {# tiedostoa muutettu}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -111,9 +111,14 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
+#: src/features/calendar/components/agenda.tsx
+msgctxt "ISO date"
+msgid "{date} {weekday}"
+msgstr "{date} {weekday}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from}–{to}"
 
@@ -136,7 +141,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "{from}–{to}"
 
@@ -199,7 +204,7 @@ msgstr "{totalDescendants, plural, one {# vastaus} other {+# lisävastausta}}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {Vielä # tiedosto jää näyttämättä} other {Vielä # tiedostoa jää näyttämättä}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -504,7 +509,7 @@ msgstr "Banneri päivitetty"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "Binääritiedostoa ei näytetä"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -649,7 +654,6 @@ msgstr "Kamera ei ole käytettävissä"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -760,7 +764,6 @@ msgstr "Tyhjennä haku"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Sulje"
@@ -924,7 +927,8 @@ msgstr "Kopioitu leikepöydälle"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -934,10 +938,6 @@ msgstr "Kopioi"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Kopioi kalenterin osoite"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "Kopioi tapahtuma"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -970,6 +970,7 @@ msgstr "Vahvistaminen tällä tilillä ei onnistunut. Yritä uudelleen."
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "Luo"
 
@@ -1350,6 +1351,7 @@ msgid "Error"
 msgstr "Virhe"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1368,12 +1370,6 @@ msgstr "Tapahtuma poistettu"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "Tapahtuma siirretty"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "Tapahtuma tallennettu"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1590,6 +1586,9 @@ msgid "Failed to save the colour"
 msgstr "Värin tallennus epäonnistui"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "Tapahtuman tallennus epäonnistui"
 
@@ -2082,7 +2081,7 @@ msgstr "Ei vielä toimintaa"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "Ei näytettäviä muutoksia"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
@@ -2182,11 +2181,11 @@ msgstr "Normaali"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "Ei verrattu: suurempi kuin {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "Ei verrattu: ylittää kokorajan"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2698,7 +2697,6 @@ msgstr "Lauantai"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -2943,7 +2941,7 @@ msgstr "Tilava"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "Rinnakkain"
 
 #: src/features/calendar/editor.tsx
 msgid "Start"
@@ -3277,7 +3275,7 @@ msgstr "Odottamaton API-virhe"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "Yhtenäinen"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3475,7 +3473,6 @@ msgstr "Tilisi siirrettiin tänne kohteesta {source}. Kunnes poistat sen sieltä
 msgid "Your attachments will be lost."
 msgstr "Liitteesi menetetään."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "Muutoksesi menetetään."

@@ -29,7 +29,7 @@ msgstr "(zgjero)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "(nga {0})"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -70,7 +70,7 @@ msgstr "{0, plural, one {{skipped} ngjarje është tashmë në kalendar} other {
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# skedar i ndryshuar} other {# skedarë të ndryshuar}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -111,9 +111,14 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#javë} other {#javë}}"
 
+#: src/features/calendar/components/agenda.tsx
+msgctxt "ISO date"
+msgid "{date} {weekday}"
+msgstr "{date} {weekday}"
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{day}, {from} to {to}"
 msgstr "{day}, nga {from} deri në {to}"
 
@@ -136,7 +141,7 @@ msgstr "{from} – {to}"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
 msgid "{from} to {to}"
 msgstr "nga {from} deri në {to}"
 
@@ -199,7 +204,7 @@ msgstr "{totalDescendants, plural, one {# përgjigje} other {+# përgjigje të t
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {Edhe # skedar tjetër nuk shfaqet} other {Edhe # skedarë të tjerë nuk shfaqen}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -504,7 +509,7 @@ msgstr "Banner-i u përditësua"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "Skedari binar nuk shfaqet"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -649,7 +654,6 @@ msgstr "Kamera nuk është e disponueshme"
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
-#: src/features/calendar/editor.tsx
 msgid "Cancel"
 msgstr "Anulo"
 
@@ -760,7 +764,6 @@ msgstr "Pastro kërkimin"
 #: ../../../lib/web/src/components/ui/side-panel.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
 #: src/features/calendar/dialogs/import-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/hooks/use-ics-copy.tsx
 msgid "Close"
 msgstr "Mbyll"
@@ -924,7 +927,8 @@ msgstr "U kopjua në kujtesën e fragmenteve"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/calendar/components/event-popover.tsx
+#: src/features/calendar/components/event-summary.tsx
+#: src/features/calendar/components/event-summary.tsx
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 msgid "Copy"
@@ -934,10 +938,6 @@ msgstr "Kopjo"
 #: src/components/layout/calendars-layout.tsx
 msgid "Copy calendar address"
 msgstr "Kopjo adresën e kalendarit"
-
-#: src/features/calendar/editor.tsx
-msgid "Copy event"
-msgstr "Kopjo ngjarjen"
 
 #: src/features/calendar/editor.tsx
 #: src/features/calendar/index.tsx
@@ -970,6 +970,7 @@ msgstr "Nuk u verifikua dot me atë llogari. Ju lutemi provoni përsëri."
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/calendar/dialogs/connect-dialog.tsx
+#: src/features/calendar/editor.tsx
 msgid "Create"
 msgstr "Krijo"
 
@@ -1350,6 +1351,7 @@ msgid "Error"
 msgstr "Gabim"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 #: src/hooks/use-event-move.ts
 #: src/hooks/use-event-move.ts
 msgid "Event copied"
@@ -1368,12 +1370,6 @@ msgstr "Ngjarja u fshi"
 #: src/hooks/use-event-move.ts
 msgid "Event moved"
 msgstr "Ngjarja u zhvendos"
-
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-#: src/features/calendar/editor.tsx
-msgid "Event saved"
-msgstr "Ngjarja u ruajt"
 
 #: src/features/calendar/editor.tsx
 msgid "Every"
@@ -1590,6 +1586,9 @@ msgid "Failed to save the colour"
 msgstr "Ruajtja e ngjyrës dështoi"
 
 #: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/editor.tsx
+#: src/features/calendar/index.tsx
 msgid "Failed to save the event"
 msgstr "Ruajtja e ngjarjes dështoi"
 
@@ -2082,7 +2081,7 @@ msgstr "Ende pa aktivitet"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "Asnjë ndryshim për të shfaqur"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
@@ -2182,11 +2181,11 @@ msgstr "Normale"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "Nuk u krahasua: më i madh se {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "Nuk u krahasua: mbi kufirin e madhësisë"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2698,7 +2697,6 @@ msgstr "E shtunë"
 #: src/features/calendar/dialogs/colour-dialog.tsx
 #: src/features/calendar/dialogs/preferences-dialog.tsx
 #: src/features/calendar/dialogs/rename-dialog.tsx
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/settings.tsx
 #: src/features/calendar/settings.tsx
 msgid "Save"
@@ -2943,7 +2941,7 @@ msgstr "I hapësirshëm"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "Ndaj"
 
 #: src/features/calendar/editor.tsx
 msgid "Start"
@@ -3277,7 +3275,7 @@ msgstr "Gabim i papritur i API-t"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "I unifikuar"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3475,7 +3473,6 @@ msgstr "Llogaria juaj u zhvendos këtu nga {source}. Derisa ta fshini atje, mesa
 msgid "Your attachments will be lost."
 msgstr "Bashkëngjitjet tuaja do të humbasin."
 
-#: src/features/calendar/editor.tsx
 #: src/features/calendar/editor.tsx
 msgid "Your changes will be lost."
 msgstr "Ndryshimet e tua do të humbasin."

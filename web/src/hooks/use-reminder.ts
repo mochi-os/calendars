@@ -8,8 +8,9 @@ import type { Instance } from '@/api/types/events'
 
 /**
  * A reminder opens the calendar at the event it is for. Once the occurrence
- * is among the loaded ones it opens as a click on it would, and the link is
- * dropped so going back does not open it again. When it is not there after
+ * is among the loaded ones the link is dropped, so going back does not open
+ * it again, and the occurrence then opens as a click on it would: its panel
+ * names it in the address afresh, after the drop has landed. When it is not there after
  * the shown calendars' occurrences have loaded, its calendar is hidden: that
  * calendar is shown, and the occurrence opens as it arrives. If its calendar
  * is shown, the occurrence has gone and the link is dropped.
@@ -31,7 +32,7 @@ export function useReminder({
   visible: { id: string }[]
   reveal: (calendar: string) => void
   open: (instance: Instance, key: string) => void
-  clear: () => void
+  clear: () => void | Promise<unknown>
 }) {
   useEffect(() => {
     if (!event) return
@@ -40,8 +41,7 @@ export function useReminder({
       (item) => `${item.event}:${item.start}` === key
     )
     if (instance) {
-      open(instance, key)
-      clear()
+      void Promise.resolve(clear()).then(() => open(instance, key))
       return
     }
     if (loading) return

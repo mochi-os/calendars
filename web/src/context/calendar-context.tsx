@@ -40,17 +40,7 @@ const VIEWS: CalendarView[] = ['day', 'week', 'multiweek', 'month', 'list']
 
 /** What the editor was opened on. */
 type Editing =
-  | {
-      mode: 'create'
-      draft: EventDraft
-      /** The draft was copied from another event, so the editor says so. */
-      copy?: boolean
-      /**
-       * What closing measures the draft against, when not the draft itself:
-       * a copy carrying edits never saved asks before they are dropped.
-       */
-      initial?: EventDraft
-    }
+  | { mode: 'create'; draft: EventDraft }
   | { mode: 'edit'; event: string; start: number }
 
 interface CalendarContextValue {
@@ -74,6 +64,14 @@ interface CalendarContextValue {
   /** The anchored day, as YYYY-MM-DD in the user's own zone. */
   date: string
   setDate: (date: string) => void
+  /**
+   * The day atop the list view as it scrolls, which the toolbar's title,
+   * the month pickers and paging follow; undefined outside the list, or
+   * until the list says.
+   */
+  listed?: string
+  /** Tells which day is atop the list view, under the current anchor. */
+  setListed: (day: string) => void
   today: string
   range: CalendarRange
   /** Week view: hide the days that are not work days. */
@@ -188,6 +186,11 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     [navigate]
   )
 
+  // Measured under one anchor, the day atop the list lapses with it.
+  const [top, setTop] = useState<{ date: string; day: string } | null>(null)
+  const listed = view === 'list' && top?.date === date ? top.day : undefined
+  const setListed = useCallback((day: string) => setTop({ date, day }), [date])
+
   const range = useMemo(
     () =>
       viewRange(view, date, {
@@ -230,6 +233,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       setView,
       date,
       setDate,
+      listed,
+      setListed,
       today,
       range,
       workweek,
@@ -257,6 +262,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       setView,
       date,
       setDate,
+      listed,
+      setListed,
       today,
       range,
       workweek,

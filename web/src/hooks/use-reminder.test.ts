@@ -39,10 +39,11 @@ describe('useReminder', () => {
     api.get.mockReset()
   })
 
-  it('opens the occurrence once it has loaded, and drops the link', () => {
+  it('drops the link once the occurrence has loaded, then opens it', async () => {
     const { open, clear } = setup({ instances: [occurrence] })
-    expect(open).toHaveBeenCalledWith(occurrence, 'e1:100')
     expect(clear).toHaveBeenCalledTimes(1)
+    expect(open).not.toHaveBeenCalled()
+    await waitFor(() => expect(open).toHaveBeenCalledWith(occurrence, 'e1:100'))
     expect(api.get).not.toHaveBeenCalled()
   })
 
@@ -60,8 +61,8 @@ describe('useReminder', () => {
     expect(clear).not.toHaveBeenCalled()
     rerender({ ...initial, loading: true })
     rerender({ ...initial, instances: [occurrence] })
-    expect(open).toHaveBeenCalledWith(occurrence, 'e1:100')
     expect(clear).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(open).toHaveBeenCalledWith(occurrence, 'e1:100'))
   })
 
   it('drops the link when the calendar is shown and the occurrence has gone', async () => {

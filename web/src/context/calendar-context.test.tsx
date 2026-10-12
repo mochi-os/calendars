@@ -15,6 +15,7 @@ const state = vi.hoisted(() => ({
   failed: false,
   refetch: vi.fn(),
   save: vi.fn(),
+  search: {} as Record<string, string>,
 }))
 
 beforeEach(() => {
@@ -23,11 +24,12 @@ beforeEach(() => {
   state.failed = false
   state.refetch.mockReset()
   state.save.mockReset()
+  state.search = {}
 })
 
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => vi.fn(),
-  useSearch: () => ({}),
+  useSearch: () => state.search,
 }))
 vi.mock('@/hooks/use-calendars', () => ({
   useCalendarsQuery: () => ({
@@ -85,6 +87,37 @@ function provide() {
   )
   return seen
 }
+
+describe('CalendarProvider list', () => {
+  it('holds the day atop the list under its anchor, and lets it go with the anchor or the view', () => {
+    state.search = { view: 'list', date: '2026-09-22' }
+    const seen: { current: ReturnType<typeof useCalendarContext> | null } = {
+      current: null,
+    }
+    function Reader() {
+      seen.current = useCalendarContext()
+      return null
+    }
+    const tree = () => (
+      <CalendarProvider>
+        <Reader />
+      </CalendarProvider>
+    )
+    const { rerender } = render(tree())
+    expect(seen.current?.listed).toBeUndefined()
+    act(() => seen.current?.setListed('2026-10-12'))
+    expect(seen.current?.listed).toBe('2026-10-12')
+    state.search = { view: 'month', date: '2026-09-22' }
+    rerender(tree())
+    expect(seen.current?.listed).toBeUndefined()
+    state.search = { view: 'list', date: '2026-09-22' }
+    rerender(tree())
+    expect(seen.current?.listed).toBe('2026-10-12')
+    state.search = { view: 'list', date: '2026-11-01' }
+    rerender(tree())
+    expect(seen.current?.listed).toBeUndefined()
+  })
+})
 
 describe('CalendarProvider', () => {
   it('opens a browser that has shown no view on the view last chosen anywhere', () => {
