@@ -60,6 +60,7 @@ import {
 } from 'lucide-react'
 import type { Component, Event } from '@/api/types/events'
 import {
+  beneath,
   copyDraft,
   formCopy,
   draftComponent,
@@ -119,6 +120,7 @@ export function EventEditor() {
     editing,
     setEditing,
     ordered: listed,
+    preferences,
     remember,
     reveal,
   } = useCalendarContext()
@@ -212,14 +214,27 @@ export function EventEditor() {
       if (stored.current?.etag === event.etag) return
       if (dirty()) return
     }
-    const read = openedDraft(
+    const opened = openedDraft(
       event.components,
       editing.start,
       event.calendar,
       format.timezone,
       event.recurring
     )
-    if (!read) return
+    if (!opened) return
+    // An all-day event holds beneath it the times turning all-day off gives:
+    // where a new event on its first day would start, for the default length.
+    const now = new Date()
+    const times = beneath(
+      opened.start,
+      format.zonedDay(now),
+      format.zonedMinutes(now),
+      preferences.hours,
+      preferences.duration
+    )
+    const read = opened.allday
+      ? { ...opened, startTime: times.start, finishTime: times.finish }
+      : opened
     seeded.current = editing
     stored.current = event
     base.current = JSON.stringify(read)
@@ -227,7 +242,7 @@ export function EventEditor() {
     setUntitled(false)
     setDraft(read)
     setCustom(customised(read.repeat))
-  }, [editing, event, format.timezone, dirty])
+  }, [editing, event, format, preferences.hours, preferences.duration, dirty])
 
   const close = () => setEditing(null)
 

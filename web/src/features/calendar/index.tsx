@@ -25,6 +25,7 @@ import {
 import { Check } from 'lucide-react'
 import type { Instance } from '@/api/types/events'
 import {
+  beneath,
   creationDay,
   defaultCalendar,
   defaultStart,
@@ -215,15 +216,19 @@ export function CalendarPage() {
   const createOnDay = (day: string) => createAt(day)
 
   // A drag across day cells or the all-day band says which days, and a run
-  // of days is an all-day event. The times underneath start at the working
-  // hours, for a user who turns all-day off.
+  // of days is an all-day event. The times underneath are where a new event
+  // on its first day would start, for a user who turns all-day off.
   const createOnDays = (first: string, last: string) => {
-    const minutes = preferences.hours.start * 60
-    const from = format.timestampAt(first, minutes)
-    const to = format.timestampAt(
-      last,
-      Math.min(minutes + preferences.duration, 24 * 60 - 1)
+    const now = new Date()
+    const times = beneath(
+      first,
+      format.zonedDay(now),
+      format.zonedMinutes(now),
+      preferences.hours,
+      preferences.duration
     )
+    const from = format.timestampAt(first, times.start)
+    const to = format.timestampAt(last, times.finish)
     setEditing({ mode: 'create', draft: compose(from, to, true) })
   }
 

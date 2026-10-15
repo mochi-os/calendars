@@ -217,18 +217,55 @@ describe('CalendarPage', () => {
   })
 
   it('opens a new all-day event over the days a drag across the month picked', () => {
-    show()
-    const pick = state.month.onCreateRange as (first: string, last: string) => void
-    pick('2026-09-22', '2026-09-25')
-    expect(state.setEditing).toHaveBeenCalledWith({
-      mode: 'create',
-      draft: expect.objectContaining({
-        allday: true,
-        calendar: 'c1',
-        start: '2026-09-22',
-        finish: '2026-09-25',
-      }),
-    })
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T10:20:00Z'))
+    try {
+      show()
+      const pick = state.month.onCreateRange as (
+        first: string,
+        last: string
+      ) => void
+      pick('2026-09-22', '2026-09-25')
+      // Beneath, the times turning all day off gives: the working hours on
+      // a day that is not today, for the default length, on the last day.
+      expect(state.setEditing).toHaveBeenCalledWith({
+        mode: 'create',
+        draft: expect.objectContaining({
+          allday: true,
+          calendar: 'c1',
+          start: '2026-09-22',
+          startTime: 8 * 60,
+          finish: '2026-09-25',
+          finishTime: 9 * 60,
+        }),
+      })
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('holds beneath a drag from today the next whole hour, as a new event starts', () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T10:20:00Z'))
+    try {
+      show()
+      const pick = state.month.onCreateRange as (
+        first: string,
+        last: string
+      ) => void
+      pick('2026-09-15', '2026-09-17')
+      expect(state.setEditing).toHaveBeenCalledWith({
+        mode: 'create',
+        draft: expect.objectContaining({
+          start: '2026-09-15',
+          startTime: 11 * 60,
+          finish: '2026-09-17',
+          finishTime: 12 * 60,
+        }),
+      })
+    } finally {
+      vi.useRealTimers()
+    }
   })
 
   it('puts a new event on today when today is in a wide month', () => {

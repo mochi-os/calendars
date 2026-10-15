@@ -20,6 +20,7 @@ const { setEditing, noon, state } = vi.hoisted(() => ({
     create: vi.fn(),
     update: vi.fn(),
     split: vi.fn(),
+    preferences: { hours: { start: 8, finish: 17 }, duration: 60 },
   },
 }))
 
@@ -74,6 +75,9 @@ vi.mock('@/context/calendar-context', async () => {
     },
     setEditing,
     ordered: [{ id: 'c1', name: 'Personal', readonly: false, default: true }],
+    get preferences() {
+      return state.preferences
+    },
     remember: vi.fn(),
     reveal: vi.fn(),
   }
@@ -155,10 +159,60 @@ async function stored(recurring = false) {
   return event
 }
 
+// A stored all-day event over `first` to `last`, which has no times.
+function whole(first: string, last: string) {
+  const date = (day: string) => day.replace(/-/g, '')
+  const after = new Date(`${last}T00:00:00Z`)
+  after.setUTCDate(after.getUTCDate() + 1)
+  const event = {
+    id: 'e1',
+    calendar: 'c1',
+    etag: 'v1',
+    recurring: false,
+    summary: 'Trip',
+    updated: 1,
+    components: [
+      {
+        name: 'VEVENT',
+        properties: [
+          { name: 'UID', params: {}, value: 'u1' },
+          { name: 'SUMMARY', params: {}, value: 'Trip' },
+          { name: 'DTSTART', params: { VALUE: ['DATE'] }, value: date(first) },
+          {
+            name: 'DTEND',
+            params: { VALUE: ['DATE'] },
+            value: date(after.toISOString().slice(0, 10)),
+          },
+        ],
+        components: [],
+      },
+    ],
+  }
+  state.event = event
+  state.editing = {
+    mode: 'edit',
+    event: 'e1',
+    start: Date.parse(`${first}T00:00:00Z`) / 1000,
+  }
+}
+
+// Turns all day off and saves, giving the start and end the save wrote.
+async function untimed() {
+  await screen.findByLabelText('Title')
+  fireEvent.click(screen.getByLabelText('All day'))
+  leave(title())
+  await waitFor(() => expect(state.update).toHaveBeenCalledTimes(1))
+  const request = state.update.mock.calls[0][0] as { components: Component[] }
+  const value = (name: string) =>
+    request.components[0].properties.find((p) => p.name === name)?.value
+  return [value('DTSTART'), value('DTEND')]
+}
+
 beforeEach(() => {
   setEditing.mockClear()
   state.editing = null
   state.event = undefined
+  state.preferences = { hours: { start: 8, finish: 17 }, duration: 60 }
   state.create = vi.fn().mockResolvedValue({ event: { id: 'e9' } })
   state.update = vi.fn().mockImplementation(async (written) => ({
     event: { ...(state.event as object), ...written, etag: 'v2' },
@@ -441,6 +495,60 @@ describe('EventEditor saving a one-time event', () => {
     expect(screen.getByRole('textbox', { name: 'Colour value' })).toHaveValue(
       'Turquoise'
     )
+  })
+})
+
+describe('EventEditor turning all day off', () => {
+  it('starts on another day at the working hours, for the default length', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T14:37:00Z'))
+    whole('2026-09-21', '2026-09-21')
+    show()
+    expect(await untimed()).toEqual(['20260921T080000', '20260921T090000'])
+  })
+
+  it('starts today at the next whole hour, as a new event does', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-21T14:37:00Z'))
+    whole('2026-09-21', '2026-09-21')
+    show()
+    expect(await untimed()).toEqual(['20260921T150000', '20260921T160000'])
+  })
+
+  it('keeps the days of an event across several, ending the default length after the start on the last', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T14:37:00Z'))
+    whole('2026-09-21', '2026-09-23')
+    show()
+    expect(await untimed()).toEqual(['20260921T080000', '20260923T090000'])
+  })
+
+  it('reads the working hours and the default length from the preferences', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T14:37:00Z'))
+    state.preferences = { hours: { start: 9, finish: 17 }, duration: 30 }
+    whole('2026-09-21', '2026-09-21')
+    show()
+    expect(await untimed()).toEqual(['20260921T090000', '20260921T093000'])
+  })
+
+  it('gives back the times a timed event had when all day goes on and off again', async () => {
+    await stored()
+    show()
+    await screen.findByLabelText('Title')
+    fireEvent.click(screen.getByLabelText('All day'))
+    leave(title())
+    await waitFor(() => expect(state.update).toHaveBeenCalledTimes(1))
+    fireEvent.click(screen.getByLabelText('All day'))
+    leave(title())
+    await waitFor(() => expect(state.update).toHaveBeenCalledTimes(2))
+    const request = state.update.mock.calls[1][0] as { components: Component[] }
+    const value = (name: string) =>
+      request.components[0].properties.find((p) => p.name === name)?.value
+    expect([value('DTSTART'), value('DTEND')]).toEqual([
+      '20260925T120000',
+      '20260925T130000',
+    ])
   })
 })
 

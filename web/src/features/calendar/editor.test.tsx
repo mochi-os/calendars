@@ -76,6 +76,7 @@ vi.mock('@/context/calendar-context', () => ({
     editing: state.editing,
     setEditing: state.setEditing,
     ordered: [{ id: 'c1', name: 'Home', colour: '#000', readonly: false }],
+    preferences: { hours: { start: 8, finish: 17 }, duration: 60 },
     remember: vi.fn(),
     reveal: vi.fn(),
   }),

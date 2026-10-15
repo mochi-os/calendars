@@ -1325,6 +1325,24 @@ export function defaultStart(
 }
 
 /**
+ * The times an all-day event starting on `day` holds beneath it, which
+ * turning all-day off gives it, in minutes past midnight: where a new event
+ * on that day would start, and `duration` minutes later on its last day, held
+ * to that day's last minute. Its days never move, so today with no whole hour
+ * left starts at the working hours. The Android client gives the same.
+ */
+export function beneath(
+  day: string,
+  today: string,
+  now: number,
+  hours: { start: number },
+  duration: number
+): { start: number; finish: number } {
+  const start = defaultStart(day, today, now, hours).minutes
+  return { start, finish: Math.min(start + duration, 24 * 60 - 1) }
+}
+
+/**
  * The day "New event" lands on: today when today is on screen, and otherwise
  * the day the view is on, since a user paging through another week is
  * planning that week. `from` and `days` are the range on screen.

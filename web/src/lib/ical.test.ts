@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest'
 import type { Component, Property } from '@/api/types/events'
 import {
   alarmMinutes,
+  beneath,
   creationDay,
   defaultCalendar,
   defaultStart,
@@ -1889,6 +1890,33 @@ describe('when a new event starts', () => {
     expect(defaultStart(today, today, 23 * 60 + 10, hours)).toEqual({
       day: '2026-09-29',
       minutes: 8 * 60,
+    })
+  })
+
+  it('holds beneath an all-day event the times a new event on its first day would have', () => {
+    // Today: the next whole hour, for the default length.
+    expect(beneath(today, today, 14 * 60 + 37, hours, 60)).toEqual({
+      start: 15 * 60,
+      finish: 16 * 60,
+    })
+    // Another day: the working hours.
+    expect(beneath('2026-10-02', today, 14 * 60 + 37, hours, 90)).toEqual({
+      start: 8 * 60,
+      finish: 9 * 60 + 30,
+    })
+  })
+
+  it('keeps the day an all-day event is on, where a new event would move to tomorrow', () => {
+    expect(beneath(today, today, 23 * 60 + 10, hours, 60)).toEqual({
+      start: 8 * 60,
+      finish: 9 * 60,
+    })
+  })
+
+  it("stops the end at the day's last minute", () => {
+    expect(beneath(today, today, 22 * 60 + 5, hours, 120)).toEqual({
+      start: 23 * 60,
+      finish: 24 * 60 - 1,
     })
   })
 
