@@ -1343,6 +1343,22 @@ export function beneath(
 }
 
 /**
+ * An all-day draft holding the times [beneath] its first day, which turning
+ * all-day off gives it; a timed draft as it is.
+ */
+export function underneath(
+  draft: EventDraft,
+  today: string,
+  now: number,
+  hours: { start: number },
+  duration: number
+): EventDraft {
+  if (!draft.allday) return draft
+  const times = beneath(draft.start, today, now, hours, duration)
+  return { ...draft, startTime: times.start, finishTime: times.finish }
+}
+
+/**
  * The day "New event" lands on: today when today is on screen, and otherwise
  * the day the view is on, since a user paging through another week is
  * planning that week. `from` and `days` are the range on screen.

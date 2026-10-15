@@ -616,33 +616,103 @@ describe('EventEditor saving a series', () => {
 })
 
 describe('EventEditor copying', () => {
-  it('copies the stored event at once and opens the copy', async () => {
-    await stored()
-    show()
-    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
-    await waitFor(() =>
-      expect(setEditing).toHaveBeenCalledWith({
-        mode: 'edit',
-        event: 'e9',
-        start: noon,
-      })
+  // The editor as Copy reopened it, on the new event it asked for.
+  function reopen() {
+    const call = setEditing.mock.calls.find(
+      ([next]) => (next as { mode?: string } | null)?.mode === 'create'
     )
-    const request = state.create.mock.calls[0][0] as {
-      components: Component[]
-    }
-    expect(titleOf(request.components)).toBe('Dentist')
-  })
+    expect(call).toBeDefined()
+    state.editing = call![0]
+  }
 
-  it('carries a change not yet saved into the copy', async () => {
+  it('opens the copy as a new event, making nothing until Create', async () => {
     await stored()
-    show()
-    fireEvent.change(title(), { target: { value: 'Dentist, moved' } })
+    const view = show()
+    await screen.findByLabelText('Title')
     fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    expect(setEditing).toHaveBeenCalledWith({
+      mode: 'create',
+      draft: expect.objectContaining({ title: 'Dentist', calendar: 'c1' }),
+      base: expect.objectContaining({ title: 'Dentist' }),
+    })
+    expect(state.create).not.toHaveBeenCalled()
+    expect(state.update).not.toHaveBeenCalled()
+    reopen()
+    view.rerender(
+      <I18nProvider i18n={i18n}>
+        <EventEditor />
+      </I18nProvider>
+    )
+    expect(
+      screen.getByRole('heading', { name: 'New event' })
+    ).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Create' }))
     await waitFor(() => expect(state.create).toHaveBeenCalledTimes(1))
     const request = state.create.mock.calls[0][0] as {
       components: Component[]
     }
-    expect(titleOf(request.components)).toBe('Dentist, moved')
+    expect(titleOf(request.components)).toBe('Dentist')
+    await waitFor(() => expect(setEditing).toHaveBeenLastCalledWith(null))
+  })
+
+  it('holds beneath a copied all-day event the times turning all day off gives', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-15T14:37:00Z'))
+    whole('2026-09-21', '2026-09-23')
+    show()
+    await screen.findByLabelText('Title')
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    expect(setEditing).toHaveBeenCalledWith({
+      mode: 'create',
+      draft: expect.objectContaining({
+        allday: true,
+        start: '2026-09-21',
+        startTime: 8 * 60,
+        finish: '2026-09-23',
+        finishTime: 9 * 60,
+      }),
+      base: expect.objectContaining({ startTime: 8 * 60 }),
+    })
+  })
+
+  it('closes an untouched copy without asking, leaving nothing made', async () => {
+    await stored()
+    const view = show()
+    await screen.findByLabelText('Title')
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    reopen()
+    view.rerender(
+      <I18nProvider i18n={i18n}>
+        <EventEditor />
+      </I18nProvider>
+    )
+    close()
+    expect(screen.queryByText('Discard draft?')).toBeNull()
+    expect(setEditing).toHaveBeenLastCalledWith(null)
+    expect(state.create).not.toHaveBeenCalled()
+  })
+
+  it('carries a change not yet saved into the copy, and asks before closing drops it', async () => {
+    await stored()
+    const view = show()
+    fireEvent.change(title(), { target: { value: 'Dentist, moved' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    expect(setEditing).toHaveBeenCalledWith({
+      mode: 'create',
+      draft: expect.objectContaining({ title: 'Dentist, moved' }),
+      base: expect.objectContaining({ title: 'Dentist' }),
+    })
+    reopen()
+    view.rerender(
+      <I18nProvider i18n={i18n}>
+        <EventEditor />
+      </I18nProvider>
+    )
+    expect(title()).toHaveValue('Dentist, moved')
+    close()
+    expect(screen.getByText('Discard draft?')).toBeInTheDocument()
+    expect(state.create).not.toHaveBeenCalled()
+    expect(state.update).not.toHaveBeenCalled()
   })
 })
 

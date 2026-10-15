@@ -11,12 +11,10 @@ import {
   dayOfWeek,
   eventStatus,
   GeneralError,
-  getErrorMessage,
   MonthGrid,
   monthOf,
   stepDate,
   TimeGrid,
-  toast,
   useFormat,
   usePageTitle,
   offsetLabel,
@@ -29,20 +27,16 @@ import {
   creationDay,
   defaultCalendar,
   defaultStart,
-  draftComponent,
-  draftInstants,
   instanceDraft,
   newDraft,
+  underneath,
   type EventDraft,
   type Scope,
 } from '@/lib/ical'
 import { useCalendarContext } from '@/context/calendar-context'
 import { useCalendarShortcuts } from '@/hooks/use-calendar-shortcuts'
 import { useEventMove } from '@/hooks/use-event-move'
-import {
-  useCreateEventMutation,
-  useInstancesQuery,
-} from '@/hooks/use-events'
+import { useInstancesQuery } from '@/hooks/use-events'
 import { useReminder } from '@/hooks/use-reminder'
 import { Agenda } from '@/features/calendar/components/agenda'
 import { EventSummaryPanel } from '@/features/calendar/components/event-summary'
@@ -323,32 +317,25 @@ export function CalendarPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- naming is nameKey's
   }, [nameKey, router])
 
-  // A read-only occurrence's copy is the user's own event, made at once from
-  // what the listing says of it, in the user's calendar, and opened there.
-  const createMutation = useCreateEventMutation()
-  const copyOccurrence = async (instance: Instance) => {
-    const draft = instanceDraft(
-      instance,
-      calendarFor(),
-      preferences.reminder,
-      format.timezone
+  // A read-only occurrence's copy is the user's own event, opened as a new
+  // one from what the listing says of it, in the user's calendar, and made by
+  // Create as any new event is.
+  const copyOccurrence = (instance: Instance) => {
+    const now = new Date()
+    const draft = underneath(
+      instanceDraft(
+        instance,
+        calendarFor(),
+        preferences.reminder,
+        format.timezone
+      ),
+      format.zonedDay(now),
+      format.zonedMinutes(now),
+      preferences.hours,
+      preferences.duration
     )
-    try {
-      const result = await createMutation.mutateAsync({
-        calendar: draft.calendar,
-        components: [draftComponent(draft)],
-      })
-      reveal(draft.calendar)
-      toast.success(t`Event copied`)
-      setSelected(null)
-      setEditing({
-        mode: 'edit',
-        event: result.event.id,
-        start: draftInstants(draft).start,
-      })
-    } catch (error) {
-      toast.error(getErrorMessage(error, t`Failed to save the event`))
-    }
+    setSelected(null)
+    setEditing({ mode: 'create', draft })
   }
 
   const select = (key: string) => {
@@ -474,7 +461,7 @@ export function CalendarPage() {
         instance={selected}
         zones={preferences.zones}
         onClose={() => setSelected(null)}
-        onCopy={(instance) => void copyOccurrence(instance)}
+        onCopy={copyOccurrence}
       />
 
       <ScopeDialog

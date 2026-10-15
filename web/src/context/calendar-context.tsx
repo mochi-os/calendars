@@ -38,9 +38,13 @@ import { useShownCalendars } from '@/hooks/use-shown'
 
 const VIEWS: CalendarView[] = ['day', 'week', 'multiweek', 'month', 'list']
 
-/** What the editor was opened on. */
+/**
+ * What the editor was opened on. A new event's `base` is what closing
+ * measures a change against when the draft opens already holding one: a
+ * copy carrying a change the original had not saved.
+ */
 type Editing =
-  | { mode: 'create'; draft: EventDraft }
+  | { mode: 'create'; draft: EventDraft; base?: EventDraft }
   | { mode: 'edit'; event: string; start: number }
 
 interface CalendarContextValue {

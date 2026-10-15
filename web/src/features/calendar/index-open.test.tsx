@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Instance } from '@/api/types/events'
 import { CalendarPage } from './index'
@@ -146,22 +146,53 @@ describe('a click on an occurrence', () => {
     expect(screen.queryByTestId('summary')).toBeNull()
   })
 
-  it('opens a read-only occurrence in its read-only panel, offering only a copy', async () => {
+  it('opens a read-only occurrence in its read-only panel, offering only a copy', () => {
     listed.instance = occurrence({ readonly: true })
     show()
     expect(screen.getByTestId('summary')).toBeInTheDocument()
     expect(setEditing).not.toHaveBeenCalled()
 
+    // The copy opens as a new event, made only by its Create.
     fireEvent.click(screen.getByRole('button', { name: 'onCopy' }))
-    await waitFor(() =>
-      expect(setEditing).toHaveBeenCalledWith({
-        mode: 'edit',
-        event: 'e9',
-        start,
-      })
-    )
-    expect(created).toHaveBeenCalledTimes(1)
+    expect(setEditing).toHaveBeenCalledWith({
+      mode: 'create',
+      draft: expect.objectContaining({
+        title: 'Standup',
+        calendar: 'c1',
+        start: '2026-09-30',
+        startTime: 9 * 60,
+      }),
+    })
+    expect(created).not.toHaveBeenCalled()
     expect(screen.queryByTestId('summary')).toBeNull()
+  })
+
+  it('holds beneath a copied all-day occurrence the times turning all day off gives', () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date('2026-09-28T14:37:00Z'))
+    try {
+      listed.instance = occurrence({
+        readonly: true,
+        allday: true,
+        date: '2026-09-30',
+        start: Date.UTC(2026, 8, 30) / 1000,
+        finish: Date.UTC(2026, 9, 1) / 1000,
+      })
+      show()
+      fireEvent.click(screen.getByRole('button', { name: 'onCopy' }))
+      expect(setEditing).toHaveBeenCalledWith({
+        mode: 'create',
+        draft: expect.objectContaining({
+          allday: true,
+          start: '2026-09-30',
+          startTime: 9 * 60,
+          finish: '2026-09-30',
+          finishTime: 10 * 60,
+        }),
+      })
+    } finally {
+      vi.useRealTimers()
+    }
   })
 
   it('names the open event in the address, and takes it out on closing', () => {

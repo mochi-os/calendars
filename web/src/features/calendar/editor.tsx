@@ -60,7 +60,6 @@ import {
 } from 'lucide-react'
 import type { Component, Event } from '@/api/types/events'
 import {
-  beneath,
   copyDraft,
   formCopy,
   draftComponent,
@@ -74,6 +73,7 @@ import {
   openedDraft,
   savedComponents,
   savedSplit,
+  underneath,
   type EventDraft,
   type Frequency,
   type Repeat,
@@ -180,6 +180,21 @@ export function EventEditor() {
     []
   )
 
+  // An all-day draft with the times turning all-day off gives it.
+  const timed = useCallback(
+    (draft: EventDraft): EventDraft => {
+      const now = new Date()
+      return underneath(
+        draft,
+        format.zonedDay(now),
+        format.zonedMinutes(now),
+        preferences.hours,
+        preferences.duration
+      )
+    },
+    [format, preferences.hours, preferences.duration]
+  )
+
   // A create opens on the draft it was given. An edit waits for the stored
   // event, then reads the occurrence's own component where it has one. The
   // same event read again, written here or changed elsewhere, replaces the
@@ -224,17 +239,7 @@ export function EventEditor() {
     if (!opened) return
     // An all-day event holds beneath it the times turning all-day off gives:
     // where a new event on its first day would start, for the default length.
-    const now = new Date()
-    const times = beneath(
-      opened.start,
-      format.zonedDay(now),
-      format.zonedMinutes(now),
-      preferences.hours,
-      preferences.duration
-    )
-    const read = opened.allday
-      ? { ...opened, startTime: times.start, finishTime: times.finish }
-      : opened
+    const read = timed(opened)
     seeded.current = editing
     stored.current = event
     base.current = JSON.stringify(read)
@@ -242,7 +247,7 @@ export function EventEditor() {
     setUntitled(false)
     setDraft(read)
     setCustom(customised(read.repeat))
-  }, [editing, event, format, preferences.hours, preferences.duration, dirty])
+  }, [editing, event, format.timezone, timed, dirty])
 
   const close = () => setEditing(null)
 
@@ -435,21 +440,29 @@ export function EventEditor() {
       remember(current)
       reveal(current.calendar)
       toast.success(t`Event created`)
-      // Create is the end of making it: the event is on the calendar now,
-      // and opens from there. A copy, made to be changed, opens in the panel.
+      // Create is the end of making it, a copy's as any new event's: the
+      // event is on the calendar now, and opens from there.
       close()
     } catch (error) {
       toast.error(getErrorMessage(error, t`Failed to save the event`))
     }
   }
 
-  // A copy is made at once, in the calendar the form shows, and opens in the
-  // panel. A change not yet saved goes into the copy rather than being
-  // dropped; a series asks which of it to copy.
-  const duplicate = async (scope: 'one' | 'all') => {
+  // A copy opens as a new event, in the calendar the form shows, made by
+  // Create as any new event is. A change not yet saved goes into the copy
+  // rather than being dropped, and closing asks before it is lost; a series
+  // asks which of it to copy.
+  const duplicate = (scope: 'one' | 'all') => {
     const current = latest.current
     const event = stored.current
     if (!current || !event || editing?.mode !== 'edit') return
+    const plain = copyDraft(
+      event.components,
+      editing.start,
+      current.calendar,
+      format.timezone,
+      scope
+    )
     const copied = dirty()
       ? formCopy(
           current,
@@ -459,30 +472,18 @@ export function EventEditor() {
           scope,
           event.recurring
         )
-      : copyDraft(
-          event.components,
-          editing.start,
-          current.calendar,
-          format.timezone,
-          scope
-        )
+      : plain
     if (!copied) return
-    try {
-      const result = await createMutation.mutateAsync({
-        calendar: copied.calendar,
-        components: [draftComponent(copied)],
-      })
-      reveal(copied.calendar)
-      toast.success(t`Event copied`)
-      follow(result.event.id, draftInstants(copied).start)
-    } catch (error) {
-      toast.error(getErrorMessage(error, t`Failed to save the event`))
-    }
+    setEditing({
+      mode: 'create',
+      draft: timed(copied),
+      base: plain ? timed(plain) : undefined,
+    })
   }
 
   const copy = () => {
     if (recurring) setAsking('copy')
-    else void duplicate('one')
+    else duplicate('one')
   }
 
   const pending =
@@ -496,7 +497,7 @@ export function EventEditor() {
   const unsaved =
     draft !== null &&
     (editing?.mode === 'create'
-      ? JSON.stringify(draft) !== JSON.stringify(editing.draft)
+      ? JSON.stringify(draft) !== JSON.stringify(editing.base ?? editing.draft)
       : recurring &&
         base.current !== null &&
         JSON.stringify(draft) !== base.current)
@@ -673,7 +674,7 @@ export function EventEditor() {
         }}
         onChoose={(scope) => {
           setAsking(null)
-          void duplicate(scope === 'all' ? 'all' : 'one')
+          duplicate(scope === 'all' ? 'all' : 'one')
         }}
       />
 
