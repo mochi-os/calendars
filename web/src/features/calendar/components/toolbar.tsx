@@ -7,7 +7,7 @@ import {
   Button,
   cn,
   DropdownMenu,
-  Input,
+  SearchInput,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
@@ -37,7 +37,6 @@ import {
   MoreHorizontal,
   Plus,
   Rows3,
-  Search,
 } from 'lucide-react'
 import { useCalendarContext } from '@/context/calendar-context'
 
@@ -151,20 +150,15 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
   // The search box: the list view filters by it, and typing from any other
   // view opens the list, which is where the matches show.
   const searchBox = (
-    <div className={cn('relative', isMobile ? 'min-w-0 flex-1' : 'ms-auto')}>
-      <Search
-        className='text-muted-foreground pointer-events-none absolute start-2.5 top-1/2 size-4 -translate-y-1/2'
-        aria-hidden
-      />
-      <Input
+    <div className={cn(isMobile ? 'min-w-0 flex-1' : 'ms-auto')}>
+      <SearchInput
         id='calendar-search'
         type='search'
         aria-label={t`Search`}
         placeholder={t`Search events`}
-        className={cn('h-9 ps-8', isMobile ? 'w-full' : 'w-36 sm:w-52')}
+        className={cn('h-9', isMobile ? 'w-full' : 'w-36 sm:w-52')}
         value={search}
-        onChange={(input) => {
-          const value = input.target.value
+        onValueChange={(value) => {
           setSearch(value)
           if (value.trim() && view !== 'list') setView('list')
         }}
