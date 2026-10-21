@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "1.7",
+	"version": "2.0",
 	"label": "app.name",
 	"classes": ["calendar"],
 	"paths": ["calendars"],
@@ -18,7 +18,7 @@
 	"require": {"version": {"minimum": "2.0.9"}},
 
 	"database": {
-		"schema": 8,
+		"schema": 9,
 		"file": "calendars.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -48,6 +48,9 @@
 		"-/calendars/link": {"function": "action_calendar_link"},
 		"-/calendars/import": {"function": "action_calendar_import"},
 		"-/calendars/export": {"function": "action_calendar_export"},
+		"-/calendars/publish": {"function": "action_calendar_publish"},
+		"-/calendars/publish/set": {"function": "action_calendar_publish_set"},
+		"-/calendars/publish/forget": {"function": "action_calendar_publish_forget"},
 		"-/events": {"function": "action_events"},
 		"-/events/bounds": {"function": "action_events_bounds"},
 		"-/events/get": {"function": "action_event_get"},
@@ -86,6 +89,9 @@
 		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "calendars/read"},
 		"dav/objects": {"function": "function_dav_objects", "permission": "calendars/read"},
 		"dav/put": {"function": "function_dav_put", "permission": "calendars/read"},
-		"dav/delete": {"function": "function_dav_delete", "permission": "calendars/read"}
+		"dav/delete": {"function": "function_dav_delete", "permission": "calendars/read"},
+		// An event a hosted fediverse account published, for core's engine
+		// (the federation plan, phase 30).
+		"activitypub/object": {"function": "function_activitypub_object"}
 	}
 }

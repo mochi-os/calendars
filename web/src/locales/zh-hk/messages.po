@@ -67,6 +67,11 @@ msgstr ""
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr ""
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr ""
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr ""
 msgid "Copied to clipboard"
 msgstr ""
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr ""
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,8 +956,16 @@ msgstr ""
 msgid "Copy this event"
 msgstr ""
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr ""
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
+msgstr ""
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
 msgstr ""
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -1107,6 +1125,10 @@ msgstr ""
 msgid "Delete comment"
 msgstr ""
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr ""
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr ""
@@ -1139,6 +1161,11 @@ msgstr ""
 msgid "Delete option {0}"
 msgstr ""
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr ""
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr ""
@@ -1153,6 +1180,11 @@ msgstr "在舊伺服器上刪除您的帳戶"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
+msgstr ""
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
@@ -1780,6 +1812,10 @@ msgstr ""
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
+msgstr ""
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
 msgstr ""
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
@@ -2419,6 +2455,16 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
+msgstr ""
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr ""
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
 msgstr ""
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx

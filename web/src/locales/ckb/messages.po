@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} ڕووداو هاوردە کرا} other {{im
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} ڕووداو پێشتر لە ڕۆژژمێرەکەدا هەیە} other {{skipped} ڕووداو پێشتر لە ڕۆژژمێرەکەدا هەیە}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# کۆپی} other {# کۆپی}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "کۆپی کرا"
 msgid "Copied to clipboard"
 msgstr "کۆپی کرا بۆ کلیپبۆرد"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "کۆپییە بڵاوکراوەکان لەوێ: {0}. دەمێننەوە مەگەر بیانسڕیتەوە."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "کۆپیکردنی ناونیشانی ڕۆژژمێر"
 msgid "Copy this event"
 msgstr "کۆپیکردنی ئەم ڕووداوە"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "نەتوانرا کۆپییەکان بسڕدرێنەوە"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ئەم دۆکومێنتە نەخوێنرایەوە. تکایە دواتر هەوڵ بدە."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "نەتوانرا هەژمارەکان پاشەکەوت بکرێن"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "سڕینەوەی ستوون"
 msgid "Delete comment"
 msgstr "سڕینەوەی لێدوان"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "سڕینەوەی کۆپییەکان"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "سڕینەوەی ئامێر"
@@ -1139,6 +1161,11 @@ msgstr "سڕینەوەی هەڵبژاردە"
 msgid "Delete option {0}"
 msgstr "سڕینەوەی هەڵبژاردەی {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "کۆپییەکانی سەر {0} بسڕدرێنەوە؟"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "سڕینەوەی ئەم ڕووداوە"
@@ -1154,6 +1181,11 @@ msgstr "هەژمارەکەت لە سێرڤەری کۆنەکەوە بسڕەوە"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "سڕایەوە"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} کۆپی سڕانەوە"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "ڕووداوەکانی لە ڕۆژژمێرە ڕەسەنەکەدا دەم
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "هەر ئێستا"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "هێشتنەوە"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "پرۆمپت پاشەکەوت کرا"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "تایبەتمەندییەکان"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "بڵاوکردنەوە بۆ"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "بڵاوکردنەوە بۆ {0}"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

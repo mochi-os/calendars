@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} कार्यक्रम आयात भ
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} कार्यक्रम पहिले से कैलेंडर में बा} other {{skipped} कार्यक्रम पहिले से कैलेंडर में बाड़े}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# कॉपी} other {# कॉपी}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "कॉपी हो गइल"
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्ड पर कॉपी कइल गइल"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "उहाँ प्रकाशित कॉपी: {0}। जब ले रउआ ओह के ना मेटाइब, ऊ रहिहें।"
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "कैलेंडर के पता कॉपी करीं"
 msgid "Copy this event"
 msgstr "ई कार्यक्रम कॉपी करीं"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "कॉपी मेटावल ना जा सकल"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "एह दस्तावेज के लोड ना कर सकल। बाद में फिर कोशिश करीं।"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "खाता सहेजल ना जा सकल"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "कॉलम मेटाईं"
 msgid "Delete comment"
 msgstr "टिप्पणी मेटाईं"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "कॉपी मेटाईं"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "उपकरण मेटाईं"
@@ -1139,6 +1161,11 @@ msgstr "विकल्प मेटाईं"
 msgid "Delete option {0}"
 msgstr "विकल्प {0} मेटाईं"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} पर के कॉपी मेटाईं?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "ई कार्यक्रम मेटाईं"
@@ -1154,6 +1181,11 @@ msgstr "पुरान सर्वर पर आपन खाता मेट�
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "मेटावल गइल"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} कॉपी मेटावल गइल"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "एकर कार्यक्रम मूल कैलेंडर �
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "अबहीं"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "रहे दीं"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "प्रॉम्प्ट सहेजल गइल"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "गुण"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "कहाँ प्रकाशित करीं"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} पर प्रकाशित करीं"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

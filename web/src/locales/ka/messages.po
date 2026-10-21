@@ -67,6 +67,11 @@ msgstr "{0, plural, one {იმპორტირებულია {imported} �
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} ღონისძიება უკვე კალენდარშია} other {{skipped} ღონისძიება უკვე კალენდარშია}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# ასლი} other {# ასლი}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "დაკოპირდა"
 msgid "Copied to clipboard"
 msgstr "ბუფერში დაკოპირდა"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "იქ გამოქვეყნებული ასლები: {0}. ისინი დარჩება, თუ არ წაშლით."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "კალენდრის მისამართის კოპი�
 msgid "Copy this event"
 msgstr "ამ ღონისძიების კოპირება"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "ასლების წაშლა ვერ მოხერხდა"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ამ დოკუმენტის ჩატვირთვა ვერ მოხერხდა. სცადეთ მოგვიანებით."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "ანგარიშების შენახვა ვერ მოხერხდა"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "სვეტის წაშლა"
 msgid "Delete comment"
 msgstr "კომენტარის წაშლა"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "ასლების წაშლა"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "მოწყობილობის წაშლა"
@@ -1139,6 +1161,11 @@ msgstr "ვარიანტის წაშლა"
 msgid "Delete option {0}"
 msgstr "ვარიანტის წაშლა {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "წაიშალოს ასლები {0}-ზე?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "ამ ღონისძიების წაშლა"
@@ -1154,6 +1181,11 @@ msgstr "წაშალეთ თქვენი ანგარიში ძვ
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "წაიშალა"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "წაიშალა {0} ასლი"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "მისი ღონისძიებები თავდაპი�
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ახლახან"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "შენარჩუნება"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "მოთხოვნა შენახულია"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "თვისებები"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "სად გამოქვეყნდეს"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "გამოქვეყნება {0}-ზე"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Iompórtáladh {imported} imeacht} two {Iompórtáladh 
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} imeacht san fhéilire cheana} two {{skipped} imeacht san fhéilire cheana} few {{skipped} imeacht san fhéilire cheana} many {{skipped} n-imeacht san fhéilire cheana} other {{skipped} imeacht san fhéilire cheana}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# chóip} two {# chóip} few {# chóip} many {# gcóip} other {# cóip}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "Cóipeáilte"
 msgid "Copied to clipboard"
 msgstr "Cóipeáilte chuig an ngearrthaisce"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Cóipeanna a foilsíodh ansin: {0}. Fanann siad mura scriosann tú iad."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "Cóipeáil seoladh an fhéilire"
 msgid "Copy this event"
 msgstr "Cóipeáil an t-imeacht seo"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Níorbh fhéidir na cóipeanna a scriosadh"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Níorbh fhéidir an cháipéis seo a luchtú. Bain triail eile as ar ball."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Níorbh fhéidir na cuntais a shábháil"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "Scrios colún"
 msgid "Delete comment"
 msgstr "Scrios nóta tráchta"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Scrios cóipeanna"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Scrios an gléas"
@@ -1139,6 +1161,11 @@ msgstr "Scrios rogha"
 msgid "Delete option {0}"
 msgstr "Scrios rogha {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Scrios na cóipeanna ar {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Scrios an t-imeacht seo"
@@ -1154,6 +1181,11 @@ msgstr "Scrios do chuntas ar an sean-fhreastalaí"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Scriosta"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Cóipeanna scriosta: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "Fanann a imeachtaí san fhéilire bunaidh."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Anois beag"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Coinnigh"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "Leid sábháilte"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Airíonna"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Foilsigh chuig"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Foilsigh chuig {0}"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

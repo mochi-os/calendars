@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} bûyer hate hawirdekirin} other {{imported} 
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} bûyer jixwe di salnameyê de ye} other {{skipped} bûyer jixwe di salnameyê de ne}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kopî} other {# kopî}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "Hat kopîkirin"
 msgid "Copied to clipboard"
 msgstr "Hat kopîkirin li clipboard"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Kopiyên li wir hatine weşandin: {0}. Heta tu wan jê nebî, ew dimînin."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "Navnîşana salnameyê kopî bike"
 msgid "Copy this event"
 msgstr "Vê bûyerê kopî bike"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Kopî nehatin jêbirin"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Ev belge nikarîbû were barkirin. Ji kerema xwe re paşê dîsa biceribîne."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Hesab nehatin tomarkirin"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "Stûnê jê bibe"
 msgid "Delete comment"
 msgstr "Şîroveyê jê bibe"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Kopiyan jê bibe"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Cîhazê jê bibe"
@@ -1139,6 +1161,11 @@ msgstr "Vebijêrkê jê bibe"
 msgid "Delete option {0}"
 msgstr "Vebijêrka {0} jê bibe"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Kopiyên li ser {0} jê bibî?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Vê bûyerê jê bibe"
@@ -1154,6 +1181,11 @@ msgstr "Hesabê xwe li ser serverê kevn jêbirin"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Hate jêbirin"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} kopî hatin jêbirin"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "Bûyerên wê di salnameya eslî de dimînin."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Nuha"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Bihêle"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "Daxwaz hate tomarkirin"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "Taybetmendî"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Cihên weşandinê"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Li {0} biweşîne"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

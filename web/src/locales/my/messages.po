@@ -67,6 +67,11 @@ msgstr "{0, plural, other {အစီအစဉ် {imported} ခု တင်သ�
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, other {အစီအစဉ် {skipped} ခု ပြက္ခဒိန်တွင် ရှိပြီးသားဖြစ်သည်}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {မိတ္တူ #ခု} other {မိတ္တူ #ခု}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "ကူးယူပြီးပါပြီ"
 msgid "Copied to clipboard"
 msgstr "ကလစ်ဘုတ်သို့ ကူးပြီး"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "ထိုနေရာတွင် ထုတ်ဝေထားသော မိတ္တူများ- {0}။ သင် မဖျက်မချင်း ၎င်းတို့ ကျန်ရှိနေမည်။"
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "ပြက္ခဒိန် လိပ်စာ ကူးမည်"
 msgid "Copy this event"
 msgstr "ဤအစီအစဉ်ကို ကူးမည်"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "မိတ္တူများကို ဖျက်၍ မရပါ"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ဤစာရွက်စာတမ်းကို ဖွင့်၍ မရပါ။ နောက်မှ ထပ်စမ်းကြည့်ပါ။"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "အကောင့်များကို သိမ်းဆည်း၍ မရပါ"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "ကော်လံ ဖျက်မည်"
 msgid "Delete comment"
 msgstr "မှတ်ချက် ဖျက်မည်"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "မိတ္တူများ ဖျက်မည်"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "ကိရိယာ ဖျက်မည်"
@@ -1139,6 +1161,11 @@ msgstr "ရွေးချယ်စရာ ဖျက်မည်"
 msgid "Delete option {0}"
 msgstr "ရွေးချယ်စရာ {0} ဖျက်မည်"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} ရှိ မိတ္တူများကို ဖျက်မလား?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "ဤအစီအစဉ်ကို ဖျက်မည်"
@@ -1154,6 +1181,11 @@ msgstr "ဟောင်းသောဆာဗာမှ သင်၏အကော�
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "ဖျက်ခဲ့သည်"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "မိတ္တူ {0} ခု ဖျက်ပြီး"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "၎င်း၏ အစီအစဉ်များသည် မူလ ပ
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "အခုပဲ"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "ထားမည်"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "ညွှန်ကြားချက် သိမ်းပြီးပ�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "ဂုဏ်သတ္တိများ"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "ထုတ်ဝေရန် နေရာ"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} သို့ ထုတ်ဝေမည်"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

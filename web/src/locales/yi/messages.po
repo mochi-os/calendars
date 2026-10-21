@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} געשעעניש אימפּאָרטירט} o
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} געשעעניש איז שוין אין קאַלענדאַר} other {{skipped} געשעענישן זײַנען שוין אין קאַלענדאַר}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# קאָפּיע} other {# קאָפּיעס}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -921,6 +926,11 @@ msgstr "קאָפּירט"
 msgid "Copied to clipboard"
 msgstr "קאָפּירט צו קליפּברעט"
 
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "קאָפּיעס פּובליקירט דאָרט: {0}. זיי בלײַבן סײַדן איר מעקט זיי אויס."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -946,9 +956,17 @@ msgstr "קאָפּירן קאַלענדאַר־אַדרעס"
 msgid "Copy this event"
 msgstr "קאָפּירן די געשעעניש"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "ניט געלונגען אויסצומעקן די קאָפּיעס"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "האָט נישט געקאָנט לאָדן דעם דאָקומענט. פּרובירט שפּעטער ווידער."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "ניט געלונגען אָפּצוהיטן די קאָנטעס"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1107,6 +1125,10 @@ msgstr "אויסמעקן זײַל"
 msgid "Delete comment"
 msgstr "אויסמעקן קאָמענטאַר"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "אויסמעקן קאָפּיעס"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "אויסמעקן מיטל"
@@ -1139,6 +1161,11 @@ msgstr "אויסמעקן אָפּציע"
 msgid "Delete option {0}"
 msgstr "אויסמעקן אָפּציע {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "אויסמעקן די קאָפּיעס אויף {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "אויסמעקן די געשעעניש"
@@ -1154,6 +1181,11 @@ msgstr "לעש אויס דיין קאנטע אויפן אלטן סערווער"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "אויסגעמעקט"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} קאָפּיעס אויסגעמעקט"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1781,6 +1813,10 @@ msgstr "זײַנע געשעענישן בלײַבן אין דעם אָריגינ�
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "פּונקט אַצינד"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "האַלטן"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2420,6 +2456,16 @@ msgstr "פּראָמפּט אויפֿגעהיט"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
 msgstr "אייגנשאַפֿטן"
+
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "פּובליקירן אויף"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "פּובליקירן אויף {0}"
 
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"

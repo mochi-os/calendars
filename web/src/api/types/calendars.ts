@@ -116,3 +116,27 @@ export interface RemoteResponse {
 export interface GrantResponse {
   url: string
 }
+
+/** One of the user's accounts on another network a calendar may publish to. */
+export interface PublishAccount {
+  id: string
+  /** `mastodon`, `bluesky` or `fediverse`. */
+  type: string
+  /** The account's address on its network. */
+  identifier: string
+  name: string
+  hosted: boolean
+}
+
+/** `-/calendars/publish`: the accounts, those the calendar publishes to, and its copies on each. */
+export interface PublishResponse {
+  accounts: PublishAccount[]
+  publish: string[]
+  copies: Record<string, number>
+}
+
+/** `-/calendars/publish/set`: the new list, and the copies left on each account that left it. */
+export interface PublishSetResponse {
+  publish: string[]
+  kept: Record<string, number>
+}

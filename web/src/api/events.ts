@@ -16,6 +16,8 @@ import type {
 export interface CreateEvent {
   calendar?: string
   components: Component[]
+  /** The accounts on other networks the event goes to, overriding its calendar's list. */
+  accounts?: string[]
 }
 
 export interface UpdateEvent {

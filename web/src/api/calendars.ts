@@ -14,6 +14,8 @@ import type {
   ImportResponse,
   LinkResponse,
   PollResponse,
+  PublishResponse,
+  PublishSetResponse,
   RefreshResponse,
   RemoteResponse,
 } from '@/api/types/calendars'
@@ -185,6 +187,35 @@ export const calendarsApi = {
     requestHelpers.post<{ revoked: boolean }>(
       endpoints.link.revoke,
       body({ calendar }),
+      { ...form, ...quiet }
+    ),
+
+  // Where an own calendar publishes on other networks.
+  publish: (calendar: string): Promise<PublishResponse> =>
+    requestHelpers.post<PublishResponse>(
+      endpoints.calendars.publish,
+      body({ calendar }),
+      { ...form, ...quiet }
+    ),
+
+  setPublish: (
+    calendar: string,
+    accounts: string[]
+  ): Promise<PublishSetResponse> =>
+    requestHelpers.post<PublishSetResponse>(
+      endpoints.calendars.publishSet,
+      body({ calendar, accounts: JSON.stringify(accounts) }),
+      { ...form, ...quiet }
+    ),
+
+  // Delete the calendar's copies on an account it no longer publishes to.
+  forgetCopies: (
+    calendar: string,
+    account: string
+  ): Promise<{ deleted: number }> =>
+    requestHelpers.post<{ deleted: number }>(
+      endpoints.calendars.publishForget,
+      body({ calendar, account }),
       { ...form, ...quiet }
     ),
 }

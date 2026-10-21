@@ -93,6 +93,7 @@ import { useRuleSummary } from '@/hooks/use-rule-summary'
 import { CountInput } from '@/features/calendar/components/count-input'
 import { DeleteEventDialog } from '@/features/calendar/components/delete-event-dialog'
 import { LocationButton } from '@/features/calendar/components/location-button'
+import { PublishSwitches } from '@/features/calendar/components/publishing'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 
 const WEEKDAY_ANCHOR = '2024-01-07'
@@ -141,6 +142,13 @@ export function EventEditor() {
   // Closing with a change that cannot be saved: no title, or an end before
   // the start.
   const [discarding, setDiscarding] = useState(false)
+  // The accounts on other networks a new event goes to, once the writer has
+  // changed them from its calendar's list, with the calendar they were chosen
+  // for: another calendar starts again from its own list.
+  const [publishing, setPublishing] = useState<{
+    calendar: string
+    accounts: string[]
+  } | null>(null)
 
   const createMutation = useCreateEventMutation()
   const updateMutation = useUpdateEventMutation()
@@ -217,6 +225,7 @@ export function EventEditor() {
       stored.current = null
       base.current = null
       setUntitled(false)
+      setPublishing(null)
       setDraft(editing.draft)
       setCustom(customised(editing.draft.repeat))
       return
@@ -436,6 +445,10 @@ export function EventEditor() {
       await createMutation.mutateAsync({
         calendar: current.calendar,
         components: [draftComponent(current)],
+        accounts:
+          publishing?.calendar === current.calendar
+            ? publishing.accounts
+            : undefined,
       })
       remember(current)
       reveal(current.calendar)
@@ -562,6 +575,25 @@ export function EventEditor() {
             name: calendar.name,
           }))}
         />
+        {editing?.mode === 'create' &&
+          writable.some(
+            (calendar) =>
+              calendar.id === draft.calendar && calendar.kind === 'own'
+          ) && (
+            <div className='mt-4 px-1'>
+              <PublishSwitches
+                calendar={draft.calendar}
+                chosen={
+                  publishing?.calendar === draft.calendar
+                    ? publishing.accounts
+                    : null
+                }
+                onChange={(accounts) =>
+                  setPublishing({ calendar: draft.calendar, accounts })
+                }
+              />
+            </div>
+          )}
       </div>
     ) : null
 
