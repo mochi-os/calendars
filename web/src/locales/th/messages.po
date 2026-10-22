@@ -346,6 +346,10 @@ msgstr "หลังจากจำนวนครั้ง"
 msgid "AI"
 msgstr "AI"
 
+#: ../../../lib/web/src/components/comment-thread-context.tsx
+msgid "All comments"
+msgstr ""
+
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: src/features/calendar/editor.tsx
@@ -910,6 +914,10 @@ msgstr "ข้อมูลบริบทและรายละเอียด
 msgid "Continue"
 msgstr "ดำเนินการต่อ"
 
+#: ../../../lib/web/src/components/comment-thread-context.tsx
+msgid "Continue this thread"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
 msgstr "ดำเนินการต่อด้วย {label}"
@@ -922,6 +930,7 @@ msgstr "ดำเนินการต่อด้วย {providerLabel}"
 msgid "Copied"
 msgstr "คัดลอกแล้ว"
 
+#: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ดแล้ว"
@@ -1458,6 +1467,7 @@ msgstr "ไม่สามารถเชื่อมต่ออุปกรณ
 msgid "Failed to connect the account"
 msgstr "ไม่สามารถเชื่อมต่อบัญชีได้"
 
+#: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -2925,6 +2935,11 @@ msgstr "ตั้งค่าต้นทางและปลายทาง"
 #: src/components/layout/calendars-layout.tsx
 msgid "Settings"
 msgstr "การตั้งค่า"
+
+#: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/comment-share-button.tsx
+msgid "Share"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
