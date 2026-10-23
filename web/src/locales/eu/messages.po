@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} gertaera inportatu da} other {{imported} ger
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} gertaera dagoeneko egutegian dago} other {{skipped} gertaera dagoeneko egutegian daude}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kopia} other {# kopia}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AA"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Iruzkin guztiak"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Jarraitu"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Jarraitu hari honekin"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Kopiatuta"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Arbelera kopiatu da"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Han argitaratutako kopiak: {0}. Bertan geratzen dira ezabatzen ez badituzu."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopiatu egutegiaren helbidea"
 msgid "Copy this event"
 msgstr "Kopiatu gertaera hau"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Ezin izan dira kopiak ezabatu"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Ezin izan da dokumentu hau kargatu. Saiatu berriro geroago."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Ezin izan dira kontuak gorde"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Ezabatu zutabea"
 msgid "Delete comment"
 msgstr "Ezabatu iruzkina"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Ezabatu kopiak"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Ezabatu gailua"
@@ -1148,6 +1170,11 @@ msgstr "Ezabatu aukera"
 msgid "Delete option {0}"
 msgstr "Ezabatu {0} aukera"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0}(e)ko kopiak ezabatu?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Ezabatu gertaera hau"
@@ -1163,6 +1190,11 @@ msgstr "Ezabatu zure kontua zerbitzari zaharrean"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Ezabatuta"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} kopia ezabatu dira"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Haren gertaerak jatorrizko egutegian geratzen dira."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Oraintxe"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Mantendu"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Galdera-aukera gorde da"
 msgid "Properties"
 msgstr "Propietateak"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Argitaratu hemen"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Argitaratu {0}(e)n"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Argitaratutako egutegi-helbidea (irakurri soilik)"
@@ -2893,7 +2939,7 @@ msgstr "Ezarpenak"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Partekatu"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

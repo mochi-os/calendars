@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Uvezen je {imported} događaj} few {Uvezena su {importe
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} događaj već je u kalendaru} few {{skipped} događaja već su u kalendaru} other {{skipped} događaja već je u kalendaru}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kopija} few {# kopije} other {# kopija}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Svi komentari"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Nastavi"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Nastavi ovu nit"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Kopirano"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Kopirano u međuspremnik"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Kopije objavljene ondje: {0}. Ostaju dok ih ne obrišete."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopiraj adresu kalendara"
 msgid "Copy this event"
 msgstr "Kopiraj ovaj događaj"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Nije moguće obrisati kopije"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Nije moguće učitati ovaj dokument. Pokušajte ponovno kasnije."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Nije moguće spremiti račune"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Obriši stupac"
 msgid "Delete comment"
 msgstr "Obriši komentar"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Obriši kopije"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Izbriši uređaj"
@@ -1148,6 +1170,11 @@ msgstr "Obriši opciju"
 msgid "Delete option {0}"
 msgstr "Obriši opciju {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Obrisati kopije na {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Obriši ovaj događaj"
@@ -1163,6 +1190,11 @@ msgstr "Izbrišite svoj račun na starom poslužitelju"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Izbrisano"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Obrisano kopija: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Njegovi događaji ostaju u izvornom kalendaru."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Upravo sada"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Zadrži"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Prompt spremljen"
 msgid "Properties"
 msgstr "Svojstva"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Objavljuj na"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Objavljuj na {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Objavljena adresa kalendara (samo za čitanje)"
@@ -2893,7 +2939,7 @@ msgstr "Postavke"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Podijeli"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

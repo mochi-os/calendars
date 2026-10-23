@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Taateen {imported} alaa galfameera} other {Taateewwan {
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {Taateen {skipped} duraanuu kaalaandarii keessa jira} other {Taateewwan {skipped} duraanuu kaalaandarii keessa jiru}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {garagalcha #} other {garagalchoota #}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Yaadawwan hunda"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Itti fufi"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Mari'ii kana itti fufi"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Garagalfame"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Garagalfamee gara saanduqa garagalchaa"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Garagalchoota achitti maxxanfaman: {0}. Yoo ati hin haqiin achuma turu."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Teessoo kaalaandarii garagalchi"
 msgid "Copy this event"
 msgstr "Taatee kana garagalchi"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Garagalchoota haquu hin dandeenye"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Galmee kana fe'uu hin dandeenye. Booda yaali."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Akkaawuntiiwwan olkaa'uu hin dandeenye"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Tarjaa haqi"
 msgid "Delete comment"
 msgstr "Yaada haqi"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Garagalchoota haqi"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Meeshaa haqi"
@@ -1148,6 +1170,11 @@ msgstr "Filannoo haqi"
 msgid "Delete option {0}"
 msgstr "Filannoo {0} haqi"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Garagalchoota {0} irra jiran haqxaa?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Taatee kana haqi"
@@ -1163,6 +1190,11 @@ msgstr "Akkaawuntii kee sarvaraa durii irraa haqi"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Haqameera"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Garagalchoonni {0} haqamaniiru"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Taateewwan isaa kaalaandarii jalqabaa keessatti hafu."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Amma"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Qabadhu"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Gaaffii olkaa'ame"
 msgid "Properties"
 msgstr "Qabeenyaalee"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Bakka maxxansaa"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} irratti maxxansi"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Teessoo kaalaandarii maxxanfame (dubbisuu qofa)"
@@ -2893,7 +2939,7 @@ msgstr "Qindaa'inoota"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Qoodi"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} tədbir idxal edildi} other {{imported} təd
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} tədbir artıq təqvimdə var} other {{skipped} tədbir artıq təqvimdə var}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# nüsxə} other {# nüsxə}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Bütün şərhlər"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Davam et"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Bu müzakirəni davam etdir"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Kopyalandı"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Mübadilə yaddaşına kopyalandı"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Orada dərc edilən nüsxələr: {0}. Siz silməsəniz, onlar qalır."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Təqvim ünvanını kopyala"
 msgid "Copy this event"
 msgstr "Bu tədbiri kopyala"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Nüsxələr silinə bilmədi"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Bu sənəd yüklənə bilmədi. Daha sonra yenidən cəhd edin."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Hesablar yadda saxlanıla bilmədi"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Sütunu sil"
 msgid "Delete comment"
 msgstr "Şərhi sil"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Nüsxələri sil"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Cihazı sil"
@@ -1148,6 +1170,11 @@ msgstr "Variantı sil"
 msgid "Delete option {0}"
 msgstr "{0} variantını sil"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} üzərindəki nüsxələr silinsin?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Bu tədbiri sil"
@@ -1163,6 +1190,11 @@ msgstr "Köhnə serverdə hesabınızı silin"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Silindi"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} nüsxə silindi"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Onun tədbirləri orijinal təqvimdə qalır."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "İndicə"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Saxla"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Sorğu saxlanıldı"
 msgid "Properties"
 msgstr "Xüsusiyyətlər"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Dərc yerləri"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} hesabına dərc et"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Dərc edilmiş təqvim ünvanı (yalnız oxu)"
@@ -2893,7 +2939,7 @@ msgstr "Parametrlər"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Paylaş"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

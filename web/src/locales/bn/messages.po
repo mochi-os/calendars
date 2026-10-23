@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported}টি ইভেন্ট ইমপোর্�
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped}টি ইভেন্ট আগে থেকেই ক্যালেন্ডারে আছে} other {{skipped}টি ইভেন্ট আগে থেকেই ক্যালেন্ডারে আছে}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {#টি কপি} other {#টি কপি}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "সব মন্তব্য"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "চালিয়ে যান"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "এই থ্রেডটি চালিয়ে যান"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "কপি করা হয়েছে"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "ক্লিপবোর্ডে কপি করা হয়েছে"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "সেখানে প্রকাশিত কপি: {0}। আপনি না মুছলে সেগুলো থেকে যাবে।"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "ক্যালেন্ডারের ঠিকানা কপি ক
 msgid "Copy this event"
 msgstr "এই ইভেন্টটি কপি করুন"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "কপিগুলো মোছা যায়নি"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "এই ডকুমেন্টটি লোড করা যায়নি। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "অ্যাকাউন্টগুলো সংরক্ষণ করা যায়নি"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "কলাম মুছুন"
 msgid "Delete comment"
 msgstr "মন্তব্য মুছুন"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "কপি মুছুন"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "ডিভাইস মুছুন"
@@ -1148,6 +1170,11 @@ msgstr "অপশন মুছুন"
 msgid "Delete option {0}"
 msgstr "অপশন {0} মুছুন"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0}-এর কপিগুলো মুছবেন?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "এই ইভেন্টটি মুছুন"
@@ -1163,6 +1190,11 @@ msgstr "পুরানো সার্ভারে আপনার অ্যা
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "মুছে ফেলা হয়েছে"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0}টি কপি মোছা হয়েছে"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "এর ইভেন্টগুলো মূল ক্যালেন্
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "এইমাত্র"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "রাখুন"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "প্রম্পট সংরক্ষণ করা হয়েছে
 msgid "Properties"
 msgstr "বৈশিষ্ট্য"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "যেখানে প্রকাশ করবে"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0}-এ প্রকাশ করুন"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "প্রকাশিত ক্যালেন্ডার ঠিকানা (শুধু পড়া)"
@@ -2893,7 +2939,7 @@ msgstr "সেটিংস"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "শেয়ার করুন"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

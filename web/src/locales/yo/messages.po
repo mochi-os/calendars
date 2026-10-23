@@ -67,6 +67,11 @@ msgstr "{0, plural, other {A ti kó ìṣẹ̀lẹ̀ {imported} wọlé}}"
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, other {Ìṣẹ̀lẹ̀ {skipped} ti wà nínú kàlẹ́ńdà tẹ́lẹ̀}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {ẹ̀dà #} other {ẹ̀dà #}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Gbogbo àlàyé"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Tẹ̀síwájú"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Tẹ̀síwájú ìjíròrò yìí"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Ti dàkọ"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Àwọn ẹ̀dà tí a tẹ̀jáde níbẹ̀: {0}. Wọn yóò wà níbẹ̀ àyàfi tí o bá pa wọ́n rẹ́."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Ṣe àdàkọ àdírẹ́sì kàlẹ́ńdà"
 msgid "Copy this event"
 msgstr "Ṣe àdàkọ ìṣẹ̀lẹ̀ yìí"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Kò ṣeé ṣe láti pa àwọn ẹ̀dà rẹ́"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Kò lè kó ìwé yìí. Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kan sí i."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Kò ṣeé ṣe láti fi àwọn àkáǹtì pamọ́"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Pa ọ̀wọ́n rẹ́"
 msgid "Delete comment"
 msgstr "Pa àlàyé rẹ́"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Pa àwọn ẹ̀dà rẹ́"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Pa ẹ̀rọ rẹ́"
@@ -1148,6 +1170,11 @@ msgstr "Pa àṣàyàn rẹ́"
 msgid "Delete option {0}"
 msgstr "Pa àṣàyàn {0} rẹ́"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Ṣé kí a pa àwọn ẹ̀dà tó wà lórí {0} rẹ́?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Pa ìṣẹ̀lẹ̀ yìí rẹ́"
@@ -1163,6 +1190,11 @@ msgstr "Pa akonti rẹ rẹ lori olupin atijọ"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "A parẹ́"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "A ti pa ẹ̀dà {0} rẹ́"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Àwọn ìṣẹ̀lẹ̀ rẹ̀ ṣì wà nínú kàlẹ́ńdà àtilẹ
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ní báyìí"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Tọ́jú"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "A ti tọ́jú prompt"
 msgid "Properties"
 msgstr "Àwọn àmì"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Tẹ̀jáde sí"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Tẹ̀jáde sí {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Àdírẹ́sì kàlẹ́ńdà tí a gbé jáde (kíkà nìkan)"
@@ -2893,7 +2939,7 @@ msgstr "Àwọn ìṣètò"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Pín"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

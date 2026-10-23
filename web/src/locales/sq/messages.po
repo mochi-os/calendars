@@ -67,6 +67,11 @@ msgstr "{0, plural, one {U importua {imported} ngjarje} other {U importuan {impo
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} ngjarje është tashmë në kalendar} other {{skipped} ngjarje janë tashmë në kalendar}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kopje} other {# kopje}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Të gjitha komentet"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Vazhdo"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Vazhdo këtë diskutim"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "U kopjua"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "U kopjua në kujtesën e fragmenteve"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Kopje të publikuara atje: {0}. Ato mbeten, përveç nëse i fshini."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopjo adresën e kalendarit"
 msgid "Copy this event"
 msgstr "Kopjo këtë ngjarje"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Kopjet nuk u fshinë dot"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Nuk mund të ngarkohej ky dokument. Provo më vonë."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Llogaritë nuk u ruajtën dot"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Fshi kolonën"
 msgid "Delete comment"
 msgstr "Fshi komentin"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Fshi kopjet"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Fshi pajisjen"
@@ -1148,6 +1170,11 @@ msgstr "Fshi opsionin"
 msgid "Delete option {0}"
 msgstr "Fshi opsionin {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Të fshihen kopjet në {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Fshi këtë ngjarje"
@@ -1163,6 +1190,11 @@ msgstr "Fshini llogarinë tuaj në serverin e vjetër"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "U fshi"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "U fshinë {0} kopje"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Ngjarjet e tij mbeten në kalendarin origjinal."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Sapo"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Mbaji"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Prompti u ruajt"
 msgid "Properties"
 msgstr "Vetitë"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Publiko në"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Publiko në {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Adresë kalendari e publikuar (vetëm për lexim)"
@@ -2893,7 +2939,7 @@ msgstr "Cilësimet"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Shpërndaj"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

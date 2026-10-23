@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} иш-чара импорттолду} other 
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} иш-чара календарда мурунтан эле бар} other {{skipped} иш-чара календарда мурунтан эле бар}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# көчүрмө} other {# көчүрмө}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Бардык комментарийлер"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Улантуу"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Бул талкууну улантуу"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Көчүрүлдү"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Алмашуу буферине көчүрүлдү"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Ал жерде жарыяланган көчүрмөлөр: {0}. Аларды жок кылмайынча, алар сакталып калат."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Календардын дарегин көчүрүү"
 msgid "Copy this event"
 msgstr "Бул иш-чараны көчүрүү"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Көчүрмөлөрдү жок кылуу мүмкүн болбоду"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Бул документти жүктөө мүмкүн болбоду. Кийинчерээк кайра аракет кылыңыз."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Аккаунттарды сактоо мүмкүн болбоду"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Тилкени жок кылуу"
 msgid "Delete comment"
 msgstr "Комментарийди жок кылуу"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Көчүрмөлөрдү жок кылуу"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Түзмөктү өчүрүү"
@@ -1148,6 +1170,11 @@ msgstr "Тандоону жок кылуу"
 msgid "Delete option {0}"
 msgstr "{0} тандоосун жок кылуу"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} ичиндеги көчүрмөлөр жок кылынсынбы?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Бул иш-чараны өчүрүү"
@@ -1163,6 +1190,11 @@ msgstr "Эски серверден аккаунтуңузду жок кылың
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Өчүрүлдү"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} көчүрмө жок кылынды"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Анын иш-чаралары баштапкы календарда к�
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Азыр эле"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Калтыруу"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Промпт сакталды"
 msgid "Properties"
 msgstr "Касиеттер"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Жарыялоо орду"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Жарыялоо: {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Жарыяланган календардын дареги (окуу гана)"
@@ -2893,7 +2939,7 @@ msgstr "Жөндөөлөр"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Бөлүшүү"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

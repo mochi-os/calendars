@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Ներմուծվեց {imported} միջոցառում} o
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} միջոցառում արդեն օրացույցում է} other {{skipped} միջոցառում արդեն օրացույցում է}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# պատճեն} other {# պատճեն}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Բոլոր մեկնաբանությունները"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Շարունակել"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Շարունակել այս քննարկումը"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Պատճենվեց"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Պատճենվեց սեղմատախտակին"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Այնտեղ հրապարակված պատճեններ՝ {0}։ Դրանք կմնան, եթե չջնջեք։"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Պատճենել օրացույցի հասցեն"
 msgid "Copy this event"
 msgstr "Պատճենել այս միջոցառումը"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Չհաջողվեց ջնջել պատճենները"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Չհաջողվեց բեռնել այս փաստաթուղթը։ Խնդրում ենք փորձել ավելի ուշ։"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Չհաջողվեց պահպանել հաշիվները"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Ջնջել սյունակը"
 msgid "Delete comment"
 msgstr "Ջնջել մեկնաբանությունը"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Ջնջել պատճենները"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Ջնջել սարքը"
@@ -1148,6 +1170,11 @@ msgstr "Ջնջել տարբերակը"
 msgid "Delete option {0}"
 msgstr "Ջնջել {0} տարբերակը"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Ջնջե՞լ պատճենները {0}-ում"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Ջնջել այս միջոցառումը"
@@ -1163,6 +1190,11 @@ msgstr "Ջնջեք ձեր հաշիվը հին սերվերում"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Ջնջվել է"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Ջնջվեց {0} պատճեն"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Դրա միջոցառումները մնում են սկզբնական �
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Հենց հիմա"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Պահել"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Հուշումը պահպանվեց"
 msgid "Properties"
 msgstr "Հատկություններ"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Որտեղ հրապարակել"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Հրապարակել {0}-ում"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Հրապարակված օրացույցի հասցե (միայն կարդալ)"
@@ -2893,7 +2939,7 @@ msgstr "Կարգավորումներ"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Կիսվել"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

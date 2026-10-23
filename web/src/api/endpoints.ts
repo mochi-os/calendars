@@ -30,6 +30,9 @@ const endpoints = {
     link: `${prefix}/calendars/link`,
     import: `${prefix}/calendars/import`,
     export: `${prefix}/calendars/export`,
+    publish: `${prefix}/calendars/publish`,
+    publishSet: `${prefix}/calendars/publish/set`,
+    publishForget: `${prefix}/calendars/publish/forget`,
   },
   events: {
     list: `${prefix}/events`,

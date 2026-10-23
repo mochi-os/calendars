@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} پېښه وارده شوه} other {{imported
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} پېښه دمخه په کليز کې شته} other {{skipped} پېښې دمخه په کليز کې شته}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# کاپي} other {# کاپيانې}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "ټولې تبصرې"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "دوام ورکړئ"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "دې بحث ته دوام ورکړئ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "کاپي شو"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "په کلیپ بورډ کاپي شو"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "هلته خپرې شوې کاپيانې: {0}. هغه به پاتې وي، مګر دا چې تاسو یې ړنګې کړئ."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "د کليز پته کاپي کړئ"
 msgid "Copy this event"
 msgstr "دا پېښه کاپي کړئ"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "کاپيانې ړنګې نه شوې"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "دا سند نشي پورته کیدلی. مهرباني وکړئ وروسته بیا هڅه وکړئ."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "حسابونه خوندي نه شول"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "کالم ړنګ کړئ"
 msgid "Delete comment"
 msgstr "تبصره ړنګه کړئ"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "کاپيانې ړنګې کړئ"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "وسیله ړنګه کړئ"
@@ -1148,6 +1170,11 @@ msgstr "اختیار ړنګ کړئ"
 msgid "Delete option {0}"
 msgstr "اختیار {0} ړنګ کړئ"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "په {0} کې کاپيانې ړنګې کړئ؟"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "دا پېښه ړنګه کړئ"
@@ -1163,6 +1190,11 @@ msgstr "د پخوانی سرور پر سر خپل حساب ړنګ کړئ"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "ړنګ شو"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} کاپيانې ړنګې شوې"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "د هغه پېښې په اصلي کليز کې پاتې کېږي."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "همدا اوس"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "وساتئ"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "پرامپټ خوندي شو"
 msgid "Properties"
 msgstr "ځانګړتیاوې"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "د خپرولو ځایونه"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "په {0} کې خپرول"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "د خپور شوي کليز پته (یوازې لوستل)"
@@ -2893,7 +2939,7 @@ msgstr "تنظیمات"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "شریکه کړئ"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

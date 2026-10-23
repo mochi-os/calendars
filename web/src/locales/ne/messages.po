@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} कार्यक्रम आयात ग
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} कार्यक्रम पहिले नै क्यालेन्डरमा छ} other {{skipped} कार्यक्रम पहिले नै क्यालेन्डरमा छन्}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# प्रतिलिपि} other {# प्रतिलिपिहरू}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "सबै टिप्पणीहरू"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "जारी राख्नुहोस्"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "यो थ्रेड जारी राख्नुहोस्"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "कपी गरियो"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्डमा प्रतिलिपि गरियो"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "त्यहाँ प्रकाशित प्रतिलिपिहरू: {0}। तपाईंले नमेटाएसम्म ती रहिरहन्छन्।"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "क्यालेन्डरको ठेगाना प्रति�
 msgid "Copy this event"
 msgstr "यो कार्यक्रम प्रतिलिपि गर्नुहोस्"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "प्रतिलिपिहरू मेटाउन सकिएन"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "यो कागजात लोड गर्न सकिएन। कृपया पछि फेरि प्रयास गर्नुहोस्।"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "खाताहरू सुरक्षित गर्न सकिएन"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "स्तम्भ मेटाउनुहोस्"
 msgid "Delete comment"
 msgstr "टिप्पणी मेटाउनुहोस्"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "प्रतिलिपिहरू मेटाउनुहोस्"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "उपकरण मेटाउनुहोस्"
@@ -1148,6 +1170,11 @@ msgstr "विकल्प मेटाउनुहोस्"
 msgid "Delete option {0}"
 msgstr "विकल्प {0} मेटाउनुहोस्"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} मा भएका प्रतिलिपिहरू मेटाउने?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "यो कार्यक्रम मेटाउनुहोस्"
@@ -1163,6 +1190,11 @@ msgstr "पुरानो सर्भरमा आफ्नो खाता �
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "मेटाइयो"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} प्रतिलिपिहरू मेटाइए"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "यसका कार्यक्रमहरू मूल क्या
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "भर्खरै"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "राख्नुहोस्"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "प्रोम्प्ट बचत गरियो"
 msgid "Properties"
 msgstr "गुणहरू"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "यहाँ प्रकाशित गर्नुहोस्"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} मा प्रकाशित गर्नुहोस्"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "प्रकाशित क्यालेन्डर ठेगाना (पढ्ने मात्र)"
@@ -2893,7 +2939,7 @@ msgstr "सेटिङहरू"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "साझा गर्नुहोस्"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

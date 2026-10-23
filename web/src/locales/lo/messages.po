@@ -67,6 +67,11 @@ msgstr "{0, plural, other {ນຳເຂົ້າ {imported} ເຫດການ�
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, other {{skipped} ເຫດການມີຢູ່ໃນປະຕິທິນແລ້ວ}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# ສຳເນົາ} other {# ສຳເນົາ}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "ຄຳເຫັນທັງໝົດ"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "ຕໍ່"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "ເບິ່ງກະທູ້ນີ້ຕໍ່"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "ສຳເນົາແລ້ວ"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "ສຳເນົາໄປຄລິບບອດແລ້ວ"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "ສຳເນົາທີ່ເຜີຍແຜ່ຢູ່ທີ່ນັ້ນ: {0}. ພວກມັນຈະຍັງຢູ່ ເວັ້ນເສຍແຕ່ທ່ານຈະລົບອອກ."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "ສຳເນົາທີ່ຢູ່ປະຕິທິນ"
 msgid "Copy this event"
 msgstr "ສຳເນົາເຫດການນີ້"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "ບໍ່ສາມາດລົບສຳເນົາໄດ້"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ບໍ່ສາມາດໂຫລດເອກະສານນີ້ໄດ້. ກະລຸນາລອງອີກຄັ້ງໃນພາຍຫຼັງ."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "ບໍ່ສາມາດບັນທຶກບັນຊີໄດ້"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "ລົບຖັນ"
 msgid "Delete comment"
 msgstr "ລົບຄຳເຫັນ"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "ລົບສຳເນົາ"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "ລຶບອຸປະກອນ"
@@ -1148,6 +1170,11 @@ msgstr "ລົບຕົວເລືອກ"
 msgid "Delete option {0}"
 msgstr "ລົບຕົວເລືອກ {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "ລົບສຳເນົາໃນ {0} ບໍ?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "ລຶບເຫດການນີ້"
@@ -1163,6 +1190,11 @@ msgstr "ລຶບບັນຊີຂອງທ່ານໃນເຊີຟເວີ
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "ລຶບແລ້ວ"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "ລົບ {0} ສຳເນົາແລ້ວ"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "ເຫດການຂອງປະຕິທິນນີ້ຍັງຄົ
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ຫາກໍ່ດຽວນີ້"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "ເກັບໄວ້"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "ບັນທຶກພຣອມທ໌ແລ້ວ"
 msgid "Properties"
 msgstr "ຄຸນສົມບັດ"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "ເຜີຍແຜ່ໄປທີ່"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "ເຜີຍແຜ່ໄປທີ່ {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "ທີ່ຢູ່ປະຕິທິນທີ່ເຜີຍແຜ່ (ອ່ານຢ່າງດຽວ)"
@@ -2893,7 +2939,7 @@ msgstr "ການຕັ້ງຄ່າ"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "ແບ່ງປັນ"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

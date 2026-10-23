@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} ഇവന്റ് ഇറക്കുമത�
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} ഇവന്റ് ഇതിനകം കലണ്ടറിലുണ്ട്} other {{skipped} ഇവന്റുകൾ ഇതിനകം കലണ്ടറിലുണ്ട്}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# പകർപ്പ്} other {# പകർപ്പുകൾ}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "എല്ലാ അഭിപ്രായങ്ങളും"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "തുടരുക"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "ഈ ത്രെഡ് തുടരുക"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "പകർത്തി"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "അവിടെ പ്രസിദ്ധീകരിച്ച പകർപ്പുകൾ: {0}. നിങ്ങൾ ഇല്ലാതാക്കിയില്ലെങ്കിൽ അവ നിലനിൽക്കും."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "കലണ്ടറിന്റെ വിലാസം പകർത്ത�
 msgid "Copy this event"
 msgstr "ഈ ഇവന്റ് പകർത്തുക"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "പകർപ്പുകൾ ഇല്ലാതാക്കാൻ കഴിഞ്ഞില്ല"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ഈ ഡോക്യുമെന്റ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "അക്കൗണ്ടുകൾ സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "കോളം ഇല്ലാതാക്കുക"
 msgid "Delete comment"
 msgstr "അഭിപ്രായം ഇല്ലാതാക്കുക"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "പകർപ്പുകൾ ഇല്ലാതാക്കുക"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "ഡിവൈസ് ഇല്ലാതാക്കുക"
@@ -1148,6 +1170,11 @@ msgstr "ഓപ്ഷൻ ഇല്ലാതാക്കുക"
 msgid "Delete option {0}"
 msgstr "ഓപ്ഷൻ {0} ഇല്ലാതാക്കുക"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0}-ലെ പകർപ്പുകൾ ഇല്ലാതാക്കണോ?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "ഈ ഇവന്റ് ഇല്ലാതാക്കുക"
@@ -1163,6 +1190,11 @@ msgstr "പഴയ സെർവറിൽ നിങ്ങളുടെ അക്ക
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "ഇല്ലാതാക്കി"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} പകർപ്പുകൾ ഇല്ലാതാക്കി"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "ഇതിന്റെ ഇവന്റുകൾ യഥാർത്ഥ ക
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ഇപ്പോൾ"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "നിലനിർത്തുക"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "പ്രോംപ്റ്റ് സേവ് ചെയ്തു"
 msgid "Properties"
 msgstr "സവിശേഷതകൾ"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "പ്രസിദ്ധീകരിക്കേണ്ട ഇടം"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0}-ലേക്ക് പ്രസിദ്ധീകരിക്കുക"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "പ്രസിദ്ധീകരിച്ച കലണ്ടർ വിലാസം (വായന മാത്രം)"
@@ -2893,7 +2939,7 @@ msgstr "ക്രമീകരണങ്ങൾ"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "പങ്കിടുക"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

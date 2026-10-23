@@ -67,6 +67,11 @@ msgstr "{0, plural, one {An shigo da taro {imported}} other {An shigo da tarurru
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {Taro {skipped} ya riga ya kasance a kalanda} other {Tarurruka {skipped} sun riga sun kasance a kalanda}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {kwafi #} other {kwafi #}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Duk sharhi"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Ci gaba"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Ci gaba da wannan tattaunawa"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "An kwafi"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "An kwafi zuwa clipboard"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Kwafin da aka wallafa a can: {0}. Za su kasance sai dai idan ka goge su."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kwafi adireshin kalanda"
 msgid "Copy this event"
 msgstr "Kwafi wannan taron"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Ba a iya goge kwafin ba"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Ba a iya loda wannan takarda ba. Da fatan a sake gwadawa daga baya."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Ba a iya ajiye asusun ba"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Goge column"
 msgid "Delete comment"
 msgstr "Goge sharhi"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Goge kwafi"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Goge na'ura"
@@ -1148,6 +1170,11 @@ msgstr "Goge zaɓi"
 msgid "Delete option {0}"
 msgstr "Goge zaɓi {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "A goge kwafin da ke {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Goge wannan taron"
@@ -1163,6 +1190,11 @@ msgstr "Goge asusu ka akan tsohon uwar garken"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "An share"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "An goge kwafi {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Tarurrukansa za su ci gaba da kasancewa a cikin kalandar asali."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Yanzu"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Ajiye"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "An adana prompt"
 msgid "Properties"
 msgstr "Halaye"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Wallafa zuwa"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Wallafa zuwa {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Adireshin kalanda da aka buga (karatu kawai)"
@@ -2893,7 +2939,7 @@ msgstr "Saitunan"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Raba"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

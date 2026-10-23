@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} үйл явдал импортлогдлоо
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} үйл явдал хуанлид аль хэдийн байна} other {{skipped} үйл явдал хуанлид аль хэдийн байна}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# хуулбар} other {# хуулбар}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Бүх сэтгэгдэл"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Үргэлжлүүлэх"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Энэ хэлэлцүүлгийг үргэлжлүүлэх"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Хуулагдлаа"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Хуулбарласан"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Тэнд нийтлэгдсэн хуулбарууд: {0}. Та устгахгүй бол тэдгээр нь хэвээр үлдэнэ."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Хуанлийн хаягийг хуулах"
 msgid "Copy this event"
 msgstr "Энэ үйл явдлыг хуулах"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Хуулбаруудыг устгаж чадсангүй"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Энэ баримт бичгийг ачаалж чадсангүй. Дараа дахин оролдоно уу."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Бүртгэлүүдийг хадгалж чадсангүй"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Багана устгах"
 msgid "Delete comment"
 msgstr "Сэтгэгдэл устгах"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Хуулбаруудыг устгах"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Төхөөрөмж устгах"
@@ -1148,6 +1170,11 @@ msgstr "Сонголтыг устгах"
 msgid "Delete option {0}"
 msgstr "{0} сонголтыг устгах"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} дээрх хуулбаруудыг устгах уу?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Энэ үйл явдлыг устгах"
@@ -1163,6 +1190,11 @@ msgstr "Хуучин серверт байгаа бүртгэлээ устган
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Устгасан"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} хуулбар устгагдлаа"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Түүн дэх үйл явдлууд эх хуанлидаа хэвээ
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Дөнгөж сая"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Үлдээх"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Промпт хадгалагдсан"
 msgid "Properties"
 msgstr "Шинж чанарууд"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Нийтлэх газар"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Нийтлэх: {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Нийтлэгдсэн хуанлийн хаяг (зөвхөн унших)"
@@ -2893,7 +2939,7 @@ msgstr "Тохиргоо"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Хуваалцах"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

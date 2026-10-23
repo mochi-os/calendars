@@ -27,6 +27,7 @@ import {
   useRenameCalendarMutation,
 } from '@/hooks/use-calendars'
 import { useIcsCopy } from '@/hooks/use-ics-copy'
+import { PublishingSection } from '@/features/calendar/components/publishing'
 
 /**
  * A calendar's own page at /calendars/<fingerprint>: what it is called, what
@@ -208,6 +209,10 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
             </Button>
           </div>
         </div>
+
+        {calendar.kind === 'own' && (
+          <PublishingSection calendar={calendar.id} />
+        )}
       </div>
       {dialogs}
     </Main>

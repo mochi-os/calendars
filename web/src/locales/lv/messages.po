@@ -67,6 +67,11 @@ msgstr "{0, plural, zero {Importēti {imported} notikumi} one {Importēts {impor
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, zero {{skipped} notikumi jau ir kalendārā} one {{skipped} notikums jau ir kalendārā} other {{skipped} notikumi jau ir kalendārā}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, zero {# kopijas} one {# kopija} other {# kopijas}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Visi komentāri"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Turpināt"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Turpināt šo pavedienu"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Nokopēts"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Nokopēts starpliktuvē"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Tur publicētās kopijas: {0}. Tās paliks, ja vien jūs tās neizdzēsīsiet."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopēt kalendāra adresi"
 msgid "Copy this event"
 msgstr "Kopēt šo notikumu"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Nevarēja dzēst kopijas"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Nevarēja ielādēt šo dokumentu. Lūdzu, mēģini vēlāk vēlreiz."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Nevarēja saglabāt kontus"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Dzēst kolonnu"
 msgid "Delete comment"
 msgstr "Dzēst komentāru"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Dzēst kopijas"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Dzēst ierīci"
@@ -1148,6 +1170,11 @@ msgstr "Dzēst opciju"
 msgid "Delete option {0}"
 msgstr "Dzēst opciju {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Dzēst kopijas no {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Dzēst šo notikumu"
@@ -1163,6 +1190,11 @@ msgstr "Dzēsiet savu kontu vecajā serverī"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Dzēsts"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Dzēstas kopijas: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Tā notikumi paliek sākotnējā kalendārā."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Tikko"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Paturēt"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Pamudinājums saglabāts"
 msgid "Properties"
 msgstr "Īpašības"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Kur publicēt"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Publicēt kontā {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Publicēta kalendāra adrese (tikai lasīt)"
@@ -2893,7 +2939,7 @@ msgstr "Iestatījumi"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Kopīgot"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

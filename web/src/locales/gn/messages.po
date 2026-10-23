@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} evento oñemoinge} other {{imported} evento 
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} evento oĩma arapapahápe} other {{skipped} evento oĩma arapapahápe}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kópia} other {# kópia}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Opaite comentario"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Tenonde"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Tenonde ko ñomongetápe"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Oñekopiáma"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Oñekopiáma clipboard-pe"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Kópia oñemoherakuãva upépe: {0}. Opytáta rehundi peve."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Ekopia arapapaha dirección"
 msgid "Copy this event"
 msgstr "Ekopia ko evento"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Ndaikatúi oñembogue kópiakuéra"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Ndaikatúi oñemyanyhẽ ko documento. Eha'ã jeýta upéi."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Ndaikatúi oñeñongatu mba'ete"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Hundi columna"
 msgid "Delete comment"
 msgstr "Hundi comentario"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Embogue kópiakuéra"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Ehundi mba'e'oka"
@@ -1148,6 +1170,11 @@ msgstr "Hundi opción"
 msgid "Delete option {0}"
 msgstr "Hundi opción {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "¿Embogue kópiakuéra {0}-pegua?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Hundi ko evento"
@@ -1163,6 +1190,11 @@ msgstr "Emboguete nde mba'ete mohendaha ymaguarépe"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Oñemboguete"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} kópia oñembogue"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Umi evento opyta arapapaha ypykuépe."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ko'ág̃aite"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Eñongatu"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Prompt oñeñongatu"
 msgid "Properties"
 msgstr "Propiedadkuéra"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Moõpe emoherakuã"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Emoherakuã {0}-pe"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Arapapaha dirección oñemoherakuãva (moñe'ẽrã añoite)"
@@ -2893,7 +2939,7 @@ msgstr "Ñemboheko"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Emboja'o"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

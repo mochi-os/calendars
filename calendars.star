@@ -139,6 +139,10 @@ def database_upgrade(version):
 		mochi.db.execute("update events set ends=max(start, finish) where recurring=0")
 		for row in mochi.db.rows("select id, ics, component, start, finish, recurring from events where recurring=1"):
 			mochi.db.execute("update events set ends=? where id=?", event_ends(row["ics"], row), row["id"])
+	if version == 9:
+		# Where each calendar publishes on other networks, and the copy of
+		# each event there (the federation plan, phase 30).
+		publish_schema_create()
 
 def database_create():
 	mochi.db.execute("create table if not exists calendars ( id text not null primary key, identity text not null, slug text not null default '', kind text not null default 'own', colour text not null default '', url text not null default '', etag text not null default '', modified text not null default '', interval integer not null default 3600, next integer not null default 0, fetched integer not null default 0, failure text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0, account text not null default '', collection text not null default '', readonly integer not null default 0 )")
@@ -165,6 +169,7 @@ def database_create():
 	reminders_create()
 	# One poll at a time per subscription.
 	mochi.db.execute("create table if not exists polls ( calendar text not null primary key, token text not null, expires integer not null default 0 )")
+	publish_schema_create()
 
 # === Helpers ===
 
@@ -436,7 +441,9 @@ def changes_prune(identity):
 # Deleting a linked calendar unlinks it: the events go here and stay on the
 # other server.
 def calendar_delete(identity, row):
+	# Its events go, and their copies on other networks with them.
 	events_remove(identity, row["id"])
+	mochi.db.execute("delete from publish where calendar=?", row["id"])
 	for link in mochi.db.rows("select hash from links where calendar=?", row["id"]):
 		mochi.token.delete(link["hash"])
 	mochi.db.execute("delete from links where calendar=?", row["id"])
@@ -550,6 +557,9 @@ def event_write(identity, calendar, slug, ics, row=None, push=True):
 	calendar_touch(calendar, id)
 	after = event_get(identity, id)
 	reminders_schedule(after)
+	# An edit reaches every copy on another network (decision 25).
+	if row:
+		publish_event_update(after)
 	if push:
 		holder = mochi.db.row("select * from calendars where id=?", calendar)
 		if holder and holder["kind"] == "linked":
@@ -576,6 +586,7 @@ def event_delete(identity, row, push=True):
 			if result.get("error"):
 				return linked_failure(result)
 	reminders_cancel(row["id"])
+	publish_event_delete(row["id"])
 	mochi.db.execute("delete from events where id=? and identity=?", row["id"], identity)
 	calendar_touch(row["calendar"], row["id"], 1)
 	changes_prune(identity)
@@ -602,6 +613,8 @@ def events_remove(identity, calendar, ids=None):
 		chosen = "select id from events where " + where
 		for row in mochi.db.rows("select schedule from reminders where schedule>0 and event in (" + chosen + ")", *args):
 			mochi.schedule.cancel(row["schedule"])
+		for row in mochi.db.rows("select distinct event from copies where event in (" + chosen + ")", *args):
+			publish_event_delete(row["event"])
 		mochi.db.execute("delete from reminders where event in (" + chosen + ")", *args)
 		mochi.db.execute("delete from changes where event in (" + chosen + ")", *args)
 		mochi.db.execute("insert into changes ( identity, calendar, event, deleted, created ) select identity, calendar, id, 1, ? from events where " + where, now, *args)
@@ -1829,10 +1842,16 @@ def action_event_create(a):
 	if ics == None:
 		a.error.label(400, "errors.invalid_event")
 		return
+	# The accounts the event names for itself, overriding its calendar's list.
+	accounts, ok = publish_ids(body.get("accounts"))
+	if not ok:
+		a.error.label(400, "errors.invalid_accounts")
+		return
 	row = event_write(identity, calendar["id"], slug, ics)
 	if type(row) == "string":
 		event_error(a, row)
 		return
+	publish_event(row, accounts)
 	return {"data": {"event": event_full(row)}}
 
 def action_event_update(a):
@@ -2011,12 +2030,14 @@ def action_event_split(a):
 		event_error(a, created)
 		return
 	if copy:
+		publish_event(created)
 		return {"data": {"event": event_full(row), "following": event_full(created)}}
 	written = event_write(identity, row["calendar"], row["slug"], before, row)
 	if type(written) == "string":
 		event_delete(identity, created)
 		event_error(a, written)
 		return
+	publish_event(created)
 	return {"data": {"event": event_full(written), "following": event_full(created)}}
 
 def action_event_delete(a):
@@ -2404,6 +2425,349 @@ def action_token_delete(a):
 		return
 	return {"data": {"ok": mochi.token.delete(hash)}}
 
+# === Publishing (the federation plan, phase 30) ===
+# An own calendar publishes its events to a list of the user's accounts on
+# other networks, empty by default, as a feed does its posts: linked Mastodon
+# and Bluesky accounts, and hosted fediverse and Bluesky ones. An event is an
+# Event on the fediverse, in the form Mobilizon and Gancio read, a record of
+# Smoke Signal's type on Bluesky, and a status on Mastodon. The copy's id is
+# kept per event and account, so edits and deletes follow it (decision 25),
+# copies on accounts since taken off the list included. A new event may name
+# its own accounts, overriding the list. A recurring event goes out as its
+# next occurrence. An event imported, or pulled from another server, is not
+# published, and nothing moved into a calendar is published on the way.
+
+# The networks a calendar publishes to through linked accounts, and those it
+# publishes to through hosted accounts.
+PUBLISH_TYPES = ["mastodon", "bluesky"]
+HOSTED_TYPES = ["fediverse", "bluesky"]
+
+# What a Mastodon server takes when its limits were not read at the link.
+MASTODON_CHARACTERS = 500
+
+# Smoke Signal's record type for an event.
+BLUESKY_EVENT = "community.lexicon.calendar.event"
+
+def publish_schema_create():
+	mochi.db.execute("create table if not exists publish ( calendar text not null, account text not null, created integer not null, primary key ( calendar, account ) )")
+	mochi.db.execute("create table if not exists copies ( event text not null, account text not null, address text not null, network text not null, remote text not null, url text not null default '', created integer not null, primary key ( event, account ) )")
+	mochi.db.execute("create index if not exists copies_remote on copies( account, remote )")
+
+def publishable(acc):
+	"""Whether a calendar may publish to an account: a linked account on a
+	network that takes posts, or a hosted fediverse or Bluesky account."""
+	if acc.get("hosted"):
+		return acc.get("type") in HOSTED_TYPES
+	return acc.get("type") in PUBLISH_TYPES
+
+def publish_accounts():
+	return [acc for acc in (mochi.account.list() or []) if publishable(acc)]
+
+def publish_account(id):
+	if not id or type(id) != "string":
+		return None
+	acc = mochi.account.get(id)
+	if not acc or not publishable(acc):
+		return None
+	return acc
+
+def account_present(acc):
+	return {"id": acc["id"], "type": acc["type"], "identifier": acc.get("identifier", ""), "name": acc.get("name") or acc.get("label") or "", "hosted": bool(acc.get("hosted"))}
+
+def publish_list(calendar):
+	return [row["account"] for row in mochi.db.rows("select account from publish where calendar=? order by created", calendar)]
+
+def publish_counts(calendar):
+	"""How many copies the calendar's events have on each account."""
+	counts = {}
+	for row in mochi.db.rows("select account, count(*) as n from copies where event in (select id from events where calendar=?) group by account", calendar):
+		counts[row["account"]] = row["n"]
+	return counts
+
+# publish_ids(value) -> (list or None, ok): the accounts named for one event,
+# a list or its JSON text; None where it leaves them to the calendar's list.
+def publish_ids(value):
+	if value == None or value == "":
+		return (None, True)
+	if type(value) == "string":
+		value = json.decode(value, None)
+	if not islist(value) or len(value) > 20:
+		return (None, False)
+	ids = []
+	for id in value:
+		if not publish_account(id):
+			return (None, False)
+		if id not in ids:
+			ids.append(id)
+	return (ids, True)
+
+# === What an event becomes ===
+
+def event_master(row):
+	"""The event's own component: the first that changes no single occurrence."""
+	tree = mochi.ical.parse(row["ics"]) or {}
+	for c in tree.get("components", []):
+		if type(c) == "dict" and c.get("name") == row["component"] and not property_value(c, "RECURRENCE-ID"):
+			return c
+	return {}
+
+def property_zone(component, name):
+	"""The zone a date property names, or "" for one in UTC or floating."""
+	for p in component.get("properties", []):
+		if type(p) == "dict" and p.get("name") == name:
+			zone = (p.get("params") or {}).get("TZID", "")
+			if islist(zone):
+				return str(zone[0]) if zone else ""
+			return str(zone)
+	return ""
+
+def safe_link(url):
+	"""A web address as given, or "" for anything else."""
+	url = str(url or "").strip()
+	if len(url) > 2000 or " " in url or not (url.startswith("https://") or url.startswith("http://")):
+		return ""
+	return url
+
+def event_details(row):
+	"""What a copy of the event says: its name, description, place, link and
+	times, a series by its next occurrence, or its first once none is left.
+	An all-day event's times are midnights in UTC, as they are stored."""
+	c = event_master(row)
+	start, finish = row["start"], row["finish"]
+	if row["recurring"]:
+		now = mochi.time.now()
+		upcoming = mochi.ical.instances(row["ics"], now, now + _RANGE_MAXIMUM, timezone="UTC")
+		if upcoming:
+			start, finish = upcoming[0]["start"], upcoming[0]["finish"]
+	location = property_value(c, "LOCATION").strip()
+	return {
+		"name": row["summary"] or mochi.app.label("notifications.reminder.untitled"),
+		"description": property_value(c, "DESCRIPTION").strip(),
+		"location": location,
+		"online": safe_link(location),
+		"url": safe_link(property_value(c, "URL")),
+		"start": start,
+		"finish": finish if finish > start else 0,
+		"allday": row["allday"] == 1,
+		"zone": "" if row["allday"] == 1 else property_zone(c, "DTSTART"),
+		"status": property_value(c, "STATUS").upper(),
+	}
+
+def moment(seconds, zone):
+	return mochi.time.local(seconds, "rfc3339", timezone=zone or "UTC")
+
+def text_cut(s, n):
+	"""s within n codepoints, an ellipsis marking a cut."""
+	points = list(s.codepoints())
+	if len(points) <= n:
+		return s
+	return "".join(points[:max(n - 1, 0)]).rstrip() + "…"
+
+def event_when(details):
+	"""When the event is, as a person reads it: the day, and for an event at a
+	time the clock and the zone it was written in."""
+	zone = details["zone"] or "UTC"
+	start = mochi.time.local(details["start"], "day", timezone=zone)
+	if details["allday"]:
+		last = mochi.time.local(details["finish"] - 1, "day", timezone=zone) if details["finish"] else start
+		return start if last == start else start + " – " + last
+	text = start + ", " + mochi.time.local(details["start"], "clock", timezone=zone)
+	if details["finish"]:
+		day = mochi.time.local(details["finish"], "day", timezone=zone)
+		clock = mochi.time.local(details["finish"], "clock", timezone=zone)
+		text += " – " + (clock if day == start else day + ", " + clock)
+	return text + " (" + zone + ")"
+
+def fediverse_plain(text):
+	"""Plain text as markdown that renders to the same text."""
+	lines = []
+	for line in text.split("\n"):
+		for mark in ["\\", "*", "_", "[", "]", "`", "#", ">", "~"]:
+			line = line.replace(mark, "\\" + mark)
+		lines.append(line.replace("<", "&lt;"))
+	return "\n\n".join(lines)
+
+def fediverse_event(row):
+	"""The Event an event is on a hosted fediverse account, as Mobilizon and
+	Gancio read one: its name, its description as HTML, its times, its place
+	and its link. Core gives it its id, author, time and addressing."""
+	details = event_details(row)
+	event = {"type": "Event", "name": details["name"], "startTime": moment(details["start"], details["zone"])}
+	if details["description"]:
+		event["content"] = mochi.text.fediverse(fediverse_plain(details["description"]))["html"]
+	if details["finish"]:
+		event["endTime"] = moment(details["finish"], details["zone"])
+	if details["location"]:
+		event["location"] = {"type": "Place", "name": details["location"]}
+		if details["online"]:
+			event["location"]["url"] = details["online"]
+	if details["url"]:
+		event["url"] = details["url"]
+	if details["zone"]:
+		event["timezone"] = details["zone"]
+	return event
+
+def bluesky_event(row):
+	"""The record an event is on Bluesky, of Smoke Signal's type: an online
+	place as its link and the event as virtual, a place named in words, which
+	the type takes only as a postal address, as the description's first line."""
+	details = event_details(row)
+	record = {
+		"$type": BLUESKY_EVENT,
+		"name": text_cut(details["name"], 500),
+		"createdAt": moment(row["created"], ""),
+		"startsAt": moment(details["start"], details["zone"]),
+		"mode": BLUESKY_EVENT + "#inperson",
+		"status": BLUESKY_EVENT + {"CANCELLED": "#cancelled", "TENTATIVE": "#planned"}.get(details["status"], "#scheduled"),
+	}
+	if details["finish"]:
+		record["endsAt"] = moment(details["finish"], details["zone"])
+	description = details["description"]
+	if details["online"]:
+		record["mode"] = BLUESKY_EVENT + "#virtual"
+		record["locations"] = [{"$type": BLUESKY_EVENT + "#uri", "uri": details["online"]}]
+	elif details["location"]:
+		description = details["location"] + ("\n\n" + description if description else "")
+	if description:
+		record["description"] = description
+	if details["url"]:
+		record["uris"] = [{"uri": details["url"]}]
+	return record
+
+def mastodon_event(acc, row):
+	"""The status an event is on a linked Mastodon account: its name, when and
+	where it is, and its description, cut to the server's limit."""
+	details = event_details(row)
+	lines = [details["name"], event_when(details)]
+	if details["location"]:
+		lines.append(details["location"])
+	text = "\n".join(lines)
+	if details["description"]:
+		text += "\n\n" + details["description"]
+	if details["url"]:
+		text += "\n\n" + details["url"]
+	limits = acc.get("limits") or {}
+	limit = limits.get("characters") if type(limits.get("characters")) == "int" and limits.get("characters") > 0 else MASTODON_CHARACTERS
+	return {"status": text_cut(text, limit), "visibility": "public"}
+
+def event_object(acc, row):
+	"""The event in the form of the account's network."""
+	if acc.get("hosted") and acc["type"] == "fediverse":
+		return fediverse_event(row)
+	if acc["type"] == "bluesky":
+		return bluesky_event(row)
+	return mastodon_event(acc, row)
+
+# === The copies ===
+
+def publish_event(row, accounts=None):
+	"""Publish a new event to the accounts it names, else to its calendar's
+	list; from an own calendar only."""
+	calendar = mochi.db.row("select kind from calendars where id=?", row["calendar"])
+	if not calendar or calendar["kind"] != "own":
+		return
+	for id in (accounts if accounts != None else publish_list(row["calendar"])):
+		acc = publish_account(id)
+		if not acc or mochi.db.exists("select 1 from copies where event=? and account=?", row["id"], acc["id"]):
+			continue
+		result = mochi.account.object.create(acc["id"], event_object(acc, row), key=row["id"] + "|" + acc["id"])
+		if not result or not result.get("id"):
+			mochi.log.warn("Calendars could not publish event %s to %s", row["id"], acc.get("identifier", acc["id"]))
+			continue
+		mochi.db.execute("insert or replace into copies ( event, account, address, network, remote, url, created ) values ( ?, ?, ?, ?, ?, ?, ? )",
+			row["id"], acc["id"], acc.get("identifier", ""), acc["type"], str(result["id"]), str(result.get("url", "") or ""), mochi.time.now())
+
+def publish_event_update(row):
+	"""A new version of an event reaches each of its copies."""
+	for copy in mochi.db.rows("select account, remote from copies where event=?", row["id"]):
+		acc = publish_account(copy["account"])
+		if not acc:
+			continue
+		result = mochi.account.object.update(acc["id"], copy["remote"], event_object(acc, row))
+		if not result:
+			mochi.log.warn("Calendars could not update the copy of event %s on %s", row["id"], acc.get("identifier", acc["id"]))
+			continue
+		if result.get("id") and str(result["id"]) != copy["remote"]:
+			mochi.db.execute("update copies set remote=?, url=? where event=? and account=?", str(result["id"]), str(result.get("url", "") or ""), row["id"], acc["id"])
+
+def publish_event_delete(event):
+	"""Withdraw every copy of an event."""
+	for copy in mochi.db.rows("select account, remote from copies where event=?", event):
+		if publish_account(copy["account"]):
+			mochi.account.object.delete(copy["account"], copy["remote"])
+	mochi.db.execute("delete from copies where event=?", event)
+
+def function_activitypub_object(context, account, id):
+	"""An event a hosted fediverse account published, as it stands now: core's
+	engine asks when another server fetches it or reads the account's outbox."""
+	copy = mochi.db.row("select event from copies where account=? and remote=?", account, id)
+	if not copy:
+		return None
+	row = mochi.db.row("select * from events where id=?", copy["event"])
+	if not row:
+		return None
+	return fediverse_event(row)
+
+# === Actions ===
+
+def publish_calendar(a):
+	"""The own calendar an action names, else None having answered."""
+	calendar = calendar_get(a.user.identity.id, a.input("calendar", ""))
+	if not calendar:
+		a.error.label(404, "errors.calendar_not_found")
+		return None
+	if calendar["kind"] != "own":
+		a.error.label(400, "errors.calendar_readonly")
+		return None
+	return calendar
+
+def action_calendar_publish(a):
+	"""The accounts a calendar may publish to, those it does, and how many
+	copies each holds."""
+	calendar = publish_calendar(a)
+	if not calendar:
+		return
+	return {"data": {"accounts": [account_present(acc) for acc in publish_accounts()], "publish": publish_list(calendar["id"]), "copies": publish_counts(calendar["id"])}}
+
+def action_calendar_publish_set(a):
+	"""Set where a calendar publishes. The copies on an account that leaves
+	the list stay, counted in the answer so the client can offer to delete them."""
+	calendar = publish_calendar(a)
+	if not calendar:
+		return
+	accounts, ok = publish_ids(a.input("accounts", ""))
+	if not ok:
+		a.error.label(400, "errors.invalid_accounts")
+		return
+	accounts = accounts or []
+	before = publish_list(calendar["id"])
+	now = mochi.time.now()
+	for id in accounts:
+		mochi.db.execute("insert or ignore into publish ( calendar, account, created ) values ( ?, ?, ? )", calendar["id"], id, now)
+	for id in before:
+		if id not in accounts:
+			mochi.db.execute("delete from publish where calendar=? and account=?", calendar["id"], id)
+	counts = publish_counts(calendar["id"])
+	return {"data": {"publish": accounts, "kept": {id: counts[id] for id in before if id not in accounts and counts.get(id, 0)}}}
+
+def action_calendar_publish_forget(a):
+	"""Delete a calendar's copies on one account, as offered when it leaves
+	the list."""
+	calendar = publish_calendar(a)
+	if not calendar:
+		return
+	account = a.input("account", "")
+	if not account or len(account) > 64:
+		a.error.label(400, "errors.account_not_found")
+		return
+	rows = mochi.db.rows("select event, remote from copies where account=? and event in (select id from events where calendar=?)", account, calendar["id"])
+	acc = publish_account(account)
+	for row in rows:
+		if acc:
+			mochi.account.object.delete(acc["id"], row["remote"])
+		mochi.db.execute("delete from copies where event=? and account=?", row["event"], account)
+	return {"data": {"deleted": len(rows)}}
+
 # === CalDAV ===
 # Core serves the caldav/*path route with its DAV engine and calls these as
 # the server for the authenticated identity (core/server/dav.go). A collection
@@ -2529,6 +2893,9 @@ def function_dav_put(context, identity, collection, name, ics, match="", absent=
 	written = event_write(identity, calendar["id"], name, ics, row)
 	if type(written) == "string":
 		return {"error": written}
+	# A new event from a phone publishes as one made here does.
+	if not row:
+		publish_event(written)
 	return {"name": name, "etag": written["etag"], "updated": written["updated"]}
 
 def function_dav_delete(context, identity, collection, name, match="", absent=False):

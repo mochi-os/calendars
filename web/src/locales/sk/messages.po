@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Importovaná {imported} udalosť} few {Importované {im
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} udalosť už je v kalendári} few {{skipped} udalosti už sú v kalendári} many {{skipped} udalosti už je v kalendári} other {{skipped} udalostí už je v kalendári}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kópia} few {# kópie} many {# kópie} other {# kópií}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Všetky komentáre"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Pokračovať"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Pokračovať v tomto vlákne"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Skopírované"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Skopírované do schránky"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Počet kópií zverejnených tam: {0}. Zostanú tam, kým ich neodstránite."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopírovať adresu kalendára"
 msgid "Copy this event"
 msgstr "Kopírovať túto udalosť"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Kópie sa nepodarilo odstrániť"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Tento dokument sa nepodarilo načítať. Skúste to neskôr."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Účty sa nepodarilo uložiť"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Odstrániť stĺpec"
 msgid "Delete comment"
 msgstr "Odstrániť komentár"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Odstrániť kópie"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Odstrániť zariadenie"
@@ -1148,6 +1170,11 @@ msgstr "Odstrániť možnosť"
 msgid "Delete option {0}"
 msgstr "Odstrániť možnosť {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Odstrániť kópie na účte {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Odstrániť túto udalosť"
@@ -1163,6 +1190,11 @@ msgstr "Odstráňte svoj účet na starom serveri"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Odstránené"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Odstránené kópie: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Jeho udalosti zostanú v pôvodnom kalendári."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Práve teraz"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Ponechať"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Prompt uložený"
 msgid "Properties"
 msgstr "Vlastnosti"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Publikovať do"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Publikovať do {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Publikovaná adresa kalendára (iba na čítanie)"
@@ -2893,7 +2939,7 @@ msgstr "Nastavenia"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Zdieľať"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

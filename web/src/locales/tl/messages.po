@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Na-import ang {imported} kaganapan} other {Na-import an
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {Nasa kalendaryo na ang {skipped} kaganapan} other {Nasa kalendaryo na ang {skipped} na kaganapan}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kopya} other {# na kopya}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Lahat ng komento"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Magpatuloy"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Ituloy ang usapang ito"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Nakopya"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Nakopya sa clipboard"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Mga kopyang nailathala roon: {0}. Mananatili ang mga ito maliban kung i-delete mo."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopyahin ang address ng kalendaryo"
 msgid "Copy this event"
 msgstr "Kopyahin ang kaganapang ito"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Hindi ma-delete ang mga kopya"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Hindi ma-load ang document na ito. Subukan muli mamaya."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Hindi ma-save ang mga account"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "I-delete ang column"
 msgid "Delete comment"
 msgstr "I-delete ang komento"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "I-delete ang mga kopya"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "I-delete ang device"
@@ -1148,6 +1170,11 @@ msgstr "I-delete ang option"
 msgid "Delete option {0}"
 msgstr "I-delete ang option {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "I-delete ang mga kopya sa {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "I-delete ang kaganapang ito"
@@ -1163,6 +1190,11 @@ msgstr "Burahin ang iyong account sa lumang server"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Tinanggal"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Na-delete ang {0} kopya"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Mananatili ang mga kaganapan nito sa orihinal na kalendaryo."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ngayon lang"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Panatilihin"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Na-save ang prompt"
 msgid "Properties"
 msgstr "Mga katangian"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Ilathala sa"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Ilathala sa {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Na-publish na address ng kalendaryo (pagbasa lamang)"
@@ -2893,7 +2939,7 @@ msgstr "Mga setting"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Ibahagi"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} tapahtuma tuotu} other {{imported} tapahtuma
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} tapahtuma on jo kalenterissa} other {{skipped} tapahtumaa on jo kalenterissa}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# kopio} other {# kopiota}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "Tekoäly"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Kaikki kommentit"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Jatka"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Jatka tätä ketjua"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Kopioitu"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Kopioitu leikepöydälle"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Sinne julkaistuja kopioita: {0}. Ne säilyvät, ellet poista niitä."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Kopioi kalenterin osoite"
 msgid "Copy this event"
 msgstr "Kopioi tämä tapahtuma"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Kopioita ei voitu poistaa"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Tätä dokumenttia ei voitu ladata. Yritä myöhemmin uudelleen."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Tilejä ei voitu tallentaa"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Poista sarake"
 msgid "Delete comment"
 msgstr "Poista kommentti"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Poista kopiot"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Poista laite"
@@ -1148,6 +1170,11 @@ msgstr "Poista vaihtoehto"
 msgid "Delete option {0}"
 msgstr "Poista vaihtoehto {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Poistetaanko kopiot tililtä {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Poista tämä tapahtuma"
@@ -1163,6 +1190,11 @@ msgstr "Poista tilisi vanhalta palvelimelta"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Poistettu"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Kopioita poistettu: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Sen tapahtumat säilyvät alkuperäisessä kalenterissa."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Juuri nyt"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Säilytä"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Kehote tallennettu"
 msgid "Properties"
 msgstr "Ominaisuudet"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Julkaise kohteisiin"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Julkaise tilille {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Julkaistun kalenterin osoite (vain luku)"
@@ -2893,7 +2939,7 @@ msgstr "Asetukset"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Jaa"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

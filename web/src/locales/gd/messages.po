@@ -67,6 +67,11 @@ msgstr "{0, plural, one {Chaidh {imported} tachartas ion-phortadh} two {Chaidh {
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} tachartas sa mhìosachan mu thràth} two {{skipped} thachartas sa mhìosachan mu thràth} few {{skipped} tachartasan sa mhìosachan mu thràth} other {{skipped} tachartas sa mhìosachan mu thràth}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# lethbhreac} two {# lethbhreac} few {# lethbhric} other {# lethbhreac}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Na beachdan uile"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Lean air adhart"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Lean air adhart leis an t-snàithlean seo"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Chaidh lethbhreac a dhèanamh"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Air a chopaigeadh chun a' chliopaboird"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Lethbhric a chaidh fhoillseachadh an sin: {0}. Fanaidh iad ann mura sguab thu às iad."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Dèan lethbhreac de sheòladh a' mhìosachain"
 msgid "Copy this event"
 msgstr "Dèan lethbhreac dhen tachartas seo"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Cha b' urrainn dhuinn na lethbhric a sguabadh às"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Cha b' urrainn an sgrìobhainn seo a luchdachadh. Feuch ris a-rithist nas anmoiche."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Cha b' urrainn dhuinn na cunntasan a shàbhaladh"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Sguab às colbh"
 msgid "Delete comment"
 msgstr "Sguab às beachd"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Sguab às na lethbhric"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Sguab às an t-inneal"
@@ -1148,6 +1170,11 @@ msgstr "Sguab às roghainn"
 msgid "Delete option {0}"
 msgstr "Sguab às roghainn {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Sguab às na lethbhric air {0}?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Sguab às an tachartas seo"
@@ -1163,6 +1190,11 @@ msgstr "Sguab às do chunntas air an t-seann fhrithealaiche"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Air a sguabadh às"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "Lethbhric air an sguabadh às: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Fanaidh na tachartasan aige sa mhìosachan thùsail."
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "An-dràsta fhèin"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Cùm"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Chaidh an t-iarrtas a shàbhaladh"
 msgid "Properties"
 msgstr "Feartan"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Foillsich gu"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Foillsich gu {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Seòladh mìosachain fhoillsichte (leughadh a-mhàin)"
@@ -2893,7 +2939,7 @@ msgstr "Roghainnean"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Co-roinn"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

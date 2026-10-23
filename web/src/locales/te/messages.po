@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} ఈవెంట్ దిగుమతి చ
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} ఈవెంట్ ఇప్పటికే క్యాలెండర్‌లో ఉంది} other {{skipped} ఈవెంట్‌లు ఇప్పటికే క్యాలెండర్‌లో ఉన్నాయి}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# కాపీ} other {# కాపీలు}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "అన్ని వ్యాఖ్యలు"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "కొనసాగించండి"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "ఈ థ్రెడ్‌ను కొనసాగించండి"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "కాపీ అయింది"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "అక్కడ ప్రచురించిన కాపీలు: {0}. మీరు వాటిని తొలగించే వరకు అవి అలాగే ఉంటాయి."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "క్యాలెండర్ చిరునామాను కాప�
 msgid "Copy this event"
 msgstr "ఈ ఈవెంట్‌ను కాపీ చేయండి"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "కాపీలను తొలగించడం సాధ్యం కాలేదు"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ఈ పత్రాన్ని లోడ్ చేయలేకపోయింది. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "ఖాతాలను సేవ్ చేయడం సాధ్యం కాలేదు"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "కాలమ్‌ను తొలగించండి"
 msgid "Delete comment"
 msgstr "వ్యాఖ్యను తొలగించండి"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "కాపీలను తొలగించండి"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "పరికరాన్ని తొలగించండి"
@@ -1148,6 +1170,11 @@ msgstr "ఎంపికను తొలగించండి"
 msgid "Delete option {0}"
 msgstr "ఎంపిక {0}ని తొలగించండి"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0}లోని కాపీలను తొలగించాలా?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "ఈ ఈవెంట్‌ను తొలగించండి"
@@ -1163,6 +1190,11 @@ msgstr "పాత సర్వర్‌లో మీ ఖాతాను తొ�
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "తొలగించబడింది"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} కాపీలు తొలగించబడ్డాయి"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "దాని ఈవెంట్‌లు అసలు క్యాలె
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ఇప్పుడే"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "ఉంచు"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "ప్రాంప్ట్ సేవ్ చేయబడింది"
 msgid "Properties"
 msgstr "లక్షణాలు"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "ప్రచురించే స్థానాలు"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0}కి ప్రచురించు"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "ప్రచురించిన క్యాలెండర్ చిరునామా (చదవడానికి మాత్రమే)"
@@ -2893,7 +2939,7 @@ msgstr "సెట్టింగ్‌లు"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "పంచుకోండి"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"

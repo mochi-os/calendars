@@ -67,6 +67,11 @@ msgstr "{0, plural, one {{imported} рӯйдод ворид карда шуд} o
 msgid "{0, plural, one {{skipped} event already in the calendar} other {{skipped} events already in the calendar}}"
 msgstr "{0, plural, one {{skipped} рӯйдод аллакай дар тақвим ҳаст} other {{skipped} рӯйдод аллакай дар тақвим ҳаст}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/calendar/components/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# нусха} other {# нусха}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -343,7 +348,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "Ҳамаи шарҳҳо"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -911,7 +916,7 @@ msgstr "Идома"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "Идомаи ин сӯҳбат"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -929,6 +934,11 @@ msgstr "Нусхабардорӣ шуд"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Ба буфер нусхабардорӣ шуд"
+
+#. placeholder {0}: kept.count
+#: src/features/calendar/components/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "Нусхаҳои дар он ҷо нашршуда: {0}. Онҳо то он даме ки нест накунед, боқӣ мемонанд."
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -955,9 +965,17 @@ msgstr "Нусхабардории суроғаи тақвим"
 msgid "Copy this event"
 msgstr "Нусхабардории ин рӯйдод"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "Нусхаҳоро нест кардан нашуд"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Ин ҳуҷҷатро бор карда натавонист. Лутфан баъдтар такрор кунед."
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "Ҳисобҳоро нигоҳ доштан нашуд"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1116,6 +1134,10 @@ msgstr "Нест кардани сутун"
 msgid "Delete comment"
 msgstr "Нест кардани шарҳ"
 
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete copies"
+msgstr "Нест кардани нусхаҳо"
+
 #: src/features/calendar/dialogs/connect-dialog.tsx
 msgid "Delete device"
 msgstr "Нест кардани дастгоҳ"
@@ -1148,6 +1170,11 @@ msgstr "Нест кардани имкон"
 msgid "Delete option {0}"
 msgstr "Нест кардани имкони {0}"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "Нусхаҳо дар {0} нест карда шаванд?"
+
 #: src/features/calendar/components/delete-event-dialog.tsx
 msgid "Delete this event"
 msgstr "Нест кардани ин рӯйдод"
@@ -1163,6 +1190,11 @@ msgstr "Ҳисоби худро дар сервери кӯҳна нест кун
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "Нест карда шуд"
+
+#. placeholder {0}: answer.deleted
+#: src/features/calendar/components/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} нусха нест карда шуд"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -1791,6 +1823,10 @@ msgstr "Рӯйдодҳои он дар тақвими аслӣ боқӣ мемо
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "Ҳозир"
+
+#: src/features/calendar/components/publishing.tsx
+msgid "Keep"
+msgstr "Нигоҳ доштан"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2431,6 +2467,16 @@ msgstr "Дархост захира шуд"
 msgid "Properties"
 msgstr "Хусусиятҳо"
 
+#: src/features/calendar/components/publishing.tsx
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to"
+msgstr "Нашр дар"
+
+#. placeholder {0}: account.identifier
+#: src/features/calendar/components/publishing.tsx
+msgid "Publish to {0}"
+msgstr "Нашр дар {0}"
+
 #: src/features/calendar/dialogs/subscribe-dialog.tsx
 msgid "Published calendar address (read-only)"
 msgstr "Суроғаи тақвими нашршуда (танҳо хондан)"
@@ -2893,7 +2939,7 @@ msgstr "Танзимот"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "Мубодила"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
