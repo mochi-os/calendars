@@ -268,9 +268,9 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
           {heading}
         </div>
         <div className='flex items-center gap-2'>
+          {create}
           {searchBox}
           {picker}
-          {create}
         </div>
       </div>
     )
@@ -283,9 +283,9 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
       {nav}
       {heading}
       <div className='ms-auto flex items-center gap-2'>
+        {create}
         {searchBox}
         {picker}
-        {create}
       </div>
     </div>
   )

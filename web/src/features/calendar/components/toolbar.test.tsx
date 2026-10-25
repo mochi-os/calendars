@@ -110,7 +110,7 @@ describe('Toolbar new event', () => {
 })
 
 describe('Toolbar arrangement', () => {
-  it('keeps where you are on the left and the actions together on the right', () => {
+  it('keeps where you are on the left, and new, search and the view together on the right', () => {
     draw('month')
     const order = screen
       .getAllByRole('button')
@@ -123,9 +123,9 @@ describe('Toolbar arrangement', () => {
       'Today',
       'Next',
       'September 2026',
+      'New event',
       'Search',
       'ViewMonth',
-      'New event',
     ])
     const actions = screen.getByRole('button', {
       name: 'New event',
