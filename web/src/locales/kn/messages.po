@@ -802,6 +802,10 @@ msgstr "ಹುಡುಕಾಟ ಮುಚ್ಚಿ"
 msgid "Collapse"
 msgstr "ಸಂಕುಚಿಸಿ"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "ಎಲ್ಲವನ್ನೂ ಸಂಕುಚಿಸಿ"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "ಸೈಡ್‌ಬಾರ್ ಮಡಚಿ"
@@ -1427,6 +1431,10 @@ msgstr "ಪ್ರತಿ ನಿಮಿಷ"
 msgid "Expand"
 msgstr "ವಿಸ್ತರಿಸಿ"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "ಎಲ್ಲವನ್ನೂ ವಿಸ್ತರಿಸಿ"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "ಸೈಡ್‌ಬಾರ್ ವಿಸ್ತರಿಸಿ"
@@ -1885,6 +1893,10 @@ msgstr "ಲಿಂಕ್‌ಗಳು"
 msgid "List"
 msgstr "ಪಟ್ಟಿ"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "ವ್ಯತ್ಯಾಸಗಳನ್ನು ಲೋಡ್ ಮಾಡಿ"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "ಇನ್ನಷ್ಟು ಲೋಡ್ ಮಾಡಿ"
@@ -2084,7 +2096,6 @@ msgstr "ಇತ್ತೀಚಿನ"
 msgid "New calendar address copied to clipboard"
 msgstr "ಹೊಸ ಕ್ಯಾಲೆಂಡರ್ ವಿಳಾಸವನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "ಉಳಿಸಲಾಗುತ್ತಿದೆ..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "ಹುಡುಕಿ"
 
@@ -3452,10 +3464,6 @@ msgstr "ಐಟಂ ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "ನಿಯಂತ್ರಣಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "ಆಯ್ಕೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

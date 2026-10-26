@@ -802,6 +802,10 @@ msgstr "Затвори претрагу"
 msgid "Collapse"
 msgstr "Скупи"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Скупи све"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Скупи бочну траку"
@@ -1427,6 +1431,10 @@ msgstr "Сваки минут"
 msgid "Expand"
 msgstr "Прошири"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Прошири све"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Прошири бочну траку"
@@ -1885,6 +1893,10 @@ msgstr "Везе"
 msgid "List"
 msgstr "Листа"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Учитај разлике"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Учитај још"
@@ -2084,7 +2096,6 @@ msgstr "Најновије"
 msgid "New calendar address copied to clipboard"
 msgstr "Нова адреса календара копирана у клипборд"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Чување..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Претражи"
 
@@ -3452,10 +3464,6 @@ msgstr "Прикажи и уреди детаље ставке"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Контроле приказа"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Опције приказа"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

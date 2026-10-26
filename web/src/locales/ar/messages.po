@@ -802,6 +802,10 @@ msgstr "إغلاق البحث"
 msgid "Collapse"
 msgstr "طي"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "طي الكل"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "طيّ الشريط الجانبي"
@@ -1427,6 +1431,10 @@ msgstr "كل دقيقة"
 msgid "Expand"
 msgstr "توسيع"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "توسيع الكل"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "توسيع الشريط الجانبي"
@@ -1885,6 +1893,10 @@ msgstr "الروابط"
 msgid "List"
 msgstr "قائمة"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "تحميل التغييرات"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "تحميل المزيد"
@@ -2084,7 +2096,6 @@ msgstr "الأحدث"
 msgid "New calendar address copied to clipboard"
 msgstr "تم نسخ عنوان التقويم الجديد إلى الحافظة"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "جاري الحفظ..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "بحث"
 
@@ -3452,10 +3464,6 @@ msgstr "عرض وتعديل تفاصيل العنصر"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "عناصر تحكم العرض"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "خيارات العرض"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

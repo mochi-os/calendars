@@ -41,25 +41,42 @@ afterEach(() => {
   size.isDesktop = true
   size.isMobile = false
   context.listed = undefined
+  context.search = ''
 })
 
+// The toolbar in a view, with its search field opened where it starts as an
+// icon.
 function show(view: string) {
+  draw(view)
+  const icon = screen.queryByRole('button', { name: 'Search' })
+  if (icon) fireEvent.click(icon)
+  return screen.getByRole('searchbox', { name: 'Search' })
+}
+
+function draw(view: string) {
   context.view = view
   render(
     <I18nProvider i18n={i18n}>
       <Toolbar onCreate={vi.fn()} />
     </I18nProvider>
   )
-  return screen.getByRole('searchbox', { name: 'Search' })
 }
 
-// The views the picker offers, read from its open list.
-function views() {
-  fireEvent.pointerDown(screen.getByRole('combobox', { name: 'View' }), {
+// Opens the view menu.
+function menu() {
+  fireEvent.pointerDown(screen.getByRole('button', { name: /^View/ }), {
     button: 0,
+    ctrlKey: false,
     pointerType: 'mouse',
   })
-  return screen.getAllByRole('option').map((option) => option.textContent)
+}
+
+// The views the menu offers.
+function views() {
+  menu()
+  return screen
+    .getAllByRole('menuitemradio')
+    .map((option) => option.textContent)
 }
 
 describe('Toolbar views', () => {
@@ -74,6 +91,128 @@ describe('Toolbar views', () => {
     size.isMobile = true
     show('day')
     expect(views()).toEqual(['Day', 'List'])
+  })
+})
+
+describe('Toolbar new event', () => {
+  it('is a plain plus with no words and no fill, on a wide screen and a phone', () => {
+    for (const mobile of [false, true]) {
+      size.isDesktop = !mobile
+      size.isMobile = mobile
+      show('month')
+      const create = screen.getByRole('button', { name: 'New event' })
+      expect(create.textContent).toBe('')
+      expect(create.querySelector('svg')).not.toBeNull()
+      expect(create.classList.contains('bg-primary')).toBe(false)
+      cleanup()
+    }
+  })
+})
+
+describe('Toolbar arrangement', () => {
+  it('keeps where you are on the left, and new, search and the view together on the right', () => {
+    draw('month')
+    const order = screen
+      .getAllByRole('button')
+      .map(
+        (button) =>
+          button.getAttribute('aria-label') ?? button.textContent?.trim()
+      )
+    expect(order).toEqual([
+      'Previous',
+      'Today',
+      'Next',
+      'September 2026',
+      'New event',
+      'Search',
+      'ViewMonth',
+    ])
+    const actions = screen.getByRole('button', {
+      name: 'New event',
+    }).parentElement!
+    expect(
+      actions.contains(screen.getByRole('button', { name: 'Search' }))
+    ).toBe(true)
+    expect(actions.contains(screen.getByRole('heading'))).toBe(false)
+  })
+
+  it('names the current view in the menu button, with its icon', () => {
+    draw('week')
+    const button = screen.getByRole('button', { name: /^View/ })
+    expect(button.textContent).toBe('ViewWeek')
+    expect(button.querySelector('svg')).not.toBeNull()
+  })
+
+  it('opens a month to pick a day from the title on a wide screen too', () => {
+    draw('month')
+    fireEvent.click(screen.getByRole('button', { name: 'September 2026' }))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+  })
+
+  it('offers the work week inside the view menu in the week view, and nowhere else', () => {
+    draw('week')
+    expect(screen.queryByRole('button', { name: 'View options' })).toBeNull()
+    menu()
+    fireEvent.click(screen.getByRole('menuitemcheckbox', { name: 'Work week' }))
+    expect(context.setWorkweek).toHaveBeenCalledWith(true)
+    cleanup()
+    draw('month')
+    menu()
+    expect(screen.queryByRole('menuitemcheckbox')).toBeNull()
+  })
+
+  it('switches the view from the menu', () => {
+    draw('month')
+    menu()
+    fireEvent.click(screen.getByRole('menuitemradio', { name: 'Week' }))
+    expect(context.setView).toHaveBeenCalledWith('week')
+  })
+})
+
+describe('Toolbar search icon', () => {
+  it('starts as an icon on a wide screen and opens into the focused field', () => {
+    draw('month')
+    expect(screen.queryByRole('searchbox')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Search' }))
+    const field = screen.getByRole('searchbox', { name: 'Search' })
+    expect(document.activeElement).toBe(field)
+  })
+
+  it('closes again when left empty', () => {
+    draw('month')
+    fireEvent.click(screen.getByRole('button', { name: 'Search' }))
+    fireEvent.blur(screen.getByRole('searchbox'))
+    expect(screen.queryByRole('searchbox')).toBeNull()
+    expect(screen.getByRole('button', { name: 'Search' })).toBeInTheDocument()
+  })
+
+  it('stays open while it holds a term', () => {
+    context.search = 'flight'
+    draw('list')
+    const field = screen.getByRole('searchbox', { name: 'Search' })
+    fireEvent.blur(field)
+    expect(screen.getByRole('searchbox')).toBe(field)
+  })
+
+  it('clears and closes on Escape, giving focus back to the icon', () => {
+    draw('month')
+    fireEvent.click(screen.getByRole('button', { name: 'Search' }))
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Escape' })
+    expect(context.setSearch).toHaveBeenCalledWith('')
+    expect(screen.queryByRole('searchbox')).toBeNull()
+    expect(document.activeElement).toBe(
+      screen.getByRole('button', { name: 'Search' })
+    )
+  })
+
+  it('is always the field on a phone', () => {
+    size.isDesktop = false
+    size.isMobile = true
+    draw('list')
+    expect(
+      screen.getByRole('searchbox', { name: 'Search' })
+    ).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Search' })).toBeNull()
   })
 })
 

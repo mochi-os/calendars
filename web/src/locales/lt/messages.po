@@ -802,6 +802,10 @@ msgstr "Uždaryti paiešką"
 msgid "Collapse"
 msgstr "Sutraukti"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Sutraukti visus"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Sutraukti šoninę juostą"
@@ -1427,6 +1431,10 @@ msgstr "Kiekviena minutė"
 msgid "Expand"
 msgstr "Išskleisti"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Išskleisti visus"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Išskleisti šoninę juostą"
@@ -1885,6 +1893,10 @@ msgstr "Nuorodos"
 msgid "List"
 msgstr "Sąrašas"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Įkelti skirtumus"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Įkelti daugiau"
@@ -2084,7 +2096,6 @@ msgstr "Naujausi"
 msgid "New calendar address copied to clipboard"
 msgstr "Naujas kalendoriaus adresas nukopijuotas į iškarpinę"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Išsaugoma..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Ieškoti"
 
@@ -3452,10 +3464,6 @@ msgstr "Peržiūrėti ir redaguoti elemento detales"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Rodinio valdikliai"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Rodinio parinktys"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

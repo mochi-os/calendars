@@ -802,6 +802,10 @@ msgstr "Dùin an lorg"
 msgid "Collapse"
 msgstr "Lùb a-steach"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Lùb a-steach na h-uile"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Lùb am bàr-thaobh"
@@ -1427,6 +1431,10 @@ msgstr "Gach mionaid"
 msgid "Expand"
 msgstr "Leudaich"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Leudaich na h-uile"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Leudaich am bàr-taobh"
@@ -1885,6 +1893,10 @@ msgstr "Ceanglaichean"
 msgid "List"
 msgstr "Liosta"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Luchdaich na h-atharraichidhean"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Luchdaich barrachd"
@@ -2084,7 +2096,6 @@ msgstr "As ùire"
 msgid "New calendar address copied to clipboard"
 msgstr "Chaidh seòladh ùr a' mhìosachain a lethbhreacadh dhan stòr-bhòrd"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "A' sàbhaladh..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Lorg"
 
@@ -3452,10 +3464,6 @@ msgstr "Seall is deasaich mion-fhiosrachadh an rud"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Smachdan seallaidh"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Roghainnean seallaidh"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

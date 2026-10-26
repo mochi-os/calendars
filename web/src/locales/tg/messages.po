@@ -802,6 +802,10 @@ msgstr "Пӯшидани ҷустуҷӯ"
 msgid "Collapse"
 msgstr "Печондан"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Ҳамаро печондан"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Ҷамъ кардани панели канорӣ"
@@ -1427,6 +1431,10 @@ msgstr "Ҳар дақиқа"
 msgid "Expand"
 msgstr "Васеъ кардан"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Ҳамаро васеъ кардан"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Васеъ кардани панели канорӣ"
@@ -1885,6 +1893,10 @@ msgstr "Пайвандҳо"
 msgid "List"
 msgstr "Рӯйхат"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Бор кардани фарқҳо"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Бештар бор кунед"
@@ -2084,7 +2096,6 @@ msgstr "Навтарин"
 msgid "New calendar address copied to clipboard"
 msgstr "Суроғаи нави тақвим ба буфер нусха карда шуд"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Захира кардан..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Ҷустуҷӯ"
 
@@ -3452,10 +3464,6 @@ msgstr "Тафсилоти ҷузъро дидан ва таҳрир карда�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Назоратҳои намоиш"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Имконоти намоиш"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

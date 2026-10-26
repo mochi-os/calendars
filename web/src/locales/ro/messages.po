@@ -802,6 +802,10 @@ msgstr "Închide căutarea"
 msgid "Collapse"
 msgstr "Restrânge"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Restrânge tot"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Restrânge bara laterală"
@@ -1427,6 +1431,10 @@ msgstr "Fiecare minut"
 msgid "Expand"
 msgstr "Extinde"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Extinde tot"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Extinde bara laterală"
@@ -1885,6 +1893,10 @@ msgstr "Linkuri"
 msgid "List"
 msgstr "Listă"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Încarcă diferențele"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Încarcă mai multe"
@@ -2084,7 +2096,6 @@ msgstr "Cele mai noi"
 msgid "New calendar address copied to clipboard"
 msgstr "Noua adresă a calendarului a fost copiată în clipboard"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Se salvează..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Caută"
 
@@ -3452,10 +3464,6 @@ msgstr "Vizualizează și editează detaliile elementului"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Controale de vizualizare"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Opțiuni de vizualizare"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

@@ -802,6 +802,10 @@ msgstr "Закрити пошук"
 msgid "Collapse"
 msgstr "Згорнути"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Згорнути все"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Згорнути бічну панель"
@@ -1427,6 +1431,10 @@ msgstr "Кожна хвилина"
 msgid "Expand"
 msgstr "Розгорнути"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Розгорнути все"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Розгорнути бічну панель"
@@ -1885,6 +1893,10 @@ msgstr "Посилання"
 msgid "List"
 msgstr "Список"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Завантажити відмінності"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Завантажити більше"
@@ -2084,7 +2096,6 @@ msgstr "Нові"
 msgid "New calendar address copied to clipboard"
 msgstr "Нову адресу календаря скопійовано в буфер обміну"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Збереження..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Пошук"
 
@@ -3452,10 +3464,6 @@ msgstr "Переглянути та змінити деталі елемента
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Елементи керування виглядом"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Параметри перегляду"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

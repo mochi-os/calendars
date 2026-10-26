@@ -802,6 +802,10 @@ msgstr "Chiudi ricerca"
 msgid "Collapse"
 msgstr "Comprimi"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Comprimi tutto"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Comprimi barra laterale"
@@ -1427,6 +1431,10 @@ msgstr "Ogni minuto"
 msgid "Expand"
 msgstr "Espandi"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Espandi tutto"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Espandi barra laterale"
@@ -1885,6 +1893,10 @@ msgstr "Link"
 msgid "List"
 msgstr "Elenco"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Carica differenze"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Carica altri"
@@ -2084,7 +2096,6 @@ msgstr "Più recenti"
 msgid "New calendar address copied to clipboard"
 msgstr "Nuovo indirizzo del calendario copiato negli appunti"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Salvataggio in corso..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Cerca"
 
@@ -3452,10 +3464,6 @@ msgstr "Visualizza e modifica i dettagli dell'elemento"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Controlli di visualizzazione"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Opzioni di visualizzazione"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

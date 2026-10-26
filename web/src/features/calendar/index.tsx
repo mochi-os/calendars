@@ -363,7 +363,13 @@ export function CalendarPage() {
     page,
     create: createNow,
     view: setView,
-    search: () => document.getElementById('calendar-search')?.focus(),
+    // On a wider screen the search is an icon until clicked, which opens and
+    // focuses the field; on a phone it is the field itself.
+    search: () => {
+      const search = document.getElementById('calendar-search')
+      search?.click()
+      search?.focus()
+    },
   })
 
   const grid = failed ? (

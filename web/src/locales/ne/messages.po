@@ -802,6 +802,10 @@ msgstr "खोजी बन्द गर्नुहोस्"
 msgid "Collapse"
 msgstr "संक्षिप्त गर्नुहोस्"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "सबै संक्षिप्त गर्नुहोस्"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "साइडबार सङ्कुचन गर्नुहोस्"
@@ -1427,6 +1431,10 @@ msgstr "हरेक मिनेट"
 msgid "Expand"
 msgstr "विस्तार गर्नुहोस्"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "सबै विस्तार गर्नुहोस्"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "साइडबार विस्तार गर्नुहोस्"
@@ -1885,6 +1893,10 @@ msgstr "लिङ्कहरू"
 msgid "List"
 msgstr "सूची"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "भिन्नताहरू लोड गर्नुहोस्"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "थप लोड गर्नुहोस्"
@@ -2084,7 +2096,6 @@ msgstr "सबैभन्दा नयाँ"
 msgid "New calendar address copied to clipboard"
 msgstr "नयाँ क्यालेन्डरको ठेगाना क्लिपबोर्डमा प्रतिलिपि गरियो"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "सुरक्षित गर्दै..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "खोज्नुहोस्"
 
@@ -3452,10 +3464,6 @@ msgstr "वस्तुको विवरण हेर्नुहोस् र
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "दृश्य नियन्त्रणहरू"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "दृश्य विकल्पहरू"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

@@ -802,6 +802,10 @@ msgstr "Tanca la cerca"
 msgid "Collapse"
 msgstr "Replega"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Replega-ho tot"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Replega la barra lateral"
@@ -1427,6 +1431,10 @@ msgstr "Cada minut"
 msgid "Expand"
 msgstr "Desplega"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Desplega-ho tot"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Expandeix la barra lateral"
@@ -1885,6 +1893,10 @@ msgstr "Enllaços"
 msgid "List"
 msgstr "Llista"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Carrega els canvis"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Carrega'n més"
@@ -2084,7 +2096,6 @@ msgstr "Recent"
 msgid "New calendar address copied to clipboard"
 msgstr "Nova adreça del calendari copiada al porta-retalls"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Desant..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Cerca"
 
@@ -3452,10 +3464,6 @@ msgstr "Visualitza i edita els detalls de l'element"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Controls de visualització"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Opcions de visualització"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

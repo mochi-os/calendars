@@ -802,6 +802,10 @@ msgstr "Sluit soektog"
 msgid "Collapse"
 msgstr "Vou in"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Vou alles in"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Vou sybalk in"
@@ -1427,6 +1431,10 @@ msgstr "Elke minuut"
 msgid "Expand"
 msgstr "Vou uit"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Vou alles uit"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Brei sybalk uit"
@@ -1885,6 +1893,10 @@ msgstr "Skakels"
 msgid "List"
 msgstr "Lys"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Laai veranderinge"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Laai meer"
@@ -2084,7 +2096,6 @@ msgstr "Nuutste"
 msgid "New calendar address copied to clipboard"
 msgstr "Nuwe kalenderadres na knipbord gekopieer"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Besig om te stoor..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Soek"
 
@@ -3452,10 +3464,6 @@ msgstr "Bekyk en wysig item-besonderhede"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Bekyk-kontroles"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Bekyk-opsies"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

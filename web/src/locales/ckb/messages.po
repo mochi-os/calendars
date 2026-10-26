@@ -802,6 +802,10 @@ msgstr "داخستنی گەڕان"
 msgid "Collapse"
 msgstr "داپۆشین"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "داپۆشینی هەموو"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "نوقاندنی لاتەنیشت"
@@ -1427,6 +1431,10 @@ msgstr "هەموو خولەکێک"
 msgid "Expand"
 msgstr "فراوانکردن"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "فراوانکردنی هەموو"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "فراوانکردنی لاتەنیشت"
@@ -1885,6 +1893,10 @@ msgstr "بەستەرەکان"
 msgid "List"
 msgstr "لیست"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "بارکردنی گۆڕانکارییەکان"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "زیاتر باربکە"
@@ -2084,7 +2096,6 @@ msgstr "نوێترین"
 msgid "New calendar address copied to clipboard"
 msgstr "ناونیشانی نوێی ڕۆژژمێر کۆپی کرا بۆ کلیپبۆرد"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "پاشەکەوتکردن..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "گەڕان"
 
@@ -3452,10 +3464,6 @@ msgstr "وردەکارییەکانی بابەت ببینە و دەستکاری �
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "کۆنترۆڵەکانی بینین"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "بژاردەکانی بینین"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

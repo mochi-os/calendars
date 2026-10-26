@@ -802,6 +802,10 @@ msgstr "بستن جست‌وجو"
 msgid "Collapse"
 msgstr "جمع کردن"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "جمع کردن همه"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "جمع کردن نوار کناری"
@@ -1427,6 +1431,10 @@ msgstr "هر دقیقه"
 msgid "Expand"
 msgstr "گسترش"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "گسترش همه"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "گسترش نوار کناری"
@@ -1885,6 +1893,10 @@ msgstr "لینک‌ها"
 msgid "List"
 msgstr "فهرست"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "بارگذاری تغییرات"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "بارگذاری بیشتر"
@@ -2084,7 +2096,6 @@ msgstr "جدیدترین"
 msgid "New calendar address copied to clipboard"
 msgstr "نشانی جدید تقویم در کلیپ‌بورد کپی شد"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "در حال ذخیره..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -3452,10 +3464,6 @@ msgstr "نمایش و ویرایش جزئیات مورد"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "کنترل‌های نمایش"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "گزینه‌های نمایش"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

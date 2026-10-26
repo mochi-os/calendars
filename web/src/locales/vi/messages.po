@@ -802,6 +802,10 @@ msgstr "Đóng tìm kiếm"
 msgid "Collapse"
 msgstr "Thu gọn"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Thu gọn tất cả"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Thu gọn thanh bên"
@@ -1427,6 +1431,10 @@ msgstr "Từng phút"
 msgid "Expand"
 msgstr "Mở rộng"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Mở rộng tất cả"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Mở rộng thanh bên"
@@ -1885,6 +1893,10 @@ msgstr "Liên kết"
 msgid "List"
 msgstr "Danh sách"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Tải phần khác biệt"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Tải thêm"
@@ -2084,7 +2096,6 @@ msgstr "Mới nhất"
 msgid "New calendar address copied to clipboard"
 msgstr "Đã sao chép địa chỉ lịch mới vào bộ nhớ tạm"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Đang lưu..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Tìm kiếm"
 
@@ -3452,10 +3464,6 @@ msgstr "Xem và chỉnh sửa chi tiết mục"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Điều khiển xem"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Tùy chọn xem"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

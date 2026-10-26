@@ -802,6 +802,10 @@ msgstr "Tutup carian"
 msgid "Collapse"
 msgstr "Runtuhkan"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Collapse all"
+msgstr "Runtuhkan semua"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Runtuhkan bar sisi"
@@ -1427,6 +1431,10 @@ msgstr "Setiap minit"
 msgid "Expand"
 msgstr "Kembangkan"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Expand all"
+msgstr "Kembangkan semua"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
 msgstr "Kembangkan bar sisi"
@@ -1885,6 +1893,10 @@ msgstr "Pautan"
 msgid "List"
 msgstr "Senarai"
 
+#: ../../../lib/web/src/components/diff-viewer.tsx
+msgid "Load diff"
+msgstr "Muatkan perbezaan"
+
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
 msgstr "Muatkan lagi"
@@ -2084,7 +2096,6 @@ msgstr "Terbaharu"
 msgid "New calendar address copied to clipboard"
 msgstr "Alamat kalendar baharu disalin ke papan keratan"
 
-#: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/components/toolbar.tsx
 #: src/features/calendar/editor.tsx
 msgid "New event"
@@ -2780,6 +2791,7 @@ msgstr "Sedang menyimpan..."
 #: ../../../lib/web/src/components/header-search.tsx
 #: ../../../lib/web/src/components/search.tsx
 #: src/features/calendar/components/toolbar.tsx
+#: src/features/calendar/components/toolbar.tsx
 msgid "Search"
 msgstr "Cari"
 
@@ -3452,10 +3464,6 @@ msgstr "Lihat dan edit butiran item"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
 msgstr "Kawalan paparan"
-
-#: src/features/calendar/components/toolbar.tsx
-msgid "View options"
-msgstr "Pilihan paparan"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
