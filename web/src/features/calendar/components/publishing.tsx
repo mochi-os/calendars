@@ -25,6 +25,24 @@ import { Archive } from 'lucide-react'
 import { calendarsApi } from '@/api/calendars'
 import type { PublishAccount } from '@/api/types/calendars'
 
+// Whether a calendar's Publish to tab is offered: one of the user's own
+// calendars with an account to publish to, or whose answer failed and shows
+// why. Undefined while it is asked.
+export function usePublishOffered(
+  calendar: string,
+  enabled: boolean
+): boolean | undefined {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['calendar', 'publish', calendar],
+    queryFn: () => calendarsApi.publish(calendar),
+    retry: false,
+    enabled,
+  })
+  if (!enabled) return false
+  if (isLoading) return undefined
+  return !!error || (data?.accounts ?? []).length > 0
+}
+
 export function PublishingSection({ calendar }: { calendar: string }) {
   const { t } = useLingui()
   const queryClient = useQueryClient()

@@ -6,9 +6,19 @@ import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+  waitFor,
+} from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { PublishSwitches, PublishingSection } from './publishing'
+import {
+  PublishSwitches,
+  PublishingSection,
+  usePublishOffered,
+} from './publishing'
 
 const state = vi.hoisted(() => ({
   publish: vi.fn(),
@@ -169,5 +179,50 @@ describe('Publish switches', () => {
       name: '@alice@example.org',
     })
     expect(hosted).toHaveAttribute('aria-checked', 'false')
+  })
+})
+
+describe('usePublishOffered', () => {
+  const offered = (enabled: boolean) => {
+    const client = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    })
+    return renderHook(() => usePublishOffered('c1', enabled), {
+      wrapper: ({ children }) => (
+        <QueryClientProvider client={client}>{children}</QueryClientProvider>
+      ),
+    }).result
+  }
+
+  beforeEach(() => {
+    state.publish.mockReset()
+  })
+
+  it('offers the tab where there is an account to publish to, once that is known', async () => {
+    state.publish.mockResolvedValue({
+      accounts: [{ id: 'm1', type: 'mastodon', identifier: '@a@b.example' }],
+      publish: [],
+      copies: {},
+    })
+    const result = offered(true)
+    expect(result.current).toBeUndefined()
+    await waitFor(() => expect(result.current).toBe(true))
+  })
+
+  it('offers no tab where there is no account', async () => {
+    state.publish.mockResolvedValue({ accounts: [], publish: [], copies: {} })
+    const result = offered(true)
+    await waitFor(() => expect(result.current).toBe(false))
+  })
+
+  it('offers the tab where the answer failed, so the error shows', async () => {
+    state.publish.mockRejectedValue(new Error('no'))
+    const result = offered(true)
+    await waitFor(() => expect(result.current).toBe(true))
+  })
+
+  it("asks nothing for a calendar that is not the user's own", () => {
+    expect(offered(false).current).toBe(false)
+    expect(state.publish).not.toHaveBeenCalled()
   })
 })

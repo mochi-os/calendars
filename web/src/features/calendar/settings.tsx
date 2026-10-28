@@ -16,10 +16,13 @@ import {
   Label,
   Main,
   PageHeader,
+  Tabs,
+  TabsList,
+  TabsTrigger,
   toastAction,
   usePageTitle,
 } from '@mochi/web'
-import { Check, Copy, Link2 } from 'lucide-react'
+import { Check, Copy, Link2, Settings, Share2 } from 'lucide-react'
 import { calendarsApi } from '@/api/calendars'
 import type { CalendarResponse } from '@/api/types/calendars'
 import {
@@ -27,13 +30,26 @@ import {
   useRenameCalendarMutation,
 } from '@/hooks/use-calendars'
 import { useIcsCopy } from '@/hooks/use-ics-copy'
-import { PublishingSection } from '@/features/calendar/components/publishing'
+import {
+  PublishingSection,
+  usePublishOffered,
+} from '@/features/calendar/components/publishing'
+
+export type CalendarTab = 'settings' | 'publish'
 
 /**
  * A calendar's own page at /calendars/<fingerprint>: what it is called, what
  * colour it is drawn in, and the address others can subscribe to.
  */
-export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
+export function CalendarSettings({
+  fingerprint,
+  tab,
+  onTab,
+}: {
+  fingerprint: string
+  tab?: CalendarTab
+  onTab?: (tab: CalendarTab) => void
+}) {
   const { t } = useLingui()
   const { data, isLoading, isError, refetch } = useQuery<CalendarResponse>({
     queryKey: ['calendar', fingerprint],
@@ -41,6 +57,19 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
   })
   const calendar = data?.calendar
   usePageTitle(calendar?.name ?? t`Calendars`)
+
+  // Publish to is a tab of its own on one of the user's own calendars with
+  // somewhere to publish; with nowhere, the page has no tabs. A link to it
+  // holds it while that is asked, and opens the settings once it is not so.
+  const publishable = usePublishOffered(
+    calendar?.id ?? '',
+    calendar?.kind === 'own'
+  )
+  const active =
+    tab === 'publish' && publishable === false
+      ? 'settings'
+      : (tab ?? 'settings')
+  const tabbed = publishable || active === 'publish'
 
   const [name, setName] = useState('')
   const [colour, setColour] = useState('')
@@ -138,82 +167,111 @@ export function CalendarSettings({ fingerprint }: { fingerprint: string }) {
     }
   }
 
-  return (
-    <Main>
-      <PageHeader title={calendar.name} back={back} />
-      <div className='max-w-lg space-y-6'>
-        {(calendar.kind === 'subscription' || calendar.kind === 'linked') &&
-          calendar.failure !== '' && (
-            <p className='text-destructive text-sm'>
-              <Trans>
-                The last fetch failed: {failureReason(calendar.failure)}
-              </Trans>
-            </p>
-          )}
-        <div className='space-y-2'>
-          <Label htmlFor='settings-name'>
-            <Trans>Name</Trans>
-          </Label>
-          <div className='flex gap-2'>
-            <Input
-              id='settings-name'
-              value={name}
-              maxLength={100}
-              disabled={calendar.readonly && calendar.kind === 'birthdays'}
-              onChange={(input) => setName(input.target.value)}
-            />
+  const settings = (
+    <div className='max-w-lg space-y-6'>
+      {(calendar.kind === 'subscription' || calendar.kind === 'linked') &&
+        calendar.failure !== '' && (
+          <p className='text-destructive text-sm'>
+            <Trans>
+              The last fetch failed: {failureReason(calendar.failure)}
+            </Trans>
+          </p>
+        )}
+      <div className='space-y-2'>
+        <Label htmlFor='settings-name'>
+          <Trans>Name</Trans>
+        </Label>
+        <div className='flex gap-2'>
+          <Input
+            id='settings-name'
+            value={name}
+            maxLength={100}
+            disabled={calendar.readonly && calendar.kind === 'birthdays'}
+            onChange={(input) => setName(input.target.value)}
+          />
+          <Button
+            onClick={() => void saveName()}
+            loading={renameMutation.isPending}
+            disabled={name.trim() === '' || name === calendar.name}
+            icon={<Check className='size-4' />}
+          >
+            <Trans>Save</Trans>
+          </Button>
+        </div>
+      </div>
+
+      <div className='space-y-2'>
+        <Label>
+          <Trans>Colour</Trans>
+        </Label>
+        <ColourPicker
+          value={colour}
+          onChange={setColour}
+          actions={
             <Button
-              onClick={() => void saveName()}
-              loading={renameMutation.isPending}
-              disabled={name.trim() === '' || name === calendar.name}
+              size='sm'
+              onClick={() => void saveColour()}
+              loading={colourMutation.isPending}
+              disabled={colour === calendar.colour}
               icon={<Check className='size-4' />}
             >
               <Trans>Save</Trans>
             </Button>
-          </div>
-        </div>
-
-        <div className='space-y-2'>
-          <Label>
-            <Trans>Colour</Trans>
-          </Label>
-          <ColourPicker
-            value={colour}
-            onChange={setColour}
-            actions={
-              <Button
-                size='sm'
-                onClick={() => void saveColour()}
-                loading={colourMutation.isPending}
-                disabled={colour === calendar.colour}
-                icon={<Check className='size-4' />}
-              >
-                <Trans>Save</Trans>
-              </Button>
-            }
-          />
-        </div>
-
-        <div className='space-y-2'>
-          <Label>
-            <Trans>Calendar address</Trans>
-          </Label>
-          <div className='flex gap-2'>
-            <Button variant='outline' onClick={() => void copy(calendar.id)}>
-              <Copy className='size-4' />
-              <Trans>Copy</Trans>
-            </Button>
-            <Button variant='outline' onClick={() => revoke(calendar.id)}>
-              <Link2 className='size-4' />
-              <Trans>Revoke</Trans>
-            </Button>
-          </div>
-        </div>
-
-        {calendar.kind === 'own' && (
-          <PublishingSection calendar={calendar.id} />
-        )}
+          }
+        />
       </div>
+
+      <div className='space-y-2'>
+        <Label>
+          <Trans>Calendar address</Trans>
+        </Label>
+        <div className='flex gap-2'>
+          <Button variant='outline' onClick={() => void copy(calendar.id)}>
+            <Copy className='size-4' />
+            <Trans>Copy</Trans>
+          </Button>
+          <Button variant='outline' onClick={() => revoke(calendar.id)}>
+            <Link2 className='size-4' />
+            <Trans>Revoke</Trans>
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
+
+  return (
+    <Main>
+      <PageHeader title={calendar.name} back={back} />
+      {tabbed ? (
+        <Tabs
+          variant='underline'
+          value={active}
+          onValueChange={(value) => onTab?.(value as CalendarTab)}
+          className='gap-6'
+        >
+          <TabsList sticky>
+            <TabsTrigger value='settings' className='gap-2'>
+              <Settings className='h-4 w-4' />
+              <Trans>Settings</Trans>
+            </TabsTrigger>
+            <TabsTrigger value='publish' className='gap-2'>
+              <Share2 className='h-4 w-4' />
+              <Trans>Publish to</Trans>
+            </TabsTrigger>
+          </TabsList>
+          <div className='pt-2'>
+            {active === 'publish' ? (
+              <div className='max-w-lg'>
+                <PublishingSection calendar={calendar.id} />
+              </div>
+            ) : (
+              settings
+            )}
+          </div>
+        </Tabs>
+      ) : (
+        settings
+      )}
       {dialogs}
     </Main>
   )
