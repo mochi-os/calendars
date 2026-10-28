@@ -14,6 +14,7 @@ import {
   getAppBasepath,
   I18nProvider,
   startRoutePrefetch,
+  RouteError,
   type Catalogs,
 } from '@mochi/web'
 // Generated Routes
@@ -135,11 +136,15 @@ const queryClient = createQueryClient()
 
 // getAppBasepath keeps the fingerprint out of the basepath: a calendar's own
 // page is the $calendarId route, as a repository's is.
+// A route without its own errorComponent gets no boundary at all, so a page
+// error climbed to __root and replaced the sidebar along with it. The default
+// gives every route its own boundary, so the error stays in the content pane.
 const router = createRouter({
   routeTree,
   context: { queryClient },
   basepath: getAppBasepath(),
   defaultPreload: false,
+  defaultErrorComponent: RouteError,
 })
 
 // Fetch page code on hover, press or focus; never route data
