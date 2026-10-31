@@ -133,8 +133,9 @@ describe('New event accounts', () => {
   it("leaves the accounts to the calendar's list when untouched", async () => {
     show()
     await titled()
+    fireEvent.click(await screen.findByRole('button', { name: /Also post to/ }))
     expect(
-      await screen.findByRole('switch', { name: '@alice@example.org' })
+      screen.getByRole('switch', { name: '@alice@example.org' })
     ).toHaveAttribute('aria-checked', 'true')
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
     await waitFor(() => expect(state.create).toHaveBeenCalledTimes(1))
@@ -144,9 +145,8 @@ describe('New event accounts', () => {
   it('sends the accounts chosen for the event', async () => {
     show()
     await titled()
-    fireEvent.click(
-      await screen.findByRole('switch', { name: 'alice.example.org' })
-    )
+    fireEvent.click(await screen.findByRole('button', { name: /Also post to/ }))
+    fireEvent.click(screen.getByRole('switch', { name: 'alice.example.org' }))
     fireEvent.click(screen.getByRole('switch', { name: '@alice@example.org' }))
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
     await waitFor(() => expect(state.create).toHaveBeenCalledTimes(1))
@@ -157,7 +157,7 @@ describe('New event accounts', () => {
     state.kind = 'linked'
     show()
     await titled()
-    expect(screen.queryByText('Publish to')).toBeNull()
+    expect(screen.queryByText('Also post to')).toBeNull()
     expect(state.publish).not.toHaveBeenCalled()
   })
 })

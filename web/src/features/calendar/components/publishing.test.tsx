@@ -99,7 +99,7 @@ describe('Publishing section', () => {
     wrap(<PublishingSection calendar='c1' />)
     await waitFor(() => expect(state.publish).toHaveBeenCalled())
     await new Promise((resolve) => setTimeout(resolve, 0))
-    expect(screen.queryByText('Publish to')).toBeNull()
+    expect(screen.queryByText('Also post to')).toBeNull()
   })
 
   it('adds an account to the list', async () => {
@@ -163,9 +163,12 @@ describe('Publish switches', () => {
   it("start from the calendar's list and report a change", async () => {
     const changed = vi.fn()
     wrap(<PublishSwitches calendar='c1' chosen={null} onChange={changed} />)
-    const hosted = await screen.findByRole('switch', {
-      name: '@alice@example.org',
-    })
+    const line = await screen.findByRole('button', { name: /Also post to/ })
+    expect(line).toHaveTextContent('@alice@example.org')
+    expect(line).not.toHaveTextContent('@alice@mastodon.social')
+    expect(screen.queryByRole('switch')).toBeNull()
+    fireEvent.click(line)
+    const hosted = screen.getByRole('switch', { name: '@alice@example.org' })
     expect(hosted).toHaveAttribute('aria-checked', 'true')
     fireEvent.click(
       screen.getByRole('switch', { name: '@alice@mastodon.social' })
@@ -175,10 +178,12 @@ describe('Publish switches', () => {
 
   it('show what was chosen for the event over the list', async () => {
     wrap(<PublishSwitches calendar='c1' chosen={[]} onChange={vi.fn()} />)
-    const hosted = await screen.findByRole('switch', {
-      name: '@alice@example.org',
-    })
-    expect(hosted).toHaveAttribute('aria-checked', 'false')
+    const line = await screen.findByRole('button', { name: /Also post to/ })
+    expect(line).not.toHaveTextContent('@alice@example.org')
+    fireEvent.click(line)
+    expect(
+      screen.getByRole('switch', { name: '@alice@example.org' })
+    ).toHaveAttribute('aria-checked', 'false')
   })
 })
 

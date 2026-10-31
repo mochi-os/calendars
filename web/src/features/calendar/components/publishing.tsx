@@ -15,6 +15,7 @@ import {
   ConfirmDialog,
   GeneralError,
   Label,
+  PublishChoice,
   Switch,
   getErrorMessage,
   naturalCompare,
@@ -178,34 +179,13 @@ export function PublishSwitches({
     enabled: calendar !== '',
     retry: false,
   })
-  const accounts = [...(data?.accounts ?? [])].sort((a, b) =>
-    naturalCompare(a.identifier, b.identifier)
-  )
-  if (accounts.length === 0) return null
-  const selected = chosen ?? data?.publish ?? []
+  const { t } = useLingui()
   return (
-    <div className='space-y-2'>
-      <Label>
-        <Trans>Publish to</Trans>
-      </Label>
-      <div className='flex flex-wrap gap-3'>
-        {accounts.map((account) => (
-          <label key={account.id} className='flex items-center gap-2 text-sm'>
-            <Switch
-              checked={selected.includes(account.id)}
-              aria-label={account.identifier}
-              onCheckedChange={(on) =>
-                onChange(
-                  on
-                    ? [...selected, account.id]
-                    : selected.filter((id) => id !== account.id)
-                )
-              }
-            />
-            {account.identifier}
-          </label>
-        ))}
-      </div>
-    </div>
+    <PublishChoice
+      label={t`Also post to`}
+      accounts={data?.accounts ?? []}
+      selected={chosen ?? data?.publish ?? []}
+      onChange={onChange}
+    />
   )
 }
