@@ -52,11 +52,15 @@ interface SplitResponse {
 }
 
 export const eventsApi = {
-  /** Every occurrence in [start, finish), in unix seconds. */
+  /**
+   * Every occurrence in [start, finish), in unix seconds, of every calendar
+   * but the hidden ones: the hidden set is kept in this browser, so the page
+   * can ask before the calendar list has answered.
+   */
   list: (
     start: number,
     finish: number,
-    calendars?: string[],
+    hidden: string[] = [],
     timezone?: string
   ): Promise<InstancesResponse> =>
     requestHelpers.get<InstancesResponse>(endpoints.events.list, {
@@ -64,21 +68,18 @@ export const eventsApi = {
       params: {
         start: String(start),
         finish: String(finish),
-        ...(calendars && calendars.length
-          ? { calendars: calendars.join(',') }
-          : {}),
+        ...(hidden.length ? { hidden: hidden.join(',') } : {}),
         // The zone "auto" resolved to here, so the server expands floating
         // times and day boundaries in the zone the views draw in.
         ...(timezone ? { timezone } : {}),
       },
     }),
 
-  /** The first and last moments the calendars have anything on. */
-  bounds: (calendars?: string[]): Promise<BoundsResponse> =>
+  /** The first and last moments the calendars not hidden have anything on. */
+  bounds: (hidden: string[] = []): Promise<BoundsResponse> =>
     requestHelpers.get<BoundsResponse>(endpoints.events.bounds, {
       ...quiet,
-      params:
-        calendars && calendars.length ? { calendars: calendars.join(',') } : {},
+      params: hidden.length ? { hidden: hidden.join(',') } : {},
     }),
 
   get: (event: string): Promise<EventResponse> =>

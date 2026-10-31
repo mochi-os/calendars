@@ -58,6 +58,18 @@ interface CalendarContextValue {
   /** Asks for the calendar list again. */
   reload: () => void
   shown: (calendar: string) => boolean
+  /** The calendars hidden in this browser, which the event queries name. */
+  hidden: string[]
+  /**
+   * Every calendar the user has is hidden here: the views show nothing and
+   * ask for nothing. False until the calendar list has answered.
+   */
+  none: boolean
+  /**
+   * The browser's stored choices the range depends on, the hidden calendars
+   * and the last view, have been read, so the event queries may ask.
+   */
+  settled: boolean
   toggle: (calendar: string) => void
   /** Shows a calendar an event was just saved into, if it was hidden. */
   reveal: (calendar: string) => void
@@ -106,18 +118,34 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const { data, isLoading, isError, refetch } = useCalendarsQuery()
   useCalendarsRefresh()
   const calendars = useMemo(() => data?.calendars ?? [], [data?.calendars])
-  const { shown, toggle, reveal, only, visible } =
+  const { shown, toggle, reveal, only, visible, hidden, known } =
     useShownCalendars(calendars)
+  const none = calendars.length > 0 && visible.length === 0
 
-  const { data: preferenceData } = usePreferencesQuery()
-  const preferences = preferenceData?.preferences ?? DEFAULTS
+  const { data: preferenceData, isFetched: preferencesFetched } =
+    usePreferencesQuery()
+  // Whether events show in their own zones widens the range the event
+  // queries ask for, so this browser keeps a copy of it to ask right before
+  // the preferences answer.
+  const [storedZones, setStoredZones, zonesKnown] = useShellStorage<boolean>(
+    'calendars:zones',
+    false
+  )
+  const preferences = useMemo(
+    () => preferenceData?.preferences ?? { ...DEFAULTS, zones: storedZones },
+    [preferenceData, storedZones]
+  )
+  const zones = preferenceData?.preferences.zones
+  useEffect(() => {
+    if (zones !== undefined && zonesKnown && zones !== storedZones) {
+      setStoredZones(zones)
+    }
+  }, [zones, zonesKnown, storedZones, setStoredZones])
 
   // The view this browser last showed; one that has shown none opens on the
   // view last chosen anywhere, which the preferences keep.
-  const [lastView, setLastView] = useShellStorage<CalendarView | null>(
-    'calendars:view',
-    null
-  )
+  const [lastView, setLastView, viewKnown] =
+    useShellStorage<CalendarView | null>('calendars:view', null)
   const { mutate: savePreferences } = useSetPreferencesMutation()
   // Kept per device like the last view, so a reload does not lose it.
   const [workweek, setWorkweek] = useShellStorage<boolean>(
@@ -151,6 +179,18 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const date = /^\d{4}-\d{2}-\d{2}$/.test(search.date ?? '')
     ? (search.date as string)
     : today
+
+  // The range follows the view, so the event queries wait until it is known:
+  // the hidden calendars and the last view are read from this browser, and
+  // the preferences are waited for only where the range depends on them and
+  // the browser holds no copy - a browser that has shown no view opens on the
+  // shared one, and the multiweek view's length is a preference.
+  const preferred = !urlView && !lastView
+  const settled =
+    known &&
+    viewKnown &&
+    zonesKnown &&
+    (preferencesFetched || (!preferred && view !== 'multiweek'))
 
   // The URL is the state; the stored view only decides where the app reopens.
   useEffect(() => {
@@ -229,6 +269,9 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       failed: isError,
       reload: () => void refetch(),
       shown,
+      hidden,
+      none,
+      settled,
       toggle,
       reveal,
       only,
@@ -258,6 +301,9 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       isError,
       refetch,
       shown,
+      hidden,
+      none,
+      settled,
       toggle,
       reveal,
       only,

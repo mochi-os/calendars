@@ -16,9 +16,23 @@ const state = vi.hoisted(() => ({
   refetch: vi.fn(),
   save: vi.fn(),
   search: {} as Record<string, string>,
+  hiddenKnown: true,
+  viewKnown: true,
+  preferencesFetched: true,
+  zones: false,
+  storedZones: false,
+  zonesKnown: true,
+  storeZones: vi.fn(),
 }))
 
 beforeEach(() => {
+  state.hiddenKnown = true
+  state.viewKnown = true
+  state.preferencesFetched = true
+  state.zones = false
+  state.storedZones = false
+  state.zonesKnown = true
+  state.storeZones.mockReset()
   state.stored = null
   state.view = 'month'
   state.failed = false
@@ -44,9 +58,19 @@ vi.mock('@/hooks/use-preferences', async (importOriginal) => {
   const original = await importOriginal<typeof import('@/hooks/use-preferences')>()
   return {
     ...original,
-    usePreferencesQuery: () => ({
-      data: { preferences: { ...original.DEFAULTS, view: state.view } },
-    }),
+    usePreferencesQuery: () =>
+      state.preferencesFetched
+        ? {
+            data: {
+              preferences: {
+                ...original.DEFAULTS,
+                view: state.view,
+                zones: state.zones,
+              },
+            },
+            isFetched: true,
+          }
+        : { data: undefined, isFetched: false },
     useSetPreferencesMutation: () => ({ mutate: state.save }),
   }
 })
@@ -57,6 +81,8 @@ vi.mock('@/hooks/use-shown', () => ({
     reveal: vi.fn(),
     only: vi.fn(),
     visible: [],
+    hidden: ['c2'],
+    known: state.hiddenKnown,
   }),
 }))
 vi.mock('@mochi/web', async (importOriginal) => {
@@ -67,8 +93,10 @@ vi.mock('@mochi/web', async (importOriginal) => {
     // The view is the one key read from storage here; the rest start empty.
     useShellStorage: <T,>(key: string, fallback: T) =>
       key === 'calendars:view'
-        ? [(state.stored ?? fallback) as T, vi.fn()]
-        : [fallback, vi.fn()],
+        ? [(state.stored ?? fallback) as T, vi.fn(), state.viewKnown]
+        : key === 'calendars:zones'
+          ? [state.storedZones as T, state.storeZones, state.zonesKnown]
+          : [fallback, vi.fn(), true],
   }
 })
 
@@ -151,3 +179,70 @@ describe('CalendarProvider', () => {
     expect(state.refetch).toHaveBeenCalledTimes(1)
   })
 })
+
+// The range the event queries ask for depends on the hidden calendars and the
+// last view, both kept in the browser; asking before they are read would ask
+// for the wrong calendars or the wrong range, and then again.
+describe('CalendarProvider stored choices', () => {
+  it('lets the event queries ask once the hidden calendars and the view are read', () => {
+    const seen = provide()
+    expect(seen.current?.settled).toBe(true)
+    expect(seen.current?.hidden).toEqual(['c2'])
+  })
+
+  it('holds them back while the hidden calendars are unread', () => {
+    state.hiddenKnown = false
+    expect(provide().current?.settled).toBe(false)
+  })
+
+  it('holds them back while the last view is unread', () => {
+    state.viewKnown = false
+    expect(provide().current?.settled).toBe(false)
+  })
+
+  it('does not call every calendar hidden before the list answers', () => {
+    expect(provide().current?.none).toBe(false)
+  })
+
+  it('waits for the shared preferences when this browser has shown no view', () => {
+    state.preferencesFetched = false
+    expect(provide().current?.settled).toBe(false)
+  })
+
+  it('does not wait for them when this browser keeps a view of its own', () => {
+    state.stored = 'month'
+    state.preferencesFetched = false
+    expect(provide().current?.settled).toBe(true)
+  })
+
+  it('waits for them for the multiweek view, whose length they give', () => {
+    state.stored = 'multiweek'
+    state.preferencesFetched = false
+    expect(provide().current?.settled).toBe(false)
+  })
+
+  // Whether events show in their own zones widens the range, so this browser
+  // keeps a copy to ask right before the preferences answer.
+  it('asks with the zones copy this browser keeps until the preferences answer', () => {
+    state.stored = 'month'
+    state.preferencesFetched = false
+    state.storedZones = true
+    const seen = provide()
+    expect(seen.current?.preferences.zones).toBe(true)
+    expect(seen.current?.settled).toBe(true)
+  })
+
+  it('waits for that copy to be read', () => {
+    state.stored = 'month'
+    state.zonesKnown = false
+    expect(provide().current?.settled).toBe(false)
+  })
+
+  it('keeps the copy in step with the preferences', () => {
+    state.zones = true
+    state.storedZones = false
+    provide()
+    expect(state.storeZones).toHaveBeenCalledWith(true)
+  })
+})
+

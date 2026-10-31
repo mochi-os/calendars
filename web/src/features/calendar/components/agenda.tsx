@@ -59,9 +59,8 @@ interface Props {
 export function Agenda({ selected, onSelect, onTop }: Props) {
   const { t } = useLingui()
   const format = useFormat()
-  const { date, today, calendars, visible, preferences, search } =
+  const { date, today, calendars, preferences, search, hidden, none, settled } =
     useCalendarContext()
-  const shown = useMemo(() => visible.map((c) => c.id), [visible])
 
   /**
    * A day as the list writes one, in its headings and at each end of a span
@@ -102,11 +101,14 @@ export function Agenda({ selected, onSelect, onTop }: Props) {
     return out
   }, [span, format])
 
-  const bounds = useBoundsQuery(shown)
+  // By the calendars hidden in this browser, as the range views ask.
+  const asking = settled && !none
+  const bounds = useBoundsQuery(hidden, asking)
   const { instances, pending, failed, retry } = useInstancePages(
     pages,
-    shown,
-    format.timezone
+    hidden,
+    format.timezone,
+    asking
   )
 
   const loadedFrom = pages[0].start

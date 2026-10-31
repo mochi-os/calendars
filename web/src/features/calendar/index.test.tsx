@@ -28,6 +28,11 @@ const state = vi.hoisted(() => ({
   agenda: {} as Record<string, unknown>,
   view: 'month',
   date: '2026-09-15',
+  hidden: [] as string[],
+  none: false,
+  settled: true,
+  /** What the page last asked the range query for. */
+  asked: [] as unknown[],
   query: {
     data: undefined as unknown,
     isSuccess: true,
@@ -52,6 +57,10 @@ beforeEach(() => {
   state.agenda = {}
   state.view = 'month'
   state.date = '2026-09-15'
+  state.hidden = []
+  state.none = false
+  state.settled = true
+  state.asked = []
   state.query = {
     data: { instances: [] },
     isSuccess: true,
@@ -77,6 +86,9 @@ vi.mock('@/context/calendar-context', () => ({
     today: '2026-09-15',
     preferences: DEFAULTS,
     visible: state.visible,
+    hidden: state.hidden,
+    none: state.none,
+    settled: state.settled,
     calendars: state.visible,
     workweek: false,
     editing: null,
@@ -88,7 +100,10 @@ vi.mock('@/context/calendar-context', () => ({
   }),
 }))
 vi.mock('@/hooks/use-events', () => ({
-  useInstancesQuery: () => state.query,
+  useInstancesQuery: (...args: unknown[]) => {
+    state.asked = args
+    return state.query
+  },
   useCreateEventMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
 }))
 vi.mock('@/hooks/use-event-move', () => ({ useEventMove: () => ({}) }))
@@ -205,8 +220,30 @@ describe('CalendarPage', () => {
     expect(screen.getByText(TRUNCATED)).toBeInTheDocument()
   })
 
+  // The range is asked for by the calendars hidden in this browser, so it
+  // need not wait for the calendar list.
+  it('asks for the range by the hidden calendars once the browser has said which', () => {
+    state.hidden = ['c2']
+    show()
+    expect(state.asked[2]).toEqual(['c2'])
+    expect(state.asked[4]).toBe(true)
+  })
+
+  it('does not ask before the browser has said which calendars are hidden', () => {
+    state.settled = false
+    show()
+    expect(state.asked[4]).toBe(false)
+  })
+
+  it('asks nothing once every calendar is hidden', () => {
+    state.none = true
+    show()
+    expect(state.asked[4]).toBe(false)
+  })
+
   it('leaves the banner a previous range left behind out once every calendar is hidden', () => {
     state.visible = []
+    state.none = true
     state.query = {
       ...state.query,
       data: { instances: [], truncated: true },

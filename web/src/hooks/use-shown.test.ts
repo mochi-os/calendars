@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import type { Calendar } from '@/api/types/calendars'
 import { useShownCalendars } from './use-shown'
@@ -22,5 +22,12 @@ describe('useShownCalendars', () => {
       'standard',
       'work',
     ])
+  })
+
+  it('hands out the hidden set the event queries name, once it has been read', async () => {
+    const { result } = renderHook(() => useShownCalendars(calendars))
+    await waitFor(() => expect(result.current.known).toBe(true))
+    act(() => result.current.toggle('work'))
+    expect(result.current.hidden).toEqual(['work'])
   })
 })

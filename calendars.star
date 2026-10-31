@@ -1708,6 +1708,26 @@ def range_input(a):
 		return None
 	return (start, finish)
 
+# Which calendars a request asks about. "calendars" lists the ones wanted, an
+# empty list meaning every one; "hidden" lists ones to leave out, so a client
+# that keeps the hidden set can ask before it has the calendar list. Either
+# may name a calendar by id or fingerprint.
+def calendars_selection(a):
+	wanted = [c for c in a.input("calendars", "").split(",") if c]
+	hidden = [c for c in a.input("hidden", "").split(",") if c]
+	return (wanted, hidden)
+
+def calendar_selected(calendar, selection):
+	wanted, hidden = selection
+	if not wanted and not hidden:
+		return True
+	names = (calendar["id"], mochi.entity.fingerprint(calendar["id"]))
+	if wanted and names[0] not in wanted and names[1] not in wanted:
+		return False
+	if names[0] in hidden or names[1] in hidden:
+		return False
+	return True
+
 # The occurrences of every shown calendar in a range, recurrences expanded.
 def action_events(a):
 	identity = a.user.identity.id
@@ -1721,10 +1741,10 @@ def action_events(a):
 	timezone = a.input("timezone", "")
 	if timezone and not mochi.text.valid(timezone, "timezone"):
 		timezone = ""
-	wanted = [c for c in a.input("calendars", "").split(",") if c]
+	selection = calendars_selection(a)
 	out = []
 	for calendar in calendars_rows(identity):
-		if wanted and calendar["id"] not in wanted and mochi.entity.fingerprint(calendar["id"]) not in wanted:
+		if not calendar_selected(calendar, selection):
 			continue
 		if calendar["kind"] == "birthdays":
 			out.extend(birthdays_instances(identity, start, finish, calendar["colour"], calendar["id"]))
@@ -1753,12 +1773,12 @@ def instances_sorted(instances):
 def action_events_bounds(a):
 	identity = a.user.identity.id
 	calendars_ensure(identity)
-	wanted = [c for c in a.input("calendars", "").split(",") if c]
+	selection = calendars_selection(a)
 	first = 0
 	last = 0
 	endless = False
 	for calendar in calendars_rows(identity):
-		if wanted and calendar["id"] not in wanted and mochi.entity.fingerprint(calendar["id"]) not in wanted:
+		if not calendar_selected(calendar, selection):
 			continue
 		if calendar["kind"] == "birthdays":
 			today = birthday_today()

@@ -6,8 +6,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
+  useBoundsQuery,
   useDeleteEventMutation,
   useInstancePages,
+  useInstancesQuery,
   useUpdateEventMutation,
 } from './use-events'
 
@@ -18,6 +20,7 @@ const api = vi.hoisted(() => ({
   delete: vi.fn(),
   split: vi.fn(),
   list: vi.fn(),
+  bounds: vi.fn(),
 }))
 
 vi.mock('@/api/events', () => ({ eventsApi: api }))
@@ -127,5 +130,62 @@ describe('the list view pages', () => {
     await waitFor(() => expect(result.current.failed).toBe(false))
     expect(api.list).toHaveBeenCalledTimes(3)
     expect(api.list.mock.calls[2][0]).toBe(100)
+  })
+})
+
+describe('range queries', () => {
+  beforeEach(() => {
+    api.list.mockReset().mockResolvedValue({ instances: [] })
+    api.bounds.mockReset().mockResolvedValue({ first: 0, last: 0 })
+  })
+
+  it('names the hidden calendars, the same set in any order', async () => {
+    const { wrapper } = setup()
+    renderHook(() => useInstancesQuery(10, 20, ['b', 'a'], 'UTC'), {
+      wrapper,
+    })
+    await waitFor(() =>
+      expect(api.list).toHaveBeenCalledWith(10, 20, ['a', 'b'], 'UTC')
+    )
+  })
+
+  it('asks for every calendar when none is hidden', async () => {
+    const { wrapper } = setup()
+    renderHook(() => useInstancesQuery(10, 20, [], 'UTC'), { wrapper })
+    await waitFor(() =>
+      expect(api.list).toHaveBeenCalledWith(10, 20, [], 'UTC')
+    )
+  })
+
+  it('waits until the page says it may ask', async () => {
+    const { wrapper } = setup()
+    renderHook(() => useInstancesQuery(10, 20, [], 'UTC', false), {
+      wrapper,
+    })
+    renderHook(() => useBoundsQuery([], false), { wrapper })
+    renderHook(
+      () => useInstancePages([{ start: 10, finish: 20 }], [], 'UTC', false),
+      {
+        wrapper,
+      }
+    )
+    await new Promise((resolve) => setTimeout(resolve, 20))
+    expect(api.list).not.toHaveBeenCalled()
+    expect(api.bounds).not.toHaveBeenCalled()
+  })
+
+  it('gives the list view and its bounds the hidden calendars too', async () => {
+    const { wrapper } = setup()
+    renderHook(() => useBoundsQuery(['b', 'a']), { wrapper })
+    renderHook(
+      () => useInstancePages([{ start: 10, finish: 20 }], ['b'], 'UTC'),
+      {
+        wrapper,
+      }
+    )
+    await waitFor(() => expect(api.bounds).toHaveBeenCalledWith(['a', 'b']))
+    await waitFor(() =>
+      expect(api.list).toHaveBeenCalledWith(10, 20, ['b'], 'UTC')
+    )
   })
 })

@@ -58,6 +58,9 @@ export function CalendarPage() {
     today,
     preferences,
     visible,
+    hidden,
+    none,
+    settled,
     calendars,
     workweek,
     editing,
@@ -83,23 +86,18 @@ export function CalendarPage() {
   const margin = preferences.zones ? 86400 : 0
   const start = format.timestampAt(range.from, 0) - margin
   const finish = format.timestampAt(addDays(range.from, range.days), 0) + margin
-  // The list fetches its own pages, so the range query is idle there.
-  const shown = useMemo(
-    () => (view === 'list' ? [] : visible.map((c) => c.id)),
-    [view, visible]
-  )
+  // Asked for by the calendars hidden in this browser, so the range need not
+  // wait for the calendar list. The list fetches its own pages, so the range
+  // query is idle there, and with every calendar hidden there is nothing to
+  // ask for.
+  const idle = view === 'list' || none
   const { data, isSuccess, isPlaceholderData, isError, error, refetch } =
-    useInstancesQuery(
-    start,
-    finish,
-    shown,
-    format.timezone
-  )
+    useInstancesQuery(start, finish, hidden, format.timezone, settled && !idle)
   // Each occurrence arrives in its event's own colour, else its calendar's;
   // recolouring a calendar fetches the range again.
   const instances = useMemo(
-    () => (shown.length === 0 ? [] : (data?.instances ?? [])),
-    [shown.length, data?.instances]
+    () => (idle ? [] : (data?.instances ?? [])),
+    [idle, data?.instances]
   )
 
   // Every occurrence seen, by key: a drag that turns the page carries its
@@ -256,7 +254,7 @@ export function CalendarPage() {
     instances,
     // Until the shown calendars' own occurrences arrive, one missing from
     // them proves nothing: the previous range's stand in while they load.
-    loading: shown.length > 0 && (!isSuccess || isPlaceholderData),
+    loading: !idle && (!isSuccess || isPlaceholderData),
     visible,
     reveal,
     open: (instance) => open(instance),
@@ -456,7 +454,7 @@ export function CalendarPage() {
   return (
     <div className='flex h-full min-h-0 flex-col'>
       <Toolbar onCreate={createNow} />
-      {shown.length > 0 && data?.truncated && (
+      {!idle && data?.truncated && (
         <p className='bg-muted text-muted-foreground px-3 py-1 text-sm'>
           {t`Too many events to show them all. Choose a shorter range.`}
         </p>

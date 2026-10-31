@@ -24,33 +24,31 @@ import type {
 } from '@/api/types/events'
 
 const eventKeys = {
-  instances: (
-    start: number,
-    finish: number,
-    calendars: string[],
-    timezone = ''
-  ) => ['instances', start, finish, calendars, timezone] as const,
+  instances: (start: number, finish: number, hidden: string[], timezone = '') =>
+    ['instances', start, finish, hidden, timezone] as const,
   event: (event: string) => ['event', event] as const,
-  bounds: (calendars: string[]) => ['bounds', calendars] as const,
+  bounds: (hidden: string[]) => ['bounds', hidden] as const,
 }
 
 /**
- * One query per visible range; every view renders from its answer. An empty
- * calendar list means "no filter" to the server, so with every calendar hidden
- * the query is not made at all rather than asking for all of them.
+ * One query per visible range; every view renders from its answer. It names
+ * the calendars hidden in this browser rather than the ones shown, so it need
+ * not wait for the calendar list: the caller enables it once the hidden set
+ * has been read, and not when every calendar is hidden.
  */
 export const useInstancesQuery = (
   start: number,
   finish: number,
-  calendars: string[],
-  timezone?: string
+  hidden: string[],
+  timezone?: string,
+  enabled = true
 ) => {
   // Sorted, so the same set of calendars is always the same cache entry.
-  const key = [...calendars].sort()
+  const key = [...hidden].sort()
   return useQuery<InstancesResponse>({
     queryKey: eventKeys.instances(start, finish, key, timezone),
     queryFn: () => eventsApi.list(start, finish, key, timezone),
-    enabled: finish > start && key.length > 0,
+    enabled: enabled && finish > start,
     placeholderData: (previous) => previous,
   })
 }
@@ -62,15 +60,16 @@ export const useInstancesQuery = (
  */
 export const useInstancePages = (
   pages: { start: number; finish: number }[],
-  calendars: string[],
-  timezone?: string
+  hidden: string[],
+  timezone?: string,
+  enabled = true
 ) => {
-  const key = [...calendars].sort()
+  const key = [...hidden].sort()
   return useQueries({
     queries: pages.map((page) => ({
       queryKey: eventKeys.instances(page.start, page.finish, key, timezone),
       queryFn: () => eventsApi.list(page.start, page.finish, key, timezone),
-      enabled: page.finish > page.start && key.length > 0,
+      enabled: enabled && page.finish > page.start,
     })),
     combine: (results) => {
       // An occurrence that crosses from one page into the next comes back
@@ -101,13 +100,13 @@ export const useInstancePages = (
   })
 }
 
-/** Where the shown calendars' events begin and end. */
-export const useBoundsQuery = (calendars: string[]) => {
-  const key = [...calendars].sort()
+/** Where the events of the calendars not hidden begin and end. */
+export const useBoundsQuery = (hidden: string[], enabled = true) => {
+  const key = [...hidden].sort()
   return useQuery<BoundsResponse>({
     queryKey: eventKeys.bounds(key),
     queryFn: () => eventsApi.bounds(key),
-    enabled: key.length > 0,
+    enabled,
   })
 }
 

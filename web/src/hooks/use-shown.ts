@@ -13,7 +13,7 @@ import type { Calendar } from '@/api/types/calendars'
 const HIDDEN = 'calendars:hidden'
 
 export function useShownCalendars(calendars: Calendar[]) {
-  const [hidden, setHidden] = useShellStorage<string[]>(HIDDEN, [])
+  const [hidden, setHidden, known] = useShellStorage<string[]>(HIDDEN, [])
 
   const shown = useCallback(
     (calendar: string) => !hidden.includes(calendar),
@@ -51,5 +51,5 @@ export function useShownCalendars(calendars: Calendar[]) {
 
   const visible = calendars.filter((calendar) => shown(calendar.id))
 
-  return { shown, toggle, reveal, only, visible }
+  return { shown, toggle, reveal, only, visible, hidden, known }
 }
