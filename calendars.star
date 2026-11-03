@@ -2310,7 +2310,7 @@ def action_calendar_export(a):
 # was written in, rather than converted into the user's zone. "calendar" is
 # the calendar a new event goes in, one the user can write to; empty means the
 # built-in default calendar. "allday" is where a day's all-day events go among
-# its timed ones in the month and multiweek views, "first" or "last".
+# its timed ones in the month, multiweek and list views, "first" or "last".
 _PREFERENCES = {"hours": {"start": 8, "finish": 17}, "days": [1, 2, 3, 4, 5], "multiweek": {"weeks": 4, "previous": 0}, "duration": 60, "reminder": _REMINDER_DEFAULT, "view": "month", "zones": False, "calendar": "", "allday": "first"}
 
 def preferences_read(a):

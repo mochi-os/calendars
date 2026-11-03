@@ -17,6 +17,7 @@ const calendar = { id: 'c1', name: 'Test calendar', colour: '#60a5fa' }
 
 // What the list is given and what it asked for, per test.
 const state = vi.hoisted(() => ({
+  allday: 'first' as 'first' | 'last',
   search: '',
   date: '2026-09-22',
   first: 0,
@@ -26,6 +27,7 @@ const state = vi.hoisted(() => ({
 }))
 
 beforeEach(() => {
+  state.allday = 'first'
   state.search = ''
   state.date = '2026-09-22'
   state.first = 0
@@ -36,7 +38,7 @@ beforeEach(() => {
 
 vi.mock('@/context/calendar-context', () => ({
   useCalendarContext: () => ({
-    preferences: { zones: false },
+    preferences: { zones: false, allday: state.allday },
     search: state.search,
     date: state.date,
     today: '2026-09-22',
@@ -288,6 +290,20 @@ describe('Agenda order', () => {
     // Even one whose instants begin after a timed one's that day.
     expect(before('Market day', 'Early swim')).toBeTruthy()
     // Two from the same instant go by title.
+    expect(before('Bin day', 'Market day')).toBeTruthy()
+  })
+
+  it("puts a day's all-day occurrences after its timed ones when the preferences put them last", () => {
+    state.allday = 'last'
+    show()
+    const row = (summary: string) =>
+      screen.getByText(summary).closest('button') as HTMLElement
+    const before = (first: string, second: string) =>
+      row(first).compareDocumentPosition(row(second)) &
+      Node.DOCUMENT_POSITION_FOLLOWING
+    expect(before('Design review', 'Laundry')).toBeTruthy()
+    expect(before('Called off', 'Holiday')).toBeTruthy()
+    expect(before('Early swim', 'Market day')).toBeTruthy()
     expect(before('Bin day', 'Market day')).toBeTruthy()
   })
 })

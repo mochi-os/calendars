@@ -28,8 +28,8 @@ export interface Preferences {
    */
   calendar: string
   /**
-   * Where a day's all-day events go among its timed ones in the month and
-   * multiweek views.
+   * Where a day's all-day events go among its timed ones in the month,
+   * multiweek and list views.
    */
   allday: 'first' | 'last'
 }
