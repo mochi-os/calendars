@@ -2798,8 +2798,17 @@ def action_calendar_publish_forget(a):
 def dav_caller(context):
 	return type(context) == "dict" and context.get("_server") == True
 
+# dav_collection(row) -> dict: a calendar as the engine lists it. version is
+# the change token a client compares before it lists the events (getctag): the
+# calendar's own id with its count of changes, since a calendar deleted and
+# made again under its slug counts from nothing. The birthdays calendar has
+# none: its events follow the contacts in another app and today's date,
+# neither of which moves it, so a client always lists them.
 def dav_collection(row):
-	return {"slug": row["slug"], "name": mochi.entity.name(row["id"]) or "", "description": "", "readonly": calendar_readonly(row), "components": ["VEVENT"], "version": row["version"]}
+	collection = {"slug": row["slug"], "name": mochi.entity.name(row["id"]) or "", "description": "", "readonly": calendar_readonly(row), "components": ["VEVENT"]}
+	if row["kind"] != "birthdays":
+		collection["version"] = row["id"] + "-" + str(row["version"])
+	return collection
 
 def function_dav_collections(context, identity, collection=None):
 	if not dav_caller(context) or not identity:
