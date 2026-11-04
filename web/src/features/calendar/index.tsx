@@ -43,6 +43,9 @@ import { EventSummaryPanel } from '@/features/calendar/components/event-summary'
 import { ScopeDialog } from '@/features/calendar/components/scope-dialog'
 import { Toolbar } from '@/features/calendar/components/toolbar'
 
+// Weeks the multiweek grid draws, and fetches, beyond each end of its range.
+const BUFFER = 2
+
 export function CalendarPage() {
   const { t } = useLingui()
   const format = useFormat()
@@ -84,8 +87,12 @@ export function CalendarPage() {
   // end up to a day away by the user's clock, so the window grows a day each
   // side and the views place what falls on their days.
   const margin = preferences.zones ? 86400 : 0
-  const start = format.timestampAt(range.from, 0) - margin
-  const finish = format.timestampAt(addDays(range.from, range.days), 0) + margin
+  // The multiweek grid scrolls through weeks drawn beyond each end of its
+  // range, so they are fetched with it.
+  const buffer = view === 'multiweek' ? BUFFER : 0
+  const start = format.timestampAt(addDays(range.from, -7 * buffer), 0) - margin
+  const finish =
+    format.timestampAt(addDays(range.from, range.days + 7 * buffer), 0) + margin
   // Asked for by the calendars hidden in this browser, so the range need not
   // wait for the calendar list. The list fetches its own pages, so the range
   // query is idle there, and with every calendar hidden there is nothing to
@@ -431,6 +438,7 @@ export function CalendarPage() {
         today={today}
         weekNumbers
         allday={preferences.allday}
+        buffer={buffer}
         selected={current}
         onSelect={select}
         onCreate={createOnDay}
