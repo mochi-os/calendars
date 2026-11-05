@@ -318,6 +318,19 @@ export function PreferencesDialog({ open, onOpenChange }: Props) {
             </div>
 
             <div className='flex items-center justify-between gap-3'>
+              <Label htmlFor='week-numbers'>
+                <Trans>Show week numbers</Trans>
+              </Label>
+              <Switch
+                id='week-numbers'
+                checked={values.week.numbers}
+                onCheckedChange={(numbers) =>
+                  setValues((current) => ({ ...current, week: { numbers } }))
+                }
+              />
+            </div>
+
+            <div className='flex items-center justify-between gap-3'>
               <Label htmlFor='zones'>
                 <Trans>Show events in their own time zone</Trans>
               </Label>

@@ -56,6 +56,7 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
     setWorkweek,
     search,
     setSearch,
+    preferences,
   } = useCalendarContext()
 
   // Wider screens keep the search to an icon until it is wanted, and keep it
@@ -157,7 +158,12 @@ export function Toolbar({ onCreate }: { onCreate: () => void }) {
           </Button>
         </PopoverTrigger>
         <PopoverContent align='start' className='w-72'>
-          <MiniMonth selected={shown} today={today} onSelect={setDate} />
+          <MiniMonth
+            selected={shown}
+            today={today}
+            weekNumbers={preferences.week.numbers}
+            onSelect={setDate}
+          />
         </PopoverContent>
       </Popover>
     </h1>

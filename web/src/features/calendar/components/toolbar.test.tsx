@@ -20,6 +20,7 @@ const context = {
   setWorkweek: vi.fn(),
   search: '',
   setSearch: vi.fn(),
+  preferences: { week: { numbers: false } },
 }
 
 vi.mock('@/context/calendar-context', () => ({
@@ -42,6 +43,7 @@ afterEach(() => {
   size.isMobile = false
   context.listed = undefined
   context.search = ''
+  context.preferences.week.numbers = false
 })
 
 // The toolbar in a view, with its search field opened where it starts as an
@@ -147,6 +149,17 @@ describe('Toolbar arrangement', () => {
     draw('month')
     fireEvent.click(screen.getByRole('button', { name: 'September 2026' }))
     expect(screen.getByRole('dialog')).toBeInTheDocument()
+  })
+
+  it('numbers the weeks of the month it opens only when the preference says so', () => {
+    draw('month')
+    fireEvent.click(screen.getByRole('button', { name: 'September 2026' }))
+    expect(screen.queryAllByTestId('week-number')).toHaveLength(0)
+    cleanup()
+    context.preferences.week.numbers = true
+    draw('month')
+    fireEvent.click(screen.getByRole('button', { name: 'September 2026' }))
+    expect(screen.getAllByTestId('week-number').length).toBeGreaterThan(0)
   })
 
   it('offers the work week inside the view menu in the week view, and nowhere else', () => {

@@ -92,6 +92,7 @@ export function CalendarsLayout() {
     setDate,
     listed,
     today,
+    preferences,
   } = useCalendarContext()
 
   const [createOpen, setCreateOpen] = useState(false)
@@ -399,6 +400,7 @@ export function CalendarsLayout() {
               <MiniMonth
                 selected={listed ?? date}
                 today={today}
+                weekNumbers={preferences.week.numbers}
                 onSelect={setDate}
               />
             </div>

@@ -436,7 +436,7 @@ export function CalendarPage() {
         month={view === 'month' ? monthOf(range.date) : undefined}
         events={events}
         today={today}
-        weekNumbers
+        weekNumbers={preferences.week.numbers}
         allday={preferences.allday}
         buffer={buffer}
         selected={current}

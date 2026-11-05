@@ -31,6 +31,8 @@ const state = vi.hoisted(() => ({
   hidden: [] as string[],
   none: false,
   settled: true,
+  /** Whether the preferences ask for week numbers. */
+  numbers: false,
   /** What the page last asked the range query for. */
   asked: [] as unknown[],
   query: {
@@ -60,6 +62,7 @@ beforeEach(() => {
   state.hidden = []
   state.none = false
   state.settled = true
+  state.numbers = false
   state.asked = []
   state.query = {
     data: { instances: [] },
@@ -84,7 +87,7 @@ vi.mock('@/context/calendar-context', () => ({
     setListed: state.setListed,
     setView: vi.fn(),
     today: '2026-09-15',
-    preferences: DEFAULTS,
+    preferences: { ...DEFAULTS, week: { numbers: state.numbers } },
     visible: state.visible,
     hidden: state.hidden,
     none: state.none,
@@ -195,6 +198,15 @@ describe('CalendarPage', () => {
     show()
     expect(screen.getByText('month grid')).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Try again' })).toBeNull()
+  })
+
+  it('numbers the weeks of the grid only when the preference says so', () => {
+    show()
+    expect(state.month.weekNumbers).toBe(false)
+    cleanup()
+    state.numbers = true
+    show()
+    expect(state.month.weekNumbers).toBe(true)
   })
 
   it('says the calendars could not be read, with a way to try again', () => {

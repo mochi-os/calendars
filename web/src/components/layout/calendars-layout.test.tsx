@@ -28,6 +28,10 @@ const state = vi.hoisted(() => ({
   listed: undefined as string | undefined,
   /** The day the sidebar's month was last given as chosen. */
   picked: undefined as unknown,
+  /** Whether the preferences ask for week numbers. */
+  numbers: false,
+  /** Whether the sidebar's month was last told to number its weeks. */
+  numbered: undefined as unknown,
 }))
 
 vi.mock('@mochi/web', async (importOriginal) => {
@@ -67,8 +71,15 @@ vi.mock('@mochi/web', async (importOriginal) => {
     CreateEntityDialog: () => null,
     ConfirmDialog: () => null,
     useScreenSize: () => ({ isDesktop: state.desktop }),
-    MiniMonth: ({ selected }: { selected: unknown }) => {
+    MiniMonth: ({
+      selected,
+      weekNumbers,
+    }: {
+      selected: unknown
+      weekNumbers?: boolean
+    }) => {
       state.picked = selected
+      state.numbered = weekNumbers
       return null
     },
     shellSaveBlob: state.save,
@@ -107,6 +118,7 @@ vi.mock('@/context/calendar-context', () => ({
     setDate: vi.fn(),
     listed: state.listed,
     today: new Date(2026, 9, 2),
+    preferences: { week: { numbers: state.numbers } },
   }),
 }))
 
@@ -338,6 +350,17 @@ describe('CalendarsLayout month', () => {
     state.desktop = true
     state.listed = undefined
     state.picked = undefined
+    state.numbers = false
+    state.numbered = undefined
+  })
+
+  it("numbers the weeks of the sidebar's month only when the preference says so", () => {
+    show()
+    expect(state.numbered).toBe(false)
+    cleanup()
+    state.numbers = true
+    show()
+    expect(state.numbered).toBe(true)
   })
 
   it("chooses the day the list has scrolled to in the sidebar's month, and the anchored day otherwise", () => {

@@ -84,6 +84,16 @@ describe('PreferencesDialog', () => {
     expect(state.save.mock.calls[0][0].calendar).toBe('c1')
   })
 
+  it('starts with week numbers off and saves them on once the switch is turned', async () => {
+    render(show(true))
+    const numbers = screen.getByRole('switch', { name: 'Show week numbers' })
+    expect(numbers).not.toBeChecked()
+    fireEvent.click(numbers)
+    fireEvent.click(saveButton())
+    await waitFor(() => expect(state.save).toHaveBeenCalledTimes(1))
+    expect(state.save.mock.calls[0][0].week).toEqual({ numbers: true })
+  })
+
   it('reopens on what is saved, not on edits a Cancel discarded', () => {
     const { rerender } = render(show(true))
     fireEvent.click(zones())

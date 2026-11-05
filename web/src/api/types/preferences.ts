@@ -32,6 +32,11 @@ export interface Preferences {
    * multiweek and list views.
    */
   allday: 'first' | 'last'
+  /**
+   * Draw each week's ISO number in the month and multiweek views and the
+   * month pickers.
+   */
+  week: { numbers: boolean }
 }
 
 export interface PreferencesResponse {
