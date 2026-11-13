@@ -38,7 +38,9 @@ interface Props {
 /**
  * Asks whether an action lands on one occurrence, on it and every one after
  * it, or on the whole series. A one-off event has nothing to choose between,
- * so it gets a plain confirm.
+ * so it gets a plain confirm. The choices stand one under another at full
+ * width, as on Android: beside Cancel in one row they run past the dialog's
+ * edge, in English as in any longer language.
  */
 export function ScopeDialog({
   open,
@@ -61,41 +63,45 @@ export function ScopeDialog({
           <ResponsiveDialogTitle>{title}</ResponsiveDialogTitle>
         </ResponsiveDialogHeader>
         {children}
+        {recurring && (
+          <div className='flex flex-col gap-2'>
+            <Button
+              variant='outline'
+              className='w-full'
+              disabled={held}
+              onClick={() => onChoose('one')}
+            >
+              {icon}
+              <Trans>This event</Trans>
+            </Button>
+            {following && (
+              <Button
+                variant='outline'
+                className='w-full'
+                disabled={held}
+                onClick={() => onChoose('following')}
+              >
+                {icon}
+                <Trans>This and following</Trans>
+              </Button>
+            )}
+            <Button
+              variant={destructive ? 'destructive' : 'default'}
+              className='w-full'
+              disabled={held}
+              loading={pending}
+              onClick={() => onChoose('all')}
+              icon={icon}
+            >
+              <Trans>All events</Trans>
+            </Button>
+          </div>
+        )}
         <ResponsiveDialogFooter className='gap-2'>
           <Button variant='outline' onClick={() => onOpenChange(false)}>
             <Trans>Cancel</Trans>
           </Button>
-          {recurring ? (
-            <>
-              <Button
-                variant='outline'
-                disabled={held}
-                onClick={() => onChoose('one')}
-              >
-                {icon}
-                <Trans>This event</Trans>
-              </Button>
-              {following && (
-                <Button
-                  variant='outline'
-                  disabled={held}
-                  onClick={() => onChoose('following')}
-                >
-                  {icon}
-                  <Trans>This and following</Trans>
-                </Button>
-              )}
-              <Button
-                variant={destructive ? 'destructive' : 'default'}
-                disabled={held}
-                loading={pending}
-                onClick={() => onChoose('all')}
-                icon={icon}
-              >
-                <Trans>All events</Trans>
-              </Button>
-            </>
-          ) : (
+          {!recurring && (
             <Button
               variant={destructive ? 'destructive' : 'default'}
               disabled={held}
