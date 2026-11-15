@@ -919,6 +919,25 @@ def birthdays_contacts(identity):
 		return []
 	return mochi.service.call("contacts", "contacts/birthdays", identity) or []
 
+# birthdays_version(identity) -> string: the birthdays calendar's change tag,
+# "" for none. The events follow the contacts, today's date in the user's zone
+# and how this app writes a birthday, so the tag hashes the address books'
+# change tokens, that date, and a sample birthday written as the events are:
+# the sample moves with the user's language and with any change to the object
+# this app writes. The user's zone reaches the events only through the date.
+# A people app that predates books/versions declares no books service, and
+# a call to a function it lacks would fail the listing, so it gets no tag.
+def birthdays_version(identity):
+	if not identity or not mochi.service.exists("books"):
+		return ""
+	if not mochi.permission.check("contacts/read"):
+		return ""
+	versions = mochi.service.call("books", "books/versions", identity)
+	if type(versions) != "list":
+		return ""
+	sample = birthday_object({"id": "", "name": "", "year": 0, "month": 1, "day": 1})["ics"]
+	return mochi.crypto.hash.sha256(json.encode([versions, birthday_today(), sample]))
+
 # date_text(year, month, day) -> string: the iCalendar DATE form, padded by
 # hand because Starlark's % formatting takes no width.
 def date_text(year, month, day):
@@ -2810,13 +2829,18 @@ def dav_caller(context):
 # dav_collection(row) -> dict: a calendar as the engine lists it. version is
 # the change token a client compares before it lists the events (getctag): the
 # calendar's own id with its count of changes, since a calendar deleted and
-# made again under its slug counts from nothing. The birthdays calendar has
-# none: its events follow the contacts in another app and today's date,
-# neither of which moves it, so a client always lists them.
+# made again under its slug counts from nothing. The birthdays calendar's
+# events follow the contacts in another app and today's date, neither of which
+# moves its count, so its tag is derived from them; without one, as with a
+# people app too old to answer it, a client always lists the events.
 def dav_collection(row):
 	collection = {"slug": row["slug"], "name": mochi.entity.name(row["id"]) or "", "description": "", "readonly": calendar_readonly(row), "components": ["VEVENT"]}
 	if row["kind"] != "birthdays":
 		collection["version"] = row["id"] + "-" + str(row["version"])
+	else:
+		version = birthdays_version(row["identity"])
+		if version:
+			collection["version"] = row["id"] + "-" + version
 	return collection
 
 def function_dav_collections(context, identity, collection=None):
