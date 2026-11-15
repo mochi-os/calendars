@@ -23,6 +23,7 @@ const state = vi.hoisted(() => ({
   storedZones: false,
   zonesKnown: true,
   storeZones: vi.fn(),
+  storeView: vi.fn(),
 }))
 
 beforeEach(() => {
@@ -33,6 +34,7 @@ beforeEach(() => {
   state.storedZones = false
   state.zonesKnown = true
   state.storeZones.mockReset()
+  state.storeView.mockReset()
   state.stored = null
   state.view = 'month'
   state.failed = false
@@ -93,7 +95,7 @@ vi.mock('@mochi/web', async (importOriginal) => {
     // The view is the one key read from storage here; the rest start empty.
     useShellStorage: <T,>(key: string, fallback: T) =>
       key === 'calendars:view'
-        ? [(state.stored ?? fallback) as T, vi.fn(), state.viewKnown]
+        ? [(state.stored ?? fallback) as T, state.storeView, state.viewKnown]
         : key === 'calendars:zones'
           ? [state.storedZones as T, state.storeZones, state.zonesKnown]
           : [fallback, vi.fn(), true],
@@ -246,3 +248,40 @@ describe('CalendarProvider stored choices', () => {
   })
 })
 
+// A browser that has shown no view waits for the shared preferences before
+// asking for events, since they name the view it opens on. It keeps that view
+// as its own once they answer, so only its first visit waits.
+describe('CalendarProvider first visit', () => {
+  it('keeps the shared view as its own once the preferences answer', () => {
+    state.view = 'week'
+    provide()
+    expect(state.storeView).toHaveBeenCalledWith('week')
+  })
+
+  it('keeps nothing before the preferences answer', () => {
+    state.preferencesFetched = false
+    provide()
+    expect(state.storeView).not.toHaveBeenCalled()
+  })
+
+  it('keeps nothing before its own stored view is read', () => {
+    state.viewKnown = false
+    provide()
+    expect(state.storeView).not.toHaveBeenCalled()
+  })
+
+  it('keeps nothing over a view of its own', () => {
+    state.stored = 'day'
+    state.view = 'week'
+    provide()
+    expect(state.storeView).not.toHaveBeenCalled()
+  })
+
+  it('keeps the view the address names rather than the shared one', () => {
+    state.search = { view: 'day' }
+    state.view = 'week'
+    provide()
+    expect(state.storeView).toHaveBeenCalledWith('day')
+    expect(state.storeView).not.toHaveBeenCalledWith('week')
+  })
+})

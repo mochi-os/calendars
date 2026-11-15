@@ -197,6 +197,22 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
     if (urlView && urlView !== lastView) setLastView(urlView)
   }, [urlView, lastView, setLastView])
 
+  // A browser that has shown no view opens on the shared one, and keeps it as
+  // its own once the preferences answer, so only its first visit waits for
+  // them before asking for events.
+  const sharedView = preferenceData?.preferences.view
+  useEffect(() => {
+    if (
+      viewKnown &&
+      !urlView &&
+      !lastView &&
+      sharedView &&
+      VIEWS.includes(sharedView)
+    ) {
+      setLastView(sharedView)
+    }
+  }, [viewKnown, urlView, lastView, sharedView, setLastView])
+
   const setView = useCallback(
     (next: CalendarView) => {
       setLastView(next)
