@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import {
+  act,
   fireEvent,
   render,
   renderHook,
@@ -136,6 +137,24 @@ describe('Publishing section', () => {
       expect(state.forgetCopies).toHaveBeenCalledWith('c1', 'm1')
     )
     expect(state.success).toHaveBeenCalledWith('Deleted 2 copies')
+  })
+
+  // A switch moves when clicked, not once the server has answered and the
+  // list has been read again, and goes back when the change is refused.
+  it('moves a switch at once, and back when the change is refused', async () => {
+    let refuse: (error: Error) => void = () => {}
+    state.setPublish.mockImplementation(
+      () => new Promise((_, reject) => (refuse = reject))
+    )
+    wrap(<PublishingSection calendar='c1' />)
+    const toggle = await screen.findByRole('switch', {
+      name: 'Publish to @alice@example.org',
+    })
+    expect(toggle).toHaveAttribute('aria-checked', 'false')
+    fireEvent.click(toggle)
+    expect(toggle).toHaveAttribute('aria-checked', 'true')
+    await act(async () => refuse(new Error('refused')))
+    await waitFor(() => expect(toggle).toHaveAttribute('aria-checked', 'false'))
   })
 
   it('says so when the list cannot be saved', async () => {

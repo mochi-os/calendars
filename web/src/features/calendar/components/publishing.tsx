@@ -53,6 +53,9 @@ export function PublishingSection({ calendar }: { calendar: string }) {
     retry: false,
   })
   const [busy, setBusy] = useState<string | null>(null)
+  // Where an account's switch was moved to while its change goes: it moves
+  // when clicked, and shows what the server holds once the list is read again.
+  const [moving, setMoving] = useState<{ id: string; on: boolean } | null>(null)
   const [kept, setKept] = useState<{
     account: PublishAccount
     count: number
@@ -69,6 +72,7 @@ export function PublishingSection({ calendar }: { calendar: string }) {
 
   const toggle = async (account: PublishAccount, on: boolean) => {
     setBusy(account.id)
+    setMoving({ id: account.id, on })
     const next = on
       ? [...publish, account.id]
       : publish.filter((id) => id !== account.id)
@@ -84,6 +88,7 @@ export function PublishingSection({ calendar }: { calendar: string }) {
       toast.error(getErrorMessage(err, t`Could not save the accounts`))
     } finally {
       setBusy(null)
+      setMoving(null)
     }
   }
 
@@ -127,7 +132,11 @@ export function PublishingSection({ calendar }: { calendar: string }) {
                 </div>
               </div>
               <Switch
-                checked={publish.includes(account.id)}
+                checked={
+                  moving?.id === account.id
+                    ? moving.on
+                    : publish.includes(account.id)
+                }
                 loading={busy === account.id}
                 aria-label={t`Publish to ${account.identifier}`}
                 onCheckedChange={(on) => void toggle(account, on)}
